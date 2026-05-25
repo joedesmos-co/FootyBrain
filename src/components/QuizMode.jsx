@@ -1,6 +1,10 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getTeamName, leagues, players, teams } from '../data/sampleData';
+import { useProgression } from '../hooks/useProgression';
+
+// TODO: Future Firebase sync — persist quiz session history and scores under
+//       users/{uid}/quizSessions so progress carries across devices.
 
 const difficultyOptions = [
   { id: 'easy', label: 'Easy', description: 'Club, position, and nationality' },
@@ -22,7 +26,7 @@ function normalizeAnswer(text) {
     .trim()
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/ø/g, 'o')
     .replace(/\s+/g, ' ');
 }
@@ -35,6 +39,9 @@ function answersMatch(guess, correctName) {
   const lastName = c.split(' ').pop();
   return g === lastName && lastName.length > 3;
 }
+
+// Session milestone: award XP bonuses after this many questions answered.
+const SESSION_MILESTONE = 5;
 
 export default function QuizMode() {
   const [searchParams] = useSearchParams();
@@ -58,12 +65,19 @@ export default function QuizMode() {
   const [hintsShown, setHintsShown] = useState(1);
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState(null);
+  const [lastXpGain, setLastXpGain] = useState(0);
   const [score, setScore] = useState({
     correct: 0,
     incorrect: 0,
     totalAnswered: 0,
   });
   const [streak, setStreak] = useState(0);
+
+  // Tracks whether the session milestone XP has been awarded for the current
+  // filter combo. Resets when the user changes league or team filter.
+  const sessionMilestoneRef = useRef(false);
+
+  const progression = useProgression();
 
   const teamsInLeague = useMemo(() => {
     if (!leagueFilter) return teams;
@@ -84,6 +98,7 @@ export default function QuizMode() {
     setHintsShown(getInitialHintCount(difficulty));
     setAnswer('');
     setFeedback(null);
+    setLastXpGain(0);
   }, [difficulty, playerPool]);
 
   const resetCurrentQuestion = (nextDifficulty = difficulty) => {
@@ -91,17 +106,24 @@ export default function QuizMode() {
     setHintsShown(getInitialHintCount(nextDifficulty));
     setAnswer('');
     setFeedback(null);
+    setLastXpGain(0);
   };
 
   const handleLeagueChange = (value) => {
     setLeagueFilter(value);
     setTeamFilter('');
     resetCurrentQuestion();
+    setScore({ correct: 0, incorrect: 0, totalAnswered: 0 });
+    setStreak(0);
+    sessionMilestoneRef.current = false;
   };
 
   const handleTeamChange = (value) => {
     setTeamFilter(value);
     resetCurrentQuestion();
+    setScore({ correct: 0, incorrect: 0, totalAnswered: 0 });
+    setStreak(0);
+    sessionMilestoneRef.current = false;
   };
 
   const handleDifficultyChange = (value) => {
@@ -112,14 +134,42 @@ export default function QuizMode() {
   const handleCheckAnswer = (e) => {
     e.preventDefault();
     if (!currentPlayer || feedback || !answer.trim()) return;
-    const correct = answersMatch(answer, currentPlayer.name);
-    setFeedback(correct ? 'correct' : 'incorrect');
-    setScore((currentScore) => ({
-      correct: currentScore.correct + (correct ? 1 : 0),
-      incorrect: currentScore.incorrect + (correct ? 0 : 1),
-      totalAnswered: currentScore.totalAnswered + 1,
+
+    const isCorrect = answersMatch(answer, currentPlayer.name);
+    const newStreak = isCorrect ? streak + 1 : 0;
+
+    // Compute new session totals synchronously (score state hasn't updated yet).
+    const newTotal = score.totalAnswered + 1;
+    const newCorrect = score.correct + (isCorrect ? 1 : 0);
+
+    // Build session milestone data if the threshold is hit for the first time
+    // with the current filter. A single commit handles answer + milestone together.
+    let sessionMilestone = null;
+    if (newTotal >= SESSION_MILESTONE && !sessionMilestoneRef.current) {
+      sessionMilestoneRef.current = true;
+      sessionMilestone = {
+        teamId: teamFilter || undefined,
+        leagueId: leagueFilter || undefined,
+        correct: newCorrect,
+        total: newTotal,
+      };
+    }
+
+    // One progression commit per answer — avoids any stale-state batching issues.
+    const xpGained = progression.recordAnswer({
+      isCorrect,
+      newSessionStreak: newStreak,
+      sessionMilestone,
+    });
+
+    setFeedback(isCorrect ? 'correct' : 'incorrect');
+    setScore((s) => ({
+      correct: s.correct + (isCorrect ? 1 : 0),
+      incorrect: s.incorrect + (isCorrect ? 0 : 1),
+      totalAnswered: s.totalAnswered + 1,
     }));
-    setStreak((currentStreak) => (correct ? currentStreak + 1 : 0));
+    setStreak(newStreak);
+    setLastXpGain(isCorrect ? xpGained : 0);
   };
 
   const showAnotherHint = () => {
@@ -301,7 +351,14 @@ export default function QuizMode() {
 
             {feedback === 'correct' && (
               <article className="quiz-feedback quiz-feedback--correct" role="status">
-                <h3>Correct! It was {currentPlayer.name}.</h3>
+                <div className="quiz-feedback__header">
+                  <h3>Correct! It was {currentPlayer.name}.</h3>
+                  {lastXpGain > 0 && (
+                    <span className="quiz-feedback__xp" aria-label={`${lastXpGain} XP earned`}>
+                      +{lastXpGain} XP
+                    </span>
+                  )}
+                </div>
                 <dl className="quiz-feedback__details">
                   <div>
                     <dt>Club</dt>
@@ -318,6 +375,7 @@ export default function QuizMode() {
                 </Link>
               </article>
             )}
+
             {feedback === 'incorrect' && (
               <article className="quiz-feedback quiz-feedback--incorrect" role="status">
                 <h3>Not quite. The answer was {currentPlayer.name}.</h3>
@@ -346,8 +404,6 @@ export default function QuizMode() {
           </>
         )}
       </section>
-
-      {/* Future: persist quiz scores via Firebase / user profiles */}
     </div>
   );
 }

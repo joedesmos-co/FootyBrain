@@ -1979,3 +1979,466 @@ input:focus-visible {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ============================================================
+   Navbar XP widget (links to /profile)
+   ============================================================ */
+.nav-xp-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.4rem 0.65rem;
+  min-width: 5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.nav-xp-link:hover,
+.nav-xp-link.active {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.nav-xp__level {
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: var(--color-gold);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.nav-xp__bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(167, 243, 208, 0.15);
+  overflow: hidden;
+}
+
+.nav-xp__fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-cyan));
+  transition: width 0.5s ease;
+  min-width: 2px; /* always show a sliver even at 0% */
+}
+
+/* ============================================================
+   Quiz XP feedback
+   ============================================================ */
+.quiz-feedback__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.quiz-feedback__header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.quiz-feedback__xp {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius);
+  background: rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 950;
+  white-space: nowrap;
+  animation: xp-pop 0.28s ease;
+}
+
+@keyframes xp-pop {
+  0% { transform: scale(0.75); opacity: 0; }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   Progress / Profile page
+   ============================================================ */
+.progress-page {
+  gap: 1.5rem;
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.progress-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(90deg, rgba(52, 211, 153, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(23, 37, 32, 0.96), rgba(16, 26, 23, 0.98));
+  background-size: 54px 54px, auto;
+  box-shadow: var(--shadow-soft);
+}
+
+.progress-hero__identity {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.progress-level-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold);
+  background: radial-gradient(circle at 40% 35%, rgba(251, 191, 36, 0.18), transparent 60%),
+    rgba(7, 17, 13, 0.6);
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.12);
+}
+
+.progress-level-badge__number {
+  color: var(--color-gold);
+  font-size: 2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.progress-level-badge__label {
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-hero__info {
+  min-width: 0;
+}
+
+.progress-hero__eyebrow {
+  margin: 0 0 0.15rem;
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.progress-hero__title {
+  margin: 0 0 0.45rem;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.progress-hero__xp-text {
+  margin: 0 0 0.55rem;
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.progress-hero__xp-text span {
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+/* ── XP progress bar (large, used on Progress page) ─────────── */
+.progress-xp-bar {
+  width: 100%;
+  max-width: 22rem;
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(167, 243, 208, 0.12);
+  overflow: hidden;
+}
+
+.progress-xp-bar__fill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-cyan));
+  transition: width 0.6s ease;
+  min-width: 4px;
+}
+
+/* ── Section label ───────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  color: var(--color-accent);
+}
+
+.section-label__count {
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius);
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+/* ── Stats grid ─────────────────────────────────────────────── */
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 130px), 1fr));
+  gap: 0.75rem;
+}
+
+.progress-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(16, 26, 23, 0.95);
+  box-shadow: var(--shadow-soft);
+}
+
+.progress-stat__value {
+  color: var(--color-text);
+  font-size: 1.55rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.progress-stat__label {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* ── Achievements ────────────────────────────────────────────── */
+.progress-achievements {
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 0.6rem;
+}
+
+.achievement-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(16, 26, 23, 0.95);
+  transition: border-color 0.16s ease;
+}
+
+.achievement-item--earned {
+  border-color: rgba(52, 211, 153, 0.32);
+  background: rgba(52, 211, 153, 0.05);
+}
+
+.achievement-item--locked {
+  opacity: 0.52;
+}
+
+.achievement-item__icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(7, 17, 13, 0.55);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.achievement-item--earned .achievement-item__icon {
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.achievement-item__body {
+  min-width: 0;
+}
+
+.achievement-item__label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.achievement-item__desc {
+  margin: 0.15rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.achievement-item__earned-badge {
+  flex-shrink: 0;
+  padding: 0.18rem 0.5rem;
+  border-radius: var(--radius);
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.32);
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* ── Completed sessions ──────────────────────────────────────── */
+.progress-completed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(16, 26, 23, 0.95);
+}
+
+.progress-completed__subtitle {
+  margin: 0 0 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.progress-completed__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-completed__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.progress-completed__link {
+  display: inline-flex;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(32, 52, 45, 0.78);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.progress-completed__link:hover,
+.progress-completed__link:focus-visible {
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+/* ── Reset section ───────────────────────────────────────────── */
+.progress-reset {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.progress-reset__trigger {
+  opacity: 0.6;
+  font-size: 0.85rem;
+}
+
+.progress-reset__confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: var(--radius);
+  background: rgba(251, 113, 133, 0.06);
+}
+
+.progress-reset__confirm p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.progress-reset__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.btn--danger {
+  border-color: rgba(251, 113, 133, 0.5);
+  background: rgba(251, 113, 133, 0.12);
+  color: var(--color-danger);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--color-danger);
+  color: #1c0008;
+}
+
+/* ============================================================
+   Mobile overrides for progression UI
+   ============================================================ */
+@media (max-width: 700px) {
+  .nav-xp-link {
+    min-width: 4rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .progress-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .progress-hero .btn {
+    width: 100%;
+  }
+
+  .progress-hero__identity {
+    gap: 1rem;
+  }
+
+  .progress-hero__title {
+    font-size: 1.45rem;
+  }
+
+  .progress-xp-bar {
+    max-width: none;
+  }
+
+  .achievement-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav-xp__bar {
+    display: none; /* show only level number on very small screens */
+  }
+
+  .nav-xp-link {
+    min-width: auto;
+  }
+}

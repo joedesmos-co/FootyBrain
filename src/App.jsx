@@ -9,6 +9,7 @@ import LeagueProfile from './components/LeagueProfile';
 import TeamLearning from './components/TeamLearning';
 import QuizMode from './components/QuizMode';
 import SavedPage from './components/SavedPage';
+import ProgressPage from './components/ProgressPage';
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/teams" element={<TeamLearning />} />
             <Route path="/quiz" element={<QuizRoute />} />
             <Route path="/saved" element={<SavedPage />} />
+            <Route path="/profile" element={<ProgressPage />} />
           </Routes>
         </main>
         <footer className="app__footer">
