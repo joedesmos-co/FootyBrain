@@ -7,6 +7,7 @@ import {
 import { useFavorites } from '../hooks/useFavorites';
 import FavoriteButton from './FavoriteButton';
 import PlayerCard from './PlayerCard';
+import TeamBadge from './TeamBadge';
 
 export default function TeamProfile() {
   const { teamId } = useParams();
@@ -72,14 +73,17 @@ export default function TeamProfile() {
         ← Back to Team Learning
       </Link>
 
-      <header className="profile__hero">
-        <div>
-          <p className="profile__league">{leagueName}</p>
-          <h1>{team.name}</h1>
-          <p className="profile__sub">
-            {team.country} · {team.stadium}
-          </p>
-          <span className="fan-level-badge">Fan Level: Starter</span>
+      <header className="profile__hero profile__hero--team">
+        <div className="profile__identity">
+          <TeamBadge team={team} size="profile" />
+          <div>
+            <p className="profile__league">{leagueName}</p>
+            <h1>{team.name}</h1>
+            <p className="profile__sub">
+              {team.country} · {team.stadium}
+            </p>
+            <span className="fan-level-badge">Fan Level: Starter</span>
+          </div>
         </div>
         <div className="team-profile__actions">
           <FavoriteButton

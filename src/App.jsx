@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import BrowseDatabase from './components/BrowseDatabase';
@@ -8,9 +9,20 @@ import TeamLearning from './components/TeamLearning';
 import QuizMode from './components/QuizMode';
 import SavedPage from './components/SavedPage';
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ left: 0, top: 0 });
+  }, [pathname, search]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="app">
         <Navbar />
         <main className="app__main">

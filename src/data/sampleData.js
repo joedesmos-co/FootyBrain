@@ -8,7 +8,18 @@ export const leagues = [
   { id: 'serie-a', name: 'Serie A', country: 'Italy' },
 ];
 
-export const teams = [
+const teamBadgeThemes = [
+  { from: '#0f9f6e', to: '#14532d', accent: '#d1fae5' },
+  { from: '#e11d48', to: '#7f1d1d', accent: '#ffe4e6' },
+  { from: '#0891b2', to: '#164e63', accent: '#cffafe' },
+  { from: '#f59e0b', to: '#78350f', accent: '#fffbeb' },
+  { from: '#2563eb', to: '#172554', accent: '#dbeafe' },
+  { from: '#7c3aed', to: '#3b0764', accent: '#ede9fe' },
+  { from: '#dc2626', to: '#111827', accent: '#fee2e2' },
+  { from: '#0f172a', to: '#1d4ed8', accent: '#bfdbfe' },
+];
+
+const baseTeams = [
   {
     id: 'manchester-city',
     name: 'Manchester City',
@@ -131,7 +142,25 @@ export const teams = [
   },
 ];
 
-export const players = [
+// TODO: Replace null crestUrl values only with licensed club crest assets.
+export const teams = baseTeams.map((team, index) => ({
+  crestUrl: null,
+  badgeTheme: teamBadgeThemes[index % teamBadgeThemes.length],
+  ...team,
+}));
+
+const playerVisualThemes = [
+  { from: '#22c55e', to: '#0f766e', accent: '#bbf7d0' },
+  { from: '#38bdf8', to: '#1d4ed8', accent: '#e0f2fe' },
+  { from: '#f97316', to: '#be123c', accent: '#ffedd5' },
+  { from: '#a78bfa', to: '#4338ca', accent: '#ede9fe' },
+  { from: '#facc15', to: '#b45309', accent: '#fef9c3' },
+  { from: '#fb7185', to: '#9f1239', accent: '#ffe4e6' },
+  { from: '#2dd4bf', to: '#155e75', accent: '#ccfbf1' },
+  { from: '#94a3b8', to: '#334155', accent: '#f8fafc' },
+];
+
+const basePlayers = [
   {
     id: 'haaland',
     name: 'Erling Haaland',
@@ -950,6 +979,13 @@ export const players = [
     ],
   },
 ];
+
+// TODO: Replace null imageUrl values only with licensed player photos or approved generated assets.
+export const players = basePlayers.map((player, index) => ({
+  imageUrl: null,
+  visualTheme: playerVisualThemes[index % playerVisualThemes.length],
+  ...player,
+}));
 
 // Helpers for local data — swap implementations when API/Firebase is wired up.
 export function getPlayerById(id) {

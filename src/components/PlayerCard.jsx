@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { getTeamName } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
 import FavoriteButton from './FavoriteButton';
+import PlayerVisual from './PlayerVisual';
 
 export default function PlayerCard({ player }) {
   const { isPlayerSaved, togglePlayer } = useFavorites();
@@ -9,8 +10,12 @@ export default function PlayerCard({ player }) {
 
   return (
     <article className="player-card">
+      <PlayerVisual player={player} />
       <div className="player-card__header">
-        <h3 className="player-card__name">{player.name}</h3>
+        <div>
+          <span className="player-card__position-pill">{player.position}</span>
+          <h3 className="player-card__name">{player.name}</h3>
+        </div>
         <div className="player-card__actions">
           <span className="player-card__score" title="FootyBrain Importance Score">
             {player.importanceScore}

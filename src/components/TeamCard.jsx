@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { getLeagueName } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
 import FavoriteButton from './FavoriteButton';
+import TeamBadge from './TeamBadge';
 
 export default function TeamCard({ team }) {
   const { isTeamSaved, toggleTeam } = useFavorites();
@@ -10,13 +11,18 @@ export default function TeamCard({ team }) {
   return (
     <article className="team-card">
       <header className="team-card__header">
-        <h3>
-          <Link to={`/team/${team.id}`} className="team-card__title-link">
-            {team.name}
-          </Link>
-        </h3>
+        <div className="team-card__identity">
+          <TeamBadge team={team} />
+          <div>
+            <span className="team-card__league">{getLeagueName(team.leagueId)}</span>
+            <h3>
+              <Link to={`/team/${team.id}`} className="team-card__title-link">
+                {team.name}
+              </Link>
+            </h3>
+          </div>
+        </div>
         <div className="team-card__header-actions">
-          <span className="team-card__league">{getLeagueName(team.leagueId)}</span>
           <FavoriteButton
             className="favorite-button--compact"
             itemName={team.name}

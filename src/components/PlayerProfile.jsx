@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getLeagueName, getPlayerById, getTeamName } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
 import FavoriteButton from './FavoriteButton';
+import PlayerVisual from './PlayerVisual';
 
 export default function PlayerProfile() {
   const { playerId } = useParams();
@@ -28,13 +29,16 @@ export default function PlayerProfile() {
         ← Back to database
       </Link>
 
-      <header className="profile__hero">
-        <div>
-          <p className="profile__league">{getLeagueName(player.leagueId)}</p>
-          <h1>{player.name}</h1>
-          <p className="profile__sub">
-            {player.position} · {getTeamName(player.teamId)}
-          </p>
+      <header className="profile__hero profile__hero--player">
+        <div className="profile__identity">
+          <PlayerVisual player={player} size="profile" />
+          <div>
+            <p className="profile__league">{getLeagueName(player.leagueId)}</p>
+            <h1>{player.name}</h1>
+            <p className="profile__sub">
+              {player.position} · {getTeamName(player.teamId)}
+            </p>
+          </div>
         </div>
         <div className="profile__side-actions">
           <div className="profile__score-block">
