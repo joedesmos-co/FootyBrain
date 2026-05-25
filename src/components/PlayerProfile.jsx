@@ -33,7 +33,9 @@ export default function PlayerProfile() {
         <div className="profile__identity">
           <PlayerVisual player={player} size="profile" />
           <div>
-            <p className="profile__league">{getLeagueName(player.leagueId)}</p>
+            <Link to={`/league/${player.leagueId}`} className="profile__league profile__league-link">
+              {getLeagueName(player.leagueId)}
+            </Link>
             <h1>{player.name}</h1>
             <p className="profile__sub">
               {player.position} · {getTeamName(player.teamId)}

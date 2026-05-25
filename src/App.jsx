@@ -5,6 +5,7 @@ import Home from './components/Home';
 import BrowseDatabase from './components/BrowseDatabase';
 import PlayerProfile from './components/PlayerProfile';
 import TeamProfile from './components/TeamProfile';
+import LeagueProfile from './components/LeagueProfile';
 import TeamLearning from './components/TeamLearning';
 import QuizMode from './components/QuizMode';
 import SavedPage from './components/SavedPage';
@@ -19,6 +20,11 @@ function ScrollToTop() {
   return null;
 }
 
+function QuizRoute() {
+  const { search } = useLocation();
+  return <QuizMode key={search} />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -31,8 +37,9 @@ export default function App() {
             <Route path="/browse" element={<BrowseDatabase />} />
             <Route path="/player/:playerId" element={<PlayerProfile />} />
             <Route path="/team/:teamId" element={<TeamProfile />} />
+            <Route path="/league/:leagueId" element={<LeagueProfile />} />
             <Route path="/teams" element={<TeamLearning />} />
-            <Route path="/quiz" element={<QuizMode />} />
+            <Route path="/quiz" element={<QuizRoute />} />
             <Route path="/saved" element={<SavedPage />} />
           </Routes>
         </main>

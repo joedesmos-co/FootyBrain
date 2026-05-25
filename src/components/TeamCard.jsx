@@ -14,7 +14,9 @@ export default function TeamCard({ team }) {
         <div className="team-card__identity">
           <TeamBadge team={team} />
           <div>
-            <span className="team-card__league">{getLeagueName(team.leagueId)}</span>
+            <Link to={`/league/${team.leagueId}`} className="team-card__league team-card__league-link">
+              {getLeagueName(team.leagueId)}
+            </Link>
             <h3>
               <Link to={`/team/${team.id}`} className="team-card__title-link">
                 {team.name}

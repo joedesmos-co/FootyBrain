@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { leagues, players, teams } from '../data/sampleData';
+import LeagueBadge from './LeagueBadge';
 import PlayerCard from './PlayerCard';
 
 export default function BrowseDatabase() {
@@ -79,6 +81,24 @@ export default function BrowseDatabase() {
         <p className="filters__count">
           {filteredPlayers.length} player{filteredPlayers.length !== 1 ? 's' : ''} found
         </p>
+      </section>
+
+      <section className="league-hub-strip" aria-labelledby="league-hubs-title">
+        <div className="league-hub-strip__header">
+          <h2 id="league-hubs-title">League learning hubs</h2>
+          <p>Open a league for clubs, rivalries, style, star players, and a league quiz.</p>
+        </div>
+        <div className="league-link-grid">
+          {leagues.map((league) => (
+            <Link key={league.id} to={`/league/${league.id}`} className="league-link-card">
+              <LeagueBadge league={league} />
+              <span>
+                <strong>{league.name}</strong>
+                <small>{league.country}</small>
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Future: loading state while fetchPlayers(filters) resolves from API/Firebase */}

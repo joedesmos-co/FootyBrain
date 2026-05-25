@@ -1,12 +1,86 @@
 // Local sample data for FootyBrain MVP.
 // Future: replace with API/Firebase fetch — see fetchPlayers(), fetchTeams() stubs at bottom.
 
-export const leagues = [
-  { id: 'premier-league', name: 'Premier League', country: 'England' },
-  { id: 'la-liga', name: 'La Liga', country: 'Spain' },
-  { id: 'bundesliga', name: 'Bundesliga', country: 'Germany' },
-  { id: 'serie-a', name: 'Serie A', country: 'Italy' },
+const leagueBadgeThemes = [
+  { from: '#22c55e', to: '#134e4a', accent: '#dcfce7' },
+  { from: '#f97316', to: '#7f1d1d', accent: '#ffedd5' },
+  { from: '#ef4444', to: '#111827', accent: '#fee2e2' },
+  { from: '#38bdf8', to: '#1e3a8a', accent: '#e0f2fe' },
 ];
+
+const baseLeagues = [
+  {
+    id: 'premier-league',
+    name: 'Premier League',
+    country: 'England',
+    description:
+      'England’s top flight is the global TV powerhouse: fast, physical, dramatic, and packed with clubs that draw worldwide followings.',
+    styleOfPlay:
+      'High tempo, direct transitions, pressing, athletic duels, and end-to-end matches. Top clubs add elite positional play and deep squads.',
+    famousClubs: ['Manchester City', 'Arsenal', 'Liverpool', 'Manchester United', 'Chelsea'],
+    famousPlayers: ['Erling Haaland', 'Bukayo Saka', 'Mohamed Salah', 'Kevin De Bruyne'],
+    historySummary:
+      'Launched in 1992, the Premier League grew from English football tradition into the world’s most-watched domestic league.',
+    rivalries: ['North London derby', 'Merseyside derby', 'Manchester derby', 'Liverpool vs Manchester United'],
+    fanGuide:
+      'Expect full stadiums, intense away followings, Boxing Day fixtures, and weekly debates about managers, transfers, and title races.',
+  },
+  {
+    id: 'la-liga',
+    name: 'La Liga',
+    country: 'Spain',
+    description:
+      'Spain’s top league is known for technical quality, iconic superclubs, and a deep tradition of midfield control and creative attacking.',
+    styleOfPlay:
+      'Possession, close control, patient buildup, technical midfielders, and sharp attacking combinations. Tactical defending matters too.',
+    famousClubs: ['Real Madrid', 'Barcelona', 'Atlético Madrid', 'Sevilla', 'Real Sociedad'],
+    famousPlayers: ['Vinícius Júnior', 'Jude Bellingham', 'Robert Lewandowski', 'Pedri'],
+    historySummary:
+      'La Liga’s story runs through Real Madrid and Barcelona dominance, legendary European nights, and generations of elite Spanish creators.',
+    rivalries: ['El Clásico', 'Madrid derby', 'Derbi barceloní', 'Seville derby'],
+    fanGuide:
+      'Start with El Clásico, then learn the contrast between Madrid star power, Barça identity, Basque clubs, and gritty regional rivalries.',
+  },
+  {
+    id: 'bundesliga',
+    name: 'Bundesliga',
+    country: 'Germany',
+    description:
+      'Germany’s top league blends fan culture, loud stadiums, academy talent, and attacking football with strong tactical organization.',
+    styleOfPlay:
+      'Vertical attacks, pressing, quick transitions, young player development, and aggressive full-backs. Matches often open up quickly.',
+    famousClubs: ['Bayern Munich', 'Borussia Dortmund', 'Bayer Leverkusen', 'RB Leipzig', 'Schalke 04'],
+    famousPlayers: ['Harry Kane', 'Jamal Musiala', 'Joshua Kimmich', 'Manuel Neuer'],
+    historySummary:
+      'Founded in 1963, the Bundesliga became famous for supporter culture, elite German coaching, and Bayern Munich’s long era of dominance.',
+    rivalries: ['Der Klassiker', 'Revierderby', 'Bavarian derby'],
+    fanGuide:
+      'Learn the supporter-first identity, standing terraces, tifos, and why Dortmund’s Yellow Wall is one of football’s great atmospheres.',
+  },
+  {
+    id: 'serie-a',
+    name: 'Serie A',
+    country: 'Italy',
+    description:
+      'Italy’s top league is built on history, tactics, iconic clubs, and derby culture, with a reputation for defensive intelligence.',
+    styleOfPlay:
+      'Structured defending, tactical adjustments, compact midfields, wing-back systems, and moments of individual flair in tight matches.',
+    famousClubs: ['AC Milan', 'Inter Milan', 'Juventus', 'Roma', 'Napoli'],
+    famousPlayers: ['Lautaro Martínez', 'Rafael Leão', 'Nicolò Barella', 'Mike Maignan'],
+    historySummary:
+      'Serie A has produced dynasties, legendary defenders, and European champions, from catenaccio roots to modern pressing systems.',
+    rivalries: ['Derby della Madonnina', 'Derby d’Italia', 'Derby della Capitale'],
+    fanGuide:
+      'Focus on derby identity, tactical battles, ultras culture, and how cities like Milan, Rome, Turin, and Naples live through football.',
+  },
+];
+
+// TODO: Replace null logoUrl values only with licensed league marks or approved original artwork.
+export const leagues = baseLeagues.map((league, index) => ({
+  logoUrl: null,
+  badgeTheme: leagueBadgeThemes[index % leagueBadgeThemes.length],
+  ...league,
+}));
 
 const teamBadgeThemes = [
   { from: '#0f9f6e', to: '#14532d', accent: '#d1fae5' },

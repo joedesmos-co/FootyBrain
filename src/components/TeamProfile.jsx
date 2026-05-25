@@ -77,7 +77,9 @@ export default function TeamProfile() {
         <div className="profile__identity">
           <TeamBadge team={team} size="profile" />
           <div>
-            <p className="profile__league">{leagueName}</p>
+            <Link to={`/league/${team.leagueId}`} className="profile__league profile__league-link">
+              {leagueName}
+            </Link>
             <h1>{team.name}</h1>
             <p className="profile__sub">
               {team.country} · {team.stadium}
