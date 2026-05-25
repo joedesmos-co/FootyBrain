@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 1,
+  "description": "Manual editorial overlay for FootyBrain MVP players (Stage 2). Factual roster fields come from generated core later; this file holds app-owned learning content and optional TM sourceId links.",
+  "updatedAt": "2026-05-24",
+  "fieldDocs": {
+    "id": "FootyBrain player slug; must match src/data/sampleData.js",
+    "sourceId": "Transfermarkt spieler id string, or null if not confidently matched to preview squad",
+    "displayName": "User-facing name in browse, profile, and quiz",
+    "quickFact": "One memorable beginner-friendly fact",
+    "quizHints": "Ordered hints; least obvious first for quiz mode",
+    "playingStyle": "Short style summary for profile",
+    "importanceScore": "FootyBrain importance score (1–99); not market value",
+    "quizEligible": "Include in default MVP quiz and daily pools",
+    "rosterTier": "featured = MVP curated player",
+    "notes": "Optional merge/import notes for maintainers"
+  },
+  "players": [
+    {
+      "id": "haaland",
+      "sourceId": "418560",
+      "displayName": "Erling Haaland",
+      "quickFact": "His meditation-style goal celebration became one of the Premier League’s most recognizable rituals.",
+      "quizHints": [
+        "Rose through Molde and Salzburg before a prolific spell in Dortmund yellow.",
+        "His father Alf-Inge played in England for Nottingham Forest and Leeds.",
+        "Norwegian striker who wears sky blue and often scores with his head."
+      ],
+      "playingStyle": "Relentless finisher with explosive runs and ruthless positioning in the box.",
+      "importanceScore": 96,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "de-bruyne",
+      "sourceId": null,
+      "displayName": "Kevin De Bruyne",
+      "quickFact": "Set the Premier League single-season assists record in 2019–20 — a benchmark for modern playmakers.",
+      "quizHints": [
+        "Belgian international who rebuilt his reputation in the Bundesliga after a brief London spell.",
+        "Genk academy product who also wore Wolfsburg green before the Etihad.",
+        "Whips crosses from the right half-space — ginger beard and number 17 at City."
+      ],
+      "playingStyle": "World-class passer who dictates tempo with vision, whipped crosses, and long-range shooting.",
+      "importanceScore": 94,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "Not on Manchester City squad in TM 2025 preview; sourceId left null until roster match confirmed."
+    },
+    {
+      "id": "rodri",
+      "sourceId": "357565",
+      "displayName": "Rodri",
+      "quickFact": "Spain fans nicknamed him “El tractor” for how he shields the back line and never stops running.",
+      "quizHints": [
+        "Spanish pivot who left Villarreal’s yellow submarine for Atlético briefly.",
+        "Scored in Istanbul to help his club complete a treble in 2023.",
+        "Often wears number 16 in sky blue — Euro 2024 winner with La Roja."
+      ],
+      "playingStyle": "Calm pivot who shields the defense, recycles possession, and occasionally arrives late in the box.",
+      "importanceScore": 93,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "foden",
+      "sourceId": "406635",
+      "displayName": "Phil Foden",
+      "quickFact": "Wears number 47 at City — a tribute to his grandparents’ house in Moss Side.",
+      "quizHints": [
+        "One-club Premier League attacker raised in Stockport, not Spain.",
+        "Pep once compared him to a Barcelona academy legend from the 2000s.",
+        "England international in sky blue who plays wide or as a number 10."
+      ],
+      "playingStyle": "Silky dribbler who links play between the lines with both feet and clever movement.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "ederson",
+      "sourceId": null,
+      "displayName": "Ederson",
+      "quickFact": "Set up a goal with a kick from his own penalty area in a 2018 Manchester derby — a snapshot of the sweeper-keeper era.",
+      "quizHints": [
+        "Brazilian who won the Premier League Golden Glove in his first season at City.",
+        "Left Benfica’s Eagles before joining Guardiola’s possession side.",
+        "Often plays long-sleeved with striking tattoos — distribution rivals outfielders."
+      ],
+      "playingStyle": "Sweeper-keeper with elite distribution and composure under high pressing.",
+      "importanceScore": 88,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "Not on Manchester City squad in TM 2025 preview; sourceId left null until roster match confirmed."
+    },
+    {
+      "id": "saka",
+      "sourceId": "433177",
+      "displayName": "Bukayo Saka",
+      "quickFact": "His parents reportedly named him after finding “Bukayo” on a second-hand shopping site.",
+      "quizHints": [
+        "England international who took the decisive spot-kick at Euro 2020’s final.",
+        "Hale End graduate who broke through as a left-back before owning the right wing.",
+        "Left-footed curls from the right — Arsenal’s number 7 in red and white."
+      ],
+      "playingStyle": "Direct winger with elite ball-striking, cut-inside threat, and tireless defensive work rate.",
+      "importanceScore": 92,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "odegaard",
+      "sourceId": "316264",
+      "displayName": "Martin Ødegaard",
+      "quickFact": "Made his Norway senior debut at 15 — still the youngest debutant in the men’s national team history.",
+      "quizHints": [
+        "Scandinavian playmaker Real Madrid bought as a 16-year-old prodigy.",
+        "Loan spells included Heerenveen, Vitesse, and Real Sociedad before north London.",
+        "Arsenal captain who wears the armband for Norway — son of a former footballer."
+      ],
+      "playingStyle": "Elegant number 10 who orchestrates attacks with disguised passes and clever pressing triggers.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "saliba",
+      "sourceId": "495666",
+      "displayName": "William Saliba",
+      "quickFact": "Won Ligue 1 Young Player of the Year on loan at Marseille before Arsenal fans finally saw him in red and white.",
+      "quizHints": [
+        "French defender Arsenal signed young but waited years to field in the Premier League.",
+        "Loan stops included Nice and Marseille before the Emirates partnership chant.",
+        "Forms half of a famous centre-back duo with Gabriel — low fade, number 2."
+      ],
+      "playingStyle": "Composed defender who wins duels, carries the ball, and reads through-balls early.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "rice",
+      "sourceId": "357662",
+      "displayName": "Declan Rice",
+      "quickFact": "Was West Ham’s youngest-ever captain before a nine-figure move across London in 2023.",
+      "quizHints": [
+        "England midfielder who wore claret and blue before Arsenal’s number 41.",
+        "Could have represented Ireland through grandparents but chose England.",
+        "Euro 2024 winner who anchors the Gunners’ midfield shield."
+      ],
+      "playingStyle": "Box-to-box midfielder with tackling intensity, progressive carrying, and leadership.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "jesus",
+      "sourceId": "363205",
+      "displayName": "Gabriel Jesus",
+      "quickFact": "His “call to heaven” celebration is a tribute to his mother, who helped raise him in São Paulo.",
+      "quizHints": [
+        "Brazilian forward who won Premier League titles in Manchester before north London.",
+        "Palmeiras graduate whose given name matches a biblical figure.",
+        "Mimics a phone call after scoring — number 9 in Arsenal red."
+      ],
+      "playingStyle": "Mobile forward who presses relentlessly, links play, and thrives in wide-to-central rotations.",
+      "importanceScore": 86,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "salah",
+      "sourceId": "148455",
+      "displayName": "Mohamed Salah",
+      "quickFact": "Worked in a café during a rough patch after Chelsea — before becoming Liverpool’s defining goal scorer of a generation.",
+      "quizHints": [
+        "African nation whose flag inspires his “Egyptian King” nickname at Anfield.",
+        "Left foot on the right wing — the near-post curl is his signature.",
+        "Roma’s “Pharaoh” before Merseyside records and Premier League Golden Boots."
+      ],
+      "playingStyle": "Left-footed inverted winger who cuts inside for curlers and thrives on counterattacks.",
+      "importanceScore": 95,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "van-dijk",
+      "sourceId": "139208",
+      "displayName": "Virgil van Dijk",
+      "quickFact": "PFA Player of the Year in 2019 — one of the few defenders to win England’s top individual prize.",
+      "quizHints": [
+        "Dutch defender who wore Celtic hoops and Southampton red-and-white before Anfield.",
+        "Southampton sold him for a then-record fee for a defender in 2018.",
+        "Wears number 4, leads Liverpool’s high line — recovered from a serious knee injury."
+      ],
+      "playingStyle": "Dominant aerial defender with calm distribution and game-reading that organizes the back line.",
+      "importanceScore": 93,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "alisson",
+      "sourceId": "105470",
+      "displayName": "Alisson Becker",
+      "quickFact": "Scored a 95th-minute header from a corner in May 2021 — one of only a handful of Premier League goals by a keeper.",
+      "quizHints": [
+        "Brazilian shot-stopper whose brother also keeps professionally in Portugal.",
+        "Roma’s number one before Liverpool made him the world’s most expensive keeper at the time.",
+        "Famous late winning header against a Midlands club in green and white stripes."
+      ],
+      "playingStyle": "Shot-stopper with quick reflexes and calm one-on-one defending in big moments.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "trent",
+      "sourceId": null,
+      "displayName": "Trent Alexander-Arnold",
+      "quickFact": "Wears number 66 — a nod to the year his postal district was founded, not a random squad number.",
+      "quizHints": [
+        "Scouse academy graduate from West Derby who never left his boyhood club.",
+        "Among the Premier League’s most prolific assist-makers for a defender.",
+        "Set-piece delivery from the right touchline — free-kicks and corners for Liverpool."
+      ],
+      "playingStyle": "Quarterback full-back who delivers whipped crosses and set-piece mastery over defensive orthodoxy.",
+      "importanceScore": 89,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "TM 2025 lists Trent Alexander-Arnold (314353) at Real Madrid; sampleData still Liverpool — no sourceId until teams align."
+    },
+    {
+      "id": "nunez",
+      "sourceId": null,
+      "displayName": "Darwin Núñez",
+      "quickFact": "Almería bought him from Uruguay for about €4M and sold him to Benfica for roughly eight times that one season later.",
+      "quizHints": [
+        "Uruguayan striker whose hair colour changes as often as debate about his finishing.",
+        "Portuguese league top scorer season preceded a big Anfield transfer fee.",
+        "Often plays central in a front three beside Egypt’s king on the right wing."
+      ],
+      "playingStyle": "Chaotic runner who presses high, attacks channels, and finishes with power over finesse.",
+      "importanceScore": 84,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "Not on Liverpool squad in TM 2025 preview; sourceId left null until roster match confirmed."
+    },
+    {
+      "id": "vinicius",
+      "sourceId": "371998",
+      "displayName": "Vinícius Júnior",
+      "quickFact": "Flamengo sold him to Madrid as a teenager — he later scored the decisive goal in a Paris Champions League final.",
+      "quizHints": [
+        "Brazilian left winger who wears the famous number 7 in white at the Bernabéu.",
+        "Became a leading voice against repeated racist abuse in Spanish stadiums.",
+        "2022 final winner against the club in all-red from Merseyside."
+      ],
+      "playingStyle": "Explosive dribbler who terrorizes full-backs, draws fouls, and finishes in clutch moments.",
+      "importanceScore": 95,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "bellingham",
+      "sourceId": "581678",
+      "displayName": "Jude Bellingham",
+      "quickFact": "Became Birmingham City’s youngest-ever first-team player at 16 years and 38 days.",
+      "quizHints": [
+        "Midlands-born England star who left for Germany before crossing to Spain.",
+        "Knee-slide celebration copied by teammates after big goals in white.",
+        "Wore Dortmund’s number 22 before starring in Madrid’s number 5 shirt."
+      ],
+      "playingStyle": "Complete midfielder who arrives in the box, presses aggressively, and leads with charisma.",
+      "importanceScore": 96,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "modric",
+      "sourceId": null,
+      "displayName": "Luka Modrić",
+      "quickFact": "Ballon d’Or winner in 2018 — the first player outside Messi or Ronaldo to win it in over a decade.",
+      "quizHints": [
+        "Croatian midfielder who fled war as a child and grew up in a hotel as a refugee.",
+        "White Hart Lane years before a decade-plus in Madrid white.",
+        "Outside-of-the-foot passes and metronome tempo — number 10 for La Roja’s neighbors."
+      ],
+      "playingStyle": "Metronome midfielder with outside-foot passes, press resistance, and legendary stamina.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "TM 2025 lists Luka Modrić (27992) at AC Milan; sampleData still Real Madrid — no sourceId until teams align."
+    },
+    {
+      "id": "valverde",
+      "sourceId": "369081",
+      "displayName": "Federico Valverde",
+      "quickFact": "Once played right-back in a Clásico to mark Barcelona’s star winger — coaches trusted his engine over his natural role.",
+      "quizHints": [
+        "Uruguayan runner with a bleached-blond look in Madrid white.",
+        "Peñarol talent signed young by the club with the most European Cups.",
+        "Long-range shot in a 2022 Champions League tie injured Liverpool’s keeper."
+      ],
+      "playingStyle": "Engine midfielder with lung-busting runs, long shots, and tactical discipline on the wing or center.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "courtois",
+      "sourceId": "108390",
+      "displayName": "Thibaut Courtois",
+      "quickFact": "At roughly 6’7”, he is among the tallest regular starters in elite European football.",
+      "quizHints": [
+        "Belgian keeper who represented Atlético, Chelsea, and Real Madrid.",
+        "Genk youth product before La Liga and Premier League spells.",
+        "Man of the Match in a Paris Champions League final with late saves."
+      ],
+      "playingStyle": "Giant frame keeper who excels one-on-one and commands the penalty area on crosses.",
+      "importanceScore": 89,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "lewandowski",
+      "sourceId": "38253",
+      "displayName": "Robert Lewandowski",
+      "quickFact": "Five goals in nine minutes vs Wolfsburg in 2015 remains one of the Bundesliga’s most famous individual explosions.",
+      "quizHints": [
+        "Poland’s all-time leading men’s international goalscorer.",
+        "Dortmund’s yellow-and-black number 9 before Bayern records and Barça stripes.",
+        "Also played volleyball competitively as a teenager before committing to football."
+      ],
+      "playingStyle": "Complete number 9 with elite movement, link play, and both-footed finishing.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "pedri",
+      "sourceId": "683840",
+      "displayName": "Pedri",
+      "quickFact": "Stacked club, national team, and Olympics minutes as a teenager in 2021 — sparking talk about burnout before he turned 19.",
+      "quizHints": [
+        "Canary Islands-born La Masia midfielder with a low center of gravity.",
+        "Las Palmas loanee who became Euro 2020 Young Player of the Tournament.",
+        "Often paired in midfield with a younger teammate known for fiery tackles."
+      ],
+      "playingStyle": "La Masia technician who glides past presses with body feints and progressive passing.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "gavi",
+      "sourceId": "646740",
+      "displayName": "Gavi",
+      "quickFact": "Made his Spain senior debut at 17 — among the youngest in the men’s team in the modern era.",
+      "quizHints": [
+        "La Masia graduate whose first name is Pablo but everyone uses a four-letter nickname.",
+        "Long hair and aggressive challenges mark his style beside Pedri.",
+        "Serious knee surgery interrupted his rapid rise in blaugrana stripes."
+      ],
+      "playingStyle": "Fiery ball-winner with flair dribbles and aggressive personality on the pitch.",
+      "importanceScore": 88,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "raphinha",
+      "sourceId": "411295",
+      "displayName": "Raphinha",
+      "quickFact": "Left Leeds for Barcelona in 2022 — one of several Brazilians who sharpened their game in England before La Liga.",
+      "quizHints": [
+        "Brazilian winger who wore white at Elland Road before Camp Nou.",
+        "Breakout in Portugal at Sporting before France at Rennes.",
+        "Direct dribbler often stationed on Barça’s right in a trident attack."
+      ],
+      "playingStyle": "Direct Brazilian winger with tricks, cutbacks, and relentless work off the ball.",
+      "importanceScore": 87,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "ter-stegen",
+      "sourceId": null,
+      "displayName": "Marc-André ter Stegen",
+      "quickFact": "Germany’s number-one debate often pits him against Bayern’s long-serving keeper — both rose through Bundesliga rivals.",
+      "quizHints": [
+        "Mönchengladbach “Foals” graduate who joined Barça in 2014.",
+        "Sweeper-keeper who starts attacks with short passes under pressure.",
+        "Catalan club’s long-term number one while Neuer ruled for Die Mannschaft."
+      ],
+      "playingStyle": "Sweeper-keeper with reflex saves and excellent distribution to start buildup.",
+      "importanceScore": 88,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "Not on Barcelona squad in TM 2025 preview; sourceId left null until roster match confirmed."
+    },
+    {
+      "id": "kane",
+      "sourceId": "132098",
+      "displayName": "Harry Kane",
+      "quickFact": "England’s men’s all-time leading goalscorer — he passed Wayne Rooney’s record during Euro 2024 qualifying.",
+      "quizHints": [
+        "Striker who wore white for a north London club for over a decade before Bavaria.",
+        "Drops deep to create — often described as a nine-and-a-half.",
+        "2018 World Cup Golden Boot winner in Russia — England captain."
+      ],
+      "playingStyle": "Classic number 9 who drops deep to create, finishes with both feet, and dominates aerial duels.",
+      "importanceScore": 94,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "musiala",
+      "sourceId": "580195",
+      "displayName": "Jamal Musiala",
+      "quickFact": "Chose Germany over England at senior level despite captaining England youth sides and growing up in London.",
+      "quizHints": [
+        "Bayern’s slippery dribbler born in Fulham with Nigerian and German heritage.",
+        "Left Chelsea’s academy before starring in red in Munich.",
+        "Opponents dub him “Bambi” for how he glides past challenges."
+      ],
+      "playingStyle": "Slippery dribbler with close control, nutmegs, and intelligent cuts from the left half-space.",
+      "importanceScore": 93,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "kimmich",
+      "sourceId": "161056",
+      "displayName": "Joshua Kimmich",
+      "quickFact": "Pep Guardiola shifted him from Bundesliga right-back to one of Germany’s defining midfield controllers.",
+      "quizHints": [
+        "RB Leipzig and Stuttgart pipeline before Bayern’s red shirt.",
+        "Vocal organizer who has worn both 6 and 32 at club level.",
+        "Crosses from wide were his weapon before anchoring the middle for Die Mannschaft."
+      ],
+      "playingStyle": "Tactical leader who tackles, crosses from wide, and dictates pressing traps.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "neuer",
+      "sourceId": "17259",
+      "displayName": "Manuel Neuer",
+      "quickFact": "Helped redefine the sweeper-keeper role and captained Germany to the 2014 World Cup in Brazil.",
+      "quizHints": [
+        "Schalke blue before over a decade in Bayern red.",
+        "Famous for racing out to slide-tackle like an outfielder.",
+        "World Cup winner in Rio who often wears a cap after skin treatment."
+      ],
+      "playingStyle": "Revolutionary keeper who acts as a libero, commands the box, and organizes the defense.",
+      "importanceScore": 89,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "sane",
+      "sourceId": null,
+      "displayName": "Leroy Sané",
+      "quickFact": "His mother won Olympic gold in gymnastics — pundits often cite that background for his balance and body control.",
+      "quizHints": [
+        "German winger who wore sky blue in Manchester before Munich.",
+        "Schalke breakout with a famous surname tied to Senegalese football.",
+        "Often cuts inside from the left with rapid stepovers — father played for Senegal."
+      ],
+      "playingStyle": "Pace merchant who cuts inside with flair, direct dribbling, and inconsistent end product.",
+      "importanceScore": 87,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "notes": "Not on Bayern Munich squad in TM 2025 preview; sourceId left null until roster match confirmed."
+    },
+    {
+      "id": "leao",
+      "sourceId": "357164",
+      "displayName": "Rafael Leão",
+      "quickFact": "His motorcycle-throttle celebration nods to riding culture — he is known for languid dribbles that suddenly explode into top speed.",
+      "quizHints": [
+        "Portuguese left winger who wears Rossoneri red and black at San Siro.",
+        "Ligue 1 cameo at Lille before Milan made him a Serie A star.",
+        "2021–22 Scudetto-winning side’s standout attacker on the left flank."
+      ],
+      "playingStyle": "Gangly speedster who glides past defenders with long strides and cool finishing.",
+      "importanceScore": 91,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "maignan",
+      "sourceId": "182906",
+      "displayName": "Mike Maignan",
+      "quickFact": "PSG never gave him a Ligue 1 appearance — Lille and Milan turned him into one of Europe’s top shot-stoppers.",
+      "quizHints": [
+        "French keeper born in Cayenne, French Guiana.",
+        "Won Ligue 1 at Lille before replacing a Cameroonian international at Milan.",
+        "Known for quick feet and playing out from the back in Serie A — number 16."
+      ],
+      "playingStyle": "Athletic shot-stopper with quick feet and confident distribution under pressure.",
+      "importanceScore": 88,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "lautaro",
+      "sourceId": "406625",
+      "displayName": "Lautaro Martínez",
+      "quickFact": "His bull celebration — hands on hips, charging — became one of Argentina’s most copied goal rituals after 2022.",
+      "quizHints": [
+        "Argentine striker who left Racing’s light blue and white for Nerazzurri black and blue.",
+        "World Cup co-top scorer in Qatar alongside his country’s greatest number 10.",
+        "Inter captain who leads the line in Serie A — bull celebration after goals."
+      ],
+      "playingStyle": "Pressing forward who links play, drops deep, and finishes with power and movement off the shoulder.",
+      "importanceScore": 92,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "barella",
+      "sourceId": "255942",
+      "displayName": "Nicolò Barella",
+      "quickFact": "Cagliari sold their homegrown midfielder to Inter — he later ran the engine room of Italy’s Euro 2020 winners.",
+      "quizHints": [
+        "Sardinian-born Italian with trademark blonde-streaked hair.",
+        "Small stature, huge lungs — covers every blade at San Siro.",
+        "Euro 2020 champion who wears Inter’s number 23 in blue and black."
+      ],
+      "playingStyle": "Box-to-box dynamo with relentless energy, line-breaking passes, and emotional leadership.",
+      "importanceScore": 90,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "bastoni",
+      "sourceId": "315853",
+      "displayName": "Alessandro Bastoni",
+      "quickFact": "Left-footed centre-back in a back three — Atalanta groomed him before Inter made him a Serie A title pillar.",
+      "quizHints": [
+        "Italian defender who plays on the left side of a defensive trio in blue and black.",
+        "Bergamo youth product before a big move across Lombardy to San Siro.",
+        "Progressive passes and stepping into midfield are his calling cards."
+      ],
+      "playingStyle": "Modern defender who steps into midfield, slides tackles, and sprays diagonal passes.",
+      "importanceScore": 89,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    },
+    {
+      "id": "sommer",
+      "sourceId": "42205",
+      "displayName": "Yann Sommer",
+      "quickFact": "At 1.83 m he is short for a modern elite keeper — yet ranked among Europe’s best reflex shot-stoppers for years at Gladbach.",
+      "quizHints": [
+        "Swiss international who spent nearly a decade in green and white at Mönchengladbach.",
+        "Basel boy before Bundesliga fame and a 2023 move to San Siro.",
+        "Replaced a Cameroonian number one when joining Inter’s Serie A title-winning side."
+      ],
+      "playingStyle": "Reflex keeper with excellent penalty saving and calm handling in one-on-ones.",
+      "importanceScore": 86,
+      "quizEligible": true,
+      "rosterTier": "featured"
+    }
+  ]
+}

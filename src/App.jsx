@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -10,6 +10,8 @@ import TeamLearning from './components/TeamLearning';
 import QuizMode from './components/QuizMode';
 import SavedPage from './components/SavedPage';
 import ProgressPage from './components/ProgressPage';
+import DailyChallenge from './components/DailyChallenge';
+const DevExpandedDataPage = lazy(() => import('./components/DevExpandedDataPage'));
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -42,7 +44,22 @@ export default function App() {
             <Route path="/teams" element={<TeamLearning />} />
             <Route path="/quiz" element={<QuizRoute />} />
             <Route path="/saved" element={<SavedPage />} />
+            <Route path="/daily" element={<DailyChallenge />} />
             <Route path="/profile" element={<ProgressPage />} />
+            <Route
+              path="/dev/expanded-data"
+              element={
+                <Suspense
+                  fallback={
+                    <p className="dev-expanded__status" style={{ padding: '1.5rem' }}>
+                      Loading dev preview…
+                    </p>
+                  }
+                >
+                  <DevExpandedDataPage />
+                </Suspense>
+              }
+            />
           </Routes>
         </main>
         <footer className="app__footer">

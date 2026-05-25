@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { useDailyChallenge } from '../hooks/useDailyChallenge';
 import { useProgression } from '../hooks/useProgression';
 
 function NavXPWidget({ level, xpIntoLevel, xpForNextLevel }) {
@@ -23,6 +24,7 @@ function NavXPWidget({ level, xpIntoLevel, xpForNextLevel }) {
 
 export default function Navbar() {
   const { level, xpIntoLevel, xpForNextLevel } = useProgression();
+  const { isCompleted: dailyCompleted } = useDailyChallenge();
 
   return (
     <header className="navbar">
@@ -42,6 +44,14 @@ export default function Navbar() {
         </NavLink>
         <NavLink to="/saved" className={({ isActive }) => (isActive ? 'active' : '')}>
           Saved
+        </NavLink>
+        <NavLink
+          to="/daily"
+          className={({ isActive }) => `nav-daily-link${isActive ? ' active' : ''}${dailyCompleted ? ' nav-daily-link--done' : ''}`}
+          aria-label={dailyCompleted ? 'Daily Challenge — completed' : 'Daily Challenge — new challenge available'}
+        >
+          Daily
+          {!dailyCompleted && <span className="nav-daily-dot" aria-hidden="true" />}
         </NavLink>
         <NavXPWidget
           level={level}

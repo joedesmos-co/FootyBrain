@@ -222,6 +222,37 @@ export function useProgression() {
       return baseXp;
     },
 
+    /**
+     * Record the results of a completed daily challenge in a single atomic commit.
+     * Avoids stale-state issues that would arise from calling recordAnswer in a loop.
+     * Idempotency (don't double-award) is enforced by the daily hook before this is called.
+     *
+     * @param {{
+     *   results: boolean[],   – isCorrect per question
+     *   bonusXp?: number,     – completion bonus (computed by getDailyCompletionBonus)
+     * }}
+     * @returns {number} Total XP awarded.
+     */
+    recordDailyChallenge({ results, bonusXp = 0 }) {
+      const correctCount = results.filter(Boolean).length;
+      const xpFromAnswers = correctCount * 10;
+      const total = Math.max(xpFromAnswers + bonusXp, 0);
+
+      const next = {
+        ...state,
+        xp: state.xp + total,
+        totalAnswered: state.totalAnswered + results.length,
+        totalCorrect: state.totalCorrect + correctCount,
+        // Daily challenge does not affect bestStreak (that's a quiz-session concept)
+        bestStreak: state.bestStreak,
+        completedTeamQuizzes: state.completedTeamQuizzes,
+        completedLeagueQuizzes: state.completedLeagueQuizzes,
+      };
+      next.earnedAchievements = resolveAchievements(next, 0);
+      commit(next);
+      return total;
+    },
+
     /** Wipe all progression data. Useful for development and testing. */
     reset() {
       const fresh = sanitize({});

@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "inspect:tm": "node scripts/inspect-transfermarkt-csvs.js",
+    "build:data-preview": "node scripts/build-footybrain-preview-data.js",
+    "validate:overlays": "node scripts/validate-editorial-overlays.js",
+    "build:app-ready-preview": "node scripts/build-app-ready-preview.js",
+    "validate:app-ready-preview": "node scripts/validate-app-ready-preview.js"
   },
   "dependencies": {
     "react": "^19.2.6",

@@ -14,64 +14,126 @@ const baseLeagues = [
     name: 'Premier League',
     country: 'England',
     description:
-      'England’s top flight is the global TV powerhouse: fast, physical, dramatic, and packed with clubs that draw worldwide followings.',
+      'England’s top division: 20 clubs, home-and-away season, three points for a win. It is known for pace, physical duels, and tight races at the top — a good first league to follow if you like constant drama and famous clubs.',
     styleOfPlay:
-      'High tempo, direct transitions, pressing, athletic duels, and end-to-end matches. Top clubs add elite positional play and deep squads.',
-    famousClubs: ['Manchester City', 'Arsenal', 'Liverpool', 'Manchester United', 'Chelsea'],
-    famousPlayers: ['Erling Haaland', 'Bukayo Saka', 'Mohamed Salah', 'Kevin De Bruyne'],
+      'Often end-to-end: quick transitions, pressing, and athletic midfield battles. Top teams mix that with modern positional play; smaller clubs may sit deeper and counter. Less “slow build-up only” than Spain; more sprint and duel intensity.',
+    famousClubs: [
+      'Manchester City — possession and titles in the 2010s–20s',
+      'Arsenal — youth, pressing, north London identity',
+      'Liverpool — Anfield atmosphere and European pedigree',
+      'Manchester United — global fanbase and historic trophy haul',
+      'Chelsea — London club with modern European success',
+    ],
+    famousPlayers: [
+      'Erling Haaland — main striker at City',
+      'Bukayo Saka — Arsenal winger and England star',
+      'Mohamed Salah — Liverpool’s inverted right winger',
+      'Kevin De Bruyne — City playmaker and assist king',
+    ],
     historySummary:
-      'Launched in 1992, the Premier League grew from English football tradition into the world’s most-watched domestic league.',
-    rivalries: ['North London derby', 'Merseyside derby', 'Manchester derby', 'Liverpool vs Manchester United'],
+      'The Premier League started in 1992 when top clubs broke away to share TV revenue. It replaced the old First Division branding and grew with global broadcasts. Traditions like Boxing Day fixtures and promotion/relegation keep every match meaningful.',
+    rivalries: [
+      'North London derby — Arsenal vs Tottenham',
+      'Merseyside derby — Liverpool vs Everton',
+      'Manchester derby — United vs City',
+      'Liverpool vs Manchester United — historic national grudge',
+    ],
     fanGuide:
-      'Expect full stadiums, intense away followings, Boxing Day fixtures, and weekly debates about managers, transfers, and title races.',
+      'Learn the table: top four often means Champions League, bottom three means relegation. Saturdays remain the rhythm; midweek games pile up in winter. Chants, rivalry weeks, and manager pressure are part of the culture — pick one club and one derby to start.',
   },
   {
     id: 'la-liga',
     name: 'La Liga',
     country: 'Spain',
     description:
-      'Spain’s top league is known for technical quality, iconic superclubs, and a deep tradition of midfield control and creative attacking.',
+      'Spain’s top flight: technical football, strong youth academies, and two global giants in Real Madrid and Barcelona. Smaller clubs and regions (Basque Country, Seville, Valencia) add identity beyond the big two.',
     styleOfPlay:
-      'Possession, close control, patient buildup, technical midfielders, and sharp attacking combinations. Tactical defending matters too.',
-    famousClubs: ['Real Madrid', 'Barcelona', 'Atlético Madrid', 'Sevilla', 'Real Sociedad'],
-    famousPlayers: ['Vinícius Júnior', 'Jude Bellingham', 'Robert Lewandowski', 'Pedri'],
+      'Traditionally more possession and touch in midfield; patience to find gaps. Defending is organised; attackers use dribbling and combinations. Real and Barça set the star standard, while others often defend deep and counter.',
+    famousClubs: [
+      'Real Madrid — European Cup record and galáctico eras',
+      'Barcelona — La Masia, tiki-taka, Catalan identity',
+      'Atlético Madrid — gritty defending and Diego Simeone style',
+      'Sevilla — Europa League specialists',
+      'Real Sociedad — Basque academy and possession football',
+    ],
+    famousPlayers: [
+      'Vinícius Júnior — Real Madrid left winger',
+      'Jude Bellingham — Real Madrid midfielder and goal threat',
+      'Robert Lewandowski — Barcelona striker',
+      'Pedri — Barcelona midfielder, Spain youth graduate',
+    ],
     historySummary:
-      'La Liga’s story runs through Real Madrid and Barcelona dominance, legendary European nights, and generations of elite Spanish creators.',
-    rivalries: ['El Clásico', 'Madrid derby', 'Derbi barceloní', 'Seville derby'],
+      'La Liga grew through the 20th century with Madrid and Barça at the centre. Spanish talent pools fed midfield artists and smart defenders. The league exported coaches and style worldwide, even as the big two dominate headlines and TV interest.',
+    rivalries: [
+      'El Clásico — Real Madrid vs Barcelona',
+      'Madrid derby — Real Madrid vs Atlético Madrid',
+      'Derbi barceloní — Barcelona vs Espanyol',
+      'Seville derby — Sevilla vs Real Betis',
+    ],
     fanGuide:
-      'Start with El Clásico, then learn the contrast between Madrid star power, Barça identity, Basque clubs, and gritty regional rivalries.',
+      'Start with El Clásico to see Spain’s biggest story. Notice how Barça fans tie club to Catalan culture; Madrid fans expect European nights. Late kickoff times (UK viewers) and strong regional derbies help you see beyond two clubs.',
   },
   {
     id: 'bundesliga',
     name: 'Bundesliga',
     country: 'Germany',
     description:
-      'Germany’s top league blends fan culture, loud stadiums, academy talent, and attacking football with strong tactical organization.',
+      'Germany’s top league: famous for loud stadiums, cheaper tickets than some rivals, and developing young players. Bayern Munich lead the trophy count, but Dortmund and others make Der Klassiker a must-know fixture.',
     styleOfPlay:
-      'Vertical attacks, pressing, quick transitions, young player development, and aggressive full-backs. Matches often open up quickly.',
-    famousClubs: ['Bayern Munich', 'Borussia Dortmund', 'Bayer Leverkusen', 'RB Leipzig', 'Schalke 04'],
-    famousPlayers: ['Harry Kane', 'Jamal Musiala', 'Joshua Kimmich', 'Manuel Neuer'],
+      'Direct and vertical: win the ball, attack fast, use wingers and overlapping full-backs. Pressing is common; transitions matter. Many clubs trust academy graduates, so you will see teenagers in meaningful minutes.',
+    famousClubs: [
+      'Bayern Munich — domestic dominance and European regulars',
+      'Borussia Dortmund — Yellow Wall atmosphere and youth sales',
+      'Bayer Leverkusen — recent title challengers from North Rhine-Westphalia',
+      'RB Leipzig — modern club built on Red Bull structure',
+      'Schalke 04 — massive support; historic Ruhr rivals to Dortmund',
+    ],
+    famousPlayers: [
+      'Harry Kane — Bayern striker and England captain',
+      'Jamal Musiala — Bayern dribbler, Germany international',
+      'Joshua Kimmich — Bayern midfielder and tactical leader',
+      'Manuel Neuer — Bayern keeper; sweeper-keeper pioneer',
+    ],
     historySummary:
-      'Founded in 1963, the Bundesliga became famous for supporter culture, elite German coaching, and Bayern Munich’s long era of dominance.',
-    rivalries: ['Der Klassiker', 'Revierderby', 'Bavarian derby'],
+      'The Bundesliga began in 1963, unifying West German professional clubs. The 50+1 rule keeps members’ voting power over outside owners — part of why fan culture stays central. Bayern’s run of titles is the modern headline, but Ruhr and Bavarian rivalries ground the history.',
+    rivalries: [
+      'Der Klassiker — Bayern Munich vs Borussia Dortmund',
+      'Revierderby — Dortmund vs Schalke (Ruhr area)',
+      'Bavarian derby — Bayern vs regional neighbours (e.g. 1860, Nürnberg)',
+    ],
     fanGuide:
-      'Learn the supporter-first identity, standing terraces, tifos, and why Dortmund’s Yellow Wall is one of football’s great atmospheres.',
+      'Expect standing terraces, choreographed tifos, and affordable season culture compared with some leagues. Learn Der Klassiker first, then the Revierderby if you like intense local hate. Commentators often highlight xG and pressing — good league for tactical beginners.',
   },
   {
     id: 'serie-a',
     name: 'Serie A',
     country: 'Italy',
     description:
-      'Italy’s top league is built on history, tactics, iconic clubs, and derby culture, with a reputation for defensive intelligence.',
+      'Italy’s top division: tactical coaching, fierce derbies, and clubs tied to city identity. It is not “defence only” today — but games are often tighter, with managers adjusting shape minute by minute.',
     styleOfPlay:
-      'Structured defending, tactical adjustments, compact midfields, wing-back systems, and moments of individual flair in tight matches.',
-    famousClubs: ['AC Milan', 'Inter Milan', 'Juventus', 'Roma', 'Napoli'],
-    famousPlayers: ['Lautaro Martínez', 'Rafael Leão', 'Nicolò Barella', 'Mike Maignan'],
+      'Organised defending and midfield blocks; wing-backs and three-at-the-back systems appear often. Teams protect shape first, then explode with individual skill. Set pieces and game management (fouls, cards, tempo) matter more than in some leagues.',
+    famousClubs: [
+      'AC Milan — seven European Cups, red-and-black tradition',
+      'Inter Milan — Nerazzurri stripes, shared San Siro with Milan',
+      'Juventus — record Serie A titles; black-and-white from Turin',
+      'Roma — capital club; passionate Curva Sud',
+      'Napoli — southern pride; Diego Maradona legacy',
+    ],
+    famousPlayers: [
+      'Lautaro Martínez — Inter striker and Argentina star',
+      'Rafael Leão — AC Milan left winger',
+      'Nicolò Barella — Inter midfielder, Italy engine',
+      'Mike Maignan — AC Milan goalkeeper',
+    ],
     historySummary:
-      'Serie A has produced dynasties, legendary defenders, and European champions, from catenaccio roots to modern pressing systems.',
-    rivalries: ['Derby della Madonnina', 'Derby d’Italia', 'Derby della Capitale'],
+      'Serie A was among Europe’s strongest leagues in the 1980s–90s, known for world-class defenders and imports. Financial crises and match-fixing scandals hurt the brand, but Milan clubs and others rebuilt. Today it mixes old-school tactics with modern pressing sides.',
+    rivalries: [
+      'Derby della Madonnina — AC Milan vs Inter (same stadium)',
+      'Derby d’Italia — Juventus vs Inter (title-heavy history)',
+      'Derby della Capitale — Roma vs Lazio (Rome)',
+    ],
     fanGuide:
-      'Focus on derby identity, tactical battles, ultras culture, and how cities like Milan, Rome, Turin, and Naples live through football.',
+      'Pick a city derby first — Milan’s Madonnina is the easiest entry. Ultras and choreography differ by curva; respect that matchday is serious business. Watch how managers use five subs and tactical fouls; learn one formation (e.g. 3-5-2) to follow commentary.',
   },
 ];
 
@@ -103,11 +165,21 @@ const baseTeams = [
     founded: 1880,
     rivals: ['Manchester United', 'Liverpool'],
     shortHistory:
-      'Rebuilt under Sheikh Mansour, City became a dominant force in English football with Pep Guardiola’s possession football and record-breaking title runs.',
+      'For decades City were the “noisy neighbours” to United. Investment and smart coaching turned them into a Premier League powerhouse, with Pep Guardiola’s teams known for possession, control, and a first Champions League title in 2023.',
     fanGuide:
-      'Expect sky blue everywhere on matchday. The “Blue Moon” anthem echoes before kickoff. Away fans sit in the south stand upper tier.',
-    legends: ['Sergio Agüero', 'David Silva', 'Vincent Kompany', 'Yaya Touré'],
-    currentKeyPlayers: ['Erling Haaland', 'Rodri', 'Phil Foden', 'Kevin De Bruyne'],
+      'Sky blue is the colour to know. Supporters sing “Blue Moon” before kickoff at the Etihad. The club’s modern identity is slick football and trophies — less about one legendary era, more about sustained winning since the late 2000s.',
+    legends: [
+      'Sergio Agüero — 93rd-minute title winner in 2012; City’s greatest goalscorer',
+      'David Silva — tiny magician who ran attacks for a decade in sky blue',
+      'Vincent Kompany — captain who led the rebuild and scored huge derby goals',
+      'Yaya Touré — powerful midfielder; hero of two Premier League titles',
+    ],
+    currentKeyPlayers: [
+      'Erling Haaland — centre-forward; main goal threat',
+      'Rodri — defensive midfielder; tempo and balance',
+      'Phil Foden — local academy star; links midfield and attack',
+      'Kevin De Bruyne — creator; crosses and through-balls from the right',
+    ],
   },
   {
     id: 'arsenal',
@@ -118,11 +190,21 @@ const baseTeams = [
     founded: 1886,
     rivals: ['Tottenham Hotspur', 'Chelsea'],
     shortHistory:
-      'The Invincibles of 2003–04 remain legendary. Under Mikel Arteta, Arsenal returned to title contention with young talent and structured pressing.',
+      'Arsenal’s 2003–04 “Invincibles” went unbeaten in the league — still a benchmark in English football. After years outside the title race, Mikel Arteta rebuilt with homegrown talent and pressing football, pushing the club back toward the top.',
     fanGuide:
-      'North London derby days are electric. “North London Forever” plays after wins. The clock end is iconic for long-time supporters.',
-    legends: ['Thierry Henry', 'Dennis Bergkamp', 'Tony Adams', 'Patrick Vieira'],
-    currentKeyPlayers: ['Bukayo Saka', 'Martin Ødegaard', 'William Saliba', 'Declan Rice'],
+      'The Gunners wear red and white; the north London derby vs Tottenham is the fixture fans circle first. “North London Forever” plays after big wins at the Emirates. Long-time supporters still talk about the old Highbury ground and the clock on the stadium exterior.',
+    legends: [
+      'Thierry Henry — club record goalscorer; pace and composure defined the Wenger era',
+      'Dennis Bergkamp — non-scoring genius; first touch and link play',
+      'Tony Adams — “Mr Arsenal”; leader of the defence for 14 league titles',
+      'Patrick Vieira — tall, fierce midfielder; heart of the late 1990s teams',
+    ],
+    currentKeyPlayers: [
+      'Bukayo Saka — right wing; goals, assists, and England star',
+      'Martin Ødegaard — captain; playmaker between the lines',
+      'William Saliba — centre-back; calm on the ball, strong in duels',
+      'Declan Rice — defensive midfield; tackles and progression',
+    ],
   },
   {
     id: 'liverpool',
@@ -133,11 +215,21 @@ const baseTeams = [
     founded: 1892,
     rivals: ['Everton', 'Manchester United'],
     shortHistory:
-      'Six European Cups and a passionate fanbase define Liverpool. Jürgen Klopp’s gegenpressing era brought another Champions League and a long-awaited league title.',
+      'Liverpool built their reputation on European nights at Anfield and a fanbase that travels everywhere. Bill Shankly and Bob Paisley laid the trophy culture; the Klopp years added another Champions League and a first league title in 30 years in 2020.',
     fanGuide:
-      'You’ll Never Walk Alone before kickoff is non-negotiable. The Kop leads chants. European nights at Anfield are bucket-list experiences.',
-    legends: ['Steven Gerrard', 'Kenny Dalglish', 'Ian Rush', 'Jamie Carragher'],
-    currentKeyPlayers: ['Mohamed Salah', 'Virgil van Dijk', 'Alisson', 'Trent Alexander-Arnold'],
+      'Red shirts, the Kop end, and “You’ll Never Walk Alone” before kickoff — that song is non-negotiable for newcomers. The Merseyside derby vs Everton is about city pride; matches vs Manchester United carry extra history. European games at Anfield are famous for loud, late comebacks.',
+    legends: [
+      'Steven Gerrard — one-club captain; Istanbul 2005 and famous long-range goals',
+      'Kenny Dalglish — player and manager; symbol of the club in the 1970s–80s',
+      'Ian Rush — record goalscorer; poacher in front of goal for years',
+      'Jamie Carragher — local defender; 737 appearances, now a vocal pundit',
+    ],
+    currentKeyPlayers: [
+      'Mohamed Salah — right wing; cutting inside on his left foot',
+      'Virgil van Dijk — centre-back; organises the defensive line',
+      'Alisson Becker — goalkeeper; saves and calm distribution',
+      'Trent Alexander-Arnold — right-back; set pieces and crossing',
+    ],
   },
   {
     id: 'real-madrid',
@@ -148,11 +240,21 @@ const baseTeams = [
     founded: 1902,
     rivals: ['Barcelona', 'Atlético Madrid'],
     shortHistory:
-      'Los Blancos are the most decorated club in European football, built on galácticos, late drama, and a trophy culture unmatched globally.',
+      'Real Madrid measure success in European Cups — they have won the competition more than any other club. From Di Stéfano to the galácticos and modern stars, the story is star power, late goals, and pressure to win every season.',
     fanGuide:
-      'Hala Madrid rings through the Bernabéu. Ultras in the south end drive atmosphere. El Clásico is the calendar highlight.',
-    legends: ['Cristiano Ronaldo', 'Raúl', 'Alfredo Di Stéfano', 'Zinedine Zidane'],
-    currentKeyPlayers: ['Vinícius Júnior', 'Jude Bellingham', 'Federico Valverde', 'Luka Modrić'],
+      'White shirts at the Santiago Bernabéu; “Hala Madrid” is the chant to know. El Clásico vs Barcelona is the world’s most watched club fixture. The Madrid derby vs Atlético splits the capital. Expect talk of legends, transfers, and whether the team “knows how to win” in big moments.',
+    legends: [
+      'Alfredo Di Stéfano — forward who shaped the club’s first European dominance',
+      'Raúl — one-club striker; symbol of loyalty in white before the galácticos',
+      'Cristiano Ronaldo — record goalscorer in Madrid; four Champions Leagues there',
+      'Zinedine Zidane — playmaker turned manager; three straight European Cups as coach',
+    ],
+    currentKeyPlayers: [
+      'Vinícius Júnior — left wing; dribbling and big-game goals',
+      'Jude Bellingham — midfielder; arrives in the box and leads by example',
+      'Federico Valverde — engine; covers ground in midfield or wide',
+      'Luka Modrić — veteran playmaker; outside-foot passes and control',
+    ],
   },
   {
     id: 'barcelona',
@@ -163,11 +265,21 @@ const baseTeams = [
     founded: 1899,
     rivals: ['Real Madrid', 'Espanyol'],
     shortHistory:
-      'La Masia produced tiki-taka legends. Financial struggles slowed the club, but youth-led rebuilds and Messi-era memories keep global support huge.',
+      'Barcelona’s identity is La Masia — the academy that taught possession football to the world. The Messi era brought endless trophies; recent years mixed financial trouble with rebuilds built on Pedri, Gavi, and Catalan pride.',
     fanGuide:
-      'Mes que un club is more than a slogan. Culers pack Camp Nou for Clásicos. The Cant del Barça plays after home wins.',
-    legends: ['Lionel Messi', 'Xavi', 'Andrés Iniesta', 'Carles Puyol'],
-    currentKeyPlayers: ['Robert Lewandowski', 'Pedri', 'Gavi', 'Raphinha'],
+      'Blaugrana stripes (blue and garnet); supporters call themselves culers. “Més que un club” means the team stands for Catalan identity as well as football. El Clásico vs Real Madrid is the must-learn fixture; the city derby vs Espanyol is smaller but fierce. “Cant del Barça” often plays after home wins.',
+    legends: [
+      'Lionel Messi — greatest player in club history; hundreds of goals in blaugrana',
+      'Xavi — midfield metronome; defined tiki-taka as player and coach',
+      'Andrés Iniesta — clutch creator; World Cup winner and fan favourite',
+      'Carles Puyol — captain; warrior centre-back of the 2000s–2010s',
+    ],
+    currentKeyPlayers: [
+      'Robert Lewandowski — striker; movement and finishing in the box',
+      'Pedri — midfielder; press resistance and passing',
+      'Gavi — midfielder; energy, tackling, and bite',
+      'Raphinha — right wing; dribbling and direct runs',
+    ],
   },
   {
     id: 'bayern-munich',
@@ -178,11 +290,21 @@ const baseTeams = [
     founded: 1900,
     rivals: ['Borussia Dortmund', '1860 Munich'],
     shortHistory:
-      'Bayern’s Bundesliga dominance and European pedigree make them Germany’s flagship club, blending Bavarian tradition with ruthless efficiency.',
+      'Bayern are Germany’s most successful club — league titles, domestic cups, and regular Champions League runs. From Beckenbauer’s libero to modern stars, they set the standard other Bundesliga clubs chase. The Allianz Arena glows red on European nights.',
     fanGuide:
-      'The Südkurve is the heart of support. Red home shirts fill the glowing Allianz Arena shell. Der Klassiker vs Dortmund is fierce.',
-    legends: ['Franz Beckenbauer', 'Gerd Müller', 'Philipp Lahm', 'Thomas Müller'],
-    currentKeyPlayers: ['Harry Kane', 'Jamal Musiala', 'Joshua Kimmich', 'Manuel Neuer'],
+      'Red home kit; the Südkurve (south stand) leads songs and tifos. Der Klassiker vs Dortmund is the rivalry beginners hear about most. Munich’s local grudge with 1860 is older but quieter today. German fan culture here mixes standing terraces, beer, and expectation of winning.',
+    legends: [
+      'Franz Beckenbauer — libero who redefined defending; World Cup winner as player and coach',
+      'Gerd Müller — “Der Bomber”; legendary goal poacher in the 1970s',
+      'Philipp Lahm — intelligent full-back turned midfielder; World Cup-winning captain',
+      'Thomas Müller — one-club forward; “Raumdeuter” who finds space in the box',
+    ],
+    currentKeyPlayers: [
+      'Harry Kane — striker; link play and finishing',
+      'Jamal Musiala — attacking midfielder; dribbling between lines',
+      'Joshua Kimmich — midfielder; tackles, passes, and leadership',
+      'Manuel Neuer — goalkeeper; sweeper-keeper style',
+    ],
   },
   {
     id: 'ac-milan',
@@ -193,11 +315,19 @@ const baseTeams = [
     founded: 1899,
     rivals: ['Inter Milan', 'Juventus'],
     shortHistory:
-      'Rossoneri history spans Sacchi’s pressing, Maldini’s elegance, and seven European Cups. Milan remain a symbol of Italian football glamour.',
+      'AC Milan’s red and black stripes stand for Italian glamour and European pedigree. Arrigo Sacchi’s pressing teams and Paolo Maldini’s defending built eras fans still study. Seven European Cups put them among the continent’s elite — the Derby della Madonnina vs Inter defines the city.',
     fanGuide:
-      'Curva Sud leads chants at San Siro. Derby della Madonnina nights split the city red and black vs blue and black.',
-    legends: ['Paolo Maldini', 'Franco Baresi', 'Marco van Basten', 'Kaka'],
-    currentKeyPlayers: ['Rafael Leão', 'Theo Hernández', 'Mike Maignan', 'Olivier Giroud'],
+      'Rossoneri means “red and blacks.” They share San Siro with Inter — same stadium, different curvas. Curva Sud is Milan’s vocal end. On derby night Milan wears red/black and Inter wears blue/black; the whole city stops. Juventus away is Italy’s other historic grudge.',
+    legends: [
+      'Paolo Maldini — one-club defender; elegance and 25 years in rossonero',
+      'Franco Baresi — libero partner to Maldini; tactical genius at the back',
+      'Marco van Basten — Dutch striker; volleys and ruthlessness in the late 1980s',
+      'Kaká — Brazilian playmaker; Ballon d’Or winner who carried the 2007 Champions League',
+    ],
+    currentKeyPlayers: [
+      'Rafael Leão — left wing; pace and Serie A star quality',
+      'Mike Maignan — goalkeeper; shot-stopping and playing out',
+    ],
   },
   {
     id: 'inter-milan',
@@ -208,11 +338,21 @@ const baseTeams = [
     founded: 1908,
     rivals: ['AC Milan', 'Juventus'],
     shortHistory:
-      'Nerazzurri identity blends defensive grit and Italian craft. Inter’s treble under Mourinho and recent Scudetto runs revived global prestige.',
+      'Inter’s blue and black stripes (“Nerazzurri”) come from merging clubs in 1908. They are known for structured defending, Italian grit, and big European nights. José Mourinho’s 2010 treble is the modern benchmark; recent Serie A titles put them back among Italy’s top two.',
     fanGuide:
-      'Curva Nord is Inter’s spiritual home at San Siro. Pizzulandia songs and fireworks mark big European nights.',
-    legends: ['Javier Zanetti', 'Ronaldo Nazário', 'Giuseppe Meazza', 'Marco Materazzi'],
-    currentKeyPlayers: ['Lautaro Martínez', 'Nicolò Barella', 'Alessandro Bastoni', 'Yann Sommer'],
+      'Black and blue stripes; Curva Nord at San Siro is Inter’s heart. “Pazza Inter amala” captures the love-hate passion of supporting them. The Derby della Madonnina vs AC Milan splits Milan — same stadium, different ends. Juventus is the nationwide rivalry fans mention after the derby.',
+    legends: [
+      'Giuseppe Meazza — stadium namesake; striker who defined pre-war Italian football',
+      'Javier Zanetti — one-club captain; 19 years at Inter without a red card',
+      'Ronaldo Nazário — “Il Fenomeno”; explosive striker in the late 1990s',
+      'Marco Materazzi — tough defender; hero of the 2010 treble and 2006 World Cup',
+    ],
+    currentKeyPlayers: [
+      'Lautaro Martínez — striker; pressing, link play, and goals',
+      'Nicolò Barella — midfielder; energy and line-breaking runs',
+      'Alessandro Bastoni — centre-back; left side of a back three',
+      'Yann Sommer — goalkeeper; reflex saves despite smaller stature',
+    ],
   },
 ];
 
@@ -245,19 +385,19 @@ const basePlayers = [
     nationalTeam: 'Norway',
     nationality: 'Norway',
     importanceScore: 96,
-    quickFact: 'Scored a record 36 Premier League goals in his first full season at City.',
+    quickFact: 'His meditation-style goal celebration became one of the Premier League’s most recognizable rituals.',
     playingStyle: 'Relentless finisher with explosive runs and ruthless positioning in the box.',
     careerHistory: [
       { club: 'Bryne', years: '2015-2016' },
       { club: 'Molde', years: '2017-2018' },
-      { club: 'Red Bull Salzburg', years: '2019' },
+      { club: 'Red Bull Salzburg', years: '2019-2020' },
       { club: 'Borussia Dortmund', years: '2020-2022' },
       { club: 'Manchester City', years: '2022-present' },
     ],
     quizHints: [
-      'Nordic striker known for zen celebrations.',
-      'Played for Dortmund before moving to Manchester.',
-      'Father also played professional football in Norway.',
+      'Rose through Molde and Salzburg before a prolific spell in Dortmund yellow.',
+      'His father Alf-Inge played in England for Nottingham Forest and Leeds.',
+      'Norwegian striker who wears sky blue and often scores with his head.',
     ],
   },
   {
@@ -270,7 +410,7 @@ const basePlayers = [
     nationalTeam: 'Belgium',
     nationality: 'Belgium',
     importanceScore: 94,
-    quickFact: 'Holds the Premier League record for most assists in a single season.',
+    quickFact: 'Set the Premier League single-season assists record in 2019–20 — a benchmark for modern playmakers.',
     playingStyle: 'World-class passer who dictates tempo with vision, whipped crosses, and long-range shooting.',
     careerHistory: [
       { club: 'Genk', years: '2008-2012' },
@@ -280,9 +420,9 @@ const basePlayers = [
       { club: 'Manchester City', years: '2015-present' },
     ],
     quizHints: [
-      'Belgian playmaker with a ginger beard.',
-      'Brief Chelsea spell before thriving in Germany and England.',
-      'Famous for assists from the right half-space at City.',
+      'Belgian international who rebuilt his reputation in the Bundesliga after a brief London spell.',
+      'Genk academy product who also wore Wolfsburg green before the Etihad.',
+      'Whips crosses from the right half-space — ginger beard and number 17 at City.',
     ],
   },
   {
@@ -295,7 +435,7 @@ const basePlayers = [
     nationalTeam: 'Spain',
     nationality: 'Spain',
     importanceScore: 93,
-    quickFact: 'Scored the winner in the 2023 Champions League final for Manchester City.',
+    quickFact: 'Spain fans nicknamed him “El tractor” for how he shields the back line and never stops running.',
     playingStyle: 'Calm pivot who shields the defense, recycles possession, and occasionally arrives late in the box.',
     careerHistory: [
       { club: 'Villarreal', years: '2015-2018' },
@@ -303,9 +443,9 @@ const basePlayers = [
       { club: 'Manchester City', years: '2019-present' },
     ],
     quizHints: [
-      'Spanish holding midfielder nicknamed a tractor.',
-      'Won Euro 2024 with Spain and scored in the final.',
-      'Moved from Atlético to Manchester sky blues.',
+      'Spanish pivot who left Villarreal’s yellow submarine for Atlético briefly.',
+      'Scored in Istanbul to help his club complete a treble in 2023.',
+      'Often wears number 16 in sky blue — Euro 2024 winner with La Roja.',
     ],
   },
   {
@@ -318,13 +458,13 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 91,
-    quickFact: 'Manchester-born academy graduate dubbed the Stockport Iniesta.',
+    quickFact: 'Wears number 47 at City — a tribute to his grandparents’ house in Moss Side.',
     playingStyle: 'Silky dribbler who links play between the lines with both feet and clever movement.',
     careerHistory: [{ club: 'Manchester City', years: '2017-present' }],
     quizHints: [
-      'England youth star from Greater Manchester.',
-      'Wears number 47 for his boyhood club.',
-      'Pep called him the best talent he has coached.',
+      'One-club Premier League attacker raised in Stockport, not Spain.',
+      'Pep once compared him to a Barcelona academy legend from the 2000s.',
+      'England international in sky blue who plays wide or as a number 10.',
     ],
   },
   {
@@ -337,7 +477,7 @@ const basePlayers = [
     nationalTeam: 'Brazil',
     nationality: 'Brazil',
     importanceScore: 88,
-    quickFact: 'Famous for long-range passes and playing as an extra outfield player.',
+    quickFact: 'Set up a goal with a kick from his own penalty area in a 2018 Manchester derby — a snapshot of the sweeper-keeper era.',
     playingStyle: 'Sweeper-keeper with elite distribution and composure under high pressing.',
     careerHistory: [
       { club: 'São Paulo', years: '2011-2015' },
@@ -345,9 +485,9 @@ const basePlayers = [
       { club: 'Manchester City', years: '2017-present' },
     ],
     quizHints: [
-      'Brazilian keeper with tattoos and a bandana sometimes.',
-      'Benfica stopper before joining Guardiola’s City.',
-      'Known for assist-level passing from goal kicks.',
+      'Brazilian who won the Premier League Golden Glove in his first season at City.',
+      'Left Benfica’s Eagles before joining Guardiola’s possession side.',
+      'Often plays long-sleeved with striking tattoos — distribution rivals outfielders.',
     ],
   },
   {
@@ -360,13 +500,13 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 92,
-    quickFact: 'Arsenal’s Player of the Season multiple times before age 23.',
+    quickFact: 'His parents reportedly named him after finding “Bukayo” on a second-hand shopping site.',
     playingStyle: 'Direct winger with elite ball-striking, cut-inside threat, and tireless defensive work rate.',
     careerHistory: [{ club: 'Arsenal', years: '2018-present' }],
     quizHints: [
-      'England star who missed a decisive penalty at Euro 2020.',
-      'Hale End academy graduate for the Gunners.',
-      'Often plays on the right with left-footed curl.',
+      'England international who took the decisive spot-kick at Euro 2020’s final.',
+      'Hale End graduate who broke through as a left-back before owning the right wing.',
+      'Left-footed curls from the right — Arsenal’s number 7 in red and white.',
     ],
   },
   {
@@ -379,20 +519,20 @@ const basePlayers = [
     nationalTeam: 'Norway',
     nationality: 'Norway',
     importanceScore: 91,
-    quickFact: 'Youngest player to debut for Norway; captains both club and country.',
+    quickFact: 'Made his Norway senior debut at 15 — still the youngest debutant in the men’s national team history.',
     playingStyle: 'Elegant number 10 who orchestrates attacks with disguised passes and clever pressing triggers.',
     careerHistory: [
       { club: 'Strømsgodset', years: '2014-2015' },
       { club: 'Real Madrid', years: '2015-2021' },
-      { club: 'Heerenveen', years: '2017' },
+      { club: 'Heerenveen', years: '2017-2018' },
       { club: 'Vitesse', years: '2018-2019' },
       { club: 'Real Sociedad', years: '2019-2020' },
       { club: 'Arsenal', years: '2021-present' },
     ],
     quizHints: [
-      'Norwegian captain who wears the Arsenal armband.',
-      'Real Madrid wonderkid loaned across Europe before north London.',
-      'Son of a former footballer who pushed his early career.',
+      'Scandinavian playmaker Real Madrid bought as a 16-year-old prodigy.',
+      'Loan spells included Heerenveen, Vitesse, and Real Sociedad before north London.',
+      'Arsenal captain who wears the armband for Norway — son of a former footballer.',
     ],
   },
   {
@@ -405,7 +545,7 @@ const basePlayers = [
     nationalTeam: 'France',
     nationality: 'France',
     importanceScore: 90,
-    quickFact: 'Named to the Premier League Team of the Season after loan spells in France.',
+    quickFact: 'Won Ligue 1 Young Player of the Year on loan at Marseille before Arsenal fans finally saw him in red and white.',
     playingStyle: 'Composed defender who wins duels, carries the ball, and reads through-balls early.',
     careerHistory: [
       { club: 'Saint-Étienne', years: '2019-2021' },
@@ -414,9 +554,9 @@ const basePlayers = [
       { club: 'Arsenal', years: '2023-present' },
     ],
     quizHints: [
-      'French centre-back with a low fade haircut.',
-      'Arsenal waited years after signing him from Saint-Étienne.',
-      'Partnered Gabriel in a famous Gunners back line.',
+      'French defender Arsenal signed young but waited years to field in the Premier League.',
+      'Loan stops included Nice and Marseille before the Emirates partnership chant.',
+      'Forms half of a famous centre-back duo with Gabriel — low fade, number 2.',
     ],
   },
   {
@@ -429,16 +569,16 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 90,
-    quickFact: 'Record British transfer when he left West Ham for Arsenal in 2023.',
+    quickFact: 'Was West Ham’s youngest-ever captain before a nine-figure move across London in 2023.',
     playingStyle: 'Box-to-box midfielder with tackling intensity, progressive carrying, and leadership.',
     careerHistory: [
       { club: 'West Ham United', years: '2017-2023' },
       { club: 'Arsenal', years: '2023-present' },
     ],
     quizHints: [
-      'Former West Ham captain and England Euro 2024 winner.',
-      'Irish grandparents but plays for England internationally.',
-      'Big-money move from east London to north London.',
+      'England midfielder who wore claret and blue before Arsenal’s number 41.',
+      'Could have represented Ireland through grandparents but chose England.',
+      'Euro 2024 winner who anchors the Gunners’ midfield shield.',
     ],
   },
   {
@@ -451,7 +591,7 @@ const basePlayers = [
     nationalTeam: 'Brazil',
     nationality: 'Brazil',
     importanceScore: 86,
-    quickFact: 'Celebration mimics a phone call to heaven, tribute to his mother.',
+    quickFact: 'His “call to heaven” celebration is a tribute to his mother, who helped raise him in São Paulo.',
     playingStyle: 'Mobile forward who presses relentlessly, links play, and thrives in wide-to-central rotations.',
     careerHistory: [
       { club: 'Palmeiras', years: '2015-2017' },
@@ -459,9 +599,9 @@ const basePlayers = [
       { club: 'Arsenal', years: '2022-present' },
     ],
     quizHints: [
-      'Brazilian number 9 who left City for Arsenal.',
-      'Palmeiras product from São Paulo streets.',
-      'Famous phone-call goal celebration.',
+      'Brazilian forward who won Premier League titles in Manchester before north London.',
+      'Palmeiras graduate whose given name matches a biblical figure.',
+      'Mimics a phone call after scoring — number 9 in Arsenal red.',
     ],
   },
   {
@@ -474,20 +614,20 @@ const basePlayers = [
     nationalTeam: 'Egypt',
     nationality: 'Egypt',
     importanceScore: 95,
-    quickFact: 'Liverpool’s all-time Premier League top scorer for the club.',
+    quickFact: 'Worked in a café during a rough patch after Chelsea — before becoming Liverpool’s defining goal scorer of a generation.',
     playingStyle: 'Left-footed inverted winger who cuts inside for curlers and thrives on counterattacks.',
     careerHistory: [
       { club: 'Al Mokawloon', years: '2010-2012' },
       { club: 'Basel', years: '2012-2014' },
-      { club: 'Chelsea', years: '2014' },
-      { club: 'Fiorentina', years: '2015' },
+      { club: 'Chelsea', years: '2014-2015' },
+      { club: 'Fiorentina', years: '2015-2016' },
       { club: 'Roma', years: '2015-2017' },
       { club: 'Liverpool', years: '2017-present' },
     ],
     quizHints: [
-      'Egyptian King who plays on Liverpool’s right.',
-      'Left foot, right wing — signature curl into the far corner.',
-      'Former Roma star before Anfield stardom.',
+      'African nation whose flag inspires his “Egyptian King” nickname at Anfield.',
+      'Left foot on the right wing — the near-post curl is his signature.',
+      'Roma’s “Pharaoh” before Merseyside records and Premier League Golden Boots.',
     ],
   },
   {
@@ -500,7 +640,7 @@ const basePlayers = [
     nationalTeam: 'Netherlands',
     nationality: 'Netherlands',
     importanceScore: 93,
-    quickFact: 'Won PFA Player of the Year in 2019 as a defender — rare feat.',
+    quickFact: 'PFA Player of the Year in 2019 — one of the few defenders to win England’s top individual prize.',
     playingStyle: 'Dominant aerial defender with calm distribution and game-reading that organizes the back line.',
     careerHistory: [
       { club: 'Groningen', years: '2011-2013' },
@@ -509,9 +649,9 @@ const basePlayers = [
       { club: 'Liverpool', years: '2018-present' },
     ],
     quizHints: [
-      'Dutch colossus who wears number 4 at Anfield.',
-      'Southampton sold him for a then-record defender fee.',
-      'Recovered from a serious ACL injury to win the Euros.',
+      'Dutch defender who wore Celtic hoops and Southampton red-and-white before Anfield.',
+      'Southampton sold him for a then-record fee for a defender in 2018.',
+      'Wears number 4, leads Liverpool’s high line — recovered from a serious knee injury.',
     ],
   },
   {
@@ -524,7 +664,7 @@ const basePlayers = [
     nationalTeam: 'Brazil',
     nationality: 'Brazil',
     importanceScore: 90,
-    quickFact: 'Scored a dramatic header in a 2021 match against West Brom.',
+    quickFact: 'Scored a 95th-minute header from a corner in May 2021 — one of only a handful of Premier League goals by a keeper.',
     playingStyle: 'Shot-stopper with quick reflexes and calm one-on-one defending in big moments.',
     careerHistory: [
       { club: 'Internacional', years: '2013-2016' },
@@ -532,9 +672,9 @@ const basePlayers = [
       { club: 'Liverpool', years: '2018-present' },
     ],
     quizHints: [
-      'Brazilian keeper with a beard, brother also plays in goal.',
-      'Roma goalkeeper before Merseyside move.',
-      'Famous late header goal as a keeper.',
+      'Brazilian shot-stopper whose brother also keeps professionally in Portugal.',
+      'Roma’s number one before Liverpool made him the world’s most expensive keeper at the time.',
+      'Famous late winning header against a Midlands club in green and white stripes.',
     ],
   },
   {
@@ -547,13 +687,13 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 89,
-    quickFact: 'Academy product from West Derby with more PL assists than any defender in history.',
+    quickFact: 'Wears number 66 — a nod to the year his postal district was founded, not a random squad number.',
     playingStyle: 'Quarterback full-back who delivers whipped crosses and set-piece mastery over defensive orthodoxy.',
     careerHistory: [{ club: 'Liverpool', years: '2016-present' }],
     quizHints: [
-      'Scouse full-back who grew up near Anfield.',
-      'Free-kick and corner specialist for Liverpool.',
-      'Number 66 shirt at his boyhood club.',
+      'Scouse academy graduate from West Derby who never left his boyhood club.',
+      'Among the Premier League’s most prolific assist-makers for a defender.',
+      'Set-piece delivery from the right touchline — free-kicks and corners for Liverpool.',
     ],
   },
   {
@@ -566,7 +706,7 @@ const basePlayers = [
     nationalTeam: 'Uruguay',
     nationality: 'Uruguay',
     importanceScore: 84,
-    quickFact: 'Benfica sold him for a club-record fee that Liverpool matched in 2022.',
+    quickFact: 'Almería bought him from Uruguay for about €4M and sold him to Benfica for roughly eight times that one season later.',
     playingStyle: 'Chaotic runner who presses high, attacks channels, and finishes with power over finesse.',
     careerHistory: [
       { club: 'Peñarol', years: '2019-2020' },
@@ -575,9 +715,9 @@ const basePlayers = [
       { club: 'Liverpool', years: '2022-present' },
     ],
     quizHints: [
-      'Uruguayan striker with distinctive blonde hair phases.',
-      'Portuguese league top scorer before Anfield move.',
-      'Often paired in a front three with Salah and Diaz.',
+      'Uruguayan striker whose hair colour changes as often as debate about his finishing.',
+      'Portuguese league top scorer season preceded a big Anfield transfer fee.',
+      'Often plays central in a front three beside Egypt’s king on the right wing.',
     ],
   },
   {
@@ -590,16 +730,16 @@ const basePlayers = [
     nationalTeam: 'Brazil',
     nationality: 'Brazil',
     importanceScore: 95,
-    quickFact: 'Scored the 2022 Champions League final winner against Liverpool in Paris.',
+    quickFact: 'Flamengo sold him to Madrid as a teenager — he later scored the decisive goal in a Paris Champions League final.',
     playingStyle: 'Explosive dribbler who terrorizes full-backs, draws fouls, and finishes in clutch moments.',
     careerHistory: [
       { club: 'Flamengo', years: '2017-2018' },
       { club: 'Real Madrid', years: '2018-present' },
     ],
     quizHints: [
-      'Brazilian winger who wears number 7 for Los Blancos.',
-      'Flamengo teenager bought for a huge fee as a teen.',
-      'Danced at the Ballon d’Or ceremony after criticism.',
+      'Brazilian left winger who wears the famous number 7 in white at the Bernabéu.',
+      'Became a leading voice against repeated racist abuse in Spanish stadiums.',
+      '2022 final winner against the club in all-red from Merseyside.',
     ],
   },
   {
@@ -612,7 +752,7 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 96,
-    quickFact: 'Became Real Madrid’s star signing from Dortmund and scored freely in his first Clásicos.',
+    quickFact: 'Became Birmingham City’s youngest-ever first-team player at 16 years and 38 days.',
     playingStyle: 'Complete midfielder who arrives in the box, presses aggressively, and leads with charisma.',
     careerHistory: [
       { club: 'Birmingham City', years: '2019-2020' },
@@ -620,9 +760,9 @@ const basePlayers = [
       { club: 'Real Madrid', years: '2023-present' },
     ],
     quizHints: [
-      'English teen who broke through at Birmingham City.',
-      'Dortmund star before Madrid move with iconic knee celebration.',
-      'Brother plays professionally in England too.',
+      'Midlands-born England star who left for Germany before crossing to Spain.',
+      'Knee-slide celebration copied by teammates after big goals in white.',
+      'Wore Dortmund’s number 22 before starring in Madrid’s number 5 shirt.',
     ],
   },
   {
@@ -635,7 +775,7 @@ const basePlayers = [
     nationalTeam: 'Croatia',
     nationality: 'Croatia',
     importanceScore: 90,
-    quickFact: 'Won the Ballon d’Or in 2018 after leading Croatia to a World Cup final.',
+    quickFact: 'Ballon d’Or winner in 2018 — the first player outside Messi or Ronaldo to win it in over a decade.',
     playingStyle: 'Metronome midfielder with outside-foot passes, press resistance, and legendary stamina.',
     careerHistory: [
       { club: 'Dinamo Zagreb', years: '2002-2008' },
@@ -643,9 +783,9 @@ const basePlayers = [
       { club: 'Real Madrid', years: '2012-present' },
     ],
     quizHints: [
-      'Croatian maestro who grew up amid war hardship.',
-      'Former Spurs player before long Madrid tenure.',
-      'Ballon d’Or winner who broke Messi-Ronaldo duopoly.',
+      'Croatian midfielder who fled war as a child and grew up in a hotel as a refugee.',
+      'White Hart Lane years before a decade-plus in Madrid white.',
+      'Outside-of-the-foot passes and metronome tempo — number 10 for La Roja’s neighbors.',
     ],
   },
   {
@@ -658,16 +798,16 @@ const basePlayers = [
     nationalTeam: 'Uruguay',
     nationality: 'Uruguay',
     importanceScore: 91,
-    quickFact: 'Famous for a Champions League shot that broke Liverpool’s keeper’s nose in 2022.',
+    quickFact: 'Once played right-back in a Clásico to mark Barcelona’s star winger — coaches trusted his engine over his natural role.',
     playingStyle: 'Engine midfielder with lung-busting runs, long shots, and tactical discipline on the wing or center.',
     careerHistory: [
       { club: 'Peñarol', years: '2015-2016' },
       { club: 'Real Madrid', years: '2016-present' },
     ],
     quizHints: [
-      'Uruguayan midfielder with a distinctive blonde look.',
-      'Peñarol youth before Madrid promotion.',
-      'Played right-back in a Clásico to man-mark a winger.',
+      'Uruguayan runner with a bleached-blond look in Madrid white.',
+      'Peñarol talent signed young by the club with the most European Cups.',
+      'Long-range shot in a 2022 Champions League tie injured Liverpool’s keeper.',
     ],
   },
   {
@@ -680,7 +820,7 @@ const basePlayers = [
     nationalTeam: 'Belgium',
     nationality: 'Belgium',
     importanceScore: 89,
-    quickFact: 'Man of the Match in the 2022 Champions League final with heroic saves.',
+    quickFact: 'At roughly 6’7”, he is among the tallest regular starters in elite European football.',
     playingStyle: 'Giant frame keeper who excels one-on-one and commands the penalty area on crosses.',
     careerHistory: [
       { club: 'Genk', years: '2009-2011' },
@@ -689,9 +829,9 @@ const basePlayers = [
       { club: 'Real Madrid', years: '2018-present' },
     ],
     quizHints: [
-      'Belgian keeper over 6’6" tall.',
-      'Chelsea and Atlético before crossing Madrid city rivals.',
-      'Saved everything in a Paris Champions League final.',
+      'Belgian keeper who represented Atlético, Chelsea, and Real Madrid.',
+      'Genk youth product before La Liga and Premier League spells.',
+      'Man of the Match in a Paris Champions League final with late saves.',
     ],
   },
   {
@@ -704,7 +844,7 @@ const basePlayers = [
     nationalTeam: 'Poland',
     nationality: 'Poland',
     importanceScore: 91,
-    quickFact: 'Scored five goals in nine minutes for Bayern against Wolfsburg in 2015.',
+    quickFact: 'Five goals in nine minutes vs Wolfsburg in 2015 remains one of the Bundesliga’s most famous individual explosions.',
     playingStyle: 'Complete number 9 with elite movement, link play, and both-footed finishing.',
     careerHistory: [
       { club: 'Lech Poznań', years: '2008-2010' },
@@ -713,9 +853,9 @@ const basePlayers = [
       { club: 'Barcelona', years: '2022-present' },
     ],
     quizHints: [
-      'Polish striker who dominated the Bundesliga for years.',
-      'Five goals in nine minutes — legendary Bundesliga night.',
-      'Bayern legend who moved to Catalonia in his 30s.',
+      'Poland’s all-time leading men’s international goalscorer.',
+      'Dortmund’s yellow-and-black number 9 before Bayern records and Barça stripes.',
+      'Also played volleyball competitively as a teenager before committing to football.',
     ],
   },
   {
@@ -728,16 +868,16 @@ const basePlayers = [
     nationalTeam: 'Spain',
     nationality: 'Spain',
     importanceScore: 90,
-    quickFact: 'Played more matches in a single calendar year than almost any footballer ever in 2021.',
+    quickFact: 'Stacked club, national team, and Olympics minutes as a teenager in 2021 — sparking talk about burnout before he turned 19.',
     playingStyle: 'La Masia technician who glides past presses with body feints and progressive passing.',
     careerHistory: [
       { club: 'Las Palmas', years: '2019-2020' },
       { club: 'Barcelona', years: '2020-present' },
     ],
     quizHints: [
-      'Canary Islands-born Spain midfielder for Barça.',
-      'Euro 2020 Young Player of the Tournament.',
-      'Las Palmas teenager before Camp Nou stardom.',
+      'Canary Islands-born La Masia midfielder with a low center of gravity.',
+      'Las Palmas loanee who became Euro 2020 Young Player of the Tournament.',
+      'Often paired in midfield with a younger teammate known for fiery tackles.',
     ],
   },
   {
@@ -750,13 +890,13 @@ const basePlayers = [
     nationalTeam: 'Spain',
     nationality: 'Spain',
     importanceScore: 88,
-    quickFact: 'Youngest Spain player at a World Cup since the 1950s when he debuted in 2022.',
+    quickFact: 'Made his Spain senior debut at 17 — among the youngest in the men’s team in the modern era.',
     playingStyle: 'Fiery ball-winner with flair dribbles and aggressive personality on the pitch.',
     careerHistory: [{ club: 'Barcelona', years: '2021-present' }],
     quizHints: [
-      'Spanish teen with long hair and fierce tackling.',
-      'La Masia graduate who partners Pedri for club and country.',
-      'Knee injury disrupted his early peak years.',
+      'La Masia graduate whose first name is Pablo but everyone uses a four-letter nickname.',
+      'Long hair and aggressive challenges mark his style beside Pedri.',
+      'Serious knee surgery interrupted his rapid rise in blaugrana stripes.',
     ],
   },
   {
@@ -769,7 +909,7 @@ const basePlayers = [
     nationalTeam: 'Brazil',
     nationality: 'Brazil',
     importanceScore: 87,
-    quickFact: 'Leeds United sold him to Barcelona after starring in the Premier League.',
+    quickFact: 'Left Leeds for Barcelona in 2022 — one of several Brazilians who sharpened their game in England before La Liga.',
     playingStyle: 'Direct Brazilian winger with tricks, cutbacks, and relentless work off the ball.',
     careerHistory: [
       { club: 'Vitória Guimarães', years: '2016-2018' },
@@ -779,9 +919,9 @@ const basePlayers = [
       { club: 'Barcelona', years: '2022-present' },
     ],
     quizHints: [
-      'Brazilian winger who played for Leeds before Catalonia.',
-      'Portuguese league breakout at Sporting before France and England.',
-      'Often operates on the right for Barça with flair.',
+      'Brazilian winger who wore white at Elland Road before Camp Nou.',
+      'Breakout in Portugal at Sporting before France at Rennes.',
+      'Direct dribbler often stationed on Barça’s right in a trident attack.',
     ],
   },
   {
@@ -794,16 +934,16 @@ const basePlayers = [
     nationalTeam: 'Germany',
     nationality: 'Germany',
     importanceScore: 88,
-    quickFact: 'Holds the record for most clean sheets in a La Liga season for Barcelona.',
+    quickFact: 'Germany’s number-one debate often pits him against Bayern’s long-serving keeper — both rose through Bundesliga rivals.',
     playingStyle: 'Sweeper-keeper with reflex saves and excellent distribution to start buildup.',
     careerHistory: [
       { club: 'Borussia Mönchengladbach', years: '2011-2014' },
       { club: 'Barcelona', years: '2014-present' },
     ],
     quizHints: [
-      'German goalkeeper for a Catalan club.',
-      'Gladbach prospect before long Barça tenure.',
-      'Competed with Neuer for Germany number one.',
+      'Mönchengladbach “Foals” graduate who joined Barça in 2014.',
+      'Sweeper-keeper who starts attacks with short passes under pressure.',
+      'Catalan club’s long-term number one while Neuer ruled for Die Mannschaft.',
     ],
   },
   {
@@ -816,16 +956,16 @@ const basePlayers = [
     nationalTeam: 'England',
     nationality: 'England',
     importanceScore: 94,
-    quickFact: 'Tottenham’s all-time top scorer before becoming Bayern’s marquee signing in 2023.',
+    quickFact: 'England’s men’s all-time leading goalscorer — he passed Wayne Rooney’s record during Euro 2024 qualifying.',
     playingStyle: 'Classic number 9 who drops deep to create, finishes with both feet, and dominates aerial duels.',
     careerHistory: [
       { club: 'Tottenham Hotspur', years: '2009-2023' },
       { club: 'Bayern Munich', years: '2023-present' },
     ],
     quizHints: [
-      'England captain who left north London for Bavaria.',
-      'North London derby hero who never won the league there.',
-      'Golden Boot winner at the 2018 World Cup.',
+      'Striker who wore white for a north London club for over a decade before Bavaria.',
+      'Drops deep to create — often described as a nine-and-a-half.',
+      '2018 World Cup Golden Boot winner in Russia — England captain.',
     ],
   },
   {
@@ -838,16 +978,16 @@ const basePlayers = [
     nationalTeam: 'Germany',
     nationality: 'Germany',
     importanceScore: 93,
-    quickFact: 'Chose to represent Germany despite playing youth football for England.',
+    quickFact: 'Chose Germany over England at senior level despite captaining England youth sides and growing up in London.',
     playingStyle: 'Slippery dribbler with close control, nutmegs, and intelligent cuts from the left half-space.',
     careerHistory: [
       { club: 'Chelsea', years: '2011-2019' },
       { club: 'Bayern Munich', years: '2019-present' },
     ],
     quizHints: [
-      'Young German star born in England with Nigerian heritage.',
-      'Chelsea academy before Bayern breakthrough.',
-      'Nicknamed Bambi for his graceful dribbling.',
+      'Bayern’s slippery dribbler born in Fulham with Nigerian and German heritage.',
+      'Left Chelsea’s academy before starring in red in Munich.',
+      'Opponents dub him “Bambi” for how he glides past challenges.',
     ],
   },
   {
@@ -860,16 +1000,16 @@ const basePlayers = [
     nationalTeam: 'Germany',
     nationality: 'Germany',
     importanceScore: 91,
-    quickFact: 'Converted from right-back to midfield anchor under Guardiola at Bayern.',
+    quickFact: 'Pep Guardiola shifted him from Bundesliga right-back to one of Germany’s defining midfield controllers.',
     playingStyle: 'Tactical leader who tackles, crosses from wide, and dictates pressing traps.',
     careerHistory: [
       { club: 'RB Leipzig', years: '2013-2015' },
       { club: 'Bayern Munich', years: '2015-present' },
     ],
     quizHints: [
-      'German midfielder who captains Bayern often.',
-      'RB Leipzig loanee before becoming a Bavarian staple.',
-      'Known for vocal leadership and tactical IQ.',
+      'RB Leipzig and Stuttgart pipeline before Bayern’s red shirt.',
+      'Vocal organizer who has worn both 6 and 32 at club level.',
+      'Crosses from wide were his weapon before anchoring the middle for Die Mannschaft.',
     ],
   },
   {
@@ -882,16 +1022,16 @@ const basePlayers = [
     nationalTeam: 'Germany',
     nationality: 'Germany',
     importanceScore: 89,
-    quickFact: 'Pioneered the modern sweeper-keeper role winning the World Cup in 2014.',
+    quickFact: 'Helped redefine the sweeper-keeper role and captained Germany to the 2014 World Cup in Brazil.',
     playingStyle: 'Revolutionary keeper who acts as a libero, commands the box, and organizes the defense.',
     careerHistory: [
       { club: 'Schalke 04', years: '2006-2011' },
       { club: 'Bayern Munich', years: '2011-present' },
     ],
     quizHints: [
-      'German World Cup-winning captain in goal.',
-      'Schalke keeper before decade-plus at Bayern.',
-      'Famous for sliding tackles outside his box.',
+      'Schalke blue before over a decade in Bayern red.',
+      'Famous for racing out to slide-tackle like an outfielder.',
+      'World Cup winner in Rio who often wears a cap after skin treatment.',
     ],
   },
   {
@@ -904,7 +1044,7 @@ const basePlayers = [
     nationalTeam: 'Germany',
     nationality: 'Germany',
     importanceScore: 87,
-    quickFact: 'Son of a former Senegal international and German gymnast Olympian.',
+    quickFact: 'His mother won Olympic gold in gymnastics — pundits often cite that background for his balance and body control.',
     playingStyle: 'Pace merchant who cuts inside with flair, direct dribbling, and inconsistent end product.',
     careerHistory: [
       { club: 'Schalke 04', years: '2014-2016' },
@@ -912,9 +1052,9 @@ const basePlayers = [
       { club: 'Bayern Munich', years: '2020-present' },
     ],
     quizHints: [
-      'German winger who played for Manchester City before Munich.',
-      'Schalke breakout star with famous surname in sports.',
-      'Often wears a low headband style on the wing.',
+      'German winger who wore sky blue in Manchester before Munich.',
+      'Schalke breakout with a famous surname tied to Senegalese football.',
+      'Often cuts inside from the left with rapid stepovers — father played for Senegal.',
     ],
   },
   {
@@ -927,7 +1067,7 @@ const basePlayers = [
     nationalTeam: 'Portugal',
     nationality: 'Portugal',
     importanceScore: 91,
-    quickFact: 'Serie A MVP when Milan won the 2022 Scudetto after a decade without the title.',
+    quickFact: 'His motorcycle-throttle celebration nods to riding culture — he is known for languid dribbles that suddenly explode into top speed.',
     playingStyle: 'Gangly speedster who glides past defenders with long strides and cool finishing.',
     careerHistory: [
       { club: 'Sporting CP', years: '2017-2018' },
@@ -935,9 +1075,9 @@ const basePlayers = [
       { club: 'AC Milan', years: '2019-present' },
     ],
     quizHints: [
-      'Portuguese winger who drives Milan’s left flank.',
-      'Lille youngster before San Siro stardom.',
-      'Celebration mimics revving a motorcycle throttle.',
+      'Portuguese left winger who wears Rossoneri red and black at San Siro.',
+      'Ligue 1 cameo at Lille before Milan made him a Serie A star.',
+      '2021–22 Scudetto-winning side’s standout attacker on the left flank.',
     ],
   },
   {
@@ -950,7 +1090,7 @@ const basePlayers = [
     nationalTeam: 'France',
     nationality: 'France',
     importanceScore: 88,
-    quickFact: 'Lille sold him to Milan after winning Ligue 1; became Italy’s top keeper.',
+    quickFact: 'PSG never gave him a Ligue 1 appearance — Lille and Milan turned him into one of Europe’s top shot-stoppers.',
     playingStyle: 'Athletic shot-stopper with quick feet and confident distribution under pressure.',
     careerHistory: [
       { club: 'Paris Saint-Germain', years: '2015-2019' },
@@ -958,9 +1098,9 @@ const basePlayers = [
       { club: 'AC Milan', years: '2021-present' },
     ],
     quizHints: [
-      'French keeper who won Serie A with Milan.',
-      'PSG academy product who found fame at Lille.',
-      'Penalty-saving specialist in big games.',
+      'French keeper born in Cayenne, French Guiana.',
+      'Won Ligue 1 at Lille before replacing a Cameroonian international at Milan.',
+      'Known for quick feet and playing out from the back in Serie A — number 16.',
     ],
   },
   {
@@ -973,16 +1113,16 @@ const basePlayers = [
     nationalTeam: 'Argentina',
     nationality: 'Argentina',
     importanceScore: 92,
-    quickFact: 'Argentina’s co-top scorer at the 2022 World Cup alongside Messi.',
+    quickFact: 'His bull celebration — hands on hips, charging — became one of Argentina’s most copied goal rituals after 2022.',
     playingStyle: 'Pressing forward who links play, drops deep, and finishes with power and movement off the shoulder.',
     careerHistory: [
       { club: 'Racing Club', years: '2015-2018' },
       { club: 'Inter Milan', years: '2018-present' },
     ],
     quizHints: [
-      'Argentine striker who partners with Thuram at Inter.',
-      'Racing Club talent before Nerazzurri captaincy.',
-      'Bull celebration after goals for Argentina and Inter.',
+      'Argentine striker who left Racing’s light blue and white for Nerazzurri black and blue.',
+      'World Cup co-top scorer in Qatar alongside his country’s greatest number 10.',
+      'Inter captain who leads the line in Serie A — bull celebration after goals.',
     ],
   },
   {
@@ -995,16 +1135,16 @@ const basePlayers = [
     nationalTeam: 'Italy',
     nationality: 'Italy',
     importanceScore: 90,
-    quickFact: 'Cagliari homegrown star sold to Inter and became a Euro 2020 winner with Italy.',
+    quickFact: 'Cagliari sold their homegrown midfielder to Inter — he later ran the engine room of Italy’s Euro 2020 winners.',
     playingStyle: 'Box-to-box dynamo with relentless energy, line-breaking passes, and emotional leadership.',
     careerHistory: [
       { club: 'Cagliari', years: '2015-2020' },
       { club: 'Inter Milan', years: '2020-present' },
     ],
     quizHints: [
-      'Italian midfielder with distinctive blonde highlights.',
-      'Sardinia-born before Inter midfield engine role.',
-      'Euro 2020 champion who runs endlessly.',
+      'Sardinian-born Italian with trademark blonde-streaked hair.',
+      'Small stature, huge lungs — covers every blade at San Siro.',
+      'Euro 2020 champion who wears Inter’s number 23 in blue and black.',
     ],
   },
   {
@@ -1017,16 +1157,16 @@ const basePlayers = [
     nationalTeam: 'Italy',
     nationality: 'Italy',
     importanceScore: 89,
-    quickFact: 'Atalanta academy product who became Inter’s left-sided ball-playing defender.',
+    quickFact: 'Left-footed centre-back in a back three — Atalanta groomed him before Inter made him a Serie A title pillar.',
     playingStyle: 'Modern defender who steps into midfield, slides tackles, and sprays diagonal passes.',
     careerHistory: [
       { club: 'Atalanta', years: '2016-2021' },
       { club: 'Inter Milan', years: '2021-present' },
     ],
     quizHints: [
-      'Italian centre-back who plays on the left of a back three.',
-      'Atalanta youth before Inter title wins.',
-      'Tall, dark-haired defender in Nerazzurri blue and black.',
+      'Italian defender who plays on the left side of a defensive trio in blue and black.',
+      'Bergamo youth product before a big move across Lombardy to San Siro.',
+      'Progressive passes and stepping into midfield are his calling cards.',
     ],
   },
   {
@@ -1039,7 +1179,7 @@ const basePlayers = [
     nationalTeam: 'Switzerland',
     nationality: 'Switzerland',
     importanceScore: 86,
-    quickFact: 'Gladbach legend who joined Inter and immediately won the Serie A title.',
+    quickFact: 'At 1.83 m he is short for a modern elite keeper — yet ranked among Europe’s best reflex shot-stoppers for years at Gladbach.',
     playingStyle: 'Reflex keeper with excellent penalty saving and calm handling in one-on-ones.',
     careerHistory: [
       { club: 'Basel', years: '2008-2014' },
@@ -1047,9 +1187,9 @@ const basePlayers = [
       { club: 'Inter Milan', years: '2023-present' },
     ],
     quizHints: [
-      'Swiss goalkeeper who replaced Onana at Inter.',
-      'Long Bundesliga career at Gladbach before Italy.',
-      'Short in stature for a keeper but elite reflexes.',
+      'Swiss international who spent nearly a decade in green and white at Mönchengladbach.',
+      'Basel boy before Bundesliga fame and a 2023 move to San Siro.',
+      'Replaced a Cameroonian number one when joining Inter’s Serie A title-winning side.',
     ],
   },
 ];
