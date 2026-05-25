@@ -30,10 +30,6 @@ export default function PlayerCard({ player }) {
       </div>
       <dl className="player-card__meta">
         <div>
-          <dt>Position</dt>
-          <dd>{player.position}</dd>
-        </div>
-        <div>
           <dt>Club</dt>
           <dd>{getTeamName(player.teamId)}</dd>
         </div>
@@ -44,6 +40,10 @@ export default function PlayerCard({ player }) {
         <div>
           <dt>Nationality</dt>
           <dd>{player.nationality}</dd>
+        </div>
+        <div>
+          <dt>Age</dt>
+          <dd>{player.age}</dd>
         </div>
       </dl>
       <p className="player-card__fact">{player.quickFact}</p>

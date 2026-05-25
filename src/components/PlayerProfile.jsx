@@ -112,7 +112,7 @@ export default function PlayerProfile() {
               <li key={index}>{hint}</li>
             ))}
           </ul>
-          <Link to="/quiz" className="btn btn--primary">
+          <Link to={`/quiz?team=${player.teamId}`} className="btn btn--primary">
             Practice in Quiz Mode
           </Link>
         </article>

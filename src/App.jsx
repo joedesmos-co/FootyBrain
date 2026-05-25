@@ -44,7 +44,7 @@ export default function App() {
           </Routes>
         </main>
         <footer className="app__footer">
-          <p>FootyBrain MVP — local sample data. API integration coming soon.</p>
+          <p>FootyBrain · Learn the game. Know the players. Become a real fan.</p>
         </footer>
       </div>
     </BrowserRouter>
