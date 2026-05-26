@@ -29,6 +29,7 @@
     "write:major-league-shards": "node scripts/write-league-shard.js la-liga && node scripts/write-league-shard.js bundesliga && node scripts/write-league-shard.js serie-a && node scripts/write-league-shard.js ligue-1 && node scripts/write-league-shard.js eredivisie && node scripts/write-league-shard.js brasileirao",
     "write:quiz-registry": "node scripts/write-quiz-registry.js",
     "write:search-index": "node scripts/write-search-index.js",
+    "write:post-merge-artifacts": "npm run write:quiz-registry && npm run write:search-index && npm run write:content-manifest && npm run write:league-shards && npm run write:major-league-shards",
     "sync:player-image-manifest": "node scripts/sync-player-image-manifest.js",
     "validate:player-images": "node scripts/validate-player-image-manifest.js",
     "merge:phase1-sample": "node scripts/merge-phase1-sample-data.js",
@@ -40,10 +41,10 @@
     "validate:dataset-scale": "node scripts/validate-dataset-scale.js",
     "validate:dataset-scale:dist": "node scripts/validate-dataset-scale.js --dist",
     "editorial:report": "node scripts/editorial-report.js",
-    "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
-    "expand:phase4-mls": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report",
-    "expand:phase4": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report",
-    "expand:phase4-bra": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report"
+    "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
+    "expand:phase4-mls": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
+    "expand:phase4": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
+    "expand:phase4-bra": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale"
   },
   "dependencies": {
     "react": "^19.2.6",

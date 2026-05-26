@@ -9,10 +9,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { gzipSync } from 'zlib';
 import { players } from '../src/data/sampleData.js';
+import { DATASET_META } from '../src/data/datasetMeta.js';
+import { isQuizEligiblePlayer } from '../src/utils/quizPlayerRules.js';
 import { EXPANSION_LIMITS } from './phase1-curation.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
+const QUIZ_REGISTRY_PATH = path.join(ROOT, 'public/data/quiz-registry.json');
 
 const SAMPLE_DATA_GZIP_WARN_KB = 230;
 const SAMPLE_DATA_GZIP_FAIL_KB = 280;
@@ -56,6 +59,59 @@ function validatePlayerCount() {
     fail(`Player count ${count} exceeds hard max ${playersHardMax}`);
   } else if (count > playersSoftMax) {
     warn(`Player count ${count} exceeds soft max ${playersSoftMax} — review before next expansion wave`);
+  }
+}
+
+function validateQuizRegistry() {
+  const liveQuizReady = players.filter(isQuizEligiblePlayer);
+  const liveCount = liveQuizReady.length;
+
+  console.log(`\nQuiz registry:`);
+  console.log(`  Live quiz-ready (rules): ${liveCount}`);
+  if (typeof DATASET_META?.quizEligibleCount === 'number') {
+    console.log(`  DATASET_META.quizEligibleCount: ${DATASET_META.quizEligibleCount}`);
+    if (DATASET_META.quizEligibleCount !== liveCount) {
+      fail(
+        `DATASET_META.quizEligibleCount (${DATASET_META.quizEligibleCount}) != live quiz-ready (${liveCount}) — re-run merge`,
+      );
+    }
+  }
+
+  if (!fs.existsSync(QUIZ_REGISTRY_PATH)) {
+    fail(`Missing ${path.relative(ROOT, QUIZ_REGISTRY_PATH)} — run npm run write:quiz-registry`);
+    return;
+  }
+
+  const registry = JSON.parse(fs.readFileSync(QUIZ_REGISTRY_PATH, 'utf8'));
+  const registryCount = registry?.players?.length ?? 0;
+  const metaCount = registry?.meta?.quizEligibleCount;
+
+  console.log(`  quiz-registry.json players: ${registryCount}`);
+  if (typeof metaCount === 'number') {
+    console.log(`  quiz-registry meta.quizEligibleCount: ${metaCount}`);
+    if (metaCount !== registryCount) {
+      fail(
+        `quiz-registry meta.quizEligibleCount (${metaCount}) != players.length (${registryCount})`,
+      );
+    }
+  }
+
+  if (registryCount !== liveCount) {
+    fail(
+      `quiz-registry has ${registryCount} players but live quiz-ready count is ${liveCount} — run npm run write:post-merge-artifacts`,
+    );
+  }
+
+  const registryIds = new Set((registry.players ?? []).map((p) => p.id));
+  const liveIds = new Set(liveQuizReady.map((p) => p.id));
+  if (registryIds.size !== liveIds.size) {
+    fail('quiz-registry player ids do not match live quiz-ready set (duplicate or missing ids)');
+  }
+  for (const id of liveIds) {
+    if (!registryIds.has(id)) {
+      fail(`quiz-registry missing quiz-ready player id: ${id}`);
+      break;
+    }
   }
 }
 
@@ -105,6 +161,7 @@ function main() {
 
   console.log('FootyBrain dataset scale validation\n');
   validatePlayerCount();
+  validateQuizRegistry();
   validateSampleDataSource();
   if (checkDist) validateDistChunk(distDir);
 
