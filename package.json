@@ -26,6 +26,7 @@
     "write:premier-league-shard": "node scripts/write-league-shard.js premier-league",
     "write:mls-shard": "node scripts/write-league-shard.js mls",
     "write:league-shards": "node scripts/write-league-shard.js premier-league && node scripts/write-league-shard.js mls",
+    "write:major-league-shards": "node scripts/write-league-shard.js la-liga && node scripts/write-league-shard.js bundesliga && node scripts/write-league-shard.js serie-a && node scripts/write-league-shard.js ligue-1 && node scripts/write-league-shard.js eredivisie && node scripts/write-league-shard.js brasileirao",
     "sync:player-image-manifest": "node scripts/sync-player-image-manifest.js",
     "validate:player-images": "node scripts/validate-player-image-manifest.js",
     "merge:phase1-sample": "node scripts/merge-phase1-sample-data.js",

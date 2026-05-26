@@ -160,11 +160,30 @@ At **5k+ players**, expect **30–50 MB** heap growth in mobile WebViews without
 
 ---
 
+### Phase 8C (2026-05-26) — Major league shard rollout (manifest-driven)
+
+Target leagues shipped as shards: La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Brasileirão.
+
+| League | Raw | Gzip |
+|-------:|----:|-----:|
+| Premier League | ~302 KB | **~39 KB** |
+| MLS | ~539 KB | **~44 KB** |
+| La Liga | ~198 KB | **~27 KB** |
+| Bundesliga | ~196 KB | **~25 KB** |
+| Serie A | ~120 KB | **~18 KB** |
+| Ligue 1 | ~169 KB | **~22 KB** |
+| Eredivisie | ~96 KB | **~13 KB** |
+| Brasileirão | ~349 KB | **~28 KB** |
+
+**Impact:** `/league/:leagueId` and `/browse` with a single-league filter now avoid `sample-data` for **8 leagues** (picks hidden while sharded-league-only to keep the monolith unloaded). Search / quiz / compare / player profiles still require `sample-data`.
+
+---
+
 ## 3. Deferred scaling work
 
 | Item | Trigger | Approach |
 |------|---------|----------|
-| **Remaining league shards** (4 EU top flights) | After MLS pilot | `write-league-shard.js` + `SHARD_OVERRIDES` only |
+| **Additional league shards** (long tail) | When player count growth resumes | `write-league-shard.js` + `SHARD_OVERRIDES` only |
 | **Core shell module** | With shards | `getPlayerById` async cache |
 | **Build-time search index** | Main-thread jank on search | Prefix/trigram JSON |
 | **Web Worker search** | Index + slow devices | Offload scan |
@@ -188,12 +207,12 @@ At **5k+ players**, expect **30–50 MB** heap growth in mobile WebViews without
 
 ```
 public/data/content-manifest.json   ← counts + shardPath per league
-src/data/leagues/premier-league.json
-src/data/leagues/mls.json
+public/data/leagues/premier-league.json
+public/data/leagues/mls.json
 src/data/sampleData.js              ← MVP editorial + shared helpers only (shrunk)
 ```
 
-**Hook contract:** `loadLeagueShard(leagueId)` in `leagueShard.js` — live for `premier-league` and `mls`; extend via manifest only.
+**Hook contract:** `loadLeagueShard(leagueId)` in `leagueShard.js` — live for major leagues; extend via manifest only.
 
 ---
 

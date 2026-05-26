@@ -28,9 +28,33 @@ const SHARD_OVERRIDES = {
     shardStatus: 'deferred',
     shardPath: '/data/leagues/premier-league.json',
   },
+  'la-liga': {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/la-liga.json',
+  },
+  bundesliga: {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/bundesliga.json',
+  },
+  'serie-a': {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/serie-a.json',
+  },
+  'ligue-1': {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/ligue-1.json',
+  },
+  eredivisie: {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/eredivisie.json',
+  },
   mls: {
     shardStatus: 'deferred',
     shardPath: '/data/leagues/mls.json',
+  },
+  brasileirao: {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/brasileirao.json',
   },
 };
 
