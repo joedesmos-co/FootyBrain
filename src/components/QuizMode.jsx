@@ -65,9 +65,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const requestedNationalTeamId = searchParams.get('nationalTeam') ?? '';
   const requestedPoolFocus = searchParams.get('poolFocus') ?? '';
   const worldCupPrep = isWorldCupQuizPrepParam(searchParams.get('worldCup'));
-  const teams = registry?.teams ?? [];
-  const leagues = registry?.leagues ?? [];
-  const players = registry?.players ?? [];
+  const teams = useMemo(() => registry?.teams ?? [], [registry]);
+  const leagues = useMemo(() => registry?.leagues ?? [], [registry]);
+  const players = useMemo(() => registry?.players ?? [], [registry]);
   const liveNationalTeams = useMemo(() => registry?.national?.nationalTeams ?? [], [registry]);
   const liveNationalTeamIds = useMemo(
     () => new Set(registry?.national?.liveNationalTeamIds ?? []),
@@ -89,7 +89,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const requestedNationalTeam = useMemo(
     () =>
       liveNationalTeamIds.has(requestedNationalTeamId) ? requestedNationalTeamId : '',
-    [requestedNationalTeamId],
+    [requestedNationalTeamId, liveNationalTeamIds],
   );
 
   const initialPoolFocus =
@@ -170,11 +170,11 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const teamsInLeague = useMemo(() => {
     if (!leagueFilter) return teams;
     return teams.filter((t) => t.leagueId === leagueFilter);
-  }, [leagueFilter]);
+  }, [leagueFilter, teams]);
 
   const playerPool = useMemo(
     () => buildQuizPlayerPool(players, filterState, quizType),
-    [filterState, quizType],
+    [players, filterState, quizType],
   );
 
   const ambiguousLastNames = useMemo(
@@ -416,7 +416,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const currentPoolFocus = QUIZ_POOL_FOCUS_OPTIONS.find((option) => option.id === poolFocus);
   const selectedTeam = useMemo(
     () => (teamFilter ? teams.find((team) => team.id === teamFilter) : null),
-    [teamFilter],
+    [teamFilter, teams],
   );
   const poolHint = getPoolFocusHint(poolFocus, filterState, playerPool.length, quizType, {
     nationalTeamName: selectedNationalTeam?.displayName,
