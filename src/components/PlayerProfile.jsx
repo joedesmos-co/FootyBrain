@@ -1,6 +1,5 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getLiveNationalTeamForPlayer } from '../data/nationalTeamData';
 import { getLeagueName, getPlayerById, getTeamName } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
@@ -94,6 +93,32 @@ export default function PlayerProfile() {
   const accentStyle = player ? getFootballAccentStyle(player) : undefined;
   const { isPlayerSaved, togglePlayer } = useFavorites();
   useRecordRecentView('player', player?.id);
+  const [ntModuleState, setNtModuleState] = useState(() => ({
+    playerId: null,
+    mod: null,
+  }));
+
+  // Only load nationalTeamData when the player has a relevant label.
+  // This keeps the nationalTeamData chunk off routes that never need it.
+  useEffect(() => {
+    if (!player) return undefined;
+    const label = getNationalTeamPlainLabel(player);
+    if (!label) return undefined;
+
+    let cancelled = false;
+    import('../data/nationalTeamData.js')
+      .then((mod) => {
+        if (cancelled) return;
+        setNtModuleState({ playerId: player.id, mod });
+      })
+      .catch(() => {
+        // fall back to plain label only
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [player]);
 
   const relatedPlayers = useMemo(
     () => (player ? getRelatedPlayers(player) : []),
@@ -122,8 +147,11 @@ export default function PlayerProfile() {
   const saved = isPlayerSaved(player.id);
   const teamName = getTeamName(player.teamId);
   const leagueName = getLeagueName(player.leagueId);
-  const liveNationalTeam = getLiveNationalTeamForPlayer(player);
   const nationalTeamPlainLabel = getNationalTeamPlainLabel(player);
+  const liveNationalTeam =
+    ntModuleState.mod && ntModuleState.playerId === player.id
+      ? ntModuleState.mod.getLiveNationalTeamForPlayer(player)
+      : null;
   const roleSummary = getRoleSummary(player);
   const careerSummary = buildCareerSummary(player);
   const browseOnly = isBrowseOnlyPlayer(player);
@@ -137,6 +165,7 @@ export default function PlayerProfile() {
   const resolvedAge = player.age ?? calculateAgeFromDate(player.dateOfBirth);
   const ageDisplay =
     resolvedAge !== '' && resolvedAge != null ? String(resolvedAge) : null;
+
   const playerInfoItems = [
     {
       label: 'Club',

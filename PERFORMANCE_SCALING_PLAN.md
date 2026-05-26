@@ -202,6 +202,17 @@ Target leagues shipped as shards: La Liga, Bundesliga, Serie A, Ligue 1, Eredivi
 
 ---
 
+### Phase 9B (2026-05-26) — Defer national team data on low-need routes
+
+| Change | File(s) | Effect |
+|--------|---------|--------|
+| **PlayerProfile** | `src/components/PlayerProfile.jsx` | Lazy-import `nationalTeamData` only when player has a national-team label (keeps link behavior). |
+| **Onboarding / Home feature cards** | `src/data/onboardingGuide.js` | Use `CONTENT_MANIFEST.liveNationalTeamIds` instead of importing `nationalTeamData` (prevents loading NT chunk just to show “X live”). |
+
+**Impact:** Home below-fold and onboarding no longer pull the `nationalTeamData` chunk (~24 KB gzip). National team routes and quiz flows remain unchanged.
+
+---
+
 ## 3. Deferred scaling work
 
 | Item | Trigger | Approach |

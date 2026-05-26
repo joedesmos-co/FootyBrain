@@ -1,4 +1,4 @@
-import { getLiveNationalTeams } from './nationalTeamData';
+import { CONTENT_MANIFEST } from './contentManifest';
 
 /** Short “how it works” steps for onboarding and home feature grid. */
 export const ONBOARDING_STEPS = [
@@ -62,7 +62,7 @@ const NATIONAL_TEAMS_STEP = {
 /** Ordered steps for /onboarding and home (national teams inserted when live). */
 export function getOnboardingSteps() {
   const steps = [...ONBOARDING_STEPS];
-  if (getLiveNationalTeams().length > 0) {
+  if (CONTENT_MANIFEST.liveNationalTeamIds.length > 0) {
     steps.splice(4, 0, NATIONAL_TEAMS_STEP);
   }
   return steps;
@@ -78,7 +78,7 @@ export function getHomeFeatureCards(counts) {
     collections: 'Playlists',
     compare: 'Players & clubs',
     daily: '5 questions',
-    'national-teams': `${getLiveNationalTeams().length} live`,
+    'national-teams': `${CONTENT_MANIFEST.liveNationalTeamIds.length} live`,
   };
 
   return getOnboardingSteps().map((step) => ({
@@ -91,5 +91,5 @@ export function getHomeFeatureCards(counts) {
 }
 
 export function hasLiveNationalTeams() {
-  return getLiveNationalTeams().length > 0;
+  return CONTENT_MANIFEST.liveNationalTeamIds.length > 0;
 }
