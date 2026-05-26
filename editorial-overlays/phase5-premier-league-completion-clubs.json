@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 5 preview — Premier League completion. Adds the remaining safe missing clubs (Leeds, Bournemouth, Sunderland, Nottingham Forest, Burnley) for inspection-only TM preview build.",
+  "targetCounts": { "clubsMin": 110, "clubsMax": 115, "playersMin": 2400, "playersMax": 2600 },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "leeds",
+      "label": "Leeds United",
+      "leagueId": "premier-league",
+      "codes": ["leeds-united"],
+      "nameKeys": ["leeds united", "leeds"]
+    },
+    {
+      "footybrainTeamId": "bournemouth",
+      "label": "Bournemouth",
+      "leagueId": "premier-league",
+      "codes": ["afc-bournemouth"],
+      "nameKeys": ["bournemouth", "afc bournemouth"]
+    },
+    {
+      "footybrainTeamId": "sunderland",
+      "label": "Sunderland",
+      "leagueId": "premier-league",
+      "codes": ["afc-sunderland"],
+      "nameKeys": ["sunderland", "afc sunderland"]
+    },
+    {
+      "footybrainTeamId": "nottingham-forest",
+      "label": "Nottingham Forest",
+      "leagueId": "premier-league",
+      "codes": ["nottingham-forest"],
+      "nameKeys": ["nottingham forest", "forest"]
+    },
+    {
+      "footybrainTeamId": "burnley",
+      "label": "Burnley",
+      "leagueId": "premier-league",
+      "codes": ["fc-burnley"],
+      "nameKeys": ["burnley"]
+    }
+  ]
+}
+

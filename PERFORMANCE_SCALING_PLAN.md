@@ -227,6 +227,20 @@ Target leagues shipped as shards: La Liga, Bundesliga, Serie A, Ligue 1, Eredivi
 
 ---
 
+## 10. Club expansion wave impact (planning)
+
+See [CLUB_EXPANSION_PLAN.md](./CLUB_EXPANSION_PLAN.md).
+
+If we complete the missing clubs in existing European leagues (PL, La Liga, Serie A, Ligue 1, Eredivisie), expect on the order of **~+1,100 players**.
+
+**Impact summary:**
+
+- **League shard routes** remain efficient (per-league JSON still far smaller than `sample-data`).
+- **`sample-data` monolith** (gzip + parse) is the primary scaling risk for Quiz/Daily/Compare/Player profiles and unfiltered Browse until those consumers switch to sharded or indexed data.
+
+**Premier League completion (Phase 5 preview):** +5 clubs, +138 players in TM preview (Leeds/Bournemouth/Sunderland/Nottingham Forest/Burnley).  
+If merged, expect `public/data/leagues/premier-league.json` to grow roughly proportionally (current ~39 KB gzip at 341 players → ~50–60 KB gzip range at ~480 players).
+
 ## 4. When league sharding should happen
 
 **Trigger any two of:**

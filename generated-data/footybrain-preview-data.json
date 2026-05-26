@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-26T12:37:41.835Z",
+    "generatedAt": "2026-05-26T17:44:47.956Z",
     "purpose": "inspection-only — do not import into React yet",
     "phase": "phases1-3",
     "source": "transfermarkt-scraper raw NDJSON.gz",
@@ -343,6 +343,20 @@
       "matchConfidence": "high"
     },
     {
+      "footybrainTeamId": "bournemouth",
+      "displayName": "Bournemouth",
+      "sourceClubId": "989",
+      "sourceClubCode": "afc-bournemouth",
+      "sourceClubName": "Association Football Club Bournemouth",
+      "sourceClubHref": "/afc-bournemouth/startseite/verein/989",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "stadium": "Vitality Stadium",
+      "squadSize": "26",
+      "matchMethod": "code",
+      "matchConfidence": "high"
+    },
+    {
       "footybrainTeamId": "bragantino",
       "displayName": "Red Bull Bragantino",
       "sourceClubId": "8793",
@@ -381,6 +395,20 @@
       "footybrainLeagueId": "premier-league",
       "stadium": "AMEX Stadium",
       "squadSize": "26",
+      "matchMethod": "code",
+      "matchConfidence": "high"
+    },
+    {
+      "footybrainTeamId": "burnley",
+      "displayName": "Burnley",
+      "sourceClubId": "1132",
+      "sourceClubCode": "fc-burnley",
+      "sourceClubName": "Burnley Football Club",
+      "sourceClubHref": "/fc-burnley/startseite/verein/1132",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "stadium": "Turf Moor",
+      "squadSize": "29",
       "matchMethod": "code",
       "matchConfidence": "high"
     },
@@ -833,6 +861,20 @@
       "matchConfidence": "high"
     },
     {
+      "footybrainTeamId": "leeds",
+      "displayName": "Leeds United",
+      "sourceClubId": "399",
+      "sourceClubCode": "leeds-united",
+      "sourceClubName": "Leeds United Association Football Club",
+      "sourceClubHref": "/leeds-united/startseite/verein/399",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "stadium": "Elland Road",
+      "squadSize": "26",
+      "matchMethod": "code",
+      "matchConfidence": "high"
+    },
+    {
       "footybrainTeamId": "lens",
       "displayName": "RC Lens",
       "sourceClubId": "826",
@@ -1066,6 +1108,20 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "stadium": "Allianz Riviera",
+      "squadSize": "29",
+      "matchMethod": "code",
+      "matchConfidence": "high"
+    },
+    {
+      "footybrainTeamId": "nottingham-forest",
+      "displayName": "Nottingham Forest",
+      "sourceClubId": "703",
+      "sourceClubCode": "nottingham-forest",
+      "sourceClubName": "Nottingham Forest Football Club",
+      "sourceClubHref": "/nottingham-forest/startseite/verein/703",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "stadium": "The City Ground",
       "squadSize": "29",
       "matchMethod": "code",
       "matchConfidence": "high"
@@ -1389,6 +1445,20 @@
       "footybrainLeagueId": "ligue-1",
       "stadium": "Stade de la Meinau",
       "squadSize": "26",
+      "matchMethod": "code",
+      "matchConfidence": "high"
+    },
+    {
+      "footybrainTeamId": "sunderland",
+      "displayName": "Sunderland",
+      "sourceClubId": "289",
+      "sourceClubCode": "afc-sunderland",
+      "sourceClubName": "Sunderland Association Football Club",
+      "sourceClubHref": "/afc-sunderland/startseite/verein/289",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "stadium": "Stadium of Light",
+      "squadSize": "28",
       "matchMethod": "code",
       "matchConfidence": "high"
     },
@@ -1750,6 +1820,23 @@
       "sourcePlayerHref": "/karim-coulibaly/profil/spieler/1084638"
     },
     {
+      "sourceId": "654412",
+      "name": "Abdoullah Ba",
+      "firstName": "Abdoullah",
+      "lastName": "Ba",
+      "dateOfBirth": "2003-07-31",
+      "dateOfBirthRaw": "31/07/2003",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Midfield - Right Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/abdoullah-ba/profil/spieler/654412"
+    },
+    {
       "sourceId": "763079",
       "name": "Abdukodir Khikmatovich Khusanov, Абдукодир Хикматович Хусанов",
       "firstName": "Abdukodir",
@@ -1884,6 +1971,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/adam-beaudry/profil/spieler/998664"
+    },
+    {
+      "sourceId": "61841",
+      "name": "Adam James Smith",
+      "firstName": "Adam",
+      "lastName": "Smith",
+      "dateOfBirth": "1991-04-29",
+      "dateOfBirthRaw": "29/04/1991",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/adam-smith/profil/spieler/61841"
     },
     {
       "sourceId": "744149",
@@ -2277,6 +2381,23 @@
       "sourcePlayerHref": "/adrien-thomasson/profil/spieler/215977"
     },
     {
+      "sourceId": "654539",
+      "name": "Adrien Truffert",
+      "firstName": "Adrien",
+      "lastName": "Truffert",
+      "dateOfBirth": "2001-11-20",
+      "dateOfBirthRaw": "20/11/2001",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/adrien-truffert/profil/spieler/654539"
+    },
+    {
       "sourceId": "868891",
       "name": "Adson",
       "firstName": "",
@@ -2445,6 +2566,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/agustin-resch/profil/spieler/1501088"
+    },
+    {
+      "sourceId": "1015619",
+      "name": "Ahmed Abdullahi",
+      "firstName": "Ahmed",
+      "lastName": "Abdullahi",
+      "dateOfBirth": "2004-06-19",
+      "dateOfBirthRaw": "19/06/2004",
+      "nationality": "Nigeria",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ahmed-abdullahi/profil/spieler/1015619"
     },
     {
       "sourceId": "1006609",
@@ -2991,6 +3129,23 @@
       "sourcePlayerHref": "/alejandro-grimaldo/profil/spieler/193082"
     },
     {
+      "sourceId": "741257",
+      "name": "Alejandro Jiménez Sánchez",
+      "firstName": "Álex",
+      "lastName": "Jiménez",
+      "dateOfBirth": "2005-05-08",
+      "dateOfBirthRaw": "08/05/2005",
+      "nationality": "Spain",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/alex-jimenez/profil/spieler/741257"
+    },
+    {
       "sourceId": "834483",
       "name": "Alejandro Padilla Pérez",
       "firstName": "Álex",
@@ -3193,6 +3348,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/alex/profil/spieler/628223"
+    },
+    {
+      "sourceId": "855256",
+      "name": "Alex Jay Scott",
+      "firstName": "Alex",
+      "lastName": "Scott",
+      "dateOfBirth": "2003-08-21",
+      "dateOfBirthRaw": "21/08/2003",
+      "nationality": "England",
+      "nationalTeam": "England",
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/alex-scott/profil/spieler/855256"
     },
     {
       "sourceId": "240414",
@@ -3533,6 +3705,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/alexander-sorloth/profil/spieler/238407"
+    },
+    {
+      "sourceId": "194386",
+      "name": "Alexander Thomas Cairns",
+      "firstName": "Alex",
+      "lastName": "Cairns",
+      "dateOfBirth": "1993-01-04",
+      "dateOfBirthRaw": "04/01/1993",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/alex-cairns/profil/spieler/194386"
     },
     {
       "sourceId": "413690",
@@ -5235,6 +5424,23 @@
       "sourcePlayerHref": "/angelo-stiller/profil/spieler/443710"
     },
     {
+      "sourceId": "201574",
+      "name": "Angus Fraser James Gunn",
+      "firstName": "Angus",
+      "lastName": "Gunn",
+      "dateOfBirth": "1996-01-22",
+      "dateOfBirthRaw": "22/01/1996",
+      "nationality": "Scotland",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/angus-gunn/profil/spieler/201574"
+    },
+    {
       "sourceId": "161671",
       "name": "Aníbal Casis Godoy Lemus",
       "firstName": "Aníbal",
@@ -5556,6 +5762,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/anton-saletros/profil/spieler/249102"
+    },
+    {
+      "sourceId": "344069",
+      "name": "Anton Levi Stach",
+      "firstName": "Anton",
+      "lastName": "Stach",
+      "dateOfBirth": "1998-11-15",
+      "dateOfBirthRaw": "15/11/1998",
+      "nationality": "Germany",
+      "nationalTeam": "Germany",
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/anton-stach/profil/spieler/344069"
     },
     {
       "sourceId": "349701",
@@ -5915,6 +6138,23 @@
       "sourcePlayerHref": "/arkadiusz-milik/profil/spieler/191891"
     },
     {
+      "sourceId": "571743",
+      "name": "Armando Broja",
+      "firstName": "Armando",
+      "lastName": "Broja",
+      "dateOfBirth": "2001-09-10",
+      "dateOfBirthRaw": "10/09/2001",
+      "nationality": "Albania",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/armando-broja/profil/spieler/571743"
+    },
+    {
       "sourceId": "339337",
       "name": "Armando Maria Obispo",
       "firstName": "Armando",
@@ -6221,6 +6461,23 @@
       "sourcePlayerHref": "/artur/profil/spieler/440658"
     },
     {
+      "sourceId": "63200",
+      "name": "Ashley Luke Barnes",
+      "firstName": "Ashley",
+      "lastName": "Barnes",
+      "dateOfBirth": "1989-10-30",
+      "dateOfBirthRaw": "30/10/1989",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ashley-barnes/profil/spieler/63200"
+    },
+    {
       "sourceId": "91317",
       "name": "Ashley Roy Westwood",
       "firstName": "Ashley",
@@ -6355,6 +6612,23 @@
       "tmLeagueCode": "L1",
       "footybrainLeagueId": "bundesliga",
       "sourcePlayerHref": "/axel-tape/profil/spieler/1077670"
+    },
+    {
+      "sourceId": "342046",
+      "name": "Axel Tuanzebe",
+      "firstName": "Axel",
+      "lastName": "Tuanzebe",
+      "dateOfBirth": "1997-11-14",
+      "dateOfBirthRaw": "14/11/1997",
+      "nationality": "DR Congo",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/axel-tuanzebe/profil/spieler/342046"
     },
     {
       "sourceId": "1078163",
@@ -6493,6 +6767,23 @@
       "sourcePlayerHref": "/az-jackson/profil/spieler/889193"
     },
     {
+      "sourceId": "463605",
+      "name": "Bafodé Diakité",
+      "firstName": "Bafodé",
+      "lastName": "Diakité",
+      "dateOfBirth": "2001-01-06",
+      "dateOfBirthRaw": "06/01/2001",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/bafode-diakite/profil/spieler/463605"
+    },
+    {
       "sourceId": "1004739",
       "name": "Bahia",
       "firstName": "",
@@ -6629,6 +6920,23 @@
       "sourcePlayerHref": "/bartosz-zelazowski/profil/spieler/828889"
     },
     {
+      "sourceId": "612517",
+      "name": "Bashir Humphreys",
+      "firstName": "Bashir",
+      "lastName": "Humphreys",
+      "dateOfBirth": "2003-03-15",
+      "dateOfBirthRaw": "15/03/2003",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/bashir-humphreys/profil/spieler/612517"
+    },
+    {
       "sourceId": "195810",
       "name": "Bastos",
       "firstName": "",
@@ -6712,6 +7020,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/martial-godo/profil/spieler/992686"
+    },
+    {
+      "sourceId": "719673",
+      "name": "Ben Gannon-Doak",
+      "firstName": "Ben",
+      "lastName": "Gannon-Doak",
+      "dateOfBirth": "2005-11-11",
+      "dateOfBirthRaw": "11/11/2005",
+      "nationality": "Scotland",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ben-gannon-doak/profil/spieler/719673"
     },
     {
       "sourceId": "1095547",
@@ -7137,6 +7462,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/bernd-leno/profil/spieler/72476"
+    },
+    {
+      "sourceId": "131996",
+      "name": "Bertrand Isidore Traoré",
+      "firstName": "Bertrand",
+      "lastName": "Traoré",
+      "dateOfBirth": "1995-09-06",
+      "dateOfBirthRaw": "06/09/1995",
+      "nationality": "Burkina Faso",
+      "nationalTeam": "Burkina Faso",
+      "position": "Attack - Right Winger",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/bertrand-traore/profil/spieler/131996"
     },
     {
       "sourceId": "595809",
@@ -7717,6 +8059,23 @@
       "sourcePlayerHref": "/brendan-mcsorley/profil/spieler/1236495"
     },
     {
+      "sourceId": "393323",
+      "name": "Brenden Russell Aaronson",
+      "firstName": "Brenden",
+      "lastName": "Aaronson",
+      "dateOfBirth": "2000-10-22",
+      "dateOfBirthRaw": "22/10/2000",
+      "nationality": "United States",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/brenden-aaronson/profil/spieler/393323"
+    },
+    {
       "sourceId": "470607",
       "name": "Brennan Price Johnson",
       "firstName": "Brennan",
@@ -7800,6 +8159,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/brian-romero/profil/spieler/1000274"
+    },
+    {
+      "sourceId": "473169",
+      "name": "Brian Ebenezer Adjei Brobbey",
+      "firstName": "Brian",
+      "lastName": "Brobbey",
+      "dateOfBirth": "2002-02-01",
+      "dateOfBirthRaw": "01/02/2002",
+      "nationality": "Netherlands",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/brian-brobbey/profil/spieler/473169"
     },
     {
       "sourceId": "562555",
@@ -8582,6 +8958,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/callum-wilson/profil/spieler/123682"
+    },
+    {
+      "sourceId": "392768",
+      "name": "Callum James Hudson-Odoi",
+      "firstName": "Callum",
+      "lastName": "Hudson-Odoi",
+      "dateOfBirth": "2000-11-07",
+      "dateOfBirthRaw": "07/11/2000",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Left Winger",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/callum-hudson-odoi/profil/spieler/392768"
     },
     {
       "sourceId": "461883",
@@ -9604,6 +9997,23 @@
       "sourcePlayerHref": "/charles/profil/spieler/486078"
     },
     {
+      "sourceId": "883539",
+      "name": "Charles David Crew",
+      "firstName": "Charlie",
+      "lastName": "Crew",
+      "dateOfBirth": "2006-06-15",
+      "dateOfBirthRaw": "15/06/2006",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/charlie-crew/profil/spieler/883539"
+    },
+    {
       "sourceId": "569845",
       "name": "Charles Vanhoutte",
       "firstName": "Charles",
@@ -10046,6 +10456,23 @@
       "sourcePlayerHref": "/christopher-mcvey/profil/spieler/321155"
     },
     {
+      "sourceId": "108725",
+      "name": "Christopher Grant Wood",
+      "firstName": "Chris",
+      "lastName": "Wood",
+      "dateOfBirth": "1991-12-07",
+      "dateOfBirthRaw": "07/12/1991",
+      "nationality": "New Zealand",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/chris-wood/profil/spieler/108725"
+    },
+    {
       "sourceId": "367423",
       "name": "Christopher James Durkin",
       "firstName": "Chris",
@@ -10095,6 +10522,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/christopher-cupps/profil/spieler/1054471"
+    },
+    {
+      "sourceId": "947411",
+      "name": "Christopher John Rigg",
+      "firstName": "Chris",
+      "lastName": "Rigg",
+      "dateOfBirth": "2007-06-18",
+      "dateOfBirthRaw": "18/06/2007",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/chris-rigg/profil/spieler/947411"
     },
     {
       "sourceId": "765504",
@@ -10435,6 +10879,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/connor-ronan/profil/spieler/337787"
+    },
+    {
+      "sourceId": "214666",
+      "name": "Connor Richard John Roberts",
+      "firstName": "Connor",
+      "lastName": "Roberts",
+      "dateOfBirth": "1995-09-23",
+      "dateOfBirthRaw": "23/09/1995",
+      "nationality": "Wales",
+      "nationalTeam": "Wales",
+      "position": "Defender - Right-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/connor-roberts/profil/spieler/214666"
     },
     {
       "sourceId": "624258",
@@ -10947,6 +11408,23 @@
       "sourcePlayerHref": "/damian-bobadilla/profil/spieler/861852"
     },
     {
+      "sourceId": "365108",
+      "name": "Dan Assane Ndoye",
+      "firstName": "Dan",
+      "lastName": "Ndoye",
+      "dateOfBirth": "2000-10-25",
+      "dateOfBirthRaw": "25/10/2000",
+      "nationality": "Switzerland",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/dan-ndoye/profil/spieler/365108"
+    },
+    {
       "sourceId": "344598",
       "name": "Dan-Axel Zagadou",
       "firstName": "Dan-Axel",
@@ -11151,6 +11629,23 @@
       "sourcePlayerHref": "/daniel-gazdag/profil/spieler/249030"
     },
     {
+      "sourceId": "503686",
+      "name": "Daniel George Ballard",
+      "firstName": "Dan",
+      "lastName": "Ballard",
+      "dateOfBirth": "1999-09-22",
+      "dateOfBirthRaw": "22/09/1999",
+      "nationality": "Northern Ireland",
+      "nationalTeam": "Northern Ireland",
+      "position": "Defender - Centre-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/dan-ballard/profil/spieler/503686"
+    },
+    {
       "sourceId": "271198",
       "name": "Daniel Harry Lovitz",
       "firstName": "Daniel",
@@ -11319,6 +11814,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/dani-olmo/profil/spieler/293385"
+    },
+    {
+      "sourceId": "319301",
+      "name": "Daniel Owen James",
+      "firstName": "Daniel",
+      "lastName": "James",
+      "dateOfBirth": "1997-11-10",
+      "dateOfBirthRaw": "10/11/1997",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/daniel-james/profil/spieler/319301"
     },
     {
       "sourceId": "59561",
@@ -12018,6 +12530,23 @@
       "sourcePlayerHref": "/david-raya/profil/spieler/262749"
     },
     {
+      "sourceId": "277033",
+      "name": "David Robert Brooks",
+      "firstName": "David",
+      "lastName": "Brooks",
+      "dateOfBirth": "1997-07-08",
+      "dateOfBirthRaw": "08/07/1997",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/david-brooks/profil/spieler/277033"
+    },
+    {
       "sourceId": "378260",
       "name": "David Schnegg",
       "firstName": "David",
@@ -12307,6 +12836,23 @@
       "sourcePlayerHref": "/declan-rice/profil/spieler/357662"
     },
     {
+      "sourceId": "627626",
+      "name": "Degnand Wilfried Gnonto",
+      "firstName": "Wilfried",
+      "lastName": "Gnonto",
+      "dateOfBirth": "2003-11-05",
+      "dateOfBirthRaw": "05/11/2003",
+      "nationality": "Italy",
+      "nationalTeam": "Italy",
+      "position": "Attack - Right Winger",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/wilfried-gnonto/profil/spieler/627626"
+    },
+    {
       "sourceId": "637146",
       "name": "DeJuan Lytelle Jones",
       "firstName": "DeJuan",
@@ -12458,6 +13004,23 @@
       "tmLeagueCode": "NL1",
       "footybrainLeagueId": "eredivisie",
       "sourcePlayerHref": "/dennis-man/profil/spieler/397486"
+    },
+    {
+      "sourceId": "568006",
+      "name": "Denniss Cirkins",
+      "firstName": "Dennis",
+      "lastName": "Cirkin",
+      "dateOfBirth": "2002-04-06",
+      "dateOfBirthRaw": "06/04/2002",
+      "nationality": "Latvia",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/dennis-cirkin/profil/spieler/568006"
     },
     {
       "sourceId": "577394",
@@ -12902,6 +13465,23 @@
       "sourcePlayerHref": "/dieguinho/profil/spieler/1257132"
     },
     {
+      "sourceId": "540664",
+      "name": "Dilane Bakwa",
+      "firstName": "Dilane",
+      "lastName": "Bakwa",
+      "dateOfBirth": "2002-08-26",
+      "dateOfBirthRaw": "26/08/2002",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/dilane-bakwa/profil/spieler/540664"
+    },
+    {
       "sourceId": "170472",
       "name": "Dimitri Christophe Foulquier",
       "firstName": "Dimitri",
@@ -12985,6 +13565,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/djhordney/profil/spieler/1383716"
+    },
+    {
+      "sourceId": "1322090",
+      "name": "Djiamgone Jocelin Ta Bi",
+      "firstName": "Jocelin Ta",
+      "lastName": "Bi",
+      "dateOfBirth": "2005-02-09",
+      "dateOfBirthRaw": "09/02/2005",
+      "nationality": "Cote d'Ivoire",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jocelin-ta-bi/profil/spieler/1322090"
     },
     {
       "sourceId": "1208968",
@@ -13087,6 +13684,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/dominic-solanke/profil/spieler/258889"
+    },
+    {
+      "sourceId": "306024",
+      "name": "Dominic Nathaniel Calvert-Lewin",
+      "firstName": "Dominic",
+      "lastName": "Calvert-Lewin",
+      "dateOfBirth": "1997-03-16",
+      "dateOfBirthRaw": "16/03/1997",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/dominic-calvert-lewin/profil/spieler/306024"
     },
     {
       "sourceId": "1190006",
@@ -13990,6 +14604,23 @@
       "sourcePlayerHref": "/el-hadji-malick-diouf/profil/spieler/1111589"
     },
     {
+      "sourceId": "955357",
+      "name": "Eli Junior Éric Anatole Rainha Kroupi",
+      "firstName": "Junior",
+      "lastName": "Kroupi",
+      "dateOfBirth": "2006-06-23",
+      "dateOfBirthRaw": "23/06/2006",
+      "nationality": "France",
+      "nationalTeam": "France",
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/junior-kroupi/profil/spieler/955357"
+    },
+    {
       "sourceId": "1227106",
       "name": "Elías Alexander Legendre Quiñónez",
       "firstName": "Elías",
@@ -14041,6 +14672,23 @@
       "sourcePlayerHref": "/elias-baum/profil/spieler/744857"
     },
     {
+      "sourceId": "967346",
+      "name": "Eliezer Mayenda Dossou",
+      "firstName": "Eliezer",
+      "lastName": "Mayenda",
+      "dateOfBirth": "2005-05-08",
+      "dateOfBirthRaw": "08/05/2005",
+      "nationality": "Spain",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/eliezer-mayenda/profil/spieler/967346"
+    },
+    {
       "sourceId": "957241",
       "name": "Elijah Raphaël Dijkstra",
       "firstName": "Elijah",
@@ -14090,6 +14738,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/ellery-balcombe/profil/spieler/456292"
+    },
+    {
+      "sourceId": "567576",
+      "name": "Elliot Junior Anderson",
+      "firstName": "Elliot",
+      "lastName": "Anderson",
+      "dateOfBirth": "2002-11-06",
+      "dateOfBirthRaw": "06/11/2002",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/elliot-anderson/profil/spieler/567576"
     },
     {
       "sourceId": "200056",
@@ -14381,6 +15046,23 @@
       "sourcePlayerHref": "/endrick/profil/spieler/971570"
     },
     {
+      "sourceId": "251106",
+      "name": "Enes Ünal",
+      "firstName": "Enes",
+      "lastName": "Ünal",
+      "dateOfBirth": "1997-05-10",
+      "dateOfBirthRaw": "10/05/1997",
+      "nationality": "Türkiye",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/enes-unal/profil/spieler/251106"
+    },
+    {
       "sourceId": "740085",
       "name": "Ênio",
       "firstName": "",
@@ -14483,6 +15165,23 @@
       "sourcePlayerHref": "/enzo-fernandez/profil/spieler/648195"
     },
     {
+      "sourceId": "633992",
+      "name": "Enzo Le Fée",
+      "firstName": "Enzo",
+      "lastName": "Le Fée",
+      "dateOfBirth": "2000-02-03",
+      "dateOfBirthRaw": "03/02/2000",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/enzo-le-fee/profil/spieler/633992"
+    },
+    {
       "sourceId": "1372672",
       "name": "Enzo Newman",
       "firstName": "Enzo",
@@ -14532,6 +15231,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/eray-comert/profil/spieler/298583"
+    },
+    {
+      "sourceId": "897481",
+      "name": "Eric Emanuel da Silva Moreira",
+      "firstName": "Eric",
+      "lastName": "da Silva Moreira",
+      "dateOfBirth": "2006-05-03",
+      "dateOfBirthRaw": "03/05/2006",
+      "nationality": "Germany",
+      "nationalTeam": "Germany",
+      "position": "Defender - Right-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/eric-da-silva-moreira/profil/spieler/897481"
     },
     {
       "sourceId": "466794",
@@ -14942,6 +15658,23 @@
       "sourcePlayerHref": "/ethan-kohler/profil/spieler/1000301"
     },
     {
+      "sourceId": "392771",
+      "name": "Ethan Kwame Colm Raymond Ampadu",
+      "firstName": "Ethan",
+      "lastName": "Ampadu",
+      "dateOfBirth": "2000-09-14",
+      "dateOfBirthRaw": "14/09/2000",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ethan-ampadu/profil/spieler/392771"
+    },
+    {
       "sourceId": "903666",
       "name": "Ethan Mbappé Lottin",
       "firstName": "Ethan",
@@ -15059,6 +15792,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/evander/profil/spieler/323874"
+    },
+    {
+      "sourceId": "711337",
+      "name": "Evanilson",
+      "firstName": "",
+      "lastName": "Evanilson",
+      "dateOfBirth": "1999-10-06",
+      "dateOfBirthRaw": "06/10/1999",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/evanilson/profil/spieler/711337"
     },
     {
       "sourceId": "500689",
@@ -15707,6 +16457,23 @@
       "sourcePlayerHref": "/facundo-mura/profil/spieler/642759"
     },
     {
+      "sourceId": "983989",
+      "name": "Facundo Valentín Buonanotte",
+      "firstName": "Facundo",
+      "lastName": "Buonanotte",
+      "dateOfBirth": "2004-12-23",
+      "dateOfBirthRaw": "23/12/2004",
+      "nationality": "Argentina",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/facundo-buonanotte/profil/spieler/983989"
+    },
+    {
       "sourceId": "47592",
       "name": "Fagner",
       "firstName": "",
@@ -16336,6 +17103,23 @@
       "sourcePlayerHref": "/fintelman/profil/spieler/740272"
     },
     {
+      "sourceId": "357162",
+      "name": "Florentino",
+      "firstName": "",
+      "lastName": "Florentino",
+      "dateOfBirth": "1999-08-19",
+      "dateOfBirthRaw": "19/08/1999",
+      "nationality": "Portugal",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/florentino/profil/spieler/357162"
+    },
+    {
       "sourceId": "278332",
       "name": "Florian Christian Neuhaus",
       "firstName": "Florian",
@@ -16761,6 +17545,23 @@
       "sourcePlayerHref": "/frankie-amaya/profil/spieler/575368"
     },
     {
+      "sourceId": "52570",
+      "name": "Fraser Gerard Forster",
+      "firstName": "Fraser",
+      "lastName": "Forster",
+      "dateOfBirth": "1988-03-17",
+      "dateOfBirthRaw": "17/03/1988",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/fraser-forster/profil/spieler/52570"
+    },
+    {
       "sourceId": "698164",
       "name": "Freddie Potts",
       "firstName": "Freddie",
@@ -17065,6 +17866,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/gabriel-mercado/profil/spieler/45319"
+    },
+    {
+      "sourceId": "362108",
+      "name": "Gabriel Johan Gudmundsson",
+      "firstName": "Gabriel",
+      "lastName": "Gudmundsson",
+      "dateOfBirth": "1999-04-29",
+      "dateOfBirthRaw": "29/04/1999",
+      "nationality": "Sweden",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/gabriel-gudmundsson/profil/spieler/362108"
     },
     {
       "sourceId": "54336",
@@ -18206,6 +19024,23 @@
       "sourcePlayerHref": "/gorka-guruzeta/profil/spieler/340205"
     },
     {
+      "sourceId": "111455",
+      "name": "Granit Xhaka",
+      "firstName": "Granit",
+      "lastName": "Xhaka",
+      "dateOfBirth": "1992-09-27",
+      "dateOfBirthRaw": "27/09/1992",
+      "nationality": "Switzerland",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/granit-xhaka/profil/spieler/111455"
+    },
+    {
       "sourceId": "1457747",
       "name": "Grant Franck Leveillé",
       "firstName": "Grant",
@@ -18937,6 +19772,23 @@
       "sourcePlayerHref": "/harrison-reed/profil/spieler/226973"
     },
     {
+      "sourceId": "937840",
+      "name": "Harrison Jones",
+      "firstName": "Harrison",
+      "lastName": "Jones",
+      "dateOfBirth": "2004-12-25",
+      "dateOfBirthRaw": "25/12/2004",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/harrison-jones/profil/spieler/937840"
+    },
+    {
       "sourceId": "132098",
       "name": "Harry Edward Kane",
       "firstName": "Harry",
@@ -19224,6 +20076,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/hirving-lozano/profil/spieler/316889"
+    },
+    {
+      "sourceId": "392179",
+      "name": "Hjalmar Ekdal",
+      "firstName": "Hjalmar",
+      "lastName": "Ekdal",
+      "dateOfBirth": "1998-10-21",
+      "dateOfBirthRaw": "21/10/1998",
+      "nationality": "Sweden",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/hjalmar-ekdal/profil/spieler/392179"
     },
     {
       "sourceId": "116471",
@@ -19736,6 +20605,23 @@
       "sourcePlayerHref": "/ibrahim-sadiq/profil/spieler/543501"
     },
     {
+      "sourceId": "375885",
+      "name": "Ibrahim Sangaré",
+      "firstName": "Ibrahim",
+      "lastName": "Sangaré",
+      "dateOfBirth": "1997-12-02",
+      "dateOfBirthRaw": "02/12/1997",
+      "nationality": "Cote d'Ivoire",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ibrahim-sangare/profil/spieler/375885"
+    },
+    {
       "sourceId": "357119",
       "name": "Ibrahima Konaté",
       "firstName": "Ibrahima",
@@ -19904,6 +20790,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/igor-paixao/profil/spieler/653610"
+    },
+    {
+      "sourceId": "432164",
+      "name": "Igor Jesus",
+      "firstName": "",
+      "lastName": "Igor Jesus",
+      "dateOfBirth": "2001-02-25",
+      "dateOfBirthRaw": "25/02/2001",
+      "nationality": "Brazil",
+      "nationalTeam": "Brazil",
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/igor-jesus/profil/spieler/432164"
     },
     {
       "sourceId": "978037",
@@ -20125,6 +21028,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/iliman-ndiaye/profil/spieler/623570"
+    },
+    {
+      "sourceId": "542586",
+      "name": "Illan Stéphane Meslier",
+      "firstName": "Illan",
+      "lastName": "Meslier",
+      "dateOfBirth": "2000-03-02",
+      "dateOfBirthRaw": "02/03/2000",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/illan-meslier/profil/spieler/542586"
     },
     {
       "sourceId": "255508",
@@ -20909,6 +21829,23 @@
       "sourcePlayerHref": "/jacob-bartlett/profil/spieler/1130945"
     },
     {
+      "sourceId": "293281",
+      "name": "Jacob Bruun Larsen",
+      "firstName": "Jacob",
+      "lastName": "Bruun Larsen",
+      "dateOfBirth": "1998-09-19",
+      "dateOfBirthRaw": "19/09/1998",
+      "nationality": "Denmark",
+      "nationalTeam": "Denmark",
+      "position": "Attack - Left Winger",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jacob-bruun-larsen/profil/spieler/293281"
+    },
+    {
       "sourceId": "583163",
       "name": "Jacob Daniel Jackson",
       "firstName": "Jacob",
@@ -21113,6 +22050,23 @@
       "sourcePlayerHref": "/jahkeele-marshall-rutty/profil/spieler/640852"
     },
     {
+      "sourceId": "684210",
+      "name": "Jaidon Kya Denley Anthony",
+      "firstName": "Jaidon",
+      "lastName": "Anthony",
+      "dateOfBirth": "1999-12-01",
+      "dateOfBirthRaw": "01/12/1999",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Left Winger",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jaidon-anthony/profil/spieler/684210"
+    },
+    {
       "sourceId": "1288364",
       "name": "Jaidyn Contreras",
       "firstName": "Jaidyn",
@@ -21147,6 +22101,23 @@
       "sourcePlayerHref": "/jair/profil/spieler/239294"
     },
     {
+      "sourceId": "984096",
+      "name": "Jair Paula da Cunha Filho",
+      "firstName": "Jair",
+      "lastName": "Cunha",
+      "dateOfBirth": "2005-03-07",
+      "dateOfBirthRaw": "07/03/2005",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jair-cunha/profil/spieler/984096"
+    },
+    {
       "sourceId": "726092",
       "name": "Jajá",
       "firstName": "",
@@ -21162,6 +22133,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/jaja/profil/spieler/726092"
+    },
+    {
+      "sourceId": "371851",
+      "name": "Jaka Bijol",
+      "firstName": "Jaka",
+      "lastName": "Bijol",
+      "dateOfBirth": "1999-02-05",
+      "dateOfBirthRaw": "05/02/1999",
+      "nationality": "Slovenia",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jaka-bijol/profil/spieler/371851"
     },
     {
       "sourceId": "711544",
@@ -21351,6 +22339,23 @@
       "sourcePlayerHref": "/james-hillson/profil/spieler/503765"
     },
     {
+      "sourceId": "611793",
+      "name": "James Clayton Hill",
+      "firstName": "James",
+      "lastName": "Hill",
+      "dateOfBirth": "2002-01-10",
+      "dateOfBirthRaw": "10/01/2002",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/james-hill/profil/spieler/611793"
+    },
+    {
       "sourceId": "294057",
       "name": "James Daniel Maddison",
       "firstName": "James",
@@ -21419,6 +22424,23 @@
       "sourcePlayerHref": "/james-trafford/profil/spieler/566799"
     },
     {
+      "sourceId": "583199",
+      "name": "James John McAtee",
+      "firstName": "James",
+      "lastName": "McAtee",
+      "dateOfBirth": "2002-10-18",
+      "dateOfBirthRaw": "18/10/2002",
+      "nationality": "England",
+      "nationalTeam": "England",
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/james-mcatee/profil/spieler/583199"
+    },
+    {
       "sourceId": "183337",
       "name": "James Maurer",
       "firstName": "Jimmy",
@@ -21434,6 +22456,40 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/jimmy-maurer/profil/spieler/183337"
+    },
+    {
+      "sourceId": "181579",
+      "name": "James Michael Edward Ward-Prowse",
+      "firstName": "James",
+      "lastName": "Ward-Prowse",
+      "dateOfBirth": "1994-11-01",
+      "dateOfBirthRaw": "01/11/1994",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/james-ward-prowse/profil/spieler/181579"
+    },
+    {
+      "sourceId": "413220",
+      "name": "James Michael Justin",
+      "firstName": "James",
+      "lastName": "Justin",
+      "dateOfBirth": "1998-02-23",
+      "dateOfBirthRaw": "23/02/1998",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/james-justin/profil/spieler/413220"
     },
     {
       "sourceId": "3333",
@@ -21961,6 +23017,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/jayden-hibbert/profil/spieler/1223311"
+    },
+    {
+      "sourceId": "465717",
+      "name": "Jayden Ian Bogle",
+      "firstName": "Jayden",
+      "lastName": "Bogle",
+      "dateOfBirth": "2000-07-27",
+      "dateOfBirthRaw": "27/07/2000",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jayden-bogle/profil/spieler/465717"
     },
     {
       "sourceId": "635445",
@@ -23374,6 +24447,23 @@
       "sourcePlayerHref": "/joel-veltman/profil/spieler/111195"
     },
     {
+      "sourceId": "369962",
+      "name": "Joël Mohammed Ramzan Piroe",
+      "firstName": "Joël",
+      "lastName": "Piroe",
+      "dateOfBirth": "1999-08-02",
+      "dateOfBirthRaw": "02/08/1999",
+      "nationality": "Suriname",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/joel-piroe/profil/spieler/369962"
+    },
+    {
       "sourceId": "441738",
       "name": "Joel Robert Waterman",
       "firstName": "Joel",
@@ -23695,6 +24785,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/john-ruddy/profil/spieler/29712"
+    },
+    {
+      "sourceId": "432914",
+      "name": "John Victor",
+      "firstName": "",
+      "lastName": "John Victor",
+      "dateOfBirth": "1996-02-13",
+      "dateOfBirthRaw": "13/02/1996",
+      "nationality": "Brazil",
+      "nationalTeam": "Brazil",
+      "position": "Goalkeeper",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/john-victor/profil/spieler/432914"
     },
     {
       "sourceId": "351504",
@@ -24768,6 +25875,23 @@
       "sourcePlayerHref": "/josep-martinez/profil/spieler/388516"
     },
     {
+      "sourceId": "415970",
+      "name": "Joseph Adrian Worrall",
+      "firstName": "Joe",
+      "lastName": "Worrall",
+      "dateOfBirth": "1997-01-10",
+      "dateOfBirthRaw": "10/01/1997",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/joe-worrall/profil/spieler/415970"
+    },
+    {
       "sourceId": "358250",
       "name": "Joseph Aidoo",
       "firstName": "Joseph",
@@ -24870,6 +25994,23 @@
       "sourcePlayerHref": "/joseph-paintsil/profil/spieler/534435"
     },
     {
+      "sourceId": "297212",
+      "name": "Joseph Peter Rodon",
+      "firstName": "Joe",
+      "lastName": "Rodon",
+      "dateOfBirth": "1997-10-22",
+      "dateOfBirthRaw": "22/10/1997",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/joe-rodon/profil/spieler/297212"
+    },
+    {
       "sourceId": "657225",
       "name": "Joseph Yerimid Rosales Erazo",
       "firstName": "Joseph",
@@ -24970,6 +26111,40 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/josh-king/profil/spieler/1011131"
+    },
+    {
+      "sourceId": "314241",
+      "name": "Joshua Ishaele Jacob-Heron Hunt-Laurent",
+      "firstName": "Josh",
+      "lastName": "Laurent",
+      "dateOfBirth": "1995-05-06",
+      "dateOfBirthRaw": "06/05/1995",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/josh-laurent/profil/spieler/314241"
+    },
+    {
+      "sourceId": "242606",
+      "name": "Joshua Jon Cullen",
+      "firstName": "Josh",
+      "lastName": "Cullen",
+      "dateOfBirth": "1996-04-07",
+      "dateOfBirthRaw": "07/04/1996",
+      "nationality": "Ireland",
+      "nationalTeam": "Ireland",
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/josh-cullen/profil/spieler/242606"
     },
     {
       "sourceId": "1004708",
@@ -25805,6 +26980,23 @@
       "sourcePlayerHref": "/julio-fidelis/profil/spieler/1119008"
     },
     {
+      "sourceId": "1009658",
+      "name": "Julio César Soler Barreto",
+      "firstName": "Julio",
+      "lastName": "Soler",
+      "dateOfBirth": "2005-02-16",
+      "dateOfBirthRaw": "16/02/2005",
+      "nationality": "Argentina",
+      "nationalTeam": "Argentina",
+      "position": "Defender - Left-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/julio-soler/profil/spieler/1009658"
+    },
+    {
       "sourceId": "348630",
       "name": "Julio Joao Ortiz Landázuri",
       "firstName": "Joao",
@@ -25939,6 +27131,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/justen-glad/profil/spieler/334597"
+    },
+    {
+      "sourceId": "330659",
+      "name": "Justin Dean Kluivert",
+      "firstName": "Justin",
+      "lastName": "Kluivert",
+      "dateOfBirth": "1999-05-05",
+      "dateOfBirthRaw": "05/05/1999",
+      "nationality": "Netherlands",
+      "nationalTeam": "Netherlands",
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/justin-kluivert/profil/spieler/330659"
     },
     {
       "sourceId": "747009",
@@ -26364,6 +27573,23 @@
       "tmLeagueCode": "L1",
       "footybrainLeagueId": "bundesliga",
       "sourcePlayerHref": "/karim-adeyemi/profil/spieler/496094"
+    },
+    {
+      "sourceId": "99397",
+      "name": "Karl Darlow",
+      "firstName": "Karl",
+      "lastName": "Darlow",
+      "dateOfBirth": "1990-10-08",
+      "dateOfBirthRaw": "08/10/1990",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/karl-darlow/profil/spieler/99397"
     },
     {
       "sourceId": "258007",
@@ -27777,6 +29003,23 @@
       "sourcePlayerHref": "/kye-rowles/profil/spieler/399990"
     },
     {
+      "sourceId": "95424",
+      "name": "Kyle Andrew Walker",
+      "firstName": "Kyle",
+      "lastName": "Walker",
+      "dateOfBirth": "1990-05-28",
+      "dateOfBirthRaw": "28/05/1990",
+      "nationality": "England",
+      "nationalTeam": "England",
+      "position": "Defender - Right-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/kyle-walker/profil/spieler/95424"
+    },
+    {
       "sourceId": "982519",
       "name": "Kyle Anthony Hiebert",
       "firstName": "Kyle",
@@ -28508,6 +29751,23 @@
       "sourcePlayerHref": "/leozinho/profil/spieler/1110658"
     },
     {
+      "sourceId": "711999",
+      "name": "Lesley Chimuanya Ugochukwu",
+      "firstName": "Lesley",
+      "lastName": "Ugochukwu",
+      "dateOfBirth": "2004-03-26",
+      "dateOfBirthRaw": "26/03/2004",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lesley-ugochukwu/profil/spieler/711999"
+    },
+    {
       "sourceId": "614258",
       "name": "Levi Lemar Samuel Colwill",
       "firstName": "Levi",
@@ -28557,6 +29817,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/lewis-dunk/profil/spieler/148153"
+    },
+    {
+      "sourceId": "249089",
+      "name": "Lewis John Cook",
+      "firstName": "Lewis",
+      "lastName": "Cook",
+      "dateOfBirth": "1997-02-03",
+      "dateOfBirthRaw": "03/02/1997",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lewis-cook/profil/spieler/249089"
     },
     {
       "sourceId": "670858",
@@ -28814,6 +30091,23 @@
       "sourcePlayerHref": "/lorenzo-dellavalle/profil/spieler/814476"
     },
     {
+      "sourceId": "572265",
+      "name": "Lorenzo Lucca",
+      "firstName": "Lorenzo",
+      "lastName": "Lucca",
+      "dateOfBirth": "2000-09-10",
+      "dateOfBirthRaw": "10/09/2000",
+      "nationality": "Italy",
+      "nationalTeam": "Italy",
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lorenzo-lucca/profil/spieler/572265"
+    },
+    {
       "sourceId": "286297",
       "name": "Lorenzo Pellegrini",
       "firstName": "Lorenzo",
@@ -28865,6 +30159,23 @@
       "sourcePlayerHref": "/lorenzo-venturino/profil/spieler/1061820"
     },
     {
+      "sourceId": "403898",
+      "name": "Louis Jordan Beyer",
+      "firstName": "Jordan",
+      "lastName": "Beyer",
+      "dateOfBirth": "2000-05-19",
+      "dateOfBirthRaw": "19/05/2000",
+      "nationality": "Germany",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/jordan-beyer/profil/spieler/403898"
+    },
+    {
       "sourceId": "547786",
       "name": "Louis Munteanu",
       "firstName": "Louis",
@@ -28880,6 +30191,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/louis-munteanu/profil/spieler/547786"
+    },
+    {
+      "sourceId": "607226",
+      "name": "Loum Tchaouna",
+      "firstName": "Loum",
+      "lastName": "Tchaouna",
+      "dateOfBirth": "2003-09-08",
+      "dateOfBirthRaw": "08/09/2003",
+      "nationality": "France",
+      "nationalTeam": "France",
+      "position": "Attack - Right Winger",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/loum-tchaouna/profil/spieler/607226"
     },
     {
       "sourceId": "387106",
@@ -29050,6 +30378,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/luca-moisa/profil/spieler/1054541"
+    },
+    {
+      "sourceId": "524285",
+      "name": "Luca Netz",
+      "firstName": "Luca",
+      "lastName": "Netz",
+      "dateOfBirth": "2003-05-15",
+      "dateOfBirthRaw": "15/05/2003",
+      "nationality": "Germany",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/luca-netz/profil/spieler/524285"
     },
     {
       "sourceId": "346567",
@@ -29307,6 +30652,23 @@
       "sourcePlayerHref": "/lucas-bergvall/profil/spieler/866246"
     },
     {
+      "sourceId": "352041",
+      "name": "Lucas Estella Perri",
+      "firstName": "Lucas",
+      "lastName": "Perri",
+      "dateOfBirth": "1997-12-10",
+      "dateOfBirthRaw": "10/12/1997",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lucas-perri/profil/spieler/352041"
+    },
+    {
       "sourceId": "463600",
       "name": "Lucas Eugène Chevalier",
       "firstName": "Lucas",
@@ -29543,6 +30905,23 @@
       "tmLeagueCode": "NL1",
       "footybrainLeagueId": "eredivisie",
       "sourcePlayerHref": "/lucas-rosa/profil/spieler/468309"
+    },
+    {
+      "sourceId": "927768",
+      "name": "Lucas Pires",
+      "firstName": "",
+      "lastName": "Lucas Pires",
+      "dateOfBirth": "2001-03-24",
+      "dateOfBirthRaw": "24/03/2001",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lucas-pires/profil/spieler/927768"
     },
     {
       "sourceId": "670201",
@@ -30293,6 +31672,23 @@
       "sourcePlayerHref": "/lukas-macnaughton/profil/spieler/657940"
     },
     {
+      "sourceId": "314288",
+      "name": "Lukas Okechukwu Nmecha",
+      "firstName": "Lukas",
+      "lastName": "Nmecha",
+      "dateOfBirth": "1998-12-14",
+      "dateOfBirthRaw": "14/12/1998",
+      "nationality": "Germany",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lukas-nmecha/profil/spieler/314288"
+    },
+    {
       "sourceId": "787151",
       "name": "Lukas Ullrich",
       "firstName": "Lukas",
@@ -30378,6 +31774,40 @@
       "sourcePlayerHref": "/luke-pruter/profil/spieler/688739"
     },
     {
+      "sourceId": "282939",
+      "name": "Luke Terry O'Nien",
+      "firstName": "Luke",
+      "lastName": "O'Nien",
+      "dateOfBirth": "1994-11-21",
+      "dateOfBirthRaw": "21/11/1994",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/luke-onien/profil/spieler/282939"
+    },
+    {
+      "sourceId": "420210",
+      "name": "Lutsharel Emiliano Geertruida",
+      "firstName": "Lutsharel",
+      "lastName": "Geertruida",
+      "dateOfBirth": "2000-07-18",
+      "dateOfBirthRaw": "18/07/2000",
+      "nationality": "Netherlands",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lutsharel-geertruida/profil/spieler/420210"
+    },
+    {
       "sourceId": "379807",
       "name": "Lyanco",
       "firstName": "",
@@ -30393,6 +31823,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/lyanco/profil/spieler/379807"
+    },
+    {
+      "sourceId": "467623",
+      "name": "Lyle Brent Foster",
+      "firstName": "Lyle",
+      "lastName": "Foster",
+      "dateOfBirth": "2000-09-03",
+      "dateOfBirthRaw": "03/09/2000",
+      "nationality": "South Africa",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/lyle-foster/profil/spieler/467623"
     },
     {
       "sourceId": "486046",
@@ -31653,6 +33100,23 @@
       "sourcePlayerHref": "/marcos-llorente/profil/spieler/282411"
     },
     {
+      "sourceId": "469781",
+      "name": "Marcos Nicolás Senesi Barón",
+      "firstName": "Marcos",
+      "lastName": "Senesi",
+      "dateOfBirth": "1997-05-10",
+      "dateOfBirthRaw": "10/05/1997",
+      "nationality": "Argentina",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/marcos-senesi/profil/spieler/469781"
+    },
+    {
       "sourceId": "75435",
       "name": "Marcos Rocha",
       "firstName": "",
@@ -31738,6 +33202,23 @@
       "sourcePlayerHref": "/marcus-caldeira/profil/spieler/1004299"
     },
     {
+      "sourceId": "314367",
+      "name": "Marcus Edwards",
+      "firstName": "Marcus",
+      "lastName": "Edwards",
+      "dateOfBirth": "1998-12-03",
+      "dateOfBirthRaw": "03/12/1998",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/marcus-edwards/profil/spieler/314367"
+    },
+    {
       "sourceId": "269878",
       "name": "Marcus Højriis Ingvartsen",
       "firstName": "Marcus",
@@ -31753,6 +33234,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/marcus-ingvartsen/profil/spieler/269878"
+    },
+    {
+      "sourceId": "399434",
+      "name": "Marcus Joseph Tavernier",
+      "firstName": "Marcus",
+      "lastName": "Tavernier",
+      "dateOfBirth": "1999-03-22",
+      "dateOfBirthRaw": "22/03/1999",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/marcus-tavernier/profil/spieler/399434"
     },
     {
       "sourceId": "318528",
@@ -32146,6 +33644,23 @@
       "sourcePlayerHref": "/martin-braithwaite/profil/spieler/95732"
     },
     {
+      "sourceId": "74960",
+      "name": "Martin Dúbravka",
+      "firstName": "Martin",
+      "lastName": "Dúbravka",
+      "dateOfBirth": "1989-01-15",
+      "dateOfBirthRaw": "15/01/1989",
+      "nationality": "Slovakia",
+      "nationalTeam": "Slovakia",
+      "position": "Goalkeeper",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/martin-dubravka/profil/spieler/74960"
+    },
+    {
       "sourceId": "440988",
       "name": "Martín Ezequiel Ojeda",
       "firstName": "Martín",
@@ -32297,6 +33812,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/ousmane-dembele/profil/spieler/288230"
+    },
+    {
+      "sourceId": "994604",
+      "name": "Matai Akinmboni",
+      "firstName": "Matai",
+      "lastName": "Akinmboni",
+      "dateOfBirth": "2006-10-17",
+      "dateOfBirthRaw": "17/10/2006",
+      "nationality": "United States",
+      "nationalTeam": "United States",
+      "position": "Defender - Centre-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/matai-akinmboni/profil/spieler/994604"
     },
     {
       "sourceId": "550829",
@@ -33676,6 +35208,23 @@
       "sourcePlayerHref": "/mattias-svanberg/profil/spieler/342405"
     },
     {
+      "sourceId": "127202",
+      "name": "Matz Willy Els Sels",
+      "firstName": "Matz",
+      "lastName": "Sels",
+      "dateOfBirth": "1992-02-26",
+      "dateOfBirthRaw": "26/02/1992",
+      "nationality": "Belgium",
+      "nationalTeam": "Belgium",
+      "position": "Goalkeeper",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/matz-sels/profil/spieler/127202"
+    },
+    {
       "sourceId": "678439",
       "name": "Mauricio",
       "firstName": "",
@@ -33897,6 +35446,23 @@
       "sourcePlayerHref": "/max-dowman/profil/spieler/1187629"
     },
     {
+      "sourceId": "829299",
+      "name": "Max Weiß",
+      "firstName": "Max",
+      "lastName": "Weiß",
+      "dateOfBirth": "2004-06-15",
+      "dateOfBirthRaw": "15/06/2004",
+      "nationality": "Germany",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/max-weiss/profil/spieler/829299"
+    },
+    {
       "sourceId": "429915",
       "name": "Maxim De Cuyper",
       "firstName": "Maxim",
@@ -33963,6 +35529,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/maxime-dupe/profil/spieler/127188"
+    },
+    {
+      "sourceId": "842341",
+      "name": "Maxime Fernand Christian Estève",
+      "firstName": "Maxime",
+      "lastName": "Estève",
+      "dateOfBirth": "2002-05-26",
+      "dateOfBirthRaw": "26/05/2002",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/maxime-esteve/profil/spieler/842341"
     },
     {
       "sourceId": "117674",
@@ -34354,6 +35937,23 @@
       "tmLeagueCode": "IT1",
       "footybrainLeagueId": "serie-a",
       "sourcePlayerHref": "/zeki-celik/profil/spieler/251075"
+    },
+    {
+      "sourceId": "605426",
+      "name": "Melker Åke Ellborg",
+      "firstName": "Melker",
+      "lastName": "Ellborg",
+      "dateOfBirth": "2003-05-22",
+      "dateOfBirthRaw": "22/05/2003",
+      "nationality": "Sweden",
+      "nationalTeam": "Sweden",
+      "position": "Goalkeeper",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/melker-ellborg/profil/spieler/605426"
     },
     {
       "sourceId": "532775",
@@ -34900,6 +36500,23 @@
       "sourcePlayerHref": "/mike-maignan/profil/spieler/182906"
     },
     {
+      "sourceId": "381963",
+      "name": "Mike Tresor Ndayishimiye",
+      "firstName": "Mike",
+      "lastName": "Tresor",
+      "dateOfBirth": "1999-05-28",
+      "dateOfBirthRaw": "28/05/1999",
+      "nationality": "Belgium",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/mike-tresor/profil/spieler/381963"
+    },
+    {
       "sourceId": "938729",
       "name": "Mikel Jauregizar Alboniga",
       "firstName": "Mikel",
@@ -35087,6 +36704,23 @@
       "sourcePlayerHref": "/mohamed-salah/profil/spieler/148455"
     },
     {
+      "sourceId": "548729",
+      "name": "Mohamed Zeki Amdouni",
+      "firstName": "Zeki",
+      "lastName": "Amdouni",
+      "dateOfBirth": "2000-12-04",
+      "dateOfBirthRaw": "04/12/2000",
+      "nationality": "Switzerland",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/zeki-amdouni/profil/spieler/548729"
+    },
+    {
       "sourceId": "670847",
       "name": "Mohamed-Ali Cho",
       "firstName": "Mohamed-Ali",
@@ -35221,6 +36855,40 @@
       "tmLeagueCode": "L1",
       "footybrainLeagueId": "bundesliga",
       "sourcePlayerHref": "/montrell-culbreath/profil/spieler/1058514"
+    },
+    {
+      "sourceId": "673492",
+      "name": "Morato",
+      "firstName": "",
+      "lastName": "Morato",
+      "dateOfBirth": "2001-06-30",
+      "dateOfBirthRaw": "30/06/2001",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/morato/profil/spieler/673492"
+    },
+    {
+      "sourceId": "429014",
+      "name": "Morgan Anthony Gibbs-White",
+      "firstName": "Morgan",
+      "lastName": "Gibbs-White",
+      "dateOfBirth": "2000-01-27",
+      "dateOfBirthRaw": "27/01/2000",
+      "nationality": "England",
+      "nationalTeam": "England",
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/morgan-gibbs-white/profil/spieler/429014"
     },
     {
       "sourceId": "503743",
@@ -35376,6 +37044,23 @@
       "sourcePlayerHref": "/mouctar-diakhaby/profil/spieler/346289"
     },
     {
+      "sourceId": "876631",
+      "name": "Mouhamadou Habib Diarra",
+      "firstName": "Habib",
+      "lastName": "Diarra",
+      "dateOfBirth": "2004-01-03",
+      "dateOfBirthRaw": "03/01/2004",
+      "nationality": "Senegal",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/habib-diarra/profil/spieler/876631"
+    },
+    {
       "sourceId": "551505",
       "name": "Mousa Mohammad Mousa Sulaiman Tamari, موسى محمد موسى سليمان",
       "firstName": "Mousa",
@@ -35408,6 +37093,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/moussa-niakhate/profil/spieler/291200"
+    },
+    {
+      "sourceId": "1005649",
+      "name": "Murillo",
+      "firstName": "",
+      "lastName": "Murillo",
+      "dateOfBirth": "2002-07-04",
+      "dateOfBirthRaw": "04/07/2002",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/murillo/profil/spieler/1005649"
     },
     {
       "sourceId": "458710",
@@ -35884,6 +37586,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/neal-maupay/profil/spieler/217115"
+    },
+    {
+      "sourceId": "503680",
+      "name": "Neco Shay Williams",
+      "firstName": "Neco",
+      "lastName": "Williams",
+      "dateOfBirth": "2001-04-13",
+      "dateOfBirthRaw": "13/04/2001",
+      "nationality": "Wales",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/neco-williams/profil/spieler/503680"
     },
     {
       "sourceId": "680681",
@@ -36566,6 +38285,23 @@
       "sourcePlayerHref": "/nicolas-jackson/profil/spieler/776890"
     },
     {
+      "sourceId": "497291",
+      "name": "Nicolás Martín Domínguez",
+      "firstName": "Nicolás",
+      "lastName": "Domínguez",
+      "dateOfBirth": "1998-06-28",
+      "dateOfBirthRaw": "28/06/1998",
+      "nationality": "Argentina",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/nicolas-dominguez/profil/spieler/497291"
+    },
+    {
       "sourceId": "343052",
       "name": "Nicolas Pépé",
       "firstName": "Nicolas",
@@ -36649,6 +38385,23 @@
       "tmLeagueCode": "IT1",
       "footybrainLeagueId": "serie-a",
       "sourcePlayerHref": "/nicolo-rovella/profil/spieler/525704"
+    },
+    {
+      "sourceId": "708072",
+      "name": "Nicolò Savona",
+      "firstName": "Nicolò",
+      "lastName": "Savona",
+      "dateOfBirth": "2003-03-19",
+      "dateOfBirthRaw": "19/03/2003",
+      "nationality": "Italy",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/nicolo-savona/profil/spieler/708072"
     },
     {
       "sourceId": "819566",
@@ -36838,6 +38591,23 @@
       "sourcePlayerHref": "/nikolas-nartey/profil/spieler/400546"
     },
     {
+      "sourceId": "903611",
+      "name": "Nilson David Angulo Ramírez",
+      "firstName": "Nilson",
+      "lastName": "Angulo",
+      "dateOfBirth": "2003-06-19",
+      "dateOfBirthRaw": "19/06/2003",
+      "nationality": "Ecuador",
+      "nationalTeam": "Ecuador",
+      "position": "Attack - Left Winger",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/nilson-angulo/profil/spieler/903611"
+    },
+    {
       "sourceId": "1000273",
       "name": "Nimfasha Berchimas",
       "firstName": "Nimfasha",
@@ -36870,6 +38640,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/nkosi-tafari/profil/spieler/501877"
+    },
+    {
+      "sourceId": "346890",
+      "name": "Noah Arinzechukwu Okafor",
+      "firstName": "Noah",
+      "lastName": "Okafor",
+      "dateOfBirth": "2000-05-24",
+      "dateOfBirthRaw": "24/05/2000",
+      "nationality": "Switzerland",
+      "nationalTeam": null,
+      "position": "Attack - Left Winger",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/noah-okafor/profil/spieler/346890"
     },
     {
       "sourceId": "526845",
@@ -36938,6 +38725,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/noah-cobb/profil/spieler/895884"
+    },
+    {
+      "sourceId": "727089",
+      "name": "Noah Junior Sadiki",
+      "firstName": "Noah",
+      "lastName": "Sadiki",
+      "dateOfBirth": "2004-12-17",
+      "dateOfBirthRaw": "17/12/2004",
+      "nationality": "DR Congo",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/noah-sadiki/profil/spieler/727089"
     },
     {
       "sourceId": "688614",
@@ -37108,6 +38912,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/nordan-mukiele/profil/spieler/986285"
+    },
+    {
+      "sourceId": "348026",
+      "name": "Nordi Mukiele Mulere",
+      "firstName": "Nordi",
+      "lastName": "Mukiele",
+      "dateOfBirth": "1997-11-01",
+      "dateOfBirthRaw": "01/11/1997",
+      "nationality": "France",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/nordi-mukiele/profil/spieler/348026"
     },
     {
       "sourceId": "436332",
@@ -37484,6 +39305,23 @@
       "sourcePlayerHref": "/olwethu-makhanya/profil/spieler/1069801"
     },
     {
+      "sourceId": "353032",
+      "name": "Omar Federico Alderete Fernández",
+      "firstName": "Omar",
+      "lastName": "Alderete",
+      "dateOfBirth": "1996-12-26",
+      "dateOfBirthRaw": "26/12/1996",
+      "nationality": "Paraguay",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/omar-alderete/profil/spieler/353032"
+    },
+    {
       "sourceId": "1002223",
       "name": "Omar Javier Valencia Arauz",
       "firstName": "Omar",
@@ -37516,6 +39354,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/omar-marquez/profil/spieler/1054495"
+    },
+    {
+      "sourceId": "741238",
+      "name": "Omari Elijah Giraud-Hutchinson",
+      "firstName": "Omari",
+      "lastName": "Hutchinson",
+      "dateOfBirth": "2003-10-30",
+      "dateOfBirthRaw": "30/10/2003",
+      "nationality": "England",
+      "nationalTeam": "England",
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/omari-hutchinson/profil/spieler/741238"
     },
     {
       "sourceId": "467271",
@@ -38213,6 +40068,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/pascal-gross/profil/spieler/82873"
+    },
+    {
+      "sourceId": "410708",
+      "name": "Pascal Augustus Struijk",
+      "firstName": "Pascal",
+      "lastName": "Struijk",
+      "dateOfBirth": "1999-08-11",
+      "dateOfBirthRaw": "11/08/1999",
+      "nationality": "Netherlands",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/pascal-struijk/profil/spieler/410708"
     },
     {
       "sourceId": "195246",
@@ -39864,6 +41736,23 @@
       "sourcePlayerHref": "/quentin-merlin/profil/spieler/557613"
     },
     {
+      "sourceId": "514285",
+      "name": "Quilindschy Hartman",
+      "firstName": "Quilindschy",
+      "lastName": "Hartman",
+      "dateOfBirth": "2001-11-14",
+      "dateOfBirthRaw": "14/11/2001",
+      "nationality": "Netherlands",
+      "nationalTeam": "Netherlands",
+      "position": "Defender - Left-Back",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/quilindschy-hartman/profil/spieler/514285"
+    },
+    {
       "sourceId": "795232",
       "name": "Quinn Krippendorff Sullivan",
       "firstName": "Quinn",
@@ -40510,6 +42399,23 @@
       "sourcePlayerHref": "/raul-gustavo/profil/spieler/792345"
     },
     {
+      "sourceId": "1012564",
+      "name": "Rayan",
+      "firstName": "",
+      "lastName": "Rayan",
+      "dateOfBirth": "2006-08-03",
+      "dateOfBirthRaw": "03/08/2006",
+      "nationality": "Brazil",
+      "nationalTeam": null,
+      "position": "Attack - Right Winger",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/rayan/profil/spieler/1012564"
+    },
+    {
       "sourceId": "1160814",
       "name": "Rayan Fofana",
       "firstName": "Rayan",
@@ -40678,6 +42584,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/reinier/profil/spieler/627226"
+    },
+    {
+      "sourceId": "240692",
+      "name": "Reinildo Isnard Mandava",
+      "firstName": "Reinildo",
+      "lastName": "Mandava",
+      "dateOfBirth": "1994-01-21",
+      "dateOfBirthRaw": "21/01/1994",
+      "nationality": "Mozambique",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/reinildo-mandava/profil/spieler/240692"
     },
     {
       "sourceId": "340325",
@@ -41666,6 +43589,23 @@
       "sourcePlayerHref": "/robin-risser/profil/spieler/743515"
     },
     {
+      "sourceId": "646991",
+      "name": "Robin Roefs",
+      "firstName": "Robin",
+      "lastName": "Roefs",
+      "dateOfBirth": "2003-01-17",
+      "dateOfBirthRaw": "17/01/2003",
+      "nationality": "Netherlands",
+      "nationalTeam": "Netherlands",
+      "position": "Goalkeeper",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/robin-roefs/profil/spieler/646991"
+    },
+    {
       "sourceId": "1355385",
       "name": "Robinho Junior",
       "firstName": "",
@@ -42123,6 +44063,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/romain-perraud/profil/spieler/318523"
+    },
+    {
+      "sourceId": "696181",
+      "name": "Romaine Lee Mundle",
+      "firstName": "Romaine",
+      "lastName": "Mundle",
+      "dateOfBirth": "2003-04-24",
+      "dateOfBirthRaw": "24/04/2003",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Attack - Left Winger",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/romaine-mundle/profil/spieler/696181"
     },
     {
       "sourceId": "1241022",
@@ -42686,6 +44643,23 @@
       "sourcePlayerHref": "/ryan-augusto/profil/spieler/1311456"
     },
     {
+      "sourceId": "188077",
+      "name": "Ryan Christie",
+      "firstName": "Ryan",
+      "lastName": "Christie",
+      "dateOfBirth": "1995-02-22",
+      "dateOfBirthRaw": "22/02/1995",
+      "nationality": "Scotland",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ryan-christie/profil/spieler/188077"
+    },
+    {
       "sourceId": "586429",
       "name": "Ryan Flamingo",
       "firstName": "Ryan",
@@ -42718,6 +44692,23 @@
       "tmLeagueCode": "BRA1",
       "footybrainLeagueId": "brasileirao",
       "sourcePlayerHref": "/ryan-francisco/profil/spieler/1202387"
+    },
+    {
+      "sourceId": "425902",
+      "name": "Ryan James Yates",
+      "firstName": "Ryan",
+      "lastName": "Yates",
+      "dateOfBirth": "1997-11-21",
+      "dateOfBirthRaw": "21/11/1997",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ryan-yates/profil/spieler/425902"
     },
     {
       "sourceId": "478573",
@@ -43196,6 +45187,23 @@
       "sourcePlayerHref": "/sam-johnstone/profil/spieler/110864"
     },
     {
+      "sourceId": "236953",
+      "name": "Samuel Mark Byram",
+      "firstName": "Sam",
+      "lastName": "Byram",
+      "dateOfBirth": "1993-09-16",
+      "dateOfBirthRaw": "16/09/1993",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Left-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/sam-byram/profil/spieler/236953"
+    },
+    {
       "sourceId": "535282",
       "name": "Samuel Marqus Lloyd Vines",
       "firstName": "Sam",
@@ -43621,6 +45629,23 @@
       "sourcePlayerHref": "/seamus-coleman/profil/spieler/68390"
     },
     {
+      "sourceId": "346707",
+      "name": "Sean David Longstaff",
+      "firstName": "Sean",
+      "lastName": "Longstaff",
+      "dateOfBirth": "1997-10-30",
+      "dateOfBirthRaw": "30/10/1997",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/sean-longstaff/profil/spieler/346707"
+    },
+    {
       "sourceId": "126630",
       "name": "Sean Everet Johnson",
       "firstName": "Sean",
@@ -43687,6 +45712,23 @@
       "tmLeagueCode": "NL1",
       "footybrainLeagueId": "eredivisie",
       "sourcePlayerHref": "/sean-steur/profil/spieler/1111063"
+    },
+    {
+      "sourceId": "338629",
+      "name": "Sebastiaan Bornauw",
+      "firstName": "Sebastiaan",
+      "lastName": "Bornauw",
+      "dateOfBirth": "1999-03-22",
+      "dateOfBirthRaw": "22/03/1999",
+      "nationality": "Belgium",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/sebastiaan-bornauw/profil/spieler/338629"
     },
     {
       "sourceId": "1123280",
@@ -44335,6 +46377,23 @@
       "sourcePlayerHref": "/simon-becher/profil/spieler/846899"
     },
     {
+      "sourceId": "123536",
+      "name": "Simon William Moore",
+      "firstName": "Simon",
+      "lastName": "Moore",
+      "dateOfBirth": "1990-05-19",
+      "dateOfBirthRaw": "19/05/1990",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/simon-moore/profil/spieler/123536"
+    },
+    {
       "sourceId": "1499041",
       "name": "Slade William Starnes",
       "firstName": "Slade",
@@ -44673,6 +46732,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/stefan-kapor/profil/spieler/1164963"
+    },
+    {
+      "sourceId": "85941",
+      "name": "Stefan Ortega Moreno",
+      "firstName": "Stefan",
+      "lastName": "Ortega",
+      "dateOfBirth": "1992-11-06",
+      "dateOfBirthRaw": "06/11/1992",
+      "nationality": "Germany",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/stefan-ortega/profil/spieler/85941"
     },
     {
       "sourceId": "94529",
@@ -45049,6 +47125,23 @@
       "sourcePlayerHref": "/tahir-reid-brown/profil/spieler/998204"
     },
     {
+      "sourceId": "295313",
+      "name": "Taiwo Michael Awoniyi",
+      "firstName": "Taiwo",
+      "lastName": "Awoniyi",
+      "dateOfBirth": "1997-08-12",
+      "dateOfBirthRaw": "12/08/1997",
+      "nationality": "Nigeria",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/taiwo-awoniyi/profil/spieler/295313"
+    },
+    {
       "sourceId": "638793",
       "name": "Tajon Trevor Buchanan",
       "firstName": "Tajon",
@@ -45319,6 +47412,23 @@
       "tmLeagueCode": "MLS1",
       "footybrainLeagueId": "mls",
       "sourcePlayerHref": "/telasco-segovia/profil/spieler/858719"
+    },
+    {
+      "sourceId": "236490",
+      "name": "Temitayo Olufisayo Olaoluwa Aina",
+      "firstName": "Ola",
+      "lastName": "Aina",
+      "dateOfBirth": "1996-10-08",
+      "dateOfBirthRaw": "08/10/1996",
+      "nationality": "Nigeria",
+      "nationalTeam": "Nigeria",
+      "position": "Defender - Right-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ola-aina/profil/spieler/236490"
     },
     {
       "sourceId": "1355277",
@@ -46630,6 +48740,23 @@
       "sourcePlayerHref": "/tommy-setford/profil/spieler/848753"
     },
     {
+      "sourceId": "998101",
+      "name": "Tóth Alex László",
+      "firstName": "Alex",
+      "lastName": "Tóth",
+      "dateOfBirth": "2005-10-23",
+      "dateOfBirthRaw": "23/10/2005",
+      "nationality": "Hungary",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/alex-toth/profil/spieler/998101"
+    },
+    {
       "sourceId": "606718",
       "name": "Toti",
       "firstName": "",
@@ -46645,6 +48772,23 @@
       "tmLeagueCode": "GB1",
       "footybrainLeagueId": "premier-league",
       "sourcePlayerHref": "/toti/profil/spieler/606718"
+    },
+    {
+      "sourceId": "515544",
+      "name": "Trai Hume",
+      "firstName": "Trai",
+      "lastName": "Hume",
+      "dateOfBirth": "2002-03-18",
+      "dateOfBirthRaw": "18/03/2002",
+      "nationality": "Northern Ireland",
+      "nationalTeam": null,
+      "position": "Defender - Right-Back",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/trai-hume/profil/spieler/515544"
     },
     {
       "sourceId": "314353",
@@ -46902,6 +49046,23 @@
       "sourcePlayerHref": "/tyler-morton/profil/spieler/618494"
     },
     {
+      "sourceId": "332705",
+      "name": "Tyler Shaan Adams",
+      "firstName": "Tyler",
+      "lastName": "Adams",
+      "dateOfBirth": "1999-02-14",
+      "dateOfBirthRaw": "14/02/1999",
+      "nationality": "United States",
+      "nationalTeam": "United States",
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/tyler-adams/profil/spieler/332705"
+    },
+    {
       "sourceId": "866655",
       "name": "Tyler-Jay Robert Dibling",
       "firstName": "Tyler",
@@ -47138,6 +49299,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/urko-izeta/profil/spieler/610622"
+    },
+    {
+      "sourceId": "95795",
+      "name": "Václav Hladký",
+      "firstName": "Václav",
+      "lastName": "Hladký",
+      "dateOfBirth": "1990-11-14",
+      "dateOfBirthRaw": "14/11/1990",
+      "nationality": "Czech Republic",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/vaclav-hladky/profil/spieler/95795"
     },
     {
       "sourceId": "849410",
@@ -48687,6 +50865,40 @@
       "sourcePlayerHref": "/willy-kambwala/profil/spieler/780630"
     },
     {
+      "sourceId": "142310",
+      "name": "Willy-Arnaud Zobo Boly",
+      "firstName": "Willy",
+      "lastName": "Boly",
+      "dateOfBirth": "1991-02-03",
+      "dateOfBirthRaw": "03/02/1991",
+      "nationality": "Cote d'Ivoire",
+      "nationalTeam": "Cote d'Ivoire",
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/willy-boly/profil/spieler/142310"
+    },
+    {
+      "sourceId": "494237",
+      "name": "Wilson Isidor",
+      "firstName": "Wilson",
+      "lastName": "Isidor",
+      "dateOfBirth": "2000-08-27",
+      "dateOfBirthRaw": "27/08/2000",
+      "nationality": "Haiti",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/wilson-isidor/profil/spieler/494237"
+    },
+    {
       "sourceId": "1283988",
       "name": "Wilson Robert Eisner",
       "firstName": "Wilson",
@@ -49537,6 +51749,23 @@
       "sourcePlayerHref": "/yves-bissouma/profil/spieler/410425"
     },
     {
+      "sourceId": "933017",
+      "name": "Zach MacFarlane Abbott",
+      "firstName": "Zach",
+      "lastName": "Abbott",
+      "dateOfBirth": "2006-05-13",
+      "dateOfBirthRaw": "13/05/2006",
+      "nationality": "England",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/zach-abbott/profil/spieler/933017"
+    },
+    {
       "sourceId": "990637",
       "name": "Zachary Athekame",
       "firstName": "Zachary",
@@ -49792,6 +52021,23 @@
       "sourcePlayerHref": "/ze-welison/profil/spieler/323452"
     },
     {
+      "sourceId": "411537",
+      "name": "Zian Flemming",
+      "firstName": "Zian",
+      "lastName": "Flemming",
+      "dateOfBirth": "1998-08-01",
+      "dateOfBirthRaw": "01/08/1998",
+      "nationality": "Netherlands",
+      "nationalTeam": null,
+      "position": "Attack - Centre-Forward",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/zian-flemming/profil/spieler/411537"
+    },
+    {
       "sourceId": "1151028",
       "name": "Zidane Antonio Yáñez Alvarado",
       "firstName": "Zidane",
@@ -50030,6 +52276,23 @@
       "sourcePlayerHref": "/charalampos-kostoulas/profil/spieler/1060087"
     },
     {
+      "sourceId": "481675",
+      "name": "Χρήστος Μανδάς",
+      "firstName": "Christos",
+      "lastName": "Mandas",
+      "dateOfBirth": "2001-09-17",
+      "dateOfBirthRaw": "17/09/2001",
+      "nationality": "Greece",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/christos-mandas/profil/spieler/481675"
+    },
+    {
       "sourceId": "239802",
       "name": "Адам Марушић",
       "firstName": "Adam",
@@ -50130,6 +52393,23 @@
       "tmLeagueCode": "IT1",
       "footybrainLeagueId": "serie-a",
       "sourcePlayerHref": "/vasilije-adzic/profil/spieler/944570"
+    },
+    {
+      "sourceId": "989112",
+      "name": "Вељко Милосављевић",
+      "firstName": "Veljko",
+      "lastName": "Milosavljevic",
+      "dateOfBirth": "2007-06-28",
+      "dateOfBirthRaw": "28/06/2007",
+      "nationality": "Serbia",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/veljko-milosavljevic/profil/spieler/989112"
     },
     {
       "sourceId": "698536",
@@ -50234,6 +52514,23 @@
       "sourcePlayerHref": "/dusan-vlahovic/profil/spieler/357498"
     },
     {
+      "sourceId": "465555",
+      "name": "Ђорђе Петровић",
+      "firstName": "Djordje",
+      "lastName": "Petrovic",
+      "dateOfBirth": "1999-10-08",
+      "dateOfBirthRaw": "08/10/1999",
+      "nationality": "Serbia",
+      "nationalTeam": null,
+      "position": "Goalkeeper",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/djordje-petrovic/profil/spieler/465555"
+    },
+    {
       "sourceId": "400489",
       "name": "Елиф Елмас",
       "firstName": "Eljif",
@@ -50300,6 +52597,23 @@
       "tmLeagueCode": "NL1",
       "footybrainLeagueId": "eredivisie",
       "sourcePlayerHref": "/oleksandr-zinchenko/profil/spieler/203853"
+    },
+    {
+      "sourceId": "381753",
+      "name": "Илия Илиев Груев",
+      "firstName": "Ilia",
+      "lastName": "Gruev",
+      "dateOfBirth": "2000-05-06",
+      "dateOfBirthRaw": "06/05/2000",
+      "nationality": "Bulgaria",
+      "nationalTeam": "Bulgaria",
+      "position": "Midfield - Defensive Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ilia-gruev/profil/spieler/381753"
     },
     {
       "sourceId": "699208",
@@ -50472,6 +52786,23 @@
       "sourcePlayerHref": "/vitaliy-mykolenko/profil/spieler/404842"
     },
     {
+      "sourceId": "942738",
+      "name": "Милан Алексић",
+      "firstName": "Milan",
+      "lastName": "Aleksic",
+      "dateOfBirth": "2005-08-30",
+      "dateOfBirthRaw": "30/08/2005",
+      "nationality": "Serbia",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/milan-aleksic/profil/spieler/942738"
+    },
+    {
       "sourceId": "637271",
       "name": "Милан Илоски",
       "firstName": "Milan",
@@ -50606,6 +52937,23 @@
       "tmLeagueCode": "ES1",
       "footybrainLeagueId": "la-liga",
       "sourcePlayerHref": "/nemanja-gudelj/profil/spieler/74294"
+    },
+    {
+      "sourceId": "413507",
+      "name": "Никола Миленковић",
+      "firstName": "Nikola",
+      "lastName": "Milenković",
+      "dateOfBirth": "1997-10-12",
+      "dateOfBirthRaw": "12/10/1997",
+      "nationality": "Serbia",
+      "nationalTeam": null,
+      "position": "Defender - Centre-Back",
+      "currentClub": "Nottingham Forest Football Club",
+      "sourceClubCode": "nottingham-forest",
+      "footybrainTeamId": "nottingham-forest",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/nikola-milenkovic/profil/spieler/413507"
     },
     {
       "sourceId": "619303",
@@ -51254,6 +53602,23 @@
       "sourcePlayerHref": "/ameen-al-dakhil/profil/spieler/620598"
     },
     {
+      "sourceId": "532776",
+      "name": "أمين عدلي",
+      "firstName": "Amine",
+      "lastName": "Adli",
+      "dateOfBirth": "2000-05-10",
+      "dateOfBirthRaw": "10/05/2000",
+      "nationality": "Morocco",
+      "nationalTeam": "Morocco",
+      "position": "Attack - Left Winger",
+      "currentClub": "Association Football Club Bournemouth",
+      "sourceClubCode": "afc-bournemouth",
+      "footybrainTeamId": "bournemouth",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/amine-adli/profil/spieler/532776"
+    },
+    {
       "sourceId": "485584",
       "name": "أنس صلاح الدين",
       "firstName": "Anass",
@@ -51526,6 +53891,23 @@
       "sourcePlayerHref": "/hamza-igamane/profil/spieler/885445"
     },
     {
+      "sourceId": "607224",
+      "name": "حنبعل المجبري",
+      "firstName": "",
+      "lastName": "Hannibal",
+      "dateOfBirth": "2003-01-21",
+      "dateOfBirthRaw": "21/01/2003",
+      "nationality": "Tunisia",
+      "nationalTeam": null,
+      "position": "Midfield - Attacking Midfield",
+      "currentClub": "Burnley Football Club",
+      "sourceClubCode": "fc-burnley",
+      "footybrainTeamId": "burnley",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/hannibal/profil/spieler/607224"
+    },
+    {
       "sourceId": "592979",
       "name": "حيماد عبدلي",
       "firstName": "Himad",
@@ -51745,6 +54127,23 @@
       "tmLeagueCode": "FR1",
       "footybrainLeagueId": "ligue-1",
       "sourcePlayerHref": "/samir-el-mourabet/profil/spieler/1130514"
+    },
+    {
+      "sourceId": "743384",
+      "name": "شمس الدين طالبي",
+      "firstName": "Chemsdine",
+      "lastName": "Talbi",
+      "dateOfBirth": "2005-05-09",
+      "dateOfBirthRaw": "09/05/2005",
+      "nationality": "Morocco",
+      "nationalTeam": "Morocco",
+      "position": "Attack - Right Winger",
+      "currentClub": "Sunderland Association Football Club",
+      "sourceClubCode": "afc-sunderland",
+      "footybrainTeamId": "sunderland",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/chemsdine-talbi/profil/spieler/743384"
     },
     {
       "sourceId": "593837",
@@ -52563,6 +54962,23 @@
       "sourcePlayerHref": "/tsuyoshi-watanabe/profil/spieler/598791"
     },
     {
+      "sourceId": "489359",
+      "name": "田中 碧",
+      "firstName": "Ao",
+      "lastName": "Tanaka",
+      "dateOfBirth": "1998-09-10",
+      "dateOfBirthRaw": "10/09/1998",
+      "nationality": "Japan",
+      "nationalTeam": null,
+      "position": "Midfield - Central Midfield",
+      "currentClub": "Leeds United Association Football Club",
+      "sourceClubCode": "leeds-united",
+      "footybrainTeamId": "leeds",
+      "tmLeagueCode": "GB1",
+      "footybrainLeagueId": "premier-league",
+      "sourcePlayerHref": "/ao-tanaka/profil/spieler/489359"
+    },
+    {
       "sourceId": "550580",
       "name": "町野 修斗",
       "firstName": "Shuto",
@@ -52704,8 +55120,10 @@
     "Club AS Roma ← TM \"Associazione Sportiva Roma\" (as-rom) via code [IT1 → serie-a]",
     "Club Atlético Mineiro ← TM \"Clube Atlético Mineiro\" (clube-atletico-mineiro) via code [BRA1 → brasileirao]",
     "Club Colorado Rapids ← TM \"Colorado Rapids\" (colorado-rapids) via code [MLS1 → mls]",
+    "Club Leeds United ← TM \"Leeds United Association Football Club\" (leeds-united) via code [GB1 → premier-league]",
     "Club Internacional ← TM \"Sport Club Internacional\" (sc-internacional-porto-alegre) via code [BRA1 → brasileirao]",
     "Club Toronto FC ← TM \"Toronto FC\" (toronto-fc) via code [MLS1 → mls]",
+    "Club Bournemouth ← TM \"Association Football Club Bournemouth\" (afc-bournemouth) via code [GB1 → premier-league]",
     "Club Athletico Paranaense ← TM \"Clube Atlético Paranaense\" (club-athletico-paranaense) via code [BRA1 → brasileirao]",
     "Club Clube do Remo ← TM \"Clube do Remo\" (clube-do-remo-pa-) via code [BRA1 → brasileirao]",
     "Club Brentford ← TM \"Brentford Football Club\" (fc-brentford) via code [GB1 → premier-league]",
@@ -52715,6 +55133,7 @@
     "Club RB Leipzig ← TM \"RasenBallsport Leipzig\" (rasenballsport-leipzig) via code [L1 → bundesliga]",
     "Club Real Salt Lake ← TM \"Real Salt Lake\" (real-salt-lake-city) via code [MLS1 → mls]",
     "Club San Jose Earthquakes ← TM \"San Jose Earthquakes\" (san-jose-earthquakes) via code [MLS1 → mls]",
+    "Club Sunderland ← TM \"Sunderland Association Football Club\" (afc-sunderland) via code [GB1 → premier-league]",
     "Club AZ Alkmaar ← TM \"Alkmaar Zaanstreek\" (az-alkmaar) via code [NL1 → eredivisie]",
     "Club Chapecoense ← TM \"Associação Chapecoense de Futebol\" (chapecoense) via code [BRA1 → brasileirao]",
     "Club Arsenal ← TM \"Arsenal Football Club\" (fc-arsenal) via code [GB1 → premier-league]",
@@ -52775,6 +55194,7 @@
     "Club Botafogo ← TM \"S. A. F. Botafogo\" (botafogo-rio-de-janeiro) via code [BRA1 → brasileirao]",
     "Club Cruzeiro ← TM \"Cruzeiro Esporte Clube\" (ec-cruzeiro-belo-horizonte) via code [BRA1 → brasileirao]",
     "Club Santos ← TM \"Santos Futebol Clube\" (fc-santos) via code [BRA1 → brasileirao]",
+    "Club Nottingham Forest ← TM \"Nottingham Forest Football Club\" (nottingham-forest) via code [GB1 → premier-league]",
     "Club Lyon ← TM \"Olympique Lyonnais\" (olympique-lyon) via code [FR1 → ligue-1]",
     "Club Orlando City SC ← TM \"Orlando City Soccer Club\" (orlando-city-sc) via code [MLS1 → mls]",
     "Club Real Sociedad ← TM \"Real Sociedad de Fútbol S.A.D.\" (real-sociedad-san-sebastian) via code [ES1 → la-liga]",
@@ -52802,12 +55222,13 @@
     "Club West Ham United ← TM \"West Ham United Football Club\" (west-ham-united) via code [GB1 → premier-league]",
     "Club Chicago Fire FC ← TM \"Chicago Fire Soccer Club\" (chicago-fire-fc) via code [MLS1 → mls]",
     "Club D.C. United ← TM \"D.C. United\" (d-c-united) via code [MLS1 → mls]",
+    "Club Burnley ← TM \"Burnley Football Club\" (fc-burnley) via code [GB1 → premier-league]",
     "Club Manchester United ← TM \"Manchester United Football Club\" (manchester-united) via code [GB1 → premier-league]",
     "Club Nashville SC ← TM \"Nashville SC\" (nashville-sc) via code [MLS1 → mls]",
     "Club Red Bull Bragantino ← TM \"Red Bull Bragantino\" (red-bull-bragantino) via code [BRA1 → brasileirao]",
     "Club VfB Stuttgart ← TM \"Verein für Bewegungsspiele Stuttgart 1893\" (vfb-stuttgart) via code [L1 → bundesliga]",
     "Skipped 2,458 players without club parent (national team rows, etc.).",
-    "Skipped 12,776 club-parent players outside the 105 target squads."
+    "Skipped 12,638 club-parent players outside the 110 target squads."
   ],
   "unmatchedTargetClubs": [],
   "warnings": [],
@@ -52881,6 +55302,12 @@
     {
       "type": "duplicate-name",
       "name": "gabriel",
+      "count": 2,
+      "reason": "Multiple exported players share the same normalized name"
+    },
+    {
+      "type": "duplicate-name",
+      "name": "igor jesus",
       "count": 2,
       "reason": "Multiple exported players share the same normalized name"
     },
@@ -53007,8 +55434,8 @@
   ],
   "stats": {
     "leagues": 8,
-    "teams": 105,
-    "players": 3008,
-    "targetClubsRequested": 105
+    "teams": 110,
+    "players": 3146,
+    "targetClubsRequested": 110
   }
 }

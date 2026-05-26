@@ -252,8 +252,30 @@ function main() {
     usedSourceIds,
     ageFromDateOfBirth,
   );
+
+  // Ensure all drafted/approved generated overlay players are present in the app-ready preview,
+  // even if curation filters would otherwise exclude them.
+  const requiredSourceIds = new Set(generatedOverlayBySourceId.keys());
+  const curatedSourceIds = new Set(curatedTm.map((p) => String(p.sourceId)));
+  for (const sourceId of requiredSourceIds) {
+    if (curatedSourceIds.has(String(sourceId))) continue;
+    if (usedSourceIds.has(String(sourceId))) continue;
+    const tm = tmBySourceId.get(String(sourceId));
+    if (tm) {
+      curatedTm.unshift(tm);
+      curatedSourceIds.add(String(sourceId));
+    }
+  }
+
   if (curatedTm.length > maxSquadRows) {
-    curatedTm = curatedTm.slice(0, maxSquadRows);
+    // Preserve any explicitly drafted/approved generated overlay players even when trimming.
+    const required = [];
+    const rest = [];
+    for (const row of curatedTm) {
+      if (requiredSourceIds.has(String(row.sourceId))) required.push(row);
+      else rest.push(row);
+    }
+    curatedTm = [...required, ...rest].slice(0, maxSquadRows);
     warnings.push(
       `Trimmed curated squad to ${maxSquadRows} rows (controlled expansion total cap ${EXPANSION_LIMITS.playersMax}).`,
     );

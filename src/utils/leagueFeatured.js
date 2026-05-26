@@ -41,15 +41,26 @@ const LEAGUE_SPOTLIGHT_EXTRAS = {
   ],
 };
 
+function nameTokens(value) {
+  return normalizePlayerName(value).split(/\s+/).filter(Boolean);
+}
+
 function playerMatchesFamousLabel(player, famousLabel) {
-  const playerNorm = normalizePlayerName(player.name);
-  const labelNorm = normalizePlayerName(famousLabel);
-  if (!playerNorm || !labelNorm) return false;
-  return (
-    playerNorm === labelNorm ||
-    playerNorm.includes(labelNorm) ||
-    labelNorm.includes(playerNorm)
-  );
+  const playerTokens = nameTokens(player.name);
+  const labelTokens = nameTokens(famousLabel);
+  if (!playerTokens.length || !labelTokens.length) return false;
+
+  if (playerTokens.join(' ') === labelTokens.join(' ')) return true;
+
+  const shorter =
+    playerTokens.length <= labelTokens.length ? playerTokens : labelTokens;
+  const longer =
+    playerTokens.length <= labelTokens.length ? labelTokens : playerTokens;
+
+  // Avoid matching a single-token roster name to a multi-token famous label (e.g. Kevin → Kevin De Bruyne).
+  if (shorter.length === 1 && longer.length > 1) return false;
+
+  return shorter.every((token) => longer.includes(token));
 }
 
 function teamMatchesFamousLabel(team, famousLabel) {
