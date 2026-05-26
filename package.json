@@ -36,8 +36,10 @@
     "expand:phase1": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview",
     "expand:phase2": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase2-sample && npm run validate:app-ready-preview",
     "validate:squad-report": "node scripts/validate-squad-report.js",
+    "validate:dataset-scale": "node scripts/validate-dataset-scale.js",
+    "validate:dataset-scale:dist": "node scripts/validate-dataset-scale.js --dist",
     "editorial:report": "node scripts/editorial-report.js",
-    "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run validate:app-ready-preview && npm run validate:squad-report",
+    "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
     "expand:phase4-mls": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report",
     "expand:phase4": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report",
     "expand:phase4-bra": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run validate:app-ready-preview && npm run validate:squad-report"

@@ -362,7 +362,8 @@ function main() {
     tmBySourceId,
     reservedSourceIds,
   });
-  const maxSquadRows = Math.max(0, EXPANSION_LIMITS.playersMax - mvpBase.length);
+  const emergencyCap = EXPANSION_LIMITS.playersHardMax ?? EXPANSION_LIMITS.playersMax;
+  const maxSquadRows = Math.max(0, emergencyCap - mvpBase.length);
   const { curatedTm: cappedCuratedTm, trimmedBrowse: trimmedCuratedBrowse } = trimCuratedTmToCap(
     curatedTm,
     { maxSquadRows, requiredSourceIds: requiredDraftSourceIds },
@@ -370,7 +371,7 @@ function main() {
   curatedTm = cappedCuratedTm;
   if (trimmedCuratedBrowse > 0) {
     console.log(
-      `Trimmed ${trimmedCuratedBrowse} browse-only TM rows before merge (cap ${EXPANSION_LIMITS.playersMax}, draft-required preserved).`,
+      `Emergency trim: ${trimmedCuratedBrowse} browse-only TM rows (hard cap ${emergencyCap}, draft-required preserved).`,
     );
   }
 
@@ -414,7 +415,7 @@ function main() {
     );
   }
 
-  const maxGenerated = Math.max(0, EXPANSION_LIMITS.playersMax - mvpBase.length);
+  const maxGenerated = Math.max(0, emergencyCap - mvpBase.length);
   const {
     players: trimmedGenerated,
     priorityCount,
@@ -584,7 +585,7 @@ export function getLeagueName(leagueId) {
   );
   console.log(`Quiz-eligible (flag): ${quizEligible}`);
   console.log(
-    `Curated TM rows used: ${generatedBase.length} (cap ${EXPANSION_LIMITS.playersMax}, max ${EXPANSION_LIMITS.maxPerClub}/club)`,
+    `Curated TM rows used: ${generatedBase.length} (emergency cap ${emergencyCap}, import max ${EXPANSION_LIMITS.importMaxPerClub}/club)`,
   );
 }
 

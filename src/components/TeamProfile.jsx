@@ -1,9 +1,6 @@
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  getLeagueName,
-  getTeamById,
-  players,
-} from '../data/sampleData';
+import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { useFavorites } from '../hooks/useFavorites';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
@@ -13,32 +10,15 @@ import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDis
 import ClubHubStrip from './ClubHubStrip';
 import DataTrustNotice from './DataTrustNotice';
 import FavoriteButton from './FavoriteButton';
+import PageFallback from './PageFallback';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
 
-export default function TeamProfile() {
-  const { teamId } = useParams();
-  const team = getTeamById(teamId);
+function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
   const { isTeamSaved, toggleTeam } = useFavorites();
-  useRecordRecentView('team', team?.id);
-
-  if (!team) {
-    return (
-      <div className="page">
-        <p className="empty-state">Team not found.</p>
-        <Link to="/teams" className="btn btn--secondary">
-          Back to Team Learning
-        </Link>
-      </div>
-    );
-  }
-
-  const roster = players.filter((player) => player.teamId === team.id);
   const quizReadyRoster = getQuizEligiblePlayers(roster);
   const hasTeamQuiz = quizReadyRoster.length >= QUIZ_MIN_SESSION_POOL;
-  const leagueName = getLeagueName(team.leagueId);
   const saved = isTeamSaved(team.id);
-  // TODO: Replace static Fan Mode steps with saved progress from Firebase or localStorage.
   const fanPathSteps = [
     {
       label: 'Beginner',
@@ -128,7 +108,11 @@ export default function TeamProfile() {
 
       <section className="profile__grid" aria-label={`${team.name} details`}>
         <article className="info-card info-card--wide team-profile__squad-card">
-          <TeamSquadView players={roster} teamName={team.name} />
+          {squadLoading ? (
+            <PageFallback label="Loading squad…" />
+          ) : (
+            <TeamSquadView players={roster} teamName={team.name} />
+          )}
         </article>
 
         <article className="info-card info-card--wide fan-path">
@@ -208,8 +192,91 @@ export default function TeamProfile() {
             ))}
           </ul>
         </article>
-
       </section>
     </div>
+  );
+}
+
+export default function TeamProfile() {
+  const { teamId } = useParams();
+  const [shell, setShell] = useState(null);
+
+  const shellMatchesRoute = shell?.teamId === teamId;
+  const team = shellMatchesRoute ? shell.team : null;
+  const bundledRoster = shellMatchesRoute ? shell.bundledRoster : null;
+
+  useRecordRecentView('team', team?.id);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    import('../data/sampleData.js').then((mod) => {
+      if (cancelled) return;
+      const resolvedTeam = mod.getTeamById(teamId);
+      if (!resolvedTeam) {
+        setShell({ teamId, team: null, getLeagueName: mod.getLeagueName, bundledRoster: null });
+        return;
+      }
+      setShell({
+        teamId,
+        team: resolvedTeam,
+        getLeagueName: mod.getLeagueName,
+        bundledRoster: hasExternalLeagueShard(resolvedTeam.leagueId)
+          ? null
+          : mod.getPlayersForTeam(teamId),
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [teamId]);
+  const usesShard = Boolean(team && hasExternalLeagueShard(team.leagueId));
+  const shardState = useLeagueShard(usesShard ? team.leagueId : null);
+
+  const roster = useMemo(() => {
+    if (usesShard && shardState.status === 'ready' && shardState.shard) {
+      return shardState.shard.players.filter((player) => player.teamId === teamId);
+    }
+    return bundledRoster ?? [];
+  }, [usesShard, shardState.status, shardState.shard, teamId, bundledRoster]);
+
+  const squadLoading = usesShard && shardState.status === 'loading';
+  const leagueName =
+    team && shellMatchesRoute ? shell.getLeagueName(team.leagueId) : '';
+
+  if (!shellMatchesRoute) {
+    return <PageFallback label="Loading team…" />;
+  }
+
+  if (!team) {
+    return (
+      <div className="page">
+        <p className="empty-state">Team not found.</p>
+        <Link to="/teams" className="btn btn--secondary">
+          Back to Team Learning
+        </Link>
+      </div>
+    );
+  }
+
+  if (usesShard && shardState.status === 'error') {
+    return (
+      <div className="page">
+        <p className="empty-state">Could not load this squad. Try again from Browse.</p>
+        <Link to="/teams" className="btn btn--secondary">
+          Back to Team Learning
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <TeamProfileContent
+      team={team}
+      leagueName={leagueName}
+      roster={roster}
+      squadLoading={squadLoading}
+    />
   );
 }

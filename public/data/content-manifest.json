@@ -44,56 +44,56 @@
       "id": "premier-league",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/premier-league.json",
-      "playerCount": 417,
+      "playerCount": 522,
       "teamCount": 20
     },
     {
       "id": "la-liga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/la-liga.json",
-      "playerCount": 217,
+      "playerCount": 263,
       "teamCount": 10
     },
     {
       "id": "bundesliga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/bundesliga.json",
-      "playerCount": 188,
+      "playerCount": 265,
       "teamCount": 10
     },
     {
       "id": "serie-a",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/serie-a.json",
-      "playerCount": 444,
+      "playerCount": 530,
       "teamCount": 20
     },
     {
       "id": "ligue-1",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/ligue-1.json",
-      "playerCount": 395,
+      "playerCount": 460,
       "teamCount": 18
     },
     {
       "id": "eredivisie",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/eredivisie.json",
-      "playerCount": 110,
+      "playerCount": 135,
       "teamCount": 5
     },
     {
       "id": "mls",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/mls.json",
-      "playerCount": 660,
+      "playerCount": 804,
       "teamCount": 30
     },
     {
       "id": "brasileirao",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/brasileirao.json",
-      "playerCount": 418,
+      "playerCount": 627,
       "teamCount": 20
     }
   ]

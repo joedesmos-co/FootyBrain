@@ -76,6 +76,13 @@ At **5k+ players**, expect **30–50 MB** heap growth in mobile WebViews without
 
 **Mitigations in place:** route lazy loading, search lazy modal, daily nav hook without full challenge gen, browse caps, `content-visibility` on grids.
 
+### Roster import policy (2026-05-26)
+
+- **`importMaxPerClub: 35`** — pipeline import throttle for senior TM rows (not a permanent product squad cap). Youth/U19/U21 labels and age &lt; 19 filtered in `phase1-curation.js`.
+- **`playersSoftMax: 3000`** / **`playersHardMax: 4000`** — soft warn / hard emergency trim via `expansion-player-cap.js` (draft-approved and quiz-eligible rows preserved).
+- **`npm run validate:dataset-scale`** — enforces player hard max; warns on soft max and `sampleData` gzip (~230 KB warn, ~280 KB fail).
+- **TeamProfile** — squad list from league shard when `shardPath` is set; team shell still resolves via `sampleData` until a teams index ships.
+
 ### Merge cap policy (2026-05-26)
 
 Phase 6 Serie A merge exposed a bug: `merge-phase1-sample-data.js` trimmed `generatedBase` with `slice(0, cap)`, dropping **approved** generated-draft / `quizEligible` rows when the pool grew. **Fix:** `scripts/lib/expansion-player-cap.js` — inject draft-required TM rows, trim browse-only rows first; `EXPANSION_LIMITS.playersMax` raised **2350 → 2600**. App-ready preview and live merge share the same priority order.

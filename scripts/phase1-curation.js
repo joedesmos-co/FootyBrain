@@ -4,11 +4,20 @@
 
 export const EXPANSION_LIMITS = {
   playersMin: 880,
-  /** Total players (MVP + generated). Raised for Phase 7 Ligue 1 completion (2026-05-26). */
-  playersMax: 2850,
-  /** Target 18–25 senior squad rows per club when TM data allows */
-  maxPerClub: 22,
-  targetPerClub: 20,
+  /** Soft planning threshold — warn in validate:dataset-scale when exceeded. */
+  playersSoftMax: 3000,
+  /** Emergency merge trim ceiling (browse rows dropped first; draft/editorial preserved). */
+  playersHardMax: 4000,
+  /** @deprecated Use playersHardMax — alias for merge scripts. */
+  playersMax: 4000,
+  /**
+   * Pipeline import throttle per club (senior TM rows). Not a product squad size cap.
+   * Full senior squads (including bench) target ~30–35 when TM data allows.
+   */
+  importMaxPerClub: 35,
+  /** @deprecated Use importMaxPerClub — pipeline import throttle only. */
+  maxPerClub: 35,
+  targetPerClub: 28,
   minSquadPerClub: 18,
   minQuizReadyPerClub: 5,
   minAge: 19,
@@ -79,6 +88,8 @@ function isSeniorSquadPlayer(p, ageFromDob) {
 
 /**
  * Curate TM preview rows before app-ready merge or sample merge.
+ * No global playersMax slice here — emergency trim runs at merge via expansion-player-cap.
+ *
  * @param {object[]} tmPlayers — preview.players shape
  * @param {Set<string>} reservedSourceIds — MVP linked sourceIds
  * @param {(dob: string) => number|null} [ageFromDob]
@@ -111,7 +122,7 @@ export function curatePhase1PreviewPlayers(tmPlayers, reservedSourceIds, ageFrom
 
     let taken = 0;
     for (const tm of sorted) {
-      if (taken >= PHASE1_LIMITS.maxPerClub) break;
+      if (taken >= PHASE1_LIMITS.importMaxPerClub) break;
       const norm = normalizeName(displayName(tm));
       if (!norm || seenNames.has(norm)) continue;
       seenNames.add(norm);
@@ -126,9 +137,6 @@ export function curatePhase1PreviewPlayers(tmPlayers, reservedSourceIds, ageFrom
     return (displayName(a) || '').localeCompare(displayName(b) || '');
   });
 
-  if (selected.length > PHASE1_LIMITS.playersMax) {
-    return selected.slice(0, PHASE1_LIMITS.playersMax);
-  }
   return selected;
 }
 

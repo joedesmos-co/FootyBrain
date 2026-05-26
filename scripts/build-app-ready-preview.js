@@ -252,7 +252,8 @@ function main() {
     mvpPlayers.filter((p) => p.sourceId).map((p) => String(p.sourceId)),
   );
 
-  const maxSquadRows = Math.max(0, EXPANSION_LIMITS.playersMax - mvpPlayers.length);
+  const emergencyCap = EXPANSION_LIMITS.playersHardMax ?? EXPANSION_LIMITS.playersMax;
+  const maxSquadRows = Math.max(0, emergencyCap - mvpPlayers.length);
   let curatedTm = curatePhase1PreviewPlayers(
     preview.players,
     usedSourceIds,
@@ -272,7 +273,7 @@ function main() {
   curatedTm = cappedCuratedTm;
   if (trimmedBrowse > 0) {
     warnings.push(
-      `Trimmed ${trimmedBrowse} browse-only TM rows (controlled expansion total cap ${EXPANSION_LIMITS.playersMax}; draft-approved preserved).`,
+      `Emergency trim: ${trimmedBrowse} browse-only TM rows (hard cap ${emergencyCap}; draft-approved preserved).`,
     );
   }
   if (mvpPlayers.length + curatedTm.length < EXPANSION_LIMITS.playersMin) {
