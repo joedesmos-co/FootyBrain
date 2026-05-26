@@ -56,7 +56,7 @@ function PlaceholderVisual({ player, size, style, compact, teamName, tier }) {
   );
 }
 
-function PlayerVisualComponent({ player, size = 'card', priority = false, compact = false }) {
+function PlayerVisualComponent({ player, size = 'card', priority = false, compact = false, teamName: teamNameProp }) {
   const source = resolvePlayerImageSource(player);
   const imageAttrs = getPlayerImageAttributes(player, { size, priority });
   const [failedPlayerId, setFailedPlayerId] = useState(null);
@@ -66,7 +66,7 @@ function PlayerVisualComponent({ player, size = 'card', priority = false, compac
   }, [player]);
 
   const style = getVisualStyle(player);
-  const teamName = getTeamName(player.teamId);
+  const teamName = teamNameProp ?? getTeamName(player.teamId);
   const showPhoto =
     Boolean(imageAttrs)
     && source.tier !== 'gradientInitials'

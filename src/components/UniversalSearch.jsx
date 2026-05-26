@@ -1,22 +1,13 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getLiveNationalTeams } from '../data/nationalTeamData';
-import {
-  getLeagueName,
-  getTeamName,
-  leagues,
-  players,
-  teams,
-} from '../data/sampleData';
+import { useSearchIndex } from '../hooks/useSearchIndex';
 import { RESULT_TYPE_LABELS, searchUniversalGrouped } from '../utils/universalSearch';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import RecentlyViewedPanel from './RecentlyViewedPanel';
 import TeamBadge from './TeamBadge';
-
-const liveNationalTeams = getLiveNationalTeams();
 
 const FOCUSABLE_SELECTOR = [
   'button:not([disabled])',
@@ -33,6 +24,86 @@ function getFocusableElements(root) {
   );
 }
 
+/**
+ * Build getTeamName / getLeagueName helpers from the search index.
+ * These are used by universalSearch scoring — both for players and teams.
+ */
+function buildHelpersFromIndex(index) {
+  const teamMap = new Map(index.teams.map((t) => [t.id, t.name]));
+  const leagueMap = new Map(index.leagues.map((l) => [l.id, l.name]));
+  return {
+    getTeamName: (id) => teamMap.get(id) ?? id ?? 'Unknown',
+    getLeagueName: (id) => leagueMap.get(id) ?? id ?? 'Unknown',
+  };
+}
+
+/**
+ * Adapt index entries to the shape universalSearch.js expects for players/teams/leagues/NT.
+ * We only add the minimal fields the scoring + rendering code accesses directly.
+ */
+function buildSearchContextFromIndex(index) {
+  const { getTeamName, getLeagueName } = buildHelpersFromIndex(index);
+
+  // Players: index entries are already shaped for scoring; universalSearch accesses
+  // player.importanceScore, player.nationalTeam, player.nationality, player.position,
+  // player.teamId, player.leagueId — all present. Also player.name, player.id.
+  // We copy teamName + leagueName onto each player so PlayerVisual can get it without sampleData.
+  const players = index.players.map((p) => ({
+    ...p,
+    // These are the fields universalSearch and getMembershipForPlayer need:
+    teamId: p.teamId,
+    leagueId: p.leagueId,
+    nationalTeam: p.nationalTeam,
+    nationality: p.nationality,
+    position: p.position,
+    importanceScore: p.importanceScore ?? 0,
+    // Baked-in so PlayerVisual thumb can render without sampleData getTeamName:
+    _teamName: p.teamName,
+  }));
+
+  // Teams: scoring uses team.name, team.country, team.leagueId, team.id.
+  // We add leagueName for subtitle.
+  const teams = index.teams.map((t) => ({
+    ...t,
+    leagueName: t.leagueName ?? getLeagueName(t.leagueId),
+  }));
+
+  // Leagues: scoring uses league.name, league.country, league.id.
+  const leagues = index.leagues;
+
+  // National teams: scoring uses nt.displayName, nt.country, nt.confederation, nt.id, nt.searchAliases.
+  // Index entries have aliases merged into nt.aliases — expose as searchAliases for scoring compat.
+  const nationalTeams = index.nationalTeams.map((nt) => ({
+    ...nt,
+    searchAliases: nt.aliases ?? [],
+  }));
+
+  return { players, teams, leagues, nationalTeams, getTeamName, getLeagueName };
+}
+
+/**
+ * Lazy sampleData fallback — only imported if the index fetch fails.
+ * This keeps sampleData out of the initial UniversalSearch chunk.
+ */
+let bundledContext = null;
+async function loadBundledContext() {
+  if (bundledContext) return bundledContext;
+  const [sd, ntMod] = await Promise.all([
+    import('../data/sampleData.js'),
+    import('../data/nationalTeamData.js'),
+  ]);
+  bundledContext = {
+    players: sd.players,
+    teams: sd.teams,
+    leagues: sd.leagues,
+    nationalTeams: ntMod.getLiveNationalTeams(),
+    getTeamName: sd.getTeamName,
+    getLeagueName: sd.getLeagueName,
+    getMembership: ntMod.getMembershipForPlayer,
+  };
+  return bundledContext;
+}
+
 export default function UniversalSearch({ open, onClose }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,23 +116,33 @@ export default function UniversalSearch({ open, onClose }) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const debouncedQuery = useDebouncedValue(query, 200);
 
+  const { index, status: indexStatus } = useSearchIndex();
+  const [fallbackCtx, setFallbackCtx] = useState(null);
+
+  // If index failed, load bundled sampleData as fallback.
+  useEffect(() => {
+    if (indexStatus === 'error' && !fallbackCtx) {
+      loadBundledContext().then(setFallbackCtx);
+    }
+  }, [indexStatus, fallbackCtx]);
+
+  const searchCtx = useMemo(() => {
+    if (index) return buildSearchContextFromIndex(index);
+    if (fallbackCtx) return fallbackCtx;
+    return null;
+  }, [index, fallbackCtx]);
+
   const { groups, flatResults } = useMemo(() => {
-    if (!open || !debouncedQuery.trim()) {
+    if (!open || !debouncedQuery.trim() || !searchCtx) {
       return { groups: [], flatResults: [] };
     }
-    return searchUniversalGrouped(debouncedQuery, {
-      players,
-      teams,
-      leagues,
-      nationalTeams: liveNationalTeams,
-      getTeamName,
-      getLeagueName,
-    });
-  }, [debouncedQuery, open]);
+    return searchUniversalGrouped(debouncedQuery, searchCtx);
+  }, [debouncedQuery, open, searchCtx]);
 
   const showResults = query.trim().length > 0;
   const isSearchPending = query.trim() !== debouncedQuery.trim();
   const hasResults = flatResults.length > 0;
+  const isIndexLoading = indexStatus === 'loading' && !fallbackCtx;
 
   const closeSearch = useCallback(() => {
     setQuery('');
@@ -148,21 +229,21 @@ export default function UniversalSearch({ open, onClose }) {
 
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      setActiveIndex((index) => (index + 1) % flatResults.length);
+      setActiveIndex((idx) => (idx + 1) % flatResults.length);
       return;
     }
 
     if (event.key === 'ArrowUp') {
       event.preventDefault();
-      setActiveIndex((index) => (index <= 0 ? flatResults.length - 1 : index - 1));
+      setActiveIndex((idx) => (idx <= 0 ? flatResults.length - 1 : idx - 1));
       return;
     }
 
     if (event.key === 'Enter') {
       event.preventDefault();
-      const index =
+      const idx =
         activeIndex >= 0 && activeIndex < flatResults.length ? activeIndex : 0;
-      selectResult(flatResults[index]);
+      selectResult(flatResults[idx]);
     }
   };
 
@@ -204,7 +285,7 @@ export default function UniversalSearch({ open, onClose }) {
           aria-expanded={showResults && hasResults}
           aria-controls={showResults ? listId : undefined}
           aria-autocomplete="list"
-          aria-busy={isSearchPending}
+          aria-busy={isSearchPending || isIndexLoading}
           aria-activedescendant={
             showResults && activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined
           }
@@ -237,11 +318,17 @@ export default function UniversalSearch({ open, onClose }) {
           </p>
         )}
 
-        {showResults && !isSearchPending && !hasResults && (
+        {showResults && !isSearchPending && isIndexLoading && (
+          <p className="universal-search__pending" aria-live="polite">
+            Loading search…
+          </p>
+        )}
+
+        {showResults && !isSearchPending && !isIndexLoading && !hasResults && (
           <p className="universal-search__empty">No matches — try another spelling.</p>
         )}
 
-        {showResults && !isSearchPending && hasResults && (
+        {showResults && !isSearchPending && !isIndexLoading && hasResults && (
           <ul className="universal-search__results" id={listId} role="listbox">
             {groups.map((group) => (
               <li key={group.type} className="universal-search__group" role="presentation">
@@ -250,18 +337,18 @@ export default function UniversalSearch({ open, onClose }) {
                 </p>
                 <ul className="universal-search__group-list" role="presentation">
                   {group.results.map((result) => {
-                    const index = result.flatIndex;
+                    const idx = result.flatIndex;
                     return (
                       <li key={`${result.type}-${result.id}`} role="presentation">
                         <button
                           type="button"
-                          id={`${listId}-opt-${index}`}
+                          id={`${listId}-opt-${idx}`}
                           role="option"
-                          aria-selected={index === activeIndex}
+                          aria-selected={idx === activeIndex}
                           className={`universal-search__option${
-                            index === activeIndex ? ' universal-search__option--active' : ''
+                            idx === activeIndex ? ' universal-search__option--active' : ''
                           }`}
-                          onMouseEnter={() => setActiveIndex(index)}
+                          onMouseEnter={() => setActiveIndex(idx)}
                           onMouseDown={(e) => e.preventDefault()}
                           onClick={() => selectResult(result)}
                         >
@@ -272,7 +359,11 @@ export default function UniversalSearch({ open, onClose }) {
                           </span>
                           <span className="universal-search__visual">
                             {result.type === 'player' && (
-                              <PlayerVisual player={result.player} size="thumb" />
+                              <PlayerVisual
+                                player={result.player}
+                                size="thumb"
+                                teamName={result.player._teamName}
+                              />
                             )}
                             {result.type === 'team' && (
                               <TeamBadge team={result.team} size="thumb" />

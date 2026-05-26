@@ -179,13 +179,35 @@ Target leagues shipped as shards: La Liga, Bundesliga, Serie A, Ligue 1, Eredivi
 
 ---
 
+### Phase 9 (2026-05-26) — Build-time Universal Search index
+
+| Change | File(s) | Effect |
+|--------|---------|--------|
+| **`public/data/search-index.json`** | `scripts/write-search-index.js` | ~788 KB raw / **~68 KB gzip** (2331 players, 105 teams, 8 leagues, 33 NTs) |
+| **`src/hooks/useSearchIndex.js`** | new | `fetch` + module-level cache; falls back to `null` on failure |
+| **`UniversalSearch.jsx`** | rewritten | Fetches index; no static `sampleData`/`nationalTeamData` import |
+| **`universalSearch.js`** | `getMembershipForPlayer` removed from static import | Injectable via `ctx.getMembership` |
+| **`PlayerVisual.jsx`** | `teamName` prop override | Search results pass pre-baked `_teamName` — no sampleData lookup |
+| **`npm run write:search-index`** | `package.json` | Regenerate after merge |
+
+**Cold path for Universal Search:**
+
+| Path | Before Phase 9 | Phase 9 |
+|------|---------------|---------|
+| Open search modal | Needs `sample-data` (static import) | Fetches **search-index ~68 KB gzip** |
+| Navigate to result | `sample-data` already loaded | Loads `sample-data` only when navigating to a profile |
+| Fallback (index fetch fails) | N/A | Lazy-imports `sampleData` + `nationalTeamData` |
+
+**Scoring parity:** All existing aliases, accent-insensitive matching, player/team/league/NT results, intent boost (country/club), and keyboard navigation preserved. `getMembershipForPlayer` intent boost is bypassed on index path (no live membership map available without `nationalTeamData`) — nationality/nationalTeam fields on index entries still provide most of the country-intent boost.
+
+---
+
 ## 3. Deferred scaling work
 
 | Item | Trigger | Approach |
 |------|---------|----------|
 | **Additional league shards** (long tail) | When player count growth resumes | `write-league-shard.js` + `SHARD_OVERRIDES` only |
 | **Core shell module** | With shards | `getPlayerById` async cache |
-| **Build-time search index** | Main-thread jank on search | Prefix/trigram JSON |
 | **Web Worker search** | Index + slow devices | Offload scan |
 | **Dynamic `nationalTeamData`** | NT chunk pulled on every profile | `import()` on profile/NT routes only |
 | **Virtualized browse** | Grid > 60 cards common | react-window |
@@ -276,7 +298,7 @@ src/data/sampleData.js              ← MVP editorial + shared helpers only (shr
 
 ---
 
-*Phase 8B adds MLS as the second manifest-driven league shard. **Next recommended step:** roll out remaining top-flight shards via `write-league-shard.js` + `SHARD_OVERRIDES` (no Browse/LeagueProfile changes).*
+*Phase 8B adds MLS as the second manifest-driven league shard. Phase 8C rolls out all major leagues. Phase 9 ships the build-time search index — Universal Search no longer pulls `sample-data` on open.*
 
 ---
 

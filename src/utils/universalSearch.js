@@ -19,7 +19,6 @@ import {
   scorePlayerIntentBoost,
 } from './searchIntent';
 import { isWeakSearchScore, matchScoreForFields, normalizeForSearch } from './textSearch';
-import { getMembershipForPlayer } from '../data/nationalTeamData';
 
 /** Skip full-player scan on single-character queries (teams/leagues still match). */
 export const MIN_PLAYER_QUERY_LENGTH = 2;
@@ -113,6 +112,7 @@ function collectSearchBuckets(query, ctx) {
     nationalTeams = [],
     getTeamName,
     getLeagueName,
+    getMembership = null,
   } = ctx;
 
   const buckets = {
@@ -201,7 +201,7 @@ function collectSearchBuckets(query, ctx) {
         .filter(Boolean)
         .join(' · ');
 
-      let adjusted = score + scorePlayerIntentBoost(player, intent, getMembershipForPlayer);
+      let adjusted = score + scorePlayerIntentBoost(player, intent, getMembership);
       if (nameScore > 0) adjusted += 2;
       if (normalizedQuery.length <= 3 && nameScore === 0) adjusted -= 8;
 
