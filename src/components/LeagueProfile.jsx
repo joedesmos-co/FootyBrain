@@ -1,10 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
+import { useLeagueShard } from '../hooks/useLeagueShard';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
-import {
-  getLeagueById,
-  getPlayersForLeague,
-  teams,
-} from '../data/sampleData';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import {
   getLeagueFeaturedTeams,
@@ -13,10 +9,11 @@ import {
 } from '../utils/leagueFeatured';
 import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
 import { truncateLeagueText } from '../utils/leagueIdentity';
+import DataTrustNotice from './DataTrustNotice';
 import LeagueBadge from './LeagueBadge';
 import LeagueClubChip from './LeagueClubChip';
 import LeagueHubStrip from './LeagueHubStrip';
-import DataTrustNotice from './DataTrustNotice';
+import PageFallback from './PageFallback';
 import PlayerCard from './PlayerCard';
 
 const LEARNING_STEPS = [
@@ -42,24 +39,7 @@ function stepText(league, step) {
   return truncateLeagueText(league[step.field], 140);
 }
 
-export default function LeagueProfile() {
-  const { leagueId } = useParams();
-  const league = getLeagueById(leagueId);
-  useRecordRecentView('league', leagueId);
-
-  if (!league) {
-    return (
-      <div className="page">
-        <p className="empty-state">League not found.</p>
-        <Link to="/browse" className="btn btn--secondary">
-          Back to Browse Database
-        </Link>
-      </div>
-    );
-  }
-
-  const leagueTeams = teams.filter((team) => team.leagueId === league.id);
-  const leaguePlayers = getPlayersForLeague(league.id);
+function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   const quizReadyPlayers = getQuizEligiblePlayers(leaguePlayers);
   const hasLeagueQuiz = quizReadyPlayers.length > 0;
   const featuredClubs = getLeagueFeaturedTeams(league, leagueTeams, leaguePlayers, {
@@ -218,5 +198,46 @@ export default function LeagueProfile() {
         </section>
       )}
     </div>
+  );
+}
+
+export default function LeagueProfile() {
+  const { leagueId } = useParams();
+  const loadState = useLeagueShard(leagueId, { requireManifest: true });
+
+  useRecordRecentView('league', loadState.manifestEntry ? leagueId : undefined);
+
+  if (loadState.status === 'missing') {
+    return (
+      <div className="page">
+        <p className="empty-state">League not found.</p>
+        <Link to="/browse" className="btn btn--secondary">
+          Back to Browse Database
+        </Link>
+      </div>
+    );
+  }
+
+  if (loadState.status === 'loading') {
+    return <PageFallback label="Loading league…" />;
+  }
+
+  if (loadState.status === 'error' || !loadState.shard?.league) {
+    return (
+      <div className="page">
+        <p className="empty-state">Could not load this league. Try again from Browse.</p>
+        <Link to="/browse" className="btn btn--secondary">
+          Back to Browse Database
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <LeagueProfileContent
+      league={loadState.shard.league}
+      leagueTeams={loadState.shard.teams}
+      leaguePlayers={loadState.shard.players}
+    />
   );
 }

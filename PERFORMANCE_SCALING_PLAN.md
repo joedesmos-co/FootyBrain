@@ -1,7 +1,7 @@
 # FootyBrain — Performance & Data Scaling Plan
 
 > **Authority:** [PROJECT_BRIEF.md](./PROJECT_BRIEF.md) · [PRODUCTION_LAUNCH_PLAN.md](./PRODUCTION_LAUNCH_PLAN.md)  
-> **Last updated:** 2026-05-26 (Phase 7)  
+> **Last updated:** 2026-05-26 (Phase 8B)  
 > **Scope:** Front-end scaling + manifest groundwork — **no full data architecture rewrite.**
 
 ---
@@ -119,13 +119,52 @@ At **5k+ players**, expect **30–50 MB** heap growth in mobile WebViews without
 
 **Cold `/` (gzip JS, approximate):** vendor 74 + index 14 ≈ **88 KB** (was ~88 KB index-only shell but index previously hid **+31 KB** of eager route code).
 
+### Phase 8 (2026-05-26) — Premier League shard pilot
+
+| Change | File(s) | Effect |
+|--------|---------|--------|
+| **`public/data/leagues/premier-league.json`** | generated | ~302 KB raw / **~39 KB gzip** (15 teams, 341 players) |
+| **`leagueShard.js` + `useLeagueShard`** | `src/data/`, `src/hooks/` | `fetch` + in-memory cache; `import('./sampleData')` fallback |
+| **`/league/premier-league`** | `LeagueProfile.jsx` | Shard fetch on success — **avoids `sample-data` parse** |
+| **Browse + PL filter** | `BrowseDatabase.jsx` | Lists from shard; defers `sampleData` while PL-only |
+| **`write:premier-league-shard`** | `package.json` script | Regenerate after merge |
+
+**Cold path (gzip, approximate):**
+
+| Path | Phase 7 | Phase 8 pilot |
+|------|---------|---------------|
+| `/league/premier-league` | LeagueProfile + **sample-data 199 KB** | LeagueProfile + **shard ~39 KB** |
+| `/browse` → PL filter only | Browse + **sample-data 199 KB** | Browse + **shard ~39 KB** (picks hidden until leaving PL) |
+| `/browse` (no filter) | Browse + sample-data | Unchanged (picks still need bundled data) |
+
+### Phase 8B (2026-05-26) — MLS shard (second pilot)
+
+| Change | File(s) | Effect |
+|--------|---------|--------|
+| **`public/data/leagues/mls.json`** | `write-league-shard.js mls` | ~539 KB raw / **~44 KB gzip** (30 teams, 660 players) |
+| **Generic shard writer** | `scripts/write-league-shard.js` | `npm run write:mls-shard`, `write:league-shards` |
+| **Manifest `mls`** | `contentManifest.js`, `SHARD_OVERRIDES` | `shardStatus: 'deferred'`, `shardPath: '/data/leagues/mls.json'` |
+| **Browse external shard** | `BrowseDatabase.jsx` | Any manifest league with `shardPath` — not PL-only |
+| **`/league/mls`** | `LeagueProfile.jsx` (unchanged hook) | Shard fetch on success — **avoids `sample-data` parse** |
+
+**Cold path (gzip, approximate):**
+
+| Path | Phase 8 (PL only) | Phase 8B (PL + MLS) |
+|------|-------------------|---------------------|
+| `/league/mls` | sample-data 199 KB | LeagueProfile + **shard ~44 KB** |
+| `/browse` → MLS filter only | sample-data 199 KB | Browse + **shard ~44 KB** (picks hidden) |
+| `/browse` → PL filter only | shard ~39 KB | Unchanged |
+| Quiz / Search / Daily / Compare / NT | sample-data | **Unchanged** |
+
+**Pilot readiness:** Two leagues prove the manifest-driven contract (`shardPath` + `hasExternalLeagueShard`). Next rollout: add `SHARD_OVERRIDES` + run `write-league-shard.js` per league (La Liga, Serie A, Bundesliga, Ligue 1) without Browse/LeagueProfile code changes.
+
 ---
 
 ## 3. Deferred scaling work
 
 | Item | Trigger | Approach |
 |------|---------|----------|
-| **League shards** (`data/leagues/{id}.json`) | gzip > 250 KB or players > 3,500 | `shardPath` in manifest + `import()` per league |
+| **Remaining league shards** (4 EU top flights) | After MLS pilot | `write-league-shard.js` + `SHARD_OVERRIDES` only |
 | **Core shell module** | With shards | `getPlayerById` async cache |
 | **Build-time search index** | Main-thread jank on search | Prefix/trigram JSON |
 | **Web Worker search** | Index + slow devices | Offload scan |
@@ -154,7 +193,7 @@ src/data/leagues/mls.json
 src/data/sampleData.js              ← MVP editorial + shared helpers only (shrunk)
 ```
 
-**Hook contract:** `loadLeagueShard(leagueId)` already stubbed in `contentManifest.js`.
+**Hook contract:** `loadLeagueShard(leagueId)` in `leagueShard.js` — live for `premier-league` and `mls`; extend via manifest only.
 
 ---
 
@@ -190,6 +229,10 @@ src/data/sampleData.js              ← MVP editorial + shared helpers only (shr
 | Hero only | vendor 74 + index **46** ≈ **120 KB** | vendor 74 + index **14** ≈ **88 KB** |
 | Hero + scroll hubs | + manifest ≈ **91 KB** | **~91 KB** (unchanged) |
 | `/browse` direct | index 46 + Browse + sample-data ≈ **248 KB** | index 14 + Browse + sample-data ≈ **217 KB** |
+| `/browse` PL-only | — | index 14 + Browse + shard **~39 KB** (no sample-data if user stays on PL) |
+| `/browse` MLS-only | — | index 14 + Browse + shard **~44 KB** (no sample-data if user stays on MLS) |
+| `/league/premier-league` | sample-data + LeagueProfile | shard **~39 KB** + LeagueProfile |
+| `/league/mls` | sample-data + LeagueProfile | shard **~44 KB** + LeagueProfile |
 | `/quiz` club only | + Quiz + sample-data + NT + config | index 14 + Quiz + quizSession + sample-data + NT ≈ **241 KB** (no 13 KB config) |
 | `/national-teams` | NT + sample-data | **Unchanged** |
 
@@ -214,13 +257,13 @@ src/data/sampleData.js              ← MVP editorial + shared helpers only (shr
 
 ---
 
-*Phase 7 splits the app shell from data-heavy routes and decouples quiz from World Cup hub config. **Next recommended step:** first league JSON shard (`premier-league.json`) + `loadLeagueShard()` wiring on Browse/League profile only — see §4.*
+*Phase 8B adds MLS as the second manifest-driven league shard. **Next recommended step:** roll out remaining top-flight shards via `write-league-shard.js` + `SHARD_OVERRIDES` (no Browse/LeagueProfile changes).*
 
 ---
 
 ## 9. Recommended next scaling step
 
-1. **League shard pilot** — `public/data/leagues/premier-league.json` + `loadLeagueShard('premier-league')` in `contentManifest.js`; Browse league filter loads shard instead of full registry when one league selected.  
+1. **League shard rollout** — La Liga, Serie A, Bundesliga, Ligue 1 via `write-league-shard.js` + manifest `SHARD_OVERRIDES`.  
 2. **Build-time search index** — prefix JSON for Universal Search (avoid full `players[]` scan).  
 3. **Dynamic `nationalTeamData` on PlayerProfile** — optional `import()` after player resolves if live NT link needed (saves NT chunk on browse-only deep links).  
 4. Do **not** combine `sample-data` and `national-team-data` in one `manualChunks` bucket.

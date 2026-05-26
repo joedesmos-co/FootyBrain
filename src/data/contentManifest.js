@@ -39,6 +39,14 @@ export const CONTENT_MANIFEST = {
     'nigeria',
     'japan',
     'korea-republic',
+    'norway',
+    'ghana',
+    'algeria',
+    'poland',
+    'austria',
+    'ukraine',
+    'scotland',
+    'paraguay',
   ],
   leagues: [
     {
@@ -47,8 +55,8 @@ export const CONTENT_MANIFEST = {
       country: 'England',
       teamCount: 15,
       playerCount: 341,
-      shardStatus: 'bundled',
-      shardPath: null,
+      shardStatus: 'deferred',
+      shardPath: '/data/leagues/premier-league.json',
       badgeTheme: { from: '#22c55e', to: '#134e4a', accent: '#dcfce7' },
     },
     {
@@ -107,8 +115,8 @@ export const CONTENT_MANIFEST = {
       country: 'United States',
       teamCount: 30,
       playerCount: 660,
-      shardStatus: 'bundled',
-      shardPath: null,
+      shardStatus: 'deferred',
+      shardPath: '/data/leagues/mls.json',
       badgeTheme: { from: '#ef4444', to: '#111827', accent: '#fee2e2' },
     },
     {
@@ -134,16 +142,4 @@ export function getManifestLeagues() {
   return CONTENT_MANIFEST.leagues;
 }
 
-/** Future: dynamic import when shardPath is set. */
-export async function loadLeagueShard(leagueId) {
-  const league = getManifestLeague(leagueId);
-  if (!league?.shardPath) {
-    const mod = await import('./sampleData.js');
-    return {
-      league: mod.getLeagueById(leagueId),
-      players: mod.getPlayersForLeague(leagueId),
-      teams: mod.teams.filter((t) => t.leagueId === leagueId),
-    };
-  }
-  throw new Error(`League shard not implemented: ${leagueId}`);
-}
+export { loadLeagueShard, hasExternalLeagueShard, PILOT_SHARD_LEAGUE_ID, peekLeagueShard } from './leagueShard';

@@ -1,62 +1,124 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
 import {
   countLinkedPlayers,
   getLiveNationalTeams,
   getNationalTeamQuizReadyCount,
   getViableLiveNationalTeams,
 } from '../data/nationalTeamData';
-import {
-  getLeagueName,
-  getPlayersForLeague,
-  getPlayersForTeam,
-  getTeamName,
-  leagues,
-  players,
-  teams,
-} from '../data/sampleData';
-import { getTodayKey } from '../hooks/useDailyChallenge';
+import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
+import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
+import PageFallback from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
+
+const manifestLeagues = getManifestLeagues();
 
 export default function BrowseDatabase() {
   const [leagueFilter, setLeagueFilter] = useState('');
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
-  const todayKey = getTodayKey();
-  const hasPlayerQuery = search.trim().length > 0 || Boolean(leagueFilter || teamFilter);
-  const featuredPickPool = useMemo(() => getFeaturedPickPlayers(players), []);
-  const dailyFeatured = useMemo(
-    () => getDailyFeatured(featuredPickPool, teams, todayKey),
-    [featuredPickPool, todayKey],
+  const [bundled, setBundled] = useState(null);
+
+  const usesExternalShard =
+    Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
+  const shardState = useLeagueShard(usesExternalShard ? leagueFilter : null);
+  const activeLeagueName =
+    (leagueFilter && getManifestLeague(leagueFilter)?.name) || 'league';
+
+  const needsBundledData = Boolean(
+    !usesExternalShard && (leagueFilter || teamFilter || search.trim()),
   );
+
+  useEffect(() => {
+    if (usesExternalShard) return undefined;
+    let cancelled = false;
+    import('../data/sampleData.js').then((mod) => {
+      if (!cancelled) {
+        setBundled({
+          players: mod.players,
+          teams: mod.teams,
+          getLeagueName: mod.getLeagueName,
+          getTeamName: mod.getTeamName,
+          getPlayersForLeague: mod.getPlayersForLeague,
+          getPlayersForTeam: mod.getPlayersForTeam,
+        });
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [usesExternalShard]);
+
+  const todayKey = getTodayKey();
+  const leagueShard = shardState.status === 'ready' ? shardState.shard : null;
+  const shardLoading = usesExternalShard && shardState.status === 'loading';
+
+  const getLeagueName = useMemo(() => {
+    if (usesExternalShard && leagueShard) return leagueShard.getLeagueName;
+    if (bundled) return bundled.getLeagueName;
+    return (id) => manifestLeagues.find((league) => league.id === id)?.name ?? 'Unknown';
+  }, [usesExternalShard, leagueShard, bundled]);
+
+  const getTeamName = useMemo(() => {
+    if (usesExternalShard && leagueShard) return leagueShard.getTeamName;
+    if (bundled) return bundled.getTeamName;
+    return () => 'Unknown';
+  }, [usesExternalShard, leagueShard, bundled]);
+
+  const hasPlayerQuery = search.trim().length > 0 || Boolean(leagueFilter || teamFilter);
+
+  const featuredPickPool = useMemo(() => {
+    if (!bundled) return [];
+    return getFeaturedPickPlayers(bundled.players);
+  }, [bundled]);
+
+  const dailyFeatured = useMemo(() => {
+    if (!bundled) {
+      return { mode: 'club', players: [], teams: [], nationalTeams: [] };
+    }
+    return getDailyFeatured(featuredPickPool, bundled.teams, todayKey);
+  }, [bundled, featuredPickPool, todayKey]);
+
   const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
   const viableNationalTeams = useMemo(() => getViableLiveNationalTeams(), []);
+
   const intentContext = useMemo(
     () => ({
-      teams,
+      teams: usesExternalShard && leagueShard ? leagueShard.teams : (bundled?.teams ?? []),
       nationalTeams: liveNationalTeams,
       getLeagueName,
     }),
-    [liveNationalTeams],
+    [usesExternalShard, leagueShard, bundled, liveNationalTeams, getLeagueName],
   );
 
   const teamsInLeague = useMemo(() => {
-    if (!leagueFilter) return teams;
-    return teams.filter((t) => t.leagueId === leagueFilter);
-  }, [leagueFilter]);
+    if (usesExternalShard && leagueShard) {
+      return leagueShard.teams;
+    }
+    if (!leagueFilter) return bundled?.teams ?? [];
+    return (bundled?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
+  }, [usesExternalShard, leagueShard, leagueFilter, bundled]);
 
   const scopedPlayers = useMemo(() => {
-    if (teamFilter) return getPlayersForTeam(teamFilter);
-    if (leagueFilter) return getPlayersForLeague(leagueFilter);
-    return players;
-  }, [leagueFilter, teamFilter]);
+    if (usesExternalShard && leagueShard) {
+      if (teamFilter) {
+        return leagueShard.players.filter((player) => player.teamId === teamFilter);
+      }
+      return leagueShard.players;
+    }
+    if (!bundled) return [];
+    if (teamFilter) return bundled.getPlayersForTeam(teamFilter);
+    if (leagueFilter) return bundled.getPlayersForLeague(leagueFilter);
+    return bundled.players;
+  }, [usesExternalShard, leagueShard, teamFilter, leagueFilter, bundled]);
 
   const filteredPlayers = useMemo(() => {
     if (!search.trim()) return scopedPlayers;
@@ -65,12 +127,11 @@ export default function BrowseDatabase() {
       getLeagueName,
       limit: BROWSE_SEARCH_RESULT_CAP,
     });
-  }, [scopedPlayers, search]);
+  }, [scopedPlayers, search, getTeamName, getLeagueName]);
 
   const searchResultCapped =
     search.trim().length > 0 && filteredPlayers.length >= BROWSE_SEARCH_RESULT_CAP;
 
-  // Cap league-wide lists only; a selected club shows the full squad (~18–25).
   const BROWSE_RESULT_CAP = 60;
   const showLeagueClubPicker = Boolean(leagueFilter && !teamFilter && !search.trim());
   const showPlayerResults = hasPlayerQuery && !showLeagueClubPicker;
@@ -87,6 +148,12 @@ export default function BrowseDatabase() {
     setLeagueFilter(value);
     setTeamFilter('');
   };
+
+  const showPicks = bundled && !usesExternalShard;
+  const browseDataLoading =
+    shardLoading ||
+    (needsBundledData && !bundled) ||
+    (usesExternalShard && !leagueShard && !shardLoading);
 
   return (
     <div className="page browse">
@@ -108,7 +175,7 @@ export default function BrowseDatabase() {
               onChange={(e) => handleLeagueChange(e.target.value)}
             >
               <option value="">All leagues</option>
-              {leagues.map((league) => (
+              {manifestLeagues.map((league) => (
                 <option key={league.id} value={league.id}>
                   {league.name}
                 </option>
@@ -121,6 +188,7 @@ export default function BrowseDatabase() {
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
+              disabled={!leagueFilter || shardLoading}
             >
               <option value="">All teams</option>
               {teamsInLeague.map((team) => (
@@ -140,23 +208,32 @@ export default function BrowseDatabase() {
             intentContext={intentContext}
             label="Search"
             placeholder="Search players — name, partial match…"
+            disabled={browseDataLoading}
           />
         </div>
         <p className="filters__count">
-          {hasPlayerQuery
-            ? searchResultCapped
-              ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or team to see more`
-              : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
-            : 'Search or choose a league/team to explore players.'}
+          {shardLoading
+            ? `Loading ${activeLeagueName} data…`
+            : hasPlayerQuery
+              ? searchResultCapped
+                ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or team to see more`
+                : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
+              : 'Search or choose a league/team to explore players.'}
         </p>
       </section>
 
-      <TodaysPicksSection
-        featuredPlayers={dailyFeatured.players}
-        featuredTeams={dailyFeatured.teams}
-        featuredNationalTeams={dailyFeatured.nationalTeams}
-        picksMode={dailyFeatured.mode}
-      />
+      {showPicks ? (
+        <TodaysPicksSection
+          featuredPlayers={dailyFeatured.players}
+          featuredTeams={dailyFeatured.teams}
+          featuredNationalTeams={dailyFeatured.nationalTeams}
+          picksMode={dailyFeatured.mode}
+        />
+      ) : usesExternalShard ? null : (
+        <p className="page-loading browse-picks-loading" role="status" aria-live="polite">
+          Loading today&apos;s picks…
+        </p>
+      )}
 
       <section className="national-hub-strip" aria-labelledby="national-hubs-title">
         <div className="national-hub-strip__header">
@@ -201,7 +278,7 @@ export default function BrowseDatabase() {
           <p>League hubs — clubs, rivalries, and league quizzes.</p>
         </div>
         <div className="league-link-grid">
-          {leagues.map((league) => (
+          {manifestLeagues.map((league) => (
             <Link key={league.id} to={`/league/${league.id}`} className="league-link-card">
               <LeagueBadge league={league} />
               <span>
@@ -213,8 +290,9 @@ export default function BrowseDatabase() {
         </div>
       </section>
 
-      {/* Future: loading state while fetchPlayers(filters) resolves from API/Firebase */}
-      {showLeagueClubPicker ? (
+      {shardLoading ? (
+        <PageFallback label={`Loading ${activeLeagueName}…`} />
+      ) : showLeagueClubPicker ? (
         <section className="browse-results" aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}>
           <p className="browse-results__cap-notice">
             {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
@@ -233,11 +311,14 @@ export default function BrowseDatabase() {
         </section>
       ) : showPlayerResults ? (
         <section className="browse-results" aria-label="Player results">
-          {filteredPlayers.length > 0 ? (
+          {needsBundledData && !bundled ? (
+            <PageFallback label="Loading players…" />
+          ) : filteredPlayers.length > 0 ? (
             <>
               {isResultCapped && (
                 <p className="browse-results__cap-notice">
-                  Showing {BROWSE_RESULT_CAP} of {filteredPlayers.length} — pick a club or search by name to narrow results.
+                  Showing {BROWSE_RESULT_CAP} of {filteredPlayers.length} — pick a club or search
+                  by name to narrow results.
                 </p>
               )}
               <div className="card-grid">

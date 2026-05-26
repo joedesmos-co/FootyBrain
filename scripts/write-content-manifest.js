@@ -22,6 +22,18 @@ const manifestSrc = fs.readFileSync(MANIFEST_PATH, 'utf8');
 const dataAsOfMatch = manifestSrc.match(/dataAsOf:\s*'([^']+)'/);
 const dataAsOf = dataAsOfMatch?.[1] ?? new Date().toISOString().slice(0, 10);
 
+/** Phase 8 league shards — preserve when regenerating manifest. */
+const SHARD_OVERRIDES = {
+  'premier-league': {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/premier-league.json',
+  },
+  mls: {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/mls.json',
+  },
+};
+
 const leagueRows = leagues.map((league, index) => {
   const teamCount = teams.filter((t) => t.leagueId === league.id).length;
   const playerCount = players.filter((p) => p.leagueId === league.id).length;
@@ -30,14 +42,15 @@ const leagueRows = leagues.map((league, index) => {
     to: '#134e4a',
     accent: '#dcfce7',
   };
+  const shardOverride = SHARD_OVERRIDES[league.id];
   return {
     id: league.id,
     name: league.name,
     country: league.country,
     teamCount,
     playerCount,
-    shardStatus: 'bundled',
-    shardPath: null,
+    shardStatus: shardOverride?.shardStatus ?? 'bundled',
+    shardPath: shardOverride?.shardPath ?? null,
     badgeTheme: theme,
   };
 });
@@ -45,14 +58,19 @@ const leagueRows = leagues.map((league, index) => {
 const liveNationalTeamIds = [...liveNationalMeta.liveNationalTeamIds];
 
 function formatLeague(league) {
+  const shardStatus = league.shardStatus ?? 'bundled';
+  const shardPath =
+    league.shardPath === null || league.shardPath === undefined
+      ? 'null'
+      : `'${league.shardPath}'`;
   return `    {
       id: '${league.id}',
       name: '${league.name.replace(/'/g, "\\'")}',
       country: '${league.country.replace(/'/g, "\\'")}',
       teamCount: ${league.teamCount},
       playerCount: ${league.playerCount},
-      shardStatus: 'bundled',
-      shardPath: null,
+      shardStatus: '${shardStatus}',
+      shardPath: ${shardPath},
       badgeTheme: { from: '${league.badgeTheme.from}', to: '${league.badgeTheme.to}', accent: '${league.badgeTheme.accent}' },
     }`;
 }
@@ -90,19 +108,7 @@ export function getManifestLeagues() {
   return CONTENT_MANIFEST.leagues;
 }
 
-/** Future: dynamic import when shardPath is set. */
-export async function loadLeagueShard(leagueId) {
-  const league = getManifestLeague(leagueId);
-  if (!league?.shardPath) {
-    const mod = await import('./sampleData.js');
-    return {
-      league: mod.getLeagueById(leagueId),
-      players: mod.getPlayersForLeague(leagueId),
-      teams: mod.teams.filter((t) => t.leagueId === leagueId),
-    };
-  }
-  throw new Error(\`League shard not implemented: \${leagueId}\`);
-}
+export { loadLeagueShard, hasExternalLeagueShard, PILOT_SHARD_LEAGUE_ID, peekLeagueShard } from './leagueShard';
 `;
 
 fs.writeFileSync(MANIFEST_PATH, output);

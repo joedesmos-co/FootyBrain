@@ -29,13 +29,21 @@
     "senegal",
     "nigeria",
     "japan",
-    "korea-republic"
+    "korea-republic",
+    "norway",
+    "ghana",
+    "algeria",
+    "poland",
+    "austria",
+    "ukraine",
+    "scotland",
+    "paraguay"
   ],
   "leagues": [
     {
       "id": "premier-league",
-      "shardStatus": "bundled",
-      "shardPath": null,
+      "shardStatus": "deferred",
+      "shardPath": "/data/leagues/premier-league.json",
       "playerCount": 341,
       "teamCount": 15
     },
