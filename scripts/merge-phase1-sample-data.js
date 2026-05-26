@@ -84,9 +84,9 @@ function buildGeneratedBasePlayer(row, clubIndex, teamName, leagueName) {
   const fallbackImportanceScore = 48 + Math.max(0, 6 - (clubIndex % 7));
   const hasApprovedEditorial = row.dataStatus === 'generated-editorial-approved';
   const careerHistory =
-    Array.isArray(row.careerHistory) && row.careerHistory.length > 0
+    hasApprovedEditorial && Array.isArray(row.careerHistory) && row.careerHistory.length > 0
       ? row.careerHistory
-      : buildCurrentClubCareer(teamName);
+      : [];
 
   return {
     id: row.id,
@@ -99,19 +99,10 @@ function buildGeneratedBasePlayer(row, clubIndex, teamName, leagueName) {
     nationalTeam: row.nationalTeam ?? row.nationality ?? '—',
     nationality: row.nationality ?? '—',
     importanceScore: hasApprovedEditorial ? row.importanceScore : fallbackImportanceScore,
-    quickFact: hasApprovedEditorial
-      ? row.quickFact
-      : buildGeneratedQuickFact({
-          name: row.name,
-          position: row.position,
-          age: age ?? null,
-          nationality: row.nationality,
-          teamName,
-          leagueName,
-        }),
-    playingStyle: hasApprovedEditorial
-      ? row.playingStyle
-      : buildGeneratedPlayingStyle(row.position),
+    // Browse-only rows stay out of quiz by default; keep content fields empty to
+    // reduce `sampleData` size on mobile until an editorial pass promotes them.
+    quickFact: hasApprovedEditorial ? row.quickFact : '',
+    playingStyle: hasApprovedEditorial ? row.playingStyle : '',
     careerHistory,
     quizHints: hasApprovedEditorial ? row.quizHints : [],
     quizEligible: hasApprovedEditorial ? true : false,

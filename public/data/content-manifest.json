@@ -51,8 +51,8 @@
       "id": "la-liga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/la-liga.json",
-      "playerCount": 263,
-      "teamCount": 10
+      "playerCount": 512,
+      "teamCount": 20
     },
     {
       "id": "bundesliga",

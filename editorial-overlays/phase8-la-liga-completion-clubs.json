@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 8 preview — La Liga completion. Adds the remaining 10 ES1 clubs for inspection-only TM preview build. Do not merge to sampleData until validators pass.",
+  "targetCounts": { "clubsMin": 140, "clubsMax": 150, "playersMin": 3600, "playersMax": 4000 },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "osasuna",
+      "label": "Osasuna",
+      "leagueId": "la-liga",
+      "codes": ["ca-osasuna"],
+      "nameKeys": ["osasuna", "ca osasuna", "club atletico osasuna"]
+    },
+    {
+      "footybrainTeamId": "alaves",
+      "label": "Alavés",
+      "leagueId": "la-liga",
+      "codes": ["deportivo-alaves"],
+      "nameKeys": ["alaves", "alavés", "deportivo alaves", "deportivo alavés"]
+    },
+    {
+      "footybrainTeamId": "espanyol",
+      "label": "Espanyol",
+      "leagueId": "la-liga",
+      "codes": ["espanyol-barcelona"],
+      "nameKeys": ["espanyol", "rcd espanyol", "reial club deportiu espanyol"]
+    },
+    {
+      "footybrainTeamId": "elche",
+      "label": "Elche",
+      "leagueId": "la-liga",
+      "codes": ["fc-elche"],
+      "nameKeys": ["elche", "fc elche", "elche cf", "elche club de futbol"]
+    },
+    {
+      "footybrainTeamId": "getafe",
+      "label": "Getafe",
+      "leagueId": "la-liga",
+      "codes": ["fc-getafe"],
+      "nameKeys": ["getafe", "fc getafe", "getafe cf", "getafe club de futbol"]
+    },
+    {
+      "footybrainTeamId": "girona",
+      "label": "Girona",
+      "leagueId": "la-liga",
+      "codes": ["fc-girona"],
+      "nameKeys": ["girona", "fc girona", "girona fc", "girona futbol club"]
+    },
+    {
+      "footybrainTeamId": "rayo-vallecano",
+      "label": "Rayo Vallecano",
+      "leagueId": "la-liga",
+      "codes": ["rayo-vallecano"],
+      "nameKeys": ["rayo vallecano", "rayo", "rayo vallecano de madrid"]
+    },
+    {
+      "footybrainTeamId": "mallorca",
+      "label": "Mallorca",
+      "leagueId": "la-liga",
+      "codes": ["rcd-mallorca"],
+      "nameKeys": ["mallorca", "rcd mallorca", "real club deportivo mallorca"]
+    },
+    {
+      "footybrainTeamId": "real-oviedo",
+      "label": "Real Oviedo",
+      "leagueId": "la-liga",
+      "codes": ["real-oviedo"],
+      "nameKeys": ["real oviedo", "oviedo"]
+    },
+    {
+      "footybrainTeamId": "levante",
+      "label": "Levante",
+      "leagueId": "la-liga",
+      "codes": ["ud-levante"],
+      "nameKeys": ["levante", "ud levante", "levante ud", "levante union deportiva"]
+    }
+  ]
+}
+
