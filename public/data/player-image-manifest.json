@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-26",
+  "note": "Mirror of src/data/playerImageManifest.json entries for tooling. App imports the src copy at build time.",
+  "policy": "Licensed assets only. No Transfermarkt scrape or hotlink. See PLAYER_IMAGE_SYSTEM_PLAN.md.",
+  "placeholderHierarchy": [
+    "manifest",
+    "playerField",
+    "genericPlaceholder",
+    "gradientInitials"
+  ],
+  "assets": {
+    "genericPlaceholder": "/images/players/_placeholder.svg",
+    "defaultLocalDir": "/images/players/"
+  },
+  "approvedCdnHosts": [
+    "upload.wikimedia.org",
+    "commons.wikimedia.org"
+  ],
+  "entryCount": 0,
+  "entries": {}
+}
