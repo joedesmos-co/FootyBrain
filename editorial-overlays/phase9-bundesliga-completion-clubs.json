@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 9 preview — Bundesliga completion. Adds the remaining 8 L1 clubs for inspection-only TM preview build. Do not merge to sampleData until validators pass.",
+  "targetCounts": { "clubsMin": 150, "clubsMax": 155, "playersMin": 4000, "playersMax": 4300 },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "mainz",
+      "label": "Mainz 05",
+      "leagueId": "bundesliga",
+      "codes": ["1-fsv-mainz-05"],
+      "nameKeys": ["mainz 05", "1 fsv mainz 05", "fsv mainz"]
+    },
+    {
+      "footybrainTeamId": "fc-koln",
+      "label": "1. FC Köln",
+      "leagueId": "bundesliga",
+      "codes": ["1-fc-koln"],
+      "nameKeys": ["1 fc koln", "fc koln", "koln", "cologne"]
+    },
+    {
+      "footybrainTeamId": "heidenheim",
+      "label": "1. FC Heidenheim",
+      "leagueId": "bundesliga",
+      "codes": ["1-fc-heidenheim-1846"],
+      "nameKeys": ["1 fc heidenheim", "heidenheim", "fc heidenheim"]
+    },
+    {
+      "footybrainTeamId": "union-berlin",
+      "label": "Union Berlin",
+      "leagueId": "bundesliga",
+      "codes": ["1-fc-union-berlin"],
+      "nameKeys": ["union berlin", "1 fc union berlin", "fc union berlin"]
+    },
+    {
+      "footybrainTeamId": "fc-augsburg",
+      "label": "FC Augsburg",
+      "leagueId": "bundesliga",
+      "codes": ["fc-augsburg"],
+      "nameKeys": ["fc augsburg", "augsburg", "fussball club augsburg"]
+    },
+    {
+      "footybrainTeamId": "st-pauli",
+      "label": "FC St. Pauli",
+      "leagueId": "bundesliga",
+      "codes": ["fc-st-pauli"],
+      "nameKeys": ["st pauli", "fc st pauli", "fc st pauli von 1910"]
+    },
+    {
+      "footybrainTeamId": "hamburger-sv",
+      "label": "Hamburger SV",
+      "leagueId": "bundesliga",
+      "codes": ["hamburger-sv"],
+      "nameKeys": ["hamburger sv", "hamburger sport verein", "hsv"]
+    },
+    {
+      "footybrainTeamId": "hoffenheim",
+      "label": "TSG Hoffenheim",
+      "leagueId": "bundesliga",
+      "codes": ["tsg-1899-hoffenheim"],
+      "nameKeys": ["tsg hoffenheim", "1899 hoffenheim", "hoffenheim"]
+    }
+  ]
+}

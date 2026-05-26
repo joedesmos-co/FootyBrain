@@ -58,8 +58,8 @@
       "id": "bundesliga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/bundesliga.json",
-      "playerCount": 265,
-      "teamCount": 10
+      "playerCount": 494,
+      "teamCount": 18
     },
     {
       "id": "serie-a",
