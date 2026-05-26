@@ -4,57 +4,22 @@
  */
 
 import {
-  COUNTRY_SESSION_POOL_CAP,
-  INTERNATIONAL_PER_NATION_CAP,
-  INTERNATIONAL_UNION_POOL_CAP,
   WORLD_CUP_NATIONAL_TEAM_IDS,
   WORLD_CUP_QUIZ_COLLECTION_IDS,
   WORLD_CUP_QUIZ_PREP_PARAM,
 } from '../data/worldCupQuizConfig';
 import { getCollectionById } from '../data/collectionsData';
 import {
-  getNationalTeamById,
-  getNationalTeamQuizReadyCount,
-  getQuizEligiblePlayersForNationalTeam,
-} from '../data/nationalTeamData';
-import { isQuizEligiblePlayer } from './quizPlayerRules';
+  getCountryQuizPoolMeta,
+  getCountryQuizSessionPool,
+  getInternationalQuizSessionPool,
+} from './nationalQuizPools';
 
-/** Matches `QUIZ_MIN_SESSION_POOL` in quizSession.js — avoid circular import. */
-const QUIZ_MIN_SESSION_POOL = 3;
-
-/**
- * @typedef {{
- *   nationalTeamId: string,
- *   displayName: string,
- *   quizReadyCount: number,
- *   sessionCap: number,
- *   isViable: boolean,
- * }} CountryQuizPoolMeta
- */
-
-function capSessionPool(eligiblePlayers, cap) {
-  return eligiblePlayers.slice(0, cap);
-}
-
-/**
- * @param {string} nationalTeamId
- * @returns {CountryQuizPoolMeta | null}
- */
-export function getCountryQuizPoolMeta(nationalTeamId) {
-  const nationalTeam = getNationalTeamById(nationalTeamId);
-  if (!nationalTeam) return null;
-
-  const quizReadyCount = getNationalTeamQuizReadyCount(nationalTeamId);
-  const sessionCap = Math.min(quizReadyCount, COUNTRY_SESSION_POOL_CAP);
-
-  return {
-    nationalTeamId,
-    displayName: nationalTeam.displayName,
-    quizReadyCount,
-    sessionCap,
-    isViable: quizReadyCount >= QUIZ_MIN_SESSION_POOL,
-  };
-}
+export {
+  getCountryQuizPoolMeta,
+  getCountryQuizSessionPool,
+  getInternationalQuizSessionPool,
+};
 
 /** Metadata for featured World Cup nations (viable flag + counts). */
 export function getWorldCupCountryQuizPoolMetas() {
@@ -65,41 +30,7 @@ export function getViableWorldCupCountryQuizPoolMetas() {
   return getWorldCupCountryQuizPoolMetas().filter((meta) => meta.isViable);
 }
 
-/**
- * Curated country session pool — quiz-ready only, capped by importance order.
- * @param {string} nationalTeamId
- */
-export function getCountryQuizSessionPool(nationalTeamId) {
-  const eligible = getQuizEligiblePlayersForNationalTeam(nationalTeamId);
-  return capSessionPool(eligible, COUNTRY_SESSION_POOL_CAP);
-}
-
-/**
- * International-only union across featured nations (deduped, capped per nation + total).
- */
-export function getInternationalQuizSessionPool() {
-  const byPlayerId = new Map();
-
-  for (const nationalTeamId of WORLD_CUP_NATIONAL_TEAM_IDS) {
-    const meta = getCountryQuizPoolMeta(nationalTeamId);
-    if (!meta?.isViable) continue;
-
-    const slice = getCountryQuizSessionPool(nationalTeamId).slice(0, INTERNATIONAL_PER_NATION_CAP);
-    for (const player of slice) {
-      if (isQuizEligiblePlayer(player)) {
-        byPlayerId.set(player.id, player);
-      }
-    }
-  }
-
-  return [...byPlayerId.values()]
-    .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
-    .slice(0, INTERNATIONAL_UNION_POOL_CAP);
-}
-
-export function isWorldCupQuizPrepParam(value) {
-  return value === WORLD_CUP_QUIZ_PREP_PARAM || value === '1' || value === 'true';
-}
+export { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
 
 export function isWorldCupQuizCollectionId(collectionId) {
   return WORLD_CUP_QUIZ_COLLECTION_IDS.includes(collectionId);

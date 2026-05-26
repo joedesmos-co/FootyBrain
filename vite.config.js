@@ -14,7 +14,8 @@ export default defineConfig({
           if (
             id.includes('/src/data/contentManifest') ||
             id.includes('/src/data/leagueManifest') ||
-            id.includes('/src/data/datasetMeta')
+            id.includes('/src/data/datasetMeta') ||
+            id.includes('/src/data/worldCupQuizConstants')
           ) {
             return 'content-manifest';
           }

@@ -5,16 +5,16 @@ import Home from './components/Home';
 import NotFoundPage from './components/NotFoundPage';
 import PageFallback from './components/PageFallback';
 import { DATASET_META } from './data/datasetMeta';
-import BrowseDatabase from './components/BrowseDatabase';
-import PlayerProfile from './components/PlayerProfile';
-import TeamProfile from './components/TeamProfile';
-import LeagueProfile from './components/LeagueProfile';
-import TeamLearning from './components/TeamLearning';
-import QuizMode from './components/QuizMode';
-import SavedPage from './components/SavedPage';
-import ProgressPage from './components/ProgressPage';
-import DailyChallenge from './components/DailyChallenge';
 
+const BrowseDatabase = lazy(() => import('./components/BrowseDatabase'));
+const PlayerProfile = lazy(() => import('./components/PlayerProfile'));
+const TeamProfile = lazy(() => import('./components/TeamProfile'));
+const LeagueProfile = lazy(() => import('./components/LeagueProfile'));
+const TeamLearning = lazy(() => import('./components/TeamLearning'));
+const QuizMode = lazy(() => import('./components/QuizMode'));
+const SavedPage = lazy(() => import('./components/SavedPage'));
+const ProgressPage = lazy(() => import('./components/ProgressPage'));
+const DailyChallenge = lazy(() => import('./components/DailyChallenge'));
 const ComparePage = lazy(() => import('./components/ComparePage'));
 const CollectionsPage = lazy(() => import('./components/CollectionsPage'));
 const CollectionDetailPage = lazy(() => import('./components/CollectionDetailPage'));
@@ -39,7 +39,11 @@ function ScrollToTop() {
 
 function QuizRoute() {
   const { search } = useLocation();
-  return <QuizMode key={search} />;
+  return (
+    <Suspense fallback={<PageFallback label="Loading quiz…" />}>
+      <QuizMode key={search} />
+    </Suspense>
+  );
 }
 
 function withPageSuspense(Component, label) {
@@ -60,7 +64,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/onboarding" element={withPageSuspense(OnboardingPage, 'Loading…')} />
-            <Route path="/browse" element={<BrowseDatabase />} />
+            <Route
+              path="/browse"
+              element={withPageSuspense(BrowseDatabase, 'Loading database…')}
+            />
             <Route path="/compare" element={withPageSuspense(ComparePage, 'Loading compare…')} />
             <Route path="/compare-clubs" element={withPageSuspense(ComparePage, 'Loading compare…')} />
             <Route
@@ -79,14 +86,29 @@ export default function App() {
               path="/learning-paths/:pathId"
               element={withPageSuspense(LearningPathDetailPage, 'Loading path…')}
             />
-            <Route path="/player/:playerId" element={<PlayerProfile />} />
-            <Route path="/team/:teamId" element={<TeamProfile />} />
-            <Route path="/league/:leagueId" element={<LeagueProfile />} />
-            <Route path="/teams" element={<TeamLearning />} />
+            <Route
+              path="/player/:playerId"
+              element={withPageSuspense(PlayerProfile, 'Loading player…')}
+            />
+            <Route
+              path="/team/:teamId"
+              element={withPageSuspense(TeamProfile, 'Loading club…')}
+            />
+            <Route
+              path="/league/:leagueId"
+              element={withPageSuspense(LeagueProfile, 'Loading league…')}
+            />
+            <Route
+              path="/teams"
+              element={withPageSuspense(TeamLearning, 'Loading teams…')}
+            />
             <Route path="/quiz" element={<QuizRoute />} />
-            <Route path="/saved" element={<SavedPage />} />
-            <Route path="/daily" element={<DailyChallenge />} />
-            <Route path="/profile" element={<ProgressPage />} />
+            <Route path="/saved" element={withPageSuspense(SavedPage, 'Loading saved…')} />
+            <Route
+              path="/daily"
+              element={withPageSuspense(DailyChallenge, 'Loading daily challenge…')}
+            />
+            <Route path="/profile" element={withPageSuspense(ProgressPage, 'Loading profile…')} />
             <Route
               path="/national-teams"
               element={withPageSuspense(NationalTeamsPage, 'Loading national teams…')}

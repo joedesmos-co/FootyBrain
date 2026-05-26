@@ -11,11 +11,11 @@ import {
 import { players as allPlayersRegistry } from '../data/sampleData';
 import { formatCountryLabel, formatPosition } from './footballDisplay';
 import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants';
-import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConfig';
+import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants';
 import {
   getCountryQuizSessionPool,
   getInternationalQuizSessionPool,
-} from './worldCupQuizPools';
+} from './nationalQuizPools';
 
 /** Minimum quiz-ready players for a fair club or national-team session. */
 export const QUIZ_MIN_SESSION_POOL = 3;

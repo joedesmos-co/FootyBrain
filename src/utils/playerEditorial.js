@@ -1,4 +1,3 @@
-import { getLiveNationalTeamForPlayer } from '../data/nationalTeamData';
 import { getLeagueName, getTeamName } from '../data/sampleData';
 
 /** Squad listing without full editorial (phase 1 generated rows). */
@@ -31,12 +30,8 @@ export function getDisplayQuickFact(player) {
     const club = getTeamName(player.teamId);
     const league = getLeagueName(player.leagueId);
     const ageBit = typeof player.age === 'number' ? `, age ${player.age}` : '';
-    const liveNt = getLiveNationalTeamForPlayer(player);
-    const countryBit = liveNt
-      ? ` · ${liveNt.displayName}`
-      : String(player.nationalTeam || player.nationality || '').trim()
-        ? ` · ${player.nationalTeam || player.nationality}`
-        : '';
+    const citizenship = String(player.nationalTeam || player.nationality || '').trim();
+    const countryBit = citizenship ? ` · ${citizenship}` : '';
     return `${player.name} (${player.position}${ageBit}) — ${club}, ${league}${countryBit}. Editorial quiz profile pending.`;
   }
   return fact;

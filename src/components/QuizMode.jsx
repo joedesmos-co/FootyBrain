@@ -35,10 +35,8 @@ import {
   QUIZ_TIMED_PRESETS,
   QUIZ_TYPE_OPTIONS,
 } from '../utils/quizSession';
-import {
-  getViableWorldCupCountryQuizPoolMetas,
-  isWorldCupQuizPrepParam,
-} from '../utils/worldCupQuizPools';
+import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
+import { getViableCountryQuizPoolMetas } from '../utils/nationalQuizPools';
 import PlayerAutocomplete from './PlayerAutocomplete';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
@@ -54,7 +52,6 @@ export default function QuizMode() {
   const requestedPoolFocus = searchParams.get('poolFocus') ?? '';
   const worldCupPrep = isWorldCupQuizPrepParam(searchParams.get('worldCup'));
   const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
-  const viableCountryQuizMetas = useMemo(() => getViableWorldCupCountryQuizPoolMetas(), []);
   const requestedTeam = useMemo(
     () => teams.find((team) => team.id === requestedTeamId),
     [requestedTeamId],
@@ -114,6 +111,11 @@ export default function QuizMode() {
   const filterState = useMemo(
     () => ({ poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter }),
     [poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter],
+  );
+
+  const viableCountryQuizMetas = useMemo(
+    () => (poolFocus === 'international' ? getViableCountryQuizPoolMetas() : []),
+    [poolFocus],
   );
 
   const selectedNationalTeam = useMemo(
