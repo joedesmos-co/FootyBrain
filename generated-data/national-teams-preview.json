@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-26T19:39:25.944Z",
+    "generatedAt": "2026-05-26T19:53:07.503Z",
     "purpose": "staging-only — do not merge into sampleData until reviewed",
     "expansionWave": 3,
     "previewSeason": "2025",
@@ -14,7 +14,7 @@
     },
     "counts": {
       "nationalTeams": 49,
-      "playerLinks": 279,
+      "playerLinks": 326,
       "unmatchedNationalTeamPlayers": 528,
       "warnings": 50
     }
@@ -45,10 +45,10 @@
     "ntParentRowsPriority": 528,
     "ntParentRowsSkippedNonPriority": 1930,
     "clubParentNationalTeamFieldRows": 1237,
-    "clubRegistryPlayers": 2298,
+    "clubRegistryPlayers": 2599,
     "ntSquadLinkRatePercent": 0,
     "playerLinksFromNtSquad": 0,
-    "playerLinksFromNationalTeamField": 279
+    "playerLinksFromNationalTeamField": 326
   },
   "nationalTeams": [
     {
@@ -69,9 +69,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 30,
-      "playerLinksCount": 15,
+      "playerLinksCount": 16,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 15,
+      "playerLinksFromNationalTeamField": 16,
       "unmatchedCount": 0
     },
     {
@@ -92,9 +92,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 51,
-      "playerLinksCount": 20,
+      "playerLinksCount": 22,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 20,
+      "playerLinksFromNationalTeamField": 22,
       "unmatchedCount": 0
     },
     {
@@ -115,9 +115,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 49,
-      "playerLinksCount": 17,
+      "playerLinksCount": 19,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 17,
+      "playerLinksFromNationalTeamField": 19,
       "unmatchedCount": 0
     },
     {
@@ -138,9 +138,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 52,
-      "playerLinksCount": 27,
+      "playerLinksCount": 29,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 27,
+      "playerLinksFromNationalTeamField": 29,
       "unmatchedCount": 0
     },
     {
@@ -161,9 +161,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 23,
-      "playerLinksCount": 6,
+      "playerLinksCount": 8,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 6,
+      "playerLinksFromNationalTeamField": 8,
       "unmatchedCount": 0
     },
     {
@@ -207,9 +207,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 2,
       "tmNationalTeamFieldCount": 38,
-      "playerLinksCount": 3,
+      "playerLinksCount": 5,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 3,
+      "playerLinksFromNationalTeamField": 5,
       "unmatchedCount": 2
     },
     {
@@ -230,9 +230,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 35,
-      "playerLinksCount": 18,
+      "playerLinksCount": 22,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 18,
+      "playerLinksFromNationalTeamField": 22,
       "unmatchedCount": 0
     },
     {
@@ -258,9 +258,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 42,
-      "playerLinksCount": 19,
+      "playerLinksCount": 21,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 19,
+      "playerLinksFromNationalTeamField": 21,
       "unmatchedCount": 0
     },
     {
@@ -327,9 +327,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 2,
       "tmNationalTeamFieldCount": 24,
-      "playerLinksCount": 1,
+      "playerLinksCount": 2,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 1,
+      "playerLinksFromNationalTeamField": 2,
       "unmatchedCount": 2
     },
     {
@@ -350,9 +350,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 4,
       "tmNationalTeamFieldCount": 39,
-      "playerLinksCount": 14,
+      "playerLinksCount": 15,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 14,
+      "playerLinksFromNationalTeamField": 15,
       "unmatchedCount": 4
     },
     {
@@ -373,9 +373,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 5,
       "tmNationalTeamFieldCount": 44,
-      "playerLinksCount": 2,
+      "playerLinksCount": 3,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 2,
+      "playerLinksFromNationalTeamField": 3,
       "unmatchedCount": 5
     },
     {
@@ -428,9 +428,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 6,
       "tmNationalTeamFieldCount": 50,
-      "playerLinksCount": 10,
+      "playerLinksCount": 14,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 10,
+      "playerLinksFromNationalTeamField": 14,
       "unmatchedCount": 6
     },
     {
@@ -478,9 +478,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 10,
       "tmNationalTeamFieldCount": 13,
-      "playerLinksCount": 0,
+      "playerLinksCount": 2,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 0,
+      "playerLinksFromNationalTeamField": 2,
       "unmatchedCount": 10
     },
     {
@@ -501,9 +501,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 1,
       "tmNationalTeamFieldCount": 23,
-      "playerLinksCount": 4,
+      "playerLinksCount": 6,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 4,
+      "playerLinksFromNationalTeamField": 6,
       "unmatchedCount": 1
     },
     {
@@ -570,9 +570,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 18,
       "tmNationalTeamFieldCount": 13,
-      "playerLinksCount": 2,
+      "playerLinksCount": 3,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 2,
+      "playerLinksFromNationalTeamField": 3,
       "unmatchedCount": 18
     },
     {
@@ -666,9 +666,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 3,
       "tmNationalTeamFieldCount": 34,
-      "playerLinksCount": 0,
+      "playerLinksCount": 1,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 0,
+      "playerLinksFromNationalTeamField": 1,
       "unmatchedCount": 3
     },
     {
@@ -689,9 +689,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 7,
       "tmNationalTeamFieldCount": 28,
-      "playerLinksCount": 7,
+      "playerLinksCount": 9,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 7,
+      "playerLinksFromNationalTeamField": 9,
       "unmatchedCount": 7
     },
     {
@@ -712,9 +712,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 3,
       "tmNationalTeamFieldCount": 38,
-      "playerLinksCount": 5,
+      "playerLinksCount": 9,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 5,
+      "playerLinksFromNationalTeamField": 9,
       "unmatchedCount": 3
     },
     {
@@ -808,9 +808,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 20,
       "tmNationalTeamFieldCount": 3,
-      "playerLinksCount": 1,
+      "playerLinksCount": 2,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 1,
+      "playerLinksFromNationalTeamField": 2,
       "unmatchedCount": 20
     },
     {
@@ -858,9 +858,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 28,
       "tmNationalTeamFieldCount": 9,
-      "playerLinksCount": 3,
+      "playerLinksCount": 4,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 3,
+      "playerLinksFromNationalTeamField": 4,
       "unmatchedCount": 28
     },
     {
@@ -904,9 +904,9 @@
       "tmEntityMissing": true,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 39,
-      "playerLinksCount": 4,
+      "playerLinksCount": 5,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 4,
+      "playerLinksFromNationalTeamField": 5,
       "unmatchedCount": 0
     },
     {
@@ -1001,9 +1001,9 @@
       "tmEntityMissing": true,
       "squadScrapedCount": 0,
       "tmNationalTeamFieldCount": 39,
-      "playerLinksCount": 4,
+      "playerLinksCount": 6,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 4,
+      "playerLinksFromNationalTeamField": 6,
       "unmatchedCount": 0
     },
     {
@@ -1143,9 +1143,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 3,
       "tmNationalTeamFieldCount": 18,
-      "playerLinksCount": 6,
+      "playerLinksCount": 10,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 6,
+      "playerLinksFromNationalTeamField": 10,
       "unmatchedCount": 3
     },
     {
@@ -1166,9 +1166,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 1,
       "tmNationalTeamFieldCount": 11,
-      "playerLinksCount": 3,
+      "playerLinksCount": 4,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 3,
+      "playerLinksFromNationalTeamField": 4,
       "unmatchedCount": 1
     },
     {
@@ -1189,9 +1189,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 2,
       "tmNationalTeamFieldCount": 5,
-      "playerLinksCount": 1,
+      "playerLinksCount": 2,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 1,
+      "playerLinksFromNationalTeamField": 2,
       "unmatchedCount": 2
     },
     {
@@ -1302,6 +1302,23 @@
       "clubTeamId": "lens",
       "clubLeagueId": "ligue-1",
       "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "italy",
+      "playerId": "tm-286047",
+      "sourceId": "286047",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Guglielmo Vicario",
+      "tmDisplayName": "Guglielmo Vicario",
+      "position": "Goalkeeper",
+      "citizenship": "Italy",
+      "tmNationalTeamCountry": "Italy",
+      "internationalCaps": 5,
+      "internationalGoals": 0,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
+      "quizEligible": false,
       "missingFields": []
     },
     {
@@ -1543,6 +1560,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "senegal",
+      "playerId": "tm-568696",
+      "sourceId": "568696",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Cheikh Sabaly",
+      "tmDisplayName": "Cheikh Tidiane Sabaly",
+      "position": "Attack - Left Winger",
+      "citizenship": "Senegal",
+      "tmNationalTeamCountry": "Senegal",
+      "internationalCaps": 12,
+      "internationalGoals": 1,
+      "clubTeamId": "vancouver-whitecaps",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "italy",
       "playerId": "tm-173859",
       "sourceId": "173859",
@@ -1591,6 +1625,23 @@
       "clubTeamId": "real-madrid",
       "clubLeagueId": "la-liga",
       "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "uruguay",
+      "playerId": "tm-492319",
+      "sourceId": "492319",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Franco Israel",
+      "tmDisplayName": "Franco Israel Wibmer",
+      "position": "Goalkeeper",
+      "citizenship": "Uruguay",
+      "tmNationalTeamCountry": "Uruguay",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "clubTeamId": "torino",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
       "missingFields": []
     },
     {
@@ -1730,6 +1781,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "poland",
+      "playerId": "tm-863204",
+      "sourceId": "863204",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Maxi Oyedele",
+      "tmDisplayName": "Maximillian Rotimi Oyedele",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Poland",
+      "tmNationalTeamCountry": "Poland",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "belgium",
       "playerId": "tm-179184",
       "sourceId": "179184",
@@ -1832,6 +1900,40 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "netherlands",
+      "playerId": "tm-646991",
+      "sourceId": "646991",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Robin Roefs",
+      "tmDisplayName": "Robin Roefs",
+      "position": "Goalkeeper",
+      "citizenship": "Netherlands",
+      "tmNationalTeamCountry": "Netherlands",
+      "internationalCaps": 0,
+      "internationalGoals": 0,
+      "clubTeamId": "sunderland",
+      "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "canada",
+      "playerId": "tm-287578",
+      "sourceId": "287578",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Sam Adekugbe",
+      "tmDisplayName": "Samuel Ayomide Adekugbe",
+      "position": "Defender - Left-Back",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": "Canada",
+      "internationalCaps": 44,
+      "internationalGoals": 1,
+      "clubTeamId": "vancouver-whitecaps",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "germany",
       "playerId": "tm-159471",
       "sourceId": "159471",
@@ -1896,6 +1998,23 @@
       "internationalGoals": 1,
       "clubTeamId": "bournemouth",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "republic-of-ireland",
+      "playerId": "tm-621993",
+      "sourceId": "621993",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Andrew Omobamidele",
+      "tmDisplayName": "Andrew Abiola Omobamidele",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Ireland",
+      "tmNationalTeamCountry": "Ireland",
+      "internationalCaps": 10,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
       "quizEligible": false,
       "missingFields": []
     },
@@ -2036,6 +2155,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "sweden",
+      "playerId": "tm-605426",
+      "sourceId": "605426",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Melker Ellborg",
+      "tmDisplayName": "Melker Åke Ellborg",
+      "position": "Goalkeeper",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "internationalCaps": 0,
+      "internationalGoals": 0,
+      "clubTeamId": "sunderland",
+      "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "england",
       "playerId": "tm-429014",
       "sourceId": "429014",
@@ -2104,6 +2240,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "switzerland",
+      "playerId": "tm-192616",
+      "sourceId": "192616",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Ulisses Garcia",
+      "tmDisplayName": "Ulisses Alexandre Garcia Lopes",
+      "position": "Defender - Left-Back",
+      "citizenship": "Switzerland",
+      "tmNationalTeamCountry": "Switzerland",
+      "internationalCaps": 11,
+      "internationalGoals": 0,
+      "clubTeamId": "sassuolo",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "cote-divoire",
       "playerId": "tm-145988",
       "sourceId": "145988",
@@ -2155,6 +2308,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "italy",
+      "playerId": "tm-956588",
+      "sourceId": "956588",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Alessandro Nunziante",
+      "tmDisplayName": "Alessandro Nunziante",
+      "position": "Goalkeeper",
+      "citizenship": "Italy",
+      "tmNationalTeamCountry": "Italy",
+      "internationalCaps": 4,
+      "internationalGoals": 0,
+      "clubTeamId": "udinese",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "germany",
       "playerId": "tm-344069",
       "sourceId": "344069",
@@ -2168,6 +2338,23 @@
       "internationalGoals": 0,
       "clubTeamId": "leeds",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "united-states",
+      "playerId": "tm-562555",
+      "sourceId": "562555",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Brian White",
+      "tmDisplayName": "Brian Michael White",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "United States",
+      "tmNationalTeamCountry": "United States",
+      "internationalCaps": 8,
+      "internationalGoals": 1,
+      "clubTeamId": "vancouver-whitecaps",
+      "clubLeagueId": "mls",
       "quizEligible": false,
       "missingFields": []
     },
@@ -2186,6 +2373,23 @@
       "clubTeamId": "ac-milan",
       "clubLeagueId": "serie-a",
       "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "italy",
+      "playerId": "tm-556385",
+      "sourceId": "556385",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Destiny Udogie",
+      "tmDisplayName": "Iyenoma Destiny Udogie",
+      "position": "Defender - Left-Back",
+      "citizenship": "Italy",
+      "tmNationalTeamCountry": "Italy",
+      "internationalCaps": 12,
+      "internationalGoals": 0,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
+      "quizEligible": false,
       "missingFields": []
     },
     {
@@ -2270,6 +2474,23 @@
       "internationalGoals": 1,
       "clubTeamId": "nottingham-forest",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "france",
+      "playerId": "tm-786436",
+      "sourceId": "786436",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Ismaël Doukouré",
+      "tmDisplayName": "Ismaël Doukouré",
+      "position": "Defender - Centre-Back",
+      "citizenship": "France",
+      "tmNationalTeamCountry": "France",
+      "internationalCaps": 13,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
       "quizEligible": false,
       "missingFields": []
     },
@@ -2490,6 +2711,23 @@
       "internationalCaps": 3,
       "internationalGoals": 0,
       "clubTeamId": "aston-villa",
+      "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "wales",
+      "playerId": "tm-192765",
+      "sourceId": "192765",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Ben Davies",
+      "tmDisplayName": "Benjamin Thomas Davies",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Wales",
+      "tmNationalTeamCountry": "Wales",
+      "internationalCaps": 100,
+      "internationalGoals": 3,
+      "clubTeamId": "tottenham",
       "clubLeagueId": "premier-league",
       "quizEligible": false,
       "missingFields": []
@@ -2733,6 +2971,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "spain",
+      "playerId": "tm-733576",
+      "sourceId": "733576",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Alberto Moleiro",
+      "tmDisplayName": "Alberto Moleiro González",
+      "position": "Attack - Left Winger",
+      "citizenship": "Spain",
+      "tmNationalTeamCountry": "Spain",
+      "internationalCaps": 14,
+      "internationalGoals": 0,
+      "clubTeamId": "villarreal",
+      "clubLeagueId": "la-liga",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "brazil",
       "playerId": "tm-648020",
       "sourceId": "648020",
@@ -2784,6 +3039,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "italy",
+      "playerId": "tm-622380",
+      "sourceId": "622380",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Cesare Casadei",
+      "tmDisplayName": "Cesare Casadei",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Italy",
+      "tmNationalTeamCountry": "Italy",
+      "internationalCaps": 0,
+      "internationalGoals": 0,
+      "clubTeamId": "torino",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "wales",
       "playerId": "tm-214666",
       "sourceId": "214666",
@@ -2814,6 +3086,23 @@
       "internationalGoals": 2,
       "clubTeamId": "real-salt-lake",
       "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "netherlands",
+      "playerId": "tm-559328",
+      "sourceId": "559328",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Emmanuel Emegha",
+      "tmDisplayName": "Emmanuel Esseh Emegha",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Netherlands",
+      "tmNationalTeamCountry": "Netherlands",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
       "quizEligible": false,
       "missingFields": []
     },
@@ -2882,6 +3171,23 @@
       "internationalGoals": 6,
       "clubTeamId": "lafc",
       "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "portugal",
+      "playerId": "tm-257455",
+      "sourceId": "257455",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "João Palhinha",
+      "tmDisplayName": "João Maria Lobo Alves Palhinha Gonçalves",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Portugal",
+      "tmNationalTeamCountry": "Portugal",
+      "internationalCaps": 37,
+      "internationalGoals": 2,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
       "quizEligible": false,
       "missingFields": []
     },
@@ -2988,6 +3294,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "cameroon",
+      "playerId": "tm-436332",
+      "sourceId": "436332",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Nouhou",
+      "tmDisplayName": "Nouhou",
+      "position": "Defender - Left-Back",
+      "citizenship": "Cameroon",
+      "tmNationalTeamCountry": "Cameroon",
+      "internationalCaps": 48,
+      "internationalGoals": 1,
+      "clubTeamId": "seattle-sounders",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "nigeria",
       "playerId": "tm-236490",
       "sourceId": "236490",
@@ -3069,6 +3392,23 @@
       "internationalGoals": 10,
       "clubTeamId": "fulham",
       "clubLeagueId": "premier-league",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "paraguay",
+      "playerId": "tm-323872",
+      "sourceId": "323872",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Andrés Cubas",
+      "tmDisplayName": "Adrián Andrés Cubas",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Paraguay",
+      "tmNationalTeamCountry": "Paraguay",
+      "internationalCaps": 32,
+      "internationalGoals": 0,
+      "clubTeamId": "vancouver-whitecaps",
+      "clubLeagueId": "mls",
       "quizEligible": true,
       "missingFields": []
     },
@@ -3172,6 +3512,23 @@
       "clubTeamId": "eintracht-frankfurt",
       "clubLeagueId": "bundesliga",
       "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "united-states",
+      "playerId": "tm-393325",
+      "sourceId": "393325",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Josh Sargent",
+      "tmDisplayName": "Joshua Thomas Sargent",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "United States",
+      "tmNationalTeamCountry": "United States",
+      "internationalCaps": 29,
+      "internationalGoals": 5,
+      "clubTeamId": "toronto-fc",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
       "missingFields": []
     },
     {
@@ -3358,6 +3715,23 @@
       "internationalGoals": 2,
       "clubTeamId": "bournemouth",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "cote-divoire",
+      "playerId": "tm-375877",
+      "sourceId": "375877",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Vakoun Bayo",
+      "tmDisplayName": "Vakoun Issouf Bayo",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Cote d'Ivoire",
+      "tmNationalTeamCountry": "Cote d'Ivoire",
+      "internationalCaps": 12,
+      "internationalGoals": 3,
+      "clubTeamId": "udinese",
+      "clubLeagueId": "serie-a",
       "quizEligible": false,
       "missingFields": []
     },
@@ -3719,6 +4093,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "united-states",
+      "playerId": "tm-245337",
+      "sourceId": "245337",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Walker Zimmerman",
+      "tmDisplayName": "Walker Dwain Zimmerman",
+      "position": "Defender - Centre-Back",
+      "citizenship": "United States",
+      "tmNationalTeamCountry": "United States",
+      "internationalCaps": 46,
+      "internationalGoals": 3,
+      "clubTeamId": "toronto-fc",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "cote-divoire",
       "playerId": "tm-142310",
       "sourceId": "142310",
@@ -3733,6 +4124,23 @@
       "clubTeamId": "nottingham-forest",
       "clubLeagueId": "premier-league",
       "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "brazil",
+      "playerId": "tm-800176",
+      "sourceId": "800176",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "André",
+      "tmDisplayName": "André",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Brazil",
+      "tmNationalTeamCountry": "Brazil",
+      "internationalCaps": 13,
+      "internationalGoals": 0,
+      "clubTeamId": "wolves",
+      "clubLeagueId": "premier-league",
+      "quizEligible": true,
       "missingFields": []
     },
     {
@@ -3940,6 +4348,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "canada",
+      "playerId": "tm-1381448",
+      "sourceId": "1381448",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Malik Henry",
+      "tmDisplayName": "Malik Henry",
+      "position": "Midfield - Right Midfield",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": "Canada",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "clubTeamId": "toronto-fc",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "poland",
       "playerId": "tm-208172",
       "sourceId": "208172",
@@ -3953,6 +4378,23 @@
       "internationalGoals": 0,
       "clubTeamId": "cagliari",
       "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "ecuador",
+      "playerId": "tm-903611",
+      "sourceId": "903611",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Nilson Angulo",
+      "tmDisplayName": "Nilson David Angulo Ramírez",
+      "position": "Attack - Left Winger",
+      "citizenship": "Ecuador",
+      "tmNationalTeamCountry": "Ecuador",
+      "internationalCaps": 12,
+      "internationalGoals": 1,
+      "clubTeamId": "sunderland",
+      "clubLeagueId": "premier-league",
       "quizEligible": false,
       "missingFields": []
     },
@@ -3991,6 +4433,40 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "france",
+      "playerId": "tm-487969",
+      "sourceId": "487969",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Randal Kolo Muani",
+      "tmDisplayName": "Randal Kolo Muani",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "France",
+      "tmNationalTeamCountry": "France",
+      "internationalCaps": 32,
+      "internationalGoals": 9,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "brazil",
+      "playerId": "tm-378710",
+      "sourceId": "378710",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Richarlison",
+      "tmDisplayName": "Richarlison",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Brazil",
+      "tmNationalTeamCountry": "Brazil",
+      "internationalCaps": 54,
+      "internationalGoals": 20,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "germany",
       "playerId": "tm-327251",
       "sourceId": "327251",
@@ -4021,6 +4497,23 @@
       "internationalGoals": 0,
       "clubTeamId": "flamengo",
       "clubLeagueId": "brasileirao",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "sweden",
+      "playerId": "tm-579928",
+      "sourceId": "579928",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Sebastian Nanasi",
+      "tmDisplayName": "Algot Sebastian Nanasi",
+      "position": "Midfield - Left Midfield",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "internationalCaps": 9,
+      "internationalGoals": 3,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
       "quizEligible": false,
       "missingFields": []
     },
@@ -4073,6 +4566,23 @@
       "clubTeamId": "lens",
       "clubLeagueId": "ligue-1",
       "quizEligible": true,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "poland",
+      "playerId": "tm-267160",
+      "sourceId": "267160",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Adam Buksa",
+      "tmDisplayName": "Adam Buksa",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Poland",
+      "tmNationalTeamCountry": "Poland",
+      "internationalCaps": 25,
+      "internationalGoals": 7,
+      "clubTeamId": "udinese",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
       "missingFields": []
     },
     {
@@ -4229,6 +4739,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "canada",
+      "playerId": "tm-972875",
+      "sourceId": "972875",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Luka Gavran",
+      "tmDisplayName": "Luka Robert Gavran",
+      "position": "Goalkeeper",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": "Canada",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "clubTeamId": "toronto-fc",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "belgium",
       "playerId": "tm-486046",
       "sourceId": "486046",
@@ -4276,6 +4803,23 @@
       "internationalGoals": 2,
       "clubTeamId": "manchester-united",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "portugal",
+      "playerId": "tm-637803",
+      "sourceId": "637803",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Rafael Luís",
+      "tmDisplayName": "Rafael Filipe Gonçalves Soares Luís",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Portugal",
+      "tmNationalTeamCountry": "Portugal",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
       "quizEligible": false,
       "missingFields": []
     },
@@ -4365,6 +4909,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "colombia",
+      "playerId": "tm-474589",
+      "sourceId": "474589",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Carlos Cuesta",
+      "tmDisplayName": "Carlos Eccehomo Cuesta Figueroa",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Colombia",
+      "tmNationalTeamCountry": "Colombia",
+      "internationalCaps": 24,
+      "internationalGoals": 0,
+      "clubTeamId": "vasco-da-gama",
+      "clubLeagueId": "brasileirao",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "united-states",
       "playerId": "tm-999299",
       "sourceId": "999299",
@@ -4412,6 +4973,23 @@
       "internationalGoals": 0,
       "clubTeamId": "bragantino",
       "clubLeagueId": "brasileirao",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "serbia",
+      "playerId": "tm-470794",
+      "sourceId": "470794",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Ivan Ilić",
+      "tmDisplayName": "Иван Илић",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Serbia",
+      "tmNationalTeamCountry": "Serbia",
+      "internationalCaps": 24,
+      "internationalGoals": 0,
+      "clubTeamId": "torino",
+      "clubLeagueId": "serie-a",
       "quizEligible": false,
       "missingFields": []
     },
@@ -4518,6 +5096,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "cote-divoire",
+      "playerId": "tm-992686",
+      "sourceId": "992686",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Martial Godo",
+      "tmDisplayName": "Becket Fabrice-Martial Godo",
+      "position": "Attack - Left Winger",
+      "citizenship": "Cote d'Ivoire",
+      "tmNationalTeamCountry": "Cote d'Ivoire",
+      "internationalCaps": 1,
+      "internationalGoals": 1,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "serbia",
       "playerId": "tm-595650",
       "sourceId": "595650",
@@ -4569,6 +5164,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "spain",
+      "playerId": "tm-662261",
+      "sourceId": "662261",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Rafa Marín",
+      "tmDisplayName": "Rafael Marín Zamora",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Spain",
+      "tmNationalTeamCountry": "Spain",
+      "internationalCaps": 12,
+      "internationalGoals": 0,
+      "clubTeamId": "villarreal",
+      "clubLeagueId": "la-liga",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "netherlands",
       "playerId": "tm-800995",
       "sourceId": "800995",
@@ -4582,6 +5194,23 @@
       "internationalGoals": 0,
       "clubTeamId": "az-alkmaar",
       "clubLeagueId": "eredivisie",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "uruguay",
+      "playerId": "tm-354362",
+      "sourceId": "354362",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Rodrigo Bentancur",
+      "tmDisplayName": "Rodrigo Bentancur Colmán",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Uruguay",
+      "tmNationalTeamCountry": "Uruguay",
+      "internationalCaps": 73,
+      "internationalGoals": 3,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
       "quizEligible": false,
       "missingFields": []
     },
@@ -4649,6 +5278,23 @@
       "internationalCaps": 2,
       "internationalGoals": 0,
       "clubTeamId": "columbus-crew",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "canada",
+      "playerId": "tm-531835",
+      "sourceId": "531835",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Zorhan Bassong",
+      "tmDisplayName": "Zorhan Ludovic Bassong",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": "Canada",
+      "internationalCaps": 8,
+      "internationalGoals": 0,
+      "clubTeamId": "sporting-kansas-city",
       "clubLeagueId": "mls",
       "quizEligible": false,
       "missingFields": []
@@ -4756,6 +5402,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "poland",
+      "playerId": "tm-377243",
+      "sourceId": "377243",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Jakub Piotrowski",
+      "tmDisplayName": "Jakub Piotrowski",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Poland",
+      "tmNationalTeamCountry": "Poland",
+      "internationalCaps": 13,
+      "internationalGoals": 2,
+      "clubTeamId": "udinese",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "brazil",
       "playerId": "tm-879217",
       "sourceId": "879217",
@@ -4837,6 +5500,23 @@
       "internationalGoals": 3,
       "clubTeamId": "rennes",
       "clubLeagueId": "ligue-1",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "poland",
+      "playerId": "tm-345458",
+      "sourceId": "345458",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Sebastian Walukiewicz",
+      "tmDisplayName": "Sebastian Wiktor Walukiewicz",
+      "position": "Defender - Right-Back",
+      "citizenship": "Poland",
+      "tmNationalTeamCountry": "Poland",
+      "internationalCaps": 10,
+      "internationalGoals": 1,
+      "clubTeamId": "sassuolo",
+      "clubLeagueId": "serie-a",
       "quizEligible": false,
       "missingFields": []
     },
@@ -5093,6 +5773,23 @@
       "clubTeamId": "como",
       "clubLeagueId": "serie-a",
       "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "argentina",
+      "playerId": "tm-480763",
+      "sourceId": "480763",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Juan Foyth",
+      "tmDisplayName": "Juan Marcos Foyth",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Argentina",
+      "tmNationalTeamCountry": "Argentina",
+      "internationalCaps": 22,
+      "internationalGoals": 0,
+      "clubTeamId": "villarreal",
+      "clubLeagueId": "la-liga",
+      "quizEligible": true,
       "missingFields": []
     },
     {
@@ -5385,6 +6082,23 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "argentina",
+      "playerId": "tm-1064871",
+      "sourceId": "1064871",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Joaquín Panichelli",
+      "tmDisplayName": "Joaquín Panichelli",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Argentina",
+      "tmNationalTeamCountry": "Argentina",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "clubTeamId": "strasbourg",
+      "clubLeagueId": "ligue-1",
+      "quizEligible": true,
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "netherlands",
       "playerId": "tm-923667",
       "sourceId": "923667",
@@ -5432,6 +6146,40 @@
       "internationalGoals": 0,
       "clubTeamId": "bournemouth",
       "clubLeagueId": "premier-league",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "norway",
+      "playerId": "tm-663424",
+      "sourceId": "663424",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Lasse Berg Johnsen",
+      "tmDisplayName": "Lasse Berg Johnsen",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Norway",
+      "tmNationalTeamCountry": "Norway",
+      "internationalCaps": 3,
+      "internationalGoals": 0,
+      "clubTeamId": "sporting-kansas-city",
+      "clubLeagueId": "mls",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "colombia",
+      "playerId": "tm-663319",
+      "sourceId": "663319",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Marino Hinestroza",
+      "tmDisplayName": "Marino Hinestroza Angulo",
+      "position": "Attack - Right Winger",
+      "citizenship": "Colombia",
+      "tmNationalTeamCountry": "Colombia",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "clubTeamId": "vasco-da-gama",
+      "clubLeagueId": "brasileirao",
       "quizEligible": false,
       "missingFields": []
     },
@@ -5586,6 +6334,23 @@
       "clubTeamId": "nice",
       "clubLeagueId": "ligue-1",
       "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "england",
+      "playerId": "tm-488362",
+      "sourceId": "488362",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Conor Gallagher",
+      "tmDisplayName": "Conor Gallagher",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "England",
+      "tmNationalTeamCountry": "England",
+      "internationalCaps": 22,
+      "internationalGoals": 1,
+      "clubTeamId": "tottenham",
+      "clubLeagueId": "premier-league",
+      "quizEligible": true,
       "missingFields": []
     },
     {
@@ -5811,6 +6576,23 @@
     },
     {
       "nationalTeamId": "denmark",
+      "playerId": "tm-698259",
+      "sourceId": "698259",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Thomas Kristensen",
+      "tmDisplayName": "Thomas Thiesson Kristensen",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Denmark",
+      "tmNationalTeamCountry": "Denmark",
+      "internationalCaps": 18,
+      "internationalGoals": 1,
+      "clubTeamId": "udinese",
+      "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "denmark",
       "playerId": "tm-196948",
       "sourceId": "196948",
       "linkSource": "tm_player_national_team_country",
@@ -5959,6 +6741,23 @@
       "internationalGoals": 0,
       "clubTeamId": "nice",
       "clubLeagueId": "ligue-1",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "united-states",
+      "playerId": "tm-562383",
+      "sourceId": "562383",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Tristan Blackmon",
+      "tmDisplayName": "Tristan Michael Blackmon",
+      "position": "Defender - Centre-Back",
+      "citizenship": "United States",
+      "tmNationalTeamCountry": "United States",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "clubTeamId": "vancouver-whitecaps",
+      "clubLeagueId": "mls",
       "quizEligible": false,
       "missingFields": []
     }

@@ -76,6 +76,10 @@ At **5k+ players**, expect **30–50 MB** heap growth in mobile WebViews without
 
 **Mitigations in place:** route lazy loading, search lazy modal, daily nav hook without full challenge gen, browse caps, `content-visibility` on grids.
 
+### Merge cap policy (2026-05-26)
+
+Phase 6 Serie A merge exposed a bug: `merge-phase1-sample-data.js` trimmed `generatedBase` with `slice(0, cap)`, dropping **approved** generated-draft / `quizEligible` rows when the pool grew. **Fix:** `scripts/lib/expansion-player-cap.js` — inject draft-required TM rows, trim browse-only rows first; `EXPANSION_LIMITS.playersMax` raised **2350 → 2600**. App-ready preview and live merge share the same priority order.
+
 ---
 
 ## 2. What was improved

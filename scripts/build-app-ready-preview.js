@@ -17,6 +17,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { players as samplePlayers } from '../src/data/sampleData.js';
 import { curatePhase1PreviewPlayers, EXPANSION_LIMITS } from './phase1-curation.js';
+import {
+  injectRequiredTmPlayers,
+  loadGeneratedDraftSourceIds,
+  trimCuratedTmToCap,
+} from './lib/expansion-player-cap.js';
 import { nullImageFields, validatePlayerImageFields } from './player-image-rules.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -215,6 +220,7 @@ function main() {
   const generatedOverlay = loadOptionalJson(GENERATED_OVERLAY_PATH, { players: [] });
   const sampleById = new Map(samplePlayers.map((p) => [p.id, p]));
   const tmBySourceId = new Map(preview.players.map((p) => [String(p.sourceId), p]));
+  const requiredDraftSourceIds = loadGeneratedDraftSourceIds(GENERATED_OVERLAY_PATH);
   const generatedOverlayBySourceId = new Map(
     (generatedOverlay.players ?? []).map((p) => [String(p.sourceId), p]),
   );
@@ -253,31 +259,20 @@ function main() {
     ageFromDateOfBirth,
   );
 
-  // Ensure all drafted/approved generated overlay players are present in the app-ready preview,
-  // even if curation filters would otherwise exclude them.
-  const requiredSourceIds = new Set(generatedOverlayBySourceId.keys());
-  const curatedSourceIds = new Set(curatedTm.map((p) => String(p.sourceId)));
-  for (const sourceId of requiredSourceIds) {
-    if (curatedSourceIds.has(String(sourceId))) continue;
-    if (usedSourceIds.has(String(sourceId))) continue;
-    const tm = tmBySourceId.get(String(sourceId));
-    if (tm) {
-      curatedTm.unshift(tm);
-      curatedSourceIds.add(String(sourceId));
-    }
-  }
+  curatedTm = injectRequiredTmPlayers(curatedTm, {
+    requiredSourceIds: requiredDraftSourceIds,
+    tmBySourceId,
+    reservedSourceIds: usedSourceIds,
+  });
 
-  if (curatedTm.length > maxSquadRows) {
-    // Preserve any explicitly drafted/approved generated overlay players even when trimming.
-    const required = [];
-    const rest = [];
-    for (const row of curatedTm) {
-      if (requiredSourceIds.has(String(row.sourceId))) required.push(row);
-      else rest.push(row);
-    }
-    curatedTm = [...required, ...rest].slice(0, maxSquadRows);
+  const { curatedTm: cappedCuratedTm, trimmedBrowse } = trimCuratedTmToCap(curatedTm, {
+    maxSquadRows,
+    requiredSourceIds: requiredDraftSourceIds,
+  });
+  curatedTm = cappedCuratedTm;
+  if (trimmedBrowse > 0) {
     warnings.push(
-      `Trimmed curated squad to ${maxSquadRows} rows (controlled expansion total cap ${EXPANSION_LIMITS.playersMax}).`,
+      `Trimmed ${trimmedBrowse} browse-only TM rows (controlled expansion total cap ${EXPANSION_LIMITS.playersMax}; draft-approved preserved).`,
     );
   }
   if (mvpPlayers.length + curatedTm.length < EXPANSION_LIMITS.playersMin) {

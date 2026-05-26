@@ -21,6 +21,12 @@ import {
   buildGeneratedQuickFact,
 } from './generated-player-facts.js';
 import { DATA_PATHS, loadExpansionClubConfigs } from './lib/data-pipeline-paths.js';
+import {
+  injectRequiredTmPlayers,
+  loadGeneratedDraftSourceIds,
+  trimCuratedTmToCap,
+  trimGeneratedBaseToCap,
+} from './lib/expansion-player-cap.js';
 import { checkMergePlayerIntegrity } from './lib/merge-player-integrity.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -319,11 +325,8 @@ function main() {
       .map((p) => String(p.sourceId)),
   );
 
-  const curatedTm = curatePhase1PreviewPlayers(
-    preview.players,
-    reservedSourceIds,
-    ageFromDateOfBirth,
-  );
+  const requiredDraftSourceIds = loadGeneratedDraftSourceIds(DATA_PATHS.draftOverlay);
+  const tmBySourceId = new Map(preview.players.map((p) => [String(p.sourceId), p]));
 
   const appReadyBySource = new Map(
     appReady.players.filter((p) => p.sourceId).map((p) => [String(p.sourceId), p]),
@@ -348,6 +351,28 @@ function main() {
   const reservedPlayerNames = new Set(
     mvpBase.map((p) => (p.name ?? '').trim().toLowerCase()),
   );
+
+  let curatedTm = curatePhase1PreviewPlayers(
+    preview.players,
+    reservedSourceIds,
+    ageFromDateOfBirth,
+  );
+  curatedTm = injectRequiredTmPlayers(curatedTm, {
+    requiredSourceIds: requiredDraftSourceIds,
+    tmBySourceId,
+    reservedSourceIds,
+  });
+  const maxSquadRows = Math.max(0, EXPANSION_LIMITS.playersMax - mvpBase.length);
+  const { curatedTm: cappedCuratedTm, trimmedBrowse: trimmedCuratedBrowse } = trimCuratedTmToCap(
+    curatedTm,
+    { maxSquadRows, requiredSourceIds: requiredDraftSourceIds },
+  );
+  curatedTm = cappedCuratedTm;
+  if (trimmedCuratedBrowse > 0) {
+    console.log(
+      `Trimmed ${trimmedCuratedBrowse} browse-only TM rows before merge (cap ${EXPANSION_LIMITS.playersMax}, draft-required preserved).`,
+    );
+  }
 
   const mvpTeamById = new Map(mvpTeams.map((t) => [t.id, t]));
   const previewTeamById = new Map(
@@ -390,8 +415,17 @@ function main() {
   }
 
   const maxGenerated = Math.max(0, EXPANSION_LIMITS.playersMax - mvpBase.length);
-  const trimmedGenerated =
-    generatedBase.length > maxGenerated ? generatedBase.slice(0, maxGenerated) : generatedBase;
+  const {
+    players: trimmedGenerated,
+    priorityCount,
+    browseCount,
+    trimmedBrowse,
+  } = trimGeneratedBaseToCap(generatedBase, maxGenerated);
+  if (trimmedBrowse > 0) {
+    console.log(
+      `Trimmed ${trimmedBrowse} browse-only generated players (kept ${priorityCount} draft/editorial-approved, ${browseCount} browse).`,
+    );
+  }
 
   const allBasePlayers = [...mvpBase, ...trimmedGenerated];
 
@@ -546,7 +580,7 @@ export function getLeagueName(leagueId) {
   console.log(`Wrote ${path.relative(ROOT, DATASET_META_PATH)}`);
   console.log(`Clubs: ${baseTeams.length}`);
   console.log(
-    `Players: ${allBasePlayers.length} (MVP ${mvpBase.length}, generated ${trimmedGenerated.length}${trimmedGenerated.length < generatedBase.length ? `, trimmed from ${generatedBase.length}` : ''})`,
+    `Players: ${allBasePlayers.length} (MVP ${mvpBase.length}, generated ${trimmedGenerated.length}${trimmedGenerated.length < generatedBase.length ? `, trimmed from ${generatedBase.length} (${priorityCount} editorial-approved kept)` : ''})`,
   );
   console.log(`Quiz-eligible (flag): ${quizEligible}`);
   console.log(
