@@ -4,8 +4,8 @@
 
 export const EXPANSION_LIMITS = {
   playersMin: 880,
-  /** Total players (MVP + generated). Raised 2026-05-26 after Phase 6 merge cap dropped approved quiz rows. */
-  playersMax: 2600,
+  /** Total players (MVP + generated). Raised for Phase 7 Ligue 1 completion (2026-05-26). */
+  playersMax: 2850,
   /** Target 18–25 senior squad rows per club when TM data allows */
   maxPerClub: 22,
   targetPerClub: 20,

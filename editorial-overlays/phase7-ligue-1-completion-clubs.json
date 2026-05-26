@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 7 preview — Ligue 1 completion. Adds the remaining 9 FR1 clubs for inspection-only TM preview build. Do not merge to sampleData until editorial sign-off.",
+  "targetCounts": { "clubsMin": 133, "clubsMax": 135, "playersMin": 2750, "playersMax": 2850 },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "aj-auxerre",
+      "label": "Auxerre",
+      "leagueId": "ligue-1",
+      "codes": ["aj-auxerre"],
+      "nameKeys": ["auxerre", "aj auxerre", "association de la jeunesse auxerroise"]
+    },
+    {
+      "footybrainTeamId": "fc-lorient",
+      "label": "Lorient",
+      "leagueId": "ligue-1",
+      "codes": ["fc-lorient"],
+      "nameKeys": ["lorient", "fc lorient", "football club lorient bretagne sud"]
+    },
+    {
+      "footybrainTeamId": "fc-metz",
+      "label": "Metz",
+      "leagueId": "ligue-1",
+      "codes": ["fc-metz"],
+      "nameKeys": ["metz", "fc metz", "football club de metz"]
+    },
+    {
+      "footybrainTeamId": "fc-toulouse",
+      "label": "Toulouse",
+      "leagueId": "ligue-1",
+      "codes": ["fc-toulouse"],
+      "nameKeys": ["toulouse", "fc toulouse", "toulouse football club"]
+    },
+    {
+      "footybrainTeamId": "fc-nantes",
+      "label": "Nantes",
+      "leagueId": "ligue-1",
+      "codes": ["fc-nantes"],
+      "nameKeys": ["nantes", "fc nantes", "football club de nantes"]
+    },
+    {
+      "footybrainTeamId": "ac-le-havre",
+      "label": "Le Havre",
+      "leagueId": "ligue-1",
+      "codes": ["ac-le-havre"],
+      "nameKeys": ["le havre", "ac le havre", "le havre athletic club"]
+    },
+    {
+      "footybrainTeamId": "sco-angers",
+      "label": "Angers",
+      "leagueId": "ligue-1",
+      "codes": ["sco-angers"],
+      "nameKeys": ["angers", "sco angers", "angers sporting club de l ouest"]
+    },
+    {
+      "footybrainTeamId": "stade-brest",
+      "label": "Brest",
+      "leagueId": "ligue-1",
+      "codes": ["stade-brest-29"],
+      "nameKeys": ["brest", "stade brestois", "stade brestois 29"]
+    },
+    {
+      "footybrainTeamId": "paris-fc",
+      "label": "Paris FC",
+      "leagueId": "ligue-1",
+      "codes": ["paris-fc"],
+      "nameKeys": ["paris fc", "paris football club"]
+    }
+  ]
+}

@@ -44,36 +44,36 @@
       "id": "premier-league",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/premier-league.json",
-      "playerCount": 341,
-      "teamCount": 15
+      "playerCount": 417,
+      "teamCount": 20
     },
     {
       "id": "la-liga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/la-liga.json",
-      "playerCount": 225,
+      "playerCount": 217,
       "teamCount": 10
     },
     {
       "id": "bundesliga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/bundesliga.json",
-      "playerCount": 222,
+      "playerCount": 188,
       "teamCount": 10
     },
     {
       "id": "serie-a",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/serie-a.json",
-      "playerCount": 136,
-      "teamCount": 6
+      "playerCount": 444,
+      "teamCount": 20
     },
     {
       "id": "ligue-1",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/ligue-1.json",
-      "playerCount": 197,
-      "teamCount": 9
+      "playerCount": 395,
+      "teamCount": 18
     },
     {
       "id": "eredivisie",
@@ -93,7 +93,7 @@
       "id": "brasileirao",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/brasileirao.json",
-      "playerCount": 440,
+      "playerCount": 418,
       "teamCount": 20
     }
   ]

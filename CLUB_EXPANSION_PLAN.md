@@ -240,3 +240,25 @@ Total (excluding Bundesliga): **~+1,140 players** (order-of-magnitude estimate).
 
 **Note:** Global player total is governed by the expansion cap (~2,350); this merge re-trimmed some older generated rows (−39 net app-wide) while adding Serie A squads.
 
+---
+
+## 10. Ligue 1 completion preview (Phase 7) — 9 missing FR1 clubs
+
+**Preview overlay:** `editorial-overlays/phase7-ligue-1-completion-clubs.json`  
+**Policy:** Generated players remain browse-only until editorial approval. `playersMax` raised to **2850** for merge headroom.  
+**Bundesliga raw note:** TM scraper uses competition code **`L1`** (not `DE1`) for German clubs — see `build-footybrain-preview-data.js` `BASE_LEAGUE_BY_TM_CODE`.
+
+| FootyBrain teamId | TM code | Est. merge rows |
+|------------------|---------|-----------------|
+| aj-auxerre | aj-auxerre | ~22 |
+| fc-lorient | fc-lorient | ~22 |
+| fc-metz | fc-metz | ~22 |
+| fc-toulouse | fc-toulouse | ~22 |
+| fc-nantes | fc-nantes | ~22 |
+| ac-le-havre | ac-le-havre | ~22 |
+| sco-angers | sco-angers | ~22 |
+| stade-brest | stade-brest-29 | ~22 |
+| paris-fc | paris-fc | ~22 |
+
+**Target live impact:** Ligue 1 **9 → 18** clubs; ~**198** new generated players (browse-only by default).
+
