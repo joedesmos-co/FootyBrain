@@ -1,57 +1,18 @@
 /**
- * Quiz and daily pools use editorial-quality players only.
- * Generated squad rows stay browseable/searchable but out of quiz until reviewed.
+ * Quiz eligibility rules are pure.
  *
- * Indexes are built lazily on first quiz/daily access — not at module import.
+ * Do not import the full `sampleData.js` player registry here — quiz/daily should be able
+ * to run on the slim quiz registry without pulling the full monolith.
  */
 
-import { players } from '../data/sampleData.js';
 import { isQuizEligiblePlayer } from './quizPlayerRules.js';
 
 export { isQuizEligiblePlayer } from './quizPlayerRules.js';
 
-let quizEligibleCache = null;
-const quizEligibleByTeamId = new Map();
-const quizEligibleByLeagueId = new Map();
-
-function ensureQuizIndexes() {
-  if (quizEligibleCache) return;
-
-  quizEligibleCache = players.filter(isQuizEligiblePlayer);
-
-  for (const player of quizEligibleCache) {
-    if (!quizEligibleByTeamId.has(player.teamId)) {
-      quizEligibleByTeamId.set(player.teamId, []);
-    }
-    quizEligibleByTeamId.get(player.teamId).push(player);
-
-    if (!quizEligibleByLeagueId.has(player.leagueId)) {
-      quizEligibleByLeagueId.set(player.leagueId, []);
-    }
-    quizEligibleByLeagueId.get(player.leagueId).push(player);
-  }
-}
-
-/** Full registry quiz pool (lazy-built). */
-export function getQuizEligibleRegistry() {
-  ensureQuizIndexes();
-  return quizEligibleCache;
-}
-
-export function getQuizEligiblePlayersForTeam(teamId) {
-  ensureQuizIndexes();
-  return quizEligibleByTeamId.get(teamId) ?? [];
-}
-
-export function getQuizEligiblePlayersForLeague(leagueId) {
-  ensureQuizIndexes();
-  return quizEligibleByLeagueId.get(leagueId) ?? [];
-}
-
 /**
- * @param {typeof players} [pool] — pass a filtered roster; defaults to full cached quiz pool.
+ * @param {Array<any>} pool
  */
-export function getQuizEligiblePlayers(pool = players) {
-  if (pool === players) return getQuizEligibleRegistry();
+export function getQuizEligiblePlayers(pool) {
+  if (!Array.isArray(pool)) return [];
   return pool.filter(isQuizEligiblePlayer);
 }

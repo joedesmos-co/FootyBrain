@@ -210,6 +210,8 @@ export default function BrowseDatabase() {
             label="Search"
             placeholder="Search players — name, partial match…"
             disabled={browseDataLoading}
+            getTeamName={getTeamName}
+            getLeagueName={getLeagueName}
           />
         </div>
         <p className="filters__count">

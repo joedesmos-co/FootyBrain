@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getTeamName } from '../data/sampleData';
 import { useDailyCompletionStatus } from '../hooks/useDailyCompletionStatus';
 import { getDailyCompletionBonus, useDailyChallenge } from '../hooks/useDailyChallenge';
 import { useProgression } from '../hooks/useProgression';
@@ -102,7 +101,7 @@ function CompletionScreen({
         <ol className="daily-complete__list">
           {questions.map((player, i) => {
             const result = results[i];
-            const club = getTeamName(player.teamId);
+            const club = player.teamName ?? 'Unknown';
             const isCorrect = result?.isCorrect ?? false;
             return (
               <li
@@ -150,6 +149,8 @@ export default function DailyChallenge() {
     challengeScope,
     isCompleted,
     completionData,
+    quizRegistryStatus,
+    quizRegistry,
   } = daily;
 
   // ── Quiz state (only active while answering questions) ─────────────────────
@@ -163,7 +164,7 @@ export default function DailyChallenge() {
 
   // ── Derived ────────────────────────────────────────────────────────────────
   const currentPlayer = questions[currentIndex] ?? null;
-  const currentClub = currentPlayer ? getTeamName(currentPlayer.teamId) : '';
+  const currentClub = currentPlayer ? (currentPlayer.teamName ?? 'Unknown') : '';
   const visibleHints = currentPlayer
     ? currentPlayer.quizHints.slice(0, hintsShown)
     : [];
@@ -242,6 +243,16 @@ export default function DailyChallenge() {
   }
 
   // ── Quiz screen ────────────────────────────────────────────────────────────
+  if (quizRegistryStatus !== 'ready') {
+    return (
+      <div className="page daily-page">
+        <p className="page-loading" role="status" aria-live="polite" aria-busy="true">
+          Loading daily challenge…
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="page daily-page">
       <header className="daily-header">
@@ -336,6 +347,12 @@ export default function DailyChallenge() {
             maxResults={5}
             showNationalTeam
             showClubWhenAmbiguous
+            getTeamName={(id) =>
+              (quizRegistry?.teams ?? []).find((t) => t.id === id)?.name ?? 'Unknown'
+            }
+            getLeagueName={(id) =>
+              (quizRegistry?.leagues ?? []).find((l) => l.id === id)?.name ?? 'Unknown'
+            }
           />
           {!feedback && (
             <button

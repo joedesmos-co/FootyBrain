@@ -194,6 +194,8 @@ export default function PlayerCompare({
           excludeIds={rightId ? [rightId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
+          getTeamName={getTeamName}
+          getLeagueName={getLeagueName}
         />
         <PlayerAutocomplete
           players={playersForCompare}
@@ -209,6 +211,8 @@ export default function PlayerCompare({
           excludeIds={leftId ? [leftId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
+          getTeamName={getTeamName}
+          getLeagueName={getLeagueName}
         />
       </section>
 

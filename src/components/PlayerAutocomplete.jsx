@@ -1,7 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
-import { getLeagueName, getTeamName } from '../data/sampleData';
 import { formatPosition } from '../utils/footballDisplay';
 import { searchPlayers } from '../utils/playerSearch';
 import { buildAmbiguousLastNames, normalizeAnswer } from '../utils/quizSession';
@@ -21,6 +20,8 @@ export default function PlayerAutocomplete({
   maxResults = 8,
   navigateOnSelect = false,
   intentContext = null,
+  getTeamName = () => 'Unknown',
+  getLeagueName = () => 'Unknown',
 }) {
   const navigate = useNavigate();
   const listId = useId();
@@ -40,7 +41,7 @@ export default function PlayerAutocomplete({
         getLeagueName,
         intentContext,
       }),
-    [players, debouncedValue, maxResults, excludeIds, intentContext],
+    [players, debouncedValue, maxResults, excludeIds, intentContext, getTeamName, getLeagueName],
   );
 
   const ambiguousSuggestionNames = useMemo(() => {

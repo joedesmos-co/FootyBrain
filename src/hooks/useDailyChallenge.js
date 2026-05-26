@@ -5,9 +5,10 @@
 import { useMemo, useState } from 'react';
 import {
   DAILY_QUESTION_COUNT,
-  generateDailyChallenge,
-  generateDailyQuestions,
+  generateDailyChallengeFromRegistry,
+  generateDailyQuestionsFromRegistry,
 } from '../utils/dailyChallengePlan';
+import { useQuizRegistry } from './useQuizRegistry';
 
 const STORAGE_KEY = 'footybrain:daily';
 
@@ -31,7 +32,7 @@ function getYesterdayKey() {
   return `${y}-${mo}-${day}`;
 }
 
-export { generateDailyChallenge, generateDailyQuestions, DAILY_QUESTION_COUNT };
+export { generateDailyChallengeFromRegistry, generateDailyQuestionsFromRegistry, DAILY_QUESTION_COUNT };
 
 // ---------------------------------------------------------------------------
 // Storage helpers
@@ -83,7 +84,14 @@ export function useDailyChallenge() {
   const [stored, setStored] = useState(readStorage);
 
   const todayKey = getTodayKey();
-  const dailyPlan = useMemo(() => generateDailyChallenge(todayKey), [todayKey]);
+  const quizRegistry = useQuizRegistry();
+
+  const dailyPlan = useMemo(() => {
+    if (quizRegistry.status !== 'ready' || !quizRegistry.registry) {
+      return null;
+    }
+    return generateDailyChallengeFromRegistry(todayKey, quizRegistry.registry);
+  }, [todayKey, quizRegistry.status, quizRegistry.registry]);
   const todayData = stored.date === todayKey ? stored : null;
   const isCompleted = todayData?.completed ?? false;
 
@@ -126,10 +134,12 @@ export function useDailyChallenge() {
   return {
     todayKey,
     // Deterministic plan for today — same result on every call/refresh
-    questions: dailyPlan.questions,
-    challengeLabel: dailyPlan.label,
-    challengeKind: dailyPlan.kind,
-    challengeScope: dailyPlan.scope,
+    questions: dailyPlan?.questions ?? [],
+    challengeLabel: dailyPlan?.label ?? '',
+    challengeKind: dailyPlan?.kind ?? 'general',
+    challengeScope: dailyPlan?.scope ?? { type: 'general', name: 'All leagues' },
+    quizRegistryStatus: quizRegistry.status,
+    quizRegistry: quizRegistry.registry,
     isCompleted,
     // Completion data from storage (non-null only when today is completed)
     completionData: isCompleted ? todayData : null,

@@ -1,12 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import {
-  getLiveNationalTeams,
-  getNationalTeamById,
-  getNationalTeamQuizReadyCount,
-  isLiveNationalTeamId,
-} from '../data/nationalTeamData';
-import { getTeamName, leagues, players, teams } from '../data/sampleData';
+import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import CountryFlag from './CountryFlag';
 import { useProgression } from '../hooks/useProgression';
 import {
@@ -36,7 +30,6 @@ import {
   QUIZ_TYPE_OPTIONS,
 } from '../utils/quizSession';
 import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
-import { getViableCountryQuizPoolMetas } from '../utils/nationalQuizPools';
 import PlayerAutocomplete from './PlayerAutocomplete';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
@@ -45,24 +38,57 @@ import PlayerAutocomplete from './PlayerAutocomplete';
 const SESSION_MILESTONE = 5;
 
 export default function QuizMode() {
+  const quizRegistry = useQuizRegistry();
+  if (quizRegistry.status !== 'ready' || !quizRegistry.registry) {
+    return (
+      <div className="page quiz-page">
+        <p className="page-loading" role="status" aria-live="polite" aria-busy="true">
+          Loading quiz…
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <QuizModeLoaded
+      registry={quizRegistry.registry}
+      teamById={quizRegistry.teamById}
+      leagueById={quizRegistry.leagueById}
+    />
+  );
+}
+
+function QuizModeLoaded({ registry, teamById, leagueById }) {
   const [searchParams] = useSearchParams();
   const requestedTeamId = searchParams.get('team') ?? '';
   const requestedLeagueId = searchParams.get('league') ?? '';
   const requestedNationalTeamId = searchParams.get('nationalTeam') ?? '';
   const requestedPoolFocus = searchParams.get('poolFocus') ?? '';
   const worldCupPrep = isWorldCupQuizPrepParam(searchParams.get('worldCup'));
-  const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
+  const teams = registry?.teams ?? [];
+  const leagues = registry?.leagues ?? [];
+  const players = registry?.players ?? [];
+  const liveNationalTeams = useMemo(() => registry?.national?.nationalTeams ?? [], [registry]);
+  const liveNationalTeamIds = useMemo(
+    () => new Set(registry?.national?.liveNationalTeamIds ?? []),
+    [registry],
+  );
+  const getTeamName = useCallback(
+    (teamId) => teamById?.get(teamId)?.name ?? 'Unknown',
+    [teamById],
+  );
+
   const requestedTeam = useMemo(
     () => teams.find((team) => team.id === requestedTeamId),
-    [requestedTeamId],
+    [requestedTeamId, teams],
   );
   const requestedLeague = useMemo(
     () => (leagues.some((league) => league.id === requestedLeagueId) ? requestedLeagueId : ''),
-    [requestedLeagueId],
+    [requestedLeagueId, leagues],
   );
   const requestedNationalTeam = useMemo(
     () =>
-      isLiveNationalTeamId(requestedNationalTeamId) ? requestedNationalTeamId : '',
+      liveNationalTeamIds.has(requestedNationalTeamId) ? requestedNationalTeamId : '',
     [requestedNationalTeamId],
   );
 
@@ -116,13 +142,29 @@ export default function QuizMode() {
   );
 
   const viableCountryQuizMetas = useMemo(
-    () => (poolFocus === 'international' ? getViableCountryQuizPoolMetas() : []),
-    [poolFocus],
+    () => {
+      if (poolFocus !== 'international') return [];
+      const idsByTeam = registry?.national?.quizReadyPlayerIdsByNationalTeamId ?? {};
+      const teams = registry?.national?.nationalTeams ?? [];
+      return teams
+        .map((team) => ({
+          nationalTeamId: team.id,
+          displayName: team.displayName,
+          quizReadyCount: (idsByTeam[team.id] ?? []).length,
+          isViable: (idsByTeam[team.id] ?? []).length >= QUIZ_MIN_SESSION_POOL,
+        }))
+        .filter((meta) => meta.isViable);
+    },
+    [poolFocus, registry],
   );
 
   const selectedNationalTeam = useMemo(
-    () => (nationalTeamFilter ? getNationalTeamById(nationalTeamFilter) : null),
-    [nationalTeamFilter],
+    () =>
+      nationalTeamFilter
+        ? (registry?.national?.nationalTeams ?? []).find((t) => t.id === nationalTeamFilter) ??
+          null
+        : null,
+    [nationalTeamFilter, registry],
   );
 
   const teamsInLeague = useMemo(() => {
@@ -469,7 +511,9 @@ export default function QuizMode() {
                       : 'Any country'}
                 </option>
                 {liveNationalTeams.map((team) => {
-                  const quizCount = getNationalTeamQuizReadyCount(team.id);
+                  const idsByTeam =
+                    registry?.national?.quizReadyPlayerIdsByNationalTeamId ?? {};
+                  const quizCount = (idsByTeam[team.id] ?? []).length;
                   const isTooSmallForNationalMode =
                     poolFocus === 'national' && quizCount < QUIZ_MIN_SESSION_POOL;
                   return (
@@ -758,6 +802,8 @@ export default function QuizMode() {
                 excludeIds={currentPlayer ? [currentPlayer.id] : []}
                 maxResults={6}
                 showClubWhenAmbiguous
+                getTeamName={getTeamName}
+                getLeagueName={(leagueId) => leagueById?.get(leagueId)?.name ?? 'Unknown'}
               />
 
               {!feedback && (

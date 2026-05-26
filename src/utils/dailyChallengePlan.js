@@ -1,14 +1,4 @@
-import {
-  getLiveNationalTeams,
-  getNationalTeamById,
-  getQuizEligiblePlayersForNationalTeam,
-} from '../data/nationalTeamData';
-import { getLeagueName, getTeamName, leagues, teams } from '../data/sampleData';
-import {
-  getQuizEligiblePlayersForLeague,
-  getQuizEligiblePlayersForTeam,
-  getQuizEligibleRegistry,
-} from './quizEligibility';
+import { getQuizEligiblePlayers } from './quizEligibility';
 
 export const DAILY_QUESTION_COUNT = 5;
 
@@ -48,45 +38,59 @@ function seededSample(arr, n, dateKey, salt) {
   return copy.slice(0, n);
 }
 
-function buildEligibleNationalTeams() {
-  return getLiveNationalTeams()
+/**
+ * @typedef {{
+ *   players: any[],
+ *   teams: any[],
+ *   leagues: any[],
+ *   national?: {
+ *     nationalTeams?: any[],
+ *     quizReadyPlayerIdsByNationalTeamId?: Record<string, string[]>,
+ *   }
+ * }} QuizRegistryPayload
+ */
+
+/**
+ * Build eligible pools from the quiz registry (quiz-ready players only).
+ * @param {QuizRegistryPayload} registry
+ */
+function getEligiblePools(registry) {
+  const quizReady = getQuizEligiblePlayers(registry?.players ?? []);
+  const teams = registry?.teams ?? [];
+  const leagues = registry?.leagues ?? [];
+
+  const byTeamId = new Map();
+  const byLeagueId = new Map();
+  const byPlayerId = new Map(quizReady.map((p) => [p.id, p]));
+
+  for (const player of quizReady) {
+    if (!byTeamId.has(player.teamId)) byTeamId.set(player.teamId, []);
+    byTeamId.get(player.teamId).push(player);
+    if (!byLeagueId.has(player.leagueId)) byLeagueId.set(player.leagueId, []);
+    byLeagueId.get(player.leagueId).push(player);
+  }
+
+  const clubs = teams
+    .map((team) => ({ team, players: byTeamId.get(team.id) ?? [] }))
+    .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
+
+  const leaguePools = leagues
+    .map((league) => ({ league, players: byLeagueId.get(league.id) ?? [] }))
+    .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
+
+  const nationalTeams = registry?.national?.nationalTeams ?? [];
+  const idsByTeam = registry?.national?.quizReadyPlayerIdsByNationalTeamId ?? {};
+
+  const national = nationalTeams
     .map((nationalTeam) => ({
       nationalTeam,
-      players: getQuizEligiblePlayersForNationalTeam(nationalTeam.id),
+      players: (idsByTeam[nationalTeam.id] ?? [])
+        .map((id) => byPlayerId.get(id))
+        .filter(Boolean),
     }))
     .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
-}
 
-function buildEligibleClubs() {
-  return teams
-    .map((team) => ({
-      team,
-      players: getQuizEligiblePlayersForTeam(team.id),
-    }))
-    .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
-}
-
-function buildEligibleLeagues() {
-  return leagues
-    .map((league) => ({
-      league,
-      players: getQuizEligiblePlayersForLeague(league.id),
-    }))
-    .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
-}
-
-/** Built once — daily challenge generation reused this on every /daily mount. */
-let eligiblePoolsCache = null;
-
-function getEligiblePools() {
-  if (!eligiblePoolsCache) {
-    eligiblePoolsCache = {
-      national: buildEligibleNationalTeams(),
-      clubs: buildEligibleClubs(),
-      leagues: buildEligibleLeagues(),
-    };
-  }
-  return eligiblePoolsCache;
+  return { national, clubs, leagues: leaguePools, quizReady };
 }
 
 const challengePlanByDate = new Map();
@@ -135,11 +139,16 @@ function pickIndex(length, dateKey, salt) {
  * @param {string} dateKey `YYYY-MM-DD`
  * @returns {DailyChallengePlan}
  */
-export function generateDailyChallenge(dateKey) {
+/**
+ * Deterministic daily challenge for a date — same plan on every device/refresh.
+ * @param {string} dateKey `YYYY-MM-DD`
+ * @param {QuizRegistryPayload} registry
+ */
+export function generateDailyChallengeFromRegistry(dateKey, registry) {
   const cached = challengePlanByDate.get(dateKey);
   if (cached) return cached;
 
-  const eligible = getEligiblePools();
+  const eligible = getEligiblePools(registry);
   const kind = pickChallengeKind(dateKey, eligible);
 
   let plan;
@@ -184,7 +193,7 @@ export function generateDailyChallenge(dateKey) {
       },
     };
   } else {
-    const questions = seededSample(getQuizEligibleRegistry(), DAILY_QUESTION_COUNT, dateKey, 804);
+    const questions = seededSample(eligible.quizReady, DAILY_QUESTION_COUNT, dateKey, 804);
     plan = {
       kind: 'general',
       label: DAILY_CHALLENGE_LABELS.general,
@@ -210,16 +219,28 @@ function cacheChallengePlan(dateKey, plan) {
 
 /** @param {string} dateKey */
 export function generateDailyQuestions(dateKey) {
-  return generateDailyChallenge(dateKey).questions;
+  return generateDailyQuestionsFromRegistry(dateKey, null);
+}
+
+/** @param {string} dateKey */
+export function generateDailyQuestionsFromRegistry(dateKey, registry) {
+  return generateDailyChallengeFromRegistry(dateKey, registry).questions;
 }
 
 /** Resolve display name for scope (e.g. after reload). */
-export function getDailyChallengeScopeName(scope) {
+export function getDailyChallengeScopeName(scope, registry) {
   if (!scope) return '';
-  if (scope.type === 'club' && scope.teamId) return getTeamName(scope.teamId);
-  if (scope.type === 'league' && scope.leagueId) return getLeagueName(scope.leagueId);
+  if (scope.type === 'club' && scope.teamId) {
+    return (registry?.teams ?? []).find((t) => t.id === scope.teamId)?.name ?? scope.name ?? '';
+  }
+  if (scope.type === 'league' && scope.leagueId) {
+    return (registry?.leagues ?? []).find((l) => l.id === scope.leagueId)?.name ?? scope.name ?? '';
+  }
   if (scope.type === 'national-team' && scope.nationalTeamId) {
-    return getNationalTeamById(scope.nationalTeamId)?.displayName ?? scope.name;
+    return (
+      (registry?.national?.nationalTeams ?? []).find((t) => t.id === scope.nationalTeamId)
+        ?.displayName ?? scope.name ?? ''
+    );
   }
   return scope.name ?? '';
 }

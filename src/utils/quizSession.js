@@ -1,21 +1,7 @@
-import {
-  getQuizEligiblePlayersForNationalTeam,
-  isPlayerLinkedToLiveNationalTeam,
-} from '../data/nationalTeamData';
-import {
-  getQuizEligiblePlayers,
-  getQuizEligiblePlayersForLeague,
-  getQuizEligiblePlayersForTeam,
-  getQuizEligibleRegistry,
-} from './quizEligibility';
-import { players as allPlayersRegistry } from '../data/sampleData';
+import { getQuizEligiblePlayers } from './quizEligibility';
 import { formatCountryLabel, formatPosition } from './footballDisplay';
 import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants';
 import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants';
-import {
-  getCountryQuizSessionPool,
-  getInternationalQuizSessionPool,
-} from './nationalQuizPools';
 
 /** Minimum quiz-ready players for a fair club or national-team session. */
 export const QUIZ_MIN_SESSION_POOL = 3;
@@ -118,9 +104,15 @@ export function playerMatchesPositionBucket(player, bucketId) {
 
 function filterByNationalTeam(pool, nationalTeamFilter) {
   if (!nationalTeamFilter) return pool;
-  return pool.filter((player) =>
-    isPlayerLinkedToLiveNationalTeam(player.id, nationalTeamFilter),
-  );
+  return pool.filter((player) => {
+    if (player?._nationalTeamId) return player._nationalTeamId === nationalTeamFilter;
+    // Fallback for legacy callers: match against nationalTeam string when present.
+    // (This is less strict than membership linking, but avoids pulling the monolith on quiz paths.)
+    return (
+      String(player?.nationalTeam ?? '').toLowerCase() ===
+      String(nationalTeamFilter ?? '').toLowerCase()
+    );
+  });
 }
 
 export function isInternationalQuizScope(poolFocus) {
@@ -170,77 +162,41 @@ export function isQuizSessionPoolViable(
  */
 export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic') {
   const { poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter } = filters;
-  const useRegistryPool = allPlayers === allPlayersRegistry;
-  const eligible = useRegistryPool ? getQuizEligibleRegistry() : getQuizEligiblePlayers(allPlayers);
+  const eligible = getQuizEligiblePlayers(allPlayers);
 
   let pool;
 
   if (poolFocus === 'league') {
     if (!leagueFilter) return [];
-    if (nationalTeamFilter && useRegistryPool) {
-      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter(
-        (p) => p.leagueId === leagueFilter,
-      );
-    } else {
-      pool = useRegistryPool
-        ? getQuizEligiblePlayersForLeague(leagueFilter)
-        : eligible.filter((p) => p.leagueId === leagueFilter);
-      if (nationalTeamFilter) {
-        pool = pool.filter((p) => isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter));
-      }
+    pool = eligible.filter((p) => p.leagueId === leagueFilter);
+    if (nationalTeamFilter) {
+      pool = pool.filter((p) => p._nationalTeamId === nationalTeamFilter);
     }
   } else if (poolFocus === 'club') {
     if (!teamFilter) return [];
-    if (nationalTeamFilter && useRegistryPool) {
-      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter(
-        (p) => p.teamId === teamFilter,
-      );
-    } else {
-      pool = useRegistryPool
-        ? getQuizEligiblePlayersForTeam(teamFilter)
-        : eligible.filter((p) => p.teamId === teamFilter);
-      if (nationalTeamFilter) {
-        pool = pool.filter((p) => isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter));
-      }
+    pool = eligible.filter((p) => p.teamId === teamFilter);
+    if (nationalTeamFilter) {
+      pool = pool.filter((p) => p._nationalTeamId === nationalTeamFilter);
     }
   } else if (poolFocus === 'national') {
     if (!nationalTeamFilter) return [];
-    pool = useRegistryPool
-      ? getCountryQuizSessionPool(nationalTeamFilter)
-      : filterByNationalTeam(eligible, nationalTeamFilter).slice(0, COUNTRY_SESSION_POOL_CAP);
+    pool = filterByNationalTeam(eligible, nationalTeamFilter).slice(0, COUNTRY_SESSION_POOL_CAP);
   } else if (poolFocus === 'international') {
-    pool = getInternationalQuizSessionPool();
-    if (nationalTeamFilter) {
-      pool = pool.filter((p) =>
-        isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter),
-      );
-    }
+    pool = eligible.filter((p) => p._inInternationalPool === true);
+    if (nationalTeamFilter) pool = pool.filter((p) => p._nationalTeamId === nationalTeamFilter);
   } else if (poolFocus === 'position') {
     if (!positionFilter) return [];
-    if (nationalTeamFilter && useRegistryPool) {
-      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter((p) =>
-        playerMatchesPositionBucket(p, positionFilter),
-      );
-    } else {
-      pool = eligible.filter((p) => playerMatchesPositionBucket(p, positionFilter));
-      if (nationalTeamFilter) {
-        pool = filterByNationalTeam(pool, nationalTeamFilter);
-      }
-    }
+    pool = eligible.filter((p) => playerMatchesPositionBucket(p, positionFilter));
+    if (nationalTeamFilter) pool = filterByNationalTeam(pool, nationalTeamFilter);
   } else {
-    pool =
-      nationalTeamFilter && useRegistryPool
-        ? getQuizEligiblePlayersForNationalTeam(nationalTeamFilter)
-        : eligible;
+    pool = eligible;
     pool = pool.filter((player) => {
       if (leagueFilter && player.leagueId !== leagueFilter) return false;
       if (teamFilter && player.teamId !== teamFilter) return false;
       if (positionFilter && !playerMatchesPositionBucket(player, positionFilter)) return false;
       return true;
     });
-    if (nationalTeamFilter && !useRegistryPool) {
-      pool = filterByNationalTeam(pool, nationalTeamFilter);
-    }
+    if (nationalTeamFilter) pool = filterByNationalTeam(pool, nationalTeamFilter);
   }
 
   if (quizType === 'classic') return pool;
