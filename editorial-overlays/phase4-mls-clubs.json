@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 4 MLS tranche only — live merge; Brasileirão stays in phase4-clubs.json for staged preview.",
+  "targetCounts": {
+    "clubsMin": 30,
+    "clubsMax": 30,
+    "playersMin": 600,
+    "playersMax": 700
+  },
+  "leagues": [
+    {
+      "id": "mls",
+      "tmCompetitionCode": "MLS1",
+      "name": "Major League Soccer",
+      "country": "United States",
+      "description": "MLS is the top men's league in the United States and Canada — playoffs, Designated Players, and growing North American rivalries.",
+      "styleOfPlay": "Athletic and direct, with squad-building rules that mix homegrown players, MLS veterans, and star imports.",
+      "famousClubs": [
+        "LA Galaxy — historic MLS brand",
+        "Inter Miami CF — global attention",
+        "Seattle Sounders FC — strong fan culture"
+      ],
+      "famousPlayers": [
+        "Lionel Messi — Inter Miami",
+        "Landon Donovan — LA Galaxy era icon"
+      ],
+      "historySummary": "Founded in 1996, MLS expanded across the US and Canada and now feeds CONCACAF Champions Cup and World Cup storylines.",
+      "rivalries": [
+        "LAFC vs LA Galaxy — El Tráfico",
+        "Seattle vs Portland — Cascadia Cup"
+      ],
+      "fanGuide": "Learn playoff format first, then pick a city rivalry. Club soccer here is as much about community and stadium atmosphere as European tables."
+    }
+  ],
+  "clubs": [
+    {
+      "footybrainTeamId": "atlanta-united",
+      "label": "Atlanta United FC",
+      "leagueId": "mls",
+      "codes": [
+        "atlanta-united-fc"
+      ],
+      "nameKeys": [
+        "atlanta united"
+      ]
+    },
+    {
+      "footybrainTeamId": "austin-fc",
+      "label": "Austin FC",
+      "leagueId": "mls",
+      "codes": [
+        "austin-fc"
+      ],
+      "nameKeys": [
+        "austin fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "charlotte-fc",
+      "label": "Charlotte FC",
+      "leagueId": "mls",
+      "codes": [
+        "charlotte-fc"
+      ],
+      "nameKeys": [
+        "charlotte fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "chicago-fire",
+      "label": "Chicago Fire FC",
+      "leagueId": "mls",
+      "codes": [
+        "chicago-fire-fc"
+      ],
+      "nameKeys": [
+        "chicago fire"
+      ]
+    },
+    {
+      "footybrainTeamId": "fc-cincinnati",
+      "label": "FC Cincinnati",
+      "leagueId": "mls",
+      "codes": [
+        "fc-cincinnati"
+      ],
+      "nameKeys": [
+        "fc cincinnati",
+        "cincinnati"
+      ]
+    },
+    {
+      "footybrainTeamId": "colorado-rapids",
+      "label": "Colorado Rapids",
+      "leagueId": "mls",
+      "codes": [
+        "colorado-rapids"
+      ],
+      "nameKeys": [
+        "colorado rapids"
+      ]
+    },
+    {
+      "footybrainTeamId": "columbus-crew",
+      "label": "Columbus Crew",
+      "leagueId": "mls",
+      "codes": [
+        "columbus-crew-sc"
+      ],
+      "nameKeys": [
+        "columbus crew"
+      ]
+    },
+    {
+      "footybrainTeamId": "dc-united",
+      "label": "D.C. United",
+      "leagueId": "mls",
+      "codes": [
+        "d-c-united"
+      ],
+      "nameKeys": [
+        "dc united",
+        "d c united"
+      ]
+    },
+    {
+      "footybrainTeamId": "fc-dallas",
+      "label": "FC Dallas",
+      "leagueId": "mls",
+      "codes": [
+        "fc-dallas"
+      ],
+      "nameKeys": [
+        "fc dallas",
+        "dallas"
+      ]
+    },
+    {
+      "footybrainTeamId": "houston-dynamo",
+      "label": "Houston Dynamo FC",
+      "leagueId": "mls",
+      "codes": [
+        "houston-dynamo-fc"
+      ],
+      "nameKeys": [
+        "houston dynamo"
+      ]
+    },
+    {
+      "footybrainTeamId": "inter-miami",
+      "label": "Inter Miami CF",
+      "leagueId": "mls",
+      "codes": [
+        "inter-miami-cf"
+      ],
+      "nameKeys": [
+        "inter miami",
+        "inter miami cf"
+      ]
+    },
+    {
+      "footybrainTeamId": "la-galaxy",
+      "label": "LA Galaxy",
+      "leagueId": "mls",
+      "codes": [
+        "los-angeles-galaxy"
+      ],
+      "nameKeys": [
+        "la galaxy",
+        "los angeles galaxy"
+      ]
+    },
+    {
+      "footybrainTeamId": "lafc",
+      "label": "Los Angeles FC",
+      "leagueId": "mls",
+      "codes": [
+        "los-angeles-fc"
+      ],
+      "nameKeys": [
+        "lafc",
+        "los angeles fc",
+        "la fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "san-diego-fc",
+      "label": "San Diego FC",
+      "leagueId": "mls",
+      "codes": [
+        "san-diego-fc"
+      ],
+      "nameKeys": [
+        "san diego fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "minnesota-united",
+      "label": "Minnesota United FC",
+      "leagueId": "mls",
+      "codes": [
+        "minnesota-united-fc"
+      ],
+      "nameKeys": [
+        "minnesota united"
+      ]
+    },
+    {
+      "footybrainTeamId": "cf-montreal",
+      "label": "CF Montréal",
+      "leagueId": "mls",
+      "codes": [
+        "club-de-foot-montreal"
+      ],
+      "nameKeys": [
+        "cf montreal",
+        "montreal"
+      ]
+    },
+    {
+      "footybrainTeamId": "nashville-sc",
+      "label": "Nashville SC",
+      "leagueId": "mls",
+      "codes": [
+        "nashville-sc"
+      ],
+      "nameKeys": [
+        "nashville sc"
+      ]
+    },
+    {
+      "footybrainTeamId": "new-england-revolution",
+      "label": "New England Revolution",
+      "leagueId": "mls",
+      "codes": [
+        "new-england-revolution"
+      ],
+      "nameKeys": [
+        "new england revolution"
+      ]
+    },
+    {
+      "footybrainTeamId": "new-york-city-fc",
+      "label": "New York City FC",
+      "leagueId": "mls",
+      "codes": [
+        "new-york-city-fc"
+      ],
+      "nameKeys": [
+        "new york city fc",
+        "nycfc"
+      ]
+    },
+    {
+      "footybrainTeamId": "new-york-red-bulls",
+      "label": "New York Red Bulls",
+      "leagueId": "mls",
+      "codes": [
+        "new-york-red-bulls"
+      ],
+      "nameKeys": [
+        "red bull new york",
+        "ny red bulls"
+      ]
+    },
+    {
+      "footybrainTeamId": "orlando-city",
+      "label": "Orlando City SC",
+      "leagueId": "mls",
+      "codes": [
+        "orlando-city-sc"
+      ],
+      "nameKeys": [
+        "orlando city"
+      ]
+    },
+    {
+      "footybrainTeamId": "philadelphia-union",
+      "label": "Philadelphia Union",
+      "leagueId": "mls",
+      "codes": [
+        "philadelphia-union"
+      ],
+      "nameKeys": [
+        "philadelphia union"
+      ]
+    },
+    {
+      "footybrainTeamId": "portland-timbers",
+      "label": "Portland Timbers",
+      "leagueId": "mls",
+      "codes": [
+        "portland-timbers"
+      ],
+      "nameKeys": [
+        "portland timbers"
+      ]
+    },
+    {
+      "footybrainTeamId": "real-salt-lake",
+      "label": "Real Salt Lake",
+      "leagueId": "mls",
+      "codes": [
+        "real-salt-lake-city"
+      ],
+      "nameKeys": [
+        "real salt lake",
+        "salt lake"
+      ]
+    },
+    {
+      "footybrainTeamId": "san-jose-earthquakes",
+      "label": "San Jose Earthquakes",
+      "leagueId": "mls",
+      "codes": [
+        "san-jose-earthquakes"
+      ],
+      "nameKeys": [
+        "san jose earthquakes"
+      ]
+    },
+    {
+      "footybrainTeamId": "seattle-sounders",
+      "label": "Seattle Sounders FC",
+      "leagueId": "mls",
+      "codes": [
+        "seattle-sounders-fc"
+      ],
+      "nameKeys": [
+        "seattle sounders"
+      ]
+    },
+    {
+      "footybrainTeamId": "sporting-kansas-city",
+      "label": "Sporting Kansas City",
+      "leagueId": "mls",
+      "codes": [
+        "sporting-kansas-city"
+      ],
+      "nameKeys": [
+        "sporting kansas city",
+        "sporting kc"
+      ]
+    },
+    {
+      "footybrainTeamId": "st-louis-city",
+      "label": "St. Louis City SC",
+      "leagueId": "mls",
+      "codes": [
+        "st-louis-city-sc"
+      ],
+      "nameKeys": [
+        "st louis city",
+        "saint louis city"
+      ]
+    },
+    {
+      "footybrainTeamId": "toronto-fc",
+      "label": "Toronto FC",
+      "leagueId": "mls",
+      "codes": [
+        "toronto-fc"
+      ],
+      "nameKeys": [
+        "toronto fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "vancouver-whitecaps",
+      "label": "Vancouver Whitecaps FC",
+      "leagueId": "mls",
+      "codes": [
+        "vancouver-whitecaps-fc"
+      ],
+      "nameKeys": [
+        "vancouver whitecaps"
+      ]
+    }
+  ]
+}

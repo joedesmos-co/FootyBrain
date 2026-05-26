@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 4 Brasileirão tranche — live merge alongside MLS (phase4-mls-clubs.json).",
+  "targetCounts": {
+    "clubsMin": 20,
+    "clubsMax": 20,
+    "playersMin": 400,
+    "playersMax": 500
+  },
+  "leagues": [
+    {
+      "id": "brasileirao",
+      "tmCompetitionCode": "BRA1",
+      "name": "Série A",
+      "country": "Brazil",
+      "description": "Brazil's Campeonato Brasileiro Série A — flair, clássicos, Libertadores places, and one of the world's deepest talent pools.",
+      "styleOfPlay": "Technical, creative, and transition-heavy; wing play and 1v1 skill are central to how fans describe the league.",
+      "famousClubs": [
+        "Flamengo — massive support",
+        "Palmeiras — title-winning machine",
+        "Corinthians — passionate torcida"
+      ],
+      "famousPlayers": [
+        "Pelé — Santos legend (history)",
+        "Neymar — Santos breakout"
+      ],
+      "historySummary": "Série A runs on promotion/relegation with state championships feeding club identity. Libertadores success shapes how Brazilians rank their clubs.",
+      "rivalries": [
+        "Flamengo vs Fluminense — Fla-Flu",
+        "Corinthians vs Palmeiras — Derby Paulista"
+      ],
+      "fanGuide": "Start with a clássico and one grande club from Rio or São Paulo. Learn why state leagues matter in club history even if you only follow Série A."
+    }
+  ],
+  "clubs": [
+    {
+      "footybrainTeamId": "chapecoense",
+      "label": "Chapecoense",
+      "leagueId": "brasileirao",
+      "codes": [
+        "chapecoense"
+      ],
+      "nameKeys": [
+        "chapecoense"
+      ]
+    },
+    {
+      "footybrainTeamId": "vasco-da-gama",
+      "label": "Vasco da Gama",
+      "leagueId": "brasileirao",
+      "codes": [
+        "vasco-da-gama-rio-de-janeiro"
+      ],
+      "nameKeys": [
+        "vasco da gama",
+        "vasco"
+      ]
+    },
+    {
+      "footybrainTeamId": "atletico-mineiro",
+      "label": "Atlético Mineiro",
+      "leagueId": "brasileirao",
+      "codes": [
+        "clube-atletico-mineiro"
+      ],
+      "nameKeys": [
+        "atletico mineiro",
+        "galo"
+      ]
+    },
+    {
+      "footybrainTeamId": "athletico-paranaense",
+      "label": "Athletico Paranaense",
+      "leagueId": "brasileirao",
+      "codes": [
+        "club-athletico-paranaense"
+      ],
+      "nameKeys": [
+        "athletico paranaense",
+        "atletico paranaense"
+      ]
+    },
+    {
+      "footybrainTeamId": "flamengo",
+      "label": "Flamengo",
+      "leagueId": "brasileirao",
+      "codes": [
+        "flamengo-rio-de-janeiro"
+      ],
+      "nameKeys": [
+        "flamengo",
+        "fla"
+      ]
+    },
+    {
+      "footybrainTeamId": "remo",
+      "label": "Clube do Remo",
+      "leagueId": "brasileirao",
+      "codes": [
+        "clube-do-remo-pa-"
+      ],
+      "nameKeys": [
+        "remo",
+        "clube do remo"
+      ]
+    },
+    {
+      "footybrainTeamId": "coritiba",
+      "label": "Coritiba",
+      "leagueId": "brasileirao",
+      "codes": [
+        "coritiba-fc"
+      ],
+      "nameKeys": [
+        "coritiba"
+      ]
+    },
+    {
+      "footybrainTeamId": "cruzeiro",
+      "label": "Cruzeiro",
+      "leagueId": "brasileirao",
+      "codes": [
+        "ec-cruzeiro-belo-horizonte"
+      ],
+      "nameKeys": [
+        "cruzeiro"
+      ]
+    },
+    {
+      "footybrainTeamId": "bahia",
+      "label": "Bahia",
+      "leagueId": "brasileirao",
+      "codes": [
+        "esporte-clube-bahia"
+      ],
+      "nameKeys": [
+        "bahia",
+        "esporte clube bahia"
+      ]
+    },
+    {
+      "footybrainTeamId": "vitoria",
+      "label": "Vitória",
+      "leagueId": "brasileirao",
+      "codes": [
+        "esporte-clube-vitoria"
+      ],
+      "nameKeys": [
+        "vitoria",
+        "vitoria ec"
+      ]
+    },
+    {
+      "footybrainTeamId": "fluminense",
+      "label": "Fluminense",
+      "leagueId": "brasileirao",
+      "codes": [
+        "fluminense-rio-de-janeiro"
+      ],
+      "nameKeys": [
+        "fluminense",
+        "flu"
+      ]
+    },
+    {
+      "footybrainTeamId": "gremio",
+      "label": "Grêmio",
+      "leagueId": "brasileirao",
+      "codes": [
+        "gremio-porto-alegre"
+      ],
+      "nameKeys": [
+        "gremio"
+      ]
+    },
+    {
+      "footybrainTeamId": "mirassol",
+      "label": "Mirassol",
+      "leagueId": "brasileirao",
+      "codes": [
+        "mirassol-futebol-clube-sp-"
+      ],
+      "nameKeys": [
+        "mirassol"
+      ]
+    },
+    {
+      "footybrainTeamId": "bragantino",
+      "label": "Red Bull Bragantino",
+      "leagueId": "brasileirao",
+      "codes": [
+        "red-bull-bragantino"
+      ],
+      "nameKeys": [
+        "bragantino",
+        "red bull bragantino"
+      ]
+    },
+    {
+      "footybrainTeamId": "botafogo",
+      "label": "Botafogo",
+      "leagueId": "brasileirao",
+      "codes": [
+        "botafogo-rio-de-janeiro"
+      ],
+      "nameKeys": [
+        "botafogo"
+      ]
+    },
+    {
+      "footybrainTeamId": "santos",
+      "label": "Santos",
+      "leagueId": "brasileirao",
+      "codes": [
+        "fc-santos"
+      ],
+      "nameKeys": [
+        "santos fc"
+      ]
+    },
+    {
+      "footybrainTeamId": "sao-paulo",
+      "label": "São Paulo",
+      "leagueId": "brasileirao",
+      "codes": [
+        "fc-sao-paulo"
+      ],
+      "nameKeys": [
+        "sao paulo",
+        "spfc"
+      ]
+    },
+    {
+      "footybrainTeamId": "palmeiras",
+      "label": "Palmeiras",
+      "leagueId": "brasileirao",
+      "codes": [
+        "se-palmeiras-sao-paulo"
+      ],
+      "nameKeys": [
+        "palmeiras",
+        "verdao"
+      ]
+    },
+    {
+      "footybrainTeamId": "corinthians",
+      "label": "Corinthians",
+      "leagueId": "brasileirao",
+      "codes": [
+        "corinthians-sao-paulo"
+      ],
+      "nameKeys": [
+        "corinthians",
+        "timao"
+      ]
+    },
+    {
+      "footybrainTeamId": "internacional",
+      "label": "Internacional",
+      "leagueId": "brasileirao",
+      "codes": [
+        "sc-internacional-porto-alegre"
+      ],
+      "nameKeys": [
+        "internacional",
+        "inter porto alegre"
+      ]
+    }
+  ]
+}

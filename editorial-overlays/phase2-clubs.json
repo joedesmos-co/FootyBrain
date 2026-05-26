@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 2 controlled expansion — adds Ligue 1 and Eredivisie hubs with 10 curated clubs total.",
+  "targetCounts": {
+    "clubsMin": 31,
+    "clubsMax": 35,
+    "playersMin": 250,
+    "playersMax": 300
+  },
+  "leagues": [
+    {
+      "id": "ligue-1",
+      "tmCompetitionCode": "FR1",
+      "name": "Ligue 1",
+      "country": "France",
+      "description": "France's top division mixes Paris Saint-Germain's modern star power with historic clubs from Marseille, Lyon, Monaco, Lille, and other strong regional football cities.",
+      "styleOfPlay": "Athletic, fast, and development-heavy. Ligue 1 often gives young players real minutes, while top clubs blend direct transitions with technical attacking midfielders and quick wide players.",
+      "famousClubs": [
+        "Paris Saint-Germain — Paris superclub and modern title force",
+        "Marseille — southern giant with European pedigree",
+        "Lyon — academy reputation and 2000s dominance",
+        "Monaco — talent factory from the principality",
+        "Lille — northern club with recent title success"
+      ],
+      "famousPlayers": [
+        "Ousmane Dembele — PSG forward",
+        "Achraf Hakimi — PSG full-back",
+        "Alexandre Lacazette — Lyon striker",
+        "Paul Pogba — Monaco midfielder"
+      ],
+      "historySummary": "French football has produced waves of elite talent, from Marseille's European triumph to Lyon's domestic dynasty and PSG's Qatar-backed era. The league is often watched for the next breakout star as much as for the title race.",
+      "rivalries": [
+        "Le Classique — PSG vs Marseille",
+        "Choc des Olympiques — Lyon vs Marseille",
+        "Derby du Nord — Lille vs Lens"
+      ],
+      "fanGuide": "Start with Le Classique to understand the emotional map: Paris against Marseille. Then follow Lyon and Monaco for academy and talent-development storylines."
+    },
+    {
+      "id": "eredivisie",
+      "tmCompetitionCode": "NL1",
+      "name": "Eredivisie",
+      "country": "Netherlands",
+      "description": "The Netherlands' top league is a classic football learning lab: Ajax, PSV, and Feyenoord drive the title story, while smaller clubs often develop future European stars.",
+      "styleOfPlay": "Attack-minded and academy-driven, with a strong emphasis on technical midfielders, wingers, possession ideas, and flexible Dutch positional concepts.",
+      "famousClubs": [
+        "Ajax — Amsterdam academy and European history",
+        "PSV Eindhoven — title regular with attacking identity",
+        "Feyenoord — Rotterdam power and De Kuip atmosphere",
+        "AZ Alkmaar — smart recruitment and youth development",
+        "FC Twente — strong regional support in Enschede"
+      ],
+      "famousPlayers": [
+        "Johan Cruyff — Ajax legend and Dutch football icon",
+        "Ruud Gullit — Feyenoord and PSV graduate before Milan fame",
+        "Ruud van Nistelrooy — PSV striker before Manchester United",
+        "Steven Berghuis — Ajax attacker"
+      ],
+      "historySummary": "Dutch clubs shaped modern football through Total Football, academy coaching, and European success. Ajax, PSV, and Feyenoord remain the big three, but the league's broader value is how quickly young players can become important.",
+      "rivalries": [
+        "De Klassieker — Ajax vs Feyenoord",
+        "PSV vs Ajax — title-race heavyweight matchup",
+        "Twente vs Heracles — eastern Netherlands derby"
+      ],
+      "fanGuide": "Learn the big three first, especially De Klassieker. Watch how Dutch teams build attacks and trust young players; it is one of the best leagues for learning football patterns."
+    }
+  ],
+  "clubs": [
+    {
+      "footybrainTeamId": "paris-saint-germain",
+      "label": "Paris Saint-Germain",
+      "leagueId": "ligue-1",
+      "codes": ["fc-paris-saint-germain"],
+      "nameKeys": ["paris saint germain", "psg", "paris sg"],
+      "stub": {
+        "stadium": "Parc des Princes",
+        "founded": 1970,
+        "rivals": ["Marseille", "Lyon"],
+        "shortHistory": "PSG grew from a young Paris club into France's dominant modern force, with the Qatari ownership era turning the Parc des Princes into a global football stage.",
+        "fanGuide": "Dark blue, red, and Paris identity. Le Classique against Marseille is the fixture to learn first; European expectations shape every season.",
+        "legends": ["Zlatan Ibrahimovic — striker who defined early QSI dominance", "Kylian Mbappe — Paris-born superstar", "Thiago Silva — defensive leader"],
+        "currentKeyPlayers": ["Ousmane Dembele — France forward", "Achraf Hakimi — Morocco full-back", "Vitinha — Portugal midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "marseille",
+      "label": "Marseille",
+      "leagueId": "ligue-1",
+      "codes": ["olympique-marseille"],
+      "nameKeys": ["marseille", "olympique marseille", "olympique de marseille"],
+      "stub": {
+        "stadium": "Orange Velodrome",
+        "founded": 1899,
+        "rivals": ["Paris Saint-Germain", "Lyon"],
+        "shortHistory": "Marseille are France's southern giant and the first French club to win the European Cup. Their support, noise, and suspicion of Paris drive much of Ligue 1's emotion.",
+        "fanGuide": "White and sky blue; the Velodrome is the sound. Le Classique vs PSG is about geography, culture, and power as much as football.",
+        "legends": ["Didier Drogba — explosive striker and cult hero", "Jean-Pierre Papin — Ballon d'Or striker", "Basila Boli — 1993 European Cup final scorer"],
+        "currentKeyPlayers": ["Pierre-Emerick Aubameyang — Gabon striker", "Pierre-Emile Hojbjerg — Denmark midfielder", "Benjamin Pavard — France defender"]
+      }
+    },
+    {
+      "footybrainTeamId": "lyon",
+      "label": "Lyon",
+      "leagueId": "ligue-1",
+      "codes": ["olympique-lyon"],
+      "nameKeys": ["lyon", "olympique lyonnais", "olympique lyon"],
+      "stub": {
+        "stadium": "Groupama Stadium",
+        "founded": 1950,
+        "rivals": ["Saint-Etienne", "Marseille"],
+        "shortHistory": "Lyon dominated France in the 2000s and built one of Europe's most respected academy pipelines, producing technical midfielders and forwards for bigger stages.",
+        "fanGuide": "White kits with red and blue; academy pride matters. The derby against Saint-Etienne is the local grudge, while Marseille games carry national weight.",
+        "legends": ["Juninho Pernambucano — free-kick master", "Karim Benzema — academy striker", "Alexandre Lacazette — academy scorer"],
+        "currentKeyPlayers": ["Corentin Tolisso — France midfielder", "Nicolas Tagliafico — Argentina full-back", "Rayan Cherki — academy attacker"]
+      }
+    },
+    {
+      "footybrainTeamId": "monaco",
+      "label": "Monaco",
+      "leagueId": "ligue-1",
+      "codes": ["as-monaco"],
+      "nameKeys": ["monaco", "as monaco", "association sportive de monaco"],
+      "stub": {
+        "stadium": "Stade Louis-II",
+        "founded": 1924,
+        "rivals": ["Nice", "Paris Saint-Germain"],
+        "shortHistory": "Monaco play in the French system from the principality and are known for waves of elite talent, from European finals to the Mbappe-led title team of 2017.",
+        "fanGuide": "Red and white diagonal shirts; smaller stadium, big talent reputation. Watch Monaco to spot future stars before they move.",
+        "legends": ["Thierry Henry — academy forward", "Kylian Mbappe — teenage title winner", "Radamel Falcao — title-era striker"],
+        "currentKeyPlayers": ["Paul Pogba — France midfielder", "Takumi Minamino — Japan attacker", "Denis Zakaria — Switzerland midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "lille",
+      "label": "Lille",
+      "leagueId": "ligue-1",
+      "codes": ["losc-lille"],
+      "nameKeys": ["lille", "losc lille", "lille olympique sporting club"],
+      "stub": {
+        "stadium": "Decathlon Arena-Stade Pierre-Mauroy",
+        "founded": 1944,
+        "rivals": ["Lens", "Paris Saint-Germain"],
+        "shortHistory": "Lille are a northern club with a modern recruitment reputation and a famous 2021 title that interrupted PSG's dominance.",
+        "fanGuide": "Red, navy, and northern pride. The Derby du Nord against Lens is the fixture that explains local identity.",
+        "legends": ["Eden Hazard — academy winger", "Burak Yilmaz — 2021 title striker", "Rio Mavuba — midfield leader"],
+        "currentKeyPlayers": ["Olivier Giroud — France striker", "Benjamin Andre — midfield leader", "Thomas Meunier — Belgium full-back"]
+      }
+    },
+    {
+      "footybrainTeamId": "ajax",
+      "label": "Ajax",
+      "leagueId": "eredivisie",
+      "codes": ["ajax-amsterdam"],
+      "nameKeys": ["ajax", "ajax amsterdam", "afc ajax amsterdam"],
+      "stub": {
+        "stadium": "Johan Cruijff ArenA",
+        "founded": 1900,
+        "rivals": ["Feyenoord", "PSV Eindhoven"],
+        "shortHistory": "Ajax are the academy and ideas club: Total Football, European Cups, and a conveyor belt of players who shape bigger leagues.",
+        "fanGuide": "White shirt with a red central stripe; Amsterdam confidence. De Klassieker against Feyenoord is essential.",
+        "legends": ["Johan Cruyff — club and football philosophy icon", "Marco van Basten — elegant striker", "Frank Rijkaard — midfielder and defender"],
+        "currentKeyPlayers": ["Steven Berghuis — Netherlands attacker", "Davy Klaassen — academy midfielder", "Wout Weghorst — Netherlands striker"]
+      }
+    },
+    {
+      "footybrainTeamId": "psv",
+      "label": "PSV Eindhoven",
+      "leagueId": "eredivisie",
+      "codes": ["psv-eindhoven"],
+      "nameKeys": ["psv", "psv eindhoven", "philips sport vereniging"],
+      "stub": {
+        "stadium": "Philips Stadion",
+        "founded": 1913,
+        "rivals": ["Ajax", "Feyenoord"],
+        "shortHistory": "PSV began as the Philips works team and became one of Dutch football's title powers, known for attacking teams and export-ready forwards.",
+        "fanGuide": "Red and white stripes; Eindhoven identity. PSV vs Ajax often feels like a title checkpoint.",
+        "legends": ["Romario — Brazilian striker", "Ruud van Nistelrooy — prolific forward", "Arjen Robben — winger before European fame"],
+        "currentKeyPlayers": ["Ivan Perisic — Croatia winger", "Joey Veerman — Netherlands midfielder", "Sergino Dest — United States full-back"]
+      }
+    },
+    {
+      "footybrainTeamId": "feyenoord",
+      "label": "Feyenoord",
+      "leagueId": "eredivisie",
+      "codes": ["feyenoord-rotterdam"],
+      "nameKeys": ["feyenoord", "feyenoord rotterdam"],
+      "stub": {
+        "stadium": "Stadion Feyenoord De Kuip",
+        "founded": 1908,
+        "rivals": ["Ajax", "PSV Eindhoven"],
+        "shortHistory": "Feyenoord are Rotterdam's working-class giant, with European history and one of the Netherlands' most intense stadium atmospheres at De Kuip.",
+        "fanGuide": "Red and white halves; Rotterdam edge. De Klassieker vs Ajax is the first rivalry to learn.",
+        "legends": ["Willem van Hanegem — midfield icon", "Robin van Persie — Rotterdam-born forward", "Dirk Kuyt — tireless striker"],
+        "currentKeyPlayers": ["Raheem Sterling — England winger", "Gernot Trauner — Austria defender", "Jakub Moder — Poland midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "az-alkmaar",
+      "label": "AZ Alkmaar",
+      "leagueId": "eredivisie",
+      "codes": ["az-alkmaar"],
+      "nameKeys": ["az", "az alkmaar", "alkmaar zaanstreek"],
+      "stub": {
+        "stadium": "AFAS Stadion",
+        "founded": 1967,
+        "rivals": ["Ajax", "FC Utrecht"],
+        "shortHistory": "AZ are a smart-recruitment club with title history, strong analytics reputation, and a productive youth pathway outside the Dutch big three.",
+        "fanGuide": "Red and white from Alkmaar; watch for clever recruitment and academy players taking senior responsibility.",
+        "legends": ["Kees Kist — prolific striker", "Louis van Gaal — title-winning coach", "Teun Koopmeiners — academy midfielder"],
+        "currentKeyPlayers": ["Jordy Clasie — Netherlands midfielder", "Troy Parrott — Ireland striker", "Sven Mijnans — attacking midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "fc-twente",
+      "label": "FC Twente",
+      "leagueId": "eredivisie",
+      "codes": ["fc-twente-enschede"],
+      "nameKeys": ["fc twente", "twente", "football club twente"],
+      "stub": {
+        "stadium": "De Grolsch Veste",
+        "founded": 1965,
+        "rivals": ["Heracles Almelo", "Ajax"],
+        "shortHistory": "Twente carry strong regional support in Enschede and won the Dutch title in 2010, a rare break in the big-three pattern.",
+        "fanGuide": "Red shirts; De Grolsch Veste is loud when Twente are pushing near the top. The Heracles derby is the local one.",
+        "legends": ["Blaise Nkufo — record scorer", "Theo Janssen — midfield cult hero", "Sander Boschker — long-serving goalkeeper"],
+        "currentKeyPlayers": ["Ricky van Wolfswinkel — Netherlands striker", "Lars Unnerstall — Germany goalkeeper", "Mees Hilgers — Indonesia defender"]
+      }
+    }
+  ]
+}

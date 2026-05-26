@@ -68,6 +68,19 @@ export default function Navbar() {
         <NavLink to="/national-teams" className={({ isActive }) => (isActive ? 'active' : '')}>
           Nations
         </NavLink>
+        <NavLink to="/world-cup" className={({ isActive }) => (isActive ? 'active' : '')}>
+          World Cup
+        </NavLink>
+        <NavLink to="/compare" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Compare
+        </NavLink>
+        <NavLink
+          to="/collections"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+          end
+        >
+          Collections
+        </NavLink>
         <NavLink to="/quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
           Quiz
         </NavLink>

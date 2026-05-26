@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "description": "Editorial club identity for Phase 4 MLS/Brasileirão priority clubs — merged into sampleData via merge-phase1-sample-data.js",
+  "teams": {
+    "flamengo": {
+      "founded": 1895,
+      "rivals": ["Fluminense", "Vasco da Gama", "Botafogo"],
+      "shortHistory": "Flamengo are Brazil's best-supported club, with a trophy room built on Libertadores nights and domestic dominance from Rio.",
+      "fanGuide": "Expect attacking football, enormous away support, and the Fla-Flu derby against Fluminense as the emotional starting point.",
+      "legends": ["Zico", "Romário", "Gabigol"],
+      "currentKeyPlayers": ["Giorgian de Arrascaeta", "Lucas Paquetá", "Pedro", "Bruno Henrique"],
+      "identityTags": ["fan-culture", "historic-giant", "technical"]
+    },
+    "palmeiras": {
+      "founded": 1914,
+      "rivals": ["Corinthians", "São Paulo", "Santos"],
+      "shortHistory": "Palmeiras built a modern winning machine in São Paulo, with repeated Brasileirão titles and strong Libertadores pedigree.",
+      "fanGuide": "Green-wall atmosphere at Allianz Parque; learn the Derby Paulista against Corinthians before the state-vs-state storylines.",
+      "legends": ["Marcos", "Edmundo", "Dudu"],
+      "currentKeyPlayers": ["Gustavo Gómez", "Vitor Roque", "Andreas Pereira", "Felipe Anderson"],
+      "identityTags": ["title-challenger", "defensive-block", "fan-culture"]
+    },
+    "corinthians": {
+      "founded": 1910,
+      "rivals": ["Palmeiras", "São Paulo", "Santos"],
+      "shortHistory": "Corinthians carry the Fiel torcida identity — working-class roots, huge crowds, and fierce Paulista derbies.",
+      "fanGuide": "Start with the Derby Paulista vs Palmeiras; the stadium roar matters as much as the tactical shape.",
+      "legends": ["Sócrates", "Rivelino", "Cássio"],
+      "currentKeyPlayers": ["Memphis Depay", "Yuri Alberto", "Gustavo Henrique", "Matheuzinho"],
+      "identityTags": ["fan-culture", "physical", "underdog-spirit"]
+    },
+    "sao-paulo": {
+      "founded": 1930,
+      "rivals": ["Corinthians", "Palmeiras", "Santos"],
+      "shortHistory": "São Paulo FC are a three-world-title institution in Brazilian football, known for structure, academies, and big-game pedigree.",
+      "fanGuide": "Tricolor Paulista identity runs deep — Morumbi nights and clássicos against Corinthians and Palmeiras anchor the learning path.",
+      "legends": ["Raí", "Cafu", "Rogerio Ceni"],
+      "currentKeyPlayers": ["Jonathan Calleri", "Luciano", "Marcos Antônio", "Rafael"],
+      "identityTags": ["historic-giant", "academy", "technical"]
+    },
+    "santos": {
+      "founded": 1912,
+      "rivals": ["Corinthians", "São Paulo", "Palmeiras"],
+      "shortHistory": "Santos are the club of Pelé's roots and endless youth talent — the Vila Belmiro factory still defines Brazilian romance with the game.",
+      "fanGuide": "Peixe culture on the coast; Neymar and Gabigol stories tie the past to the present before you dive into Paulista rivals.",
+      "legends": ["Pelé", "Neymar", "Robinho"],
+      "currentKeyPlayers": ["Neymar", "Gabriel Barbosa", "Zé Rafael", "Rony"],
+      "identityTags": ["academy", "technical", "fan-culture"]
+    },
+    "inter-miami": {
+      "founded": 2018,
+      "rivals": ["Orlando City SC", "LA Galaxy"],
+      "shortHistory": "Inter Miami CF turned global attention toward MLS with Designated Player signings and a pink-shirt brand built in South Florida.",
+      "fanGuide": "Chase Stadium nights mix celebrity storylines with improving squad depth — learn Messi-era context, then the Florida derby with Orlando.",
+      "legends": [],
+      "currentKeyPlayers": ["Lionel Messi", "Luis Suárez", "Rodrigo De Paul", "Sergio Reguilón"],
+      "identityTags": ["fan-culture", "technical", "title-challenger"]
+    },
+    "lafc": {
+      "founded": 2014,
+      "rivals": ["LA Galaxy", "San Jose Earthquakes"],
+      "shortHistory": "LAFC arrived as a sleek Los Angeles expansion project and quickly became an MLS trophy contender with strong South American talent.",
+      "fanGuide": "BMO Stadium atmosphere and the El Tráfico rivalry with LA Galaxy are the two names every new fan should know first.",
+      "legends": [],
+      "currentKeyPlayers": ["Denis Bouanga", "Aaron Long", "Ryan Porteous", "Tyler Boyd"],
+      "identityTags": ["pressing", "fan-culture", "title-challenger"]
+    },
+    "la-galaxy": {
+      "founded": 1996,
+      "rivals": ["LAFC", "San Jose Earthquakes"],
+      "shortHistory": "LA Galaxy are MLS royalty — five Cups, Hollywood appeal, and the league's original star-import blueprint.",
+      "fanGuide": "Carson-era history matters: Beckham, Donovan, and now a veteran mix with Marco Reus — start with El Tráfico vs LAFC.",
+      "legends": ["Landon Donovan", "David Beckham", "Cobi Jones"],
+      "currentKeyPlayers": ["Marco Reus", "Riqui Puig", "Maya Yoshida", "João Klauss"],
+      "identityTags": ["historic-giant", "fan-culture", "technical"]
+    },
+    "seattle-sounders": {
+      "founded": 2007,
+      "rivals": ["Portland Timbers", "Vancouver Whitecaps FC"],
+      "shortHistory": "Seattle Sounders FC turned Pacific Northwest passion into MLS trophies and the loudest recurring atmospheres in the league.",
+      "fanGuide": "Learn the Cascadia Cup with Portland first — Lumen Field noise and green scarves are the culture before you memorize the roster.",
+      "legends": ["Nicolas Lodeiro", "Clint Dempsey", "Jordan Morris"],
+      "currentKeyPlayers": ["Jordan Morris", "Cristian Roldán", "Albert Rusnák", "Paul Arriola"],
+      "identityTags": ["fan-culture", "pressing", "title-challenger"]
+    }
+  }
+}

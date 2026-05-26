@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "wave": 1,
+  "updatedAt": "2026-05-25",
+  "description": "First Brasileirão editorial batch — four quiz-ready stars each at Flamengo, Palmeiras, Corinthians, São Paulo, and Santos.",
+  "approvedWave1Ids": [
+    "tm-248410",
+    "tm-444523",
+    "tm-432895",
+    "tm-353108",
+    "tm-215390",
+    "tm-943837",
+    "tm-203394",
+    "tm-159372",
+    "tm-167850",
+    "tm-489893",
+    "tm-208681",
+    "tm-594226",
+    "tm-284727",
+    "tm-223560",
+    "tm-468301",
+    "tm-68097",
+    "tm-68290",
+    "tm-244275",
+    "tm-225432",
+    "tm-371009"
+  ],
+  "clubs": {
+    "flamengo": ["Giorgian de Arrascaeta", "Lucas Paquetá", "Pedro", "Bruno Henrique"],
+    "palmeiras": ["Gustavo Gómez", "Vitor Roque", "Andreas Pereira", "Felipe Anderson"],
+    "corinthians": ["Memphis Depay", "Yuri Alberto", "Gustavo Henrique", "Matheuzinho"],
+    "sao-paulo": ["Jonathan Calleri", "Luciano", "Marcos Antônio", "Rafael"],
+    "santos": ["Neymar", "Gabriel Barbosa", "Zé Rafael", "Rony"]
+  }
+}

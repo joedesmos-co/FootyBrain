@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 3 controlled expansion — completes major European league coverage. Adds 22 clubs across Premier League, La Liga, Bundesliga, and Ligue 1. Targets 55 total clubs and 450–600 total players.",
+  "targetCounts": {
+    "clubsMin": 55,
+    "clubsMax": 60,
+    "playersMin": 450,
+    "playersMax": 600
+  },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "west-ham",
+      "label": "West Ham United",
+      "leagueId": "premier-league",
+      "codes": ["west-ham-united"],
+      "nameKeys": ["west ham united", "west ham"],
+      "stub": {
+        "stadium": "London Stadium",
+        "founded": 1895,
+        "rivals": ["Chelsea", "Millwall", "Arsenal"],
+        "shortHistory": "East London club that has produced generations of England internationals from Geoff Hurst to Declan Rice. Known as the Hammers and famous for their academy's contribution to English football.",
+        "fanGuide": "West Ham fans are famously passionate. The club moved from Upton Park to the London Stadium in 2016 — the old ground is a touchstone of the identity debate.",
+        "legends": ["Bobby Moore", "Geoff Hurst", "Martin Peters"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "brighton",
+      "label": "Brighton & Hove Albion",
+      "leagueId": "premier-league",
+      "codes": ["brighton-amp-hove-albion"],
+      "nameKeys": ["brighton hove albion", "brighton"],
+      "stub": {
+        "stadium": "Amex Stadium",
+        "founded": 1901,
+        "rivals": ["Crystal Palace"],
+        "shortHistory": "Brighton rose from the lower leagues to become a data-driven Premier League force under Graham Potter and Roberto De Zerbi. The Amex Stadium opened in 2011 and the club is known for developing and selling elite talent.",
+        "fanGuide": "The M23 derby against Crystal Palace is the rivalry that matters most. Brighton fans pride themselves on a progressive, modern club culture.",
+        "legends": [],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "wolves",
+      "label": "Wolverhampton Wanderers",
+      "leagueId": "premier-league",
+      "codes": ["wolverhampton-wanderers"],
+      "nameKeys": ["wolverhampton wanderers", "wolverhampton", "wolves"],
+      "stub": {
+        "stadium": "Molineux Stadium",
+        "founded": 1877,
+        "rivals": ["West Bromwich Albion", "Aston Villa", "Birmingham City"],
+        "shortHistory": "One of the founding members of the Football League, Wolves won three First Division titles in the 1950s. Their modern resurgence under Nuno Espírito Santo brought Portuguese flair and Europa League football.",
+        "fanGuide": "The Black Country derby against West Brom is fierce. Molineux has one of the most distinctive atmospheres in the Midlands.",
+        "legends": ["Billy Wright", "Steve Bull", "Robbie Keane"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "crystal-palace",
+      "label": "Crystal Palace",
+      "leagueId": "premier-league",
+      "codes": ["crystal-palace"],
+      "nameKeys": ["crystal palace"],
+      "stub": {
+        "stadium": "Selhurst Park",
+        "founded": 1905,
+        "rivals": ["Brighton & Hove Albion", "Charlton Athletic", "Millwall"],
+        "shortHistory": "South London club nicknamed the Eagles with one of the most atmospheric grounds in the Premier League. Known for the passionate Holmesdale Road end and a style built around wide attackers.",
+        "fanGuide": "The rivalry with Brighton — the M23 derby — defines their season. Selhurst Park's tight stands and vocal support create a unique home advantage.",
+        "legends": ["Ian Wright", "Wilfried Zaha", "Mark Bright"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "brentford",
+      "label": "Brentford",
+      "leagueId": "premier-league",
+      "codes": ["fc-brentford"],
+      "nameKeys": ["brentford"],
+      "stub": {
+        "stadium": "Gtech Community Stadium",
+        "founded": 1889,
+        "rivals": ["Fulham", "QPR", "Chelsea"],
+        "shortHistory": "West London club that reinvented itself as a data-analytics trailblazer. After 74 years outside the top flight, Brentford won promotion to the Premier League in 2021 and quickly established themselves with intelligent recruitment.",
+        "fanGuide": "The Bees are a community club that punches above their wage bill. Their approach to player recruitment is studied across the football world.",
+        "legends": [],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "everton",
+      "label": "Everton",
+      "leagueId": "premier-league",
+      "codes": ["fc-everton"],
+      "nameKeys": ["everton"],
+      "stub": {
+        "stadium": "Goodison Park",
+        "founded": 1878,
+        "rivals": ["Liverpool"],
+        "shortHistory": "One of England's most storied clubs, Everton spent the first 130 years of their top-flight life at Goodison Park. Nine league titles and five FA Cups define a proud history. The Merseyside derby against Liverpool is the fiercest local derby in England.",
+        "fanGuide": "The Merseyside derby is everything. Goodison Park's unique atmosphere and the wall of noise from the bullpen end are unlike anything in English football.",
+        "legends": ["Dixie Dean", "Alan Ball", "Wayne Rooney"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "fulham",
+      "label": "Fulham",
+      "leagueId": "premier-league",
+      "codes": ["fc-fulham"],
+      "nameKeys": ["fulham"],
+      "stub": {
+        "stadium": "Craven Cottage",
+        "founded": 1879,
+        "rivals": ["Chelsea", "Brentford", "QPR"],
+        "shortHistory": "West London club with one of football's most charming grounds in Craven Cottage, beside the Thames. Fulham are yo-yo club regulars between the Premier League and Championship, known for a technical style and attractive football.",
+        "fanGuide": "The Cottage's riverside setting is unique in English football. The West Stand's white facade and the neutral Putney End give it a village-football atmosphere even in the top flight.",
+        "legends": ["Johnny Haynes", "George Best (briefly)", "Clint Dempsey"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "athletic-bilbao",
+      "label": "Athletic Club",
+      "leagueId": "la-liga",
+      "codes": ["athletic-bilbao"],
+      "nameKeys": ["athletic club bilbao", "athletic bilbao", "athletic club"],
+      "stub": {
+        "stadium": "San Mamés",
+        "founded": 1898,
+        "rivals": ["Real Sociedad", "Atlético de Madrid"],
+        "shortHistory": "Athletic Club operate a unique policy of fielding only players from the Basque Country. Despite this restriction they have never been relegated from La Liga, hold a historic relationship with their region, and have won eight league titles.",
+        "fanGuide": "San Mamés — nicknamed the Cathedral — is one of Europe's iconic football cathedrals. The Basque-only policy and their unique identity make Athletic Club genuinely one-of-a-kind.",
+        "legends": ["Telmo Zarra", "Joseba Etxeberria", "Aritz Aduriz"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "real-sociedad",
+      "label": "Real Sociedad",
+      "leagueId": "la-liga",
+      "codes": ["real-sociedad-san-sebastian"],
+      "nameKeys": ["real sociedad de futbol", "real sociedad san sebastian", "real sociedad"],
+      "stub": {
+        "stadium": "Reale Arena",
+        "founded": 1909,
+        "rivals": ["Athletic Club"],
+        "shortHistory": "San Sebastián club who won back-to-back La Liga titles in 1981 and 1982 and are known for developing Basque talent alongside foreign stars. Their modern era saw them qualify regularly for European competition.",
+        "fanGuide": "The Basque derby against Athletic Club — txuri-urdin against the reds and whites — is the Basque Country's defining football match.",
+        "legends": ["Jesús María Satrústegui", "John Aldridge", "Mikel Arteta"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "real-betis",
+      "label": "Real Betis",
+      "leagueId": "la-liga",
+      "codes": ["real-betis-sevilla"],
+      "nameKeys": ["real betis balompie", "real betis sevilla", "real betis"],
+      "stub": {
+        "stadium": "Estadio Benito Villamarín",
+        "founded": 1907,
+        "rivals": ["Sevilla"],
+        "shortHistory": "Seville's green-and-white half, Betis won their only league title in 1935 and have enjoyed periodic revivals with exciting attacking football. The Seville derby against FC Sevilla is one of Spain's most atmospheric local derbies.",
+        "fanGuide": "Béticos are known for their passion and willingness to applaud good football, even from opponents. The derby against Sevilla FC fills the whole city.",
+        "legends": ["Joaquín", "Denilson", "Alfonso"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "villarreal",
+      "label": "Villarreal",
+      "leagueId": "la-liga",
+      "codes": ["fc-villarreal"],
+      "nameKeys": ["villarreal club de futbol", "villarreal"],
+      "stub": {
+        "stadium": "Estadio de la Cerámica",
+        "founded": 1923,
+        "rivals": ["Valencia", "Levante"],
+        "shortHistory": "The Yellow Submarine from a small town in Valencia province have become a consistent La Liga presence and Europa League winners in 2021 under Unai Emery, defeating Manchester United on penalties in the final.",
+        "fanGuide": "Villarreal is a small-town club that over-achieves through smart management and a clear footballing identity. Their Europa League win is the high-water mark of a remarkable rise.",
+        "legends": ["Marcos Senna", "Juan Román Riquelme", "Diego Forlán"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "celta-vigo",
+      "label": "Celta Vigo",
+      "leagueId": "la-liga",
+      "codes": ["celta-vigo"],
+      "nameKeys": ["real club celta de vigo", "celta vigo", "celta de vigo"],
+      "stub": {
+        "stadium": "Abanca-Balaídos",
+        "founded": 1923,
+        "rivals": ["Deportivo de La Coruña", "Pontevedra"],
+        "shortHistory": "Galician club from the far northwest corner of Spain, Celta Vigo are known for technical, attacking football shaped by their history of producing creative players from the region.",
+        "fanGuide": "The Galician derby against Deportivo is the local rivalry. Celta's sky-blue and white shirts and their Balaídos ground are the symbols of football in Galicia.",
+        "legends": ["Iago Aspas", "Mostovoi", "Mazinho"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "valencia",
+      "label": "Valencia",
+      "leagueId": "la-liga",
+      "codes": ["fc-valencia"],
+      "nameKeys": ["valencia club de futbol", "valencia cf", "valencia"],
+      "stub": {
+        "stadium": "Estadio de Mestalla",
+        "founded": 1919,
+        "rivals": ["Villarreal", "Real Betis", "Levante"],
+        "shortHistory": "Valencia were the dominant force in Spanish football at the turn of the millennium, reaching two consecutive Champions League finals in 2000 and 2001 and winning La Liga twice. Mestalla is one of Spain's most intimidating atmospheres.",
+        "fanGuide": "Mestalla's steep, close stands create a cauldron effect that has rattled visiting Champions League contenders for decades. The club's financial troubles contrast with a proud history.",
+        "legends": ["Mario Kempes", "David Villa", "Pablo Aimar"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "vfb-stuttgart",
+      "label": "VfB Stuttgart",
+      "leagueId": "bundesliga",
+      "codes": ["vfb-stuttgart"],
+      "nameKeys": ["verein fur bewegungsspiele stuttgart 1893", "vfb stuttgart", "stuttgart"],
+      "stub": {
+        "stadium": "MHPArena",
+        "founded": 1893,
+        "rivals": ["Karlsruher SC", "VfL Wolfsburg"],
+        "shortHistory": "Five-time German champions and a founding member of the Bundesliga. Stuttgart have a tradition of developing homegrown talent and attacking football, with their 1980s and early 2000s eras standing as the club's high points.",
+        "fanGuide": "Baden-Württemberg's most popular club, Stuttgart draw fans from across the state. Their recent return to Bundesliga contention has refreshed a proud fan base.",
+        "legends": ["Gerd Müller (briefly)", "Fredi Bobic", "Kevin Großkreutz"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "borussia-monchengladbach",
+      "label": "Borussia Mönchengladbach",
+      "leagueId": "bundesliga",
+      "codes": ["borussia-monchengladbach"],
+      "nameKeys": ["borussia verein fur leibesubungen 1900 monchengladbach", "borussia monchengladbach", "monchengladbach", "gladbach"],
+      "stub": {
+        "stadium": "Borussia-Park",
+        "founded": 1900,
+        "rivals": ["Fortuna Düsseldorf", "Köln"],
+        "shortHistory": "The Foals dominated the Bundesliga in the 1970s, winning five league titles and producing players like Berti Vogts and Jupp Heynckes. Their modern identity is built on youth development and the 4-2-3-1 system.",
+        "fanGuide": "The Rhine derby against Köln is one of Germany's most intense local rivalries. Borussia-Park's modern layout contrasts with an old-school Rhineland fan culture.",
+        "legends": ["Günter Netzer", "Berti Vogts", "Jupp Heynckes"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "wolfsburg",
+      "label": "VfL Wolfsburg",
+      "leagueId": "bundesliga",
+      "codes": ["vfl-wolfsburg"],
+      "nameKeys": ["verein fur leibesubungen wolfsburg", "vfl wolfsburg", "wolfsburg"],
+      "stub": {
+        "stadium": "Volkswagen Arena",
+        "founded": 1945,
+        "rivals": ["Hannover 96", "Eintracht Braunschweig"],
+        "shortHistory": "Company club created by Volkswagen workers, Wolfsburg shocked Europe by winning the Bundesliga in 2009 with Edin Džeko and Grafite both exceeding 20 goals. Their women's team is among Europe's most successful.",
+        "fanGuide": "Wolfsburg is a model-town club with deep ties to VW. The Volkswagen Arena sits at the heart of a planned company town — an unusual context for professional football.",
+        "legends": ["Edin Džeko", "Grafite", "Kevin De Bruyne (2014-15)"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "werder-bremen",
+      "label": "Werder Bremen",
+      "leagueId": "bundesliga",
+      "codes": ["sv-werder-bremen"],
+      "nameKeys": ["sportverein werder bremen von 1899", "sv werder bremen", "werder bremen", "werder"],
+      "stub": {
+        "stadium": "Weserstadion",
+        "founded": 1899,
+        "rivals": ["Hamburger SV", "VfL Wolfsburg"],
+        "shortHistory": "Four-time Bundesliga champions and DFB-Pokal record holders. Werder's 2003-04 league title under Thomas Schaaf marked the peak of their modern era. The Weserstadion beside the Weser river is one of German football's most distinctive venues.",
+        "fanGuide": "The North Derby against Hamburg is one of Germany's fiercest. Werder's green-and-white identity is inseparable from Bremen's civic pride.",
+        "legends": ["Karl-Heinz Riedle", "Wynton Rufer", "Miroslav Klose"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "freiburg",
+      "label": "SC Freiburg",
+      "leagueId": "bundesliga",
+      "codes": ["sc-freiburg"],
+      "nameKeys": ["sport club freiburg", "sc freiburg", "freiburg"],
+      "stub": {
+        "stadium": "Europa-Park Stadion",
+        "founded": 1904,
+        "rivals": ["VfB Stuttgart", "Karlsruher SC"],
+        "shortHistory": "The Breisgau club are one of the Bundesliga's great overachievers — a small-city club that consistently competes above their means through long-term management stability under Christian Streich. Europa-Park Stadion opened in 2021.",
+        "fanGuide": "Freiburg's fan culture is known for being family-friendly and community-oriented. The club is studied across Europe as a model of sustainable football management.",
+        "legends": ["Volker Finke (manager)", "Cédric Makiadi"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "lens",
+      "label": "RC Lens",
+      "leagueId": "ligue-1",
+      "codes": ["rc-lens"],
+      "nameKeys": ["racing club de lens", "rc lens", "lens"],
+      "stub": {
+        "stadium": "Stade Bollaert-Delelis",
+        "founded": 1906,
+        "rivals": ["Lille"],
+        "shortHistory": "Mining-town club from northern France that won their only league title in 1998. Lens represent a working-class football tradition in the Nord-Pas-de-Calais region, and their return to the top flight brought passionate support back to Bollaert.",
+        "fanGuide": "The Derby du Nord against Lille is the region's defining rivalry. Bollaert's steep terraces create one of French football's noisiest atmospheres.",
+        "legends": ["Éric Sikora", "Sylvain Wiltord", "Daniel Leclercq"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "nice",
+      "label": "OGC Nice",
+      "leagueId": "ligue-1",
+      "codes": ["ogc-nizza"],
+      "nameKeys": ["olympique gymnaste club nice cote d azur", "ogc nice", "nice"],
+      "stub": {
+        "stadium": "Allianz Riviera",
+        "founded": 1904,
+        "rivals": ["Marseille", "Monaco"],
+        "shortHistory": "Côte d'Azur club who won four French championships in the 1950s. INEOS ownership has brought resources and ambition to a club with one of French football's most scenic stadium locations. Nice under Lucien Favre developed a reputation for solid defensive organization.",
+        "fanGuide": "Nice football blends Mediterranean style with new-money ambition. The Allianz Riviera opened in 2013 and offers views across the hills above the Côte d'Azur.",
+        "legends": ["Just Fontaine", "Panagiotis Retsos"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "rennes",
+      "label": "Stade Rennais",
+      "leagueId": "ligue-1",
+      "codes": ["fc-stade-rennes"],
+      "nameKeys": ["stade rennais football club", "stade rennais", "rennes"],
+      "stub": {
+        "stadium": "Roazhon Park",
+        "founded": 1901,
+        "rivals": ["Nantes", "Angers"],
+        "shortHistory": "Brittany's biggest club, Rennes have become a genuine Ligue 1 force and regular Europa League participants. Their academy is one of French football's most productive, with Eduardo Camavinga among recent graduates.",
+        "fanGuide": "The Grand Ouest derby against Nantes is Brittany versus Loire. Roazhon Park — 'Roazhon' being the Breton name for Rennes — reflects the club's regional pride.",
+        "legends": ["Didier Drogba (briefly)", "Eduardo Camavinga"],
+        "currentKeyPlayers": []
+      }
+    },
+    {
+      "footybrainTeamId": "strasbourg",
+      "label": "RC Strasbourg",
+      "leagueId": "ligue-1",
+      "codes": ["rc-strassburg-alsace"],
+      "nameKeys": ["racing club de strasbourg alsace", "rc strasbourg alsace", "strasbourg"],
+      "stub": {
+        "stadium": "Stade de la Meinau",
+        "founded": 1906,
+        "rivals": ["Metz", "Nancy"],
+        "shortHistory": "Alsatian club that won the 1979 French championship and have a long history reflecting the cross-border culture of the Alsace region. Chelsea owner Todd Boehly acquired a stake in 2022, bringing new investment to the club.",
+        "fanGuide": "Strasbourg's Alsatian identity — between France and Germany — gives the club a unique cultural flavour. The Meinau ground is compact and atmospheric.",
+        "legends": ["Jean-Marie Pfaff (briefly)"],
+        "currentKeyPlayers": []
+      }
+    }
+  ]
+}

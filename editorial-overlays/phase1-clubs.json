@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 1 expansion — 24 clubs across GB1, ES1, L1, IT1. Used by build:data-preview and merge pipeline.",
+  "targetCounts": { "clubsMin": 20, "clubsMax": 30, "playersMin": 120, "playersMax": 180 },
+  "clubs": [
+    {
+      "footybrainTeamId": "manchester-city",
+      "label": "Manchester City",
+      "codes": ["manchester-city"],
+      "nameKeys": ["manchester city"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "arsenal",
+      "label": "Arsenal",
+      "codes": ["fc-arsenal"],
+      "nameKeys": ["arsenal"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "liverpool",
+      "label": "Liverpool",
+      "codes": ["fc-liverpool"],
+      "nameKeys": ["liverpool"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "chelsea",
+      "label": "Chelsea",
+      "codes": ["fc-chelsea"],
+      "nameKeys": ["chelsea"],
+      "stub": {
+        "stadium": "Stamford Bridge",
+        "founded": 1905,
+        "rivals": ["Arsenal", "Tottenham Hotspur"],
+        "shortHistory": "Chelsea grew from a west London club into a global name through Abramovich-era investment and later American ownership, with repeated Premier League and Champions League success since the 2000s.",
+        "fanGuide": "Blue is the colour; “Carefree” and Shed End culture matter to supporters. The rivalry with Arsenal and Spurs frames the London football map.",
+        "legends": ["Frank Lampard — midfielder and club-record goals", "Didier Drogba — big-game striker", "John Terry — captain and defensive leader"],
+        "currentKeyPlayers": ["Cole Palmer — attacking midfielder", "Enzo Fernández — deep-lying playmaker"]
+      }
+    },
+    {
+      "footybrainTeamId": "manchester-united",
+      "label": "Manchester United",
+      "codes": ["manchester-united"],
+      "nameKeys": ["manchester united"],
+      "stub": {
+        "stadium": "Old Trafford",
+        "founded": 1878,
+        "rivals": ["Manchester City", "Liverpool"],
+        "shortHistory": "United built the Busby Babes story, Ferguson’s 26-year dynasty, and a global fanbase. Old Trafford and the 1999 treble remain reference points for English football history.",
+        "fanGuide": "Red shirts, Stretford End songs, and the Liverpool rivalry define the emotional calendar. “Glory Glory Man United” is the anthem newcomers hear first.",
+        "legends": ["Sir Bobby Charlton — Munich survivor and club icon", "George Best — flair winger of the 1960s", "Cristiano Ronaldo — two spells, goals and global fame"],
+        "currentKeyPlayers": ["Bruno Fernandes — Portugal playmaker and captain", "Marcus Rashford — academy forward"]
+      }
+    },
+    {
+      "footybrainTeamId": "tottenham",
+      "label": "Tottenham Hotspur",
+      "codes": ["tottenham-hotspur", "fc-tottenham-hotspur"],
+      "nameKeys": ["tottenham hotspur", "tottenham"],
+      "stub": {
+        "stadium": "Tottenham Hotspur Stadium",
+        "founded": 1882,
+        "rivals": ["Arsenal", "Chelsea"],
+        "shortHistory": "Spurs were the first English club to win a major European trophy in the modern era (1963). The north London rivalry with Arsenal is the club’s heartbeat; recent decades mixed near-miss seasons with new stadium ambition.",
+        "fanGuide": "White shirts and navy trim; the north London derby is the fixture to learn first. “When the year ends in one, Spurs win something” is a famous supporter joke — know it before you repeat it.",
+        "legends": ["Jimmy Greaves — prolific goalscorer", "Glenn Hoddle — elegant playmaker", "Harry Kane — academy striker and club record scorer"],
+        "currentKeyPlayers": ["Son Heung-min — forward and South Korea captain", "James Maddison — creative midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "newcastle",
+      "label": "Newcastle United",
+      "codes": ["newcastle-united"],
+      "nameKeys": ["newcastle united"],
+      "stub": {
+        "stadium": "St James' Park",
+        "founded": 1892,
+        "rivals": ["Sunderland", "Middlesbrough"],
+        "shortHistory": "Newcastle carry a passionate regional identity — the Tyne-Wear derby with Sunderland is historic. Modern investment aimed to restore trophy challenges after years of turbulence.",
+        "fanGuide": "Black and white stripes; Gallowgate End leads the noise. Supporters describe the club as more than football for the north east — learn the Tyne-Wear derby name even if fixtures are less frequent.",
+        "legends": ["Alan Shearer — local hero and Premier League record scorer", "Peter Beardsley — technical forward", "Kevin Keegan — player and beloved manager"],
+        "currentKeyPlayers": ["Alexander Isak — Sweden striker", "Bruno Guimarães — Brazil midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "aston-villa",
+      "label": "Aston Villa",
+      "codes": ["aston-villa"],
+      "nameKeys": ["aston villa"],
+      "stub": {
+        "stadium": "Villa Park",
+        "founded": 1874,
+        "rivals": ["Birmingham City", "West Bromwich Albion"],
+        "shortHistory": "Villa are one of England’s founding clubs and European Cup winners in 1982. Birmingham’s claret and blue identity runs deep through the West Midlands.",
+        "fanGuide": "Claret and blue halves; Holte End is famous for volume. The Second City derby vs Birmingham City is the local grudge to know.",
+        "legends": ["Peter Withe — scorer of the 1982 European Cup final goal", "Paul McGrath — elegant defender despite knee issues", "Jack Grealish — local academy talent"],
+        "currentKeyPlayers": ["Ollie Watkins — England striker", "Morgan Rogers — attacking midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "real-madrid",
+      "label": "Real Madrid",
+      "codes": ["real-madrid"],
+      "nameKeys": ["real madrid"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "barcelona",
+      "label": "Barcelona",
+      "codes": ["fc-barcelona"],
+      "nameKeys": ["barcelona", "futbol club barcelona"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "atletico-madrid",
+      "label": "Atlético Madrid",
+      "codes": ["atletico-madrid"],
+      "nameKeys": ["atletico madrid"],
+      "stub": {
+        "stadium": "Cívitas Metropolitano",
+        "founded": 1903,
+        "rivals": ["Real Madrid", "Barcelona"],
+        "shortHistory": "Atlético built a reputation as the capital’s gritty alternative to Real’s glamour — Simeone’s era added titles through organisation, set pieces, and fan intensity.",
+        "fanGuide": "Red and white stripes; the Madrid derby splits the city. “El Cholo” chants reference long-running manager Diego Simeone.",
+        "legends": ["Luis Aragonés — player and title-winning coach", "Fernando Torres — local academy hero", "Diego Godín — defensive rock of title years"],
+        "currentKeyPlayers": ["Antoine Griezmann — forward and creative hub", "Jan Oblak — Slovenia goalkeeper"]
+      }
+    },
+    {
+      "footybrainTeamId": "sevilla",
+      "label": "Sevilla",
+      "codes": ["fc-sevilla"],
+      "nameKeys": ["sevilla"],
+      "stub": {
+        "stadium": "Ramón Sánchez-Pizjuán",
+        "founded": 1890,
+        "rivals": ["Real Betis", "Barcelona"],
+        "shortHistory": "Sevilla became Europe’s specialist in the Europa League, winning the competition repeatedly while the big two dominated La Liga headlines.",
+        "fanGuide": "White shirts with red accents; the Seville derby vs Betis is one of Spain’s fiercest local rivalries.",
+        "legends": ["Diego Maradona — brief but iconic spell", "Iván Rakitić — midfield engine of trophy eras", "Jesús Navas — one-club full-back"],
+        "currentKeyPlayers": ["Youssef En-Nesyri — Morocco striker", "Sergio Ramos — veteran centre-back"]
+      }
+    },
+    {
+      "footybrainTeamId": "bayern-munich",
+      "label": "Bayern Munich",
+      "codes": ["fc-bayern-munchen", "fc-bayern-muenchen"],
+      "nameKeys": ["bayern munchen", "bayern munich"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "borussia-dortmund",
+      "label": "Borussia Dortmund",
+      "codes": ["borussia-dortmund"],
+      "nameKeys": ["borussia dortmund"],
+      "stub": {
+        "stadium": "Signal Iduna Park",
+        "founded": 1909,
+        "rivals": ["Bayern Munich", "Schalke 04"],
+        "shortHistory": "Dortmund’s Yellow Wall and youth development made them Germany’s romantic alternative to Bayern — Klopp’s pressing team and a Champions League final run define modern memory.",
+        "fanGuide": "Yellow and black; the Südtribüne is Europe’s most famous standing terrace. Der Klassiker vs Bayern is the national headline.",
+        "legends": ["Marco Reus — one-club winger and captain", "Mats Hummels — centre-back and academy graduate", "Robert Lewandowski — goal machine before Bayern"],
+        "currentKeyPlayers": ["Jadon Sancho — winger on loan spells", "Mats Hummels — returning defensive leader"]
+      }
+    },
+    {
+      "footybrainTeamId": "bayer-leverkusen",
+      "label": "Bayer Leverkusen",
+      "codes": ["bayer-04-leverkusen", "bayer-leverkusen"],
+      "nameKeys": ["bayer leverkusen", "bayer 04 leverkusen"],
+      "stub": {
+        "stadium": "BayArena",
+        "founded": 1904,
+        "rivals": ["Cologne", "Borussia Mönchengladbach"],
+        "shortHistory": "Leverkusen ended decades of “Neverkusen” jokes with an unbeaten Bundesliga title in 2024 — a club backed by pharmaceutical roots in North Rhine-Westphalia.",
+        "fanGuide": "Red and black kits; smaller than Dortmund or Bayern but fiercely supported in the Rhineland.",
+        "legends": ["Bernd Schuster — midfield playmaker", "Rudi Völler — striker and later sporting director", "Michael Ballack — powerful midfielder"],
+        "currentKeyPlayers": ["Florian Wirtz — Germany attacking midfielder", "Granit Xhaka — Switzerland midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "rb-leipzig",
+      "label": "RB Leipzig",
+      "codes": ["rasenballsport-leipzig"],
+      "nameKeys": ["rb leipzig", "rasenballsport leipzig"],
+      "stub": {
+        "stadium": "Red Bull Arena",
+        "founded": 2009,
+        "rivals": ["Dynamo Dresden", "Borussia Dortmund"],
+        "shortHistory": "Leipzig rose quickly from lower leagues with Red Bull backing, becoming a Champions League regular and a foil to traditional German club culture.",
+        "fanGuide": "White and red; controversial among some German fans but loud and organised in Saxony.",
+        "legends": ["Yussuf Poulsen — Denmark striker and early symbol", "Dayot Upamecano — defender before Bayern move"],
+        "currentKeyPlayers": ["Lois Openda — Belgium striker", "Benjamin Šeško — Slovenia forward"]
+      }
+    },
+    {
+      "footybrainTeamId": "eintracht-frankfurt",
+      "label": "Eintracht Frankfurt",
+      "codes": ["eintracht-frankfurt"],
+      "nameKeys": ["eintracht frankfurt"],
+      "stub": {
+        "stadium": "Deutsche Bank Park",
+        "founded": 1899,
+        "rivals": ["Mainz 05", "Bayern Munich"],
+        "shortHistory": "Frankfurt mixed Bundesliga survival with European silverware — the 2022 Europa League win underlined their cup-night pedigree.",
+        "fanGuide": "Black, red, and white; Commerzbank-Arena nights are famous for atmosphere in the Rhine-Main region.",
+        "legends": ["Jürgen Grabowski — 1960s winger and World Cup winner", "Bernd Hölzenbein — tricky winger of the 1970s"],
+        "currentKeyPlayers": ["Randal Kolo Muani — France forward", "Kevin Trapp — goalkeeper"]
+      }
+    },
+    {
+      "footybrainTeamId": "ac-milan",
+      "label": "AC Milan",
+      "codes": ["ac-mailand", "ac-milan"],
+      "nameKeys": ["ac milan", "milan", "associazione calcio milan"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "inter-milan",
+      "label": "Inter Milan",
+      "codes": ["inter-mailand", "inter-milan"],
+      "nameKeys": ["inter milan", "internazionale milano"],
+      "mvp": true
+    },
+    {
+      "footybrainTeamId": "juventus",
+      "label": "Juventus",
+      "codes": ["juventus-turin", "juventus"],
+      "nameKeys": ["juventus", "juventus turin"],
+      "stub": {
+        "stadium": "Allianz Stadium",
+        "founded": 1897,
+        "rivals": ["Inter Milan", "AC Milan", "Torino"],
+        "shortHistory": "Juventus hold the record for Serie A titles — the Old Lady’s black and white stripes symbolise Italian dominance, scandal, and rebuilds across decades.",
+        "fanGuide": "Black and white stripes; the Derby d’Italia vs Inter is a national grudge. Turin’s Derby della Mole vs Torino is the local fixture.",
+        "legends": ["Alessandro Del Piero — one-club symbol and free-kick artist", "Gianluigi Buffon — goalkeeper for a generation", "Michel Platini — French playmaker of the 1980s"],
+        "currentKeyPlayers": ["Dusan Vlahović — Serbia striker", "Federico Chiesa — Italy winger"]
+      }
+    },
+    {
+      "footybrainTeamId": "napoli",
+      "label": "Napoli",
+      "codes": ["ssc-neapel", "ssc-napoli"],
+      "nameKeys": ["napoli", "ssc napoli", "ssc neapel"],
+      "stub": {
+        "stadium": "Diego Armando Maradona Stadium",
+        "founded": 1926,
+        "rivals": ["Roma", "Juventus"],
+        "shortHistory": "Napoli’s story is southern pride and Maradona’s 1987 scudetto — modern titles under Spalletti brought the city celebrations back to the streets.",
+        "fanGuide": "Sky blue shirts; Curva B is volcanic. The club is a symbol of Naples beyond football — learn Maradona’s name first.",
+        "legends": ["Diego Maradona — icon of the 1987 title", "Ciro Ferrara — local defender", "Gonzalo Higuaín — striker of title races"],
+        "currentKeyPlayers": ["Victor Osimhen — Nigeria striker", "Khvicha Kvaratskhelia — Georgia winger"]
+      }
+    },
+    {
+      "footybrainTeamId": "roma",
+      "label": "AS Roma",
+      "codes": ["as-rom", "as-roma"],
+      "nameKeys": ["as roma", "roma", "associazione sportiva roma"],
+      "stub": {
+        "stadium": "Stadio Olimpico",
+        "founded": 1927,
+        "rivals": ["Lazio", "Juventus"],
+        "shortHistory": "Roma carry the capital’s giallorossi identity — Francesco Totti’s one-club career defines modern fan memory alongside sporadic title challenges.",
+        "fanGuide": "Yellow and red; the Derby della Capitale vs Lazio splits Rome. Totti’s number 10 shirt is still sacred to Curva Sud.",
+        "legends": ["Francesco Totti — one-club captain and Serie A icon", "Daniele De Rossi — local midfielder warrior", "Gabriel Batistuta — Argentine striker"],
+        "currentKeyPlayers": ["Paulo Dybala — Argentina forward", "Lorenzo Pellegrini — Italy midfielder"]
+      }
+    },
+    {
+      "footybrainTeamId": "lazio",
+      "label": "Lazio",
+      "codes": ["lazio-rom"],
+      "nameKeys": ["lazio", "ss lazio"],
+      "stub": {
+        "stadium": "Stadio Olimpico",
+        "founded": 1900,
+        "rivals": ["Roma", "Juventus"],
+        "shortHistory": "Lazio’s sky blue comes from Greek heritage branding — the Rome derby and ultras culture make them one of Italy’s most polarising clubs.",
+        "fanGuide": "Light blue shirts; Curva Nord at the Olimpico. Derby vs Roma is the first fixture Roman fans explain.",
+        "legends": ["Paolo Maldini — brief youth spell before Milan", "Alessandro Nesta — elegant defender", "Ciro Immobile — modern goalscorer"],
+        "currentKeyPlayers": ["Ciro Immobile — Italy striker", "Sergej Milinković-Savić — Serbia midfielder"]
+      }
+    }
+  ]
+}
