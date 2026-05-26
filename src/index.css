@@ -1258,6 +1258,104 @@ input:focus-visible {
   font-size: 0.9rem;
 }
 
+.learning-hub-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(12, 32, 48, 0.95), rgba(16, 26, 23, 0.92));
+  box-shadow: var(--shadow-soft);
+}
+
+.learning-hub-cta--compact {
+  margin-top: 0.25rem;
+}
+
+.learning-hub-cta__copy {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.learning-hub-cta__title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.learning-hub-cta__copy p:last-child {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.learning-hub-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.world-cup-player-spotlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(7, 17, 13, 0.55);
+}
+
+.world-cup-player-spotlight__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.world-cup-player-spotlight__role {
+  font-size: 0.72rem;
+}
+
+.world-cup-player-spotlight__score {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--color-accent);
+}
+
+.world-cup-player-spotlight__name {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.world-cup-player-spotlight__meta {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.world-cup-player-spotlight__note {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.world-cup-player-spotlight__link {
+  margin-top: auto;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
 .national-hub-strip {
   display: flex;
   flex-direction: column;

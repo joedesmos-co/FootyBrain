@@ -8,7 +8,7 @@ import {
   getLiveNationalTeams,
   getNationalTeamQuizReadyCount,
 } from './nationalTeamData';
-import { getPlayerById } from './sampleData';
+import { getPlayerById, getTeamName } from './sampleData';
 import { getWorldCup2026GroupsSummary } from './worldCup2026Prep';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
 import { getViableWorldCupCountryQuizPoolMetas } from '../utils/worldCupQuizPools';
@@ -61,7 +61,10 @@ export function getCollectionSpotlightPlayers(collectionId, limit = 6) {
     .map((item) => {
       const player = getPlayerById(item.id);
       if (!player) return null;
-      return { player, note: item.note };
+      return {
+        player: { ...player, teamName: getTeamName(player.teamId) },
+        note: item.note,
+      };
     })
     .filter(Boolean);
 

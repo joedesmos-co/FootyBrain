@@ -10,6 +10,7 @@ import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_NATIONAL_TEAM_MIN_POOL } from '../utils/quizSession';
 import NationalTeamBadge from './NationalTeamBadge';
 import DataTrustNotice from './DataTrustNotice';
+import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData';
 import TeamSquadView from './TeamSquadView';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
@@ -86,9 +87,14 @@ export default function NationalTeamProfile() {
           </div>
         </div>
         <div className="team-profile__actions">
+          {FEATURED_NATIONAL_TEAM_IDS.includes(nationalTeam.id) ? (
+            <Link to="/world-cup" className="btn btn--secondary">
+              World Cup hub
+            </Link>
+          ) : null}
           {canLaunchNationalQuiz ? (
             <Link
-              to={`/quiz?nationalTeam=${nationalTeam.id}`}
+              to={`/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`}
               className="btn btn--primary"
             >
               National team quiz

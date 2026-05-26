@@ -59,11 +59,22 @@ const NATIONAL_TEAMS_STEP = {
   stat: 'Live NTs',
 };
 
+const WORLD_CUP_STEP = {
+  id: 'world-cup',
+  label: 'World Cup',
+  title: 'World Cup 2026 prep',
+  description:
+    'Featured nations, group draw, tournament collections, and international quiz — no live scores.',
+  to: '/world-cup',
+  stat: 'Prep hub',
+};
+
 /** Ordered steps for /onboarding and home (national teams inserted when live). */
 export function getOnboardingSteps() {
   const steps = [...ONBOARDING_STEPS];
   if (CONTENT_MANIFEST.liveNationalTeamIds.length > 0) {
     steps.splice(4, 0, NATIONAL_TEAMS_STEP);
+    steps.splice(5, 0, WORLD_CUP_STEP);
   }
   return steps;
 }
@@ -79,6 +90,7 @@ export function getHomeFeatureCards(counts) {
     compare: 'Players & clubs',
     daily: '5 questions',
     'national-teams': `${CONTENT_MANIFEST.liveNationalTeamIds.length} live`,
+    'world-cup': '2026 prep',
   };
 
   return getOnboardingSteps().map((step) => ({

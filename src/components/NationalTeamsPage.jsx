@@ -31,6 +31,24 @@ export default function NationalTeamsPage() {
         {nationCount} nations · {totalLinked.toLocaleString()} linked players
       </p>
 
+      <aside className="learning-hub-cta" aria-label="World Cup learning">
+        <div className="learning-hub-cta__copy">
+          <p className="learning-hub-cta__title">World Cup 2026 prep</p>
+          <p>
+            Featured nations, group draw, tournament collections, and international quiz — same
+            player registry as club football.
+          </p>
+        </div>
+        <div className="learning-hub-cta__actions">
+          <Link to="/world-cup" className="btn btn--primary btn--small">
+            Open World Cup hub
+          </Link>
+          <Link to="/quiz?poolFocus=international&worldCup=prep" className="btn btn--secondary btn--small">
+            International quiz
+          </Link>
+        </div>
+      </aside>
+
       {confederationGroups.map((group) => (
         <section
           key={group.confederation}

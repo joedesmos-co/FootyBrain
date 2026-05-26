@@ -14,6 +14,7 @@ import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSe
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
+import { getInternationalQuizHref } from '../utils/worldCupQuizPools';
 import NationalTeamBadge from './NationalTeamBadge';
 import PageFallback from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
@@ -234,6 +235,24 @@ export default function BrowseDatabase() {
           Loading today&apos;s picks…
         </p>
       )}
+
+      <aside className="learning-hub-cta learning-hub-cta--compact" aria-label="World Cup learning">
+        <div className="learning-hub-cta__copy">
+          <p className="learning-hub-cta__title">World Cup 2026 prep</p>
+          <p>
+            Study featured nations, groups, and collections — or jump into the international quiz
+            pool.
+          </p>
+        </div>
+        <div className="learning-hub-cta__actions">
+          <Link to="/world-cup" className="btn btn--primary btn--small">
+            World Cup hub
+          </Link>
+          <Link to={getInternationalQuizHref()} className="btn btn--secondary btn--small">
+            International quiz
+          </Link>
+        </div>
+      </aside>
 
       <section className="national-hub-strip" aria-labelledby="national-hubs-title">
         <div className="national-hub-strip__header">

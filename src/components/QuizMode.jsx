@@ -106,6 +106,8 @@ export default function QuizMode() {
   const [timedOut, setTimedOut] = useState(false);
 
   const sessionMilestoneRef = useRef(false);
+  const lastQuestionPlayerIdRef = useRef(null);
+  const handleTimeoutRef = useRef(() => {});
   const progression = useProgression();
 
   const filterState = useMemo(
@@ -164,7 +166,8 @@ export default function QuizMode() {
   }, [difficulty, initialHintsForQuestion]);
 
   const startQuestion = useCallback(() => {
-    const next = pickRandomPlayer(playerPool);
+    const next = pickRandomPlayer(playerPool, lastQuestionPlayerIdRef.current ?? '');
+    lastQuestionPlayerIdRef.current = next?.id ?? null;
     setCurrentPlayer(next);
     setHintsShown(initialHintsForQuestion(difficulty));
     setAnswer('');
@@ -255,20 +258,28 @@ export default function QuizMode() {
   }, [currentPlayer, feedback, recordAnswer]);
 
   useEffect(() => {
-    if (!timeLimitSeconds || !currentPlayer || feedback) return undefined;
+    handleTimeoutRef.current = handleTimeout;
+  }, [handleTimeout]);
+
+  useEffect(() => {
+    if (!timeLimitSeconds || !currentPlayer || feedback) {
+      return undefined;
+    }
 
     let remaining = timeLimitSeconds;
     const intervalId = window.setInterval(() => {
       remaining -= 1;
-      setSecondsLeft(remaining);
       if (remaining <= 0) {
         window.clearInterval(intervalId);
-        handleTimeout();
+        setSecondsLeft(0);
+        handleTimeoutRef.current();
+        return;
       }
+      setSecondsLeft(remaining);
     }, 1000);
 
     return () => window.clearInterval(intervalId);
-  }, [currentPlayer, feedback, timeLimitSeconds, handleTimeout]);
+  }, [currentPlayer, feedback, timeLimitSeconds]);
 
   const handlePoolFocusChange = (value) => {
     setPoolFocus(value);

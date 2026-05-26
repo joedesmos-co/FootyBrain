@@ -21,6 +21,9 @@ export default function Home() {
             <Link to="/browse" className="btn btn--primary btn--large">
               Open database
             </Link>
+            <Link to="/world-cup" className="btn btn--secondary btn--large">
+              World Cup 2026
+            </Link>
             <Link to="/onboarding" className="btn btn--secondary btn--large">
               How it works
             </Link>

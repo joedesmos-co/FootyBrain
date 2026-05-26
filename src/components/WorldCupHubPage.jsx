@@ -31,7 +31,7 @@ import {
 import CollectionCard from './CollectionCard';
 import LearningPathCard from './LearningPathCard';
 import NationalTeamBadge from './NationalTeamBadge';
-import PlayerCard from './PlayerCard';
+import WorldCupPlayerSpotlight from './WorldCupPlayerSpotlight';
 
 function WorldCupNationActions({ team }) {
   const learnPath = getLearningPathForNationalTeam(team.id);
@@ -69,8 +69,7 @@ function CollectionPlayerStrip({ players }) {
     <ul className="card-grid world-cup-hub__player-grid">
       {players.map(({ player, note }) => (
         <li key={player.id}>
-          <PlayerCard player={player} />
-          {note ? <p className="world-cup-hub__player-note">{note}</p> : null}
+          <WorldCupPlayerSpotlight player={player} note={note} />
         </li>
       ))}
     </ul>

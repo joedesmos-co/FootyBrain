@@ -444,9 +444,21 @@ export function getQuizClubEmptyState(
   return null;
 }
 
-export function pickRandomPlayer(pool) {
+/**
+ * @param {import('../data/sampleData').players} pool
+ * @param {string} [excludePlayerId] — avoid immediate repeat when pool has 2+ players
+ */
+export function pickRandomPlayer(pool, excludePlayerId = '') {
   if (pool.length === 0) return null;
-  return pool[Math.floor(Math.random() * pool.length)];
+  if (pool.length === 1) return pool[0];
+  if (!excludePlayerId) return pool[Math.floor(Math.random() * pool.length)];
+
+  let candidate = pool[0];
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    candidate = pool[Math.floor(Math.random() * pool.length)];
+    if (candidate.id !== excludePlayerId) return candidate;
+  }
+  return candidate;
 }
 
 export function normalizeAnswer(text) {
