@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "wave": 1,
+  "updatedAt": "2026-05-25",
+  "description": "First national-team editorial backlog — wave 1 live nations (England, France, Spain, Brazil, Argentina). Prioritizes World Cup relevance, recognizable stars, and durable NT-linked quiz hints.",
+  "selectionRules": [
+    "Player must appear in nationalTeamLive.json membership for the target nation.",
+    "Prefer World Cup / major-tournament pedigree and unmistakable full names in hints.",
+    "Skip crowded surnames without club or given-name context (García, Rodrigo, Martínez).",
+    "Do not approve players missing from FootyBrain sampleData or TM preview sourceId.",
+    "Argentina and France are highest urgency (fewest quiz-ready per linked squad)."
+  ],
+  "targets": {
+    "totalApprovals": 20,
+    "minQuizReadyPerNationForQuizMode": 3
+  },
+  "nations": [
+    {
+      "nationalTeamId": "argentina",
+      "displayName": "Argentina",
+      "priority": 1,
+      "linkedSquad": 8,
+      "quizReadyBefore": 2,
+      "quizReadyTarget": 8,
+      "urgency": "critical",
+      "rationale": "Only two quiz-ready Albiceleste players; national quiz mode needs at least three linked approvals.",
+      "candidates": [
+        {
+          "playerId": "tm-348795",
+          "displayName": "Giovani Lo Celso",
+          "tier": "approve-wave1",
+          "score": 95,
+          "notes": "2022 World Cup winner; Betis playmaker; full name avoids Lo Celso ambiguity."
+        },
+        {
+          "playerId": "tm-321247",
+          "displayName": "Emiliano Buendía",
+          "tier": "approve-wave1",
+          "score": 94,
+          "notes": "Villa no. 10; Copa América squad pedigree; distinctive given name."
+        },
+        {
+          "playerId": "tm-474800",
+          "displayName": "Facundo Medina",
+          "tier": "approve-wave1",
+          "score": 88,
+          "notes": "Marseille centre-back; 2022 World Cup squad; not Leonardo Balerdi."
+        },
+        {
+          "playerId": "tm-575998",
+          "displayName": "Leonardo Balerdi",
+          "tier": "approve-wave1",
+          "score": 86,
+          "notes": "Marseille partner to Medina; use full name in hints."
+        },
+        {
+          "playerId": "tm-296802",
+          "displayName": "Walter Benítez",
+          "tier": "approve-wave1",
+          "score": 82,
+          "notes": "Argentina goalkeeper at Palace; full name disambiguates from other Benítez."
+        },
+        {
+          "playerId": "tm-1064871",
+          "displayName": "Joaquín Panichelli",
+          "tier": "approve-wave1",
+          "score": 76,
+          "notes": "Young Strasbourg forward in TM Argentina link set; youth pipeline hint."
+        }
+      ]
+    },
+    {
+      "nationalTeamId": "france",
+      "displayName": "France",
+      "priority": 2,
+      "linkedSquad": 23,
+      "quizReadyBefore": 4,
+      "quizReadyTarget": 8,
+      "urgency": "high",
+      "rationale": "Deep TM link list but many browse-only stars (2018 winners, Euro contenders).",
+      "candidates": [
+        {
+          "playerId": "tm-344381",
+          "displayName": "Christopher Nkunku",
+          "tier": "approve-wave1",
+          "score": 96,
+          "notes": "2018 World Cup winner; RB Leipzig breakout; now AC Milan."
+        },
+        {
+          "playerId": "tm-640428",
+          "displayName": "Eduardo Camavinga",
+          "tier": "approve-wave1",
+          "score": 95,
+          "notes": "Real Madrid midfielder; 2022 World Cup runner-up; Rennes academy arc."
+        },
+        {
+          "playerId": "tm-709726",
+          "displayName": "Hugo Ekitiké",
+          "tier": "approve-wave1",
+          "score": 92,
+          "notes": "France striker at Liverpool; full name avoids Ekitiké confusion."
+        },
+        {
+          "playerId": "tm-487969",
+          "displayName": "Randal Kolo Muani",
+          "tier": "approve-wave1",
+          "score": 91,
+          "notes": "2022 World Cup final substitute; use full hyphenated surname in hints."
+        }
+      ]
+    },
+    {
+      "nationalTeamId": "spain",
+      "displayName": "Spain",
+      "priority": 3,
+      "linkedSquad": 19,
+      "quizReadyBefore": 4,
+      "quizReadyTarget": 8,
+      "urgency": "high",
+      "rationale": "Euro 2024 champions with several linked stars still browse-only.",
+      "candidates": [
+        {
+          "playerId": "tm-338424",
+          "displayName": "Mikel Merino",
+          "tier": "approve-wave1",
+          "score": 94,
+          "notes": "Euro 2024 hero; Arsenal move; Mikel disambiguates from other Merinos."
+        },
+        {
+          "playerId": "tm-350219",
+          "displayName": "Fabián Ruiz",
+          "tier": "approve-wave1",
+          "score": 92,
+          "notes": "PSG midfielder; 2010-era Spain pedigree; not Fabián Ruiz Peña mononym."
+        },
+        {
+          "playerId": "tm-351809",
+          "displayName": "Robin Le Normand",
+          "tier": "approve-wave1",
+          "score": 90,
+          "notes": "France-born Spain centre-back; Euro 2024 starter; full surname in hints."
+        },
+        {
+          "playerId": "tm-85288",
+          "displayName": "Isco",
+          "tier": "approve-wave1",
+          "score": 89,
+          "notes": "Mononym allowed — 2010 World Cup winner; Betis return arc."
+        }
+      ]
+    },
+    {
+      "nationalTeamId": "brazil",
+      "displayName": "Brazil",
+      "priority": 4,
+      "linkedSquad": 28,
+      "quizReadyBefore": 5,
+      "quizReadyTarget": 8,
+      "urgency": "medium",
+      "rationale": "Add unmistakable Seleção stars still browse-only; avoid Vitinho/Rodrigo surname collisions.",
+      "candidates": [
+        {
+          "playerId": "tm-412363",
+          "displayName": "Rodrygo",
+          "tier": "approve-wave1",
+          "score": 96,
+          "notes": "Real Madrid winger; 2022 World Cup; use Rodrygo not generic Rodrigo."
+        },
+        {
+          "playerId": "tm-401530",
+          "displayName": "Éder Militão",
+          "tier": "approve-wave1",
+          "score": 94,
+          "notes": "Real Madrid centre-back; 2019 Copa América winner."
+        },
+        {
+          "playerId": "tm-378710",
+          "displayName": "Richarlison",
+          "tier": "approve-wave1",
+          "score": 93,
+          "notes": "2022 World Cup no. 9; Spurs striker; mononym is durable."
+        }
+      ]
+    },
+    {
+      "nationalTeamId": "england",
+      "displayName": "England",
+      "priority": 5,
+      "linkedSquad": 15,
+      "quizReadyBefore": 8,
+      "quizReadyTarget": 11,
+      "urgency": "medium",
+      "rationale": "Already above quiz minimum; add Euro 2024 stars still browse-only.",
+      "candidates": [
+        {
+          "playerId": "tm-479999",
+          "displayName": "Eberechi Eze",
+          "tier": "approve-wave1",
+          "score": 93,
+          "notes": "Euro 2024 squad; Arsenal playmaker; full name avoids Eze ambiguity."
+        },
+        {
+          "playerId": "tm-488362",
+          "displayName": "Conor Gallagher",
+          "tier": "approve-wave1",
+          "score": 90,
+          "notes": "2022 World Cup squad; Chelsea academy; now Spurs."
+        },
+        {
+          "playerId": "tm-433188",
+          "displayName": "Curtis Jones",
+          "tier": "approve-wave1",
+          "score": 86,
+          "notes": "Liverpool academy; England midfielder; not Curtis Jones of other clubs."
+        }
+      ]
+    }
+  ],
+  "approvedWave1Ids": [
+    "tm-348795",
+    "tm-321247",
+    "tm-474800",
+    "tm-575998",
+    "tm-296802",
+    "tm-1064871",
+    "tm-344381",
+    "tm-640428",
+    "tm-709726",
+    "tm-487969",
+    "tm-338424",
+    "tm-350219",
+    "tm-351809",
+    "tm-85288",
+    "tm-412363",
+    "tm-401530",
+    "tm-378710",
+    "tm-479999",
+    "tm-488362",
+    "tm-433188"
+  ]
+}

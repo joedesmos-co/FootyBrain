@@ -1,24 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ACHIEVEMENTS, getLevelTitle } from '../data/achievements';
-import { teams as allTeams, leagues as allLeagues } from '../data/sampleData';
+import {
+  ACHIEVEMENTS,
+  getLevelTitle,
+  groupAchievementsByCategory,
+} from '../data/achievements';
+import {
+  COLLECTION_MASTERY_TARGET,
+  LEAGUE_MASTERY_TARGET,
+} from '../utils/progressionAchievements';
 import { useProgression } from '../hooks/useProgression';
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 function pct(a, b) {
   if (!b) return 0;
   return Math.round((a / b) * 100);
 }
 
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
 function XpBar({ xpIntoLevel, xpForNextLevel }) {
   const progress = pct(xpIntoLevel, xpForNextLevel);
-  // aria-hidden: the sibling text "N / M XP to level X" already conveys this
-  // information to screen readers. A div without a role ignores aria-label anyway.
   return (
     <div className="progress-xp-bar" aria-hidden="true">
       <div className="progress-xp-bar__fill" style={{ width: `${progress}%` }} />
@@ -37,7 +36,9 @@ function StatCard({ label, value }) {
 
 function AchievementItem({ achievement, earned }) {
   return (
-    <li className={`achievement-item${earned ? ' achievement-item--earned' : ' achievement-item--locked'}`}>
+    <li
+      className={`achievement-item${earned ? ' achievement-item--earned' : ' achievement-item--locked'}`}
+    >
       <span className="achievement-item__icon" aria-hidden="true">
         {earned ? achievement.icon : '🔒'}
       </span>
@@ -50,9 +51,6 @@ function AchievementItem({ achievement, earned }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
 export default function ProgressPage() {
   const progression = useProgression();
   const [showReset, setShowReset] = useState(false);
@@ -67,19 +65,17 @@ export default function ProgressPage() {
     bestStreak,
     completedTeamQuizzes,
     completedLeagueQuizzes,
+    quizSessionsCompleted,
+    compareCount,
+    collectionsCompleted,
     earnedAchievements,
     reset,
   } = progression;
 
   const accuracy = pct(totalCorrect, totalAnswered);
   const levelTitle = getLevelTitle(level);
-
-  const completedTeamData = allTeams.filter((t) =>
-    completedTeamQuizzes.includes(t.id),
-  );
-  const completedLeagueData = allLeagues.filter((l) =>
-    completedLeagueQuizzes.includes(l.id),
-  );
+  const earnedSet = new Set(earnedAchievements);
+  const achievementGroups = groupAchievementsByCategory();
 
   const handleReset = () => {
     reset();
@@ -88,45 +84,72 @@ export default function ProgressPage() {
 
   return (
     <div className="page progress-page">
-      <Link to="/" className="back-link">← Back to home</Link>
+      <Link to="/" className="back-link">
+        ← Back to home
+      </Link>
 
-      {/* ── Hero: level + XP bar ─────────────────────────────────────────── */}
-      <header className="progress-hero">
-        <div className="progress-hero__identity">
-          {/* aria-hidden: h1 (level title) + XP text below already describe the level */}
-          <div className="progress-level-badge" aria-hidden="true">
-            <span className="progress-level-badge__number">{level}</span>
-            <span className="progress-level-badge__label">LVL</span>
-          </div>
-          <div className="progress-hero__info">
-            <p className="progress-hero__eyebrow">Your profile</p>
-            <h1 className="progress-hero__title">{levelTitle}</h1>
-            <p className="progress-hero__xp-text">
-              {xpIntoLevel} <span>/ {xpForNextLevel} XP to level {level + 1}</span>
-            </p>
-            <XpBar xpIntoLevel={xpIntoLevel} xpForNextLevel={xpForNextLevel} />
-          </div>
+      <section
+        aria-labelledby="profile-stats-title"
+        className="progress-section progress-section--stats"
+      >
+        <div className="progress-profile-heading">
+          <p className="progress-hero__eyebrow">Your profile</p>
+          <h1 id="profile-stats-title" className="progress-hero__title">
+            Learning progress
+          </h1>
+          <p className="progress-hero__xp-text">
+            {levelTitle} · {xpIntoLevel}{' '}
+            <span>
+              / {xpForNextLevel} XP to level {level + 1}
+            </span>
+          </p>
+          <XpBar xpIntoLevel={xpIntoLevel} xpForNextLevel={xpForNextLevel} />
         </div>
-        <Link to="/quiz" className="btn btn--primary">
-          Go to Quiz
-        </Link>
-      </header>
-
-      {/* ── Stats grid ───────────────────────────────────────────────────── */}
-      <section aria-label="Your statistics">
-        <h2 className="section-label">Stats</h2>
         <div className="progress-stats">
+          <StatCard label="Level" value={level} />
           <StatCard label="Total XP" value={xp} />
-          <StatCard label="Questions" value={totalAnswered} />
-          <StatCard label="Correct" value={totalCorrect} />
-          <StatCard label="Accuracy" value={totalAnswered > 0 ? `${accuracy}%` : '—'} />
           <StatCard label="Best streak" value={bestStreak} />
-          <StatCard label="Teams done" value={completedTeamQuizzes.length} />
-          <StatCard label="Leagues done" value={completedLeagueQuizzes.length} />
+          <StatCard label="Accuracy" value={totalAnswered > 0 ? `${accuracy}%` : '—'} />
         </div>
       </section>
 
-      {/* ── Achievements ─────────────────────────────────────────────────── */}
+      <section className="progress-paths" aria-label="Learning paths">
+        <h2 className="section-label">Learning paths</h2>
+        <ul className="progress-paths__list">
+          <li>
+            <span className="progress-paths__label">Quiz sessions</span>
+            <strong>{quizSessionsCompleted}</strong>
+            <span className="progress-paths__meta">5+ question milestones</span>
+          </li>
+          <li>
+            <span className="progress-paths__label">Club mastery</span>
+            <strong>
+              {completedTeamQuizzes.length}
+            </strong>
+            <span className="progress-paths__meta">clubs with quiz sessions</span>
+          </li>
+          <li>
+            <span className="progress-paths__label">League mastery</span>
+            <strong>
+              {completedLeagueQuizzes.length}/{LEAGUE_MASTERY_TARGET}
+            </strong>
+            <span className="progress-paths__meta">leagues explored</span>
+          </li>
+          <li>
+            <span className="progress-paths__label">Collections</span>
+            <strong>
+              {collectionsCompleted}/{COLLECTION_MASTERY_TARGET}
+            </strong>
+            <span className="progress-paths__meta">paths completed</span>
+          </li>
+          <li>
+            <span className="progress-paths__label">Compare</span>
+            <strong>{compareCount}</strong>
+            <span className="progress-paths__meta">comparisons run</span>
+          </li>
+        </ul>
+      </section>
+
       <section aria-label="Achievements" className="progress-achievements">
         <h2 className="section-label">
           Achievements
@@ -134,56 +157,32 @@ export default function ProgressPage() {
             {earnedAchievements.length} / {ACHIEVEMENTS.length}
           </span>
         </h2>
-        <ul className="achievement-list">
-          {ACHIEVEMENTS.map((achievement) => (
-            <AchievementItem
-              key={achievement.id}
-              achievement={achievement}
-              earned={earnedAchievements.includes(achievement.id)}
-            />
-          ))}
-        </ul>
+        {achievementGroups.map((group) => {
+          const earnedInGroup = group.achievements.filter((a) => earnedSet.has(a.id)).length;
+          return (
+            <div key={group.id} className="progress-achievement-group">
+              <h3 className="progress-achievement-group__title">
+                {group.label}
+                <span className="progress-achievement-group__count">
+                  {earnedInGroup}/{group.achievements.length}
+                </span>
+              </h3>
+              <ul className="achievement-list">
+                {group.achievements.map((achievement) => (
+                  <AchievementItem
+                    key={achievement.id}
+                    achievement={achievement}
+                    earned={earnedSet.has(achievement.id)}
+                  />
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </section>
 
-      {/* ── Completed quizzes ─────────────────────────────────────────────── */}
-      {(completedTeamData.length > 0 || completedLeagueData.length > 0) && (
-        <section aria-label="Completed quiz sessions" className="progress-completed">
-          <h2 className="section-label">Completed sessions</h2>
-
-          {completedTeamData.length > 0 && (
-            <div className="progress-completed__group">
-              <h3 className="progress-completed__subtitle">Teams</h3>
-              <ul className="progress-completed__list">
-                {completedTeamData.map((team) => (
-                  <li key={team.id}>
-                    <Link to={`/team/${team.id}`} className="progress-completed__link">
-                      {team.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {completedLeagueData.length > 0 && (
-            <div className="progress-completed__group">
-              <h3 className="progress-completed__subtitle">Leagues</h3>
-              <ul className="progress-completed__list">
-                {completedLeagueData.map((league) => (
-                  <li key={league.id}>
-                    <Link to={`/league/${league.id}`} className="progress-completed__link">
-                      {league.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </section>
-      )}
-
-      {/* ── Reset (dev) ──────────────────────────────────────────────────── */}
-      <section className="progress-reset" aria-label="Reset progress">
+      <details className="progress-reset">
+        <summary>Reset progress</summary>
         {!showReset ? (
           <button
             type="button"
@@ -194,9 +193,15 @@ export default function ProgressPage() {
           </button>
         ) : (
           <div className="progress-reset__confirm">
-            <p>This will erase all XP, levels, achievements, and quiz history. Are you sure?</p>
+            <p>
+              This will erase all XP, levels, achievements, and quiz history. Are you sure?
+            </p>
             <div className="progress-reset__actions">
-              <button type="button" className="btn btn--secondary" onClick={() => setShowReset(false)}>
+              <button
+                type="button"
+                className="btn btn--secondary"
+                onClick={() => setShowReset(false)}
+              >
                 Cancel
               </button>
               <button type="button" className="btn btn--danger" onClick={handleReset}>
@@ -205,7 +210,7 @@ export default function ProgressPage() {
             </div>
           </div>
         )}
-      </section>
+      </details>
     </div>
   );
 }

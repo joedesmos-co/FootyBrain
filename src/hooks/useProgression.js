@@ -1,50 +1,40 @@
 import { useEffect, useState } from 'react';
+import {
+  getNewAchievementIds,
+  resolveAchievements,
+} from '../utils/progressionAchievements';
+import { calculateLevel } from '../utils/progressionLevel';
 
 // TODO: Future Firebase sync — replace readStorage / persist with Firestore reads and writes
 //       once authentication is added. Store progression under users/{uid}/progression.
 //       The hook interface (recordAnswer, reset) stays identical; only the I/O layer changes.
 
+export { calculateLevel, xpToAdvance } from '../utils/progressionLevel';
+
 const STORAGE_KEY = 'footybrain:progression';
 const CHANGE_EVENT = 'footybrain:progression-changed';
 
 // ---------------------------------------------------------------------------
-// Leveling formula
-// XP needed to advance from level N to N+1 = N * 100.
-// Level 1→2: 100 XP, Level 2→3: 200 XP, Level 5→6: 500 XP, etc.
-// ---------------------------------------------------------------------------
-export function xpToAdvance(level) {
-  return level * 100;
-}
-
-/**
- * Given a raw total-XP number, return:
- *   level          – current level (≥ 1)
- *   xpIntoLevel    – XP earned within the current level
- *   xpForNextLevel – XP required to complete the current level
- */
-export function calculateLevel(totalXp) {
-  let level = 1;
-  let accumulated = 0;
-  let needed = xpToAdvance(level);
-  while (totalXp >= accumulated + needed) {
-    accumulated += needed;
-    level += 1;
-    needed = xpToAdvance(level);
-  }
-  return { level, xpIntoLevel: totalXp - accumulated, xpForNextLevel: needed };
-}
-
-// ---------------------------------------------------------------------------
 // Storage helpers
 // ---------------------------------------------------------------------------
+export const COLLECTION_ITEM_XP = 5;
+export const COLLECTION_COMPLETE_XP = 30;
+export const COMPARE_XP = 5;
+
 const EMPTY = {
   xp: 0,
   totalAnswered: 0,
   totalCorrect: 0,
   bestStreak: 0,
-  completedTeamQuizzes: [],   // [teamId, ...]
-  completedLeagueQuizzes: [], // [leagueId, ...]
-  earnedAchievements: [],     // [achievementId, ...]
+  quizSessionsCompleted: 0,
+  compareCount: 0,
+  collectionsCompleted: 0,
+  completedTeamQuizzes: [],
+  completedLeagueQuizzes: [],
+  earnedAchievements: [],
+  collectionItemXpAwarded: [],
+  collectionCompleteXpAwarded: [],
+  comparePairXpAwarded: [],
 };
 
 function sanitize(raw) {
@@ -62,7 +52,45 @@ function sanitize(raw) {
     earnedAchievements: Array.isArray(raw?.earnedAchievements)
       ? raw.earnedAchievements
       : [],
+    collectionItemXpAwarded: Array.isArray(raw?.collectionItemXpAwarded)
+      ? raw.collectionItemXpAwarded
+      : [],
+    collectionCompleteXpAwarded: Array.isArray(raw?.collectionCompleteXpAwarded)
+      ? raw.collectionCompleteXpAwarded
+      : [],
+    quizSessionsCompleted: Number.isFinite(raw?.quizSessionsCompleted)
+      ? raw.quizSessionsCompleted
+      : 0,
+    compareCount: Number.isFinite(raw?.compareCount) ? raw.compareCount : 0,
+    collectionsCompleted: Number.isFinite(raw?.collectionsCompleted)
+      ? Math.max(
+          raw.collectionsCompleted,
+          Array.isArray(raw?.collectionCompleteXpAwarded)
+            ? raw.collectionCompleteXpAwarded.length
+            : 0,
+        )
+      : Array.isArray(raw?.collectionCompleteXpAwarded)
+        ? raw.collectionCompleteXpAwarded.length
+        : 0,
+    comparePairXpAwarded: Array.isArray(raw?.comparePairXpAwarded)
+      ? raw.comparePairXpAwarded
+      : [],
   };
+}
+
+function comparePairKey(idA, idB) {
+  return [idA, idB].sort().join('|');
+}
+
+function commitAchievements(next, sessionStreak = 0) {
+  const before = next.earnedAchievements ?? [];
+  next.earnedAchievements = resolveAchievements(next, sessionStreak);
+  const newAchievementIds = getNewAchievementIds(before, next.earnedAchievements);
+  return { next, newAchievementIds };
+}
+
+function collectionItemXpKey(collectionId, itemIndex) {
+  return `${collectionId}:${itemIndex}`;
 }
 
 function readStorage() {
@@ -84,24 +112,6 @@ function persist(state) {
   }
   // Notify all hook instances in this tab so the XP bar stays in sync.
   window.dispatchEvent(new CustomEvent(CHANGE_EVENT, { detail: state }));
-}
-
-// ---------------------------------------------------------------------------
-// Achievement resolution
-// Accepts the candidate state + the session streak for the current answer.
-// Returns a new (possibly larger) earnedAchievements array.
-// ---------------------------------------------------------------------------
-function resolveAchievements(state, sessionStreak = 0) {
-  const earned = new Set(state.earnedAchievements);
-  if (state.totalCorrect >= 1) earned.add('first_correct');
-  if (sessionStreak >= 5) earned.add('streak_5');
-  if (sessionStreak >= 10) earned.add('streak_10');
-  if (state.totalAnswered >= 10) earned.add('answered_10');
-  if (state.totalAnswered >= 50) earned.add('answered_50');
-  if (calculateLevel(state.xp).level >= 5) earned.add('level_5');
-  if (state.completedTeamQuizzes.length >= 1) earned.add('team_quiz_first');
-  if (state.completedLeagueQuizzes.length >= 1) earned.add('league_quiz_first');
-  return [...earned];
 }
 
 // ---------------------------------------------------------------------------
@@ -152,8 +162,72 @@ export function useProgression() {
     completedTeamQuizzes: state.completedTeamQuizzes,
     completedLeagueQuizzes: state.completedLeagueQuizzes,
     earnedAchievements: state.earnedAchievements,
+    collectionItemXpAwarded: state.collectionItemXpAwarded,
+    collectionCompleteXpAwarded: state.collectionCompleteXpAwarded,
+    quizSessionsCompleted: state.quizSessionsCompleted,
+    compareCount: state.compareCount,
+    collectionsCompleted: state.collectionsCompleted,
 
     // ── Actions ────────────────────────────────────────────────────────────
+
+    /**
+     * One-time XP for marking a collection item as learned.
+     * @returns {number} XP awarded (0 if already claimed).
+     */
+    awardCollectionItemXp(collectionId, itemIndex) {
+      const key = collectionItemXpKey(collectionId, itemIndex);
+      if (state.collectionItemXpAwarded.includes(key)) return 0;
+      let next = {
+        ...state,
+        xp: state.xp + COLLECTION_ITEM_XP,
+        collectionItemXpAwarded: [...state.collectionItemXpAwarded, key],
+      };
+      ({ next } = commitAchievements(next, 0));
+      commit(next);
+      return COLLECTION_ITEM_XP;
+    },
+
+    /**
+     * One-time XP for completing a collection.
+     * @returns {number} XP awarded (0 if already claimed).
+     */
+    awardCollectionCompleteXp(collectionId) {
+      if (state.collectionCompleteXpAwarded.includes(collectionId)) return 0;
+      let next = {
+        ...state,
+        xp: state.xp + COLLECTION_COMPLETE_XP,
+        collectionsCompleted: state.collectionsCompleted + 1,
+        collectionCompleteXpAwarded: [
+          ...state.collectionCompleteXpAwarded,
+          collectionId,
+        ],
+      };
+      ({ next } = commitAchievements(next, 0));
+      commit(next);
+      return COLLECTION_COMPLETE_XP;
+    },
+
+    /**
+     * Record a player or club comparison (once per unique pair earns XP).
+     * @returns {{ xp: number, newAchievementIds: string[] }}
+     */
+    recordCompare(entityIdA, entityIdB) {
+      const pairKey = comparePairKey(entityIdA, entityIdB);
+      const firstPair = !state.comparePairXpAwarded.includes(pairKey);
+      const xpGain = firstPair ? COMPARE_XP : 0;
+
+      let next = {
+        ...state,
+        compareCount: state.compareCount + 1,
+        comparePairXpAwarded: firstPair
+          ? [...state.comparePairXpAwarded, pairKey]
+          : state.comparePairXpAwarded,
+        xp: state.xp + xpGain,
+      };
+      const { newAchievementIds } = commitAchievements(next, 0);
+      commit(next);
+      return { xp: xpGain, newAchievementIds };
+    },
 
     /**
      * Record the outcome of a quiz answer.
@@ -169,40 +243,43 @@ export function useProgression() {
      *     total: number,
      *   } | null
      * }}
-     * @returns {number} Base XP awarded (for "+N XP" display; excludes milestone bonus).
+     * @returns {{
+     *   baseXp: number,
+     *   streakBonus: number,
+     *   milestoneXp: number,
+     *   totalXp: number,
+     *   newAchievementIds: string[],
+     *   sessionMilestoneHit: object | null,
+     * }}
      */
     recordAnswer({ isCorrect, newSessionStreak, sessionMilestone = null }) {
-      // Base XP is deterministic from the answer + streak; no state read needed.
-      const baseXp = isCorrect
-        ? 10 + (newSessionStreak > 0 && newSessionStreak % 5 === 0 ? 5 : 0)
-        : 0;
+      const streakBonus =
+        isCorrect && newSessionStreak > 0 && newSessionStreak % 5 === 0 ? 5 : 0;
+      const baseXp = isCorrect ? 10 + streakBonus : 0;
 
       const teams = [...state.completedTeamQuizzes];
       const lgues = [...state.completedLeagueQuizzes];
       let milestoneXp = 0;
+      let quizSessionsCompleted = state.quizSessionsCompleted;
 
       if (sessionMilestone) {
+        quizSessionsCompleted += 1;
         const { teamId, leagueId, correct, total } = sessionMilestone;
-        // newFirstCompletion gates the accuracy bonus so it can only be earned
-        // once per team/league — not re-farmed by switching filters and replaying.
         let newFirstCompletion = false;
         if (teamId && !teams.includes(teamId)) {
           teams.push(teamId);
-          milestoneXp += 25; // first team-quiz completion bonus
+          milestoneXp += 25;
           newFirstCompletion = true;
         }
         if (leagueId && !lgues.includes(leagueId)) {
           lgues.push(leagueId);
-          milestoneXp += 50; // first league-quiz completion bonus
+          milestoneXp += 50;
           newFirstCompletion = true;
         }
-        // Accuracy bonus: ≥ 60% correct, awarded only on genuine first completion.
-        // Gating on newFirstCompletion means it cannot be re-earned by replaying
-        // a filter combo that was already completed.
         if (newFirstCompletion && correct >= 1 && correct / total >= 0.6) milestoneXp += 15;
       }
 
-      const next = {
+      let next = {
         ...state,
         xp: state.xp + baseXp + milestoneXp,
         totalAnswered: state.totalAnswered + 1,
@@ -212,14 +289,22 @@ export function useProgression() {
           : state.bestStreak,
         completedTeamQuizzes: teams,
         completedLeagueQuizzes: lgues,
+        quizSessionsCompleted,
       };
-      next.earnedAchievements = resolveAchievements(
+      const { next: withAchievements, newAchievementIds } = commitAchievements(
         next,
         isCorrect ? newSessionStreak : 0,
       );
+      commit(withAchievements);
 
-      commit(next);
-      return baseXp;
+      return {
+        baseXp,
+        streakBonus,
+        milestoneXp,
+        totalXp: baseXp + milestoneXp,
+        newAchievementIds,
+        sessionMilestoneHit: sessionMilestone,
+      };
     },
 
     /**
@@ -238,17 +323,22 @@ export function useProgression() {
       const xpFromAnswers = correctCount * 10;
       const total = Math.max(xpFromAnswers + bonusXp, 0);
 
-      const next = {
+      let next = {
         ...state,
         xp: state.xp + total,
         totalAnswered: state.totalAnswered + results.length,
         totalCorrect: state.totalCorrect + correctCount,
-        // Daily challenge does not affect bestStreak (that's a quiz-session concept)
         bestStreak: state.bestStreak,
         completedTeamQuizzes: state.completedTeamQuizzes,
         completedLeagueQuizzes: state.completedLeagueQuizzes,
+        collectionItemXpAwarded: state.collectionItemXpAwarded,
+        collectionCompleteXpAwarded: state.collectionCompleteXpAwarded,
+        quizSessionsCompleted: state.quizSessionsCompleted,
+        compareCount: state.compareCount,
+        collectionsCompleted: state.collectionsCompleted,
+        comparePairXpAwarded: state.comparePairXpAwarded,
       };
-      next.earnedAchievements = resolveAchievements(next, 0);
+      ({ next } = commitAchievements(next, 0));
       commit(next);
       return total;
     },

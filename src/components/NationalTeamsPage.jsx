@@ -1,0 +1,79 @@
+import { Link } from 'react-router-dom';
+import {
+  countLinkedPlayers,
+  getLiveNationalTeamsByConfederation,
+  getNationalTeamQuizReadyCount,
+  isLiveNationalTeamQuizViable,
+  LIVE_NATIONAL_TEAM_MIN_QUIZ,
+} from '../data/nationalTeamData';
+import NationalTeamBadge from './NationalTeamBadge';
+
+export default function NationalTeamsPage() {
+  const confederationGroups = getLiveNationalTeamsByConfederation();
+  const totalLinked = confederationGroups.reduce(
+    (sum, group) => sum + group.teams.reduce((s, team) => s + countLinkedPlayers(team.id), 0),
+    0,
+  );
+  const nationCount = confederationGroups.reduce((sum, group) => sum + group.teams.length, 0);
+
+  return (
+    <div className="page national-teams-page">
+      <header className="page-header">
+        <h1>National teams</h1>
+        <p>
+          Men&apos;s national sides in FootyBrain. Squads list players already in the club
+          database — one profile per athlete. National quizzes need at least{' '}
+          {LIVE_NATIONAL_TEAM_MIN_QUIZ} quiz-ready linked players.
+        </p>
+      </header>
+
+      <p className="national-teams-page__meta">
+        {nationCount} nations · {totalLinked.toLocaleString()} linked players
+      </p>
+
+      {confederationGroups.map((group) => (
+        <section
+          key={group.confederation}
+          className="national-teams-page__section"
+          aria-labelledby={`nt-confed-${group.confederation.replace(/\s+/g, '-')}`}
+        >
+          <h2
+            id={`nt-confed-${group.confederation.replace(/\s+/g, '-')}`}
+            className="national-teams-page__section-title"
+          >
+            {group.confederation}
+          </h2>
+          <ul className="national-teams-page__grid">
+            {group.teams.map((team) => {
+              const linked = countLinkedPlayers(team.id);
+              const quizReady = getNationalTeamQuizReadyCount(team.id);
+              return (
+                <li key={team.id}>
+                  <Link to={`/national-team/${team.id}`} className="national-teams-page__card">
+                    <NationalTeamBadge nationalTeam={team} size="card" />
+                    <div className="national-teams-page__card-copy">
+                      <h3>{team.displayName}</h3>
+                      <p>
+                        {team.fifaRanking != null ? `FIFA rank ${team.fifaRanking}` : group.confederation}
+                      </p>
+                      <p className="national-teams-page__count">
+                        {linked} linked
+                        {quizReady > 0 ? ` · ${quizReady} quiz-ready` : ''}
+                        {!isLiveNationalTeamQuizViable(team.id) && (
+                          <span className="national-teams-page__quiz-pending">
+                            {' '}
+                            · quiz needs {LIVE_NATIONAL_TEAM_MIN_QUIZ}+
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}

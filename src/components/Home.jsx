@@ -1,73 +1,47 @@
+import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { leagues, players, teams } from '../data/sampleData';
+import { DATASET_META } from '../data/datasetMeta';
+import PageFallback from './PageFallback';
 
-const features = [
-  {
-    to: '/browse',
-    label: 'Database',
-    title: 'Browse Database',
-    description: 'Filter leagues and clubs, then open visual player cards with context that sticks.',
-    stat: `${players.length} players`,
-  },
-  {
-    to: '/teams',
-    label: 'Fan Mode',
-    title: 'Club Learning Paths',
-    description: 'Learn the basics, squad, rivals, legends, and fan culture for each club.',
-    stat: `${teams.length} teams`,
-  },
-  {
-    to: '/quiz',
-    label: 'Quiz',
-    title: 'Practice With Hints',
-    description: 'Use progressive clues, difficulty levels, and feedback to build recall.',
-    stat: '3 levels',
-  },
-  {
-    to: '/saved',
-    label: 'Saved',
-    title: 'Saved Learning',
-    description: 'Keep a local list of players and clubs you want to revisit next.',
-    stat: 'Local only',
-  },
-];
+const HomeBelowFold = lazy(() => import('./HomeBelowFold'));
 
 export default function Home() {
   return (
     <div className="home">
       <section className="hero">
         <div className="hero__content">
-          <p className="hero__eyebrow">Soccer learning database</p>
+          <p className="hero__eyebrow">Men&apos;s football learning</p>
           <h1 className="hero__title">FootyBrain</h1>
-          <p className="hero__tagline">
-            Learn the game. Know the players. Become a real fan.
-          </p>
+          <p className="hero__tagline">Learn the game. Know the players.</p>
           <p className="hero__copy">
-            A football study app for new and returning fans who want names,
-            clubs, positions, rivalries, and quiz practice in one clean place.
+            Browse players and clubs, study curated collections, compare sides, and test yourself
+            in quizzes—saved progress stays on this device.
           </p>
           <div className="hero__actions">
             <Link to="/browse" className="btn btn--primary btn--large">
-              Browse players
+              Open database
             </Link>
-            <Link to="/quiz" className="btn btn--secondary btn--large">
-              Start quiz
+            <Link to="/onboarding" className="btn btn--secondary btn--large">
+              How it works
             </Link>
           </div>
           <dl className="hero__stats" aria-label="FootyBrain sample data">
             <div>
-              <dt>{players.length}</dt>
+              <dt>{DATASET_META.playerCount}</dt>
               <dd>Players</dd>
             </div>
             <div>
-              <dt>{teams.length}</dt>
+              <dt>{DATASET_META.teamCount}</dt>
               <dd>Teams</dd>
             </div>
             <div>
-              <dt>{leagues.length}</dt>
+              <dt>{DATASET_META.leagueCount}</dt>
               <dd>Leagues</dd>
             </div>
           </dl>
+          <p className="hero__data-note">
+            Dataset snapshot {DATASET_META.dataAsOf} · {DATASET_META.quizEligibleCount} quiz-ready
+          </p>
         </div>
 
         <div className="hero-visual" aria-hidden="true">
@@ -80,9 +54,9 @@ export default function Home() {
               <span>RW · Arsenal · 92</span>
             </article>
             <article className="floating-card floating-card--club">
-              <span className="floating-card__label">Fan Mode</span>
+              <span className="floating-card__label">Club profile</span>
               <strong>Arsenal</strong>
-              <span>Rivals · Legends · Culture</span>
+              <span>Squad · League · History</span>
             </article>
             <article className="floating-card floating-card--quiz">
               <span className="floating-card__label">Quiz clue</span>
@@ -96,19 +70,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="feature-grid" aria-label="Main features">
-        {features.map((feature) => (
-          <Link key={feature.to} to={feature.to} className="feature-card">
-            <span className="feature-card__label">{feature.label}</span>
-            <div className="feature-card__topline">
-              <h2 className="feature-card__title">{feature.title}</h2>
-              <span>{feature.stat}</span>
-            </div>
-            <p className="feature-card__text">{feature.description}</p>
-            <span className="feature-card__cta">Open</span>
-          </Link>
-        ))}
-      </section>
+      <Suspense fallback={<PageFallback label="Loading league hubs…" />}>
+        <HomeBelowFold />
+      </Suspense>
     </div>
   );
 }

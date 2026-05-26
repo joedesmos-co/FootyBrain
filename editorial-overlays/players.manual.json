@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "description": "Manual editorial overlay for FootyBrain MVP players (Stage 2). Factual roster fields come from generated core later; this file holds app-owned learning content and optional TM sourceId links.",
-  "updatedAt": "2026-05-24",
+  "updatedAt": "2026-05-25",
   "fieldDocs": {
     "id": "FootyBrain player slug; must match src/data/sampleData.js",
     "sourceId": "Transfermarkt spieler id string, or null if not confidently matched to preview squad",
@@ -32,19 +32,19 @@
     },
     {
       "id": "de-bruyne",
-      "sourceId": null,
+      "sourceId": "88755",
       "displayName": "Kevin De Bruyne",
       "quickFact": "Set the Premier League single-season assists record in 2019–20 — a benchmark for modern playmakers.",
       "quizHints": [
         "Belgian international who rebuilt his reputation in the Bundesliga after a brief London spell.",
         "Genk academy product who also wore Wolfsburg green before the Etihad.",
-        "Whips crosses from the right half-space — ginger beard and number 17 at City."
+        "Whips crosses from the right half-space — ginger beard, supreme vision, and a cannon of a right foot."
       ],
       "playingStyle": "World-class passer who dictates tempo with vision, whipped crosses, and long-range shooting.",
       "importanceScore": 94,
       "quizEligible": true,
       "rosterTier": "featured",
-      "notes": "Not on Manchester City squad in TM 2025 preview; sourceId left null until roster match confirmed."
+      "notes": "TM 2025 confirms Kevin De Bruyne (sourceId 88755) at Napoli. teamId, sourceId, and Hint 3 updated 2026-05-25."
     },
     {
       "id": "rodri",
@@ -276,7 +276,7 @@
     },
     {
       "id": "modric",
-      "sourceId": null,
+      "sourceId": "27992",
       "displayName": "Luka Modrić",
       "quickFact": "Ballon d’Or winner in 2018 — the first player outside Messi or Ronaldo to win it in over a decade.",
       "quizHints": [
@@ -288,7 +288,7 @@
       "importanceScore": 90,
       "quizEligible": true,
       "rosterTier": "featured",
-      "notes": "TM 2025 lists Luka Modrić (27992) at AC Milan; sampleData still Real Madrid — no sourceId until teams align."
+      "notes": "TM 2025 confirms Luka Modrić (sourceId 27992) at AC Milan. teamId and sourceId updated 2026-05-25."
     },
     {
       "id": "valverde",

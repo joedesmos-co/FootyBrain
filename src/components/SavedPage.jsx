@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import { players, teams } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
+import { useLearningRecommendations } from '../hooks/useLearningRecommendations';
 import PlayerCard from './PlayerCard';
+import RecommendationsPanel from './RecommendationsPanel';
 import TeamCard from './TeamCard';
 
 export default function SavedPage() {
   const { favorites } = useFavorites();
+  const recommendations = useLearningRecommendations();
   const savedPlayers = players.filter((player) => favorites.players.includes(player.id));
   const savedTeams = teams.filter((team) => favorites.teams.includes(team.id));
   const hasSavedItems = savedPlayers.length > 0 || savedTeams.length > 0;
@@ -14,13 +17,21 @@ export default function SavedPage() {
     <div className="page saved-page">
       <header className="page-header">
         <h1>Saved to Learn</h1>
-        <p>Players and teams you want to come back to while building your football brain.</p>
+        <p>Players and clubs you bookmarked on this device.</p>
       </header>
 
+      {hasSavedItems && (
+        <RecommendationsPanel
+          recommendations={recommendations}
+          title="What to learn next"
+          compact
+        />
+      )}
+
       {!hasSavedItems && (
-        <section className="empty-state saved-page__empty">
-          <p>No saved players or teams yet.</p>
-          <div className="saved-page__empty-actions">
+        <section className="empty-state" aria-label="Nothing saved yet">
+          <p>Nothing saved yet. Use Save on any player or club profile.</p>
+          <div className="empty-state__actions">
             <Link to="/browse" className="btn btn--primary">
               Browse players
             </Link>

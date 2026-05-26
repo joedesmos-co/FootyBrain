@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "dataAsOf": "2026-05-26",
+  "defaultPlayerChunk": "sample-data",
+  "nationalTeamChunk": "national-team-data",
+  "note": "Mirror of src/data/contentManifest.js for future runtime fetch.",
+  "liveNationalTeamIds": [
+    "england",
+    "france",
+    "spain",
+    "brazil",
+    "argentina",
+    "germany",
+    "portugal",
+    "italy",
+    "netherlands",
+    "belgium",
+    "croatia",
+    "switzerland",
+    "denmark",
+    "serbia",
+    "turkey",
+    "united-states",
+    "mexico",
+    "uruguay",
+    "colombia",
+    "chile",
+    "morocco",
+    "senegal",
+    "nigeria",
+    "japan",
+    "korea-republic"
+  ],
+  "leagues": [
+    {
+      "id": "premier-league",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 341,
+      "teamCount": 15
+    },
+    {
+      "id": "la-liga",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 225,
+      "teamCount": 10
+    },
+    {
+      "id": "bundesliga",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 222,
+      "teamCount": 10
+    },
+    {
+      "id": "serie-a",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 136,
+      "teamCount": 6
+    },
+    {
+      "id": "ligue-1",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 197,
+      "teamCount": 9
+    },
+    {
+      "id": "eredivisie",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 110,
+      "teamCount": 5
+    },
+    {
+      "id": "mls",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 660,
+      "teamCount": 30
+    },
+    {
+      "id": "brasileirao",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 440,
+      "teamCount": 20
+    }
+  ]
+}

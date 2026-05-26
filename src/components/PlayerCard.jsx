@@ -1,10 +1,14 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { getTeamName } from '../data/sampleData';
+import { getCardQuickFact } from '../utils/playerEditorial';
 import { useFavorites } from '../hooks/useFavorites';
+import CountryFlag from './CountryFlag';
 import FavoriteButton from './FavoriteButton';
 import PlayerVisual from './PlayerVisual';
+import PositionLabel from './PositionLabel';
 
-export default function PlayerCard({ player }) {
+function PlayerCard({ player }) {
   const { isPlayerSaved, togglePlayer } = useFavorites();
   const saved = isPlayerSaved(player.id);
 
@@ -13,7 +17,7 @@ export default function PlayerCard({ player }) {
       <PlayerVisual player={player} />
       <div className="player-card__header">
         <div>
-          <span className="player-card__position-pill">{player.position}</span>
+          <PositionLabel position={player.position} className="player-card__position-pill" />
           <h3 className="player-card__name">{player.name}</h3>
         </div>
         <div className="player-card__actions">
@@ -35,21 +39,29 @@ export default function PlayerCard({ player }) {
         </div>
         <div>
           <dt>National team</dt>
-          <dd>{player.nationalTeam}</dd>
+          <dd className="football-meta-line">
+            <CountryFlag label={player.nationalTeam} />
+            {player.nationalTeam || '—'}
+          </dd>
         </div>
         <div>
           <dt>Nationality</dt>
-          <dd>{player.nationality}</dd>
+          <dd className="football-meta-line">
+            <CountryFlag label={player.nationality} />
+            {player.nationality || '—'}
+          </dd>
         </div>
         <div>
           <dt>Age</dt>
           <dd>{player.age}</dd>
         </div>
       </dl>
-      <p className="player-card__fact">{player.quickFact}</p>
+      <p className="player-card__fact">{getCardQuickFact(player)}</p>
       <Link to={`/player/${player.id}`} className="player-card__link">
         View profile
       </Link>
     </article>
   );
 }
+
+export default memo(PlayerCard);

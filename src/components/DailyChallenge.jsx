@@ -1,29 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTeamName } from '../data/sampleData';
+import { useDailyCompletionStatus } from '../hooks/useDailyCompletionStatus';
 import { getDailyCompletionBonus, useDailyChallenge } from '../hooks/useDailyChallenge';
 import { useProgression } from '../hooks/useProgression';
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-function normalizeAnswer(text) {
-  return text
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/ø/g, 'o')
-    .replace(/\s+/g, ' ');
-}
-
-function answersMatch(guess, correctName) {
-  const g = normalizeAnswer(guess);
-  const c = normalizeAnswer(correctName);
-  if (g === c) return true;
-  const lastName = c.split(' ').pop();
-  return g === lastName && lastName.length > 3;
-}
+import { answersMatch, buildAmbiguousLastNames } from '../utils/quizSession';
+import CountryFlag from './CountryFlag';
+import PlayerAutocomplete from './PlayerAutocomplete';
+import PositionLabel from './PositionLabel';
 
 function formatDateKey(dateKey) {
   const [y, m, d] = dateKey.split('-').map(Number);
@@ -63,7 +47,15 @@ function ProgressPips({ total, current, results }) {
 // ---------------------------------------------------------------------------
 // Completion screen — shown after all 5 questions or on reload if already done
 // ---------------------------------------------------------------------------
-function CompletionScreen({ todayKey, questions, results, totalXp, dailyStreak }) {
+function CompletionScreen({
+  todayKey,
+  questions,
+  results,
+  totalXp,
+  dailyStreak,
+  challengeLabel,
+  challengeScope,
+}) {
   const correct = results.filter((r) => r.isCorrect).length;
   const total = questions.length;
   const perfect = correct === total;
@@ -78,6 +70,14 @@ function CompletionScreen({ todayKey, questions, results, totalXp, dailyStreak }
           {perfect ? 'Perfect score!' : 'Challenge complete!'}
         </h1>
         <p className="daily-complete__date">{formatDateKey(todayKey)}</p>
+        {challengeLabel && (
+          <p className="daily-challenge-label daily-challenge-label--complete">
+            {challengeLabel}
+            {challengeScope?.name && challengeScope.type !== 'general' && (
+              <span className="daily-challenge-label__scope"> · {challengeScope.name}</span>
+            )}
+          </p>
+        )}
       </div>
 
       <div className="daily-complete__stats" aria-label="Today's results">
@@ -140,9 +140,17 @@ function CompletionScreen({ todayKey, questions, results, totalXp, dailyStreak }
 // ---------------------------------------------------------------------------
 export default function DailyChallenge() {
   const daily = useDailyChallenge();
+  const { refresh: refreshDailyNav } = useDailyCompletionStatus();
   const progression = useProgression();
 
-  const { todayKey, questions, isCompleted, completionData } = daily;
+  const {
+    todayKey,
+    questions,
+    challengeLabel,
+    challengeScope,
+    isCompleted,
+    completionData,
+  } = daily;
 
   // ── Quiz state (only active while answering questions) ─────────────────────
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -162,11 +170,14 @@ export default function DailyChallenge() {
   const canShowMoreHints =
     currentPlayer && hintsShown < currentPlayer.quizHints.length;
 
+  // Fixed set for today's 5 questions — blocks last-name shortcuts when two players share a surname
+  const ambiguousLastNames = buildAmbiguousLastNames(questions);
+
   // ── Handlers ───────────────────────────────────────────────────────────────
   const handleCheck = (e) => {
     e.preventDefault();
     if (!currentPlayer || feedback || !answer.trim()) return;
-    const isCorrect = answersMatch(answer, currentPlayer.name);
+    const isCorrect = answersMatch(answer, currentPlayer.name, ambiguousLastNames);
     setFeedback(isCorrect ? 'correct' : 'incorrect');
   };
 
@@ -191,6 +202,7 @@ export default function DailyChallenge() {
         xpEarned: totalXp,
         questionResults: newResults.map((r) => r.isCorrect),
       });
+      refreshDailyNav();
 
       setCompletionXp(totalXp);
       setPhase('complete');
@@ -222,6 +234,8 @@ export default function DailyChallenge() {
           results={displayResults}
           totalXp={completionXp}
           dailyStreak={daily.dailyStreak}
+          challengeLabel={challengeLabel}
+          challengeScope={challengeScope}
         />
       </div>
     );
@@ -234,6 +248,28 @@ export default function DailyChallenge() {
         <div>
           <h1 className="daily-header__title">Daily Challenge</h1>
           <p className="daily-header__date">{formatDateKey(todayKey)}</p>
+          {challengeLabel && (
+            <p className="daily-challenge-label" role="status">
+              <span className="daily-challenge-label__type">{challengeLabel}</span>
+              {challengeScope?.name && challengeScope.type !== 'general' && (
+                <span className="daily-challenge-label__scope">
+                  {' '}
+                  —{' '}
+                  {challengeScope.type === 'national-team' ? (
+                    <Link to={`/national-team/${challengeScope.nationalTeamId}`}>
+                      {challengeScope.name}
+                    </Link>
+                  ) : challengeScope.type === 'club' ? (
+                    <Link to={`/team/${challengeScope.teamId}`}>{challengeScope.name}</Link>
+                  ) : challengeScope.type === 'league' ? (
+                    <Link to={`/league/${challengeScope.leagueId}`}>{challengeScope.name}</Link>
+                  ) : (
+                    challengeScope.name
+                  )}
+                </span>
+              )}
+            </p>
+          )}
         </div>
         <ProgressPips
           total={questions.length}
@@ -251,11 +287,16 @@ export default function DailyChallenge() {
         <dl className="quiz-clues" aria-label="Clues">
           <div>
             <dt>Position</dt>
-            <dd>{currentPlayer?.position}</dd>
+            <dd>
+              <PositionLabel position={currentPlayer?.position} />
+            </dd>
           </div>
           <div>
             <dt>National team</dt>
-            <dd>{currentPlayer?.nationalTeam}</dd>
+            <dd className="football-meta-line">
+              <CountryFlag label={currentPlayer?.nationalTeam} />
+              {currentPlayer?.nationalTeam || '—'}
+            </dd>
           </div>
         </dl>
 
@@ -283,17 +324,19 @@ export default function DailyChallenge() {
 
         {/* Answer form */}
         <form className="quiz-form" onSubmit={handleCheck}>
-          <label className="filter-field">
-            <span>Your answer</span>
-            <input
-              type="text"
-              placeholder="Type player name…"
-              value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
-              disabled={!!feedback}
-              autoComplete="off"
-            />
-          </label>
+          <PlayerAutocomplete
+            players={questions}
+            value={answer}
+            onChange={setAnswer}
+            onSelect={(player) => setAnswer(player.name)}
+            label="Your answer"
+            placeholder="Type player name…"
+            disabled={!!feedback}
+            excludeIds={currentPlayer ? [currentPlayer.id] : []}
+            maxResults={5}
+            showNationalTeam
+            showClubWhenAmbiguous
+          />
           {!feedback && (
             <button
               type="submit"
@@ -318,7 +361,10 @@ export default function DailyChallenge() {
               </div>
               <div>
                 <dt>National team</dt>
-                <dd>{currentPlayer.nationalTeam}</dd>
+                <dd className="football-meta-line">
+                  <CountryFlag label={currentPlayer.nationalTeam} />
+                  {currentPlayer.nationalTeam || '—'}
+                </dd>
               </div>
             </dl>
             <p>{currentPlayer.quickFact}</p>
@@ -338,7 +384,10 @@ export default function DailyChallenge() {
               </div>
               <div>
                 <dt>National team</dt>
-                <dd>{currentPlayer.nationalTeam}</dd>
+                <dd className="football-meta-line">
+                  <CountryFlag label={currentPlayer.nationalTeam} />
+                  {currentPlayer.nationalTeam || '—'}
+                </dd>
               </div>
             </dl>
             <p>{currentPlayer.quickFact}</p>

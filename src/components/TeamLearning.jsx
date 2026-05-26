@@ -19,7 +19,7 @@ export default function TeamLearning() {
     <div className="page teams-page">
       <header className="page-header">
         <h1>Team Learning</h1>
-        <p>Club histories, fan culture, legends, and squads to know as a real supporter.</p>
+        <p>Club history, squads, rivals, and fan notes.</p>
       </header>
 
       <section className="filters" aria-label="Team filters">
@@ -59,7 +59,21 @@ export default function TeamLearning() {
         {filteredTeams.length > 0 ? (
           filteredTeams.map((team) => <TeamCard key={team.id} team={team} />)
         ) : (
-          <p className="empty-state">No teams match your search.</p>
+          <section className="empty-state" aria-label="No matching teams">
+            <p>No teams match your search.</p>
+            <div className="empty-state__actions">
+              <button
+                type="button"
+                className="btn btn--secondary"
+                onClick={() => {
+                  setLeagueFilter('');
+                  setSearch('');
+                }}
+              >
+                Clear filters
+              </button>
+            </div>
+          </section>
         )}
       </div>
     </div>

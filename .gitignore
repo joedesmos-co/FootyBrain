@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 raw-data/
+
+# Regenerated pipeline audit/report outputs (see npm run editorial:report, validate:*)
+generated-data/*-report.json
+generated-data/*-audit-report.json
+generated-data/*-inspection-summary.json
+generated-data/editorial-backlog-report.json
+generated-data/phase4-raw-probe-report.json

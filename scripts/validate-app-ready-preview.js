@@ -7,13 +7,56 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { leagues, teams } from '../src/data/sampleData.js';
+import {
+  collectForbiddenImageKeys,
+  validatePlayerImageFields,
+} from './player-image-rules.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const PREVIEW_PATH = path.join(ROOT, 'generated-data/footybrain-app-ready-preview.json');
+const PHASE1_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase1-clubs.json');
+const PHASE2_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase2-clubs.json');
+const PHASE3_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase3-clubs.json');
+const PHASE4_MLS_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase4-mls-clubs.json');
+const PHASE4_BRASILEIRAO_CLUBS_PATH = path.join(
+  ROOT,
+  'editorial-overlays/phase4-brasileirao-clubs.json',
+);
+const EXPANSION_CONFIG_PATHS = [
+  PHASE1_CLUBS_PATH,
+  PHASE2_CLUBS_PATH,
+  PHASE3_CLUBS_PATH,
+  PHASE4_MLS_CLUBS_PATH,
+  PHASE4_BRASILEIRAO_CLUBS_PATH,
+];
 
-const KNOWN_TEAM_IDS = new Set(teams.map((t) => t.id));
-const KNOWN_LEAGUE_IDS = new Set(leagues.map((l) => l.id));
+function loadKnownTeamIds() {
+  const ids = new Set(teams.map((t) => t.id));
+  for (const configPath of EXPANSION_CONFIG_PATHS) {
+    if (!fs.existsSync(configPath)) continue;
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    for (const club of config.clubs ?? []) {
+      if (club.footybrainTeamId) ids.add(club.footybrainTeamId);
+    }
+  }
+  return ids;
+}
+
+function loadKnownLeagueIds() {
+  const ids = new Set(leagues.map((l) => l.id));
+  for (const configPath of EXPANSION_CONFIG_PATHS) {
+    if (!fs.existsSync(configPath)) continue;
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    for (const league of config.leagues ?? []) {
+      if (league.id) ids.add(league.id);
+    }
+  }
+  return ids;
+}
+
+const KNOWN_TEAM_IDS = loadKnownTeamIds();
+const KNOWN_LEAGUE_IDS = loadKnownLeagueIds();
 
 const REQUIRED_PLAYER_KEYS = [
   'id',
@@ -116,13 +159,19 @@ function main() {
   const linked = players.filter((p) => p.dataStatus === 'mvp-linked');
   const manualOnly = players.filter((p) => p.dataStatus === 'manual-only');
   const needsEditorial = players.filter((p) => p.dataStatus === 'generated-needs-editorial');
+  const generatedApproved = players.filter((p) => p.dataStatus === 'generated-editorial-approved');
 
   const actual = {
     totalPlayers: players.length,
-    mvpFeatured: featured.length,
+    mvpFeatured: players.filter(
+      (p) => p.rosterTier === 'featured' && ['mvp-linked', 'manual-only'].includes(p.dataStatus),
+    ).length,
+    featuredPlayers: featured.length,
     mvpLinked: linked.length,
     mvpManualOnly: manualOnly.length,
     generatedNeedsEditorial: needsEditorial.length,
+    generatedEditorialApproved: generatedApproved.length,
+    quizEligible: players.filter((p) => p.quizEligible === true).length,
   };
 
   if (meta.counts) {
@@ -206,6 +255,11 @@ function main() {
       err(`Forbidden field "${key}" on player ${id}`);
     }
 
+    for (const key of collectForbiddenImageKeys(player)) {
+      err(`Forbidden image field "${key}" on player ${id}`);
+    }
+    validatePlayerImageFields(player, { err, warn, id });
+
     if (player.rosterTier === 'featured') {
       for (const field of EDITORIAL_FIELDS) {
         if (isEmptyEditorial(player[field], field)) {
@@ -233,6 +287,23 @@ function main() {
         if (!isEmptyEditorial(player[field], field)) {
           warn(`generated-needs-editorial player ${id} has non-empty ${field} (unexpected)`);
         }
+      }
+    }
+
+    if (player.dataStatus === 'generated-editorial-approved') {
+      if (player.quizEligible !== true) {
+        err(`generated-editorial-approved player ${id} must have quizEligible: true`);
+      }
+      if (player.rosterTier !== 'featured') {
+        err(`generated-editorial-approved player ${id} must have rosterTier: featured`);
+      }
+      for (const field of QUIZ_READY_FIELDS) {
+        if (isEmptyEditorial(player[field], field)) {
+          err(`generated-editorial-approved player ${id} missing quiz-ready field: ${field}`);
+        }
+      }
+      if (!Array.isArray(player.quizHints) || player.quizHints.length < 3) {
+        err(`generated-editorial-approved player ${id} must have at least 3 quizHints`);
       }
     }
 
@@ -355,10 +426,8 @@ function assessDevPreview() {
       `  OK for browse-only dev preview (${editorialWarns.length} squad rows lack editorial by design).`,
     );
   }
-  console.log(
-    '  Safe for hidden dev preview if scoped to rosterTier "featured" or quizEligible true only (36 MVP).',
-  );
-  console.log('  Do not expose full 213-player quiz pool without editorial pass.\n');
+  console.log('  Safe for hidden dev preview if scoped to rosterTier "featured" or quizEligible true only.');
+  console.log('  Do not expose full generated player pool without editorial pass.\n');
 }
 
 main();

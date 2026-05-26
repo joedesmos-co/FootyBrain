@@ -16,17 +16,25 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { players as samplePlayers } from '../src/data/sampleData.js';
+import { curatePhase1PreviewPlayers, EXPANSION_LIMITS } from './phase1-curation.js';
+import { nullImageFields, validatePlayerImageFields } from './player-image-rules.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const PREVIEW_PATH = path.join(ROOT, 'generated-data/footybrain-preview-data.json');
 const OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.manual.json');
+const GENERATED_OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.generated-draft.json');
 const OUTPUT_PATH = path.join(ROOT, 'generated-data/footybrain-app-ready-preview.json');
 
-const DATA_AS_OF = '2026-05-24';
+const DATA_AS_OF = '2026-05-25';
 
 function loadJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function loadOptionalJson(filePath, fallback) {
+  if (!fs.existsSync(filePath)) return fallback;
+  return loadJson(filePath);
 }
 
 function ageFromDateOfBirth(dateOfBirth, asOf = new Date(DATA_AS_OF)) {
@@ -63,7 +71,7 @@ function buildMvpPlayer(overlay, sample, tmBySourceId, warnings) {
     importanceScore: overlay.importanceScore,
     quizEligible: overlay.quizEligible,
     rosterTier: overlay.rosterTier,
-    imageUrl: null,
+    ...nullImageFields(),
     careerHistory: sample.careerHistory ?? [],
   };
 
@@ -119,7 +127,34 @@ function factualFromSample(sample) {
   };
 }
 
-function buildGeneratedPlayer(tm) {
+function buildGeneratedPlayer(tm, generatedOverlayBySourceId) {
+  const overlay = generatedOverlayBySourceId.get(String(tm.sourceId));
+  if (overlay) {
+    return {
+      id: overlay.id,
+      sourceId: String(tm.sourceId),
+      name: overlay.displayName,
+      displayName: overlay.displayName,
+      dateOfBirth: tm.dateOfBirth ?? null,
+      age: ageFromDateOfBirth(tm.dateOfBirth),
+      nationality: tm.nationality ?? null,
+      nationalTeam: nationalTeamFromPreview(tm),
+      position: tm.position ?? null,
+      teamId: tm.footybrainTeamId,
+      leagueId: tm.footybrainLeagueId,
+      quickFact: overlay.quickFact,
+      quizHints: overlay.quizHints,
+      playingStyle: overlay.playingStyle,
+      importanceScore: overlay.importanceScore,
+      quizEligible: overlay.quizEligible,
+      rosterTier: overlay.rosterTier,
+      reviewStatus: overlay.reviewStatus,
+      ...nullImageFields(),
+      careerHistory: [],
+      dataStatus: 'generated-editorial-approved',
+    };
+  }
+
   return {
     id: `tm-${tm.sourceId}`,
     sourceId: String(tm.sourceId),
@@ -137,7 +172,7 @@ function buildGeneratedPlayer(tm) {
     importanceScore: null,
     quizEligible: false,
     rosterTier: 'squad',
-    imageUrl: null,
+    ...nullImageFields(),
     careerHistory: [],
     dataStatus: 'generated-needs-editorial',
   };
@@ -151,13 +186,14 @@ function validateOutput(output) {
     if (!p.id) issues.push('player missing id');
     if (ids.has(p.id)) issues.push(`duplicate id: ${p.id}`);
     ids.add(p.id);
-    if (p.image_url !== undefined || p.imageUrl && p.imageUrl.includes('transfermarkt')) {
-      issues.push(`forbidden image field on ${p.id}`);
-    }
     if ('market_value' in p || 'marketValue' in p || 'sourcePlayerHref' in p) {
       issues.push(`forbidden TM field on ${p.id}`);
     }
     if (!p.dataStatus) issues.push(`missing dataStatus on ${p.id}`);
+    validatePlayerImageFields(p, {
+      err: (msg) => issues.push(msg),
+      id: p.id,
+    });
   }
   return issues;
 }
@@ -176,11 +212,15 @@ function main() {
 
   const preview = loadJson(PREVIEW_PATH);
   const overlay = loadJson(OVERLAY_PATH);
+  const generatedOverlay = loadOptionalJson(GENERATED_OVERLAY_PATH, { players: [] });
   const sampleById = new Map(samplePlayers.map((p) => [p.id, p]));
   const tmBySourceId = new Map(preview.players.map((p) => [String(p.sourceId), p]));
+  const generatedOverlayBySourceId = new Map(
+    (generatedOverlay.players ?? []).map((p) => [String(p.sourceId), p]),
+  );
 
-  const mvpIds = new Set(samplePlayers.map((p) => p.id));
   const overlayById = new Map(overlay.players.map((p) => [p.id, p]));
+  const mvpIds = new Set(overlay.players.map((p) => p.id));
 
   for (const id of mvpIds) {
     if (!overlayById.has(id)) {
@@ -192,9 +232,10 @@ function main() {
   const linkedPlayers = [];
   const manualOnlyPlayers = [];
 
-  for (const sample of samplePlayers) {
-    const ov = overlayById.get(sample.id);
-    if (!ov) continue;
+  for (const mvpId of mvpIds) {
+    const sample = sampleById.get(mvpId);
+    const ov = overlayById.get(mvpId);
+    if (!sample || !ov) continue;
     const merged = buildMvpPlayer(ov, sample, tmBySourceId, warnings);
     mvpPlayers.push(merged);
     if (merged.dataStatus === 'mvp-linked') linkedPlayers.push(merged.id);
@@ -205,16 +246,38 @@ function main() {
     mvpPlayers.filter((p) => p.sourceId).map((p) => String(p.sourceId)),
   );
 
+  const maxSquadRows = Math.max(0, EXPANSION_LIMITS.playersMax - mvpPlayers.length);
+  let curatedTm = curatePhase1PreviewPlayers(
+    preview.players,
+    usedSourceIds,
+    ageFromDateOfBirth,
+  );
+  if (curatedTm.length > maxSquadRows) {
+    curatedTm = curatedTm.slice(0, maxSquadRows);
+    warnings.push(
+      `Trimmed curated squad to ${maxSquadRows} rows (controlled expansion total cap ${EXPANSION_LIMITS.playersMax}).`,
+    );
+  }
+  if (mvpPlayers.length + curatedTm.length < EXPANSION_LIMITS.playersMin) {
+    warnings.push(
+      `Total player count ${mvpPlayers.length + curatedTm.length} below target min ${EXPANSION_LIMITS.playersMin} — check preview build / club matches.`,
+    );
+  }
+
   const generatedNeedsEditorial = [];
+  const generatedEditorialApproved = [];
   const squadPlayers = [];
-  for (const tm of preview.players) {
-    if (usedSourceIds.has(String(tm.sourceId))) continue;
-    const row = buildGeneratedPlayer(tm);
+  for (const tm of curatedTm) {
+    const row = buildGeneratedPlayer(tm, generatedOverlayBySourceId);
     if (!row.name) {
       warnings.push(`Skipped generated player ${tm.sourceId}: no display name`);
       continue;
     }
-    generatedNeedsEditorial.push(row.id);
+    if (row.dataStatus === 'generated-editorial-approved') {
+      generatedEditorialApproved.push(row.id);
+    } else {
+      generatedNeedsEditorial.push(row.id);
+    }
     squadPlayers.push(row);
   }
 
@@ -233,10 +296,13 @@ function main() {
         mvpLinked: linkedPlayers.length,
         mvpManualOnly: manualOnlyPlayers.length,
         generatedNeedsEditorial: generatedNeedsEditorial.length,
+        generatedEditorialApproved: generatedEditorialApproved.length,
+        quizEligible: allPlayers.filter((p) => p.quizEligible === true).length,
       },
       linkedPlayers,
       manualOnlyPlayers,
       generatedNeedsEditorialPlayers: generatedNeedsEditorial,
+      generatedEditorialApprovedPlayers: generatedEditorialApproved,
       warnings,
     },
     players: allPlayers,
@@ -263,7 +329,9 @@ function main() {
   console.log(`Total players: ${output.meta.counts.totalPlayers}`);
   console.log(`MVP linked: ${output.meta.counts.mvpLinked}`);
   console.log(`MVP manual-only: ${output.meta.counts.mvpManualOnly}`);
+  console.log(`Generated editorial approved: ${output.meta.counts.generatedEditorialApproved}`);
   console.log(`Generated needs editorial: ${output.meta.counts.generatedNeedsEditorial}`);
+  console.log(`Quiz-eligible: ${output.meta.counts.quizEligible}`);
   console.log(`Warnings: ${warnings.length}`);
   if (warnings.length) warnings.forEach((w) => console.log(`  ⚠ ${w}`));
   console.log(`File size: ${bytes} bytes (${Math.round(bytes / 1024)} KB)`);

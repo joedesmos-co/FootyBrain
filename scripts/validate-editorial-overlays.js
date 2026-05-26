@@ -1,20 +1,27 @@
 #!/usr/bin/env node
 /**
- * Validate editorial-overlays/players.manual.json against sampleData and TM preview.
- * Does not modify any data files.
+ * Validate editorial overlay files.
+ * - players.manual.json vs sampleData + TM scraper preview
+ * - players.generated-draft.json vs app-ready preview
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { players as samplePlayers } from '../src/data/sampleData.js';
+import {
+  collectForbiddenImageKeys,
+  validatePlayerImageFields,
+} from './player-image-rules.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.manual.json');
-const PREVIEW_PATH = path.join(ROOT, 'generated-data/footybrain-preview-data.json');
+const MANUAL_OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.manual.json');
+const DRAFT_OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.generated-draft.json');
+const TM_PREVIEW_PATH = path.join(ROOT, 'generated-data/footybrain-preview-data.json');
+const APP_READY_PATH = path.join(ROOT, 'generated-data/footybrain-app-ready-preview.json');
 
-const REQUIRED_FIELDS = [
+const MANUAL_REQUIRED_FIELDS = [
   'id',
   'displayName',
   'quickFact',
@@ -24,6 +31,14 @@ const REQUIRED_FIELDS = [
   'quizEligible',
   'rosterTier',
 ];
+
+const DRAFT_REQUIRED_FIELDS = [
+  ...MANUAL_REQUIRED_FIELDS,
+  'sourceId',
+  'reviewStatus',
+];
+
+const FORBIDDEN_KEYS = new Set(['image_url', 'marketValue', 'market_value', 'url']);
 
 const errors = [];
 const warnings = [];
@@ -42,42 +57,33 @@ function stripAccents(s) {
 
 function loadJson(filePath, label) {
   if (!fs.existsSync(filePath)) {
-    err(`${label} not found: ${filePath}`);
+    err(`[${label}] File not found: ${filePath}`);
     return null;
   }
   try {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (e) {
-    err(`${label} is not valid JSON: ${e.message}`);
+    err(`[${label}] Invalid JSON: ${e.message}`);
     return null;
   }
 }
 
-function findPreviewBySourceId(previewById, sourceId) {
-  return previewById.get(String(sourceId)) ?? null;
+function collectForbiddenKeys(obj, prefix = '') {
+  const hits = [];
+  if (!obj || typeof obj !== 'object') return hits;
+  for (const [key, val] of Object.entries(obj)) {
+    const full = prefix ? `${prefix}.${key}` : key;
+    if (FORBIDDEN_KEYS.has(key)) hits.push(full);
+    if (/href/i.test(key)) hits.push(full);
+    if (typeof val === 'object' && val !== null && !Array.isArray(val)) {
+      hits.push(...collectForbiddenKeys(val, full));
+    }
+  }
+  return hits;
 }
 
-/** Best-effort locate player anywhere in preview by sample display name */
-function findPreviewByName(allPreviewPlayers, samplePlayer) {
-  const last = stripAccents(samplePlayer.name.split(/\s+/).pop() ?? '');
-  const team = samplePlayer.teamId;
-  const onTeam = [];
-  const elsewhere = [];
-
-  for (const p of allPreviewPlayers) {
-    const plast = stripAccents((p.lastName || '').trim());
-    const pname = stripAccents((p.name || '').split(',')[0]);
-    const hit =
-      (plast && plast === last) ||
-      (last.length > 3 && pname.includes(last)) ||
-      matchMononym(samplePlayer.id, p);
-
-    if (!hit) continue;
-    if (p.footybrainTeamId === team) onTeam.push(p);
-    else elsewhere.push(p);
-  }
-
-  return { onTeam, elsewhere };
+function findPreviewBySourceId(previewBySourceId, sourceId) {
+  return previewBySourceId.get(String(sourceId)) ?? null;
 }
 
 function matchMononym(sampleId, previewPlayer) {
@@ -115,93 +121,115 @@ function matchMononym(sampleId, previewPlayer) {
   }
 }
 
-function validateOverlayShape(overlay) {
-  if (!overlay || typeof overlay !== 'object') return;
+function findPreviewByName(allPreviewPlayers, samplePlayer) {
+  const last = stripAccents(samplePlayer.name.split(/\s+/).pop() ?? '');
+  const team = samplePlayer.teamId;
+  const onTeam = [];
+  const elsewhere = [];
+
+  for (const p of allPreviewPlayers) {
+    const plast = stripAccents((p.lastName || '').trim());
+    // Split the display name into whitespace-separated tokens for whole-word matching.
+    // This avoids false positives like "sane" matching inside "Alassane" (Pléa at PSV).
+    const pnameTokens = stripAccents((p.name || '').split(',')[0]).split(/\s+/);
+    const hit =
+      (plast && plast === last) ||
+      (last.length > 3 && pnameTokens.some((tok) => tok === last)) ||
+      matchMononym(samplePlayer.id, p);
+
+    if (!hit) continue;
+    if (p.footybrainTeamId === team) onTeam.push(p);
+    else elsewhere.push(p);
+  }
+
+  return { onTeam, elsewhere };
+}
+
+function validateManualOverlay(overlay, tmPreview) {
+  if (!overlay || typeof overlay !== 'object') return null;
   if (!Array.isArray(overlay.players)) {
-    err('Overlay root must contain a "players" array.');
-    return;
+    err('[manual] Root must contain a "players" array.');
+    return null;
   }
 
   const sampleById = new Map(samplePlayers.map((p) => [p.id, p]));
-  const mvpIds = [...sampleById.keys()];
-  const overlayIds = overlay.players.map((p) => p?.id);
-
-  // Duplicate overlay ids
+  const mvpIds = overlay.players.map((p) => p?.id).filter(Boolean);
   const seen = new Set();
-  for (const id of overlayIds) {
-    if (!id) {
-      err('Overlay entry missing id.');
-      continue;
-    }
-    if (seen.has(id)) err(`Duplicate overlay id: ${id}`);
-    seen.add(id);
-  }
 
-  // MVP coverage
   for (const id of mvpIds) {
-    if (!seen.has(id)) err(`Missing overlay for MVP player id: ${id}`);
+    if (seen.has(id)) err(`[manual] Duplicate overlay id: ${id}`);
+    seen.add(id);
   }
 
   for (const entry of overlay.players) {
     if (!entry || typeof entry !== 'object') {
-      err('Invalid overlay entry (not an object).');
+      err('[manual] Invalid overlay entry (not an object).');
       continue;
     }
 
     if (!sampleById.has(entry.id)) {
-      err(`Overlay id not in sampleData.js: ${entry.id}`);
+      err(`[manual] Overlay id not in sampleData.js: ${entry.id}`);
     }
 
-    for (const field of REQUIRED_FIELDS) {
+    for (const field of MANUAL_REQUIRED_FIELDS) {
       if (!(field in entry)) {
-        err(`Missing required field "${field}" on overlay id: ${entry.id}`);
+        err(`[manual] Missing required field "${field}" on id: ${entry.id}`);
         continue;
       }
       const val = entry[field];
       if (val === null || val === undefined || val === '') {
-        err(`Empty required field "${field}" on overlay id: ${entry.id}`);
+        err(`[manual] Empty required field "${field}" on id: ${entry.id}`);
       }
     }
 
-    if (!Array.isArray(entry.quizHints) || entry.quizHints.length === 0) {
-      err(`quizHints must be a non-empty array on id: ${entry.id}`);
+    for (const key of collectForbiddenKeys(entry)) {
+      err(`[manual] Forbidden field "${key}" on id: ${entry.id}`);
+    }
+
+    for (const key of collectForbiddenImageKeys(entry)) {
+      err(`[manual] Forbidden image field "${key}" on id: ${entry.id}`);
+    }
+    validatePlayerImageFields(entry, { err: (msg) => err(`[manual] ${msg}`), warn, id: entry.id });
+
+    if (!String(entry.quickFact ?? '').trim()) {
+      err(`[manual] quickFact must not be empty on id: ${entry.id}`);
+    }
+
+    if (!Array.isArray(entry.quizHints) || entry.quizHints.length < 3) {
+      err(`[manual] quizHints must have at least 3 items on id: ${entry.id}`);
     } else if (entry.quizHints.some((h) => typeof h !== 'string' || !h.trim())) {
-      err(`quizHints must be non-empty strings on id: ${entry.id}`);
+      err(`[manual] quizHints must be non-empty strings on id: ${entry.id}`);
     }
 
     if (typeof entry.importanceScore !== 'number' || entry.importanceScore < 1 || entry.importanceScore > 99) {
-      err(`importanceScore must be a number 1–99 on id: ${entry.id}`);
+      err(`[manual] importanceScore must be a number 1–99 on id: ${entry.id}`);
     }
 
     if (entry.quizEligible !== true) {
-      warn(`quizEligible is not true on id: ${entry.id} (expected MVP featured pool)`);
+      warn(`[manual] quizEligible is not true on id: ${entry.id} (expected MVP featured pool)`);
     }
 
     if (entry.rosterTier !== 'featured') {
-      warn(`rosterTier is not "featured" on id: ${entry.id}`);
+      warn(`[manual] rosterTier is not "featured" on id: ${entry.id}`);
     }
 
-    if ('sourceId' in entry === false) {
-      err(`Missing sourceId key (use null) on id: ${entry.id}`);
+    if (!('sourceId' in entry)) {
+      err(`[manual] Missing sourceId key (use null) on id: ${entry.id}`);
     } else if (entry.sourceId !== null && typeof entry.sourceId !== 'string') {
-      err(`sourceId must be string or null on id: ${entry.id}`);
+      err(`[manual] sourceId must be string or null on id: ${entry.id}`);
     }
   }
 
-  return { sampleById, overlayPlayers: overlay.players };
-}
-
-function validateSourceIds(overlayPlayers, sampleById, preview) {
-  if (!preview?.players) {
-    err('Preview file has no players array.');
-    return;
+  if (!tmPreview?.players) {
+    warn('[manual] Skipping sourceId checks — TM preview unavailable.');
+    return { sampleById, overlayPlayers: overlay.players, nullSourceIds: [] };
   }
 
-  const previewById = new Map(preview.players.map((p) => [String(p.sourceId), p]));
+  const previewBySourceId = new Map(tmPreview.players.map((p) => [String(p.sourceId), p]));
   const sourceIdToOverlayIds = new Map();
   const nullSourceIds = [];
 
-  for (const entry of overlayPlayers) {
+  for (const entry of overlay.players) {
     if (entry.sourceId === null) {
       nullSourceIds.push(entry.id);
       continue;
@@ -211,30 +239,38 @@ function validateSourceIds(overlayPlayers, sampleById, preview) {
     if (!sourceIdToOverlayIds.has(sid)) sourceIdToOverlayIds.set(sid, []);
     sourceIdToOverlayIds.get(sid).push(entry.id);
 
-    const tm = findPreviewBySourceId(previewById, sid);
+    const tm = findPreviewBySourceId(previewBySourceId, sid);
     if (!tm) {
-      err(`sourceId ${sid} (${entry.id}) not found in footybrain-preview-data.json`);
+      err(`[manual] sourceId ${sid} (${entry.id}) not found in footybrain-preview-data.json`);
       continue;
     }
 
     const sample = sampleById.get(entry.id);
     if (sample && tm.footybrainTeamId !== sample.teamId) {
       err(
-        `sourceId ${sid} (${entry.id}) maps to TM club ${tm.footybrainTeamId}, but sampleData teamId is ${sample.teamId}`,
+        `[manual] sourceId ${sid} (${entry.id}) maps to TM club ${tm.footybrainTeamId}, but sampleData teamId is ${sample.teamId}`,
       );
     }
   }
 
-  for (const [sid, ids] of sourceIdToOverlayIds) {
-    if (ids.length > 1) {
-      err(`Duplicate sourceId ${sid} used by overlay ids: ${ids.join(', ')}`);
+  for (const [sid, idsList] of sourceIdToOverlayIds) {
+    if (idsList.length > 1) {
+      err(`[manual] Duplicate sourceId ${sid} used by overlay ids: ${idsList.join(', ')}`);
     }
   }
 
-  return { nullSourceIds, previewById, allPreviewPlayers: preview.players };
+  reportStaleRosters(overlay.players, sampleById, previewBySourceId, tmPreview.players, nullSourceIds);
+
+  return { sampleById, overlayPlayers: overlay.players, nullSourceIds };
 }
 
-function reportStaleRosters(overlayPlayers, sampleById, previewById, allPreviewPlayers) {
+function reportStaleRosters(overlayPlayers, sampleById, previewBySourceId, allPreviewPlayers, nullSourceIds) {
+  if (nullSourceIds.length) {
+    console.log('--- [manual] sourceId null (report) ---');
+    for (const id of nullSourceIds) console.log(`  - ${id}`);
+    console.log(`Total: ${nullSourceIds.length}\n`);
+  }
+
   const staleClubMismatch = [];
   const missingFromExpectedSquad = [];
 
@@ -243,14 +279,12 @@ function reportStaleRosters(overlayPlayers, sampleById, previewById, allPreviewP
     if (!sample) continue;
 
     if (entry.sourceId) {
-      const tm = findPreviewBySourceId(previewById, entry.sourceId);
+      const tm = findPreviewBySourceId(previewBySourceId, entry.sourceId);
       if (tm && tm.footybrainTeamId !== sample.teamId) {
         staleClubMismatch.push({
           id: entry.id,
           sampleTeamId: sample.teamId,
           tmTeamId: tm.footybrainTeamId,
-          sourceId: entry.sourceId,
-          tmName: tm.name,
         });
       }
       continue;
@@ -259,104 +293,186 @@ function reportStaleRosters(overlayPlayers, sampleById, previewById, allPreviewP
     const { onTeam, elsewhere } = findPreviewByName(allPreviewPlayers, sample);
 
     if (onTeam.length === 0 && elsewhere.length === 0) {
-      missingFromExpectedSquad.push({
-        id: entry.id,
-        displayName: entry.displayName,
-        sampleTeamId: sample.teamId,
-        note: 'Not found on expected club squad or elsewhere in TM 2025 preview',
-      });
-      continue;
-    }
-
-    if (onTeam.length === 0 && elsewhere.length > 0) {
-      const tm = elsewhere[0];
+      missingFromExpectedSquad.push({ id: entry.id, sampleTeamId: sample.teamId });
+    } else if (onTeam.length === 0 && elsewhere.length > 0) {
       staleClubMismatch.push({
         id: entry.id,
         sampleTeamId: sample.teamId,
-        tmTeamId: tm.footybrainTeamId,
-        sourceId: tm.sourceId,
-        tmName: tm.name,
-        overlaySourceId: null,
+        tmTeamId: elsewhere[0].footybrainTeamId,
       });
     } else if (onTeam.length > 1) {
       warn(
-        `Ambiguous TM name match on ${sample.teamId} for ${entry.id} (${onTeam.length} candidates); stale check skipped`,
+        `[manual] Ambiguous TM name match on ${sample.teamId} for ${entry.id} (${onTeam.length} candidates)`,
       );
     }
   }
 
-  return { staleClubMismatch, missingFromExpectedSquad };
+  if (staleClubMismatch.length) {
+    console.log('--- [manual] Stale roster: TM 2025 club ≠ sampleData teamId ---');
+    for (const row of staleClubMismatch) {
+      console.log(`  - ${row.id}: sample=${row.sampleTeamId}, TM=${row.tmTeamId}`);
+      warn(`[manual] Stale roster: ${row.id} — sampleData ${row.sampleTeamId}, TM 2025 ${row.tmTeamId}`);
+    }
+    console.log('');
+  }
+
+  if (missingFromExpectedSquad.length) {
+    console.log('--- [manual] Missing from TM preview (expected squad) ---');
+    for (const row of missingFromExpectedSquad) {
+      console.log(`  - ${row.id} (${row.sampleTeamId})`);
+      warn(`[manual] Missing from TM 2025 preview squad: ${row.id} (${row.sampleTeamId})`);
+    }
+    console.log('');
+  }
+}
+
+function validateGeneratedDraft(draft, appReady) {
+  if (!draft || typeof draft !== 'object') return;
+  if (!Array.isArray(draft.players)) {
+    err('[generated-draft] Root must contain a "players" array.');
+    return;
+  }
+
+  if (!appReady?.players) {
+    err('[generated-draft] Cannot validate — app-ready preview has no players array.');
+    return;
+  }
+
+  const appReadyById = new Map(appReady.players.map((p) => [p.id, p]));
+  const seenIds = new Set();
+  const seenSourceIds = new Set();
+
+  for (const entry of draft.players) {
+    if (!entry || typeof entry !== 'object') {
+      err('[generated-draft] Invalid entry (not an object).');
+      continue;
+    }
+
+    const id = entry.id;
+    if (!id) {
+      err('[generated-draft] Entry missing id.');
+      continue;
+    }
+    if (seenIds.has(id)) err(`[generated-draft] Duplicate id: ${id}`);
+    seenIds.add(id);
+
+    const previewPlayer = appReadyById.get(id);
+    if (!previewPlayer) {
+      err(`[generated-draft] id ${id} not found in footybrain-app-ready-preview.json`);
+    } else if (
+      previewPlayer.dataStatus !== 'generated-needs-editorial' &&
+      previewPlayer.dataStatus !== 'generated-editorial-approved'
+    ) {
+      warn(
+        `[generated-draft] id ${id} is dataStatus "${previewPlayer.dataStatus}" in app-ready preview (expected generated-needs-editorial or generated-editorial-approved)`,
+      );
+    }
+
+    for (const field of DRAFT_REQUIRED_FIELDS) {
+      if (!(field in entry)) {
+        err(`[generated-draft] Missing required field "${field}" on id: ${id}`);
+        continue;
+      }
+      if (entry[field] === null || entry[field] === undefined || entry[field] === '') {
+        err(`[generated-draft] Empty required field "${field}" on id: ${id}`);
+      }
+    }
+
+    for (const key of collectForbiddenKeys(entry)) {
+      err(`[generated-draft] Forbidden field "${key}" on id: ${id}`);
+    }
+
+    for (const key of collectForbiddenImageKeys(entry)) {
+      err(`[generated-draft] Forbidden image field "${key}" on id: ${id}`);
+    }
+    validatePlayerImageFields(entry, {
+      err: (msg) => err(`[generated-draft] ${msg}`),
+      warn,
+      id,
+    });
+
+    if (!String(entry.quickFact ?? '').trim()) {
+      err(`[generated-draft] quickFact must not be empty on id: ${id}`);
+    }
+
+    if (!Array.isArray(entry.quizHints) || entry.quizHints.length < 3) {
+      err(`[generated-draft] quizHints must have at least 3 items on id: ${id}`);
+    } else if (entry.quizHints.some((h) => typeof h !== 'string' || !h.trim())) {
+      err(`[generated-draft] quizHints must be non-empty strings on id: ${id}`);
+    }
+
+    if (typeof entry.importanceScore !== 'number' || entry.importanceScore < 1 || entry.importanceScore > 99) {
+      err(`[generated-draft] importanceScore must be a number 1–99 on id: ${id}`);
+    }
+
+    if (entry.quizEligible !== true) {
+      err(`[generated-draft] quizEligible must be true on id: ${id}`);
+    }
+
+    if (entry.rosterTier !== 'featured') {
+      err(`[generated-draft] rosterTier must be "featured" on id: ${id}`);
+    }
+
+    if (entry.reviewStatus !== 'approved') {
+      err(`[generated-draft] reviewStatus must be "approved" on id: ${id}`);
+    }
+
+    const sid = String(entry.sourceId);
+    if (seenSourceIds.has(sid)) {
+      err(`[generated-draft] Duplicate sourceId ${sid} on id: ${id}`);
+    }
+    seenSourceIds.add(sid);
+
+    if (previewPlayer) {
+      if (String(previewPlayer.sourceId) !== sid) {
+        err(
+          `[generated-draft] sourceId mismatch on ${id}: overlay ${sid}, app-ready preview ${previewPlayer.sourceId}`,
+        );
+      }
+      if (previewPlayer.id !== `tm-${sid}` && previewPlayer.id !== id) {
+        warn(`[generated-draft] id ${id} does not follow tm-{sourceId} pattern (preview id: ${previewPlayer.id})`);
+      }
+    }
+  }
+
+  console.log(`--- [generated-draft] validated ${draft.players.length} player(s) ---\n`);
 }
 
 // --- main ---
 console.log('Validating editorial overlays…\n');
 
-const overlay = loadJson(OVERLAY_PATH, 'Overlay');
-const preview = loadJson(PREVIEW_PATH, 'Preview');
+const manual = loadJson(MANUAL_OVERLAY_PATH, 'manual');
+const draft = loadJson(DRAFT_OVERLAY_PATH, 'generated-draft');
+const tmPreview = loadJson(TM_PREVIEW_PATH, 'tm-preview');
+const appReady = loadJson(APP_READY_PATH, 'app-ready');
 
-const ctx = overlay ? validateOverlayShape(overlay) : null;
+if (manual) {
+  console.log('--- players.manual.json ---');
+  validateManualOverlay(manual, tmPreview);
+  console.log('');
+}
 
-let nullSourceIds = [];
-if (ctx && preview) {
-  const src = validateSourceIds(ctx.overlayPlayers, ctx.sampleById, preview);
-  nullSourceIds = src.nullSourceIds;
-  const stale = reportStaleRosters(
-    ctx.overlayPlayers,
-    ctx.sampleById,
-    src.previewById,
-    src.allPreviewPlayers,
-  );
-
-  if (nullSourceIds.length) {
-    console.log('--- sourceId null (report) ---');
-    for (const id of nullSourceIds) console.log(`  - ${id}`);
-    console.log(`Total: ${nullSourceIds.length}\n`);
-  }
-
-  if (stale.staleClubMismatch.length) {
-    console.log('--- Stale roster: TM 2025 club ≠ sampleData teamId ---');
-    for (const row of stale.staleClubMismatch) {
-      console.log(
-        `  - ${row.id}: sample=${row.sampleTeamId}, TM=${row.tmTeamId}, sourceId=${row.sourceId ?? row.overlaySourceId ?? 'n/a'} (${row.tmName?.slice(0, 50)})`,
-      );
-    }
-    console.log(`Total: ${stale.staleClubMismatch.length}\n`);
-    for (const row of stale.staleClubMismatch) {
-      warn(
-        `Stale roster: ${row.id} — sampleData ${row.sampleTeamId}, TM 2025 ${row.tmTeamId}`,
-      );
-    }
-  }
-
-  if (stale.missingFromExpectedSquad.length) {
-    console.log('--- Missing from TM preview (expected squad) ---');
-    for (const row of stale.missingFromExpectedSquad) {
-      console.log(`  - ${row.id} (${row.displayName}) — ${row.sampleTeamId}: ${row.note}`);
-    }
-    console.log(`Total: ${stale.missingFromExpectedSquad.length}\n`);
-    for (const row of stale.missingFromExpectedSquad) {
-      warn(`Missing from TM 2025 preview squad: ${row.id} (${row.sampleTeamId})`);
-    }
-  }
-} else if (!preview) {
-  warn('Skipping sourceId / roster checks — preview file unavailable.');
+if (draft) {
+  console.log('--- players.generated-draft.json ---');
+  validateGeneratedDraft(draft, appReady);
 }
 
 if (warnings.length) {
-  console.log('--- Warnings ---');
+  console.log(`--- Warnings (${warnings.length}) ---`);
   warnings.forEach((w) => console.log(`  ⚠ ${w}`));
   console.log('');
 }
 
 if (errors.length) {
-  console.log('--- Errors ---');
+  console.log(`--- Errors (${errors.length}) ---`);
   errors.forEach((e) => console.log(`  ✖ ${e}`));
   console.log(`\nFAILED: ${errors.length} error(s), ${warnings.length} warning(s).`);
   process.exit(1);
 }
 
-const playerCount = overlay?.players?.length ?? 0;
+const manualCount = manual?.players?.length ?? 0;
+const draftCount = draft?.players?.length ?? 0;
 console.log(
-  `PASSED: ${playerCount} overlay players, ${samplePlayers.length} MVP ids, ${warnings.length} warning(s).`,
+  `PASSED: manual ${manualCount} players, generated-draft ${draftCount} players, ${warnings.length} warning(s).`,
 );
 process.exit(0);

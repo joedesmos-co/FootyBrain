@@ -24,67 +24,101 @@ const COMPETITIONS_PATH = path.join(
   'raw-data/transfermarkt-datasets/data/competitions.json',
 );
 const OUTPUT_PATH = path.join(ROOT, 'generated-data/footybrain-preview-data.json');
+const PHASE4_OUTPUT_PATH = path.join(ROOT, 'generated-data/footybrain-phase4-preview-data.json');
+const PHASE1_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase1-clubs.json');
+const PHASE2_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase2-clubs.json');
+const PHASE3_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase3-clubs.json');
+const PHASE4_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase4-clubs.json');
+const PHASE4_MLS_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase4-mls-clubs.json');
+const PHASE4_BRASILEIRAO_CLUBS_PATH = path.join(
+  ROOT,
+  'editorial-overlays/phase4-brasileirao-clubs.json',
+);
+const PHASE4_ONLY = process.argv.includes('--phase4-only');
 
-const TARGET_LEAGUE_CODES = ['GB1', 'ES1', 'L1', 'IT1'];
-
-const LEAGUE_BY_TM_CODE = {
+const BASE_LEAGUE_BY_TM_CODE = {
   GB1: { id: 'premier-league', name: 'Premier League', country: 'England' },
   ES1: { id: 'la-liga', name: 'La Liga', country: 'Spain' },
   L1: { id: 'bundesliga', name: 'Bundesliga', country: 'Germany' },
   IT1: { id: 'serie-a', name: 'Serie A', country: 'Italy' },
 };
 
-/** FootyBrain team ids and how we recognize them in TM data */
-const TARGET_CLUBS = [
-  {
-    footybrainTeamId: 'arsenal',
-    label: 'Arsenal',
-    codes: new Set(['fc-arsenal']),
-    nameKeys: ['arsenal'],
-  },
-  {
-    footybrainTeamId: 'manchester-city',
-    label: 'Manchester City',
-    codes: new Set(['manchester-city']),
-    nameKeys: ['manchester city'],
-  },
-  {
-    footybrainTeamId: 'liverpool',
-    label: 'Liverpool',
-    codes: new Set(['fc-liverpool']),
-    nameKeys: ['liverpool'],
-  },
-  {
-    footybrainTeamId: 'real-madrid',
-    label: 'Real Madrid',
-    codes: new Set(['real-madrid']),
-    nameKeys: ['real madrid'],
-  },
-  {
-    footybrainTeamId: 'barcelona',
-    label: 'Barcelona',
-    codes: new Set(['fc-barcelona']),
-    nameKeys: ['barcelona', 'futbol club barcelona'],
-  },
-  {
-    footybrainTeamId: 'bayern-munich',
-    label: 'Bayern Munich',
-    codes: new Set(['fc-bayern-munchen', 'fc-bayern-muenchen']),
-    nameKeys: ['bayern munchen', 'bayern munich', 'fc bayern munchen'],
-  },
-  {
-    footybrainTeamId: 'inter-milan',
-    label: 'Inter Milan',
-    codes: new Set(['inter-mailand', 'inter-milan']),
-    nameKeys: ['inter milan', 'internazionale milano', 'football club internazionale milano'],
-  },
-  {
-    footybrainTeamId: 'ac-milan',
-    label: 'AC Milan',
-    codes: new Set(['ac-mailand', 'ac-milan']),
-    nameKeys: ['ac milan', 'milan', 'associazione calcio milan'],
-  },
-];
+function loadJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+}
+
+function loadPhase4Config() {
+  if (!fs.existsSync(PHASE4_CLUBS_PATH)) {
+    console.error(`Missing ${PHASE4_CLUBS_PATH}`);
+    process.exit(1);
+  }
+  const phase4 = loadJson(PHASE4_CLUBS_PATH);
+  const leagueByTmCode = {};
+  for (const league of phase4.leagues ?? []) {
+    if (!league.tmCompetitionCode || !league.id || !league.name) continue;
+    leagueByTmCode[league.tmCompetitionCode] = {
+      id: league.id,
+      name: league.name,
+      country: league.country ?? 'Americas',
+    };
+  }
+  return {
+    clubs: phase4.clubs ?? [],
+    leagueByTmCode,
+    targetLeagueCodes: Object.keys(leagueByTmCode),
+    phaseLabel: 'phase4',
+  };
+}
+
+function loadExpansionConfig() {
+  if (!fs.existsSync(PHASE1_CLUBS_PATH)) {
+    console.error(`Missing ${PHASE1_CLUBS_PATH}`);
+    process.exit(1);
+  }
+
+  const configs = [loadJson(PHASE1_CLUBS_PATH)];
+  if (fs.existsSync(PHASE2_CLUBS_PATH)) {
+    configs.push(loadJson(PHASE2_CLUBS_PATH));
+  }
+  if (fs.existsSync(PHASE3_CLUBS_PATH)) {
+    configs.push(loadJson(PHASE3_CLUBS_PATH));
+  }
+  if (fs.existsSync(PHASE4_MLS_CLUBS_PATH)) {
+    configs.push(loadJson(PHASE4_MLS_CLUBS_PATH));
+  }
+  if (fs.existsSync(PHASE4_BRASILEIRAO_CLUBS_PATH)) {
+    configs.push(loadJson(PHASE4_BRASILEIRAO_CLUBS_PATH));
+  }
+
+  const clubs = configs.flatMap((config) => config.clubs ?? []);
+  const leagueRows = configs.flatMap((config) => config.leagues ?? []);
+  const leagueByTmCode = { ...BASE_LEAGUE_BY_TM_CODE };
+
+  for (const league of leagueRows) {
+    if (!league.tmCompetitionCode || !league.id || !league.name) continue;
+    leagueByTmCode[league.tmCompetitionCode] = {
+      id: league.id,
+      name: league.name,
+      country: league.country ?? 'Europe',
+    };
+  }
+
+  return {
+    clubs,
+    leagueByTmCode,
+    targetLeagueCodes: Object.keys(leagueByTmCode),
+    phaseLabel: 'phases1-3',
+  };
+}
+
+function loadTargetClubs(expansionConfig) {
+  return expansionConfig.clubs.map((club) => ({
+    footybrainTeamId: club.footybrainTeamId,
+    label: club.label,
+    codes: new Set(club.codes ?? []),
+    nameKeys: club.nameKeys ?? [],
+  }));
+}
 
 function normalizeName(value) {
   if (!value) return '';
@@ -186,11 +220,11 @@ const CLUB_NAME_BLOCKLIST = [
   { pattern: /sport club internacional/, blocks: 'inter-milan' },
 ];
 
-function resolveTargetClub(clubRecord) {
+function resolveTargetClub(clubRecord, targetClubs) {
   const code = clubRecord.code ?? '';
   const norm = normalizeName(clubRecord.name);
 
-  for (const target of TARGET_CLUBS) {
+  for (const target of targetClubs) {
     if (target.codes.has(code)) {
       return { target, method: 'code', confidence: 'high' };
     }
@@ -212,18 +246,18 @@ function resolveTargetClub(clubRecord) {
   return null;
 }
 
-function loadCompetitions(warnings) {
+function loadCompetitions(warnings, targetLeagueCodes, leagueByTmCode) {
   const leagues = [];
   const seen = new Set();
 
   if (!fs.existsSync(COMPETITIONS_PATH)) {
     warnings.push('Missing data/competitions.json — league metadata built from club parents only.');
-    for (const code of TARGET_LEAGUE_CODES) {
-      if (LEAGUE_BY_TM_CODE[code]) {
+    for (const code of targetLeagueCodes) {
+      if (leagueByTmCode[code]) {
         leagues.push({
           source: 'static-map',
           tmCompetitionCode: code,
-          ...LEAGUE_BY_TM_CODE[code],
+          ...leagueByTmCode[code],
         });
       }
     }
@@ -240,11 +274,11 @@ function loadCompetitions(warnings) {
       continue;
     }
     const code = row.country_code;
-    if (!TARGET_LEAGUE_CODES.includes(code)) continue;
+    if (!targetLeagueCodes.includes(code)) continue;
     if (row.competition_type && row.competition_type !== 'first_tier') continue;
     if (seen.has(code)) continue;
     seen.add(code);
-    const mapped = LEAGUE_BY_TM_CODE[code];
+    const mapped = leagueByTmCode[code];
     if (!mapped) continue;
     leagues.push({
       source: 'competitions.json',
@@ -255,12 +289,12 @@ function loadCompetitions(warnings) {
     });
   }
 
-  for (const code of TARGET_LEAGUE_CODES) {
-    if (!seen.has(code) && LEAGUE_BY_TM_CODE[code]) {
+  for (const code of targetLeagueCodes) {
+    if (!seen.has(code) && leagueByTmCode[code]) {
       leagues.push({
         source: 'static-map-fallback',
         tmCompetitionCode: code,
-        ...LEAGUE_BY_TM_CODE[code],
+        ...leagueByTmCode[code],
       });
       warnings.push(`No first_tier row for ${code} in competitions.json — used static map.`);
     }
@@ -269,7 +303,98 @@ function loadCompetitions(warnings) {
   return leagues.sort((a, b) => a.id.localeCompare(b.id));
 }
 
+function buildPhase4InspectionReport(players, matchedTeams, targetClubs, leagues) {
+  const byTeam = new Map();
+  for (const team of matchedTeams) {
+    byTeam.set(team.footybrainTeamId, { team, players: [] });
+  }
+  for (const p of players) {
+    const bucket = byTeam.get(p.footybrainTeamId);
+    if (bucket) bucket.players.push(p);
+  }
+
+  const clubsUnder18 = [];
+  const missingFields = { noDob: 0, noNationality: 0, noPosition: 0, noSourceId: 0, noName: 0 };
+  const displayByTeam = new Map();
+  const lastByTeam = new Map();
+
+  for (const [teamId, { team, players: squad }] of byTeam) {
+    if (squad.length < 18) {
+      clubsUnder18.push({
+        footybrainTeamId: teamId,
+        label: team.displayName,
+        playerCount: squad.length,
+      });
+    }
+    for (const p of squad) {
+      if (!p.dateOfBirth) missingFields.noDob += 1;
+      if (!p.nationality) missingFields.noNationality += 1;
+      if (!p.position) missingFields.noPosition += 1;
+      if (!p.sourceId) missingFields.noSourceId += 1;
+      if (!p.name) missingFields.noName += 1;
+
+      const dn = normalizeName(p.name);
+      if (dn) {
+        const dKey = `${teamId}::${dn}`;
+        if (!displayByTeam.has(dKey)) displayByTeam.set(dKey, []);
+        displayByTeam.get(dKey).push(p.sourceId);
+
+        const parts = (p.name || '').trim().split(/\s+/);
+        const ln = parts[parts.length - 1]?.toLowerCase() ?? '';
+        const lKey = `${teamId}::${ln}`;
+        if (!lastByTeam.has(lKey)) lastByTeam.set(lKey, []);
+        lastByTeam.get(lKey).push({ sourceId: p.sourceId, name: p.name });
+      }
+    }
+  }
+
+  const duplicateDisplayNames = [];
+  for (const [key, ids] of displayByTeam) {
+    if (ids.length > 1) duplicateDisplayNames.push({ key, sourceIds: ids });
+  }
+  const duplicateLastNames = [];
+  for (const [key, entries] of lastByTeam) {
+    if (entries.length > 1) duplicateLastNames.push({ key, players: entries });
+  }
+
+  const unmatchedTargetClubs = targetClubs
+    .filter((t) => !byTeam.has(t.footybrainTeamId))
+    .map((t) => t.label);
+
+  return {
+    leaguesFound: leagues.map((l) => ({
+      id: l.id,
+      name: l.name,
+      tmCompetitionCode: l.tmCompetitionCode,
+    })),
+    clubsMatched: matchedTeams.length,
+    clubsRequested: targetClubs.length,
+    playersExported: players.length,
+    clubsUnder18Players: clubsUnder18,
+    missingFields,
+    duplicateNameRisks: {
+      sameDisplayNameSameTeam: duplicateDisplayNames,
+      sameLastNameSameTeam: duplicateLastNames,
+    },
+    unmatchedTargetClubs,
+    squadCounts: [...byTeam.values()]
+      .map(({ team, players: squad }) => ({
+        footybrainTeamId: team.footybrainTeamId,
+        label: team.displayName,
+        tmLeagueCode: team.tmLeagueCode,
+        playerCount: squad.length,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+  };
+}
+
 async function main() {
+  const expansionConfig = PHASE4_ONLY ? loadPhase4Config() : loadExpansionConfig();
+  const targetLeagueCodes = expansionConfig.targetLeagueCodes;
+  const leagueByTmCode = expansionConfig.leagueByTmCode;
+  const targetClubs = loadTargetClubs(expansionConfig);
+  const outputPath = PHASE4_ONLY ? PHASE4_OUTPUT_PATH : OUTPUT_PATH;
+
   const warnings = [];
   const mappingNotes = [];
   const suspiciousMappings = [];
@@ -289,7 +414,7 @@ async function main() {
     process.exit(1);
   }
 
-  const leagues = loadCompetitions(warnings);
+  const leagues = loadCompetitions(warnings, targetLeagueCodes, leagueByTmCode);
   const matchedTeamsById = new Map();
   const clubCodeToTeam = new Map();
   const matchedTargetIds = new Set();
@@ -298,18 +423,21 @@ async function main() {
   await readNdjsonGz(clubsPath, (club) => {
     const parent = club.parent ?? {};
     const tmCode = parent.country_code;
-    if (!TARGET_LEAGUE_CODES.includes(tmCode)) return;
+    if (!targetLeagueCodes.includes(tmCode)) return;
     if (parent.competition_type && parent.competition_type !== 'first_tier') return;
 
-    const resolved = resolveTargetClub({
-      code: club.code,
-      name: club.name,
-    });
+    const resolved = resolveTargetClub(
+      {
+        code: club.code,
+        name: club.name,
+      },
+      targetClubs,
+    );
     if (!resolved) return;
 
     const { target, method, confidence } = resolved;
     const sourceClubId = extractSourceId(club.href, 'verein');
-    const league = LEAGUE_BY_TM_CODE[tmCode];
+    const league = leagueByTmCode[tmCode];
 
     const candidate = {
       footybrainTeamId: target.footybrainTeamId,
@@ -372,9 +500,9 @@ async function main() {
     );
   }
 
-  const unmatchedTargetClubs = TARGET_CLUBS.filter(
-    (t) => !matchedTargetIds.has(t.footybrainTeamId),
-  ).map((t) => t.label);
+  const unmatchedTargetClubs = targetClubs
+    .filter((t) => !matchedTargetIds.has(t.footybrainTeamId))
+    .map((t) => t.label);
 
   const players = [];
   let skippedWrongClub = 0;
@@ -400,7 +528,7 @@ async function main() {
       const teamMeta = matchedTeamsById.get(footybrainTeamId);
       const leagueCode = teamMeta?.tmLeagueCode ?? null;
       const footybrainLeagueId =
-        teamMeta?.footybrainLeagueId ?? LEAGUE_BY_TM_CODE[leagueCode]?.id ?? null;
+        teamMeta?.footybrainLeagueId ?? leagueByTmCode[leagueCode]?.id ?? null;
 
       const fullName = [player.name, player.last_name].filter(Boolean).join(' ').trim();
       const sourceId = extractSourceId(player.href, 'spieler');
@@ -441,7 +569,7 @@ async function main() {
   }
   if (skippedWrongClub > 0) {
     mappingNotes.push(
-      `Skipped ${skippedWrongClub.toLocaleString()} club-parent players outside the 8 target squads.`,
+      `Skipped ${skippedWrongClub.toLocaleString()} club-parent players outside the ${targetClubs.length} target squads.`,
     );
   }
 
@@ -462,10 +590,17 @@ async function main() {
     }
   }
 
+  const inspectionReport = PHASE4_ONLY
+    ? buildPhase4InspectionReport(players, matchedTeams, targetClubs, leagues)
+    : null;
+
   const output = {
     meta: {
       generatedAt: new Date().toISOString(),
-      purpose: 'inspection-only — do not import into React yet',
+      purpose: PHASE4_ONLY
+        ? 'phase4-staged-preview — MLS + Brasileirão only; not merged to sampleData.js'
+        : 'inspection-only — do not import into React yet',
+      phase: expansionConfig.phaseLabel,
       source: 'transfermarkt-scraper raw NDJSON.gz',
       season,
       editorialFieldsExcluded: [
@@ -476,6 +611,7 @@ async function main() {
         'image_url',
         'market_value',
       ],
+      quizEligibleDefault: false,
     },
     leagues,
     teams: matchedTeams.sort((a, b) => a.footybrainTeamId.localeCompare(b.footybrainTeamId)),
@@ -488,14 +624,20 @@ async function main() {
       leagues: leagues.length,
       teams: matchedTeams.length,
       players: players.length,
-      targetClubsRequested: TARGET_CLUBS.length,
+      targetClubsRequested: targetClubs.length,
     },
+    ...(inspectionReport ? { inspectionReport } : {}),
   };
 
-  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
 
-  console.log(`Wrote ${path.relative(ROOT, OUTPUT_PATH)}`);
+  const reportPath = path.join(ROOT, 'generated-data/phase4-preview-inspection-summary.json');
+  if (inspectionReport) {
+    fs.writeFileSync(reportPath, `${JSON.stringify(inspectionReport, null, 2)}\n`, 'utf8');
+  }
+
+  console.log(`Wrote ${path.relative(ROOT, outputPath)}`);
   console.log(`Season: ${season}`);
   console.log(`Leagues matched: ${output.stats.leagues}`);
   console.log(`Teams matched: ${output.stats.teams} / ${output.stats.targetClubsRequested}`);
@@ -504,6 +646,26 @@ async function main() {
     console.log(`Unmatched clubs: ${unmatchedTargetClubs.join(', ')}`);
   } else {
     console.log('Unmatched clubs: none');
+  }
+  if (inspectionReport) {
+    console.log('\n--- Phase 4 inspection report ---');
+    console.log(`Leagues found: ${inspectionReport.leaguesFound.map((l) => l.id).join(', ')}`);
+    console.log(`Clubs matched: ${inspectionReport.clubsMatched} / ${inspectionReport.clubsRequested}`);
+    console.log(`Players exported: ${inspectionReport.playersExported}`);
+    console.log(`Clubs under 18 players: ${inspectionReport.clubsUnder18Players.length}`);
+    if (inspectionReport.clubsUnder18Players.length) {
+      inspectionReport.clubsUnder18Players.forEach((c) =>
+        console.log(`  - ${c.label}: ${c.playerCount}`),
+      );
+    }
+    console.log(`Missing fields: ${JSON.stringify(inspectionReport.missingFields)}`);
+    console.log(
+      `Duplicate display-name risks (same team): ${inspectionReport.duplicateNameRisks.sameDisplayNameSameTeam.length}`,
+    );
+    console.log(
+      `Duplicate last-name risks (same team): ${inspectionReport.duplicateNameRisks.sameLastNameSameTeam.length}`,
+    );
+    console.log(`Wrote ${path.relative(ROOT, reportPath)}`);
   }
   if (suspiciousMappings.length) {
     console.log(`Suspicious mappings: ${suspiciousMappings.length}`);

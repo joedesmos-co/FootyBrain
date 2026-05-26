@@ -5,14 +5,22 @@ import {
   players,
 } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
+import { useRecordRecentView } from '../hooks/useRecordRecentView';
+import { getQuizEligiblePlayers } from '../utils/quizEligibility';
+import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
+import { truncateClubText } from '../utils/clubIdentity';
+import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
+import ClubHubStrip from './ClubHubStrip';
+import DataTrustNotice from './DataTrustNotice';
 import FavoriteButton from './FavoriteButton';
-import PlayerCard from './PlayerCard';
 import TeamBadge from './TeamBadge';
+import TeamSquadView from './TeamSquadView';
 
 export default function TeamProfile() {
   const { teamId } = useParams();
   const team = getTeamById(teamId);
   const { isTeamSaved, toggleTeam } = useFavorites();
+  useRecordRecentView('team', team?.id);
 
   if (!team) {
     return (
@@ -26,6 +34,8 @@ export default function TeamProfile() {
   }
 
   const roster = players.filter((player) => player.teamId === team.id);
+  const quizReadyRoster = getQuizEligiblePlayers(roster);
+  const hasTeamQuiz = quizReadyRoster.length >= QUIZ_MIN_SESSION_POOL;
   const leagueName = getLeagueName(team.leagueId);
   const saved = isTeamSaved(team.id);
   // TODO: Replace static Fan Mode steps with saved progress from Firebase or localStorage.
@@ -38,17 +48,21 @@ export default function TeamProfile() {
     {
       label: 'Squad',
       title: 'Know the current squad',
-      text: `Browse ${roster.length} FootyBrain player card${roster.length === 1 ? '' : 's'} currently listed for this club.`,
+      text: `Review ${roster.length} player${roster.length === 1 ? '' : 's'} in the squad database, grouped by position with Importance Scores.`,
     },
     {
       label: 'Squad',
       title: 'Know the key players',
-      text: `Start with ${team.currentKeyPlayers.join(', ')}.`,
+      text: team.currentKeyPlayers?.length
+        ? `Start with ${team.currentKeyPlayers.join(', ')}.`
+        : 'Start with the highest Importance Scores in the squad list below.',
     },
     {
       label: 'History',
       title: 'Learn the rivals',
-      text: `Understand why matches against ${team.rivals.join(' and ')} matter to supporters.`,
+      text: team.rivals?.length
+        ? `Understand why matches against ${team.rivals.join(' and ')} matter to supporters.`
+        : 'Club rivalries and local clássicos are being added in a later editorial pass.',
     },
     {
       label: 'History',
@@ -73,7 +87,10 @@ export default function TeamProfile() {
         ← Back to Team Learning
       </Link>
 
-      <header className="profile__hero profile__hero--team">
+      <header
+        className="profile__hero profile__hero--team football-accent-surface"
+        style={getFootballAccentStyle(team)}
+      >
         <div className="profile__identity">
           <TeamBadge team={team} size="profile" />
           <div>
@@ -82,7 +99,7 @@ export default function TeamProfile() {
             </Link>
             <h1>{team.name}</h1>
             <p className="profile__sub">
-              {team.country} · {team.stadium}
+              {formatCountryLabel(team.country)} · {team.stadium}
             </p>
             <span className="fan-level-badge">Fan Level: Starter</span>
           </div>
@@ -93,13 +110,27 @@ export default function TeamProfile() {
             saved={saved}
             onToggle={() => toggleTeam(team.id)}
           />
-          <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-            Start Team Quiz
-          </Link>
+          {hasTeamQuiz ? (
+            <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
+              Start Team Quiz
+            </Link>
+          ) : (
+            <button type="button" className="btn btn--secondary" disabled>
+              Quiz after editorial review
+            </button>
+          )}
         </div>
       </header>
 
+      <DataTrustNotice compact />
+
+      <ClubHubStrip team={team} leagueName={leagueName} />
+
       <section className="profile__grid" aria-label={`${team.name} details`}>
+        <article className="info-card info-card--wide team-profile__squad-card">
+          <TeamSquadView players={roster} teamName={team.name} />
+        </article>
+
         <article className="info-card info-card--wide fan-path">
           <div className="fan-path__header">
             <div>
@@ -107,14 +138,27 @@ export default function TeamProfile() {
               <h2>Learning Path</h2>
             </div>
             <div className="fan-path__actions">
-              <a href="#team-roster" className="btn btn--secondary">
-                Browse Roster
+              <a href="#team-squad" className="btn btn--secondary">
+                View Squad
               </a>
-              <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-                Start Team Quiz
-              </Link>
+              {hasTeamQuiz ? (
+                <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
+                  Start Team Quiz
+                </Link>
+              ) : (
+                <button type="button" className="btn btn--secondary" disabled>
+                  Quiz after editorial review
+                </button>
+              )}
             </div>
           </div>
+          {!hasTeamQuiz && (
+            <p className="player-study__note">
+              {quizReadyRoster.length > 0
+                ? `Team quiz needs at least ${QUIZ_MIN_SESSION_POOL} quiz-ready players (${quizReadyRoster.length} ready so far).`
+                : 'This squad is browse-ready now; team quiz mode unlocks after featured player editorial is approved.'}
+            </p>
+          )}
 
           <ol className="fan-path__steps">
             {fanPathSteps.map((step, index) => (
@@ -130,26 +174,12 @@ export default function TeamProfile() {
           </ol>
         </article>
 
-        <article className="info-card">
-          <h2>Club facts</h2>
-          <dl className="info-list">
-            <div>
-              <dt>League</dt>
-              <dd>{leagueName}</dd>
-            </div>
-            <div>
-              <dt>Country</dt>
-              <dd>{team.country}</dd>
-            </div>
-            <div>
-              <dt>Stadium</dt>
-              <dd>{team.stadium}</dd>
-            </div>
-            <div>
-              <dt>Founded</dt>
-              <dd>{team.founded}</dd>
-            </div>
-          </dl>
+        <article className="info-card info-card--wide club-snapshot-card">
+          <h2>Culture snapshot</h2>
+          <p className="club-snapshot-card__text">
+            {truncateClubText(team.fanGuide, 220) || truncateClubText(team.shortHistory, 220)}
+          </p>
+          <p className="info-card__note">Deeper history and culture steps are in Fan Mode below.</p>
         </article>
 
         <article className="info-card">
@@ -159,16 +189,6 @@ export default function TeamProfile() {
               <li key={rival}>{rival}</li>
             ))}
           </ul>
-        </article>
-
-        <article className="info-card info-card--wide">
-          <h2>Short history</h2>
-          <p>{team.shortHistory}</p>
-        </article>
-
-        <article className="info-card info-card--wide">
-          <h2>Fan guide</h2>
-          <p>{team.fanGuide}</p>
         </article>
 
         <article className="info-card">
@@ -189,21 +209,6 @@ export default function TeamProfile() {
           </ul>
         </article>
 
-        <article id="team-roster" className="info-card info-card--wide">
-          <h2>Roster</h2>
-          <p className="info-card__note">
-            Current FootyBrain player cards for {team.name}.
-          </p>
-          <div className="card-grid team-profile__roster">
-            {roster.length > 0 ? (
-              roster.map((player) => (
-                <PlayerCard key={player.id} player={player} />
-              ))
-            ) : (
-              <p className="empty-state">No players listed for this team yet.</p>
-            )}
-          </div>
-        </article>
       </section>
     </div>
   );

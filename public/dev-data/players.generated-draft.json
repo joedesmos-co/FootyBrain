@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "description": "Draft editorial overlay for 10 squad-tier players (Arsenal + Manchester City). Not merged into the app.",
+  "updatedAt": "2026-05-24",
+  "players": [
+    {
+      "id": "tm-325443",
+      "sourceId": "325443",
+      "displayName": "Viktor Gyökeres",
+      "quickFact": "Became a star in Portugal with Sporting CP before Arsenal made him their main striker option.",
+      "quizHints": [
+        "Swedish centre-forward who wore green and white in Lisbon.",
+        "Known for powerful running and finishing in the box.",
+        "Arsenal number 9 after a big move from Sporting in 2025."
+      ],
+      "playingStyle": "Strong centre-forward who attacks the box, holds off defenders, and finishes with power.",
+      "importanceScore": 84,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-423440",
+      "sourceId": "423440",
+      "displayName": "Martín Zubimendi",
+      "quickFact": "Spain midfielder who built his reputation at Real Sociedad before joining Arsenal.",
+      "quizHints": [
+        "Basque playmaker who wore blue and white in San Sebastián.",
+        "Euro 2024 winner with La Roja before his north London move.",
+        "Deep-lying passer often compared to other Spanish midfield controllers."
+      ],
+      "playingStyle": "Calm defensive midfielder who recycles possession and sprays long diagonals.",
+      "importanceScore": 83,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-262749",
+      "sourceId": "262749",
+      "displayName": "David Raya",
+      "quickFact": "Spain goalkeeper who left Brentford’s bees for Arsenal and became a key starter in red.",
+      "quizHints": [
+        "Former Brentford number one with a beard and confident footwork.",
+        "Spanish international who plays out from the back under pressure.",
+        "Replaced a long-serving Cameroonian keeper at the Emirates."
+      ],
+      "playingStyle": "Sweeper-keeper who claims crosses and starts attacks with short passing.",
+      "importanceScore": 82,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-435338",
+      "sourceId": "435338",
+      "displayName": "Gabriel Magalhães",
+      "quickFact": "Brazil centre-back who formed a famous partnership with William Saliba in Arsenal’s back line.",
+      "quizHints": [
+        "South American defender who played in Portugal before north London.",
+        "Often pairs with a French centre-back in a two-man Arsenal defence.",
+        "Physical in the air and aggressive in one-on-one duels."
+      ],
+      "playingStyle": "Dominant centre-back who wins headers, steps out of the line, and leads vocally.",
+      "importanceScore": 85,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-890721",
+      "sourceId": "890721",
+      "displayName": "Myles Lewis-Skelly",
+      "quickFact": "Hale End academy graduate who broke through as a versatile young defender for Arsenal.",
+      "quizHints": [
+        "Teenager from Arsenal’s own academy who can play left-back or midfield.",
+        "London-born prospect with pace and composure beyond his years.",
+        "Part of the club’s homegrown push under Mikel Arteta."
+      ],
+      "playingStyle": "Energetic ball-carrier with dribbling skill who fills in at full-back or midfield.",
+      "importanceScore": 76,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-315858",
+      "sourceId": "315858",
+      "displayName": "Gianluigi Donnarumma",
+      "quickFact": "Italy’s tall goalkeeper who won Euro 2020 and later joined Manchester City from Paris Saint-Germain.",
+      "quizHints": [
+        "AC Milan academy product who became famous as a teenager in Serie A.",
+        "PSG number one before moving to sky blue in England.",
+        "One of the tallest regular keepers in top-level football."
+      ],
+      "playingStyle": "Shot-stopper with long reach who commands the box and plays behind a high line.",
+      "importanceScore": 86,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-258004",
+      "sourceId": "258004",
+      "displayName": "Rúben Dias",
+      "quickFact": "Portugal centre-back and former Manchester City captain known for organizing the defence.",
+      "quizHints": [
+        "Portuguese leader who won multiple Premier League titles in sky blue.",
+        "Benfica graduate before starring for City in the late 2010s and 2020s.",
+        "Stocky defender who points and shouts to set the offside trap."
+      ],
+      "playingStyle": "Commanding centre-back who tackles hard, reads danger early, and leads the back line.",
+      "importanceScore": 87,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-241641",
+      "sourceId": "241641",
+      "displayName": "Bernardo Silva",
+      "quickFact": "Portugal playmaker who has been one of Manchester City’s most reliable technicians since 2017.",
+      "quizHints": [
+        "Small, skillful midfielder from Portugal who wears City sky blue.",
+        "Monaco star before joining Pep Guardiola’s side.",
+        "Can drift wide or central with quick feet and tight control."
+      ],
+      "playingStyle": "Technical winger-midfielder who dribbles in tight spaces and keeps possession under pressure.",
+      "importanceScore": 86,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-486049",
+      "sourceId": "486049",
+      "displayName": "Jérémy Doku",
+      "quickFact": "Belgium winger whose low centre of gravity and burst make him hard to stop one-on-one.",
+      "quizHints": [
+        "Belgian wide player who wore Rennes colours before Manchester City.",
+        "Left-footed dribbler with a distinctive stocky build.",
+        "Often attacks down the wing with sudden acceleration."
+      ],
+      "playingStyle": "Direct winger who takes on full-backs, cuts inside, and draws fouls in wide areas.",
+      "importanceScore": 82,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    },
+    {
+      "id": "tm-475959",
+      "sourceId": "475959",
+      "displayName": "Josko Gvardiol",
+      "quickFact": "Croatia defender who starred at the 2022 World Cup before moving to Manchester City from Leipzig.",
+      "quizHints": [
+        "Left-footed Croatian who played for RB Leipzig in red and white.",
+        "Can play left-back or centre-back in a back four or five.",
+        "Young defender with a powerful stride and aggressive tackling."
+      ],
+      "playingStyle": "Modern defender who steps into midfield, drives forward, and defends aggressively.",
+      "importanceScore": 84,
+      "quizEligible": false,
+      "rosterTier": "squad",
+      "reviewStatus": "draft"
+    }
+  ]
+}

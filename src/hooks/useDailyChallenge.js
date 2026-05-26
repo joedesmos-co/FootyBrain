@@ -2,11 +2,14 @@
 //       once authentication is added. Store daily progress under users/{uid}/daily.
 //       The hook interface (markCompleted, isCompleted, etc.) stays identical.
 
-import { useState } from 'react';
-import { players } from '../data/sampleData';
+import { useMemo, useState } from 'react';
+import {
+  DAILY_QUESTION_COUNT,
+  generateDailyChallenge,
+  generateDailyQuestions,
+} from '../utils/dailyChallengePlan';
 
 const STORAGE_KEY = 'footybrain:daily';
-const DAILY_QUESTION_COUNT = 5;
 
 // ---------------------------------------------------------------------------
 // Date helpers
@@ -28,43 +31,7 @@ function getYesterdayKey() {
   return `${y}-${mo}-${day}`;
 }
 
-// ---------------------------------------------------------------------------
-// Deterministic seeded RNG (Mulberry32)
-// Produces identical question order for a given date on every device/refresh.
-// ---------------------------------------------------------------------------
-function dateToSeed(dateKey) {
-  // 'YYYY-MM-DD' → numeric seed
-  return dateKey.split('-').reduce((acc, part) => acc * 1000 + parseInt(part, 10), 0);
-}
-
-function makeRng(seed) {
-  let s = seed >>> 0;
-  return function () {
-    s = (s + 0x6d2b79f5) >>> 0;
-    let t = Math.imul(s ^ (s >>> 15), 1 | s);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-// Fisher-Yates shuffle with seeded RNG, returns first n items
-function seededSample(arr, n, rng) {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy.slice(0, n);
-}
-
-/**
- * Generate the deterministic list of daily challenge players for a given date.
- * Exported so it can be called from any component without the hook.
- */
-export function generateDailyQuestions(dateKey) {
-  const rng = makeRng(dateToSeed(dateKey));
-  return seededSample(players, DAILY_QUESTION_COUNT, rng);
-}
+export { generateDailyChallenge, generateDailyQuestions, DAILY_QUESTION_COUNT };
 
 // ---------------------------------------------------------------------------
 // Storage helpers
@@ -116,6 +83,7 @@ export function useDailyChallenge() {
   const [stored, setStored] = useState(readStorage);
 
   const todayKey = getTodayKey();
+  const dailyPlan = useMemo(() => generateDailyChallenge(todayKey), [todayKey]);
   const todayData = stored.date === todayKey ? stored : null;
   const isCompleted = todayData?.completed ?? false;
 
@@ -157,8 +125,11 @@ export function useDailyChallenge() {
 
   return {
     todayKey,
-    // Deterministic questions for today — same result on every call/refresh
-    questions: generateDailyQuestions(todayKey),
+    // Deterministic plan for today — same result on every call/refresh
+    questions: dailyPlan.questions,
+    challengeLabel: dailyPlan.label,
+    challengeKind: dailyPlan.kind,
+    challengeScope: dailyPlan.scope,
     isCompleted,
     // Completion data from storage (non-null only when today is completed)
     completionData: isCompleted ? todayData : null,

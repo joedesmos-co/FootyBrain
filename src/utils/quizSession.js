@@ -1,0 +1,490 @@
+import {
+  getQuizEligiblePlayersForNationalTeam,
+  isPlayerLinkedToLiveNationalTeam,
+} from '../data/nationalTeamData';
+import {
+  getQuizEligiblePlayers,
+  getQuizEligiblePlayersForLeague,
+  getQuizEligiblePlayersForTeam,
+  getQuizEligibleRegistry,
+} from './quizEligibility';
+import { players as allPlayersRegistry } from '../data/sampleData';
+import { formatCountryLabel, formatPosition } from './footballDisplay';
+import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants';
+import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConfig';
+import {
+  getCountryQuizSessionPool,
+  getInternationalQuizSessionPool,
+} from './worldCupQuizPools';
+
+/** Minimum quiz-ready players for a fair club or national-team session. */
+export const QUIZ_MIN_SESSION_POOL = 3;
+
+/** @deprecated Use QUIZ_MIN_SESSION_POOL — kept for existing imports. */
+export const QUIZ_NATIONAL_TEAM_MIN_POOL = QUIZ_MIN_SESSION_POOL;
+
+export {
+  getQuizPromptForType,
+  getQuizVariantClue,
+  QUIZ_TYPE_OPTIONS,
+} from './quizVariants';
+
+export const QUIZ_DIFFICULTY_OPTIONS = [
+  { id: 'easy', label: 'Easy', description: 'Club, position, and nationality shown' },
+  { id: 'medium', label: 'Medium', description: 'Position, national team, and one hint' },
+  { id: 'hard', label: 'Hard', description: 'No free clues — reveal hints yourself' },
+];
+
+export const QUIZ_POOL_FOCUS_OPTIONS = [
+  { id: 'all', label: 'All filters', description: 'Combine league, club, position, or national team' },
+  { id: 'league', label: 'League only', description: 'Pick a league — every quiz-ready club in it' },
+  { id: 'club', label: 'Club only', description: 'Pick one team’s editorial squad' },
+  {
+    id: 'national',
+    label: 'National team only',
+    description: 'Quiz-ready players linked to one live men’s national team',
+  },
+  {
+    id: 'international',
+    label: 'International (World Cup prep)',
+    description:
+      'Curated union across featured nations — capped pool, no club or league filters',
+  },
+  { id: 'position', label: 'Position only', description: 'One role across all leagues' },
+];
+
+export const QUIZ_TIMED_PRESETS = [
+  { id: 0, label: 'Off' },
+  { id: 30, label: '30s' },
+  { id: 45, label: '45s' },
+  { id: 60, label: '60s' },
+];
+
+export function getInitialHintCount(difficulty) {
+  if (difficulty === 'easy') return 0;
+  if (difficulty === 'medium') return 1;
+  return 0;
+}
+
+export function getClueFactsForQuestion(player, difficulty, getTeamName) {
+  if (!player || difficulty === 'hard') return [];
+
+  const clubName = getTeamName(player.teamId);
+  return [
+    difficulty === 'easy' && { label: 'Club', value: clubName },
+    (difficulty === 'easy' || difficulty === 'medium') && {
+      label: 'Position',
+      value: formatPosition(player.position),
+    },
+    difficulty === 'easy' && {
+      label: 'Nationality',
+      value: formatCountryLabel(player.nationality),
+    },
+    difficulty === 'medium' && {
+      label: 'National team',
+      value: formatCountryLabel(player.nationalTeam),
+    },
+  ].filter(Boolean);
+}
+
+/** Normalised position buckets for the position-only filter. */
+export const QUIZ_POSITION_BUCKETS = [
+  { id: '', label: 'Select position…' },
+  { id: 'goalkeeper', label: 'Goalkeeper', test: (p) => /goalkeeper/i.test(p.position) },
+  {
+    id: 'defender',
+    label: 'Defenders',
+    test: (p) => /defender|centre-back|center-back|full-back|back$/i.test(p.position),
+  },
+  {
+    id: 'midfielder',
+    label: 'Midfielders',
+    test: (p) => /midfield/i.test(p.position),
+  },
+  {
+    id: 'forward',
+    label: 'Forwards / attack',
+    test: (p) =>
+      /striker|winger|forward|attack/i.test(p.position) &&
+      !/midfield/i.test(p.position),
+  },
+];
+
+export function playerMatchesPositionBucket(player, bucketId) {
+  if (!bucketId) return true;
+  const bucket = QUIZ_POSITION_BUCKETS.find((b) => b.id === bucketId);
+  return bucket?.test ? bucket.test(player) : true;
+}
+
+function filterByNationalTeam(pool, nationalTeamFilter) {
+  if (!nationalTeamFilter) return pool;
+  return pool.filter((player) =>
+    isPlayerLinkedToLiveNationalTeam(player.id, nationalTeamFilter),
+  );
+}
+
+export function isInternationalQuizScope(poolFocus) {
+  return poolFocus === 'international';
+}
+
+export function isNationalTeamQuizScope(poolFocus, nationalTeamFilter) {
+  if (isInternationalQuizScope(poolFocus)) {
+    return Boolean(nationalTeamFilter);
+  }
+  return poolFocus === 'national' || Boolean(nationalTeamFilter);
+}
+
+export function isClubQuizScope(poolFocus, teamFilter) {
+  return poolFocus === 'club' && Boolean(teamFilter);
+}
+
+export function isNationalTeamQuizPoolViable(poolSize, poolFocus, nationalTeamFilter) {
+  if (!isNationalTeamQuizScope(poolFocus, nationalTeamFilter)) {
+    return poolSize > 0;
+  }
+  return poolSize >= QUIZ_MIN_SESSION_POOL;
+}
+
+/** Whether the active filters allow starting a quiz session. */
+export function isQuizSessionPoolViable(
+  poolSize,
+  poolFocus,
+  nationalTeamFilter,
+  teamFilter = '',
+) {
+  if (isInternationalQuizScope(poolFocus)) {
+    return poolSize >= QUIZ_MIN_SESSION_POOL;
+  }
+  if (isNationalTeamQuizScope(poolFocus, nationalTeamFilter)) {
+    return poolSize >= QUIZ_MIN_SESSION_POOL;
+  }
+  if (isClubQuizScope(poolFocus, teamFilter)) {
+    return poolSize >= QUIZ_MIN_SESSION_POOL;
+  }
+  return poolSize > 0;
+}
+
+/**
+ * @param {import('../data/sampleData').players} allPlayers
+ * @param {{ poolFocus: string, leagueFilter: string, teamFilter: string, positionFilter: string, nationalTeamFilter: string }} filters
+ */
+export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic') {
+  const { poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter } = filters;
+  const useRegistryPool = allPlayers === allPlayersRegistry;
+  const eligible = useRegistryPool ? getQuizEligibleRegistry() : getQuizEligiblePlayers(allPlayers);
+
+  let pool;
+
+  if (poolFocus === 'league') {
+    if (!leagueFilter) return [];
+    if (nationalTeamFilter && useRegistryPool) {
+      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter(
+        (p) => p.leagueId === leagueFilter,
+      );
+    } else {
+      pool = useRegistryPool
+        ? getQuizEligiblePlayersForLeague(leagueFilter)
+        : eligible.filter((p) => p.leagueId === leagueFilter);
+      if (nationalTeamFilter) {
+        pool = pool.filter((p) => isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter));
+      }
+    }
+  } else if (poolFocus === 'club') {
+    if (!teamFilter) return [];
+    if (nationalTeamFilter && useRegistryPool) {
+      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter(
+        (p) => p.teamId === teamFilter,
+      );
+    } else {
+      pool = useRegistryPool
+        ? getQuizEligiblePlayersForTeam(teamFilter)
+        : eligible.filter((p) => p.teamId === teamFilter);
+      if (nationalTeamFilter) {
+        pool = pool.filter((p) => isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter));
+      }
+    }
+  } else if (poolFocus === 'national') {
+    if (!nationalTeamFilter) return [];
+    pool = useRegistryPool
+      ? getCountryQuizSessionPool(nationalTeamFilter)
+      : filterByNationalTeam(eligible, nationalTeamFilter).slice(0, COUNTRY_SESSION_POOL_CAP);
+  } else if (poolFocus === 'international') {
+    pool = getInternationalQuizSessionPool();
+    if (nationalTeamFilter) {
+      pool = pool.filter((p) =>
+        isPlayerLinkedToLiveNationalTeam(p.id, nationalTeamFilter),
+      );
+    }
+  } else if (poolFocus === 'position') {
+    if (!positionFilter) return [];
+    if (nationalTeamFilter && useRegistryPool) {
+      pool = getQuizEligiblePlayersForNationalTeam(nationalTeamFilter).filter((p) =>
+        playerMatchesPositionBucket(p, positionFilter),
+      );
+    } else {
+      pool = eligible.filter((p) => playerMatchesPositionBucket(p, positionFilter));
+      if (nationalTeamFilter) {
+        pool = filterByNationalTeam(pool, nationalTeamFilter);
+      }
+    }
+  } else {
+    pool =
+      nationalTeamFilter && useRegistryPool
+        ? getQuizEligiblePlayersForNationalTeam(nationalTeamFilter)
+        : eligible;
+    pool = pool.filter((player) => {
+      if (leagueFilter && player.leagueId !== leagueFilter) return false;
+      if (teamFilter && player.teamId !== teamFilter) return false;
+      if (positionFilter && !playerMatchesPositionBucket(player, positionFilter)) return false;
+      return true;
+    });
+    if (nationalTeamFilter && !useRegistryPool) {
+      pool = filterByNationalTeam(pool, nationalTeamFilter);
+    }
+  }
+
+  if (quizType === 'classic') return pool;
+  return pool.filter((player) => playerSupportsQuizVariant(player, quizType));
+}
+
+export function getPoolFocusHint(
+  poolFocus,
+  filters,
+  poolSize,
+  quizType = 'classic',
+  hintContext = {},
+) {
+  const { leagueFilter, teamFilter, positionFilter, nationalTeamFilter } = filters;
+  const nationalTeamName = hintContext.nationalTeamName ?? 'this national team';
+  const nationalScoped = isNationalTeamQuizScope(poolFocus, nationalTeamFilter);
+
+  if (isInternationalQuizScope(poolFocus)) {
+    if (poolSize === 0) {
+      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      if (variantHint) return variantHint;
+      return 'Not enough quiz-ready players in the featured international union yet.';
+    }
+    if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
+      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      if (variantHint) return variantHint;
+      const noun = poolSize === 1 ? 'player' : 'players';
+      return `Only ${poolSize} quiz-ready ${noun} in the international pool — need at least ${QUIZ_MIN_SESSION_POOL}.`;
+    }
+    if (nationalTeamFilter && poolSize > 0) {
+      return `${poolSize} players in pool (narrowed to ${hintContext.nationalTeamName ?? 'selected country'})`;
+    }
+  }
+
+  if (nationalScoped) {
+    if (poolFocus === 'national' && !nationalTeamFilter) {
+      return 'Choose a national team to start.';
+    }
+    if (nationalTeamFilter && poolSize === 0) {
+      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      if (variantHint) return variantHint;
+      return `No quiz-ready players are linked to ${nationalTeamName} yet. Editorial quiz profiles are still being added.`;
+    }
+    if (
+      nationalTeamFilter &&
+      poolSize > 0 &&
+      poolSize < QUIZ_MIN_SESSION_POOL
+    ) {
+      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      if (variantHint) return variantHint;
+      const noun = poolSize === 1 ? 'player' : 'players';
+      return `Only ${poolSize} quiz-ready ${noun} for ${nationalTeamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session. Try another country or remove extra filters.`;
+    }
+  }
+
+  if (poolFocus === 'club' && teamFilter && poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
+    const variantHint = getQuizTypePoolHint(quizType, poolSize);
+    if (variantHint) return variantHint;
+    const noun = poolSize === 1 ? 'player' : 'players';
+    const teamName = hintContext.teamName ?? 'this club';
+    return `Only ${poolSize} quiz-ready ${noun} for ${teamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session.`;
+  }
+
+  if (poolSize === 0) {
+    const variantHint = getQuizTypePoolHint(quizType, poolSize);
+    if (variantHint) return variantHint;
+    if (poolFocus === 'league' && !leagueFilter) return 'Choose a league to start.';
+    if (poolFocus === 'club' && !teamFilter) return 'Choose a club to start.';
+    if (poolFocus === 'position' && !positionFilter) return 'Choose a position group to start.';
+    if (poolFocus === 'international') {
+      return 'Not enough quiz-ready players in the featured international union.';
+    }
+    return 'No quiz-ready players match this filter.';
+  }
+  return `${poolSize} players in pool`;
+}
+
+/**
+ * Structured empty copy for international-only World Cup prep sessions.
+ * @returns {{ title: string, message: string, showSquadLink: boolean } | null}
+ */
+export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = 'classic') {
+  if (!isInternationalQuizScope(poolFocus)) return null;
+
+  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+
+  if (poolSize === 0) {
+    return {
+      title: 'International pool not ready',
+      message:
+        variantHint ??
+        'Featured nations need more quiz-ready linked players before an international session can start.',
+      showSquadLink: false,
+    };
+  }
+
+  if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
+    const noun = poolSize === 1 ? 'player' : 'players';
+    return {
+      title: 'International pool too small',
+      message:
+        variantHint ??
+        `Only ${poolSize} quiz-ready ${noun} in the union (minimum ${QUIZ_MIN_SESSION_POOL}). Try a single-country quiz or check back as squads grow.`,
+      showSquadLink: false,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Structured empty copy when country filter blocks starting a session.
+ * @returns {{ title: string, message: string, showSquadLink: boolean } | null}
+ */
+export function getQuizCountryEmptyState(
+  poolFocus,
+  filters,
+  poolSize,
+  hintContext = {},
+  quizType = 'classic',
+) {
+  const { nationalTeamFilter } = filters;
+  const nationalTeamName = hintContext.nationalTeamName ?? 'this country';
+  if (!isNationalTeamQuizScope(poolFocus, nationalTeamFilter)) return null;
+
+  if (poolFocus === 'national' && !nationalTeamFilter) {
+    return {
+      title: 'Choose a country',
+      message:
+        'Pick one of the live men’s national teams. The quiz uses only quiz-ready players with a linked squad membership.',
+      showSquadLink: false,
+    };
+  }
+
+  if (!nationalTeamFilter) return null;
+
+  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+
+  if (poolSize === 0) {
+    return {
+      title: `No quiz-ready players for ${nationalTeamName}`,
+      message:
+        variantHint ??
+        'No linked players have an approved editorial quiz profile yet. Browse the full squad or try another country.',
+      showSquadLink: true,
+    };
+  }
+
+  if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
+    const noun = poolSize === 1 ? 'player' : 'players';
+    return {
+      title: `${nationalTeamName} needs more quiz-ready players`,
+      message:
+        variantHint ??
+        `Only ${poolSize} quiz-ready ${noun} linked (minimum ${QUIZ_MIN_SESSION_POOL}). Add editorial profiles or pick another country.`,
+      showSquadLink: true,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Structured empty copy when a club filter has too few quiz-ready players.
+ * @returns {{ title: string, message: string, showSquadLink: boolean } | null}
+ */
+export function getQuizClubEmptyState(
+  poolFocus,
+  filters,
+  poolSize,
+  hintContext = {},
+  quizType = 'classic',
+) {
+  const { teamFilter } = filters;
+  if (!isClubQuizScope(poolFocus, teamFilter)) return null;
+
+  const teamName = hintContext.teamName ?? 'this club';
+  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+
+  if (poolSize === 0) {
+    return {
+      title: `No quiz-ready players for ${teamName}`,
+      message:
+        variantHint ??
+        'No approved editorial quiz profiles for this squad yet. Browse the full roster or pick another club.',
+      showSquadLink: true,
+    };
+  }
+
+  if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
+    const noun = poolSize === 1 ? 'player' : 'players';
+    return {
+      title: `${teamName} needs more quiz-ready players`,
+      message:
+        variantHint ??
+        `Only ${poolSize} quiz-ready ${noun} (minimum ${QUIZ_MIN_SESSION_POOL}). Add editorial profiles or try league-wide quiz.`,
+      showSquadLink: true,
+    };
+  }
+
+  return null;
+}
+
+export function pickRandomPlayer(pool) {
+  if (pool.length === 0) return null;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+export function normalizeAnswer(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/ø/g, 'o')
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+const LAST_NAME_SUFFIX_TOKENS = new Set(['jr', 'sr', 'ii', 'iii', 'iv']);
+
+function getNormalizedLastNameToken(normalizedFullName) {
+  const parts = normalizedFullName.split(' ').filter(Boolean);
+  if (parts.length === 0) return '';
+  const last = parts[parts.length - 1];
+  if (LAST_NAME_SUFFIX_TOKENS.has(last) && parts.length >= 2) {
+    return parts[parts.length - 2];
+  }
+  return last;
+}
+
+export function buildAmbiguousLastNames(pool) {
+  const counts = {};
+  for (const p of pool) {
+    const last = getNormalizedLastNameToken(normalizeAnswer(p.name));
+    if (last.length > 3) counts[last] = (counts[last] ?? 0) + 1;
+  }
+  return new Set(Object.keys(counts).filter((k) => counts[k] > 1));
+}
+
+export function answersMatch(guess, correctName, ambiguousLastNames = new Set()) {
+  const g = normalizeAnswer(guess);
+  const c = normalizeAnswer(correctName);
+  if (g === c) return true;
+  const lastName = getNormalizedLastNameToken(c);
+  return g === lastName && lastName.length > 3 && !ambiguousLastNames.has(lastName);
+}
