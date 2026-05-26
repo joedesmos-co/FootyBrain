@@ -8,12 +8,12 @@
 
 ## 1. Current live club coverage (by league)
 
-FootyBrain currently ships **105 clubs** across 8 leagues. European league coverage today:
+FootyBrain currently ships **124 clubs** across 8 leagues. European league coverage today:
 
-- **Premier League**: 15 clubs live (target full league: 20)
+- **Premier League**: 20 clubs live (target full league: 20) — **complete** (Phase 5 merged)
 - **La Liga**: 10 clubs live (target full league: 20)
 - **Bundesliga**: 10 clubs live (target full league: 18)
-- **Serie A**: 6 clubs live (target full league: 20)
+- **Serie A**: 20 clubs live (target full league: 20) — **complete** (Phase 6 merged)
 - **Ligue 1**: 9 clubs live (target full league: 18)
 - **Eredivisie**: 5 clubs live (target full league: 18)
 
@@ -42,15 +42,10 @@ Availability (2025 snapshot):
 
 ## 3. Missing club gaps (safe candidates vs defer)
 
-### 3.1 Premier League (GB1)
+### 3.1 Premier League (GB1) — complete
 
-- **Live:** 15 / 20
-- **Likely missing clubs (GB1 2025 snapshot):**
-  - Leeds United (`leeds-united`)
-  - Bournemouth (`afc-bournemouth`)
-  - Sunderland (`afc-sunderland`)
-  - Nottingham Forest (`nottingham-forest`)
-  - Burnley (`fc-burnley`)
+- **Live:** 20 / 20 (Phase 5 merged 2026-05-26)
+- **Status:** No remaining GB1 gaps in the 2025 snapshot.
 
 **Duplicate-name risk:** Low (distinct English club identities).
 
@@ -70,10 +65,10 @@ Availability (2025 snapshot):
 
 **Risk / caveat:** The 2025 snapshot may omit some stable La Liga clubs (e.g. Espanyol) depending on the season represented. Plan for a final “canonical 20” check before merging.
 
-### 3.3 Serie A (IT1)
+### 3.3 Serie A (IT1) — complete
 
-- **Live:** 6 / 20
-- **Missing clubs are the largest gap** (IT1 2025 snapshot, excluding current live big six):
+- **Live:** 20 / 20 (Phase 6 merged 2026-05-26)
+- **Previously missing clubs (now merged):**
   - Atalanta (`atalanta-bergamo`)
   - Bologna (`fc-bologna`)
   - Fiorentina (`ac-florenz`)
@@ -198,4 +193,50 @@ Total (excluding Bundesliga): **~+1,140 players** (order-of-magnitude estimate).
 
 **Duplicate-name risk:** Low (no suspicious mappings flagged for these clubs in the preview output).  
 **Quiz/editorial gap:** All newly generated players should default to `quizEligible: false` / “needs editorial” status until approved.
+
+**Live merge:** Completed — see commit `Add Premier League completion clubs`.
+
+---
+
+## 9. Serie A completion preview (Phase 6) — 14 missing IT1 clubs
+
+**Preview build:** `npm run build:data-preview` with `editorial-overlays/phase6-serie-a-completion-clubs.json` (Transfermarkt scraper season 2025).  
+**Policy:** Generated players remain **browse/search/compare only** (not quiz-ready) until editorial approval. **Do not merge** until preview sign-off.
+
+| FootyBrain teamId | Display name | Transfermarkt code | TM clubId | Preview player rows |
+|------------------:|--------------|--------------------|----------:|--------------------:|
+| `atalanta` | Atalanta | `atalanta-bergamo` | `800` | 24 |
+| `bologna` | Bologna | `fc-bologna` | `1025` | 27 |
+| `fiorentina` | Fiorentina | `ac-florenz` | `430` | 28 |
+| `genoa` | Genoa | `genua-cfc` | `252` | 26 |
+| `udinese` | Udinese | `udinese-calcio` | `410` | 26 |
+| `torino` | Torino | `fc-turin` | `416` | 30 |
+| `cagliari` | Cagliari | `cagliari-calcio` | `1390` | 29 |
+| `lecce` | Lecce | `us-lecce` | `1005` | 27 |
+| `sassuolo` | Sassuolo | `us-sassuolo` | `6574` | 29 |
+| `verona` | Hellas Verona | `hellas-verona` | `276` | 30 |
+| `parma` | Parma | `parma-calcio-1913` | `130` | 25 |
+| `como` | Como | `como-1907` | `1047` | 27 |
+| `cremonese` | Cremonese | `us-cremonese` | `2239` | 27 |
+| `pisa` | Pisa | `ac-pisa-1909` | `4172` | 29 |
+
+**Preview totals:** 14 / 14 clubs matched, **384** player rows, **0** unmatched clubs.
+
+**Duplicate-name risk:** Medium (Italy-wide). No duplicate full display names within a single new squad. Common first names repeat within squads (e.g. Federico×3 at Cremonese, Nicolò×2 at Bologna/Udinese). Four shared surnames across different new clubs (Sulemana, Rodríguez, Coulibaly, Moro) — search disambiguation should use club subtitle, not surname alone.
+
+**Safe-to-merge (preview):** All 14 clubs — clean TM code matches, IT1 membership confirmed, no club-duplicate or unmatched-target warnings for this wave.
+
+**Defer / watch (editorial, not blocking preview):**
+- **Promotion/relegation drift:** Como, Cremonese, Pisa are recent top-flight returnees; re-validate IT1 membership before live merge if the scraper season folder changes.
+- **Quiz/editorial:** ~384 new players need identity stubs, quick facts, and explicit quiz approval — none should enter quiz pools by default.
+
+**Expected live impact (if merged):**
+- Clubs: 110 → **124** (+14)
+- Serie A: 6 → **20** clubs
+- `sample-data` monolith: +~384 players
+- `public/data/leagues/serie-a.json` shard: current ~120 KB raw / ~18 KB gzip (6 clubs) → est. **~450–500 KB raw / ~55–65 KB gzip** at full 20-club coverage
+
+**Live merge (2026-05-26):** 14 clubs merged; Serie A shard 20 teams / 373 players; **237** new squad rows under Phase 6 team IDs (merge cap ~22/club). All Phase 6 players `quizEligible: false`. Regenerated shard, search index, national-team preview.
+
+**Note:** Global player total is governed by the expansion cap (~2,350); this merge re-trimmed some older generated rows (−39 net app-wide) while adding Serie A squads.
 

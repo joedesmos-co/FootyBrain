@@ -238,8 +238,9 @@ If we complete the missing clubs in existing European leagues (PL, La Liga, Seri
 - **League shard routes** remain efficient (per-league JSON still far smaller than `sample-data`).
 - **`sample-data` monolith** (gzip + parse) is the primary scaling risk for Quiz/Daily/Compare/Player profiles and unfiltered Browse until those consumers switch to sharded or indexed data.
 
-**Premier League completion (Phase 5 preview):** +5 clubs, +138 players in TM preview (Leeds/Bournemouth/Sunderland/Nottingham Forest/Burnley).  
-If merged, expect `public/data/leagues/premier-league.json` to grow roughly proportionally (current ~39 KB gzip at 341 players → ~50–60 KB gzip range at ~480 players).
+**Premier League completion (Phase 5):** merged — +5 clubs, +138 players; PL shard now at full 20-club coverage.
+
+**Serie A completion (Phase 6):** merged — 14 clubs; Serie A shard **122 KB → 303 KB raw**, **~18 KB → ~33 KB gzip** (6 → 20 clubs, 136 → 373 league players). Search index **~70 KB → ~69 KB gzip** (2,337 → 2,298 total players after expansion-cap re-trim). Browse `/league/serie-a` remains shard-backed.
 
 ## 4. When league sharding should happen
 

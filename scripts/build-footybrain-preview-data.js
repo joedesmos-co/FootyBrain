@@ -32,6 +32,10 @@ const PHASE5_PREMIER_LEAGUE_COMPLETION_CLUBS_PATH = path.join(
   ROOT,
   'editorial-overlays/phase5-premier-league-completion-clubs.json',
 );
+const PHASE6_SERIE_A_COMPLETION_CLUBS_PATH = path.join(
+  ROOT,
+  'editorial-overlays/phase6-serie-a-completion-clubs.json',
+);
 const PHASE4_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase4-clubs.json');
 const PHASE4_MLS_CLUBS_PATH = path.join(ROOT, 'editorial-overlays/phase4-mls-clubs.json');
 const PHASE4_BRASILEIRAO_CLUBS_PATH = path.join(
@@ -89,6 +93,9 @@ function loadExpansionConfig() {
   }
   if (fs.existsSync(PHASE5_PREMIER_LEAGUE_COMPLETION_CLUBS_PATH)) {
     configs.push(loadJson(PHASE5_PREMIER_LEAGUE_COMPLETION_CLUBS_PATH));
+  }
+  if (fs.existsSync(PHASE6_SERIE_A_COMPLETION_CLUBS_PATH)) {
+    configs.push(loadJson(PHASE6_SERIE_A_COMPLETION_CLUBS_PATH));
   }
   if (fs.existsSync(PHASE4_MLS_CLUBS_PATH)) {
     configs.push(loadJson(PHASE4_MLS_CLUBS_PATH));

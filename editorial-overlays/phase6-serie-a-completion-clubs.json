@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 6 preview — Serie A completion. Adds the remaining 14 missing IT1 clubs for inspection-only TM preview build. Do not merge to sampleData until editorial sign-off.",
+  "targetCounts": { "clubsMin": 124, "clubsMax": 130, "playersMin": 2700, "playersMax": 3000 },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "atalanta",
+      "label": "Atalanta",
+      "leagueId": "serie-a",
+      "codes": ["atalanta-bergamo"],
+      "nameKeys": ["atalanta", "atalanta bergamo"]
+    },
+    {
+      "footybrainTeamId": "bologna",
+      "label": "Bologna",
+      "leagueId": "serie-a",
+      "codes": ["fc-bologna"],
+      "nameKeys": ["bologna", "bologna fc"]
+    },
+    {
+      "footybrainTeamId": "fiorentina",
+      "label": "Fiorentina",
+      "leagueId": "serie-a",
+      "codes": ["ac-florenz"],
+      "nameKeys": ["fiorentina", "acf fiorentina", "ac fiorentina"]
+    },
+    {
+      "footybrainTeamId": "genoa",
+      "label": "Genoa",
+      "leagueId": "serie-a",
+      "codes": ["genua-cfc"],
+      "nameKeys": ["genoa", "genoa cfc"]
+    },
+    {
+      "footybrainTeamId": "udinese",
+      "label": "Udinese",
+      "leagueId": "serie-a",
+      "codes": ["udinese-calcio"],
+      "nameKeys": ["udinese", "udinese calcio"]
+    },
+    {
+      "footybrainTeamId": "torino",
+      "label": "Torino",
+      "leagueId": "serie-a",
+      "codes": ["fc-turin"],
+      "nameKeys": ["torino", "torino fc", "fc turin"]
+    },
+    {
+      "footybrainTeamId": "cagliari",
+      "label": "Cagliari",
+      "leagueId": "serie-a",
+      "codes": ["cagliari-calcio"],
+      "nameKeys": ["cagliari", "cagliari calcio"]
+    },
+    {
+      "footybrainTeamId": "lecce",
+      "label": "Lecce",
+      "leagueId": "serie-a",
+      "codes": ["us-lecce"],
+      "nameKeys": ["lecce", "us lecce"]
+    },
+    {
+      "footybrainTeamId": "sassuolo",
+      "label": "Sassuolo",
+      "leagueId": "serie-a",
+      "codes": ["us-sassuolo"],
+      "nameKeys": ["sassuolo", "us sassuolo"]
+    },
+    {
+      "footybrainTeamId": "verona",
+      "label": "Hellas Verona",
+      "leagueId": "serie-a",
+      "codes": ["hellas-verona"],
+      "nameKeys": ["hellas verona", "verona", "hellas verona fc"]
+    },
+    {
+      "footybrainTeamId": "parma",
+      "label": "Parma",
+      "leagueId": "serie-a",
+      "codes": ["parma-calcio-1913"],
+      "nameKeys": ["parma", "parma calcio"]
+    },
+    {
+      "footybrainTeamId": "como",
+      "label": "Como",
+      "leagueId": "serie-a",
+      "codes": ["como-1907"],
+      "nameKeys": ["como", "calcio como"]
+    },
+    {
+      "footybrainTeamId": "cremonese",
+      "label": "Cremonese",
+      "leagueId": "serie-a",
+      "codes": ["us-cremonese"],
+      "nameKeys": ["cremonese", "us cremonese"]
+    },
+    {
+      "footybrainTeamId": "pisa",
+      "label": "Pisa",
+      "leagueId": "serie-a",
+      "codes": ["ac-pisa-1909"],
+      "nameKeys": ["pisa", "ac pisa", "pisa sc"]
+    }
+  ]
+}
