@@ -8,7 +8,8 @@ export function normalizeForSearch(text) {
     .toLowerCase()
     .replace(/ø/g, 'o')
     .replace(/æ/g, 'ae')
-    .normalize('NFD')
+    // Decompose accents/diacritics so plain ASCII queries match accented names.
+    .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, ' and ')
     .replace(/[^a-z0-9]+/g, ' ')

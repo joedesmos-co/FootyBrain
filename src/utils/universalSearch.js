@@ -25,9 +25,10 @@ import { isWeakSearchScore, matchScoreForFields, normalizeForSearch } from './te
 export const MIN_PLAYER_QUERY_LENGTH = 2;
 
 /** Display order for grouped results in Universal Search. */
-export const SEARCH_GROUP_ORDER = ['player', 'team', 'league', 'national-team'];
+export const SEARCH_GROUP_ORDER = ['page', 'player', 'team', 'league', 'national-team'];
 
 export const SEARCH_GROUP_LABELS = {
+  page: 'Pages',
   player: 'Players',
   team: 'Clubs',
   league: 'Leagues',
@@ -35,6 +36,7 @@ export const SEARCH_GROUP_LABELS = {
 };
 
 export const RESULT_TYPE_LABELS = {
+  page: 'Page',
   player: 'Player',
   team: 'Club',
   league: 'League',
@@ -42,6 +44,7 @@ export const RESULT_TYPE_LABELS = {
 };
 
 const PER_TYPE_LIMITS = {
+  page: 6,
   player: 6,
   team: 4,
   league: 3,
@@ -50,6 +53,59 @@ const PER_TYPE_LIMITS = {
 
 /** Avoid allocating huge player match arrays on broad queries before sortAndCap. */
 const PLAYER_MATCH_BUFFER = 48;
+
+const PAGE_RESULTS = [
+  {
+    id: 'world-cup',
+    name: 'World Cup 2026',
+    subtitle: 'Prep hub · nations, groups, quizzes',
+    path: '/world-cup',
+    searchAliases: ['world cup', 'wc', 'world cup 2026', 'worldcup', 'world cup hub'],
+  },
+  {
+    id: 'browse',
+    name: 'Browse Database',
+    subtitle: 'Players, leagues, clubs',
+    path: '/browse',
+    searchAliases: ['browse', 'database', 'players database'],
+  },
+  {
+    id: 'quiz',
+    name: 'Quiz',
+    subtitle: 'Test yourself',
+    path: '/quiz',
+    searchAliases: ['quiz', 'quizzes'],
+  },
+  {
+    id: 'national-teams',
+    name: 'National Teams',
+    subtitle: 'Live team hubs',
+    path: '/national-teams',
+    searchAliases: ['national teams', 'nations', 'country teams', 'international teams'],
+  },
+  {
+    id: 'collections',
+    name: 'Collections',
+    subtitle: 'Curated study lists',
+    path: '/collections',
+    searchAliases: ['collections', 'study lists', 'lists'],
+  },
+  {
+    id: 'learning-paths',
+    name: 'Learning Paths',
+    subtitle: 'Step-by-step paths',
+    path: '/learning-paths',
+    searchAliases: ['learning paths', 'paths', 'roadmap', 'guide'],
+  },
+];
+
+function looksLikePlayerIdQuery(trimmed) {
+  const raw = String(trimmed ?? '').trim();
+  if (!raw) return false;
+  if (/^tm-\d+$/i.test(raw)) return true;
+  if (/^\d{5,}$/.test(raw)) return true;
+  return false;
+}
 
 /** Short tokens that flood results unless the match is strong (exact / prefix / token). */
 const AMBIGUOUS_SHORT_QUERIES = new Set([
@@ -67,7 +123,7 @@ const AMBIGUOUS_SHORT_QUERIES = new Set([
 ]);
 
 /**
- * @typedef {'player' | 'team' | 'league' | 'national-team'} UniversalResultType
+ * @typedef {'page' | 'player' | 'team' | 'league' | 'national-team'} UniversalResultType
  */
 
 function passesQueryScoreGate(normalizedQuery, score) {
@@ -117,6 +173,7 @@ function collectSearchBuckets(query, ctx) {
   } = ctx;
 
   const buckets = {
+    page: [],
     player: [],
     team: [],
     league: [],
@@ -129,6 +186,20 @@ function collectSearchBuckets(query, ctx) {
   const countryIntent =
     intent.kind === 'country' || intent.kind === 'country-soft';
   const clubIntent = intent.kind === 'club';
+
+  for (const page of PAGE_RESULTS) {
+    const base = matchScoreForFields([page.name, ...(page.searchAliases ?? [])], normalizedQuery);
+    if (!passesQueryScoreGate(normalizedQuery, base)) continue;
+    buckets.page.push({
+      type: 'page',
+      id: page.id,
+      name: page.name,
+      subtitle: page.subtitle,
+      path: page.path,
+      score: base + 6,
+      page,
+    });
+  }
 
   for (const nationalTeam of getNationalTeamSearchCandidates(nationalTeams, normalizedQuery)) {
     const base = matchScoreForFields(getNationalTeamSearchFields(nationalTeam), normalizedQuery);
@@ -169,11 +240,22 @@ function collectSearchBuckets(query, ctx) {
     let score = matchScoreForFields(getTeamSearchFields(team, getLeagueName), normalizedQuery);
     if (!passesQueryScoreGate(normalizedQuery, score)) continue;
     if (clubIntent && team.id === intent.teamId) score += 14;
+
+    const isExternalStub = team.leagueId === 'external';
+    const externalQuery =
+      normalizedQuery.includes('external') ||
+      normalizedQuery.includes('stub') ||
+      normalizedQuery.includes('international club');
+    if (externalQuery && isExternalStub) score += 18;
+    if (externalQuery && !isExternalStub) score -= 10;
+
     buckets.team.push({
       type: 'team',
       id: team.id,
       name: team.name,
-      subtitle: `${leagueName} · ${team.country}`,
+      subtitle: isExternalStub
+        ? 'International club stub'
+        : `${leagueName} · ${team.country}`,
       path: `/team/${team.id}`,
       score,
       team,
@@ -183,12 +265,18 @@ function collectSearchBuckets(query, ctx) {
   if (trimmed.length >= MIN_PLAYER_QUERY_LENGTH) {
     const helpers = { getTeamName, getLeagueName };
     const candidateEntries = getPlayerSearchCandidates(players, normalizedQuery);
+    const idIntent = looksLikePlayerIdQuery(trimmed);
 
     for (const entry of candidateEntries) {
       const player = entry.player;
 
       const nameScore = playerSearchQuickScoreForEntry(entry, normalizedQuery);
       let score = nameScore;
+      if (idIntent) {
+        const idNorm = normalizeForSearch(player.id);
+        if (idNorm === normalizedQuery) score = Math.max(score, 100);
+        else if (idNorm.startsWith(normalizedQuery)) score = Math.max(score, 90);
+      }
       if (score === 0) {
         score = matchScoreForFields(getPlayerSearchFields(player, helpers), normalizedQuery);
         if (normalizedQuery.length <= 3 && isWeakSearchScore(score)) continue;
