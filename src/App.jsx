@@ -1,9 +1,11 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import NotFoundPage from './components/NotFoundPage';
 import PageFallback from './components/PageFallback';
+import PrivacyPage from './components/PrivacyPage';
 import { DATASET_META } from './data/datasetMeta';
 
 const BrowseDatabase = lazy(() => import('./components/BrowseDatabase'));
@@ -57,11 +59,12 @@ function withPageSuspense(Component, label) {
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <div className="app">
-        <Navbar />
-        <main className="app__main" id="main-content">
-          <Routes>
+      <ErrorBoundary>
+        <ScrollToTop />
+        <div className="app">
+          <Navbar />
+          <main className="app__main" id="main-content">
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/onboarding" element={withPageSuspense(OnboardingPage, 'Loading…')} />
             <Route
@@ -109,6 +112,7 @@ export default function App() {
               element={withPageSuspense(DailyChallenge, 'Loading daily challenge…')}
             />
             <Route path="/profile" element={withPageSuspense(ProgressPage, 'Loading profile…')} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route
               path="/national-teams"
               element={withPageSuspense(NationalTeamsPage, 'Loading national teams…')}
@@ -147,19 +151,21 @@ export default function App() {
               </>
             ) : null}
             <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </main>
-        <footer className="app__footer">
-          <p>FootyBrain · Learn the game. Know the players.</p>
-          <p className="app__footer__meta">
-            Public beta · Men&apos;s football · Data snapshot {DATASET_META.dataAsOf}
-          </p>
-          <p className="app__footer__privacy">
-            No accounts. Progress, favorites, and preferences are stored in your browser only —
-            not sold or synced to a server.
-          </p>
-        </footer>
-      </div>
+            </Routes>
+          </main>
+          <footer className="app__footer">
+            <p>FootyBrain · Learn the game. Know the players.</p>
+            <p className="app__footer__meta">
+              Public beta · Men&apos;s football · Data snapshot {DATASET_META.dataAsOf}
+            </p>
+            <p className="app__footer__privacy">
+              No accounts. Progress, favorites, and preferences stay in your browser only — not
+              sold or synced to a server.{' '}
+              <Link to="/privacy">Privacy</Link>
+            </p>
+          </footer>
+        </div>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getLeagueDisplayName } from '../utils/footballDisplay';
+import QuizRegistryLoadState from './QuizRegistryLoadState';
 import { useDailyCompletionStatus } from '../hooks/useDailyCompletionStatus';
 import { getDailyCompletionBonus, useDailyChallenge } from '../hooks/useDailyChallenge';
 import { useProgression } from '../hooks/useProgression';
@@ -73,7 +75,16 @@ function CompletionScreen({
           <p className="daily-challenge-label daily-challenge-label--complete">
             {challengeLabel}
             {challengeScope?.name && challengeScope.type !== 'general' && (
-              <span className="daily-challenge-label__scope"> · {challengeScope.name}</span>
+              <span className="daily-challenge-label__scope">
+                {' '}
+                ·{' '}
+                {challengeScope.type === 'league'
+                  ? getLeagueDisplayName({
+                      id: challengeScope.leagueId,
+                      name: challengeScope.name,
+                    })
+                  : challengeScope.name}
+              </span>
             )}
           </p>
         )}
@@ -151,6 +162,7 @@ export default function DailyChallenge() {
     completionData,
     quizRegistryStatus,
     quizRegistry,
+    quizRegistryRetry,
   } = daily;
 
   // ── Quiz state (only active while answering questions) ─────────────────────
@@ -243,13 +255,14 @@ export default function DailyChallenge() {
   }
 
   // ── Quiz screen ────────────────────────────────────────────────────────────
-  if (quizRegistryStatus !== 'ready') {
+  if (quizRegistryStatus !== 'ready' || !quizRegistry) {
     return (
-      <div className="page daily-page">
-        <p className="page-loading" role="status" aria-live="polite" aria-busy="true">
-          Loading daily challenge…
-        </p>
-      </div>
+      <QuizRegistryLoadState
+        status={quizRegistryStatus}
+        onRetry={quizRegistryRetry}
+        loadingLabel="Loading daily challenge…"
+        pageClass="daily-page"
+      />
     );
   }
 
@@ -273,7 +286,12 @@ export default function DailyChallenge() {
                   ) : challengeScope.type === 'club' ? (
                     <Link to={`/team/${challengeScope.teamId}`}>{challengeScope.name}</Link>
                   ) : challengeScope.type === 'league' ? (
-                    <Link to={`/league/${challengeScope.leagueId}`}>{challengeScope.name}</Link>
+                    <Link to={`/league/${challengeScope.leagueId}`}>
+                      {getLeagueDisplayName({
+                        id: challengeScope.leagueId,
+                        name: challengeScope.name,
+                      })}
+                    </Link>
                   ) : (
                     challengeScope.name
                   )}
@@ -350,9 +368,12 @@ export default function DailyChallenge() {
             getTeamName={(id) =>
               (quizRegistry?.teams ?? []).find((t) => t.id === id)?.name ?? 'Unknown'
             }
-            getLeagueName={(id) =>
-              (quizRegistry?.leagues ?? []).find((l) => l.id === id)?.name ?? 'Unknown'
-            }
+            getLeagueName={(id) => {
+              const league = (quizRegistry?.leagues ?? []).find((l) => l.id === id);
+              return league
+                ? getLeagueDisplayName(league)
+                : getLeagueDisplayName({ id, name: 'Unknown' });
+            }}
           />
           {!feedback && (
             <button

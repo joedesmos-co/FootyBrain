@@ -161,6 +161,12 @@ const LEAGUE_ALIASES = {
     'serie a brasil',
     'campeonato brasileiro serie a',
   ],
+  external: [
+    'international club stubs',
+    'international clubs',
+    'external stubs',
+    'external clubs',
+  ],
 };
 
 const PLAYER_ALIASES = {

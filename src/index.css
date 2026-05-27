@@ -739,6 +739,43 @@ input:focus-visible {
   pointer-events: none;
 }
 
+.shell-error .page-header p {
+  max-width: 36rem;
+  color: var(--color-muted);
+}
+
+.privacy-page__section {
+  margin: 0 0 1.5rem;
+  max-width: 40rem;
+}
+
+.privacy-page__section h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.privacy-page__section p {
+  margin: 0 0 0.65rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.privacy-page__section p:last-child {
+  margin-bottom: 0;
+}
+
+.app__footer__privacy a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.app__footer__privacy a:hover,
+.app__footer__privacy a:focus-visible {
+  color: var(--color-soft);
+}
+
 .hero-visual {
   position: relative;
   z-index: 1;

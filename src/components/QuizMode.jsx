@@ -32,6 +32,7 @@ import {
 import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
+import QuizRegistryLoadState from './QuizRegistryLoadState';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
 //       users/{uid}/quizSessions so progress carries across devices.
@@ -42,11 +43,12 @@ export default function QuizMode() {
   const quizRegistry = useQuizRegistry();
   if (quizRegistry.status !== 'ready' || !quizRegistry.registry) {
     return (
-      <div className="page quiz-page">
-        <p className="page-loading" role="status" aria-live="polite" aria-busy="true">
-          Loading quiz…
-        </p>
-      </div>
+      <QuizRegistryLoadState
+        status={quizRegistry.status}
+        onRetry={quizRegistry.retry}
+        loadingLabel="Loading quiz…"
+        pageClass="quiz-page"
+      />
     );
   }
 

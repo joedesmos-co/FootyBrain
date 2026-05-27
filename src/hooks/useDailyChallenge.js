@@ -140,6 +140,7 @@ export function useDailyChallenge() {
     challengeScope: dailyPlan?.scope ?? { type: 'general', name: 'All leagues' },
     quizRegistryStatus: quizRegistry.status,
     quizRegistry: quizRegistry.registry,
+    quizRegistryRetry: quizRegistry.retry,
     isCompleted,
     // Completion data from storage (non-null only when today is completed)
     completionData: isCompleted ? todayData : null,
