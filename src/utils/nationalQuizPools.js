@@ -10,7 +10,6 @@ import {
 import {
   getNationalTeamById,
   getNationalTeamQuizReadyCount,
-  getQuizEligiblePlayersForNationalTeam,
   getViableLiveNationalTeams,
 } from '../data/nationalTeamData';
 import { isQuizEligiblePlayer } from './quizPlayerRules';
@@ -56,9 +55,10 @@ export function getCountryQuizPoolMeta(nationalTeamId) {
  * Curated country session pool — quiz-ready only, capped by importance order.
  * @param {string} nationalTeamId
  */
-export function getCountryQuizSessionPool(nationalTeamId) {
-  const eligible = getQuizEligiblePlayersForNationalTeam(nationalTeamId);
-  return capSessionPool(eligible, COUNTRY_SESSION_POOL_CAP);
+export function getCountryQuizSessionPool() {
+  throw new Error(
+    'getCountryQuizSessionPool now requires an explicit quiz-player pool (use buildCountryQuizSessionPool)',
+  );
 }
 
 /**
@@ -71,20 +71,38 @@ export function getViableCountryQuizPoolMetas() {
 }
 
 export function getInternationalQuizSessionPool() {
-  const byPlayerId = new Map();
+  throw new Error(
+    'getInternationalQuizSessionPool now requires an explicit quiz-player pool (use buildInternationalQuizSessionPool)',
+  );
+}
 
+/**
+ * Build a country quiz pool from an explicit quiz-player set (e.g. quiz-registry players).
+ * This avoids importing `sampleData.js` on hot paths.
+ */
+export function buildCountryQuizSessionPool(nationalTeamId, quizPlayers, getMembershipForPlayer) {
+  const eligible = (quizPlayers ?? []).filter((p) => {
+    if (!isQuizEligiblePlayer(p)) return false;
+    const membership = getMembershipForPlayer?.(p.id);
+    return membership?.nationalTeamId === nationalTeamId;
+  });
+  return capSessionPool(
+    eligible.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0)),
+    COUNTRY_SESSION_POOL_CAP,
+  );
+}
+
+export function buildInternationalQuizSessionPool(quizPlayers, getMembershipForPlayer) {
+  const byPlayerId = new Map();
   for (const { id: nationalTeamId } of getViableLiveNationalTeams()) {
     const meta = getCountryQuizPoolMeta(nationalTeamId);
     if (!meta?.isViable) continue;
-
-    const slice = getCountryQuizSessionPool(nationalTeamId).slice(0, INTERNATIONAL_PER_NATION_CAP);
-    for (const player of slice) {
-      if (isQuizEligiblePlayer(player)) {
-        byPlayerId.set(player.id, player);
-      }
-    }
+    const slice = buildCountryQuizSessionPool(nationalTeamId, quizPlayers, getMembershipForPlayer).slice(
+      0,
+      INTERNATIONAL_PER_NATION_CAP,
+    );
+    for (const player of slice) byPlayerId.set(player.id, player);
   }
-
   return [...byPlayerId.values()]
     .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
     .slice(0, INTERNATIONAL_UNION_POOL_CAP);

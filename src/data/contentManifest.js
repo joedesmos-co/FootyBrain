@@ -157,8 +157,8 @@ export const CONTENT_MANIFEST = {
       country: 'World',
       teamCount: 171,
       playerCount: 407,
-      shardStatus: 'bundled',
-      shardPath: null,
+      shardStatus: 'deferred',
+      shardPath: '/data/leagues/external.json',
       badgeTheme: { from: '#22c55e', to: '#134e4a', accent: '#dcfce7' },
     }
   ],

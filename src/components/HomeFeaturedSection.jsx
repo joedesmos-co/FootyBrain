@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { getLeagueName, getTeamName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
+import { peekTeamName } from '../data/teamStore';
 import { getDisplayQuickFact } from '../utils/playerEditorial';
 import { truncateNote } from '../utils/dailyFeatured';
 import NationalTeamBadge from './NationalTeamBadge';
@@ -8,7 +9,7 @@ import PositionLabel from './PositionLabel';
 import TeamBadge from './TeamBadge';
 
 function FeaturedPlayerCard({ player, priority = false }) {
-  const clubName = getTeamName(player.teamId);
+  const clubName = player?._teamName ?? peekTeamName(player.teamId);
 
   const note = truncateNote(getDisplayQuickFact(player), 58);
 
@@ -34,7 +35,7 @@ function FeaturedPlayerCard({ player, priority = false }) {
 }
 
 function FeaturedTeamCard({ team }) {
-  const leagueName = getLeagueName(team.leagueId);
+  const leagueName = getManifestLeague(team.leagueId)?.name ?? 'Unknown';
   const note = truncateNote(team.fanGuide || team.shortHistory, 58);
 
   return (

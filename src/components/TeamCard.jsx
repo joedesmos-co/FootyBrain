@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getLeagueName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
 import { useFavorites } from '../hooks/useFavorites';
 import FavoriteButton from './FavoriteButton';
 import TeamBadge from './TeamBadge';
@@ -15,7 +15,7 @@ export default function TeamCard({ team }) {
           <TeamBadge team={team} />
           <div>
             <Link to={`/league/${team.leagueId}`} className="team-card__league team-card__league-link">
-              {getLeagueName(team.leagueId)}
+              {getManifestLeague(team.leagueId)?.name ?? 'Unknown'}
             </Link>
             <h3>
               <Link to={`/team/${team.id}`} className="team-card__title-link">

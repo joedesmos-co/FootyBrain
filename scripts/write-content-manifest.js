@@ -56,6 +56,10 @@ const SHARD_OVERRIDES = {
     shardStatus: 'deferred',
     shardPath: '/data/leagues/brasileirao.json',
   },
+  external: {
+    shardStatus: 'deferred',
+    shardPath: '/data/leagues/external.json',
+  },
 };
 
 const leagueRows = leagues.map((league, index) => {

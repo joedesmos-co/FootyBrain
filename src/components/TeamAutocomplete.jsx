@@ -1,8 +1,10 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getLeagueName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
 import { searchTeams } from '../utils/teamSearch';
 import TeamBadge from './TeamBadge';
+
+const getLeagueName = (leagueId) => getManifestLeague(leagueId)?.name ?? 'Unknown';
 
 export default function TeamAutocomplete({
   teams,

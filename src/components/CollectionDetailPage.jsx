@@ -6,7 +6,8 @@ import {
   isNationalTeamLearningCollection,
 } from '../data/collectionsData';
 import { getNationalTeamName } from '../data/nationalTeamData';
-import { getLeagueName, getTeamName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
+import { peekTeamName } from '../data/teamStore';
 import {
   COLLECTION_COMPLETE_XP,
   COLLECTION_ITEM_XP,
@@ -111,6 +112,14 @@ function CollectionItemRow({
       </div>
     </li>
   );
+}
+
+function getLeagueName(leagueId) {
+  return getManifestLeague(leagueId)?.name ?? 'Unknown';
+}
+
+function getTeamName(teamId) {
+  return peekTeamName(teamId);
 }
 
 export default function CollectionDetailPage() {

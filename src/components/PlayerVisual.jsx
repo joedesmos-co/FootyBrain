@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from 'react';
-import { getTeamName } from '../data/sampleData';
+import { peekTeamName } from '../data/teamStore';
 import {
   getPlayerImageAttributes,
   resolvePlayerImageSource,
@@ -66,7 +66,7 @@ function PlayerVisualComponent({ player, size = 'card', priority = false, compac
   }, [player]);
 
   const style = getVisualStyle(player);
-  const teamName = teamNameProp ?? getTeamName(player.teamId);
+  const teamName = teamNameProp ?? player?._teamName ?? peekTeamName(player?.teamId);
   const showPhoto =
     Boolean(imageAttrs)
     && source.tier !== 'gradientInitials'

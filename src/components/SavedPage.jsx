@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { players, teams } from '../data/sampleData';
 import { useFavorites } from '../hooks/useFavorites';
 import { useLearningRecommendations } from '../hooks/useLearningRecommendations';
+import { useSearchIndex } from '../hooks/useSearchIndex';
 import PlayerCard from './PlayerCard';
 import RecommendationsPanel from './RecommendationsPanel';
 import TeamCard from './TeamCard';
@@ -9,8 +9,29 @@ import TeamCard from './TeamCard';
 export default function SavedPage() {
   const { favorites } = useFavorites();
   const recommendations = useLearningRecommendations();
-  const savedPlayers = players.filter((player) => favorites.players.includes(player.id));
-  const savedTeams = teams.filter((team) => favorites.teams.includes(team.id));
+  const { index, status: indexStatus } = useSearchIndex();
+
+  const savedPlayers =
+    indexStatus === 'ready'
+      ? index.players.filter((player) => favorites.players.includes(player.id)).map((p) => ({
+          // Adapt lightweight index entry to PlayerCard's expected fields.
+          id: p.id,
+          name: p.name,
+          teamId: p.teamId,
+          leagueId: p.leagueId,
+          position: p.position,
+          nationalTeam: p.nationalTeam,
+          nationality: p.nationality,
+          importanceScore: p.importanceScore ?? 0,
+          visualTheme: p.visualTheme,
+          _teamName: p.teamName,
+        }))
+      : [];
+
+  const savedTeams =
+    indexStatus === 'ready'
+      ? index.teams.filter((team) => favorites.teams.includes(team.id))
+      : [];
   const hasSavedItems = savedPlayers.length > 0 || savedTeams.length > 0;
 
   return (

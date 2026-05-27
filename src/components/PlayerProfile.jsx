@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getLeagueName, getPlayerById, getTeamName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
+import { loadPlayerById } from '../data/playerStore';
+import { peekTeamName } from '../data/teamStore';
 import { useFavorites } from '../hooks/useFavorites';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
 import { buildCareerSummary, getRoleSummary } from '../utils/playerImportance';
@@ -93,7 +95,31 @@ function shouldShowNationalityRow(player, liveNationalTeam) {
 
 export default function PlayerProfile() {
   const { playerId } = useParams();
-  const player = getPlayerById(playerId);
+  const [playerState, setPlayerState] = useState(() => ({
+    playerId: null,
+    status: 'loading',
+    player: null,
+  }));
+
+  useEffect(() => {
+    let cancelled = false;
+    loadPlayerById(playerId)
+      .then((p) => {
+        if (cancelled) return;
+        setPlayerState({ playerId, status: p ? 'ready' : 'not-found', player: p ?? null });
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setPlayerState({ playerId, status: 'error', player: null });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [playerId]);
+
+  const player = playerState.playerId === playerId ? playerState.player : null;
+  const playerStatus = playerState.playerId === playerId ? playerState.status : 'loading';
+
   const accentStyle = player ? getFootballAccentStyle(player) : undefined;
   const { isPlayerSaved, togglePlayer } = useFavorites();
   useRecordRecentView('player', player?.id);
@@ -137,7 +163,15 @@ export default function PlayerProfile() {
     [player],
   );
 
-  if (!player) {
+  if (playerStatus === 'loading') {
+    return (
+      <div className="page">
+        <p className="empty-state">Loading player…</p>
+      </div>
+    );
+  }
+
+  if (!player || playerStatus === 'not-found') {
     return (
       <div className="page">
         <p className="empty-state">Player not found.</p>
@@ -149,10 +183,10 @@ export default function PlayerProfile() {
   }
 
   const saved = isPlayerSaved(player.id);
-  const teamName = getTeamName(player.teamId);
+  const teamName = player?._teamName ?? peekTeamName(player.teamId);
   const leagueName = getLeagueDisplayName({
     id: player.leagueId,
-    name: getLeagueName(player.leagueId),
+    name: getManifestLeague(player.leagueId)?.name ?? 'Unknown',
   });
   const nationalTeamPlainLabel = getNationalTeamPlainLabel(player);
   const liveNationalTeam =

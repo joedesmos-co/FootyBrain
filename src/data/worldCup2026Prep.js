@@ -11,9 +11,9 @@ const teamMetaById = new Map(qualifiedManifest.teams.map((team) => [team.id, tea
 
 const qualifiedTeamIds = new Set(qualifiedManifest.teams.map((team) => team.id));
 
-/** Consumer copy for the groups draw (46 live, 2 not in app). */
+/** Consumer copy for the groups draw (all 48 live). */
 export const WORLD_CUP_DRAW_POOL_COVERAGE_NOTE =
-  '46 of 48 World Cup teams have live national pools in FootyBrain. Cabo Verde and Curaçao are listed for draw context but do not have full pool pages yet.';
+  'All 48 World Cup teams now have live national pools in FootyBrain.';
 
 export const WORLD_CUP_2026_GROUP_COUNT = Object.keys(qualifiedManifest.groups).length;
 

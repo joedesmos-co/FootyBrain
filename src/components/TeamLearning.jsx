@@ -1,19 +1,24 @@
 import { useMemo, useState } from 'react';
-import { leagues, teams } from '../data/sampleData';
+import { getManifestLeagues } from '../data/contentManifest';
+import { useSearchIndex } from '../hooks/useSearchIndex';
 import TeamCard from './TeamCard';
+
+const leagues = getManifestLeagues();
 
 export default function TeamLearning() {
   const [leagueFilter, setLeagueFilter] = useState('');
   const [search, setSearch] = useState('');
+  const { index, status: indexStatus } = useSearchIndex();
 
   const filteredTeams = useMemo(() => {
     const query = search.trim().toLowerCase();
+    const teams = indexStatus === 'ready' ? index.teams : [];
     return teams.filter((team) => {
       if (leagueFilter && team.leagueId !== leagueFilter) return false;
       if (query && !team.name.toLowerCase().includes(query)) return false;
       return true;
     });
-  }, [leagueFilter, search]);
+  }, [leagueFilter, search, indexStatus, index]);
 
   return (
     <div className="page teams-page">

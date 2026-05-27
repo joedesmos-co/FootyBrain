@@ -1,7 +1,8 @@
 import { getTodayKey } from '../hooks/useDailyChallenge';
 import {
   getLiveNationalTeams,
-  getQuizEligiblePlayersForNationalTeam,
+  getMembershipForPlayer,
+  getNationalTeamQuizReadyCount,
 } from '../data/nationalTeamData';
 import { isQuizEligiblePlayer } from './quizEligibility';
 
@@ -60,20 +61,19 @@ export function getFeaturedPickPlayers(allPlayers) {
 
 /** Quiz-ready players with a live national-team membership (World Cup prep pool). */
 export function getInternationalFeaturedPickPlayers(allPlayers) {
-  const linkedIds = new Set();
-  for (const nationalTeam of getLiveNationalTeams()) {
-    for (const player of getQuizEligiblePlayersForNationalTeam(nationalTeam.id)) {
-      linkedIds.add(player.id);
-    }
-  }
-  return allPlayers.filter((player) => linkedIds.has(player.id));
+  // allPlayers should already be quiz-ready/editorial-ready (see getFeaturedPickPlayers).
+  // We include only players with a live national-team membership AND a nation that is quiz-viable.
+  return allPlayers.filter((player) => {
+    const membership = getMembershipForPlayer(player.id);
+    if (!membership) return false;
+    return getNationalTeamQuizReadyCount(membership.nationalTeamId) >= MIN_LINKED_QUIZ_PER_NATION;
+  });
 }
 
 function getEligibleNationalTeamsForPicks() {
   return getLiveNationalTeams().filter(
     (nationalTeam) =>
-      getQuizEligiblePlayersForNationalTeam(nationalTeam.id).length >=
-      MIN_LINKED_QUIZ_PER_NATION,
+      getNationalTeamQuizReadyCount(nationalTeam.id) >= MIN_LINKED_QUIZ_PER_NATION,
   );
 }
 
@@ -82,7 +82,7 @@ function pickTopNationalTeamsForPicks(limit = 12) {
   return eligible
     .map((team) => ({
       team,
-      quizReady: getQuizEligiblePlayersForNationalTeam(team.id).length,
+      quizReady: getNationalTeamQuizReadyCount(team.id),
     }))
     .sort((a, b) => b.quizReady - a.quizReady)
     .slice(0, Math.max(2, limit))

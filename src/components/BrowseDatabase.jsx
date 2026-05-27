@@ -12,6 +12,7 @@ import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
+import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
@@ -28,6 +29,8 @@ export default function BrowseDatabase() {
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
   const [bundled, setBundled] = useState(null);
+  const [forceFullDb, setForceFullDb] = useState(false);
+  const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
 
   const usesExternalShard =
     Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
@@ -35,12 +38,11 @@ export default function BrowseDatabase() {
   const activeLeagueName =
     (leagueFilter && getLeagueDisplayName(getManifestLeague(leagueFilter))) || 'league';
 
-  const needsBundledData = Boolean(
-    !usesExternalShard && (leagueFilter || teamFilter || search.trim()),
-  );
+  const needsBundledData = Boolean(!usesExternalShard && (leagueFilter || teamFilter || search.trim() || forceFullDb));
 
   useEffect(() => {
     if (usesExternalShard) return undefined;
+    if (!needsBundledData) return undefined;
     let cancelled = false;
     import('../data/sampleData.js').then((mod) => {
       if (!cancelled) {
@@ -57,7 +59,7 @@ export default function BrowseDatabase() {
     return () => {
       cancelled = true;
     };
-  }, [usesExternalShard]);
+  }, [usesExternalShard, needsBundledData]);
 
   const todayKey = getTodayKey();
   const leagueShard = shardState.status === 'ready' ? shardState.shard : null;
@@ -78,16 +80,16 @@ export default function BrowseDatabase() {
   const hasPlayerQuery = search.trim().length > 0 || Boolean(leagueFilter || teamFilter);
 
   const featuredPickPool = useMemo(() => {
-    if (!bundled) return [];
-    return getFeaturedPickPlayers(bundled.players);
-  }, [bundled]);
+    if (quizStatus !== 'ready' || !quizRegistry?.players) return [];
+    return getFeaturedPickPlayers(quizRegistry.players);
+  }, [quizStatus, quizRegistry]);
 
   const dailyFeatured = useMemo(() => {
-    if (!bundled) {
+    if (quizStatus !== 'ready' || !quizRegistry?.players || !quizRegistry?.teams) {
       return { mode: 'club', players: [], teams: [], nationalTeams: [] };
     }
-    return getDailyFeatured(featuredPickPool, bundled.teams, todayKey);
-  }, [bundled, featuredPickPool, todayKey]);
+    return getDailyFeatured(featuredPickPool, quizRegistry.teams, todayKey);
+  }, [quizStatus, quizRegistry, featuredPickPool, todayKey]);
 
   const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
   const viableNationalTeams = useMemo(() => getViableLiveNationalTeams(), []);
@@ -116,11 +118,17 @@ export default function BrowseDatabase() {
       }
       return leagueShard.players;
     }
-    if (!bundled) return [];
+    if (!bundled) {
+      // Fast default: quiz registry only until the user opts into full DB.
+      if (!leagueFilter && !teamFilter && !search.trim() && quizStatus === 'ready' && quizRegistry?.players) {
+        return quizRegistry.players;
+      }
+      return [];
+    }
     if (teamFilter) return bundled.getPlayersForTeam(teamFilter);
     if (leagueFilter) return bundled.getPlayersForLeague(leagueFilter);
     return bundled.players;
-  }, [usesExternalShard, leagueShard, teamFilter, leagueFilter, bundled]);
+  }, [usesExternalShard, leagueShard, teamFilter, leagueFilter, bundled, quizStatus, quizRegistry, search]);
 
   const filteredPlayers = useMemo(() => {
     if (!search.trim()) return scopedPlayers;
@@ -151,7 +159,7 @@ export default function BrowseDatabase() {
     setTeamFilter('');
   };
 
-  const showPicks = bundled && !usesExternalShard;
+  const showPicks = !usesExternalShard && quizStatus === 'ready';
   const browseDataLoading =
     shardLoading ||
     (needsBundledData && !bundled) ||
@@ -222,8 +230,19 @@ export default function BrowseDatabase() {
               ? searchResultCapped
                 ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or team to see more`
                 : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
-              : 'Search or choose a league/team to explore players.'}
+              : bundled
+                ? 'Search or choose a league/team to explore players.'
+                : 'Showing quiz-ready spotlight. Load the full database to browse all players.'}
         </p>
+        {!bundled && !usesExternalShard && !leagueFilter && !teamFilter && !search.trim() ? (
+          <button
+            type="button"
+            className="btn btn--secondary btn--small"
+            onClick={() => setForceFullDb(true)}
+          >
+            Load full database
+          </button>
+        ) : null}
       </section>
 
       {showPicks ? (

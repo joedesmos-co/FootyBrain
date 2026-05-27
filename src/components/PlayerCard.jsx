@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { getTeamName } from '../data/sampleData';
+import { peekTeamName } from '../data/teamStore';
 import { getCardQuickFact } from '../utils/playerEditorial';
 import { useFavorites } from '../hooks/useFavorites';
 import CountryFlag from './CountryFlag';
@@ -11,6 +11,7 @@ import PositionLabel from './PositionLabel';
 function PlayerCard({ player }) {
   const { isPlayerSaved, togglePlayer } = useFavorites();
   const saved = isPlayerSaved(player.id);
+  const teamName = player?._teamName ?? peekTeamName(player.teamId);
 
   return (
     <article className="player-card">
@@ -35,7 +36,7 @@ function PlayerCard({ player }) {
       <dl className="player-card__meta">
         <div>
           <dt>Club</dt>
-          <dd>{getTeamName(player.teamId)}</dd>
+          <dd>{teamName}</dd>
         </div>
         <div>
           <dt>National team</dt>
@@ -53,7 +54,7 @@ function PlayerCard({ player }) {
         </div>
         <div>
           <dt>Age</dt>
-          <dd>{player.age}</dd>
+          <dd>{player.age ?? '—'}</dd>
         </div>
       </dl>
       <p className="player-card__fact">{getCardQuickFact(player)}</p>

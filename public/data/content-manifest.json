@@ -120,8 +120,8 @@
     },
     {
       "id": "external",
-      "shardStatus": "bundled",
-      "shardPath": null,
+      "shardStatus": "deferred",
+      "shardPath": "/data/leagues/external.json",
       "playerCount": 407,
       "teamCount": 171
     }

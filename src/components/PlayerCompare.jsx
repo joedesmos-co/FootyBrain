@@ -1,16 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useProgression } from '../hooks/useProgression';
 import { buildCompareProgressToast } from '../utils/compareProgressToast';
 import { Link } from 'react-router-dom';
 import { getLiveNationalTeams } from '../data/nationalTeamData';
-import {
-  getLeagueName,
-  getPlayerById,
-  getPlayersForLeague,
-  getTeamName,
-  players,
-  teams,
-} from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
 import {
   buildCompareInsights,
@@ -20,9 +13,9 @@ import {
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerVisual from './PlayerVisual';
 
-function ComparePlayerColumn({ player, side }) {
-  const teamName = getTeamName(player.teamId);
-  const leagueName = getLeagueName(player.leagueId);
+function ComparePlayerColumn({ player, side, getTeamName }) {
+  const teamName = getTeamName ? getTeamName(player.teamId) : (player?._teamName ?? 'Unknown');
+  const leagueName = getManifestLeague(player.leagueId)?.name ?? 'Unknown';
   const browseOnly = isBrowseOnlyPlayer(player);
   const roleSummary = getPlayerRoleSummary(player);
   const strengths = getPlayerStrengths(player);
@@ -112,12 +105,6 @@ function ComparePlayerColumn({ player, side }) {
   );
 }
 
-function seedPlayerPicker(playerId) {
-  if (!playerId) return { id: '', query: '' };
-  const player = getPlayerById(playerId);
-  return player ? { id: player.id, query: player.name } : { id: '', query: '' };
-}
-
 export default function PlayerCompare({
   embedded = false,
   leagueFilter = '',
@@ -125,18 +112,39 @@ export default function PlayerCompare({
   initialRightId = '',
 }) {
   const { recordCompare } = useProgression();
-  const playersForCompare = useMemo(
-    () => (leagueFilter ? getPlayersForLeague(leagueFilter) : players),
-    [leagueFilter],
-  );
-  const searchIntentContext = useMemo(
-    () => ({
-      teams,
+  const [bundled, setBundled] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    import('../data/sampleData.js').then((mod) => {
+      if (cancelled) return;
+      setBundled(mod);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const playersForCompare = useMemo(() => {
+    if (!bundled) return [];
+    return leagueFilter ? bundled.getPlayersForLeague(leagueFilter) : bundled.players;
+  }, [bundled, leagueFilter]);
+
+  const searchIntentContext = useMemo(() => {
+    if (!bundled) return null;
+    return {
+      teams: bundled.teams,
       nationalTeams: getLiveNationalTeams(),
-      getLeagueName,
-    }),
-    [],
-  );
+      getLeagueName: bundled.getLeagueName,
+    };
+  }, [bundled]);
+
+  const seedPlayerPicker = (playerId) => {
+    if (!bundled || !playerId) return { id: '', query: '' };
+    const player = bundled.getPlayerById(playerId);
+    return player ? { id: player.id, query: player.name } : { id: '', query: '' };
+  };
+
   const leftSeed = seedPlayerPicker(initialLeftId);
   const rightSeed = seedPlayerPicker(initialRightId);
   const [leftId, setLeftId] = useState(leftSeed.id);
@@ -151,8 +159,8 @@ export default function PlayerCompare({
     setCompareToast(buildCompareProgressToast(xp, newAchievementIds));
   };
 
-  const leftPlayer = leftId ? getPlayerById(leftId) : null;
-  const rightPlayer = rightId ? getPlayerById(rightId) : null;
+  const leftPlayer = bundled && leftId ? bundled.getPlayerById(leftId) : null;
+  const rightPlayer = bundled && rightId ? bundled.getPlayerById(rightId) : null;
 
   const insights = useMemo(() => {
     if (!leftPlayer || !rightPlayer) return [];
@@ -194,8 +202,8 @@ export default function PlayerCompare({
           excludeIds={rightId ? [rightId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
-          getTeamName={getTeamName}
-          getLeagueName={getLeagueName}
+          getTeamName={bundled?.getTeamName}
+          getLeagueName={bundled?.getLeagueName}
         />
         <PlayerAutocomplete
           players={playersForCompare}
@@ -211,8 +219,8 @@ export default function PlayerCompare({
           excludeIds={leftId ? [leftId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
-          getTeamName={getTeamName}
-          getLeagueName={getLeagueName}
+          getTeamName={bundled?.getTeamName}
+          getLeagueName={bundled?.getLeagueName}
         />
       </section>
 
@@ -237,8 +245,8 @@ export default function PlayerCompare({
           </section>
 
           <section className="compare-grid" aria-label="Player comparison">
-            <ComparePlayerColumn player={leftPlayer} side="a" />
-            <ComparePlayerColumn player={rightPlayer} side="b" />
+            <ComparePlayerColumn player={leftPlayer} side="a" getTeamName={bundled?.getTeamName} />
+            <ComparePlayerColumn player={rightPlayer} side="b" getTeamName={bundled?.getTeamName} />
           </section>
         </>
       )}

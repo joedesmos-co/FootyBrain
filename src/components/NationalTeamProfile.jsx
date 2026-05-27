@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
-import { getTeamById, getTeamName } from '../data/sampleData';
+import { loadPlayerById } from '../data/playerStore';
+import { peekTeamName } from '../data/teamStore';
 import {
   countLinkedPlayers,
   getNationalTeamById,
-  getPlayersForNationalTeam,
+  getMembershipRowsForNationalTeam,
   isLiveNationalTeamId,
 } from '../data/nationalTeamData';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
@@ -39,6 +41,32 @@ export default function NationalTeamProfile() {
   const { teamId } = useParams();
   const nationalTeam = getNationalTeamById(teamId);
   useRecordRecentView('national-team', nationalTeam?.id);
+  const [squadState, setSquadState] = useState(() => ({
+    nationalTeamId: null,
+    status: 'loading',
+    players: [],
+  }));
+
+  useEffect(() => {
+    if (!nationalTeam?.id) return undefined;
+    let cancelled = false;
+    const rows = getMembershipRowsForNationalTeam(nationalTeam.id);
+    const ids = rows.map((r) => r.playerId);
+    Promise.all(ids.map((id) => loadPlayerById(id)))
+      .then((players) => {
+        if (cancelled) return;
+        const list = players.filter(Boolean);
+        list.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
+        setSquadState({ nationalTeamId: nationalTeam.id, status: 'ready', players: list });
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setSquadState({ nationalTeamId: nationalTeam.id, status: 'error', players: [] });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [nationalTeam?.id]);
 
   if (!nationalTeam) {
     const poolNotAddedYet =
@@ -65,7 +93,9 @@ export default function NationalTeamProfile() {
     );
   }
 
-  const squad = getPlayersForNationalTeam(nationalTeam.id);
+  const squadStateMatches = squadState.nationalTeamId === nationalTeam.id;
+  const squad = squadStateMatches ? squadState.players : [];
+
   const quizReady = getQuizEligiblePlayers(squad);
   const canLaunchNationalQuiz = quizReady.length >= QUIZ_NATIONAL_TEAM_MIN_POOL;
   const wcRosterStatus = isWorldCup2026QualifiedTeam(nationalTeam.id)
@@ -80,9 +110,9 @@ export default function NationalTeamProfile() {
       counts.set(player.teamId, (counts.get(player.teamId) ?? 0) + 1);
     }
     return [...counts.entries()]
-      .map(([teamId, count]) => ({ teamId, count, team: getTeamById(teamId) }))
-      .filter((row) => row.team)
-      .sort((a, b) => b.count - a.count || a.team.name.localeCompare(b.team.name))
+      .map(([teamId, count]) => ({ teamId, count, teamName: peekTeamName(teamId) }))
+      .filter((row) => row.teamName && row.teamName !== 'Unknown')
+      .sort((a, b) => b.count - a.count || a.teamName.localeCompare(b.teamName))
       .slice(0, 6);
   })();
 
@@ -182,7 +212,7 @@ export default function NationalTeamProfile() {
           <ul className="national-team-profile__club-flows">
             {clubFlows.map((row) => (
               <li key={row.teamId}>
-                <Link to={`/team/${row.teamId}`}>{row.team.name}</Link>
+                <Link to={`/team/${row.teamId}`}>{row.teamName}</Link>
                 <span className="national-team-profile__club-flow-count">
                   {row.count} player{row.count !== 1 ? 's' : ''} in this squad
                 </span>
@@ -196,7 +226,7 @@ export default function NationalTeamProfile() {
         players={squad}
         teamName={nationalTeam.displayName}
         variant="national"
-        getTeamName={getTeamName}
+        getTeamName={(teamIdArg) => peekTeamName(teamIdArg)}
         eyebrow="Squad database"
         title="Linked players"
         intro={`Broad ${nationalTeam.displayName} national player pool in FootyBrain (citizenship and Transfermarkt senior listings) — not an official World Cup roster. Sorted by Importance Score.`}

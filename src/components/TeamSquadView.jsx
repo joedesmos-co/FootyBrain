@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getLiveNationalTeamForPlayer } from '../data/nationalTeamData';
-import { getTeamById } from '../data/sampleData';
+import { peekTeamById } from '../data/teamStore';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
 import { formatPosition, getCountryFlag } from '../utils/footballDisplay';
 import {
@@ -62,7 +62,7 @@ function squadRowMeta(player, variant, getTeamName) {
 
 function SquadIdentityIndicator({ player, variant }) {
   if (variant === 'national') {
-    const team = getTeamById(player.teamId);
+    const team = peekTeamById(player.teamId);
     if (team) {
       return (
         <span className="team-squad__indicator" aria-hidden="true">

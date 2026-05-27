@@ -3,7 +3,6 @@
  */
 
 import live from './nationalTeamLive.json';
-import { getPlayerById } from './sampleData';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 
 export const LIVE_NATIONAL_TEAM_IDS = live.meta.liveNationalTeamIds;
@@ -80,16 +79,8 @@ export function getLiveNationalTeamForPlayer(player) {
   return getNationalTeamById(membership.nationalTeamId);
 }
 
-function getPlayersForNationalTeamByFilter(nationalTeamId, predicate) {
-  const rows = membershipsByNationalTeamId.get(nationalTeamId) ?? [];
-  const list = [];
-  for (const row of rows) {
-    if (predicate && !predicate(row)) continue;
-    const player = getPlayerById(row.playerId);
-    if (player) list.push(player);
-  }
-  list.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
-  return list;
+export function getMembershipRowsForNationalTeam(nationalTeamId) {
+  return membershipsByNationalTeamId.get(nationalTeamId) ?? [];
 }
 
 /**
@@ -99,37 +90,17 @@ function getPlayersForNationalTeamByFilter(nationalTeamId, predicate) {
 export function getPlayersForNationalTeam(nationalTeamId) {
   const cached = squadCache.get(nationalTeamId);
   if (cached) return cached;
-  const pool = getNationalPoolPlayers(nationalTeamId);
-  squadCache.set(nationalTeamId, pool);
-  return pool;
-}
-
-export function getNationalPoolPlayers(nationalTeamId) {
-  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
-    getMembershipTags(row).has(MEMBERSHIP_TAGS.nationalPool),
-  );
-}
-
-export function getCurrentSquadPlayers(nationalTeamId) {
-  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
-    getMembershipTags(row).has(MEMBERSHIP_TAGS.currentSquad),
-  );
-}
-
-export function getWorldCupRosterPlayers(nationalTeamId) {
-  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
-    getMembershipTags(row).has(MEMBERSHIP_TAGS.worldCup2026Roster),
-  );
+  // Back-compat: callers that still rely on the sync player list will receive an empty list.
+  // National-team UI now resolves players via shards using membership rows.
+  const empty = [];
+  squadCache.set(nationalTeamId, empty);
+  return empty;
 }
 
 export function getProjectedWorldCupRosterPlayers(nationalTeamId) {
-  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
+  return (membershipsByNationalTeamId.get(nationalTeamId) ?? []).filter((row) =>
     getMembershipTags(row).has(MEMBERSHIP_TAGS.projectedWorldCup2026Roster),
   );
-}
-
-export function getNationalTeamQuizReadyPlayers(nationalTeamId) {
-  return getQuizEligiblePlayers(getNationalPoolPlayers(nationalTeamId));
 }
 
 export function getNationalTeamMeta() {
@@ -148,16 +119,11 @@ export function countLinkedPlayers(nationalTeamId) {
   return getPlayersForNationalTeam(nationalTeamId).length;
 }
 
-/** Quiz-ready players with a live national membership (single registry row each). */
-export function getQuizEligiblePlayersForNationalTeam(nationalTeamId) {
-  return getQuizEligiblePlayers(getPlayersForNationalTeam(nationalTeamId));
-}
-
 export function getNationalTeamQuizReadyCount(nationalTeamId) {
   if (quizReadyCountByNationalTeamId.has(nationalTeamId)) {
     return quizReadyCountByNationalTeamId.get(nationalTeamId);
   }
-  return getQuizEligiblePlayersForNationalTeam(nationalTeamId).length;
+  return getQuizEligiblePlayers(getPlayersForNationalTeam(nationalTeamId)).length;
 }
 
 export function isPlayerLinkedToLiveNationalTeam(playerId, nationalTeamId) {

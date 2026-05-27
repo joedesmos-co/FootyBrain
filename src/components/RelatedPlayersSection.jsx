@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getTeamName } from '../data/sampleData';
+import { peekTeamName } from '../data/teamStore';
 import PlayerVisual from './PlayerVisual';
 
 export default function RelatedPlayersSection({
@@ -19,7 +19,7 @@ export default function RelatedPlayersSection({
               <PlayerVisual player={player} size="thumb" />
               <span className="player-related__copy">
                 <strong>{player.name}</strong>
-                <span>{getTeamName(player.teamId)}</span>
+                <span>{player?._teamName ?? peekTeamName(player.teamId)}</span>
                 {reasonLabel && (
                   <span className="player-related__tag">{reasonLabel}</span>
                 )}

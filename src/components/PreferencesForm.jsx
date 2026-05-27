@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { KNOWLEDGE_LEVELS, LEARNING_GOALS } from '../data/preferencesOptions';
-import { leagues, teams } from '../data/sampleData';
+import { getManifestLeagues } from '../data/contentManifest';
+import { useSearchIndex } from '../hooks/useSearchIndex';
+
+const leagues = getManifestLeagues();
 
 function ChipGroup({ label, hint, children }) {
   return (
@@ -32,6 +35,7 @@ export default function PreferencesForm({
   submitLabel = 'Save preferences',
   showSkip = true,
 }) {
+  const { index, status: indexStatus } = useSearchIndex();
   const [favoriteLeagueIds, setFavoriteLeagueIds] = useState(
     () => initial?.favoriteLeagueIds ?? [],
   );
@@ -76,7 +80,7 @@ export default function PreferencesForm({
       </ChipGroup>
 
       <ChipGroup label="Favorite clubs" hint="Optional — clubs you want to learn first.">
-        {teams.map((team) => (
+        {(indexStatus === 'ready' ? index.teams : []).map((team) => (
           <ToggleChip
             key={team.id}
             id={team.id}
