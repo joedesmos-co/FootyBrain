@@ -16,7 +16,7 @@ const LeagueProfile = lazy(() => import('./components/LeagueProfile'));
 const TeamLearning = lazy(() => import('./components/TeamLearning'));
 const QuizMode = lazy(() => import('./components/QuizMode'));
 const SavedPage = lazy(() => import('./components/SavedPage'));
-const ProgressPage = lazy(() => import('./components/ProgressPage'));
+const ProfilePage = lazy(() => import('./components/ProfilePage'));
 const DailyChallenge = lazy(() => import('./components/DailyChallenge'));
 const ComparePage = lazy(() => import('./components/ComparePage'));
 const CollectionsPage = lazy(() => import('./components/CollectionsPage'));
@@ -113,7 +113,7 @@ export default function App() {
               path="/daily"
               element={withPageSuspense(DailyChallenge, 'Loading daily challenge…')}
             />
-            <Route path="/profile" element={withPageSuspense(ProgressPage, 'Loading profile…')} />
+            <Route path="/profile" element={withPageSuspense(ProfilePage, 'Loading profile…')} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route
               path="/national-teams"

@@ -51,7 +51,7 @@ function AchievementItem({ achievement, earned }) {
   );
 }
 
-export default function ProgressPage() {
+export default function ProgressPage({ showBackLink = true }) {
   const progression = useProgression();
   const [showReset, setShowReset] = useState(false);
 
@@ -84,9 +84,11 @@ export default function ProgressPage() {
 
   return (
     <div className="page progress-page">
-      <Link to="/" className="back-link">
-        ← Back to home
-      </Link>
+      {showBackLink ? (
+        <Link to="/" className="back-link">
+          ← Back to home
+        </Link>
+      ) : null}
 
       <section
         aria-labelledby="profile-stats-title"

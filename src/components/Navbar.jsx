@@ -45,7 +45,7 @@ export default function Navbar() {
           Browse
         </NavLink>
         <NavLink to="/quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Quizzes
+          Quiz
         </NavLink>
         <NavLink
           to="/collections"
@@ -54,8 +54,8 @@ export default function Navbar() {
         >
           Collections
         </NavLink>
-        <NavLink to="/learning-paths" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Learning Paths
+        <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Profile
         </NavLink>
       </nav>
       {searchOpen && (

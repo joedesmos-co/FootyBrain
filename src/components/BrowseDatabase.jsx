@@ -26,7 +26,8 @@ const manifestLeagues = getManifestLeagues();
 
 export default function BrowseDatabase() {
   const [searchParams] = useSearchParams();
-  const tab = searchParams.get('tab') || 'players';
+  const rawTab = searchParams.get('tab') || 'players';
+  const tab = rawTab === 'teams' ? 'clubs' : rawTab;
   const leagueParam = searchParams.get('league') || '';
   const [leagueFilter, setLeagueFilter] = useState('');
   const [teamFilter, setTeamFilter] = useState('');
@@ -225,16 +226,13 @@ export default function BrowseDatabase() {
     (leagueFilter || teamFilter || search.trim());
 
   const showPlayersTab = tab === 'players';
-  const showTeamsTab = tab === 'teams';
-  const showLeaguesTab = tab === 'leagues';
-  const showNationalTeamsTab = tab === 'national-teams';
-  const showWorldCupTab = tab === 'world-cup';
+  const showClubsTab = tab === 'clubs';
 
   return (
     <div className="page browse">
       <header className="page-header">
         <h1>Browse</h1>
-        <p>Explore the FootyBrain database by category. Use filters and search to open profiles.</p>
+        <p>Explore players and clubs. Use search and filters to open any profile.</p>
         <DataTrustNotice compact />
         <nav className="compare-tabs" aria-label="Browse categories">
           <NavLink
@@ -245,33 +243,32 @@ export default function BrowseDatabase() {
             Players
           </NavLink>
           <NavLink
-            to="/browse?tab=teams"
-            className={`compare-tabs__tab${showTeamsTab ? ' compare-tabs__tab--active' : ''}`}
+            to="/browse?tab=clubs"
+            className={`compare-tabs__tab${showClubsTab ? ' compare-tabs__tab--active' : ''}`}
           >
-            Clubs/Teams
-          </NavLink>
-          <NavLink
-            to="/browse?tab=leagues"
-            className={`compare-tabs__tab${showLeaguesTab ? ' compare-tabs__tab--active' : ''}`}
-          >
-            Leagues
-          </NavLink>
-          <NavLink
-            to="/browse?tab=national-teams"
-            className={`compare-tabs__tab${showNationalTeamsTab ? ' compare-tabs__tab--active' : ''}`}
-          >
-            National teams
-          </NavLink>
-          <NavLink
-            to="/browse?tab=world-cup"
-            className={`compare-tabs__tab${showWorldCupTab ? ' compare-tabs__tab--active' : ''}`}
-          >
-            World Cup
+            Clubs
           </NavLink>
         </nav>
       </header>
 
       {indexLoading && showPlayersTab ? <PageFallback label="Loading search index…" /> : null}
+
+      <section className="browse-secondary" aria-label="More to explore">
+        <div className="browse-secondary__grid">
+          <Link to="#leagues" className="browse-secondary__card">
+            <strong>Explore leagues</strong>
+            <span>Quick league hubs and quizzes</span>
+          </Link>
+          <Link to="/world-cup" className="browse-secondary__card">
+            <strong>World Cup prep</strong>
+            <span>Nations, groups, and picks</span>
+          </Link>
+          <Link to="/learning-paths" className="browse-secondary__card">
+            <strong>Learning Paths</strong>
+            <span>Guided checklists to study</span>
+          </Link>
+        </div>
+      </section>
 
       {showPlayersTab && (
       <section className="filters" aria-label="Player filters">
@@ -360,7 +357,7 @@ export default function BrowseDatabase() {
         </p>
       ))}
 
-      {(showPlayersTab || showWorldCupTab) && (
+      {showPlayersTab && (
       <aside className="learning-hub-cta learning-hub-cta--compact" aria-label="World Cup learning">
         <div className="learning-hub-cta__copy">
           <p className="learning-hub-cta__title">World Cup 2026 prep</p>
@@ -380,7 +377,7 @@ export default function BrowseDatabase() {
       </aside>
       )}
 
-      {(showPlayersTab || showNationalTeamsTab) && (
+      {showPlayersTab && (
       <section className="national-hub-strip" aria-labelledby="national-hubs-title">
         <div className="national-hub-strip__header">
           <h2 id="national-hubs-title">National teams</h2>
@@ -427,8 +424,8 @@ export default function BrowseDatabase() {
       </section>
       )}
 
-      {(showPlayersTab || showLeaguesTab) && (
-      <section className="league-hub-strip" aria-labelledby="league-hubs-title">
+      {showPlayersTab && (
+      <section className="league-hub-strip" aria-labelledby="league-hubs-title" id="leagues">
         <div className="league-hub-strip__header">
           <h2 id="league-hubs-title">Leagues</h2>
           <p>Pick a league to explore clubs, rivalries, and standout players.</p>
@@ -511,7 +508,7 @@ export default function BrowseDatabase() {
       )
       ) : null}
 
-      {showTeamsTab && (
+      {showClubsTab && (
         <section className="browse-results" aria-label="Browse clubs">
           <p className="browse-results__cap-notice">
             Pick a league to browse clubs. For curated club learning pages, use{' '}
@@ -521,7 +518,7 @@ export default function BrowseDatabase() {
             {manifestLeagues.map((league) => (
               <Link
                 key={league.id}
-                to={`/browse?tab=teams&league=${league.id}`}
+                to={`/browse?tab=clubs&league=${league.id}`}
                 className="league-link-card"
               >
                 <LeagueBadge league={league} />
