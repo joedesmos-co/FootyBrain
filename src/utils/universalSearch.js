@@ -254,7 +254,7 @@ function collectSearchBuckets(query, ctx) {
       id: team.id,
       name: team.name,
       subtitle: isExternalStub
-        ? 'International club stub'
+        ? 'International club'
         : `${leagueName} · ${team.country}`,
       path: `/team/${team.id}`,
       score,

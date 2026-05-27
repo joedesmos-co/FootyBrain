@@ -112,7 +112,8 @@ export default function PreferencesForm({
 
   const leagueById = useState(() => new Map(leagues.map((l) => [l.id, l])))[0];
   const bigFive = BIG_FIVE_LEAGUE_IDS.map((id) => leagueById.get(id)).filter(Boolean);
-  const otherLeagues = leagues.filter((l) => !BIG_FIVE_LEAGUE_IDS.includes(l.id));
+  const otherLeagues = leagues.filter((l) => !BIG_FIVE_LEAGUE_IDS.includes(l.id) && l.id !== 'external');
+  const internationalLeague = leagueById.get('external') ?? null;
 
   const allTeams = indexStatus === 'ready' ? index.teams : [];
   const teamById = useState(() => new Map())[0];
@@ -184,6 +185,21 @@ export default function PreferencesForm({
             ))}
           </div>
         </details>
+
+        {internationalLeague ? (
+          <details className="prefs-subsection">
+            <summary className="prefs-subsection__summary">International clubs</summary>
+            <div className="prefs-tiles prefs-tiles--compact">
+              <ToggleTile
+                id={internationalLeague.id}
+                label={internationalLeague.name}
+                pressed={favoriteLeagueIds.includes(internationalLeague.id)}
+                onToggle={(id) => toggleId(favoriteLeagueIds, setFavoriteLeagueIds, id)}
+                icon={<LeagueBadge league={internationalLeague} size="thumb" />}
+              />
+            </div>
+          </details>
+        ) : null}
       </details>
 
       <details className="prefs-section" open>

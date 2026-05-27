@@ -164,6 +164,7 @@ const LEAGUE_ALIASES = {
   external: [
     'international club stubs',
     'international clubs',
+    'national team clubs',
     'external stubs',
     'external clubs',
   ],

@@ -153,7 +153,7 @@ export const CONTENT_MANIFEST = {
     },
     {
       id: 'external',
-      name: 'External clubs',
+      name: 'International clubs',
       country: 'World',
       teamCount: 171,
       playerCount: 407,

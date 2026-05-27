@@ -23,6 +23,7 @@ import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
 
 const manifestLeagues = getManifestLeagues();
+const MAJOR_LEAGUE_IDS = ['premier-league', 'la-liga', 'bundesliga', 'serie-a', 'ligue-1'];
 
 export default function BrowseDatabase() {
   const [searchParams] = useSearchParams();
@@ -125,6 +126,22 @@ export default function BrowseDatabase() {
     if (!leagueFilter) return searchIndex?.teams ?? [];
     return (searchIndex?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
   }, [usesExternalShard, leagueShard, leagueFilter, searchIndex]);
+
+  const leagueGroups = useMemo(() => {
+    const major = [];
+    const other = [];
+    const international = [];
+    for (const league of manifestLeagues) {
+      if (league.id === 'external') {
+        international.push(league);
+      } else if (MAJOR_LEAGUE_IDS.includes(league.id)) {
+        major.push(league);
+      } else {
+        other.push(league);
+      }
+    }
+    return { major, other, international };
+  }, []);
 
   const scopedPlayers = useMemo(() => {
     if (usesExternalShard && leagueShard) {
@@ -280,11 +297,27 @@ export default function BrowseDatabase() {
               onChange={(e) => handleLeagueChange(e.target.value)}
             >
               <option value="">All leagues</option>
-              {manifestLeagues.map((league) => (
-                <option key={league.id} value={league.id}>
-                  {getLeagueDisplayName(league)}
-                </option>
-              ))}
+              <optgroup label="Major leagues">
+                {leagueGroups.major.map((league) => (
+                  <option key={league.id} value={league.id}>
+                    {getLeagueDisplayName(league)}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Other clubs">
+                {leagueGroups.other.map((league) => (
+                  <option key={league.id} value={league.id}>
+                    {getLeagueDisplayName(league)}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="International clubs">
+                {leagueGroups.international.map((league) => (
+                  <option key={league.id} value={league.id}>
+                    {getLeagueDisplayName(league)}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </label>
 
@@ -515,7 +548,39 @@ export default function BrowseDatabase() {
             <Link to="/teams">Team Learning</Link>.
           </p>
           <div className="league-link-grid">
-            {manifestLeagues.map((league) => (
+            {leagueGroups.major.map((league) => (
+              <Link
+                key={league.id}
+                to={`/browse?tab=clubs&league=${league.id}`}
+                className="league-link-card"
+              >
+                <LeagueBadge league={league} />
+                <span>
+                  <strong>{getLeagueDisplayName(league)}</strong>
+                  <small>{league.country}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <h2 className="section-label section-label--compact">Other clubs</h2>
+          <div className="league-link-grid">
+            {leagueGroups.other.map((league) => (
+              <Link
+                key={league.id}
+                to={`/browse?tab=clubs&league=${league.id}`}
+                className="league-link-card"
+              >
+                <LeagueBadge league={league} />
+                <span>
+                  <strong>{getLeagueDisplayName(league)}</strong>
+                  <small>{league.country}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <h2 className="section-label section-label--compact">International clubs</h2>
+          <div className="league-link-grid">
+            {leagueGroups.international.map((league) => (
               <Link
                 key={league.id}
                 to={`/browse?tab=clubs&league=${league.id}`}
