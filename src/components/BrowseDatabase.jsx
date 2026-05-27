@@ -338,6 +338,7 @@ export default function BrowseDatabase() {
     setPlayerPage(1);
     setSkipClubPicker(true);
     updateBrowseParams((next) => {
+      next.delete('tab');
       next.set('league', leagueId);
       if (regionId) next.set('region', regionId);
       else next.delete('region');
@@ -382,10 +383,17 @@ export default function BrowseDatabase() {
 
       <section className="browse-secondary" aria-label="More to explore">
         <div className="browse-secondary__grid">
-          <Link to="#browse-categories" className="browse-secondary__card">
-            <strong>Browse categories</strong>
-            <span>Leagues, nations, and other clubs</span>
-          </Link>
+          {showClubsTab ? (
+            <Link to="#browse-categories" className="browse-secondary__card">
+              <strong>Browse categories</strong>
+              <span>Leagues, nations, and other clubs</span>
+            </Link>
+          ) : (
+            <Link to="/browse?tab=clubs" className="browse-secondary__card">
+              <strong>Browse clubs & nations</strong>
+              <span>Leagues, national teams, and other clubs</span>
+            </Link>
+          )}
           <Link to="/world-cup" className="browse-secondary__card">
             <strong>World Cup prep</strong>
             <span>Nations, groups, and picks</span>
@@ -516,19 +524,15 @@ export default function BrowseDatabase() {
       </aside>
       )}
 
-      {(showPlayersTab || showClubsTab) && (
+      {showClubsTab ? (
       <section
         className="league-hub-strip"
         aria-labelledby="browse-categories-title"
         id="browse-categories"
       >
         <div className="league-hub-strip__header">
-          <h2 id="browse-categories-title">Browse categories</h2>
-          <p>
-            {showClubsTab
-              ? 'Expand a league or region to browse clubs inline.'
-              : 'Expand a league or region for clubs. Use Browse players to filter results below.'}
-          </p>
+          <h2 id="browse-categories-title">Browse clubs</h2>
+          <p>Expand a league or region to browse clubs inline. National teams are country squads, not clubs.</p>
         </div>
         <BrowseTaxonomyHub
           europeanLeagues={browseLeagueTaxonomy.european}
@@ -543,7 +547,7 @@ export default function BrowseDatabase() {
           onBrowsePlayers={handleBrowsePlayersFromHub}
         />
       </section>
-      )}
+      ) : null}
 
       {showPlayersTab ? (
         shardLoading ? (

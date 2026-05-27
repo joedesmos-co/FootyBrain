@@ -258,11 +258,11 @@ function BrowseOtherRegionAccordionItem({
   );
 }
 
-function NationalTeamExploreCard({ team }) {
+function NationalTeamCompactLink({ team }) {
   return (
-    <Link to={`/national-team/${team.id}`} className="browse-club-chip browse-club-chip--nation">
+    <Link to={`/national-team/${team.id}`} className="browse-nation-link">
       <NationalTeamBadge nationalTeam={team} size="thumb" />
-      <span className="browse-club-chip__name">{team.displayName}</span>
+      <span className="browse-nation-link__name">{team.displayName}</span>
     </Link>
   );
 }
@@ -350,35 +350,50 @@ export default function BrowseTaxonomyHub({
         </ul>
       </section>
 
-      <section className="browse-taxonomy__section" aria-labelledby="browse-national-teams">
-        <div className="browse-taxonomy__section-head">
-          <h3 id="browse-national-teams" className="section-label section-label--compact">
-            National teams
-          </h3>
-          <button
-            type="button"
-            className="btn btn--secondary btn--small"
-            onClick={() => setShowAllNationalTeams((open) => !open)}
-            aria-expanded={showAllNationalTeams}
+      <section
+        className="browse-taxonomy__section browse-taxonomy__section--nations"
+        aria-labelledby="browse-national-teams"
+      >
+        <div className="browse-nations-panel">
+          <div className="browse-nations-panel__head">
+            <div>
+              <h3 id="browse-national-teams" className="section-label section-label--compact">
+                National teams
+              </h3>
+              <p className="browse-nations-panel__note">
+                Country squads — not clubs.
+              </p>
+            </div>
+            {nationalTeams.length > NATIONAL_TEAM_PREVIEW_COUNT ? (
+              <button
+                type="button"
+                className="btn btn--secondary btn--small"
+                onClick={() => setShowAllNationalTeams((open) => !open)}
+                aria-expanded={showAllNationalTeams}
+              >
+                {showAllNationalTeams
+                  ? 'Show top 8'
+                  : `Show all (${nationalTeams.length})`}
+              </button>
+            ) : null}
+          </div>
+          <div
+            className={
+              showAllNationalTeams
+                ? 'browse-nation-list browse-nation-list--expanded'
+                : 'browse-nation-list browse-nation-list--preview'
+            }
           >
-            {showAllNationalTeams
-              ? 'Hide national teams'
-              : `Show all national teams (${nationalTeams.length})`}
-          </button>
+            {visibleNationalTeams.map((team) => (
+              <NationalTeamCompactLink key={team.id} team={team} />
+            ))}
+          </div>
+          {!showAllNationalTeams && nationalTeams.length > NATIONAL_TEAM_PREVIEW_COUNT ? (
+            <p className="browse-taxonomy__hint browse-taxonomy__hint--tight">
+              Top {nationalPreview.length} nations shown.
+            </p>
+          ) : null}
         </div>
-        <p className="browse-results__cap-notice">
-          Country squads — not club teams. Open a nation for its squad, rivals, and quizzes.
-        </p>
-        <div className="browse-club-grid browse-club-grid--nations">
-          {visibleNationalTeams.map((team) => (
-            <NationalTeamExploreCard key={team.id} team={team} />
-          ))}
-        </div>
-        {!showAllNationalTeams && nationalTeams.length > NATIONAL_TEAM_PREVIEW_COUNT ? (
-          <p className="browse-taxonomy__hint">
-            Showing {nationalPreview.length} of {nationalTeams.length} live nations.
-          </p>
-        ) : null}
       </section>
 
       <section className="browse-taxonomy__section" aria-labelledby="browse-other-clubs">
