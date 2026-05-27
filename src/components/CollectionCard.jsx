@@ -25,7 +25,7 @@ export default function CollectionCard({ collection, progress }) {
       </header>
 
       <div className="collection-card__stats">
-        <span>{itemCount} items</span>
+        <span>{itemCount} profiles</span>
         {progress && (
           <span className="collection-card__progress-label">
             {progress.collectionComplete

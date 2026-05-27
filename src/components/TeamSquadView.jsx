@@ -125,7 +125,7 @@ export default function TeamSquadView({
             <h2 id="team-squad-title">{title}</h2>
           </div>
         </header>
-        <p className="empty-state">No players listed for {teamName} in the current sample database.</p>
+        <p className="empty-state">No players listed for {teamName} yet.</p>
       </section>
     );
   }
@@ -145,7 +145,7 @@ export default function TeamSquadView({
           <h2 id="team-squad-title">{title}</h2>
           <p className="team-squad__intro">
             {intro ??
-              `Players in the FootyBrain sample for ${teamName}, grouped by position and sorted by Importance Score.`}
+              `Players for ${teamName}, grouped by position and sorted by Importance Score.`}
           </p>
           <DataTrustNotice compact />
         </div>
@@ -161,7 +161,7 @@ export default function TeamSquadView({
           <dd>{formatAverageAge(summary.ageStats)}</dd>
         </div>
         <div className="team-squad__stat">
-          <dt>Quiz-ready</dt>
+          <dt>Quiz mode</dt>
           <dd>
             {summary.quizReady}
             <span className="team-squad__stat-note">players</span>
@@ -221,7 +221,7 @@ export default function TeamSquadView({
                       <span className="team-squad__row-name-line">
                         <strong className="team-squad__row-name">{player.name}</strong>
                         {isQuizEligiblePlayer(player) ? (
-                          <span className="team-squad__row-quiz" title="Quiz-ready player">
+                          <span className="team-squad__row-quiz" title="Playable in quizzes">
                             Q
                           </span>
                         ) : null}
@@ -230,7 +230,7 @@ export default function TeamSquadView({
                         {squadRowMeta(player, variant, getTeamName)}
                       </span>
                     </span>
-                    <span className="team-squad__row-score" title="FootyBrain Importance Score">
+                    <span className="team-squad__row-score" title="Importance Score">
                       <span className="team-squad__row-score-label">Score</span>
                       <span className="team-squad__row-score-value">{player.importanceScore}</span>
                     </span>

@@ -238,7 +238,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
           {!hasTeamQuiz && (
             <p className="player-study__note">
               {quizReadyRoster.length > 0
-                ? `Team quiz needs at least ${QUIZ_MIN_SESSION_POOL} quiz-ready players (${quizReadyRoster.length} ready so far).`
+                ? `Team quiz unlocks at ${QUIZ_MIN_SESSION_POOL}+ players with clues (${quizReadyRoster.length} so far).`
                 : 'This squad is browse-ready now; team quiz mode unlocks after featured player editorial is approved.'}
             </p>
           )}

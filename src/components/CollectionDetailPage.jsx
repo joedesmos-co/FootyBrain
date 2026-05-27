@@ -146,8 +146,8 @@ export default function CollectionDetailPage() {
     const itemCount = collection.items.length;
     const title = `${collection.title} · Collection · FootyBrain`;
     const description = collection.description
-      ? `${collection.description} (${itemCount} items).`
-      : `A curated FootyBrain collection (${itemCount} items) to help you learn players, clubs, and history.`;
+      ? `${collection.description} (${itemCount} profiles).`
+      : `A curated FootyBrain checklist (${itemCount} profiles) to help you learn players, clubs, and history.`;
     setSeoMeta({
       title,
       description,
@@ -229,7 +229,7 @@ export default function CollectionDetailPage() {
         <h1>{collection.title}</h1>
         <p>{collection.description}</p>
         <div className="collection-detail-header__stats">
-          <span>{itemCount} items</span>
+          <span>{itemCount} profiles</span>
           <span>
             {progress.viewedCount} viewed · {progress.learnedCount}/{progress.total} learned
           </span>
@@ -314,7 +314,7 @@ export default function CollectionDetailPage() {
         </div>
       </header>
 
-      <section aria-label="Collection items">
+      <section aria-label="Study checklist">
         <h2 className="collections-section-title">Study order</h2>
         <ol className="collection-items-list">
           {resolvedItems.map((resolved) => (

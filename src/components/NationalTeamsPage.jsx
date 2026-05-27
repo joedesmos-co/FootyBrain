@@ -23,7 +23,7 @@ export default function NationalTeamsPage() {
         <p>
           Men&apos;s national sides in FootyBrain. Pages show broad national player pools from the
           club database — not official World Cup rosters. National quizzes need at least{' '}
-          {LIVE_NATIONAL_TEAM_MIN_QUIZ} quiz-ready linked players with editorial hints.
+          {LIVE_NATIONAL_TEAM_MIN_QUIZ} players with clues.
         </p>
       </header>
 
@@ -75,12 +75,12 @@ export default function NationalTeamsPage() {
                         {team.fifaRanking != null ? `FIFA rank ${team.fifaRanking}` : group.confederation}
                       </p>
                       <p className="national-teams-page__count">
-                        {linked} linked
-                        {quizReady > 0 ? ` · ${quizReady} quiz-ready` : ''}
+                        {linked} players
+                        {quizReady > 0 ? ` · ${quizReady} with quiz mode` : ''}
                         {linked > 0 && !isLiveNationalTeamQuizViable(team.id) ? (
                           <span className="national-teams-page__quiz-pending">
                             {' '}
-                            · browse pool · quiz needs {LIVE_NATIONAL_TEAM_MIN_QUIZ}+ approved
+                            · pool available · quiz unlocks at {LIVE_NATIONAL_TEAM_MIN_QUIZ}+
                           </span>
                         ) : null}
                       </p>

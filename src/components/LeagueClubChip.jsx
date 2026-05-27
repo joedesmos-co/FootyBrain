@@ -12,7 +12,7 @@ export default function LeagueClubChip({ team, quizCount = 0, featured = false }
           <strong>{team.name}</strong>
           <span>
             {quizCount > 0
-              ? `${quizCount} quiz-ready`
+              ? `${quizCount} with quiz mode`
               : 'Browse squad'}
           </span>
         </span>

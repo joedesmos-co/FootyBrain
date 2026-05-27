@@ -34,7 +34,7 @@ export default function LeagueHubStrip({
       <dl className="league-hub__facts">
         <Fact label="Country">{formatCountryLabel(league.country)}</Fact>
         <Fact label="Clubs">{clubCount}</Fact>
-        <Fact label="Quiz-ready">{quizReadyCount} players</Fact>
+        <Fact label="Quiz mode">{quizReadyCount} players</Fact>
       </dl>
 
       {playstyleSnapshot && (

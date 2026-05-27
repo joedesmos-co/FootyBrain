@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           information like your name, email, or password to use the app.
         </p>
         <p>
-          Your quiz XP, daily challenge progress, favorites, preferences, and recently viewed items
+          Your quiz XP, daily challenge progress, favorites, preferences, and recently viewed pages
           may be stored in your browser&apos;s <strong>local storage</strong> so they persist on the
           same device and browser.
         </p>

@@ -502,7 +502,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           <p className="quiz-wc-prep__title">World Cup prep</p>
           <p>
             Curated international and country pools only — no live fixtures or brackets. Same
-            quiz-ready rules as club and national sessions.
+            the same quiz rules as club and national sessions.
           </p>
         </aside>
       )}
@@ -523,7 +523,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           <p className="quiz-filters__focus-note">
             {poolFocus === 'international'
               ? `International union across featured nations (minimum ${QUIZ_MIN_SESSION_POOL} to start). Optionally narrow to one country.`
-              : `Country focus uses quiz-ready players with a live national-team membership only (minimum ${QUIZ_MIN_SESSION_POOL} to start).`}
+              : `Country focus uses players with clues and a live national-team membership only (minimum ${QUIZ_MIN_SESSION_POOL} to start).`}
           </p>
         )}
 
@@ -555,7 +555,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     poolFocus === 'national' && quizCount < QUIZ_MIN_SESSION_POOL;
                   return (
                     <option key={team.id} value={team.id} disabled={isTooSmallForNationalMode}>
-                      {team.displayName} ({quizCount} quiz-ready
+                      {team.displayName} ({quizCount} with quiz mode
                       {isTooSmallForNationalMode ? ` — needs ${QUIZ_MIN_SESSION_POOL}` : ''})
                     </option>
                   );
@@ -788,7 +788,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             )}
             {isThinPool ? (
               <p className="quiz-panel__empty-actions" role="note">
-                Need {QUIZ_MIN_SESSION_POOL}+ quiz-ready players to start a fair session.
+                Need {QUIZ_MIN_SESSION_POOL}+ players with clues to start a fair session.
               </p>
             ) : null}
             {countryEmptyState?.showSquadLink && selectedNationalTeam && (

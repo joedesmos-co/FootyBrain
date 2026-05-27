@@ -400,8 +400,7 @@ export default function PlayerProfile() {
 
       {isExternalClubStubTeam({ id: player.teamId, leagueId: player.leagueId }) ? (
         <p className="player-study__note" role="note">
-          This club is a lightweight reference used for national-pool coverage. Full club profile
-          coming later.
+          This club is listed for national-team pools. A full club page is coming later.
         </p>
       ) : null}
 

@@ -3,7 +3,7 @@ import { formatCountryLabel, formatPosition } from './footballDisplay.js';
 import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants.js';
 import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants.js';
 
-/** Minimum quiz-ready players for a fair club or national-team session. */
+/** Minimum players with clues for a fair session. */
 export const QUIZ_MIN_SESSION_POOL = 3;
 
 /** @deprecated Use QUIZ_MIN_SESSION_POOL — kept for existing imports. */
@@ -22,13 +22,13 @@ export const QUIZ_DIFFICULTY_OPTIONS = [
 ];
 
 export const QUIZ_POOL_FOCUS_OPTIONS = [
-  { id: 'all', label: 'All filters', description: 'Combine league, club, position, or national team' },
-  { id: 'league', label: 'League only', description: 'Pick a league — every quiz-ready club in it' },
-  { id: 'club', label: 'Club only', description: 'Pick one team’s editorial squad' },
+  { id: 'all', label: 'All filters', description: 'Mix league, club, position, or national team' },
+  { id: 'league', label: 'League only', description: 'Pick a league — clubs with quiz mode' },
+  { id: 'club', label: 'Club only', description: 'Pick one club squad' },
   {
     id: 'national',
     label: 'National team only',
-    description: 'Quiz-ready players linked to one live men’s national team',
+    description: 'Players with clues linked to one live national team',
   },
   {
     id: 'international',
@@ -218,13 +218,13 @@ export function getPoolFocusHint(
     if (poolSize === 0) {
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
-      return 'Not enough quiz-ready players in the featured international union yet.';
+      return 'Not enough players with clues in the featured international pool yet.';
     }
     if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
       const noun = poolSize === 1 ? 'player' : 'players';
-      return `Only ${poolSize} quiz-ready ${noun} in the international pool — need at least ${QUIZ_MIN_SESSION_POOL}.`;
+      return `Only ${poolSize} ${noun} in the international pool — need at least ${QUIZ_MIN_SESSION_POOL}.`;
     }
     if (nationalTeamFilter && poolSize > 0) {
       return `${poolSize} players in pool (narrowed to ${hintContext.nationalTeamName ?? 'selected country'})`;
@@ -238,7 +238,7 @@ export function getPoolFocusHint(
     if (nationalTeamFilter && poolSize === 0) {
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
-      return `No quiz-ready players are linked to ${nationalTeamName} yet. Editorial quiz profiles are still being added.`;
+      return `No players with clues are linked to ${nationalTeamName} yet. Profiles are still being filled in.`;
     }
     if (
       nationalTeamFilter &&
@@ -248,7 +248,7 @@ export function getPoolFocusHint(
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
       const noun = poolSize === 1 ? 'player' : 'players';
-      return `Only ${poolSize} quiz-ready ${noun} for ${nationalTeamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session. Try another country or remove extra filters.`;
+      return `Only ${poolSize} ${noun} for ${nationalTeamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session. Try another country or remove extra filters.`;
     }
   }
 
@@ -257,7 +257,7 @@ export function getPoolFocusHint(
     if (variantHint) return variantHint;
     const noun = poolSize === 1 ? 'player' : 'players';
     const teamName = hintContext.teamName ?? 'this club';
-    return `Only ${poolSize} quiz-ready ${noun} for ${teamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session.`;
+    return `Only ${poolSize} ${noun} for ${teamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session.`;
   }
 
   if (poolSize === 0) {
@@ -267,9 +267,9 @@ export function getPoolFocusHint(
     if (poolFocus === 'club' && !teamFilter) return 'Choose a club to start.';
     if (poolFocus === 'position' && !positionFilter) return 'Choose a position group to start.';
     if (poolFocus === 'international') {
-      return 'Not enough quiz-ready players in the featured international union.';
+      return 'Not enough players with clues in the featured international pool.';
     }
-    return 'No quiz-ready players match this filter.';
+    return 'No players match this filter.';
   }
   return `${poolSize} players in pool`;
 }
@@ -288,7 +288,7 @@ export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = '
       title: 'International pool not ready',
       message:
         variantHint ??
-        'Featured nations need more quiz-ready linked players before an international session can start.',
+        'Featured nations need more players with clues before an international session can start.',
       showSquadLink: false,
     };
   }
@@ -299,7 +299,7 @@ export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = '
       title: 'International pool too small',
       message:
         variantHint ??
-        `Only ${poolSize} quiz-ready ${noun} in the union (minimum ${QUIZ_MIN_SESSION_POOL}). Try a single-country quiz or check back as squads grow.`,
+        `Only ${poolSize} ${noun} in the pool (minimum ${QUIZ_MIN_SESSION_POOL}). Try a single-country quiz or check back as squads grow.`,
       showSquadLink: false,
     };
   }
@@ -326,7 +326,7 @@ export function getQuizCountryEmptyState(
     return {
       title: 'Choose a country',
       message:
-        'Pick one of the live men’s national teams. The quiz uses only quiz-ready players with a linked squad membership.',
+        'Pick a live national team. The quiz uses players with clues and a linked squad membership.',
       showSquadLink: false,
     };
   }
@@ -337,7 +337,7 @@ export function getQuizCountryEmptyState(
 
   if (poolSize === 0) {
     return {
-      title: `No quiz-ready players for ${nationalTeamName}`,
+      title: `No quiz players for ${nationalTeamName}`,
       message:
         variantHint ??
         'No linked players have an approved editorial quiz profile yet. Browse the full squad or try another country.',
@@ -348,10 +348,10 @@ export function getQuizCountryEmptyState(
   if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
     const noun = poolSize === 1 ? 'player' : 'players';
     return {
-      title: `${nationalTeamName} needs more quiz-ready players`,
+      title: `${nationalTeamName} needs more players with clues`,
       message:
         variantHint ??
-        `Only ${poolSize} quiz-ready ${noun} linked (minimum ${QUIZ_MIN_SESSION_POOL}). Add editorial profiles or pick another country.`,
+        `Only ${poolSize} ${noun} linked (minimum ${QUIZ_MIN_SESSION_POOL}). Pick another country or check back later.`,
       showSquadLink: true,
     };
   }
@@ -378,7 +378,7 @@ export function getQuizClubEmptyState(
 
   if (poolSize === 0) {
     return {
-      title: `No quiz-ready players for ${teamName}`,
+      title: `No quiz players for ${teamName}`,
       message:
         variantHint ??
         'No approved editorial quiz profiles for this squad yet. Browse the full roster or pick another club.',
@@ -389,10 +389,10 @@ export function getQuizClubEmptyState(
   if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
     const noun = poolSize === 1 ? 'player' : 'players';
     return {
-      title: `${teamName} needs more quiz-ready players`,
+      title: `${teamName} needs more players with clues`,
       message:
         variantHint ??
-        `Only ${poolSize} quiz-ready ${noun} (minimum ${QUIZ_MIN_SESSION_POOL}). Add editorial profiles or try league-wide quiz.`,
+        `Only ${poolSize} ${noun} (minimum ${QUIZ_MIN_SESSION_POOL}). Try a league-wide quiz or check back later.`,
       showSquadLink: true,
     };
   }

@@ -29,7 +29,7 @@ export default function Home() {
               Start learning
             </Link>
           </div>
-          <dl className="hero__stats" aria-label="FootyBrain sample data">
+          <dl className="hero__stats" aria-label="FootyBrain stats">
             <div>
               <dt>{DATASET_META.playerCount}</dt>
               <dd>Players</dd>
@@ -44,7 +44,7 @@ export default function Home() {
             </div>
           </dl>
           <p className="hero__data-note">
-            Dataset snapshot {DATASET_META.dataAsOf} · {DATASET_META.quizEligibleCount} quiz-ready
+            Updated {DATASET_META.dataAsOf} · {DATASET_META.quizEligibleCount} with quiz mode
           </p>
         </div>
 

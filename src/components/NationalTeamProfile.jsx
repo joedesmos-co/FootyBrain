@@ -189,7 +189,7 @@ export default function NationalTeamProfile() {
             <h1>{nationalTeam.displayName}</h1>
             <p className="profile__sub">
               {countLinkedPlayers(nationalTeam.id)} players in database
-              {quizReady.length > 0 ? ` · ${quizReady.length} quiz-ready` : ''}
+              {quizReady.length > 0 ? ` · ${quizReady.length} with quiz mode` : ''}
               {nationalTeam.fifaRanking != null ? ` · FIFA rank ${nationalTeam.fifaRanking}` : ''}
             </p>
             {wcRosterStatus ? (
@@ -215,8 +215,8 @@ export default function NationalTeamProfile() {
             </Link>
           ) : (
             <button type="button" className="btn btn--secondary" disabled>
-              Quiz needs {QUIZ_NATIONAL_TEAM_MIN_POOL}+ quiz-ready (
-              {quizReady.length} ready, {squad.length} linked)
+              Quiz unlocks at {QUIZ_NATIONAL_TEAM_MIN_POOL}+ players with clues (
+              {quizReady.length} so far, {squad.length} linked)
             </button>
           )}
         </div>

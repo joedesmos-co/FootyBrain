@@ -158,8 +158,8 @@ export default function App() {
           <footer className="app__footer" aria-label="Footer">
             <p>FootyBrain · Learn the game. Know the players.</p>
             <p className="app__footer__meta">
-              Dataset snapshot {DATASET_META.dataAsOf} · {DATASET_META.playerCount} players ·{' '}
-              {DATASET_META.quizEligibleCount} quiz-ready
+              Updated {DATASET_META.dataAsOf} · {DATASET_META.playerCount} players ·{' '}
+              {DATASET_META.quizEligibleCount} with quiz mode
             </p>
             <p className="app__footer__feedback">
               Have feedback, found a bug, or want to suggest a feature? Email us at{' '}

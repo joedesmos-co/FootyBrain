@@ -333,7 +333,7 @@ export default function BrowseDatabase() {
                 ? 'Search or choose a league/team to explore players.'
                 : bundled
                   ? 'Search or choose a league/team to explore players.'
-                  : 'Showing quiz-ready spotlight. Load the full database to browse all players.'}
+                  : 'Showing featured quiz players. Load the full list to browse everyone.'}
         </p>
         {!bundled && !usesExternalShard && !leagueFilter && !teamFilter && !search.trim() ? (
           <button
@@ -341,7 +341,7 @@ export default function BrowseDatabase() {
             className="btn btn--secondary btn--small"
             onClick={() => setForceFullDb(true)}
           >
-            Load full database
+            Load full list
           </button>
         ) : null}
       </section>
@@ -389,8 +389,8 @@ export default function BrowseDatabase() {
           </Link>
         </div>
         <p className="national-hub-strip__intro">
-          Linked squads from the club database — one profile per player. Quiz-ready nations can
-          launch a national-team quiz (minimum 3).
+          Player pools built from club squads — one profile per player. Some nations unlock a quiz
+          once enough players have clues.
         </p>
         <div className="national-hub-strip__grid">
           {viableNationalTeams.map((team) => (
@@ -404,7 +404,7 @@ export default function BrowseDatabase() {
                 <strong>{team.displayName}</strong>
                 <small>
                   {countLinkedPlayers(team.id)} linked · {getNationalTeamQuizReadyCount(team.id)}{' '}
-                  quiz-ready
+                  with quiz mode
                 </small>
               </span>
             </Link>

@@ -113,11 +113,11 @@ export default function WorldCupHubPage() {
       <aside className="world-cup-hub__prep" aria-label="World Cup prep notice">
         <p className="world-cup-hub__prep-title">Prep mode</p>
         <p>{WORLD_CUP_HUB_META.prepNote}</p>
-        <p className="world-cup-hub__stats" aria-label="Hub coverage">
+        <p className="world-cup-hub__stats" aria-label="Hub stats">
           {stats.groupCount} groups · {stats.teamCount} nations in the draw ·{' '}
           {stats.liveInDraw} live national pools · {stats.poolNotAddedInDraw} pool pages not added
-          yet · {stats.quizViableCount} quiz-ready nations ·{' '}
-          {stats.quizReadyMemberships.toLocaleString()} quiz-ready in featured pools
+          yet · {stats.quizViableCount} nations with quizzes ·{' '}
+          {stats.quizReadyMemberships.toLocaleString()} players with quiz mode in featured pools
         </p>
         <div className="world-cup-hub__prep-actions">
           <Link to={getInternationalQuizHref()} className="btn btn--primary btn--small">
@@ -169,7 +169,7 @@ export default function WorldCupHubPage() {
                     </p>
                     <p className="world-cup-nation-card__meta">
                       {linked} linked
-                      {quizReady > 0 ? ` · ${quizReady} quiz-ready` : ''}
+                      {quizReady > 0 ? ` · ${quizReady} with quiz mode` : ''}
                       {' · '}
                       {rosterStatus.label}
                     </p>
@@ -196,7 +196,7 @@ export default function WorldCupHubPage() {
           Top quiz nations
         </h2>
         <p className="collections-page__section-desc">
-          Live nations with the deepest quiz-ready pools (minimum three linked players with hints).
+          Live nations with the deepest quiz pools (minimum three players with clues).
         </p>
         <ol className="world-cup-quiz-nations">
           {topQuizNations.map((meta, index) => {
@@ -211,7 +211,7 @@ export default function WorldCupHubPage() {
                   <strong>{meta.displayName}</strong>
                 </Link>
                 <p>
-                  {meta.quizReadyCount} quiz-ready · up to {meta.sessionCap} per session
+                  {meta.quizReadyCount} with quiz mode · up to {meta.sessionCap} per session
                 </p>
               </div>
               <div className="world-cup-quiz-nations__actions">
@@ -300,7 +300,7 @@ export default function WorldCupHubPage() {
           ) : null}
         </div>
         <p className="collections-page__section-desc">
-          Winners, Golden Boot, and Golden Glove stories — quiz-ready names from 2010 through 2022.
+          Winners, Golden Boot, and Golden Glove stories — quiz names from 2010 through 2022.
         </p>
         {legends.collection ? (
           <div className="world-cup-hub__collection-cta">

@@ -59,7 +59,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
 
     setSeoMeta({
       title: `${getLeagueDisplayName(league)} · FootyBrain`,
-      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueTeams.length} clubs · ${leaguePlayers.length} players listed · ${getQuizEligiblePlayers(leaguePlayers).length} quiz-ready.`,
+      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueTeams.length} clubs · ${leaguePlayers.length} players listed · ${getQuizEligiblePlayers(leaguePlayers).length} with quiz mode.`,
       canonicalUrl: canonical,
       og: {
         title: `${getLeagueDisplayName(league)} · FootyBrain`,
@@ -118,7 +118,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             <p className="profile__league">{formatCountryLabel(league.country)}</p>
             <h1>{getLeagueDisplayName(league)}</h1>
             <p className="profile__sub">
-              {leagueTeams.length} clubs · {quizReadyPlayers.length} quiz-ready ·{' '}
+              {leagueTeams.length} clubs · {quizReadyPlayers.length} with quiz mode ·{' '}
               {leaguePlayers.length} players listed
             </p>
           </div>
@@ -177,7 +177,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       {featuredClubs.length > 0 && (
         <section className="league-section" aria-labelledby="league-featured-title">
           <div className="league-section__header">
-            <h2 id="league-featured-title">Top quiz-ready clubs</h2>
+            <h2 id="league-featured-title">Best clubs to quiz</h2>
             <p className="league-section__meta">
               Best starting points for quizzes and squad learning in {league.name}.
             </p>
