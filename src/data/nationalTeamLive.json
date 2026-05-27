@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:54:22.464Z",
+    "generatedAt": "2026-05-27T01:05:19.987Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -40,16 +40,17 @@
       "sweden",
       "cote-divoire",
       "canada",
-      "australia"
+      "australia",
+      "ecuador"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 38,
-      "memberships": 1263,
-      "unmatchedTmSquadRows": 268,
+      "nationalTeams": 39,
+      "memberships": 1286,
+      "unmatchedTmSquadRows": 270,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
     },
@@ -91,7 +92,8 @@
       "sweden": 40,
       "cote-divoire": 40,
       "canada": 40,
-      "australia": 13
+      "australia": 13,
+      "ecuador": 23
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -131,7 +133,8 @@
       "sweden": 11,
       "cote-divoire": 10,
       "canada": 12,
-      "australia": 2
+      "australia": 2,
+      "ecuador": 3
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -171,7 +174,8 @@
       "sweden": 29,
       "cote-divoire": 30,
       "canada": 28,
-      "australia": 11
+      "australia": 11,
+      "ecuador": 20
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -211,7 +215,8 @@
       "sweden": 3,
       "cote-divoire": 3,
       "canada": 3,
-      "australia": 3
+      "australia": 3,
+      "ecuador": 3
     }
   },
   "nationalTeams": [
@@ -1242,6 +1247,34 @@
       "fifaRanking": 27,
       "tmCode": "australia",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "ecuador",
+      "displayName": "Ecuador",
+      "country": "Ecuador",
+      "confederationId": "conmebol",
+      "confederation": "CONMEBOL",
+      "rivalIds": [
+        "colombia",
+        "peru"
+      ],
+      "searchAliases": [
+        "ecu",
+        "la tri",
+        "ecuador national team",
+        "ecuador nt",
+        "tricolor"
+      ],
+      "badgeTheme": {
+        "from": "#fbbf24",
+        "to": "#1e3a8a",
+        "accent": "#fef08a"
+      },
+      "fanGuide": "La Tri blend Andean grit with technical midfielders and South American World Cup pedigree. Learn Ecuador through yellow shirts, altitude football identity, and rivalry with Colombia.",
+      "shortHistory": "Men’s senior team of Ecuador (FEF). FootyBrain squads link existing club players matched to Ecuador memberships.",
+      "fifaRanking": 23,
+      "tmCode": "ecuador",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -2263,6 +2296,15 @@
       "tmSourceId": "735570"
     },
     {
+      "playerId": "tm-606872",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "606872"
+    },
+    {
       "playerId": "tm-80894",
       "nationalTeamId": "poland",
       "role": "senior",
@@ -2936,6 +2978,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "358143"
+    },
+    {
+      "playerId": "tm-1074501",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1074501"
     },
     {
       "playerId": "tm-524000",
@@ -3710,6 +3761,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "801734"
+    },
+    {
+      "playerId": "tm-903611",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "903611"
     },
     {
       "playerId": "tm-684315",
@@ -12611,6 +12671,186 @@
       "isPrimary": true,
       "source": "registry_nationality",
       "tmSourceId": null
+    },
+    {
+      "playerId": "tm-687626",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-659813",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-400960",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-897051",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-310640",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-659802",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-971663",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-388519",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-680506",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1074584",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-348630",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-139867",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-450241",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-989271",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-450211",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-349599",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-592735",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1241373",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-468174",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-661171",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
     }
   ],
   "unmatchedTmSquadRows": [
@@ -13917,6 +14157,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "ecuador",
+      "sourceId": "330682",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Jhegson Sebastián Méndez Carabalí",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Ecuador",
+      "tmNationalTeamCountry": "Ecuador",
+      "dateOfBirthRaw": "26/04/1997",
+      "internationalCaps": 38,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "morocco",
       "sourceId": "863506",
       "linkSource": "tm_nt_squad_parent",
@@ -14402,6 +14656,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "17/03/1997",
       "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "ecuador",
+      "sourceId": "981674",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Patrik Kleiver Mercado Altamirano",
+      "position": "Midfield - Attacking Midfield",
+      "citizenship": "Ecuador",
+      "tmNationalTeamCountry": "Ecuador",
+      "dateOfBirthRaw": "31/07/2003",
+      "internationalCaps": 3,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []

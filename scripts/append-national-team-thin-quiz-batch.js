@@ -634,6 +634,61 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Ecuador — World Cup live promotion (+3 quiz-ready)
+  {
+    id: 'tm-687626',
+    sourceId: '687626',
+    displayName: 'Moisés Caicedo',
+    quickFact:
+      'Ecuador defensive midfielder who broke through at Brighton before Chelsea and anchors La Tri’s midfield in the linked pool.',
+    quizHints: [
+      'Ecuadorian defensive midfielder linked to La Tri.',
+      'Chelsea no. 6 — not Piero Hincapié the centre-back.',
+      'Moisés who shields the back line and recycles possession for Ecuador.',
+    ],
+    playingStyle:
+      'Deep-lying midfielder who breaks up play, carries under pressure, and distributes with range.',
+    importanceScore: 88,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-659813',
+    sourceId: '659813',
+    displayName: 'Piero Hincapié',
+    quickFact:
+      'Ecuador centre-back in the linked La Tri squad who developed at Bayer Leverkusen before Arsenal in the Premier League.',
+    quizHints: [
+      'Ecuadorian centre-back linked to La Tri.',
+      'Arsenal defender — not Moisés Caicedo the midfielder.',
+      'Piero who steps out from the back and wins aerial duels for Ecuador.',
+    ],
+    playingStyle:
+      'Left-sided centre-back who carries forward, tackles aggressively, and builds from the back.',
+    importanceScore: 84,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-400960',
+    sourceId: '400960',
+    displayName: 'Alan Franco',
+    quickFact:
+      'Ecuador central midfielder in the linked La Tri pool who plays for Atlético Mineiro in Brazil’s top flight.',
+    quizHints: [
+      'Ecuadorian midfielder linked to La Tri.',
+      'Atlético Mineiro central player — not Caicedo at Chelsea.',
+      'Alan who connects defence to attack with steady passing for Ecuador.',
+    ],
+    playingStyle:
+      'Central midfielder who keeps possession, breaks up transitions, and supports both phases.',
+    importanceScore: 80,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({

@@ -65,6 +65,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   // Wave 3 batch 4 (World Cup 2026 — preview-gated)
   'canada',
   'australia',
+  // Wave 3 batch 5 (World Cup 2026 — preview-gated)
+  'ecuador',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -109,6 +111,7 @@ const REGISTRY_NATIONALITY_LABELS = {
   'cote-divoire': ["cote d'ivoire", 'cote divoire', 'ivory coast', 'ivorian'],
   canada: ['canada', 'canadian'],
   australia: ['australia', 'australian'],
+  ecuador: ['ecuador', 'ecuadorian'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -608,6 +611,19 @@ const LIVE_NATION_EDITORIAL = {
       'The Socceroos carry Asia-Pacific pride with a physical, direct style and a strong European diaspora pipeline. Learn Australia through World Cup runs and AFC rivalry with Japan.',
     shortHistory:
       'Men’s senior team of Australia (Football Australia). Squads link existing FootyBrain club players matched to Australia memberships.',
+  },
+  ecuador: {
+    displayName: 'Ecuador',
+    country: 'Ecuador',
+    confederationId: 'conmebol',
+    confederation: 'CONMEBOL',
+    rivalIds: ['colombia', 'peru'],
+    searchAliases: ['ecu', 'la tri', 'ecuador national team', 'ecuador nt', 'tricolor'],
+    badgeTheme: { from: '#fbbf24', to: '#1e3a8a', accent: '#fef08a' },
+    fanGuide:
+      'La Tri blend Andean grit with technical midfielders and South American World Cup pedigree. Learn Ecuador through yellow shirts, altitude football identity, and rivalry with Colombia.',
+    shortHistory:
+      'Men’s senior team of Ecuador (FEF). FootyBrain squads link existing club players matched to Ecuador memberships.',
   },
 };
 

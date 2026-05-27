@@ -50,6 +50,8 @@ export const CONTENT_MANIFEST = {
     'czechia',
     'sweden',
     'cote-divoire',
+    'canada',
+    'australia',
   ],
   leagues: [
     {
