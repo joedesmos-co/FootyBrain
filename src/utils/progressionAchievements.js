@@ -1,8 +1,8 @@
 import { collections } from '../data/collectionsData';
-import { leagues } from '../data/sampleData';
+import { DATASET_META } from '../data/datasetMeta';
 import { calculateLevel } from './progressionLevel';
 
-export const LEAGUE_MASTERY_TARGET = leagues.length;
+export const LEAGUE_MASTERY_TARGET = DATASET_META.leagueCount;
 export const COLLECTION_MASTERY_TARGET = collections.length;
 
 /**

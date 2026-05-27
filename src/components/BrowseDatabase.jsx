@@ -194,6 +194,13 @@ export default function BrowseDatabase() {
     (needsBundledData && !bundled) ||
     (usesExternalShard && !leagueShard && !shardLoading);
 
+  const indexLoading =
+    !usesExternalShard &&
+    !needsBundledData &&
+    !bundled &&
+    searchIndexStatus === 'loading' &&
+    (leagueFilter || teamFilter || search.trim());
+
   return (
     <div className="page browse">
       <header className="page-header">
@@ -204,6 +211,8 @@ export default function BrowseDatabase() {
         </p>
         <DataTrustNotice compact />
       </header>
+
+      {indexLoading ? <PageFallback label="Loading search index…" /> : null}
 
       <section className="filters" aria-label="Player filters">
         <div className="filters__row">

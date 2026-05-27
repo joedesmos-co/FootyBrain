@@ -155,15 +155,15 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          <footer className="app__footer">
+          <footer className="app__footer" aria-label="Footer">
             <p>FootyBrain · Learn the game. Know the players.</p>
             <p className="app__footer__meta">
-              Public beta · Men&apos;s football · Data snapshot {DATASET_META.dataAsOf}
+              Dataset snapshot {DATASET_META.dataAsOf} · {DATASET_META.playerCount} players ·{' '}
+              {DATASET_META.quizEligibleCount} quiz-ready
             </p>
             <p className="app__footer__privacy">
               No accounts. Progress, favorites, and preferences stay in your browser only — not
-              sold or synced to a server.{' '}
-              <Link to="/privacy">Privacy</Link>
+              sold or synced to a server. <Link to="/privacy">Privacy</Link>
             </p>
           </footer>
         </div>

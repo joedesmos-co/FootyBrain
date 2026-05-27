@@ -156,6 +156,7 @@ export default function PlayerProfile() {
     () => (searchIndexStatus === 'ready' ? (searchIndex?.players ?? []) : []),
     [searchIndexStatus, searchIndex],
   );
+  const relatedLoading = Boolean(player && searchIndexStatus === 'loading');
 
   const relatedPlayers = useMemo(
     () => (player ? getRelatedPlayers(player, { pool: relatedPool }) : []),
@@ -347,6 +348,11 @@ export default function PlayerProfile() {
         </dl>
       </section>
 
+      {relatedLoading ? (
+        <p className="page-loading" role="status" aria-live="polite">
+          Loading related players…
+        </p>
+      ) : null}
       <RelatedPlayersSection suggestions={relatedPlayers} />
       <RelatedPlayersSection
         title="Similar role"
