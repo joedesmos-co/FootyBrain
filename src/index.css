@@ -6993,6 +6993,228 @@ div.empty-state > p {
   gap: 1.5rem;
 }
 
+.prefs-lead {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.prefs-section {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  padding: 0.85rem 0.95rem;
+}
+
+.prefs-section > summary {
+  list-style: none;
+}
+
+.prefs-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.prefs-section__summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.prefs-section__summary span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.prefs-section__summary strong {
+  font-size: 0.95rem;
+}
+
+.prefs-section__summary small {
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.prefs-section__summary::after {
+  content: '▾';
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  transform: translateY(-1px);
+}
+
+.prefs-section[open] .prefs-section__summary::after {
+  content: '▴';
+}
+
+.prefs-subsection {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(167, 243, 208, 0.08);
+}
+
+.prefs-subsection > summary {
+  list-style: none;
+}
+
+.prefs-subsection > summary::-webkit-details-marker {
+  display: none;
+}
+
+.prefs-subsection__summary {
+  cursor: pointer;
+  color: var(--color-soft);
+  font-weight: 750;
+  font-size: 0.9rem;
+}
+
+.prefs-tiles {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.6rem;
+}
+
+.prefs-tiles--compact {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.prefs-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.65rem 0.7rem;
+  border: 1px solid rgba(167, 243, 208, 0.13);
+  border-radius: var(--radius);
+  background: rgba(7, 17, 13, 0.38);
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.prefs-tile:hover,
+.prefs-tile:focus-visible {
+  border-color: rgba(167, 243, 208, 0.35);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.prefs-tile--on {
+  border-color: rgba(34, 197, 94, 0.75);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.prefs-tile__icon {
+  flex: 0 0 auto;
+}
+
+.prefs-tile__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 850;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.prefs-search {
+  margin-top: 0.75rem;
+}
+
+.prefs-search--tight {
+  margin-top: 0.5rem;
+}
+
+.prefs-search__label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.prefs-search__label span {
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.prefs-search__label input {
+  width: 100%;
+  min-height: 2.65rem;
+  padding: 0.58rem 0.72rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #07110d;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.prefs-club-block {
+  margin-top: 0.9rem;
+}
+
+.prefs-block-title {
+  margin: 0 0 0.55rem;
+  color: var(--color-soft);
+  font-size: 0.9rem;
+  font-weight: 850;
+}
+
+.prefs-club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 0.6rem;
+}
+
+.prefs-club-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+}
+
+.prefs-league-groups {
+  margin-top: 0.85rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.prefs-league-group__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.55rem;
+}
+
+.prefs-league-group__heading strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.prefs-league-group__heading span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.prefs-section--future {
+  opacity: 0.9;
+}
+
+.prefs-future-note {
+  margin: 0.75rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  max-width: 42rem;
+}
+
 .prefs-field {
   border: none;
   margin: 0;
