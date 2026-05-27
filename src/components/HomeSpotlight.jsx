@@ -130,7 +130,7 @@ export default function HomeSpotlight() {
         {slideCount > 1 ? (
           <button
             type="button"
-            className="home-spotlight__arrow home-spotlight__arrow--prev"
+            className="ui-nav-arrow home-spotlight__arrow home-spotlight__arrow--prev"
             onClick={goPrev}
             aria-label="Previous featured pick"
           >
@@ -154,7 +154,7 @@ export default function HomeSpotlight() {
         {slideCount > 1 ? (
           <button
             type="button"
-            className="home-spotlight__arrow home-spotlight__arrow--next"
+            className="ui-nav-arrow home-spotlight__arrow home-spotlight__arrow--next"
             onClick={goNext}
             aria-label="Next featured pick"
           >

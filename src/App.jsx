@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Link, BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -96,6 +96,10 @@ export default function App() {
             <Route
               path="/team/:teamId"
               element={withPageSuspense(TeamProfile, 'Loading club…')}
+            />
+            <Route
+              path="/league/international"
+              element={<Navigate to="/league/external" replace />}
             />
             <Route
               path="/league/:leagueId"

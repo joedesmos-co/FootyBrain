@@ -1,33 +1,102 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
-import { formatCountryLabel, getLeagueDisplayName } from '../utils/footballDisplay';
+import {
+  formatCountryLabel,
+  getLeagueDisplayName,
+  isExternalLeagueId,
+} from '../utils/footballDisplay';
+import { groupExternalClubTeams } from '../utils/externalClubGrouping';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
 import { getInternationalQuizHref } from '../utils/worldCupQuizPools';
+import BrowsePagination from './BrowsePagination';
 import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
 
 const manifestLeagues = getManifestLeagues();
 const MAJOR_LEAGUE_IDS = ['premier-league', 'la-liga', 'bundesliga', 'serie-a', 'ligue-1'];
-const BROWSE_RESULT_CAP = 60;
+const BROWSE_PAGE_SIZE = 60;
+
+function normalizeBrowseLeagueParam(value) {
+  if (!value) return '';
+  if (value === 'international') return 'external';
+  return value;
+}
+
+function LeagueExploreCard({ league, tab, onNavigate }) {
+  const browseHref =
+    tab === 'clubs' ? `/browse?tab=clubs&league=${league.id}` : `/browse?league=${league.id}`;
+  return (
+    <Link to={browseHref} className="league-link-card" onClick={onNavigate}>
+      <LeagueBadge league={league} />
+      <span>
+        <strong>{getLeagueDisplayName(league)}</strong>
+        <small>{formatCountryLabel(league.country)} · Browse</small>
+      </span>
+    </Link>
+  );
+}
+
+function BrowseClubGrid({ teams }) {
+  return (
+    <div className="league-link-grid">
+      {teams.map((team) => (
+        <Link key={team.id} to={`/team/${team.id}`} className="league-link-card">
+          <span>
+            <strong>{team.name}</strong>
+            <small>{team.country ? formatCountryLabel(team.country) : 'International'}</small>
+          </span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+function BrowseLeagueClubSections({ teams, players, isExternalLeague }) {
+  if (!teams.length) {
+    return <p className="empty-state">No clubs in this league yet.</p>;
+  }
+
+  if (!isExternalLeague) {
+    return <BrowseClubGrid teams={teams} />;
+  }
+
+  const sections = groupExternalClubTeams(teams, players);
+
+  return (
+    <>
+      <p className="browse-results__cap-notice">
+        Imported clubs from around the world. Men&apos;s national squads (England, Brazil, etc.)
+        live under <Link to="/world-cup">World Cup prep</Link> — not mixed in here as club teams.
+      </p>
+      {sections.map((section) => (
+        <Fragment key={section.id}>
+          <h3 className="section-label section-label--compact">{section.label}</h3>
+          <BrowseClubGrid teams={section.teams} />
+        </Fragment>
+      ))}
+    </>
+  );
+}
 
 export default function BrowseDatabase() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const rawTab = searchParams.get('tab') || 'players';
   const tab = rawTab === 'teams' ? 'clubs' : rawTab;
-  const leagueParam = searchParams.get('league') || '';
-  const [leagueFilter, setLeagueFilter] = useState('');
+  const leagueFilter = normalizeBrowseLeagueParam(searchParams.get('league') || '');
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
+  const [playerPage, setPlayerPage] = useState(1);
+  const [skipClubPicker, setSkipClubPicker] = useState(false);
   const [bundled, setBundled] = useState(null);
   const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
   const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
@@ -129,10 +198,7 @@ export default function BrowseDatabase() {
     return { major, other, international };
   }, []);
 
-  const browseLeagues = useMemo(() => {
-    const { major, other, international } = leagueGroups;
-    return [...major, ...other, ...international];
-  }, [leagueGroups]);
+  const isExternalLeague = isExternalLeagueId(leagueFilter);
 
   const scopedPlayers = useMemo(() => {
     if (usesExternalShard && leagueShard) {
@@ -159,9 +225,6 @@ export default function BrowseDatabase() {
     leagueFilter,
     searchIndexStatus,
     searchIndex,
-    quizStatus,
-    quizRegistry,
-    search,
     bundled,
   ]);
 
@@ -183,42 +246,56 @@ export default function BrowseDatabase() {
 
   const showPlayersTab = tab === 'players';
   const showClubsTab = tab === 'clubs';
-  const showLeagueClubPicker = Boolean(leagueFilter && !teamFilter && !search.trim());
+  const showLeagueClubPicker = Boolean(
+    leagueFilter && !teamFilter && !search.trim() && !skipClubPicker,
+  );
   const playersListReady =
     searchIndexStatus === 'ready' || Boolean(bundled) || usesExternalShard;
   const showPlayerResults =
     showPlayersTab && !showLeagueClubPicker && (hasPlayerQuery || playersListReady);
-  const isResultCapped =
-    showPlayerResults && !search.trim() && filteredPlayers.length > BROWSE_RESULT_CAP;
-  const displayedPlayers = isResultCapped
-    ? filteredPlayers.slice(0, BROWSE_RESULT_CAP)
-    : filteredPlayers;
+
+  const totalFilteredPlayers = filteredPlayers.length;
+  const totalPlayerPages = Math.max(1, Math.ceil(totalFilteredPlayers / BROWSE_PAGE_SIZE));
+  const safePlayerPage = Math.min(Math.max(1, playerPage), totalPlayerPages);
+  const playerPageStart = (safePlayerPage - 1) * BROWSE_PAGE_SIZE;
+  const playerPageEnd = Math.min(safePlayerPage * BROWSE_PAGE_SIZE, totalFilteredPlayers);
+  const displayedPlayers = filteredPlayers.slice(
+    playerPageStart,
+    playerPageStart + BROWSE_PAGE_SIZE,
+  );
 
   const handleLeagueChange = (value) => {
-    setLeagueFilter(value);
     setTeamFilter('');
+    setSearch('');
+    setSkipClubPicker(false);
+    setPlayerPage(1);
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (value) next.set('league', value);
+        else next.delete('league');
+        return next;
+      },
+      { replace: true },
+    );
   };
 
-  useEffect(() => {
-    if (tab !== 'teams') return;
-    let cancelled = false;
-    Promise.resolve().then(() => {
-      if (cancelled) return;
-      if (leagueParam && leagueParam !== leagueFilter) {
-        setLeagueFilter(leagueParam);
-        setTeamFilter('');
-        setSearch('');
-      }
-      if (!leagueParam && leagueFilter) {
-        setLeagueFilter('');
-        setTeamFilter('');
-        setSearch('');
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [tab, leagueParam, leagueFilter]);
+  const handleTeamFilterChange = (value) => {
+    setTeamFilter(value);
+    setPlayerPage(1);
+  };
+
+  const handleSearchChange = (value) => {
+    setSearch(value);
+    setPlayerPage(1);
+  };
+
+  const resetLocalBrowseFilters = () => {
+    setTeamFilter('');
+    setSearch('');
+    setSkipClubPicker(false);
+    setPlayerPage(1);
+  };
 
   const showPicks = !usesExternalShard && quizStatus === 'ready';
   const browseDataLoading =
@@ -288,15 +365,15 @@ export default function BrowseDatabase() {
                   </option>
                 ))}
               </optgroup>
-              <optgroup label="Other clubs">
-                {leagueGroups.other.map((league) => (
+              <optgroup label="International clubs">
+                {leagueGroups.international.map((league) => (
                   <option key={league.id} value={league.id}>
                     {getLeagueDisplayName(league)}
                   </option>
                 ))}
               </optgroup>
-              <optgroup label="International clubs">
-                {leagueGroups.international.map((league) => (
+              <optgroup label="Other clubs">
+                {leagueGroups.other.map((league) => (
                   <option key={league.id} value={league.id}>
                     {getLeagueDisplayName(league)}
                   </option>
@@ -309,7 +386,7 @@ export default function BrowseDatabase() {
             <span>Club</span>
             <select
               value={teamFilter}
-              onChange={(e) => setTeamFilter(e.target.value)}
+              onChange={(e) => handleTeamFilterChange(e.target.value)}
               disabled={!leagueFilter || shardLoading}
             >
               <option value="">All clubs</option>
@@ -324,7 +401,7 @@ export default function BrowseDatabase() {
           <PlayerAutocomplete
             players={scopedPlayers}
             value={search}
-            onChange={setSearch}
+            onChange={handleSearchChange}
             showNationalTeam
             navigateOnSelect
             intentContext={intentContext}
@@ -343,12 +420,14 @@ export default function BrowseDatabase() {
               : hasPlayerQuery
                 ? searchResultCapped
                   ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or club to see more`
-                  : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
-                : isResultCapped
-                  ? `Showing top ${BROWSE_RESULT_CAP} players — search or filter to narrow the list`
-                  : playersListReady
-                    ? `${filteredPlayers.length.toLocaleString()} players — search or pick a league or club`
-                    : 'Players could not load. Try again in a moment.'}
+                  : totalFilteredPlayers === 0
+                    ? '0 players found'
+                    : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()}`
+                : playersListReady
+                  ? totalFilteredPlayers === 0
+                    ? '0 players'
+                    : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()} — search or pick a league or club`
+                  : 'Players could not load. Try again in a moment.'}
         </p>
       </section>
       )}
@@ -390,15 +469,37 @@ export default function BrowseDatabase() {
           <h2 id="league-hubs-title">Leagues</h2>
           <p>Pick a league to explore clubs, rivalries, and standout players.</p>
         </div>
+        <h3 className="section-label section-label--compact">Major leagues</h3>
         <div className="league-link-grid">
-          {browseLeagues.map((league) => (
-            <Link key={league.id} to={`/league/${league.id}`} className="league-link-card">
-              <LeagueBadge league={league} />
-              <span>
-                <strong>{getLeagueDisplayName(league)}</strong>
-                <small>{formatCountryLabel(league.country)} · Explore</small>
-              </span>
-            </Link>
+          {leagueGroups.major.map((league) => (
+            <LeagueExploreCard
+              key={league.id}
+              league={league}
+              tab={tab}
+              onNavigate={resetLocalBrowseFilters}
+            />
+          ))}
+        </div>
+        <h3 className="section-label section-label--compact">International clubs</h3>
+        <div className="league-link-grid">
+          {leagueGroups.international.map((league) => (
+            <LeagueExploreCard
+              key={league.id}
+              league={league}
+              tab={tab}
+              onNavigate={resetLocalBrowseFilters}
+            />
+          ))}
+        </div>
+        <h3 className="section-label section-label--compact">Other clubs</h3>
+        <div className="league-link-grid">
+          {leagueGroups.other.map((league) => (
+            <LeagueExploreCard
+              key={league.id}
+              league={league}
+              tab={tab}
+              onNavigate={resetLocalBrowseFilters}
+            />
           ))}
         </div>
       </section>
@@ -411,18 +512,28 @@ export default function BrowseDatabase() {
         <section className="browse-results" aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}>
           <p className="browse-results__cap-notice">
             {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
-            full squad ({scopedPlayers.length} players in this league).
+            full squad ({scopedPlayers.length.toLocaleString()} players in this league).
           </p>
-          <div className="league-link-grid">
-            {teamsInLeague.map((team) => (
-              <Link key={team.id} to={`/team/${team.id}`} className="league-link-card">
-                <span>
-                  <strong>{team.name}</strong>
-                  <small>{team.country}</small>
-                </span>
-              </Link>
-            ))}
+          <div className="browse-results__club-picker-actions">
+            <button
+              type="button"
+              className="btn btn--secondary btn--small"
+              onClick={() => {
+                setSkipClubPicker(true);
+                setPlayerPage(1);
+              }}
+            >
+              Browse all players in this league
+            </button>
+            <Link to={`/league/${leagueFilter}`} className="btn btn--secondary btn--small">
+              Open league page
+            </Link>
           </div>
+          <BrowseLeagueClubSections
+            teams={teamsInLeague}
+            players={scopedPlayers}
+            isExternalLeague={isExternalLeague}
+          />
         </section>
       ) : showPlayerResults ? (
         <section className="browse-results" aria-label="Player results">
@@ -430,17 +541,24 @@ export default function BrowseDatabase() {
             <PageFallback label="Loading players…" />
           ) : filteredPlayers.length > 0 ? (
             <>
-              {isResultCapped && (
-                <p className="browse-results__cap-notice">
-                  Showing {BROWSE_RESULT_CAP} of {filteredPlayers.length} — pick a club or search
-                  by name to narrow results.
-                </p>
-              )}
+              <BrowsePagination
+                page={safePlayerPage}
+                pageSize={BROWSE_PAGE_SIZE}
+                totalItems={totalFilteredPlayers}
+                onPageChange={setPlayerPage}
+              />
               <div className="card-grid">
                 {displayedPlayers.map((player) => (
                   <PlayerCard key={player.id} player={player} />
                 ))}
               </div>
+              <BrowsePagination
+                page={safePlayerPage}
+                pageSize={BROWSE_PAGE_SIZE}
+                totalItems={totalFilteredPlayers}
+                onPageChange={setPlayerPage}
+                className="browse-pagination--bottom"
+              />
             </>
           ) : (
             <section className="empty-state" aria-label="No matching players">
@@ -452,7 +570,8 @@ export default function BrowseDatabase() {
                   onClick={() => {
                     setSearch('');
                     setTeamFilter('');
-                    setLeagueFilter('');
+                    handleLeagueChange('');
+                    setSkipClubPicker(false);
                   }}
                 >
                   Clear filters
@@ -470,51 +589,37 @@ export default function BrowseDatabase() {
             Pick a league to browse its clubs—or open any club page for squads, rivals, and fan
             notes from <Link to="/teams">Clubs</Link>.
           </p>
+          <h2 className="section-label section-label--compact">Major leagues</h2>
           <div className="league-link-grid">
             {leagueGroups.major.map((league) => (
-              <Link
+              <LeagueExploreCard
                 key={league.id}
-                to={`/browse?tab=clubs&league=${league.id}`}
-                className="league-link-card"
-              >
-                <LeagueBadge league={league} />
-                <span>
-                  <strong>{getLeagueDisplayName(league)}</strong>
-                  <small>{league.country}</small>
-                </span>
-              </Link>
-            ))}
-          </div>
-          <h2 className="section-label section-label--compact">Other clubs</h2>
-          <div className="league-link-grid">
-            {leagueGroups.other.map((league) => (
-              <Link
-                key={league.id}
-                to={`/browse?tab=clubs&league=${league.id}`}
-                className="league-link-card"
-              >
-                <LeagueBadge league={league} />
-                <span>
-                  <strong>{getLeagueDisplayName(league)}</strong>
-                  <small>{league.country}</small>
-                </span>
-              </Link>
+                league={league}
+                tab="clubs"
+                onNavigate={resetLocalBrowseFilters}
+              />
             ))}
           </div>
           <h2 className="section-label section-label--compact">International clubs</h2>
           <div className="league-link-grid">
             {leagueGroups.international.map((league) => (
-              <Link
+              <LeagueExploreCard
                 key={league.id}
-                to={`/browse?tab=clubs&league=${league.id}`}
-                className="league-link-card"
-              >
-                <LeagueBadge league={league} />
-                <span>
-                  <strong>{getLeagueDisplayName(league)}</strong>
-                  <small>{league.country}</small>
-                </span>
-              </Link>
+                league={league}
+                tab="clubs"
+                onNavigate={resetLocalBrowseFilters}
+              />
+            ))}
+          </div>
+          <h2 className="section-label section-label--compact">Other clubs</h2>
+          <div className="league-link-grid">
+            {leagueGroups.other.map((league) => (
+              <LeagueExploreCard
+                key={league.id}
+                league={league}
+                tab="clubs"
+                onNavigate={resetLocalBrowseFilters}
+              />
             ))}
           </div>
           {leagueFilter ? (
@@ -526,16 +631,11 @@ export default function BrowseDatabase() {
                 {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
                 squad.
               </p>
-              <div className="league-link-grid">
-                {teamsInLeague.map((team) => (
-                  <Link key={team.id} to={`/team/${team.id}`} className="league-link-card">
-                    <span>
-                      <strong>{team.name}</strong>
-                      <small>{team.country}</small>
-                    </span>
-                  </Link>
-                ))}
-              </div>
+              <BrowseLeagueClubSections
+                teams={teamsInLeague}
+                players={scopedPlayers}
+                isExternalLeague={isExternalLeague}
+              />
             </section>
           ) : null}
         </section>

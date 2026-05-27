@@ -1126,7 +1126,7 @@ input:focus-visible {
   gap: 0.35rem;
 }
 
-.home-spotlight__arrow {
+.ui-nav-arrow {
   flex-shrink: 0;
   display: grid;
   place-items: center;
@@ -1146,12 +1146,21 @@ input:focus-visible {
     color var(--duration-normal) var(--ease-out);
 }
 
-.home-spotlight__arrow:hover,
-.home-spotlight__arrow:focus-visible {
+.ui-nav-arrow:hover:not(:disabled),
+.ui-nav-arrow:focus-visible:not(:disabled) {
   border-color: rgba(52, 211, 153, 0.45);
   background: rgba(52, 211, 153, 0.1);
   color: var(--color-text);
   outline: none;
+}
+
+.ui-nav-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.home-spotlight__arrow {
+  /* layout hooks only — visuals from .ui-nav-arrow */
 }
 
 .home-spotlight__card {
@@ -1249,6 +1258,50 @@ input:focus-visible {
   color: var(--color-accent);
   font-size: 0.78rem;
   font-weight: 850;
+}
+
+.browse-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  margin: 0.35rem 0 0.65rem;
+  max-width: 100%;
+}
+
+.browse-pagination--summary-only {
+  justify-content: flex-start;
+  margin: 0 0 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.browse-pagination__status {
+  flex: 1 1 12rem;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+  color: var(--color-soft);
+  font-size: 0.84rem;
+  font-weight: 750;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.browse-pagination__page {
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.browse-results__club-picker-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.65rem;
+  margin: 0 0 0.75rem;
 }
 
 .home-spotlight__nav {
@@ -10760,10 +10813,19 @@ p.browse-results-empty {
     gap: 0.2rem;
   }
 
+  .ui-nav-arrow,
   .home-spotlight__arrow {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
     font-size: 1.2rem;
+  }
+
+  .browse-pagination {
+    gap: 0.45rem;
+  }
+
+  .browse-pagination__status {
+    font-size: 0.8rem;
   }
 
   .home-spotlight__dot {
