@@ -2364,6 +2364,197 @@ input:focus-visible {
   text-transform: uppercase;
 }
 
+.browse-taxonomy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  min-width: 0;
+}
+
+.browse-taxonomy__section {
+  min-width: 0;
+}
+
+.browse-taxonomy__section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.browse-taxonomy__hint {
+  margin: 0.45rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.browse-accordion {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.browse-accordion__item {
+  min-width: 0;
+}
+
+.browse-accordion__trigger {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid rgba(167, 243, 208, 0.13);
+  color: inherit;
+  font: inherit;
+}
+
+.browse-accordion__trigger--expanded {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.12);
+}
+
+.browse-accordion__trigger:hover,
+.browse-accordion__trigger:focus-visible {
+  transform: none;
+}
+
+.browse-accordion__trigger-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.browse-accordion__chevron {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: rgba(7, 17, 13, 0.55);
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.browse-accordion__panel {
+  margin: 0.35rem 0 0;
+  padding: 0.65rem 0.7rem 0.75rem;
+  border: 1px solid rgba(167, 243, 208, 0.12);
+  border-radius: var(--radius);
+  background: rgba(7, 17, 13, 0.38);
+  min-width: 0;
+}
+
+.browse-accordion__loading,
+.browse-accordion__empty {
+  margin: 0 0 0.55rem;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.browse-accordion__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.browse-club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.browse-club-grid--compact {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.25rem), 1fr));
+}
+
+.browse-club-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(167, 243, 208, 0.1);
+  border-radius: calc(var(--radius) - 2px);
+  background: rgba(7, 17, 13, 0.5);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out);
+}
+
+.browse-club-chip:hover,
+.browse-club-chip:focus-visible {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(52, 211, 153, 0.08);
+  outline: none;
+}
+
+.browse-club-chip__name {
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.browse-club-chip__meta {
+  color: var(--color-muted);
+  font-size: 0.65rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.browse-nation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 6.5rem), 1fr));
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.browse-nation-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  padding: 0.5rem 0.35rem;
+  border: 1px solid rgba(167, 243, 208, 0.1);
+  border-radius: var(--radius);
+  background: rgba(7, 17, 13, 0.42);
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out);
+}
+
+.browse-nation-chip:hover,
+.browse-nation-chip:focus-visible {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(52, 211, 153, 0.08);
+  outline: none;
+}
+
+.browse-nation-chip__name {
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
 .filter-field {
   display: flex;
   flex-direction: column;
@@ -10873,6 +11064,23 @@ p.browse-results-empty {
   .league-link-card strong {
     white-space: normal;
     overflow-wrap: anywhere;
+  }
+
+  .browse-accordion__trigger {
+    min-height: var(--touch-target-min);
+  }
+
+  .browse-accordion__chevron {
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+  }
+
+  .browse-nation-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 5.75rem), 1fr));
+  }
+
+  .browse-club-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 8rem), 1fr));
   }
 
   /* Player / team / league profiles */
