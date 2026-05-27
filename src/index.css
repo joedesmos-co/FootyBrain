@@ -63,6 +63,8 @@
   --btn-padding-x-sm: 0.85rem;
   --chip-height: 2.15rem;
   --chip-padding-x: 0.85rem;
+  /* Minimum comfortable touch target (44px at 16px root) */
+  --touch-target-min: 2.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -328,6 +330,8 @@ input:focus-visible {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .app__main {
@@ -393,7 +397,8 @@ input:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem max(1rem, calc((100vw - var(--max-width)) / 2 + 1rem));
+  padding: max(0.85rem, env(safe-area-inset-top, 0px))
+    max(1rem, calc((100vw - var(--max-width)) / 2 + 1rem)) 0.85rem;
   background: rgba(9, 18, 15, 0.88);
   border-bottom: 1px solid var(--color-border);
   backdrop-filter: blur(16px);
@@ -1701,6 +1706,8 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   gap: var(--space-section);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .home {
@@ -5967,8 +5974,8 @@ a.player-identity-chip:focus-visible {
 }
 
 .quiz-form .filter-field {
-  flex: 1;
-  min-width: 200px;
+  flex: 1 1 auto;
+  min-width: min(100%, 12.5rem);
 }
 
 .quiz-feedback {
@@ -10601,6 +10608,383 @@ div.empty-state > p {
     color: var(--color-muted);
     font-size: 0.72rem;
     text-transform: uppercase;
+  }
+}
+
+/* Mobile Polish Pass 1 — phones (375px design target, ≤480px) */
+@media (max-width: 480px) {
+  :root {
+    --btn-height: var(--touch-target-min);
+    --btn-height-sm: var(--touch-target-min);
+    --chip-height: var(--touch-target-min);
+    --space-section: 1.35rem;
+  }
+
+  .app__main {
+    padding-inline: 0.75rem;
+    padding-bottom: max(2.75rem, calc(2rem + env(safe-area-inset-bottom, 0px)));
+  }
+
+  .page {
+    gap: 1.25rem;
+  }
+
+  .page-header h1,
+  .profile__hero h1 {
+    font-size: clamp(1.55rem, 7.5vw, 1.95rem);
+    overflow-wrap: anywhere;
+  }
+
+  .profile__sub,
+  .club-hero__sub,
+  .league-hero__sub,
+  .player-profile__meta-line {
+    overflow-wrap: anywhere;
+  }
+
+  /* Home */
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero__title {
+    font-size: 2.05rem;
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .hero__stats > div:nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-visual {
+    min-height: 200px;
+  }
+
+  .floating-card {
+    width: 78%;
+    max-width: 100%;
+  }
+
+  .home-start__grid,
+  .home-explore-strip__grid,
+  .league-link-grid,
+  .browse-secondary__grid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .home-start-card,
+  .home-explore-card,
+  .browse-secondary__card {
+    min-height: var(--touch-target-min);
+    padding: 0.9rem 1rem;
+  }
+
+  .home-spotlight__dot {
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+    background: rgba(167, 243, 208, 0.22);
+  }
+
+  .home-spotlight__dot--active {
+    background: var(--color-accent);
+    box-shadow: inset 0 0 0 4px rgba(7, 17, 13, 0.55);
+  }
+
+  .home-spotlight__title,
+  .home-spotlight__meta {
+    overflow-wrap: anywhere;
+  }
+
+  /* Browse */
+  .page.browse .compare-tabs {
+    gap: 0.45rem;
+  }
+
+  .page.browse .compare-tabs__tab {
+    flex: 1 1 calc(50% - 0.25rem);
+    min-height: var(--touch-target-min);
+    padding-inline: 0.65rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .filters {
+    padding: 0.85rem;
+  }
+
+  .filters__count {
+    overflow-wrap: anywhere;
+  }
+
+  .league-link-card {
+    min-height: var(--touch-target-min);
+    padding: 0.75rem 0.85rem;
+  }
+
+  .league-link-card strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Player / team / league profiles */
+  .profile__hero {
+    padding: 0.9rem;
+    gap: 1rem;
+  }
+
+  .profile__identity {
+    gap: 0.85rem;
+  }
+
+  .player-profile__hero-copy,
+  .club-hero__copy,
+  .league-hero__copy {
+    width: 100%;
+  }
+
+  .player-profile__quick-links a,
+  .player-profile__quick-links button,
+  .player-profile__quick-links .player-profile__quick-link--disabled {
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .player-identity-chip {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .profile__grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .player-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-snapshot__list li {
+    overflow-wrap: anywhere;
+  }
+
+  .club-hero__tags {
+    gap: 0.4rem;
+  }
+
+  .team-profile__actions {
+    gap: 0.55rem;
+  }
+
+  .team-key-players__grid {
+    flex-direction: column;
+  }
+
+  .team-key-players__card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .team-rival-cards__item {
+    min-height: var(--touch-target-min);
+    padding: 0.55rem 0.65rem;
+  }
+
+  .league-club-chip {
+    padding: 0.65rem 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .league-club-chip__meta strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .league-club-chip__quiz {
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .league-spotlight-players__card {
+    flex: 1 1 100%;
+  }
+
+  .fan-path-details__summary {
+    min-height: var(--touch-target-min);
+    padding: 0.9rem 1rem;
+  }
+
+  /* Quiz ergonomics */
+  .page.quiz {
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .quiz-form .filter-field {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .quiz-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .quiz-panel {
+    padding: 0.9rem 0.8rem;
+    gap: 0.9rem;
+  }
+
+  .quiz-panel__top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .quiz-panel__prompt {
+    font-size: 1.05rem;
+    overflow-wrap: anywhere;
+  }
+
+  .quiz-panel__variant-badge,
+  .quiz-panel__timer {
+    align-self: flex-start;
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .quiz-mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-mode-card {
+    min-height: var(--touch-target-min);
+    padding: 0.75rem 0.85rem;
+  }
+
+  .quiz-progressive-clues li,
+  .quiz-variant-clue {
+    overflow-wrap: anywhere;
+  }
+
+  .quiz-clues {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-panel .btn--secondary:not(.btn--small) {
+    width: 100%;
+  }
+
+  .quiz-hints {
+    padding-left: 1rem;
+  }
+
+  .quiz-streak-indicator {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .quiz-feedback__details {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-feedback__banner {
+    flex-wrap: wrap;
+  }
+
+  .quiz-summary {
+    padding: 0.9rem;
+  }
+
+  /* Collections & profile */
+  .collections-grid,
+  .collection-items-list {
+    gap: 0.65rem;
+  }
+
+  .collection-item {
+    gap: 0.65rem;
+  }
+
+  .collection-detail-header__actions,
+  .prefs-form__actions,
+  .saved-section__header {
+    gap: 0.55rem;
+  }
+
+  .collection-detail-header__actions .btn,
+  .prefs-form__actions .btn,
+  .progress-hero .btn,
+  .saved-page .btn {
+    width: 100%;
+  }
+
+  .progress-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .progress-hero__identity {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .collection-xp-toast {
+    flex-wrap: wrap;
+    top: max(0.35rem, env(safe-area-inset-top, 0px));
+  }
+
+  .collection-xp-toast__dismiss {
+    min-width: var(--touch-target-min);
+    min-height: var(--touch-target-min);
+    padding: 0.5rem;
+    margin-left: auto;
+  }
+
+  .collection-reset-confirm__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  /* Chips, tags, misc controls */
+  .tag-list {
+    gap: 0.4rem;
+  }
+
+  .tag,
+  .tag-list li,
+  .club-hub__tag-list li,
+  .league-hub__tag-list li {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .favorite-button--compact {
+    min-height: var(--touch-target-min);
+    padding: 0.5rem 0.75rem;
+  }
+
+  .card-title-row__meta {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .universal-search__example-link {
+    min-height: var(--touch-target-min);
+    padding-inline: 0.5rem;
   }
 }
 
