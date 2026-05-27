@@ -2130,6 +2130,17 @@ input:focus-visible {
   transition: border-color 0.16s ease, color 0.16s ease;
 }
 
+.player-profile__quick-links .player-profile__quick-link--disabled {
+  padding: 0.4rem 0.7rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 999px;
+  background: rgba(16, 26, 23, 0.6);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: default;
+}
+
 .player-profile__quick-links a:hover,
 .player-profile__quick-links a:focus-visible,
 .player-profile__quick-links button:hover,

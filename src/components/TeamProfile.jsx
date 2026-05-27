@@ -6,6 +6,7 @@ import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { truncateClubText } from '../utils/clubIdentity';
+import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import {
   formatCountryLabel,
   getFootballAccentStyle,
@@ -24,6 +25,12 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
   const { isTeamSaved, toggleTeam } = useFavorites();
   const quizReadyRoster = getQuizEligiblePlayers(roster);
   const hasTeamQuiz = quizReadyRoster.length >= QUIZ_MIN_SESSION_POOL;
+  const { status: quizRegistryStatus, registry: quizRegistry } = useQuizRegistry();
+  const leagueQuizReadyCount =
+    quizRegistryStatus === 'ready' && quizRegistry?.players
+      ? quizRegistry.players.filter((p) => p.leagueId === team.leagueId).length
+      : 0;
+  const hasLeagueQuiz = leagueQuizReadyCount > 0;
   const saved = isTeamSaved(team.id);
   const fanPathSteps = [
     {
@@ -101,9 +108,19 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
               Start Team Quiz
             </Link>
           ) : (
-            <button type="button" className="btn btn--secondary" disabled>
-              Quiz after editorial review
-            </button>
+            <>
+              <button type="button" className="btn btn--secondary" disabled>
+                Quiz after editorial review
+              </button>
+              <a href="#team-squad" className="btn btn--secondary">
+                Browse squad
+              </a>
+              {hasLeagueQuiz ? (
+                <Link to={`/quiz?league=${team.leagueId}`} className="btn btn--secondary">
+                  Try league quiz
+                </Link>
+              ) : null}
+            </>
           )}
         </div>
       </header>

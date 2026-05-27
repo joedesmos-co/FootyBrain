@@ -45,6 +45,8 @@ export default function NationalTeamProfile() {
     nationalTeamId: null,
     status: 'loading',
     players: [],
+    loaded: 0,
+    total: 0,
   }));
 
   useEffect(() => {
@@ -52,17 +54,48 @@ export default function NationalTeamProfile() {
     let cancelled = false;
     const rows = getMembershipRowsForNationalTeam(nationalTeam.id);
     const ids = rows.map((r) => r.playerId);
-    Promise.all(ids.map((id) => loadPlayerById(id)))
-      .then((players) => {
+
+    (async () => {
+      const out = [];
+      const CHUNK = 25;
+      try {
+        setSquadState({
+          nationalTeamId: nationalTeam.id,
+          status: 'loading',
+          players: [],
+          loaded: 0,
+          total: ids.length,
+        });
+        for (let i = 0; i < ids.length; i += CHUNK) {
+          const slice = ids.slice(i, i + CHUNK);
+          const players = await Promise.all(slice.map((id) => loadPlayerById(id)));
+          if (cancelled) return;
+          out.push(...players.filter(Boolean));
+          out.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
+          setSquadState((prev) =>
+            prev.nationalTeamId === nationalTeam.id
+              ? {
+                  ...prev,
+                  status: i + CHUNK >= ids.length ? 'ready' : 'loading',
+                  players: out,
+                  loaded: Math.min(i + CHUNK, ids.length),
+                  total: ids.length,
+                }
+              : prev,
+          );
+        }
+      } catch {
         if (cancelled) return;
-        const list = players.filter(Boolean);
-        list.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
-        setSquadState({ nationalTeamId: nationalTeam.id, status: 'ready', players: list });
-      })
-      .catch(() => {
-        if (cancelled) return;
-        setSquadState({ nationalTeamId: nationalTeam.id, status: 'error', players: [] });
-      });
+        setSquadState({
+          nationalTeamId: nationalTeam.id,
+          status: 'error',
+          players: [],
+          loaded: 0,
+          total: ids.length,
+        });
+      }
+    })();
+
     return () => {
       cancelled = true;
     };
@@ -95,6 +128,8 @@ export default function NationalTeamProfile() {
 
   const squadStateMatches = squadState.nationalTeamId === nationalTeam.id;
   const squad = squadStateMatches ? squadState.players : [];
+  const squadLoading =
+    squadStateMatches && squadState.status === 'loading' && squadState.total > 0;
 
   const quizReady = getQuizEligiblePlayers(squad);
   const canLaunchNationalQuiz = quizReady.length >= QUIZ_NATIONAL_TEAM_MIN_POOL;
@@ -164,6 +199,12 @@ export default function NationalTeamProfile() {
       </header>
 
       <DataTrustNotice compact />
+
+      {squadLoading && squadState.total >= 80 ? (
+        <p className="page-loading" role="status" aria-live="polite">
+          Loading linked player pool… ({squadState.loaded}/{squadState.total})
+        </p>
+      ) : null}
 
       {showBrowseOnlyPoolBanner ? (
         <p className="national-team-profile__pool-banner" role="status">

@@ -18,6 +18,7 @@ import {
   formatPosition,
   getFootballAccentStyle,
   getLeagueDisplayName,
+  isExternalClubStubTeam,
 } from '../utils/footballDisplay';
 import CountryFlag from './CountryFlag';
 import DataTrustNotice from './DataTrustNotice';
@@ -327,12 +328,22 @@ export default function PlayerProfile() {
         </p>
       )}
 
+      {isExternalClubStubTeam({ id: player.teamId, leagueId: player.leagueId }) ? (
+        <p className="player-study__note" role="note">
+          This club is a lightweight reference used for national-pool coverage. Full club profile
+          coming later.
+        </p>
+      ) : null}
+
       <nav className="player-profile__quick-links" aria-label="Quick actions">
         <Link to={`/team/${player.teamId}`}>Club</Link>
         <Link to={`/league/${player.leagueId}`}>League</Link>
         {liveNationalTeam && (
           <Link to={`/national-team/${liveNationalTeam.id}`}>National team</Link>
         )}
+        {!liveNationalTeam && nationalTeamPlainLabel ? (
+          <span className="player-profile__quick-link--disabled">National team page coming</span>
+        ) : null}
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Quiz</Link>}
       </nav>
 
