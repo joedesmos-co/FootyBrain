@@ -31,7 +31,7 @@ import {
   QUIZ_TYPE_OPTIONS,
 } from '../utils/quizSession';
 import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
-import { getLeagueDisplayName } from '../utils/footballDisplay';
+import { formatPosition, getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
 
@@ -39,6 +39,62 @@ import QuizRegistryLoadState from './QuizRegistryLoadState';
 //       users/{uid}/quizSessions so progress carries across devices.
 
 const SESSION_MILESTONE = 5;
+
+function getStreakTier(value) {
+  if (value >= 10) return 10;
+  if (value >= 5) return 5;
+  if (value >= 3) return 3;
+  return 0;
+}
+
+function getStreakMilestoneLabel(value) {
+  if (value === 10) return '10-streak — unstoppable';
+  if (value === 5) return '5-streak — on fire';
+  if (value === 3) return '3-streak — heating up';
+  return null;
+}
+
+function computeSessionCategoryInsights(sessionResults, getTeamName, leagueById) {
+  const buckets = new Map();
+
+  for (const { player, isCorrect } of sessionResults) {
+    const categories = [
+      {
+        key: `pos:${player.position}`,
+        label: formatPosition(player.position) || 'By position',
+      },
+      {
+        key: `league:${player.leagueId}`,
+        label: leagueById?.get(player.leagueId)?.name ?? 'By league',
+      },
+      {
+        key: `club:${player.teamId}`,
+        label: getTeamName(player.teamId),
+      },
+    ];
+
+    for (const cat of categories) {
+      const prev = buckets.get(cat.key) || { label: cat.label, correct: 0, total: 0 };
+      buckets.set(cat.key, {
+        label: cat.label,
+        correct: prev.correct + (isCorrect ? 1 : 0),
+        total: prev.total + 1,
+      });
+    }
+  }
+
+  const stats = [...buckets.values()].filter((row) => row.total >= 2);
+  if (stats.length === 0) return { strongest: null, weakest: null };
+
+  stats.sort((a, b) => b.correct / b.total - a.correct / b.total);
+  const strongest = stats[0];
+  const weakest =
+    stats.length > 1 && stats[stats.length - 1].label !== strongest.label
+      ? stats[stats.length - 1]
+      : null;
+
+  return { strongest, weakest };
+}
 
 export default function QuizMode() {
   const quizRegistry = useQuizRegistry();
@@ -490,26 +546,47 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const timedHelp =
     timeLimitSeconds > 0 ? `Timed mode gives ${timedLabel} per question.` : '';
 
+  const streakTier = getStreakTier(streak);
+  const streakMilestoneLabel = getStreakMilestoneLabel(streak);
+
+  const sessionSummary = useMemo(() => {
+    if (sessionResults.length === 0) return null;
+    const correctCount = sessionResults.filter((r) => r.isCorrect).length;
+    const total = sessionResults.length;
+    const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+    const insights = computeSessionCategoryInsights(sessionResults, getTeamName, leagueById);
+    const missed = sessionResults.filter((r) => !r.isCorrect).map((r) => r.player);
+    return { correctCount, total, accuracy, insights, missed };
+  }, [sessionResults, getTeamName, leagueById]);
+
+  const handlePlayAgain = useCallback(() => {
+    setSessionEnded(false);
+    resetCurrentQuestion();
+    startQuestion();
+  }, [resetCurrentQuestion, startQuestion]);
+
   return (
     <div className="page quiz">
       <header className="page-header">
         <h1>Quiz Mode</h1>
-        <p>Guess players from clues. Narrow the pool, pick a difficulty, optionally race the clock.</p>
+        <p>
+          Guess players from clues. Pick a focus, set difficulty, and optionally race the clock.
+        </p>
       </header>
 
       {showWorldCupPrepNotice && (
         <aside className="quiz-wc-prep" aria-label="World Cup quiz prep">
           <p className="quiz-wc-prep__title">World Cup prep</p>
           <p>
-            Curated international and country pools only — no live fixtures or brackets. Same
-            the same quiz rules as club and national sessions.
+            Curated international and country lineups only — no live fixtures or brackets. Same
+            quiz rules as club and national sessions.
           </p>
         </aside>
       )}
 
       <section className="filters quiz-filters" aria-label="Quiz setup">
         <label className="filter-field filter-field--wide">
-          <span>Pool focus</span>
+          <span>Quiz focus</span>
           <select value={poolFocus} onChange={(e) => handlePoolFocusChange(e.target.value)}>
             {QUIZ_POOL_FOCUS_OPTIONS.map((option) => (
               <option key={option.id} value={option.id}>
@@ -672,7 +749,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     to={`/quiz?nationalTeam=${meta.nationalTeamId}&poolFocus=national&worldCup=prep`}
                     className="quiz-wc-country-links__link"
                   >
-                    {meta.displayName} ({meta.sessionCap} in pool)
+                    {meta.displayName} ({meta.sessionCap} ready)
                   </Link>
                 </li>
               ))}
@@ -690,7 +767,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         {timedHelp ? <p className="quiz-filters__focus-note">{timedHelp}</p> : null}
         {ambiguousLastNames.size > 0 && playerPool.length > 0 && (
           <p className="quiz-filters__focus-note" role="note">
-            Shared surnames in this pool — use each player&apos;s full name (last name alone
+            Shared surnames in this quiz — use each player&apos;s full name (last name alone
             won&apos;t count).
           </p>
         )}
@@ -709,9 +786,16 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           <span className="quiz-scoreboard__label">Answered</span>
           <strong>{score.totalAnswered}</strong>
         </div>
-        <div>
+        <div
+          className={`quiz-scoreboard__streak${streakTier ? ` quiz-scoreboard__streak--t${streakTier}` : ''}`}
+        >
           <span className="quiz-scoreboard__label">Streak</span>
-          <strong className={streak >= 3 ? 'quiz-scoreboard__hot' : undefined}>{streak}</strong>
+          <strong>{streak}</strong>
+          {streakTier >= 3 ? (
+            <span className="quiz-scoreboard__streak-badge" aria-hidden="true">
+              {streakTier >= 10 ? '★' : streakTier >= 5 ? '▲' : '●'}
+            </span>
+          ) : null}
         </div>
         <div>
           <span className="quiz-scoreboard__label">Best streak</span>
@@ -727,44 +811,115 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         )}
       </section>
 
+      {(currentPlayer || score.totalAnswered > 0) && !sessionEnded ? (
+        <div
+          className={`quiz-streak-indicator quiz-streak-indicator--t${streakTier}`}
+          role="status"
+          aria-live="polite"
+          aria-label={`Current streak: ${streak}`}
+        >
+          <div className="quiz-streak-indicator__track" aria-hidden="true">
+            <span
+              className="quiz-streak-indicator__fill"
+              style={{ width: `${Math.min(100, (streak / 10) * 100)}%` }}
+            />
+          </div>
+          <div className="quiz-streak-indicator__copy">
+            <span className="quiz-streak-indicator__label">Streak</span>
+            <strong className="quiz-streak-indicator__value">{streak}</strong>
+            {streakMilestoneLabel ? (
+              <span className="quiz-streak-indicator__milestone">{streakMilestoneLabel}</span>
+            ) : (
+              <span className="quiz-streak-indicator__hint">Best: {bestStreak}</span>
+            )}
+          </div>
+        </div>
+      ) : null}
+
       <section className="quiz-panel">
-        {sessionEnded && !currentPlayer && sessionResults.length > 0 && (
+        {sessionEnded && sessionSummary && !currentPlayer && (
           <article className="info-card quiz-summary" aria-label="Session summary">
-            <h2>Session summary</h2>
-            <p className="filters__count">
-              {sessionResults.filter((r) => r.isCorrect).length}/{sessionResults.length} correct
-            </p>
-            {sessionResults.some((r) => !r.isCorrect) ? (
-              <>
-                <h3 className="section-label">Missed</h3>
+            <h2 className="quiz-summary__title">Session complete</h2>
+            <div className="quiz-summary__hero">
+              <p className="quiz-summary__score">
+                <span className="quiz-summary__score-value">{sessionSummary.correctCount}</span>
+                <span className="quiz-summary__score-sep">/</span>
+                <span className="quiz-summary__score-total">{sessionSummary.total}</span>
+              </p>
+              <p className="quiz-summary__accuracy">{sessionSummary.accuracy}% accuracy</p>
+              <p className="quiz-summary__meta">
+                Best streak {bestStreak} · {score.incorrect} miss
+                {score.incorrect !== 1 ? 'es' : ''}
+              </p>
+            </div>
+
+            {(sessionSummary.insights.strongest || sessionSummary.insights.weakest) && (
+              <div className="quiz-summary__insights" aria-label="Category breakdown">
+                {sessionSummary.insights.strongest ? (
+                  <div className="quiz-summary__insight quiz-summary__insight--strong">
+                    <span className="quiz-summary__insight-label">Strongest</span>
+                    <strong>{sessionSummary.insights.strongest.label}</strong>
+                    <span>
+                      {Math.round(
+                        (sessionSummary.insights.strongest.correct /
+                          sessionSummary.insights.strongest.total) *
+                          100,
+                      )}
+                      % ({sessionSummary.insights.strongest.correct}/
+                      {sessionSummary.insights.strongest.total})
+                    </span>
+                  </div>
+                ) : null}
+                {sessionSummary.insights.weakest ? (
+                  <div className="quiz-summary__insight quiz-summary__insight--weak">
+                    <span className="quiz-summary__insight-label">Needs work</span>
+                    <strong>{sessionSummary.insights.weakest.label}</strong>
+                    <span>
+                      {Math.round(
+                        (sessionSummary.insights.weakest.correct /
+                          sessionSummary.insights.weakest.total) *
+                          100,
+                      )}
+                      % ({sessionSummary.insights.weakest.correct}/
+                      {sessionSummary.insights.weakest.total})
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+            )}
+
+            {sessionSummary.missed.length > 0 ? (
+              <div className="quiz-summary__missed-block" id="quiz-missed-players">
+                <h3 className="quiz-summary__subtitle">Explore missed players</h3>
                 <ul className="quiz-summary__missed">
-                  {sessionResults
-                    .filter((r) => !r.isCorrect)
+                  {sessionSummary.missed
                     .slice(-10)
                     .reverse()
-                    .map((r) => (
-                      <li key={`miss-${r.player.id}`}>
-                        <Link to={`/player/${r.player.id}`}>Learn {r.player.name} →</Link>
+                    .map((player) => (
+                      <li key={`miss-${player.id}`}>
+                        <Link to={`/player/${player.id}`} className="quiz-summary__missed-link">
+                          <span>{player.name}</span>
+                          <span className="quiz-summary__missed-cta">Learn more →</span>
+                        </Link>
                       </li>
                     ))}
                 </ul>
-              </>
+              </div>
             ) : (
-              <p className="empty-state">No misses yet — nice work.</p>
+              <p className="quiz-summary__perfect">Perfect run — no misses this session.</p>
             )}
-            <div className="empty-state__actions">
-              <button
-                type="button"
-                className="btn btn--primary"
-                onClick={() => {
-                  setSessionEnded(false);
-                  resetCurrentQuestion();
-                }}
-              >
-                Continue
+
+            <div className="quiz-summary__actions">
+              <button type="button" className="btn btn--primary btn--large" onClick={handlePlayAgain}>
+                Play again
               </button>
+              {sessionSummary.missed.length > 0 ? (
+                <a href="#quiz-missed-players" className="btn btn--secondary">
+                  Explore missed players
+                </a>
+              ) : null}
               <button type="button" className="btn btn--secondary" onClick={handleClearFilters}>
-                New session
+                New quiz setup
               </button>
             </div>
           </article>
@@ -891,26 +1046,32 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             )}
 
             <form className="quiz-form" onSubmit={handleCheckAnswer}>
-              <PlayerAutocomplete
-                players={playerPool}
-                value={answer}
-                onChange={setAnswer}
-                onSelect={(player) => setAnswer(player.name)}
-                label="Your answer"
-                placeholder="Type player name…"
-                disabled={!!feedback}
-                excludeIds={currentPlayer ? [currentPlayer.id] : []}
-                maxResults={6}
-                showClubWhenAmbiguous
-                getTeamName={getTeamName}
-                getLeagueName={(leagueId) => leagueById?.get(leagueId)?.name ?? 'Unknown'}
-              />
+              <div className="quiz-form__answer">
+                <PlayerAutocomplete
+                  players={playerPool}
+                  value={answer}
+                  onChange={setAnswer}
+                  onSelect={(player) => setAnswer(player.name)}
+                  label="Your answer"
+                  placeholder="Type player name…"
+                  disabled={!!feedback}
+                  excludeIds={currentPlayer ? [currentPlayer.id] : []}
+                  maxResults={6}
+                  showClubWhenAmbiguous
+                  getTeamName={getTeamName}
+                  getLeagueName={(leagueId) => leagueById?.get(leagueId)?.name ?? 'Unknown'}
+                />
 
-              {!feedback && (
-                <button type="submit" className="btn btn--primary" disabled={!answer.trim()}>
-                  Check answer
-                </button>
-              )}
+                {!feedback && (
+                  <button
+                    type="submit"
+                    className="btn btn--primary btn--large quiz-form__submit"
+                    disabled={!answer.trim()}
+                  >
+                    Check answer
+                  </button>
+                )}
+              </div>
             </form>
 
             {milestoneMessage && (
@@ -926,18 +1087,34 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             )}
 
             {feedback === 'correct' && (
-              <article className="quiz-feedback quiz-feedback--correct" role="status">
-                <div className="quiz-feedback__header">
-                  <h3>Correct! It was {currentPlayer.name}.</h3>
-                  {streak > 1 && (
-                    <span className="quiz-feedback__streak">{streak} in a row</span>
-                  )}
-                  {lastXpFeedback && (
-                    <span className="quiz-feedback__xp" aria-label={lastXpFeedback}>
-                      {lastXpFeedback}
+              <article
+                className={`quiz-feedback quiz-feedback--correct quiz-feedback--pop quiz-feedback--streak-t${streakTier}`}
+                role="status"
+              >
+                <div className="quiz-feedback__banner quiz-feedback__banner--success">
+                  <span className="quiz-feedback__icon" aria-hidden="true">
+                    ✓
+                  </span>
+                  <div className="quiz-feedback__banner-copy">
+                    <h3>Correct!</h3>
+                    <p className="quiz-feedback__answer-name">{currentPlayer.name}</p>
+                  </div>
+                  {streak > 1 ? (
+                    <span
+                      className={`quiz-feedback__streak quiz-feedback__streak--t${streakTier}`}
+                    >
+                      {streak} streak
                     </span>
-                  )}
+                  ) : null}
                 </div>
+                {streakMilestoneLabel ? (
+                  <p className="quiz-feedback__milestone">{streakMilestoneLabel}</p>
+                ) : null}
+                {lastXpFeedback ? (
+                  <p className="quiz-feedback__xp" aria-label={lastXpFeedback}>
+                    {lastXpFeedback}
+                  </p>
+                ) : null}
                 <dl className="quiz-feedback__details">
                   <div>
                     <dt>Club</dt>
@@ -951,18 +1128,30 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     </dd>
                   </div>
                 </dl>
-                <p>{currentPlayer.quickFact}</p>
-                <Link to={`/player/${currentPlayer.id}`} className="quiz-feedback__link">
-                  Learn this player
+                {currentPlayer.quickFact ? (
+                  <p className="quiz-feedback__fact">{currentPlayer.quickFact}</p>
+                ) : null}
+                <Link
+                  to={`/player/${currentPlayer.id}`}
+                  className="btn btn--secondary btn--small quiz-feedback__cta"
+                >
+                  View player profile
                 </Link>
               </article>
             )}
 
             {feedback === 'incorrect' && (
-              <article className="quiz-feedback quiz-feedback--incorrect" role="status">
-                <h3>
-                  {timedOut ? "Time's up!" : 'Not quite.'} The answer was {currentPlayer.name}.
-                </h3>
+              <article className="quiz-feedback quiz-feedback--incorrect quiz-feedback--pop" role="status">
+                <div className="quiz-feedback__banner quiz-feedback__banner--miss">
+                  <span className="quiz-feedback__icon" aria-hidden="true">
+                    ×
+                  </span>
+                  <div className="quiz-feedback__banner-copy">
+                    <h3>{timedOut ? "Time's up!" : 'Not quite'}</h3>
+                    <p className="quiz-feedback__reveal-label">Answer</p>
+                  </div>
+                </div>
+                <p className="quiz-feedback__reveal-name">{currentPlayer.name}</p>
                 {(() => {
                   const tip = getWrongAnswerTip({
                     guess: answer,
@@ -985,16 +1174,21 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     </dd>
                   </div>
                 </dl>
-                <p>{currentPlayer.quickFact}</p>
-                <Link to={`/player/${currentPlayer.id}`} className="quiz-feedback__link">
-                  Learn this player
+                {currentPlayer.quickFact ? (
+                  <p className="quiz-feedback__fact">{currentPlayer.quickFact}</p>
+                ) : null}
+                <Link
+                  to={`/player/${currentPlayer.id}`}
+                  className="btn btn--primary quiz-feedback__cta quiz-feedback__cta--learn"
+                >
+                  Learn more about {currentPlayer.name}
                 </Link>
               </article>
             )}
 
             {feedback && (
-              <div className="empty-state__actions">
-                <button type="button" className="btn btn--primary" onClick={startQuestion}>
+              <div className="quiz-feedback__actions">
+                <button type="button" className="btn btn--primary btn--large" onClick={startQuestion}>
                   Next question
                 </button>
                 <button

@@ -34,7 +34,7 @@ export const QUIZ_POOL_FOCUS_OPTIONS = [
     id: 'international',
     label: 'International (World Cup prep)',
     description:
-      'Curated union across featured nations — capped pool, no club or league filters',
+      'Curated union across featured nations — capped lineup, no club or league filters',
   },
   { id: 'position', label: 'Position only', description: 'One role across all leagues' },
 ];
@@ -218,16 +218,16 @@ export function getPoolFocusHint(
     if (poolSize === 0) {
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
-      return 'Not enough players with clues in the featured international pool yet.';
+      return 'Not enough players with clues in the featured international lineup yet.';
     }
     if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
       const variantHint = getQuizTypePoolHint(quizType, poolSize);
       if (variantHint) return variantHint;
       const noun = poolSize === 1 ? 'player' : 'players';
-      return `Only ${poolSize} ${noun} in the international pool — need at least ${QUIZ_MIN_SESSION_POOL}.`;
+      return `Only ${poolSize} ${noun} in the international lineup — need at least ${QUIZ_MIN_SESSION_POOL}.`;
     }
     if (nationalTeamFilter && poolSize > 0) {
-      return `${poolSize} players in pool (narrowed to ${hintContext.nationalTeamName ?? 'selected country'})`;
+      return `${poolSize} players ready (narrowed to ${hintContext.nationalTeamName ?? 'selected country'})`;
     }
   }
 
@@ -267,11 +267,11 @@ export function getPoolFocusHint(
     if (poolFocus === 'club' && !teamFilter) return 'Choose a club to start.';
     if (poolFocus === 'position' && !positionFilter) return 'Choose a position group to start.';
     if (poolFocus === 'international') {
-      return 'Not enough players with clues in the featured international pool.';
+      return 'Not enough players with clues in the featured international lineup.';
     }
     return 'No players match this filter.';
   }
-  return `${poolSize} players in pool`;
+  return `${poolSize} players ready`;
 }
 
 /**
@@ -285,7 +285,7 @@ export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = '
 
   if (poolSize === 0) {
     return {
-      title: 'International pool not ready',
+      title: 'International lineup not ready',
       message:
         variantHint ??
         'Featured nations need more players with clues before an international session can start.',
@@ -296,10 +296,10 @@ export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = '
   if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
     const noun = poolSize === 1 ? 'player' : 'players';
     return {
-      title: 'International pool too small',
+      title: 'International lineup too small',
       message:
         variantHint ??
-        `Only ${poolSize} ${noun} in the pool (minimum ${QUIZ_MIN_SESSION_POOL}). Try a single-country quiz or check back as squads grow.`,
+        `Only ${poolSize} ${noun} available (minimum ${QUIZ_MIN_SESSION_POOL}). Try a single-country quiz or check back as squads grow.`,
       showSquadLink: false,
     };
   }
