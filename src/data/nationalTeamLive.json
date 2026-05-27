@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:05:19.987Z",
+    "generatedAt": "2026-05-27T01:08:19.122Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -41,16 +41,17 @@
       "cote-divoire",
       "canada",
       "australia",
-      "ecuador"
+      "ecuador",
+      "bosnia-herzegovina"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 39,
-      "memberships": 1286,
-      "unmatchedTmSquadRows": 270,
+      "nationalTeams": 40,
+      "memberships": 1299,
+      "unmatchedTmSquadRows": 281,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
     },
@@ -93,7 +94,8 @@
       "cote-divoire": 40,
       "canada": 40,
       "australia": 13,
-      "ecuador": 23
+      "ecuador": 23,
+      "bosnia-herzegovina": 13
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -134,7 +136,8 @@
       "cote-divoire": 10,
       "canada": 12,
       "australia": 2,
-      "ecuador": 3
+      "ecuador": 3,
+      "bosnia-herzegovina": 1
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -175,7 +178,8 @@
       "cote-divoire": 30,
       "canada": 28,
       "australia": 11,
-      "ecuador": 20
+      "ecuador": 20,
+      "bosnia-herzegovina": 12
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -216,7 +220,8 @@
       "cote-divoire": 3,
       "canada": 3,
       "australia": 3,
-      "ecuador": 3
+      "ecuador": 3,
+      "bosnia-herzegovina": 3
     }
   },
   "nationalTeams": [
@@ -1275,6 +1280,33 @@
       "fifaRanking": 23,
       "tmCode": "ecuador",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "bosnia-herzegovina",
+      "displayName": "Bosnia and Herzegovina",
+      "country": "Bosnia and Herzegovina",
+      "confederationId": "uefa",
+      "confederation": "UEFA",
+      "rivalIds": [
+        "serbia",
+        "croatia"
+      ],
+      "searchAliases": [
+        "bih",
+        "bosnia nt",
+        "bosnia national team",
+        "bosnia-herzegovina"
+      ],
+      "badgeTheme": {
+        "from": "#1d4ed8",
+        "to": "#fde047",
+        "accent": "#dbeafe"
+      },
+      "fanGuide": "Bosnia and Herzegovina’s Zmajevi tie mountain football passion to Serie A and Bundesliga exports. Learn them through Yugoslav heritage, derby tension with Serbia, and gritty defensive football.",
+      "shortHistory": "Men’s senior team of Bosnia and Herzegovina (NFSBiH). FootyBrain squads link existing club players matched to Bosnia memberships.",
+      "fifaRanking": 65,
+      "tmCode": "bosnia-herzegovina",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1610,6 +1642,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "173859"
+    },
+    {
+      "playerId": "tm-678479",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "678479"
     },
     {
       "playerId": "tm-931160",
@@ -12851,6 +12892,114 @@
       "isPrimary": true,
       "source": "registry_nationality",
       "tmSourceId": null
+    },
+    {
+      "playerId": "tm-377468",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-94005",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-248454",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1079622",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1015822",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-685484",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-335457",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-819566",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-679423",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-203123",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-925862",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-67556",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
     }
   ],
   "unmatchedTmSquadRows": [
@@ -12920,6 +13069,20 @@
       "tmNationalTeamCountry": "Morocco",
       "dateOfBirthRaw": "30/09/2002",
       "internationalCaps": 2,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "322065",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Dennis Hadžikadunić",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": "Bosnia-Herzegovina",
+      "dateOfBirthRaw": "09/07/1998",
+      "internationalCaps": 30,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -13205,6 +13368,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "620560",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Ivan Bašić",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "30/04/2002",
+      "internationalCaps": 15,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "australia",
       "sourceId": "1154164",
       "linkSource": "tm_nt_squad_parent",
@@ -13285,6 +13462,20 @@
       "dateOfBirthRaw": "12/09/2007",
       "internationalCaps": 2,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "316047",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Luka Menalo",
+      "position": "Attack - Left Winger",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": "Bosnia-Herzegovina",
+      "dateOfBirthRaw": "22/07/1996",
+      "internationalCaps": 16,
+      "internationalGoals": 3,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -13527,6 +13718,34 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "672052",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Enver Kulašin",
+      "position": "Attack - Right Winger",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": "Bosnia-Herzegovina",
+      "dateOfBirthRaw": "11/09/2003",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "51676",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Ermin Bičakčić",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": "Bosnia-Herzegovina",
+      "dateOfBirthRaw": "24/01/1990",
+      "internationalCaps": 43,
+      "internationalGoals": 3,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "algeria",
       "sourceId": "375708",
       "linkSource": "tm_nt_squad_parent",
@@ -13751,6 +13970,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "251295",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Dženis Burnić",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "22/05/1998",
+      "internationalCaps": 18,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "morocco",
       "sourceId": "1134255",
       "linkSource": "tm_nt_squad_parent",
@@ -13901,6 +14134,20 @@
       "dateOfBirthRaw": "22/02/1997",
       "internationalCaps": 0,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "422051",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Nikola Katić",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "10/10/1996",
+      "internationalCaps": 15,
+      "internationalGoals": 1,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -14801,6 +15048,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "226097",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Ivan Šunjić",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "09/10/1996",
+      "internationalCaps": 11,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "chile",
       "sourceId": "1002042",
       "linkSource": "tm_nt_squad_parent",
@@ -14965,6 +15226,20 @@
       "dateOfBirthRaw": "02/12/2000",
       "internationalCaps": 1,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "28396",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Edin Džeko",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "17/03/1986",
+      "internationalCaps": 148,
+      "internationalGoals": 73,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -15669,6 +15944,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "539907",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Vedad Muftić",
+      "position": "Goalkeeper",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": "Bosnia-Herzegovina",
+      "dateOfBirthRaw": "25/10/2001",
+      "internationalCaps": 0,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "nigeria",
       "sourceId": "168337",
       "linkSource": "tm_nt_squad_parent",
@@ -16140,6 +16429,20 @@
       "tmNationalTeamCountry": "Morocco",
       "dateOfBirthRaw": "17/09/2001",
       "internationalCaps": 3,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "bosnia-herzegovina",
+      "sourceId": "293213",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Amir Hadžiahmetović",
+      "position": "Midfield - Defensive Midfield",
+      "citizenship": "Bosnia-Herzegovina",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "08/03/1997",
+      "internationalCaps": 34,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []

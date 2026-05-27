@@ -62,6 +62,7 @@ export const WAVE_3_NATIONAL_TEAM_IDS = [
   'paraguay',
   'ecuador',
   'peru',
+  'bosnia-herzegovina',
 ];
 
 /** FootyBrain id ↔ TM slug ↔ registry nationality labels */
@@ -197,6 +198,14 @@ export const NATIONAL_TEAM_TARGETS = [
   { id: 'canada', tmCode: 'canada', displayName: 'Canada', expansionWave: 3, registryLabels: ['canada', 'canadian'] },
   { id: 'paraguay', tmCode: 'paraguay', displayName: 'Paraguay', expansionWave: 3, registryLabels: ['paraguay', 'paraguayan'] },
   { id: 'ecuador', tmCode: 'ecuador', displayName: 'Ecuador', expansionWave: 3, registryLabels: ['ecuador', 'ecuadorian'] },
+  {
+    id: 'bosnia-herzegovina',
+    tmCode: 'bosnia-herzegovina',
+    displayName: 'Bosnia and Herzegovina',
+    expansionWave: 3,
+    searchAliases: ['bosnia', 'bosnia-herzegovina', 'bosnia and herzegovina', 'bih'],
+    registryLabels: ['bosnia-herzegovina', 'bosnia and herzegovina', 'bosnian', 'bosnia'],
+  },
   { id: 'peru', tmCode: 'peru', displayName: 'Peru', expansionWave: 3, registryLabels: ['peru', 'peruvian'] },
 ];
 

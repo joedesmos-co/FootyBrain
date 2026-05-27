@@ -52,6 +52,7 @@ export const CONTENT_MANIFEST = {
     'cote-divoire',
     'canada',
     'australia',
+    'ecuador',
   ],
   leagues: [
     {

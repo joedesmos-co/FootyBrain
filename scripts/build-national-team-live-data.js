@@ -67,6 +67,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'australia',
   // Wave 3 batch 5 (World Cup 2026 — preview-gated)
   'ecuador',
+  // Wave 3 batch 6 (World Cup 2026 — preview-gated)
+  'bosnia-herzegovina',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -112,6 +114,12 @@ const REGISTRY_NATIONALITY_LABELS = {
   canada: ['canada', 'canadian'],
   australia: ['australia', 'australian'],
   ecuador: ['ecuador', 'ecuadorian'],
+  'bosnia-herzegovina': [
+    'bosnia-herzegovina',
+    'bosnia and herzegovina',
+    'bosnian',
+    'bosnia',
+  ],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -624,6 +632,19 @@ const LIVE_NATION_EDITORIAL = {
       'La Tri blend Andean grit with technical midfielders and South American World Cup pedigree. Learn Ecuador through yellow shirts, altitude football identity, and rivalry with Colombia.',
     shortHistory:
       'Men’s senior team of Ecuador (FEF). FootyBrain squads link existing club players matched to Ecuador memberships.',
+  },
+  'bosnia-herzegovina': {
+    displayName: 'Bosnia and Herzegovina',
+    country: 'Bosnia and Herzegovina',
+    confederationId: 'uefa',
+    confederation: 'UEFA',
+    rivalIds: ['serbia', 'croatia'],
+    searchAliases: ['bih', 'bosnia nt', 'bosnia national team', 'bosnia-herzegovina'],
+    badgeTheme: { from: '#1d4ed8', to: '#fde047', accent: '#dbeafe' },
+    fanGuide:
+      'Bosnia and Herzegovina’s Zmajevi tie mountain football passion to Serie A and Bundesliga exports. Learn them through Yugoslav heritage, derby tension with Serbia, and gritty defensive football.',
+    shortHistory:
+      'Men’s senior team of Bosnia and Herzegovina (NFSBiH). FootyBrain squads link existing club players matched to Bosnia memberships.',
   },
 };
 

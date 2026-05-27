@@ -689,6 +689,25 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Bosnia and Herzegovina — World Cup live promotion (+1 quiz-ready → 3)
+  {
+    id: 'tm-94005',
+    sourceId: '94005',
+    displayName: 'Sead Kolasinac',
+    quickFact:
+      'Bosnia and Herzegovina left-sided defender linked to La Zmajeva in FootyBrain, with long Serie A tenure at Arsenal, Schalke, and Marseille before Atalanta.',
+    quizHints: [
+      'Bosnia-Herzegovina defender in the linked national pool.',
+      'Atalanta full-back — not Ahmedhodžić at centre-back.',
+      'Sead nicknamed "the Tank" for physical defending for Bosnia.',
+    ],
+    playingStyle:
+      'Athletic defender who overlaps on the flank, tackles aggressively, and delivers set-piece threat.',
+    importanceScore: 82,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({

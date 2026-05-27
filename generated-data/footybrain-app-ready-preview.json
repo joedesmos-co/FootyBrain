@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:05:17.005Z",
+    "generatedAt": "2026-05-27T01:08:16.156Z",
     "purpose": "staging-only — do not import into React until reviewed",
     "dataAsOf": "2026-05-25",
     "previewSeason": "2025",
@@ -10,9 +10,9 @@
       "mvpFeatured": 36,
       "mvpLinked": 31,
       "mvpManualOnly": 5,
-      "generatedNeedsEditorial": 3593,
-      "generatedEditorialApproved": 457,
-      "quizEligible": 493
+      "generatedNeedsEditorial": 3592,
+      "generatedEditorialApproved": 458,
+      "quizEligible": 494
     },
     "linkedPlayers": [
       "haaland",
@@ -212,7 +212,6 @@
       "tm-434433",
       "tm-644771",
       "tm-357992",
-      "tm-94005",
       "tm-503991",
       "tm-834491",
       "tm-834483",
@@ -3680,6 +3679,7 @@
       "tm-503743",
       "tm-324358",
       "tm-249565",
+      "tm-94005",
       "tm-710671",
       "tm-591916",
       "tm-338425",
@@ -10701,6 +10701,7 @@
       "id": "tm-94005",
       "sourceId": "94005",
       "name": "Sead Kolasinac",
+      "displayName": "Sead Kolasinac",
       "dateOfBirth": "1993-06-20",
       "age": 32,
       "nationality": "Bosnia-Herzegovina",
@@ -10708,12 +10709,17 @@
       "position": "Defender - Centre-Back",
       "teamId": "atalanta",
       "leagueId": "serie-a",
-      "quickFact": "",
-      "quizHints": [],
-      "playingStyle": "",
-      "importanceScore": null,
-      "quizEligible": false,
-      "rosterTier": "squad",
+      "quickFact": "Bosnia and Herzegovina left-sided defender linked to La Zmajeva in FootyBrain, with long Serie A tenure at Arsenal, Schalke, and Marseille before Atalanta.",
+      "quizHints": [
+        "Bosnia-Herzegovina defender in the linked national pool.",
+        "Atalanta full-back — not Ahmedhodžić at centre-back.",
+        "Sead nicknamed \"the Tank\" for physical defending for Bosnia."
+      ],
+      "playingStyle": "Athletic defender who overlaps on the flank, tackles aggressively, and delivers set-piece threat.",
+      "importanceScore": 82,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved",
       "imageUrl": null,
       "imageAlt": null,
       "imageCredit": null,
@@ -10721,7 +10727,7 @@
       "imageLicense": null,
       "imageSrcSet": null,
       "careerHistory": [],
-      "dataStatus": "generated-needs-editorial"
+      "dataStatus": "generated-editorial-approved"
     },
     {
       "id": "tm-503991",
