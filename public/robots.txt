@@ -7,5 +7,5 @@ Disallow: /saved
 Disallow: /profile
 Disallow: /daily
 
-Sitemap: /sitemap.xml
+Sitemap: https://footybrain.pages.dev/sitemap.xml
 

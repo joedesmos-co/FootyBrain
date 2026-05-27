@@ -18,7 +18,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 
-const DEFAULT_SITE_URL = 'https://footybrain.app';
+const DEFAULT_SITE_URL = 'https://footybrain.pages.dev';
 const SITE_URL = String(process.env.SITE_URL ?? DEFAULT_SITE_URL).replace(/\/+$/, '');
 const DATA_AS_OF = (() => {
   try {
