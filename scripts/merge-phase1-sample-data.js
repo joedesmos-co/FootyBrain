@@ -24,6 +24,7 @@ import { DATA_PATHS, loadExpansionClubConfigs } from './lib/data-pipeline-paths.
 import {
   injectRequiredTmPlayers,
   loadGeneratedDraftSourceIds,
+  loadRequiredImportSourceIds,
   trimCuratedTmToCap,
   trimGeneratedBaseToCap,
 } from './lib/expansion-player-cap.js';
@@ -38,6 +39,7 @@ const SAMPLE_PATH = DATA_PATHS.sampleData;
 const DATASET_META_PATH = path.join(ROOT, 'src/data/datasetMeta.js');
 const EXPANSION_CLUB_PLACEHOLDER = 'controlled expansion club set';
 const OVERLAY_PATH = DATA_PATHS.manualOverlay;
+const REQUIRED_IMPORTS_PATH = path.join(ROOT, 'editorial-overlays/required-import-sourceIds.json');
 const DATA_AS_OF = '2026-05-25';
 
 function loadJson(filePath) {
@@ -317,6 +319,8 @@ function main() {
   );
 
   const requiredDraftSourceIds = loadGeneratedDraftSourceIds(DATA_PATHS.draftOverlay);
+  const requiredImportSourceIds = loadRequiredImportSourceIds(REQUIRED_IMPORTS_PATH);
+  const requiredSourceIds = new Set([...requiredDraftSourceIds, ...requiredImportSourceIds]);
   const tmBySourceId = new Map(preview.players.map((p) => [String(p.sourceId), p]));
 
   const appReadyBySource = new Map(
@@ -349,7 +353,7 @@ function main() {
     ageFromDateOfBirth,
   );
   curatedTm = injectRequiredTmPlayers(curatedTm, {
-    requiredSourceIds: requiredDraftSourceIds,
+    requiredSourceIds,
     tmBySourceId,
     reservedSourceIds,
   });
@@ -357,7 +361,7 @@ function main() {
   const maxSquadRows = Math.max(0, emergencyCap - mvpBase.length);
   const { curatedTm: cappedCuratedTm, trimmedBrowse: trimmedCuratedBrowse } = trimCuratedTmToCap(
     curatedTm,
-    { maxSquadRows, requiredSourceIds: requiredDraftSourceIds },
+    { maxSquadRows, requiredSourceIds },
   );
   curatedTm = cappedCuratedTm;
   if (trimmedCuratedBrowse > 0) {

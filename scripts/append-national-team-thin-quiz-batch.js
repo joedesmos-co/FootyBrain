@@ -782,13 +782,50 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Tunisia — mini-import live promotion (+2 quiz-ready → 3)
+  {
+    id: 'tm-290587',
+    sourceId: '290587',
+    displayName: 'Ellyes Skhiri',
+    quickFact:
+      'Tunisia defensive midfielder and Eintracht Frankfurt engine who anchors the Carthage Eagles’ midfield with relentless running and ball-winning.',
+    quizHints: [
+      'Tunisia midfielder in the linked national pool.',
+      'Eintracht Frankfurt ball-winner who protects the back line.',
+      'Ellyes who combines tackling with steady short passing for Tunisia.',
+    ],
+    playingStyle:
+      'Hard-working midfielder who breaks up play, screens transitions, and keeps possession moving with simple distribution.',
+    importanceScore: 82,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-496706',
+    sourceId: '496706',
+    displayName: 'Montassar Talbi',
+    quickFact:
+      'Tunisia centre-back and Lorient defender who brings aerial strength and calm distribution to the Carthage Eagles in CAF competition.',
+    quizHints: [
+      'Tunisia centre-back in the linked national pool.',
+      'Lorient defender — not Skhiri the midfielder.',
+      'Montassar who wins headers and organizes the back line for Tunisia.',
+    ],
+    playingStyle:
+      'Strong central defender who defends the box, attacks aerial balls, and plays safe passes out of pressure.',
+    importanceScore: 78,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({
   draftPath: DATA_PATHS.draftOverlay,
   batch: THIN_NATIONAL_QUIZ_BATCH,
   description:
-    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR, Haiti (2026-05-26).',
+    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR, Haiti, Tunisia (2026-05-26).',
 });
 
 console.log(

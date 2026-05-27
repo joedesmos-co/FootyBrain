@@ -20,6 +20,7 @@ import { curatePhase1PreviewPlayers, EXPANSION_LIMITS } from './phase1-curation.
 import {
   injectRequiredTmPlayers,
   loadGeneratedDraftSourceIds,
+  loadRequiredImportSourceIds,
   trimCuratedTmToCap,
 } from './lib/expansion-player-cap.js';
 import { nullImageFields, validatePlayerImageFields } from './player-image-rules.js';
@@ -29,6 +30,10 @@ const ROOT = path.resolve(__dirname, '..');
 const PREVIEW_PATH = path.join(ROOT, 'generated-data/footybrain-preview-data.json');
 const OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.manual.json');
 const GENERATED_OVERLAY_PATH = path.join(ROOT, 'editorial-overlays/players.generated-draft.json');
+const REQUIRED_IMPORTS_PATH = path.join(
+  ROOT,
+  'editorial-overlays/required-import-sourceIds.json',
+);
 const OUTPUT_PATH = path.join(ROOT, 'generated-data/footybrain-app-ready-preview.json');
 
 const DATA_AS_OF = '2026-05-25';
@@ -221,6 +226,8 @@ function main() {
   const sampleById = new Map(samplePlayers.map((p) => [p.id, p]));
   const tmBySourceId = new Map(preview.players.map((p) => [String(p.sourceId), p]));
   const requiredDraftSourceIds = loadGeneratedDraftSourceIds(GENERATED_OVERLAY_PATH);
+  const requiredImportSourceIds = loadRequiredImportSourceIds(REQUIRED_IMPORTS_PATH);
+  const requiredSourceIds = new Set([...requiredDraftSourceIds, ...requiredImportSourceIds]);
   const generatedOverlayBySourceId = new Map(
     (generatedOverlay.players ?? []).map((p) => [String(p.sourceId), p]),
   );
@@ -261,14 +268,14 @@ function main() {
   );
 
   curatedTm = injectRequiredTmPlayers(curatedTm, {
-    requiredSourceIds: requiredDraftSourceIds,
+    requiredSourceIds,
     tmBySourceId,
     reservedSourceIds: usedSourceIds,
   });
 
   const { curatedTm: cappedCuratedTm, trimmedBrowse } = trimCuratedTmToCap(curatedTm, {
     maxSquadRows,
-    requiredSourceIds: requiredDraftSourceIds,
+    requiredSourceIds,
   });
   curatedTm = cappedCuratedTm;
   if (trimmedBrowse > 0) {

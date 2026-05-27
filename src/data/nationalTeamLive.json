@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:18:53.393Z",
+    "generatedAt": "2026-05-27T01:30:16.287Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -44,16 +44,17 @@
       "ecuador",
       "bosnia-herzegovina",
       "congo-dr",
-      "haiti"
+      "haiti",
+      "tunisia"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 42,
-      "memberships": 1322,
-      "unmatchedTmSquadRows": 281,
+      "nationalTeams": 43,
+      "memberships": 1330,
+      "unmatchedTmSquadRows": 289,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
     },
@@ -99,7 +100,8 @@
       "ecuador": 23,
       "bosnia-herzegovina": 13,
       "congo-dr": 13,
-      "haiti": 10
+      "haiti": 10,
+      "tunisia": 8
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -143,7 +145,8 @@
       "ecuador": 3,
       "bosnia-herzegovina": 1,
       "congo-dr": 0,
-      "haiti": 2
+      "haiti": 2,
+      "tunisia": 1
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -187,7 +190,8 @@
       "ecuador": 20,
       "bosnia-herzegovina": 12,
       "congo-dr": 13,
-      "haiti": 8
+      "haiti": 8,
+      "tunisia": 7
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -231,7 +235,8 @@
       "ecuador": 3,
       "bosnia-herzegovina": 3,
       "congo-dr": 3,
-      "haiti": 3
+      "haiti": 3,
+      "tunisia": 3
     }
   },
   "nationalTeams": [
@@ -1370,6 +1375,34 @@
       "shortHistory": "Men’s senior team of Haiti (FHF). FootyBrain squads link existing club players via nationality registry until TM squad listings match cleanly.",
       "fifaRanking": null,
       "tmCode": "haiti",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "tunisia",
+      "displayName": "Tunisia",
+      "country": "Tunisia",
+      "confederationId": "caf",
+      "confederation": "CAF",
+      "rivalIds": [
+        "algeria",
+        "morocco"
+      ],
+      "searchAliases": [
+        "tun",
+        "tunisia national team",
+        "tunisia nt",
+        "carthage eagles",
+        "les aigles de carthage"
+      ],
+      "badgeTheme": {
+        "from": "#dc2626",
+        "to": "#ffffff",
+        "accent": "#1f2937"
+      },
+      "fanGuide": "Tunisia’s Carthage Eagles are a resilient North African tournament side built on disciplined defending and fast transitions. Learn Tunisia through CAF rivalry with Algeria and Morocco and a strong pipeline into Europe’s leagues.",
+      "shortHistory": "Men’s senior team of Tunisia (FTF). FootyBrain squads link existing club players via Transfermarkt preview links plus nationality registry backfill.",
+      "fifaRanking": 44,
+      "tmCode": "tunisia",
       "crestPolicy": "text-only"
     }
   ],
@@ -5731,6 +5764,15 @@
       "tmSourceId": "583699"
     },
     {
+      "playerId": "tm-1073378",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1073378"
+    },
+    {
       "playerId": "tm-249102",
       "nationalTeamId": "sweden",
       "role": "senior",
@@ -7837,6 +7879,15 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-269878",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-926978",
       "nationalTeamId": "denmark",
       "role": "senior",
@@ -7856,15 +7907,6 @@
     },
     {
       "playerId": "tm-543822",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-257324",
       "nationalTeamId": "denmark",
       "role": "senior",
       "status": "active",
@@ -8098,15 +8140,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-336381",
-      "nationalTeamId": "serbia",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-94308",
       "nationalTeamId": "serbia",
       "role": "senior",
@@ -8117,6 +8150,15 @@
     },
     {
       "playerId": "tm-245056",
+      "nationalTeamId": "serbia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-336381",
       "nationalTeamId": "serbia",
       "role": "senior",
       "status": "active",
@@ -8377,15 +8419,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-351477",
-      "nationalTeamId": "mexico",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-834483",
       "nationalTeamId": "mexico",
       "role": "senior",
@@ -8396,6 +8429,15 @@
     },
     {
       "playerId": "tm-889435",
+      "nationalTeamId": "mexico",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-351477",
       "nationalTeamId": "mexico",
       "role": "senior",
       "status": "active",
@@ -8584,15 +8626,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-577405",
-      "nationalTeamId": "uruguay",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-465822",
       "nationalTeamId": "uruguay",
       "role": "senior",
@@ -8639,6 +8672,15 @@
     },
     {
       "playerId": "tm-578419",
+      "nationalTeamId": "uruguay",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-577405",
       "nationalTeamId": "uruguay",
       "role": "senior",
       "status": "active",
@@ -8836,15 +8878,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-958473",
-      "nationalTeamId": "colombia",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-1087334",
       "nationalTeamId": "colombia",
       "role": "senior",
@@ -8927,6 +8960,15 @@
     },
     {
       "playerId": "tm-989937",
+      "nationalTeamId": "colombia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-958473",
       "nationalTeamId": "colombia",
       "role": "senior",
       "status": "active",
@@ -9853,6 +9895,15 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-309196",
+      "nationalTeamId": "japan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-641029",
       "nationalTeamId": "japan",
       "role": "senior",
@@ -10016,15 +10067,6 @@
     },
     {
       "playerId": "tm-895609",
-      "nationalTeamId": "japan",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-309196",
       "nationalTeamId": "japan",
       "role": "senior",
       "status": "active",
@@ -10249,15 +10291,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-218278",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-73517",
       "nationalTeamId": "norway",
       "role": "senior",
@@ -10286,6 +10319,15 @@
     },
     {
       "playerId": "tm-549378",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-218278",
       "nationalTeamId": "norway",
       "role": "senior",
       "status": "active",
@@ -10681,15 +10723,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-279681",
-      "nationalTeamId": "ghana",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-1246704",
       "nationalTeamId": "ghana",
       "role": "senior",
@@ -10708,7 +10741,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-1355954",
+      "playerId": "tm-279681",
       "nationalTeamId": "ghana",
       "role": "senior",
       "status": "active",
@@ -10717,7 +10750,16 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-875178",
+      "playerId": "tm-1492798",
+      "nationalTeamId": "ghana",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-374554",
       "nationalTeamId": "ghana",
       "role": "senior",
       "status": "active",
@@ -11554,6 +11596,15 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-193081",
+      "nationalTeamId": "scotland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-188077",
       "nationalTeamId": "scotland",
       "role": "senior",
@@ -11581,7 +11632,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-311351",
+      "playerId": "tm-428563",
       "nationalTeamId": "scotland",
       "role": "senior",
       "status": "active",
@@ -11590,7 +11641,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-428563",
+      "playerId": "tm-311351",
       "nationalTeamId": "scotland",
       "role": "senior",
       "status": "active",
@@ -11609,15 +11660,6 @@
     },
     {
       "playerId": "tm-341317",
-      "nationalTeamId": "scotland",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-193081",
       "nationalTeamId": "scotland",
       "role": "senior",
       "status": "active",
@@ -11950,15 +11992,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-321155",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-866246",
       "nationalTeamId": "sweden",
       "role": "senior",
@@ -11987,6 +12020,15 @@
     },
     {
       "playerId": "tm-300532",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-321155",
       "nationalTeamId": "sweden",
       "role": "senior",
       "status": "active",
@@ -12535,6 +12577,15 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-1067266",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-1128512",
       "nationalTeamId": "canada",
       "role": "senior",
@@ -12607,15 +12658,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-802143",
-      "nationalTeamId": "canada",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-638793",
       "nationalTeamId": "canada",
       "role": "senior",
@@ -12635,6 +12677,15 @@
     },
     {
       "playerId": "tm-1010912",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-802143",
       "nationalTeamId": "canada",
       "role": "senior",
       "status": "active",
@@ -12680,15 +12731,6 @@
     },
     {
       "playerId": "tm-1004299",
-      "nationalTeamId": "canada",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-640852",
       "nationalTeamId": "canada",
       "role": "senior",
       "status": "active",
@@ -12949,15 +12991,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-1241373",
-      "nationalTeamId": "ecuador",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "source": "registry_nationality",
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-468174",
       "nationalTeamId": "ecuador",
       "role": "senior",
@@ -12968,6 +13001,15 @@
     },
     {
       "playerId": "tm-661171",
+      "nationalTeamId": "ecuador",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1241373",
       "nationalTeamId": "ecuador",
       "role": "senior",
       "status": "active",
@@ -13266,6 +13308,69 @@
     {
       "playerId": "tm-628834",
       "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-211474",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-290587",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-496706",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1273985",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-810096",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-607224",
+      "nationalTeamId": "tunisia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-124410",
+      "nationalTeamId": "tunisia",
       "role": "senior",
       "status": "active",
       "isPrimary": true,
@@ -13611,6 +13716,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "tunisia",
+      "sourceId": "348144",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "بشير بن سعيد",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "dateOfBirthRaw": "29/11/1992",
+      "internationalCaps": 22,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "chile",
       "sourceId": "737923",
       "linkSource": "tm_nt_squad_parent",
@@ -13844,6 +13963,20 @@
       "tmNationalTeamCountry": "Morocco",
       "dateOfBirthRaw": "12/10/2002",
       "internationalCaps": 4,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "tunisia",
+      "sourceId": "206758",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "سامي هلال",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "dateOfBirthRaw": "19/10/1988",
+      "internationalCaps": 0,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -14619,6 +14752,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "tunisia",
+      "sourceId": "295381",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "صبري بن حسن",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "13/06/1996",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "morocco",
       "sourceId": "692595",
       "linkSource": "tm_nt_squad_parent",
@@ -15025,6 +15172,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "tunisia",
+      "sourceId": "569433",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "أيمن دحمان",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "28/01/1997",
+      "internationalCaps": 37,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "scotland",
       "sourceId": "983248",
       "linkSource": "tm_nt_squad_parent",
@@ -15426,6 +15587,20 @@
       "tmNationalTeamCountry": "Morocco",
       "dateOfBirthRaw": "23/01/1999",
       "internationalCaps": 2,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "tunisia",
+      "sourceId": "275956",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "نادر الغندري",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "dateOfBirthRaw": "18/02/1995",
+      "internationalCaps": 20,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -16425,6 +16600,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "tunisia",
+      "sourceId": "679463",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "نورالدين الفرحاتي",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "14/09/2000",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "sweden",
       "sourceId": "273742",
       "linkSource": "tm_nt_squad_parent",
@@ -16435,6 +16624,20 @@
       "dateOfBirthRaw": "14/09/1998",
       "internationalCaps": 12,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "tunisia",
+      "sourceId": "306330",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "ياسين مرياح",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "dateOfBirthRaw": "02/07/1993",
+      "internationalCaps": 95,
+      "internationalGoals": 6,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -16672,6 +16875,20 @@
       "tmNationalTeamCountry": "Nigeria",
       "dateOfBirthRaw": "11/06/2006",
       "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "tunisia",
+      "sourceId": "441867",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "عبد السلام الحلاوي",
+      "position": "Goalkeeper",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "dateOfBirthRaw": "28/06/1989",
+      "internationalCaps": 0,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []

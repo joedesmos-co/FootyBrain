@@ -45,7 +45,8 @@
     "australia",
     "ecuador",
     "bosnia-herzegovina",
-    "congo-dr"
+    "congo-dr",
+    "haiti"
   ],
   "leagues": [
     {
@@ -94,7 +95,7 @@
       "id": "mls",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/mls.json",
-      "playerCount": 804,
+      "playerCount": 806,
       "teamCount": 30
     },
     {

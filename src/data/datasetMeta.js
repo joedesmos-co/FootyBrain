@@ -4,8 +4,8 @@
  */
 export const DATASET_META = {
   dataAsOf: '2026-05-25',
-  playerCount: 4084,
+  playerCount: 4086,
   teamCount: 151,
   leagueCount: 8,
-  quizEligibleCount: 498,
+  quizEligibleCount: 500,
 };

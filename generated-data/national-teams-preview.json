@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:18:54.098Z",
+    "generatedAt": "2026-05-27T01:30:16.982Z",
     "purpose": "staging-only — do not merge into sampleData until reviewed",
     "expansionWave": 3,
     "previewSeason": "2025",
@@ -14,7 +14,7 @@
     },
     "counts": {
       "nationalTeams": 52,
-      "playerLinks": 532,
+      "playerLinks": 533,
       "unmatchedNationalTeamPlayers": 539,
       "warnings": 53
     }
@@ -46,10 +46,10 @@
     "ntParentRowsPriority": 539,
     "ntParentRowsSkippedNonPriority": 1919,
     "clubParentNationalTeamFieldRows": 1251,
-    "clubRegistryPlayers": 4084,
+    "clubRegistryPlayers": 4086,
     "ntSquadLinkRatePercent": 0,
     "playerLinksFromNtSquad": 0,
-    "playerLinksFromNationalTeamField": 532
+    "playerLinksFromNationalTeamField": 533
   },
   "nationalTeams": [
     {
@@ -974,9 +974,9 @@
       "tmEntityMissing": false,
       "squadScrapedCount": 8,
       "tmNationalTeamFieldCount": 5,
-      "playerLinksCount": 0,
+      "playerLinksCount": 1,
       "playerLinksFromNtSquad": 0,
-      "playerLinksFromNationalTeamField": 0,
+      "playerLinksFromNationalTeamField": 1,
       "unmatchedCount": 8
     },
     {
@@ -9935,6 +9935,23 @@
       "internationalGoals": 0,
       "clubTeamId": "union-berlin",
       "clubLeagueId": "bundesliga",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "tunisia",
+      "playerId": "tm-1073378",
+      "sourceId": "1073378",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Anisse Saidi",
+      "tmDisplayName": "Anisse Hassouna Daylyn Saidi, أنيس السعيدي",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Tunisia",
+      "tmNationalTeamCountry": "Tunisia",
+      "internationalCaps": 0,
+      "internationalGoals": 0,
+      "clubTeamId": "san-diego-fc",
+      "clubLeagueId": "mls",
       "quizEligible": false,
       "missingFields": []
     },

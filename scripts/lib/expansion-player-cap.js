@@ -25,6 +25,26 @@ export function loadGeneratedDraftSourceIds(
 }
 
 /**
+ * Optional "required imports" list: force specific TM sourceIds into the dataset
+ * without marking them quiz-ready / editorial-approved.
+ *
+ * File shape:
+ *   { "sourceIds": ["123", "456"] }
+ */
+export function loadRequiredImportSourceIds(requiredImportsPath) {
+  if (!fs.existsSync(requiredImportsPath)) return new Set();
+  const raw = JSON.parse(fs.readFileSync(requiredImportsPath, 'utf8'));
+  const ids = new Set();
+  for (const value of raw.sourceIds ?? []) {
+    if (value == null) continue;
+    const key = String(value).trim();
+    if (!key) continue;
+    ids.add(key);
+  }
+  return ids;
+}
+
+/**
  * Re-insert TM preview rows required by the generated draft overlay when curation excluded them.
  */
 export function injectRequiredTmPlayers(

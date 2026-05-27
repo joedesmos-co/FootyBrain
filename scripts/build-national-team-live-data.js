@@ -73,6 +73,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'congo-dr',
   // Wave 3 batch 8 (World Cup 2026 — registry-only TM stub)
   'haiti',
+  // Wave 3 batch 9 (World Cup 2026 — mini-import + approvals)
+  'tunisia',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -126,6 +128,7 @@ const REGISTRY_NATIONALITY_LABELS = {
   ],
   'congo-dr': ['dr congo', 'congo dr', 'democratic republic of the congo', 'drc'],
   haiti: ['haiti', 'haitian'],
+  tunisia: ['tunisia', 'tunisian'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -677,6 +680,19 @@ const LIVE_NATION_EDITORIAL = {
       'Les Grenadiers carry Caribbean passion through pacey wingers and a growing MLS and European diaspora. Learn Haiti through CONCACAF fight and rivalry with neighbouring regional powers.',
     shortHistory:
       'Men’s senior team of Haiti (FHF). FootyBrain squads link existing club players via nationality registry until TM squad listings match cleanly.',
+  },
+  tunisia: {
+    displayName: 'Tunisia',
+    country: 'Tunisia',
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['algeria', 'morocco'],
+    searchAliases: ['tun', 'tunisia national team', 'tunisia nt', 'carthage eagles', 'les aigles de carthage'],
+    badgeTheme: { from: '#dc2626', to: '#ffffff', accent: '#1f2937' },
+    fanGuide:
+      'Tunisia’s Carthage Eagles are a resilient North African tournament side built on disciplined defending and fast transitions. Learn Tunisia through CAF rivalry with Algeria and Morocco and a strong pipeline into Europe’s leagues.',
+    shortHistory:
+      'Men’s senior team of Tunisia (FTF). FootyBrain squads link existing club players via Transfermarkt preview links plus nationality registry backfill.',
   },
 };
 

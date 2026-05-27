@@ -55,6 +55,7 @@ export const CONTENT_MANIFEST = {
     'ecuador',
     'bosnia-herzegovina',
     'congo-dr',
+    'haiti',
   ],
   leagues: [
     {
@@ -122,7 +123,7 @@ export const CONTENT_MANIFEST = {
       name: 'Major League Soccer',
       country: 'United States',
       teamCount: 30,
-      playerCount: 804,
+      playerCount: 806,
       shardStatus: 'deferred',
       shardPath: '/data/leagues/mls.json',
       badgeTheme: { from: '#ef4444', to: '#111827', accent: '#fee2e2' },
