@@ -18,7 +18,7 @@ import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
 import { getInternationalQuizHref } from '../utils/worldCupQuizPools';
 import NationalTeamBadge from './NationalTeamBadge';
-import PageFallback from './PageFallback';
+import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
 
@@ -385,9 +385,7 @@ export default function BrowseDatabase() {
           picksMode={dailyFeatured.mode}
         />
       ) : usesExternalShard ? null : (
-        <p className="page-loading browse-picks-loading" role="status" aria-live="polite">
-          Loading today&apos;s picks…
-        </p>
+        <PageLoadingInline label="Loading today's picks…" />
       ))}
 
       {showPlayersTab && (

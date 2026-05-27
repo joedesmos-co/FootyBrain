@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { PageLoadingInline } from './PageFallback';
 
 /**
  * Loading / error gate for quiz surfaces that depend on the quiz registry.
@@ -12,9 +13,7 @@ export default function QuizRegistryLoadState({
   if (status === 'loading') {
     return (
       <div className={`page ${pageClass}`.trim()}>
-        <p className="page-loading" role="status" aria-live="polite" aria-busy="true">
-          {loadingLabel}
-        </p>
+        <PageLoadingInline label={loadingLabel} />
       </div>
     );
   }
