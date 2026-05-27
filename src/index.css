@@ -787,6 +787,18 @@ input:focus-visible {
   word-break: break-word;
 }
 
+.privacy-page a {
+  color: var(--color-accent);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacy-page a:hover,
+.privacy-page a:focus-visible {
+  color: var(--color-soft);
+}
+
 .hero-visual {
   position: relative;
   z-index: 1;

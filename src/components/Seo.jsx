@@ -60,7 +60,7 @@ function titleForPath(pathname) {
   if (pathname === '/learning-paths') return 'Learning paths · FootyBrain';
   if (pathname === '/national-teams') return 'National teams · FootyBrain';
   if (pathname === '/world-cup') return 'World Cup 2026 · FootyBrain';
-  if (pathname === '/privacy') return 'Privacy · FootyBrain';
+  if (pathname === '/privacy') return 'Privacy Policy · FootyBrain';
   if (pathname === '/onboarding') return 'How it works · FootyBrain';
   return SITE_NAME;
 }

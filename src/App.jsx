@@ -167,7 +167,7 @@ export default function App() {
             </p>
             <p className="app__footer__privacy">
               No accounts. Progress, favorites, and preferences stay in your browser only — not
-              sold or synced to a server. <Link to="/privacy">Privacy</Link>
+              sold or synced to a server. <Link to="/privacy">Privacy Policy</Link>
             </p>
           </footer>
         </div>
