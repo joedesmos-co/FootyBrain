@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:11:18.929Z",
+    "generatedAt": "2026-05-27T01:18:54.098Z",
     "purpose": "staging-only — do not merge into sampleData until reviewed",
     "expansionWave": 3,
     "previewSeason": "2025",
@@ -9,14 +9,14 @@
     "waveCounts": {
       "wave1": 5,
       "wave2": 20,
-      "wave3": 26,
-      "total": 51
+      "wave3": 27,
+      "total": 52
     },
     "counts": {
-      "nationalTeams": 51,
-      "playerLinks": 530,
+      "nationalTeams": 52,
+      "playerLinks": 532,
       "unmatchedNationalTeamPlayers": 539,
-      "warnings": 52
+      "warnings": 53
     }
   },
   "inspection": {
@@ -34,21 +34,22 @@
     "expansionWave": 3,
     "wave1TeamCount": 5,
     "wave2TeamCount": 20,
-    "wave3TeamCount": 26,
+    "wave3TeamCount": 27,
     "tmBackedTeamsExpected": 48,
     "tmBackedTeamsFound": 48,
     "tmEntityMissingTeamIds": [
       "cameroon",
-      "congo-dr"
+      "congo-dr",
+      "haiti"
     ],
     "ntSquadParentDataClean": true,
     "ntParentRowsPriority": 539,
     "ntParentRowsSkippedNonPriority": 1919,
-    "clubParentNationalTeamFieldRows": 1248,
+    "clubParentNationalTeamFieldRows": 1251,
     "clubRegistryPlayers": 4084,
     "ntSquadLinkRatePercent": 0,
     "playerLinksFromNtSquad": 0,
-    "playerLinksFromNationalTeamField": 530
+    "playerLinksFromNationalTeamField": 532
   },
   "nationalTeams": [
     {
@@ -903,7 +904,7 @@
       "expansionWave": 3,
       "tmEntityMissing": true,
       "squadScrapedCount": 0,
-      "tmNationalTeamFieldCount": 39,
+      "tmNationalTeamFieldCount": 42,
       "playerLinksCount": 9,
       "playerLinksFromNtSquad": 0,
       "playerLinksFromNationalTeamField": 9,
@@ -1000,7 +1001,7 @@
       "expansionWave": 3,
       "tmEntityMissing": true,
       "squadScrapedCount": 0,
-      "tmNationalTeamFieldCount": 39,
+      "tmNationalTeamFieldCount": 42,
       "playerLinksCount": 10,
       "playerLinksFromNtSquad": 0,
       "playerLinksFromNationalTeamField": 10,
@@ -1244,10 +1245,36 @@
       "expansionWave": 3,
       "tmEntityMissing": true,
       "squadScrapedCount": 0,
-      "tmNationalTeamFieldCount": 39,
+      "tmNationalTeamFieldCount": 42,
       "playerLinksCount": 0,
       "playerLinksFromNtSquad": 0,
       "playerLinksFromNationalTeamField": 0,
+      "unmatchedCount": 0
+    },
+    {
+      "id": "haiti",
+      "displayName": "Haiti",
+      "tmCode": null,
+      "tmTeamId": null,
+      "confederationId": null,
+      "confederation": null,
+      "fifaRanking": null,
+      "squadSizeReported": null,
+      "averageAge": null,
+      "coachName": null,
+      "sourceUrl": null,
+      "searchAliases": [
+        "haiti",
+        "hayti"
+      ],
+      "crestPolicy": "text-only",
+      "expansionWave": 3,
+      "tmEntityMissing": true,
+      "squadScrapedCount": 0,
+      "tmNationalTeamFieldCount": 42,
+      "playerLinksCount": 2,
+      "playerLinksFromNtSquad": 0,
+      "playerLinksFromNationalTeamField": 2,
       "unmatchedCount": 0
     },
     {
@@ -5199,6 +5226,23 @@
       "internationalGoals": 3,
       "clubTeamId": "udinese",
       "clubLeagueId": "serie-a",
+      "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "haiti",
+      "playerId": "tm-919006",
+      "sourceId": "919006",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Woobens Pacius",
+      "tmDisplayName": "Woobens Pacius",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Haiti",
+      "tmNationalTeamCountry": "Haiti",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "clubTeamId": "nashville-sc",
+      "clubLeagueId": "mls",
       "quizEligible": false,
       "missingFields": []
     },
@@ -9994,6 +10038,23 @@
       "clubTeamId": "fiorentina",
       "clubLeagueId": "serie-a",
       "quizEligible": false,
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "haiti",
+      "playerId": "tm-216683",
+      "sourceId": "216683",
+      "linkSource": "tm_player_national_team_country",
+      "displayName": "Fafà Picault",
+      "tmDisplayName": "Fabrice Jean-Ian Picault",
+      "position": "Attack - Left Winger",
+      "citizenship": "Haiti",
+      "tmNationalTeamCountry": "Haiti",
+      "internationalCaps": 16,
+      "internationalGoals": 1,
+      "clubTeamId": "atlanta-united",
+      "clubLeagueId": "mls",
+      "quizEligible": true,
       "missingFields": []
     },
     {
@@ -17838,6 +17899,7 @@
     "cameroon: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
     "cote-divoire: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
     "congo-dr: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
+    "haiti: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
     "england: NT-parent squad 0 ≠ TM squad_size 35",
     "france: NT-parent squad 0 ≠ TM squad_size 25",
     "spain: NT-parent squad 0 ≠ TM squad_size 27",
@@ -17900,6 +17962,10 @@
       },
       {
         "nationalTeamId": "congo-dr",
+        "reason": "tm_entity_missing"
+      },
+      {
+        "nationalTeamId": "haiti",
         "reason": "tm_entity_missing"
       }
     ],

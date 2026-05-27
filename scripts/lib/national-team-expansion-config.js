@@ -64,6 +64,7 @@ export const WAVE_3_NATIONAL_TEAM_IDS = [
   'peru',
   'bosnia-herzegovina',
   'congo-dr',
+  'haiti',
 ];
 
 /** FootyBrain id ↔ TM slug ↔ registry nationality labels */
@@ -220,6 +221,15 @@ export const NATIONAL_TEAM_TARGETS = [
       'democratic republic of the congo',
       'drc',
     ],
+  },
+  {
+    id: 'haiti',
+    tmCode: null,
+    displayName: 'Haiti',
+    expansionWave: 3,
+    tmMissing: true,
+    searchAliases: ['haiti', 'hayti'],
+    registryLabels: ['haiti', 'haitian'],
   },
   { id: 'peru', tmCode: 'peru', displayName: 'Peru', expansionWave: 3, registryLabels: ['peru', 'peruvian'] },
 ];

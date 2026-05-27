@@ -54,6 +54,7 @@ export const CONTENT_MANIFEST = {
     'australia',
     'ecuador',
     'bosnia-herzegovina',
+    'congo-dr',
   ],
   leagues: [
     {

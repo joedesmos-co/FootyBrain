@@ -727,13 +727,68 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Haiti — World Cup live promotion (+3 quiz-ready)
+  {
+    id: 'tm-216683',
+    sourceId: '216683',
+    displayName: 'Fafà Picault',
+    quickFact:
+      'Haiti left-sided attacker with long MLS and Süper Lig experience whose direct runs embody Les Grenadiers’ transition threat.',
+    quizHints: [
+      'Haiti winger in the linked national pool — not Bellegarde in central midfield at Wolves.',
+      'Atlanta United attacker with prior Minnesota and Philadelphia union links.',
+      'Fafà: pace and inside cuts from wide left for the Caribbean senior team.',
+    ],
+    playingStyle:
+      'Aggressive dribbler wide who threatens the back line, cuts inside to shoot, and presses from the front.',
+    importanceScore: 78,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-450050',
+    sourceId: '450050',
+    displayName: 'Jean-Ricner Bellegarde',
+    quickFact:
+      'Haiti central midfielder forging a Wolves career after French Ligue roots, anchoring transitional play between defence and Haiti’s speedy wing play.',
+    quizHints: [
+      'Haiti midfielder linked in FootyBrain — not João Gomes as Brazil NT at Wolves.',
+      'Jean-Ricner who drives vertically from midfield after Strasbourg upbringing.',
+      'Powerful athletic profile for Haiti’s CONCACAF battles.',
+    ],
+    playingStyle:
+      'Athletic midfielder who advances play with dribbles, tackles hard in duels, and supports both boxes.',
+    importanceScore: 76,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-763182',
+    sourceId: '763182',
+    displayName: 'Josué Casimir',
+    quickFact:
+      'Young Haiti wide attacker carving minutes in France’s top flight with Auxerre flair and grenadier pace on international duty.',
+    quizHints: [
+      'Haiti right-winger linked in FootyBrain — teammate pool at Auxerre is mostly French juniors.',
+      'Josué who stretches defences vertically for Haiti on the flank.',
+      'Ligue 1 export from the Haiti squad under 26.',
+    ],
+    playingStyle:
+      'Direct wing threat who isolates full-backs, looks to cross early, and tracks back in low blocks.',
+    importanceScore: 74,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({
   draftPath: DATA_PATHS.draftOverlay,
   batch: THIN_NATIONAL_QUIZ_BATCH,
   description:
-    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR (2026-05-26).',
+    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR, Haiti (2026-05-26).',
 });
 
 console.log(

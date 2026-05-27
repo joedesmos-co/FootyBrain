@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:11:18.442Z",
+    "generatedAt": "2026-05-27T01:18:53.393Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -43,15 +43,16 @@
       "australia",
       "ecuador",
       "bosnia-herzegovina",
-      "congo-dr"
+      "congo-dr",
+      "haiti"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 41,
-      "memberships": 1312,
+      "nationalTeams": 42,
+      "memberships": 1322,
       "unmatchedTmSquadRows": 281,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
@@ -97,7 +98,8 @@
       "australia": 13,
       "ecuador": 23,
       "bosnia-herzegovina": 13,
-      "congo-dr": 13
+      "congo-dr": 13,
+      "haiti": 10
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -140,7 +142,8 @@
       "australia": 2,
       "ecuador": 3,
       "bosnia-herzegovina": 1,
-      "congo-dr": 0
+      "congo-dr": 0,
+      "haiti": 2
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -183,7 +186,8 @@
       "australia": 11,
       "ecuador": 20,
       "bosnia-herzegovina": 12,
-      "congo-dr": 13
+      "congo-dr": 13,
+      "haiti": 8
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -226,7 +230,8 @@
       "australia": 3,
       "ecuador": 3,
       "bosnia-herzegovina": 3,
-      "congo-dr": 3
+      "congo-dr": 3,
+      "haiti": 3
     }
   },
   "nationalTeams": [
@@ -1338,6 +1343,33 @@
       "shortHistory": "Men’s senior team of DR Congo (FECOFA). FootyBrain squads link existing club players via nationality registry; TM national-team scraper lacks a stable row.",
       "fifaRanking": null,
       "tmCode": "congo-dr",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "haiti",
+      "displayName": "Haiti",
+      "country": "Haiti",
+      "confederationId": "concacaf",
+      "confederation": "CONCACAF",
+      "rivalIds": [
+        "canada",
+        "mexico"
+      ],
+      "searchAliases": [
+        "hai",
+        "les grenadiers",
+        "haitian national team",
+        "grenadiers"
+      ],
+      "badgeTheme": {
+        "from": "#1d4ed8",
+        "to": "#dc2626",
+        "accent": "#fde047"
+      },
+      "fanGuide": "Les Grenadiers carry Caribbean passion through pacey wingers and a growing MLS and European diaspora. Learn Haiti through CONCACAF fight and rivalry with neighbouring regional powers.",
+      "shortHistory": "Men’s senior team of Haiti (FHF). FootyBrain squads link existing club players via nationality registry until TM squad listings match cleanly.",
+      "fifaRanking": null,
+      "tmCode": "haiti",
       "crestPolicy": "text-only"
     }
   ],
@@ -3294,6 +3326,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "375877"
+    },
+    {
+      "playerId": "tm-919006",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "919006"
     },
     {
       "playerId": "tm-1061122",
@@ -5733,6 +5774,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "162959"
+    },
+    {
+      "playerId": "tm-216683",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "216683"
     },
     {
       "playerId": "tm-709969",
@@ -13144,6 +13194,78 @@
     {
       "playerId": "tm-203348",
       "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-450050",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-763182",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-646108",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-371686",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1492796",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-494237",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-354763",
+      "nationalTeamId": "haiti",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-628834",
+      "nationalTeamId": "haiti",
       "role": "senior",
       "status": "active",
       "isPrimary": true,

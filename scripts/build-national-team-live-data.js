@@ -71,6 +71,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'bosnia-herzegovina',
   // Wave 3 batch 7 (World Cup 2026 — registry-only TM stub)
   'congo-dr',
+  // Wave 3 batch 8 (World Cup 2026 — registry-only TM stub)
+  'haiti',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -123,6 +125,7 @@ const REGISTRY_NATIONALITY_LABELS = {
     'bosnia',
   ],
   'congo-dr': ['dr congo', 'congo dr', 'democratic republic of the congo', 'drc'],
+  haiti: ['haiti', 'haitian'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -661,6 +664,19 @@ const LIVE_NATION_EDITORIAL = {
       'Les Léopards blend Central African athleticism with a European club diaspora across Ligue 1 and La Liga. Learn Congo DR through fast transitions and rivalry with neighbouring West African powers.',
     shortHistory:
       'Men’s senior team of DR Congo (FECOFA). FootyBrain squads link existing club players via nationality registry; TM national-team scraper lacks a stable row.',
+  },
+  haiti: {
+    displayName: 'Haiti',
+    country: 'Haiti',
+    confederationId: 'concacaf',
+    confederation: 'CONCACAF',
+    rivalIds: ['canada', 'mexico'],
+    searchAliases: ['hai', 'les grenadiers', 'haitian national team', 'grenadiers'],
+    badgeTheme: { from: '#1d4ed8', to: '#dc2626', accent: '#fde047' },
+    fanGuide:
+      'Les Grenadiers carry Caribbean passion through pacey wingers and a growing MLS and European diaspora. Learn Haiti through CONCACAF fight and rivalry with neighbouring regional powers.',
+    shortHistory:
+      'Men’s senior team of Haiti (FHF). FootyBrain squads link existing club players via nationality registry until TM squad listings match cleanly.',
   },
 };
 
