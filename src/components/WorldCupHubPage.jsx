@@ -17,6 +17,7 @@ import {
   WORLD_CUP_HUB_META,
 } from '../data/worldCupHubData';
 import { getWorldCup2026Groups } from '../data/worldCup2026Prep';
+import { getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters';
 import {
   countLinkedPlayers,
   getNationalTeamQuizReadyCount,
@@ -48,11 +49,11 @@ function WorldCupNationActions({ team }) {
         </Link>
       ) : (
         <Link to={`/national-team/${team.id}`} className="btn btn--primary btn--small">
-          Open squad
+          Open national pool
         </Link>
       )}
       <Link to={`/national-team/${team.id}`} className="btn btn--secondary btn--small">
-        Squad page
+        National page
       </Link>
       {quizViable ? (
         <Link to={getCountryQuizHref(team.id)} className="btn btn--secondary btn--small">
@@ -111,7 +112,7 @@ export default function WorldCupHubPage() {
         <p className="world-cup-hub__stats" aria-label="Hub coverage">
           {stats.groupCount} groups · {stats.teamCount} nations in the draw ·{' '}
           {stats.liveInDraw} live in FootyBrain · {stats.quizViableCount} quiz-ready nations ·{' '}
-          {stats.quizReadyMemberships.toLocaleString()} quiz-ready in featured squads
+          {stats.quizReadyMemberships.toLocaleString()} quiz-ready in featured pools
         </p>
         <div className="world-cup-hub__prep-actions">
           <Link to={getInternationalQuizHref()} className="btn btn--primary btn--small">
@@ -139,13 +140,15 @@ export default function WorldCupHubPage() {
           </Link>
         </div>
         <p className="collections-page__section-desc">
-          Hosts and title contenders with live squad pages — one registry row per player.
+          Hosts and title contenders with live national pages. World Cup rosters are separate from the
+          broad national player pool.
         </p>
         <ul className="world-cup-nation-card-grid">
           {featuredNations.map((team) => {
             const linked = countLinkedPlayers(team.id);
             const quizReady = getNationalTeamQuizReadyCount(team.id);
             const learnPath = getLearningPathForNationalTeam(team.id);
+            const rosterStatus = getWorldCup2026RosterStatus(team.id);
             return (
               <li key={team.id} className="world-cup-nation-card">
                 <Link
@@ -162,6 +165,8 @@ export default function WorldCupHubPage() {
                     <p className="world-cup-nation-card__meta">
                       {linked} linked
                       {quizReady > 0 ? ` · ${quizReady} quiz-ready` : ''}
+                      {' · '}
+                      {rosterStatus.label}
                     </p>
                   </div>
                 </Link>
@@ -232,7 +237,8 @@ export default function WorldCupHubPage() {
         </h2>
         <p className="collections-page__section-desc">
           2026 group draw for orientation — open live nation pages or use Learn country when a path
-          exists. Preview-only teams are listed without squad pages.
+          exists. World Cup rosters are separate (may be TBD). Preview-only teams are listed without
+          national pages.
         </p>
         <div className="world-cup-groups-grid">
           {groups.map((group) => (
