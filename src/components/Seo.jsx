@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { upsertJsonLdScript } from '../utils/jsonLd';
 
 const SITE_NAME = 'FootyBrain';
 const SITE_DESCRIPTION =
@@ -40,6 +41,24 @@ function buildCanonical(pathname) {
   return `${origin}${pathname}`;
 }
 
+function isBreadcrumbPath(pathname) {
+  return (
+    pathname.startsWith('/league/') ||
+    pathname.startsWith('/team/') ||
+    pathname.startsWith('/player/')
+  );
+}
+
+function websiteJsonLd(origin) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: origin,
+    description: SITE_DESCRIPTION,
+  };
+}
+
 function isNoIndexPath(pathname) {
   return (
     pathname.startsWith('/dev/') ||
@@ -75,6 +94,7 @@ export default function Seo() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    const origin = window.location.origin;
     const canonicalUrl = buildCanonical(pathname);
     const title = titleForPath(pathname);
     const indexable = !isNoIndexPath(pathname);
@@ -98,6 +118,12 @@ export default function Seo() {
     ensureMeta('twitter:card').setAttribute('content', 'summary');
     ensureMeta('twitter:title').setAttribute('content', title);
     ensureMeta('twitter:description').setAttribute('content', SITE_DESCRIPTION);
+
+    // JSON-LD
+    upsertJsonLdScript('jsonld-website', websiteJsonLd(origin));
+    if (!isBreadcrumbPath(pathname)) upsertJsonLdScript('jsonld-breadcrumb', null);
+    if (!pathname.startsWith('/player/')) upsertJsonLdScript('jsonld-person', null);
+    if (!pathname.startsWith('/team/')) upsertJsonLdScript('jsonld-sportsteam', null);
 
     document.title = title;
   }, [pathname]);

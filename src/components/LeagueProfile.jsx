@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLeagueShard } from '../hooks/useLeagueShard';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
@@ -21,6 +22,7 @@ import LeagueClubChip from './LeagueClubChip';
 import LeagueHubStrip from './LeagueHubStrip';
 import PageFallback from './PageFallback';
 import PlayerCard from './PlayerCard';
+import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 
 const LEARNING_STEPS = [
   { label: 'Basics', title: 'League snapshot', field: 'description' },
@@ -46,6 +48,28 @@ function stepText(league, step) {
 }
 
 function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
+  useEffect(() => {
+    const canonical = getCanonicalUrl();
+    if (!canonical) return undefined;
+
+    const homeUrl = canonical.replace(/\/league\/[^/]+$/, '/');
+    const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
+
+    upsertJsonLdScript('jsonld-breadcrumb', {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+        { '@type': 'ListItem', position: 2, name: 'Browse', item: browseUrl },
+        { '@type': 'ListItem', position: 3, name: league.name, item: canonical },
+      ],
+    });
+
+    return () => {
+      upsertJsonLdScript('jsonld-breadcrumb', null);
+    };
+  }, [league.id, league.name]);
+
   const quizReadyPlayers = getQuizEligiblePlayers(leaguePlayers);
   const hasLeagueQuiz = quizReadyPlayers.length > 0;
   const featuredClubs = getLeagueFeaturedTeams(league, leagueTeams, leaguePlayers, {

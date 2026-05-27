@@ -26,6 +26,7 @@ import FavoriteButton from './FavoriteButton';
 import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
+import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 
 function parseDateOfBirth(value) {
   if (!value) return null;
@@ -171,6 +172,51 @@ export default function PlayerProfile() {
     () => (player ? getYouMayAlsoLikePlayers(player, { pool: relatedPool }) : []),
     [player, relatedPool],
   );
+
+  useEffect(() => {
+    if (!player) return undefined;
+    const canonical = getCanonicalUrl();
+    if (!canonical) return undefined;
+
+    const homeUrl = canonical.replace(/\/player\/[^/]+$/, '/');
+    const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
+    const teamUrl = `${homeUrl.replace(/\/$/, '')}/team/${player.teamId}`;
+    const resolvedTeamName = player?._teamName ?? peekTeamName(player.teamId) ?? 'Unknown';
+
+    upsertJsonLdScript('jsonld-breadcrumb', {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+        { '@type': 'ListItem', position: 2, name: 'Browse', item: browseUrl },
+        { '@type': 'ListItem', position: 3, name: player.name, item: canonical },
+      ],
+    });
+
+    const birthDate =
+      typeof player.dateOfBirth === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(player.dateOfBirth)
+        ? player.dateOfBirth
+        : undefined;
+
+    upsertJsonLdScript('jsonld-person', {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: player.name,
+      url: canonical,
+      nationality: player.nationality || undefined,
+      birthDate,
+      memberOf: {
+        '@type': 'SportsTeam',
+        name: resolvedTeamName,
+        url: teamUrl,
+      },
+    });
+
+    return () => {
+      upsertJsonLdScript('jsonld-breadcrumb', null);
+      upsertJsonLdScript('jsonld-person', null);
+    };
+  }, [player]);
 
   if (playerStatus === 'loading') {
     return (

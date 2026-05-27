@@ -20,8 +20,45 @@ import FavoriteButton from './FavoriteButton';
 import PageFallback from './PageFallback';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
+import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 
 function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
+  useEffect(() => {
+    const canonical = getCanonicalUrl();
+    if (!canonical) return undefined;
+
+    const homeUrl = canonical.replace(/\/team\/[^/]+$/, '/');
+    const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
+
+    upsertJsonLdScript('jsonld-breadcrumb', {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+        { '@type': 'ListItem', position: 2, name: 'Teams', item: teamsUrl },
+        { '@type': 'ListItem', position: 3, name: team.name, item: canonical },
+      ],
+    });
+
+    upsertJsonLdScript('jsonld-sportsteam', {
+      '@context': 'https://schema.org',
+      '@type': 'SportsTeam',
+      name: team.name,
+      sport: 'Soccer',
+      url: canonical,
+      memberOf: {
+        '@type': 'SportsOrganization',
+        name: leagueName,
+        url: `${homeUrl.replace(/\/$/, '')}/league/${team.leagueId}`,
+      },
+    });
+
+    return () => {
+      upsertJsonLdScript('jsonld-breadcrumb', null);
+      upsertJsonLdScript('jsonld-sportsteam', null);
+    };
+  }, [team.id, team.name, team.leagueId, leagueName]);
+
   const { isTeamSaved, toggleTeam } = useFavorites();
   const quizReadyRoster = getQuizEligiblePlayers(roster);
   const hasTeamQuiz = quizReadyRoster.length >= QUIZ_MIN_SESSION_POOL;
