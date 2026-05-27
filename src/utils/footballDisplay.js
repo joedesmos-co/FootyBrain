@@ -54,7 +54,60 @@ const COUNTRY_FLAG = {
   Cameroon: 'CM',
   "Côte d'Ivoire": 'CI',
   'Ivory Coast': 'CI',
+  'South Africa': 'ZA',
+  Panama: 'PA',
+  Iraq: 'IQ',
+  Jordan: 'JO',
+  Uzbekistan: 'UZ',
+  'New Zealand': 'NZ',
+  'Cape Verde': 'CV',
+  'Cabo Verde': 'CV',
+  Curaçao: 'CW',
+  Curacao: 'CW',
+  Qatar: 'QA',
+  'Saudi Arabia': 'SA',
+  Iran: 'IR',
+  'IR Iran': 'IR',
+  Tunisia: 'TN',
+  Algeria: 'DZ',
+  'Czechia': 'CZ',
+  'Czech Republic': 'CZ',
+  'Bosnia and Herzegovina': 'BA',
+  'Bosnia-Herzegovina': 'BA',
+  Haiti: 'HT',
+  'DR Congo': 'CD',
+  'Congo DR': 'CD',
 };
+
+/** League id for TM external club stubs (national-pool imports). */
+export const EXTERNAL_LEAGUE_ID = 'external';
+
+/** Consumer-facing label — sample data may still say "External clubs". */
+export const EXTERNAL_LEAGUE_DISPLAY_NAME = 'International club stubs';
+
+export function isExternalLeagueId(leagueId) {
+  return leagueId === EXTERNAL_LEAGUE_ID;
+}
+
+/**
+ * @param {{ id?: string, name?: string } | string} leagueOrId
+ */
+export function getLeagueDisplayName(leagueOrId) {
+  if (!leagueOrId) return '—';
+  if (typeof leagueOrId === 'string') {
+    return leagueOrId === EXTERNAL_LEAGUE_ID ? EXTERNAL_LEAGUE_DISPLAY_NAME : leagueOrId;
+  }
+  if (leagueOrId.id === EXTERNAL_LEAGUE_ID) return EXTERNAL_LEAGUE_DISPLAY_NAME;
+  return leagueOrId.name ?? '—';
+}
+
+/**
+ * @param {{ leagueId?: string, dataStatus?: string } | null | undefined} team
+ */
+export function isExternalClubStubTeam(team) {
+  if (!team) return false;
+  return team.leagueId === EXTERNAL_LEAGUE_ID || team.dataStatus === 'external-stub';
+}
 
 /** Stable league accent colours (database chips, hub cards). */
 export const LEAGUE_DISPLAY_ACCENTS = {

@@ -11,6 +11,7 @@ import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard'
 import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
+import { getLeagueDisplayName } from '../utils/footballDisplay';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
@@ -32,7 +33,7 @@ export default function BrowseDatabase() {
     Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
   const shardState = useLeagueShard(usesExternalShard ? leagueFilter : null);
   const activeLeagueName =
-    (leagueFilter && getManifestLeague(leagueFilter)?.name) || 'league';
+    (leagueFilter && getLeagueDisplayName(getManifestLeague(leagueFilter))) || 'league';
 
   const needsBundledData = Boolean(
     !usesExternalShard && (leagueFilter || teamFilter || search.trim()),
@@ -178,7 +179,7 @@ export default function BrowseDatabase() {
               <option value="">All leagues</option>
               {manifestLeagues.map((league) => (
                 <option key={league.id} value={league.id}>
-                  {league.name}
+                  {getLeagueDisplayName(league)}
                 </option>
               ))}
             </select>
@@ -303,7 +304,7 @@ export default function BrowseDatabase() {
             <Link key={league.id} to={`/league/${league.id}`} className="league-link-card">
               <LeagueBadge league={league} />
               <span>
-                <strong>{league.name}</strong>
+                <strong>{getLeagueDisplayName(league)}</strong>
                 <small>{league.country}</small>
               </span>
             </Link>

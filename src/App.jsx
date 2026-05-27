@@ -121,24 +121,31 @@ export default function App() {
               path="/world-cup"
               element={withPageSuspense(WorldCupHubPage, 'Loading World Cup hub…')}
             />
-            <Route
-              path="/dev/expanded-data"
-              element={
-                <Suspense
-                  fallback={
-                    <p className="dev-expanded__status" style={{ padding: '1.5rem' }}>
-                      Loading dev preview…
-                    </p>
+            {!import.meta.env.PROD ? (
+              <>
+                <Route
+                  path="/dev/expanded-data"
+                  element={
+                    <Suspense
+                      fallback={
+                        <p className="dev-expanded__status" style={{ padding: '1.5rem' }}>
+                          Loading dev preview…
+                        </p>
+                      }
+                    >
+                      <DevExpandedDataPage />
+                    </Suspense>
                   }
-                >
-                  <DevExpandedDataPage />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/dev/national-teams"
-              element={withPageSuspense(DevNationalTeamsPage, 'Loading national teams preview…')}
-            />
+                />
+                <Route
+                  path="/dev/national-teams"
+                  element={withPageSuspense(
+                    DevNationalTeamsPage,
+                    'Loading national teams preview…',
+                  )}
+                />
+              </>
+            ) : null}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

@@ -6577,6 +6577,52 @@ div.empty-state > p {
   color: #86efac;
 }
 
+.world-cup-group-card__badge--pending {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fcd34d;
+}
+
+.world-cup-hub__draw-coverage {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.national-team-profile__wc-roster-status {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fcd34d;
+}
+
+.national-team-profile__pool-banner {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.08);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.external-stub-notice {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.external-stub-notice--compact {
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
 .world-cup-group-card__learn {
   font-size: 0.78rem;
   margin-left: auto;

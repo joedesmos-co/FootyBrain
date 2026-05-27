@@ -6,9 +6,15 @@ import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { truncateClubText } from '../utils/clubIdentity';
-import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
+import {
+  formatCountryLabel,
+  getFootballAccentStyle,
+  getLeagueDisplayName,
+  isExternalClubStubTeam,
+} from '../utils/footballDisplay';
 import ClubHubStrip from './ClubHubStrip';
 import DataTrustNotice from './DataTrustNotice';
+import ExternalStubNotice from './ExternalStubNotice';
 import FavoriteButton from './FavoriteButton';
 import PageFallback from './PageFallback';
 import TeamBadge from './TeamBadge';
@@ -103,6 +109,8 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
       </header>
 
       <DataTrustNotice compact />
+
+      {isExternalClubStubTeam(team) ? <ExternalStubNotice compact /> : null}
 
       <ClubHubStrip team={team} leagueName={leagueName} />
 
@@ -243,7 +251,12 @@ export default function TeamProfile() {
 
   const squadLoading = usesShard && shardState.status === 'loading';
   const leagueName =
-    team && shellMatchesRoute ? shell.getLeagueName(team.leagueId) : '';
+    team && shellMatchesRoute
+      ? getLeagueDisplayName({
+          id: team.leagueId,
+          name: shell.getLeagueName(team.leagueId),
+        })
+      : '';
 
   if (!shellMatchesRoute) {
     return <PageFallback label="Loading team…" />;

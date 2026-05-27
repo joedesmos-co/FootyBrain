@@ -11,6 +11,8 @@ import { QUIZ_NATIONAL_TEAM_MIN_POOL } from '../utils/quizSession';
 import NationalTeamBadge from './NationalTeamBadge';
 import DataTrustNotice from './DataTrustNotice';
 import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData';
+import { getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters';
+import { isWorldCup2026QualifiedTeam } from '../data/worldCup2026Prep';
 import TeamSquadView from './TeamSquadView';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
@@ -38,9 +40,21 @@ export default function NationalTeamProfile() {
   useRecordRecentView('national-team', nationalTeam?.id);
 
   if (!nationalTeam) {
+    const wcQualifiedNotLive = teamId && isWorldCup2026QualifiedTeam(teamId);
     return (
       <div className="page">
-        <p className="empty-state">National team not found.</p>
+        <p className="empty-state">
+          {wcQualifiedNotLive
+            ? 'This World Cup team is in the 2026 draw for context, but FootyBrain does not have a national pool page for them yet.'
+            : 'National team not found.'}
+        </p>
+        {wcQualifiedNotLive ? (
+          <p className="collections-page__section-desc">
+            Browse live national pools from the{' '}
+            <Link to="/world-cup">World Cup hub</Link> or the{' '}
+            <Link to="/national-teams">national teams</Link> list.
+          </p>
+        ) : null}
         <Link to="/national-teams" className="btn btn--secondary">
           Back to national teams
         </Link>
@@ -51,6 +65,11 @@ export default function NationalTeamProfile() {
   const squad = getPlayersForNationalTeam(nationalTeam.id);
   const quizReady = getQuizEligiblePlayers(squad);
   const canLaunchNationalQuiz = quizReady.length >= QUIZ_NATIONAL_TEAM_MIN_POOL;
+  const wcRosterStatus = isWorldCup2026QualifiedTeam(nationalTeam.id)
+    ? getWorldCup2026RosterStatus(nationalTeam.id)
+    : null;
+  const showBrowseOnlyPoolBanner =
+    squad.length >= 8 && quizReady.length < QUIZ_NATIONAL_TEAM_MIN_POOL;
 
   const clubFlows = (() => {
     const counts = new Map();
@@ -81,6 +100,9 @@ export default function NationalTeamProfile() {
               {quizReady.length > 0 ? ` · ${quizReady.length} quiz-ready` : ''}
               {nationalTeam.fifaRanking != null ? ` · FIFA rank ${nationalTeam.fifaRanking}` : ''}
             </p>
+            {wcRosterStatus ? (
+              <p className="national-team-profile__wc-roster-status">{wcRosterStatus.label}</p>
+            ) : null}
             {nationalTeam.shortHistory && (
               <p className="national-team-profile__lede">{nationalTeam.shortHistory}</p>
             )}
@@ -109,6 +131,13 @@ export default function NationalTeamProfile() {
       </header>
 
       <DataTrustNotice compact />
+
+      {showBrowseOnlyPoolBanner ? (
+        <p className="national-team-profile__pool-banner" role="status">
+          This national pool is available for browsing. Quiz mode unlocks after more players are
+          editorially approved.
+        </p>
+      ) : null}
 
       {nationalTeam.fanGuide && (
         <details className="profile__section national-team-profile__fan-guide">

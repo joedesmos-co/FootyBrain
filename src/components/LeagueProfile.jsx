@@ -7,7 +7,13 @@ import {
   getLeagueSpotlightPlayers,
   getLeagueTeamQuizCounts,
 } from '../utils/leagueFeatured';
-import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
+import {
+  formatCountryLabel,
+  getFootballAccentStyle,
+  getLeagueDisplayName,
+  isExternalLeagueId,
+} from '../utils/footballDisplay';
+import ExternalStubNotice from './ExternalStubNotice';
 import { truncateLeagueText } from '../utils/leagueIdentity';
 import DataTrustNotice from './DataTrustNotice';
 import LeagueBadge from './LeagueBadge';
@@ -64,7 +70,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           <LeagueBadge league={league} size="profile" />
           <div>
             <p className="profile__league">{formatCountryLabel(league.country)}</p>
-            <h1>{league.name}</h1>
+            <h1>{getLeagueDisplayName(league)}</h1>
             <p className="profile__sub">
               {leagueTeams.length} clubs · {quizReadyPlayers.length} quiz-ready ·{' '}
               {leaguePlayers.length} players listed
@@ -88,6 +94,8 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       </header>
 
       <DataTrustNotice compact />
+
+      {isExternalLeagueId(league.id) ? <ExternalStubNotice compact /> : null}
 
       <LeagueHubStrip
         league={league}

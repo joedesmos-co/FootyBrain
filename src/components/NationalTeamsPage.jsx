@@ -21,9 +21,9 @@ export default function NationalTeamsPage() {
       <header className="page-header">
         <h1>National teams</h1>
         <p>
-          Men&apos;s national sides in FootyBrain. Squads list players already in the club
-          database — one profile per athlete. National quizzes need at least{' '}
-          {LIVE_NATIONAL_TEAM_MIN_QUIZ} quiz-ready linked players.
+          Men&apos;s national sides in FootyBrain. Pages show broad national player pools from the
+          club database — not official World Cup rosters. National quizzes need at least{' '}
+          {LIVE_NATIONAL_TEAM_MIN_QUIZ} quiz-ready linked players with editorial hints.
         </p>
       </header>
 
@@ -77,12 +77,12 @@ export default function NationalTeamsPage() {
                       <p className="national-teams-page__count">
                         {linked} linked
                         {quizReady > 0 ? ` · ${quizReady} quiz-ready` : ''}
-                        {!isLiveNationalTeamQuizViable(team.id) && (
+                        {linked > 0 && !isLiveNationalTeamQuizViable(team.id) ? (
                           <span className="national-teams-page__quiz-pending">
                             {' '}
-                            · quiz needs {LIVE_NATIONAL_TEAM_MIN_QUIZ}+
+                            · browse pool · quiz needs {LIVE_NATIONAL_TEAM_MIN_QUIZ}+ approved
                           </span>
-                        )}
+                        ) : null}
                       </p>
                     </div>
                   </Link>

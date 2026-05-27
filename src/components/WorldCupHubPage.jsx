@@ -16,7 +16,11 @@ import {
   getWorldCupTopPlayers,
   WORLD_CUP_HUB_META,
 } from '../data/worldCupHubData';
-import { getWorldCup2026Groups } from '../data/worldCup2026Prep';
+import {
+  getWorldCup2026Groups,
+  getWorldCupDrawNationBadgeLabel,
+  WORLD_CUP_DRAW_POOL_COVERAGE_NOTE,
+} from '../data/worldCup2026Prep';
 import { getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters';
 import {
   countLinkedPlayers,
@@ -111,7 +115,8 @@ export default function WorldCupHubPage() {
         <p>{WORLD_CUP_HUB_META.prepNote}</p>
         <p className="world-cup-hub__stats" aria-label="Hub coverage">
           {stats.groupCount} groups · {stats.teamCount} nations in the draw ·{' '}
-          {stats.liveInDraw} live in FootyBrain · {stats.quizViableCount} quiz-ready nations ·{' '}
+          {stats.liveInDraw} live national pools · {stats.poolNotAddedInDraw} pool pages not added
+          yet · {stats.quizViableCount} quiz-ready nations ·{' '}
           {stats.quizReadyMemberships.toLocaleString()} quiz-ready in featured pools
         </p>
         <div className="world-cup-hub__prep-actions">
@@ -237,8 +242,11 @@ export default function WorldCupHubPage() {
         </h2>
         <p className="collections-page__section-desc">
           2026 group draw for orientation — open live nation pages or use Learn country when a path
-          exists. World Cup rosters are separate (may be TBD). Preview-only teams are listed without
-          national pages.
+          exists. Each live page is a broad national player pool, not an official World Cup roster
+          (tournament rosters stay TBD).
+        </p>
+        <p className="world-cup-hub__draw-coverage" role="note">
+          {WORLD_CUP_DRAW_POOL_COVERAGE_NOTE}
         </p>
         <div className="world-cup-groups-grid">
           {groups.map((group) => (
@@ -256,10 +264,10 @@ export default function WorldCupHubPage() {
                       className={
                         nation.isLive
                           ? 'world-cup-group-card__badge world-cup-group-card__badge--live'
-                          : 'world-cup-group-card__badge'
+                          : 'world-cup-group-card__badge world-cup-group-card__badge--pending'
                       }
                     >
-                      {nation.isLive ? 'Live' : 'Preview'}
+                      {getWorldCupDrawNationBadgeLabel(nation)}
                     </span>
                     {nation.learnPathId ? (
                       <Link

@@ -11,7 +11,11 @@ import {
   getSimilarRolePlayers,
   getYouMayAlsoLikePlayers,
 } from '../utils/relatedPlayers';
-import { formatPosition, getFootballAccentStyle } from '../utils/footballDisplay';
+import {
+  formatPosition,
+  getFootballAccentStyle,
+  getLeagueDisplayName,
+} from '../utils/footballDisplay';
 import CountryFlag from './CountryFlag';
 import DataTrustNotice from './DataTrustNotice';
 import FavoriteButton from './FavoriteButton';
@@ -146,7 +150,10 @@ export default function PlayerProfile() {
 
   const saved = isPlayerSaved(player.id);
   const teamName = getTeamName(player.teamId);
-  const leagueName = getLeagueName(player.leagueId);
+  const leagueName = getLeagueDisplayName({
+    id: player.leagueId,
+    name: getLeagueName(player.leagueId),
+  });
   const nationalTeamPlainLabel = getNationalTeamPlainLabel(player);
   const liveNationalTeam =
     ntModuleState.mod && ntModuleState.playerId === player.id
