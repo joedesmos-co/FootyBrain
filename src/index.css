@@ -4198,6 +4198,12 @@ input:focus-visible {
   font-variant-numeric: tabular-nums;
 }
 
+.quiz-summary__missed {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--color-text);
+}
+
 .quiz-clues {
   margin: 0;
   display: grid;
@@ -4272,6 +4278,11 @@ input:focus-visible {
   margin: 0.75rem 0;
   color: var(--color-text);
   font-size: 0.92rem;
+}
+
+.quiz-feedback__tip {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--color-muted);
 }
 
 .quiz-feedback__details {
@@ -4794,6 +4805,11 @@ div.empty-state > p {
 
   .quiz-scoreboard {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Quiz: avoid two competing timers on mobile (keep in-panel timer). */
+  .quiz-scoreboard__timer {
+    display: none;
   }
 
   .quiz-form .btn {

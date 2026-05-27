@@ -14,6 +14,7 @@ import {
   buildQuizPlayerPool,
   getClueFactsForQuestion,
   getInitialHintCount,
+  getWrongAnswerTip,
   getPoolFocusHint,
   getQuizClubEmptyState,
   getQuizCountryEmptyState,
@@ -133,6 +134,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
   const [timedOut, setTimedOut] = useState(false);
+  const [sessionResults, setSessionResults] = useState(() => []);
+  const [sessionEnded, setSessionEnded] = useState(false);
 
   const sessionMilestoneRef = useRef(false);
   const lastQuestionPlayerIdRef = useRef(null);
@@ -194,6 +197,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     setScore({ correct: 0, incorrect: 0, totalAnswered: 0 });
     setStreak(0);
     setBestStreak(0);
+    setSessionResults([]);
+    setSessionEnded(false);
     sessionMilestoneRef.current = false;
   }, []);
 
@@ -265,6 +270,10 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         incorrect: s.incorrect + (isCorrect ? 0 : 1),
         totalAnswered: s.totalAnswered + 1,
       }));
+      setSessionResults((prev) => [
+        ...prev,
+        { player: currentPlayer, isCorrect, timedOut: Boolean(timedOut) },
+      ]);
       setStreak(newStreak);
       setBestStreak(newBest);
       setLastXpFeedback(isCorrect ? formatQuizXpFeedback(xpResult) : '');
@@ -290,6 +299,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       score.totalAnswered,
       streak,
       teamFilter,
+      timedOut,
     ],
   );
 
@@ -401,6 +411,19 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     resetCurrentQuestion();
   };
 
+  const handleClearFilters = useCallback(() => {
+    resetCurrentQuestion();
+    resetSessionStats();
+    setPoolFocus('all');
+    setLeagueFilter('');
+    setTeamFilter('');
+    setNationalTeamFilter('');
+    setPositionFilter('');
+    setDifficulty('medium');
+    setQuizType('classic');
+    setTimeLimitSeconds(0);
+  }, [resetCurrentQuestion, resetSessionStats]);
+
   const showAnotherHint = () => {
     if (!currentPlayer) return;
     setHintsShown((n) => Math.min(n + 1, currentPlayer.quizHints.length));
@@ -457,9 +480,15 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     nationalTeamFilter,
     teamFilter,
   );
+  const isThinPool =
+    playerPool.length > 0 &&
+    playerPool.length < QUIZ_MIN_SESSION_POOL &&
+    (poolFocus === 'club' || poolFocus === 'national' || poolFocus === 'international');
   const questionPrompt = getQuizPromptForType(quizType);
   const timedLabel =
     QUIZ_TIMED_PRESETS.find((preset) => preset.id === timeLimitSeconds)?.label ?? 'Off';
+  const timedHelp =
+    timeLimitSeconds > 0 ? `Timed mode gives ${timedLabel} per question.` : '';
 
   return (
     <div className="page quiz">
@@ -658,6 +687,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           {isClassicQuiz ? ` · ${currentDifficulty?.description}` : ''}
           {timeLimitSeconds > 0 ? ` · ${timedLabel} per question` : ''}
         </p>
+        {timedHelp ? <p className="quiz-filters__focus-note">{timedHelp}</p> : null}
         {ambiguousLastNames.size > 0 && playerPool.length > 0 && (
           <p className="quiz-filters__focus-note" role="note">
             Shared surnames in this pool — use each player&apos;s full name (last name alone
@@ -698,6 +728,48 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       </section>
 
       <section className="quiz-panel">
+        {sessionEnded && !currentPlayer && sessionResults.length > 0 && (
+          <article className="info-card quiz-summary" aria-label="Session summary">
+            <h2>Session summary</h2>
+            <p className="filters__count">
+              {sessionResults.filter((r) => r.isCorrect).length}/{sessionResults.length} correct
+            </p>
+            {sessionResults.some((r) => !r.isCorrect) ? (
+              <>
+                <h3 className="section-label">Missed</h3>
+                <ul className="quiz-summary__missed">
+                  {sessionResults
+                    .filter((r) => !r.isCorrect)
+                    .slice(-10)
+                    .reverse()
+                    .map((r) => (
+                      <li key={`miss-${r.player.id}`}>
+                        <Link to={`/player/${r.player.id}`}>Learn {r.player.name} →</Link>
+                      </li>
+                    ))}
+                </ul>
+              </>
+            ) : (
+              <p className="empty-state">No misses yet — nice work.</p>
+            )}
+            <div className="empty-state__actions">
+              <button
+                type="button"
+                className="btn btn--primary"
+                onClick={() => {
+                  setSessionEnded(false);
+                  resetCurrentQuestion();
+                }}
+              >
+                Continue
+              </button>
+              <button type="button" className="btn btn--secondary" onClick={handleClearFilters}>
+                New session
+              </button>
+            </div>
+          </article>
+        )}
+
         {!currentPlayer && !canStartQuiz && (
           <div
             className={`quiz-panel__empty${scopedEmptyState ? ' quiz-panel__empty--country' : ''}`}
@@ -714,6 +786,11 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 {poolHint}
               </p>
             )}
+            {isThinPool ? (
+              <p className="quiz-panel__empty-actions" role="note">
+                Need {QUIZ_MIN_SESSION_POOL}+ quiz-ready players to start a fair session.
+              </p>
+            ) : null}
             {countryEmptyState?.showSquadLink && selectedNationalTeam && (
               <p className="quiz-panel__empty-actions">
                 <Link to={`/national-team/${selectedNationalTeam.id}`}>
@@ -721,6 +798,10 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 </Link>
                 {' · '}
                 <Link to="/national-teams">All national teams</Link>
+                {' · '}
+                <button type="button" className="btn btn--secondary btn--small" onClick={handleClearFilters}>
+                  Clear filters
+                </button>
               </p>
             )}
             {clubEmptyState?.showSquadLink && selectedTeam && (
@@ -732,8 +813,19 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     <Link to={`/quiz?league=${selectedTeam.leagueId}`}>League quiz</Link>
                   </>
                 )}
+                {' · '}
+                <button type="button" className="btn btn--secondary btn--small" onClick={handleClearFilters}>
+                  Clear filters
+                </button>
               </p>
             )}
+            {!countryEmptyState?.showSquadLink && !clubEmptyState?.showSquadLink ? (
+              <p className="quiz-panel__empty-actions">
+                <button type="button" className="btn btn--secondary btn--small" onClick={handleClearFilters}>
+                  Clear filters
+                </button>
+              </p>
+            ) : null}
           </div>
         )}
 
@@ -871,6 +963,15 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 <h3>
                   {timedOut ? "Time's up!" : 'Not quite.'} The answer was {currentPlayer.name}.
                 </h3>
+                {(() => {
+                  const tip = getWrongAnswerTip({
+                    guess: answer,
+                    correctName: currentPlayer.name,
+                    ambiguousLastNames,
+                    timedOut,
+                  });
+                  return tip?.tip ? <p className="quiz-feedback__tip">{tip.tip}</p> : null;
+                })()}
                 <dl className="quiz-feedback__details">
                   <div>
                     <dt>Club</dt>
@@ -892,9 +993,18 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             )}
 
             {feedback && (
-              <button type="button" className="btn btn--primary" onClick={startQuestion}>
-                Next question
-              </button>
+              <div className="empty-state__actions">
+                <button type="button" className="btn btn--primary" onClick={startQuestion}>
+                  Next question
+                </button>
+                <button
+                  type="button"
+                  className="btn btn--secondary"
+                  onClick={() => setSessionEnded(true)}
+                >
+                  End session
+                </button>
+              </div>
             )}
           </>
         )}

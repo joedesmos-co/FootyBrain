@@ -456,3 +456,40 @@ export function answersMatch(guess, correctName, ambiguousLastNames = new Set())
   const lastName = getNormalizedLastNameToken(c);
   return g === lastName && lastName.length > 3 && !ambiguousLastNames.has(lastName);
 }
+
+/**
+ * Lightweight explanation for wrong answers (does not change matching rules).
+ * @param {{ guess: string, correctName: string, ambiguousLastNames?: Set<string>, timedOut?: boolean }} params
+ * @returns {{ title?: string, tip?: string } | null}
+ */
+export function getWrongAnswerTip({
+  guess,
+  correctName,
+  ambiguousLastNames = new Set(),
+  timedOut = false,
+}) {
+  if (timedOut) {
+    return { title: "Time's up", tip: 'Tip: timed mode gives a fixed time per question.' };
+  }
+  const g = normalizeAnswer(guess);
+  const c = normalizeAnswer(correctName);
+  if (!g || !c) return null;
+
+  const lastName = getNormalizedLastNameToken(c);
+  if (g === lastName && lastName.length > 3 && ambiguousLastNames.has(lastName)) {
+    return {
+      title: 'Surname shortcut blocked',
+      tip: 'Tip: multiple players share that surname in this pool — use the full name.',
+    };
+  }
+
+  if (g.replace(/\s+/g, '') === c.replace(/\s+/g, '')) {
+    return { tip: 'Tip: spacing and punctuation are ignored — try the player’s full name.' };
+  }
+
+  if (g.length <= 3) {
+    return { tip: 'Tip: use more of the name (short guesses rarely match).' };
+  }
+
+  return { tip: 'Tip: try the full name (spelling matters).' };
+}
