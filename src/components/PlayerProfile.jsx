@@ -70,10 +70,44 @@ function calculateAgeFromDate(value) {
   return age;
 }
 
-function formatValue(value, fallback = 'Not available') {
-  if (value === 0) return '0';
+function normalizeLabel(value) {
   const text = String(value ?? '').trim();
-  return text || fallback;
+  return text;
+}
+
+function pickFirstPresent(...values) {
+  for (const v of values) {
+    const t = normalizeLabel(v);
+    if (t) return t;
+  }
+  return '';
+}
+
+function toTagList(value, max = 8) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return [];
+  const parts = raw
+    .split(/[·•,;|/]/g)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const uniq = [];
+  const seen = new Set();
+  for (const p of parts) {
+    const key = p.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    uniq.push(p);
+    if (uniq.length >= max) break;
+  }
+  return uniq;
+}
+
+function toStringList(value, max = 12) {
+  if (!value) return [];
+  if (Array.isArray(value)) {
+    return value.map((v) => String(v).trim()).filter(Boolean).slice(0, max);
+  }
+  return toTagList(value, max);
 }
 
 /** Citizenship / NT label when there is no live `/national-team` page. */
@@ -279,6 +313,23 @@ export default function PlayerProfile() {
   const ageDisplay =
     resolvedAge !== '' && resolvedAge != null ? String(resolvedAge) : null;
 
+  const preferredFoot = pickFirstPresent(player.preferredFoot, player.foot, player.strongFoot);
+  const height = pickFirstPresent(player.height, player.heightCm, player.heightCM);
+
+  const playStyleTags = toTagList(player.playingStyle, 7);
+  const playStyleSummary = pickFirstPresent(player.playStyleSummary, player.styleSummary);
+
+  const strengths = toStringList(
+    player.strengths ?? player.keyStrengths ?? player.signatureStrengths,
+    10,
+  );
+
+  const honors = toStringList(player.honors ?? player.honours ?? player.trophies, 12);
+  const showHonors = honors.length > 0;
+
+  const funFact = normalizeLabel(player.quickFact || displayFact);
+  const showFunFact = Boolean(funFact);
+
   const playerInfoItems = [
     {
       label: 'Club',
@@ -322,7 +373,8 @@ export default function PlayerProfile() {
     { label: 'Position', value: formatPosition(player.position) },
     ageDisplay && { label: 'Age', value: ageDisplay },
     dateOfBirth && { label: 'Date of birth', value: dateOfBirth },
-    { label: 'Importance Score', value: formatValue(player.importanceScore) },
+    preferredFoot && { label: 'Preferred foot', value: preferredFoot },
+    height && { label: 'Height', value: String(height) },
   ].filter(Boolean);
 
   return (
@@ -417,7 +469,10 @@ export default function PlayerProfile() {
       </nav>
 
       <section className="info-card player-info-card" aria-labelledby="player-info-title">
-        <h2 id="player-info-title">Club &amp; country</h2>
+        <div className="card-title-row">
+          <h2 id="player-info-title">Snapshot</h2>
+          <span className="card-title-row__meta">RW, CF, DM… stays visible</span>
+        </div>
         <dl className="player-info-grid">
           {playerInfoItems.map((item) => (
             <div key={item.label} className="player-info-grid__item">
@@ -429,26 +484,39 @@ export default function PlayerProfile() {
       </section>
 
       <section className="player-profile__body" aria-label={`${player.name} profile`}>
-        <article className="info-card player-snapshot">
-          <h2>Snapshot</h2>
-          <ul className="player-snapshot__list">
-            <li>
-              <span className="player-snapshot__label">Style</span>
-              <span>{player.playingStyle?.trim() || '—'}</span>
-            </li>
-            <li>
-              <span className="player-snapshot__label">Fact</span>
-              <span>{displayFact}</span>
-            </li>
-            <li>
-              <span className="player-snapshot__label">Importance</span>
-              <span>{roleSummary}</span>
-            </li>
-          </ul>
-        </article>
+        {(playStyleTags.length > 0 || playStyleSummary) && (
+          <article className="info-card">
+            <h2>Play style</h2>
+            {playStyleTags.length > 0 && (
+              <ul className="tag-list" aria-label="Play style tags">
+                {playStyleTags.map((tag) => (
+                  <li key={tag} className="tag">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {playStyleSummary ? (
+              <p className="card-note">{playStyleSummary}</p>
+            ) : null}
+          </article>
+        )}
+
+        {strengths.length > 0 && (
+          <article className="info-card">
+            <h2>Strengths</h2>
+            <ul className="tag-list tag-list--tight" aria-label="Strengths">
+              {strengths.map((s) => (
+                <li key={s} className="tag tag--solid">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </article>
+        )}
 
         <article className="info-card">
-          <h2>Career</h2>
+          <h2>Career highlights</h2>
           {hasCareerStops ? (
             <ol className="career-timeline career-timeline--compact">
               {careerHistory.map((entry) => (
@@ -466,23 +534,61 @@ export default function PlayerProfile() {
           )}
           {hasCareerStops && (
             <details className="player-profile__details">
-              <summary>Career summary</summary>
+              <summary>Career notes</summary>
               <p>{careerSummary}</p>
             </details>
           )}
         </article>
 
+        {showHonors ? (
+          <article className="info-card">
+            <h2>Honors</h2>
+            <ul className="bullet-list" aria-label="Honors and trophies">
+              {honors.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+          </article>
+        ) : null}
+
+        {showFunFact ? (
+          <article className="info-card">
+            <h2>Fun facts</h2>
+            <ul className="bullet-list" aria-label="Fun facts">
+              <li>{funFact}</li>
+            </ul>
+          </article>
+        ) : null}
+
         {hasQuizClues && (
           <article className="info-card player-study">
             <h2>Quiz clues</h2>
             <p className="player-study__note">Short hints for recall — not full answers.</p>
-            <ul className="player-study__hints">
+            <ul className="tag-list tag-list--stack" aria-label="Quiz clues">
               {quizHints.map((hint, index) => (
-                <li key={index}>{hint}</li>
+                <li key={index} className="tag tag--hint">
+                  {hint}
+                </li>
               ))}
             </ul>
           </article>
         )}
+
+        <article className="info-card">
+          <h2>Player summary</h2>
+          <ul className="player-snapshot__list">
+            <li>
+              <span className="player-snapshot__label">Importance</span>
+              <span>{roleSummary}</span>
+            </li>
+            {displayFact ? (
+              <li>
+                <span className="player-snapshot__label">Note</span>
+                <span>{displayFact}</span>
+              </li>
+            ) : null}
+          </ul>
+        </article>
       </section>
 
       {relatedLoading ? (
