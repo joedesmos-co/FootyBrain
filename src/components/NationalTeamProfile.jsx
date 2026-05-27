@@ -5,6 +5,7 @@ import {
   countLinkedPlayers,
   getNationalTeamById,
   getPlayersForNationalTeam,
+  isLiveNationalTeamId,
 } from '../data/nationalTeamData';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_NATIONAL_TEAM_MIN_POOL } from '../utils/quizSession';
@@ -40,17 +41,19 @@ export default function NationalTeamProfile() {
   useRecordRecentView('national-team', nationalTeam?.id);
 
   if (!nationalTeam) {
-    const wcQualifiedNotLive = teamId && isWorldCup2026QualifiedTeam(teamId);
+    const poolNotAddedYet =
+      teamId && isWorldCup2026QualifiedTeam(teamId) && !isLiveNationalTeamId(teamId);
     return (
       <div className="page">
         <p className="empty-state">
-          {wcQualifiedNotLive
-            ? 'This World Cup team is in the 2026 draw for context, but FootyBrain does not have a national pool page for them yet.'
+          {poolNotAddedYet
+            ? 'Pool not added yet.'
             : 'National team not found.'}
         </p>
-        {wcQualifiedNotLive ? (
+        {poolNotAddedYet ? (
           <p className="collections-page__section-desc">
-            Browse live national pools from the{' '}
+            This World Cup team is in the 2026 draw for orientation only — FootyBrain does not
+            have a national player pool page yet. Browse live pools from the{' '}
             <Link to="/world-cup">World Cup hub</Link> or the{' '}
             <Link to="/national-teams">national teams</Link> list.
           </p>

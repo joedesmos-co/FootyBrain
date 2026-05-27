@@ -30,6 +30,7 @@ import {
   QUIZ_TYPE_OPTIONS,
 } from '../utils/quizSession';
 import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
+import { getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
@@ -166,6 +167,11 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         : null,
     [nationalTeamFilter, registry],
   );
+
+  const leaguesForFilter = useMemo(() => {
+    const leagueIdsWithQuizPlayers = new Set(players.map((p) => p.leagueId).filter(Boolean));
+    return leagues.filter((league) => leagueIdsWithQuizPlayers.has(league.id));
+  }, [leagues, players]);
 
   const teamsInLeague = useMemo(() => {
     if (!leagueFilter) return teams;
@@ -538,9 +544,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 <option value="">
                   {poolFocus === 'league' ? 'Select league…' : 'All leagues'}
                 </option>
-                {leagues.map((league) => (
+                {leaguesForFilter.map((league) => (
                   <option key={league.id} value={league.id}>
-                    {league.name}
+                    {getLeagueDisplayName(league)}
                   </option>
                 ))}
               </select>

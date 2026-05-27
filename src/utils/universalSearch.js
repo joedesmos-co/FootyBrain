@@ -18,6 +18,7 @@ import {
   getSearchGroupOrder,
   scorePlayerIntentBoost,
 } from './searchIntent';
+import { getLeagueDisplayName } from './footballDisplay';
 import { isWeakSearchScore, matchScoreForFields, normalizeForSearch } from './textSearch';
 
 /** Skip full-player scan on single-character queries (teams/leagues still match). */
@@ -155,11 +156,11 @@ function collectSearchBuckets(query, ctx) {
     buckets.league.push({
       type: 'league',
       id: league.id,
-      name: league.name,
+      name: getLeagueDisplayName(league),
       subtitle: league.country,
       path: `/league/${league.id}`,
       score,
-      league,
+      league: { ...league, name: getLeagueDisplayName(league) },
     });
   }
 

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSearchIndex } from '../hooks/useSearchIndex';
+import { getLeagueDisplayName } from '../utils/footballDisplay';
 import { RESULT_TYPE_LABELS, searchUniversalGrouped } from '../utils/universalSearch';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
@@ -30,10 +31,14 @@ function getFocusableElements(root) {
  */
 function buildHelpersFromIndex(index) {
   const teamMap = new Map(index.teams.map((t) => [t.id, t.name]));
-  const leagueMap = new Map(index.leagues.map((l) => [l.id, l.name]));
+  const leagueMap = new Map(index.leagues.map((l) => [l.id, l]));
   return {
     getTeamName: (id) => teamMap.get(id) ?? id ?? 'Unknown',
-    getLeagueName: (id) => leagueMap.get(id) ?? id ?? 'Unknown',
+    getLeagueName: (id) => {
+      const league = leagueMap.get(id);
+      if (league) return getLeagueDisplayName(league);
+      return id ?? 'Unknown';
+    },
   };
 }
 
@@ -68,8 +73,11 @@ function buildSearchContextFromIndex(index) {
     leagueName: t.leagueName ?? getLeagueName(t.leagueId),
   }));
 
-  // Leagues: scoring uses league.name, league.country, league.id.
-  const leagues = index.leagues;
+  // Leagues: scoring uses league.name, league.country, league.id (display name mapped for UI).
+  const leagues = index.leagues.map((league) => ({
+    ...league,
+    name: getLeagueDisplayName(league),
+  }));
 
   // National teams: scoring uses nt.displayName, nt.country, nt.confederation, nt.id, nt.searchAliases.
   // Index entries have aliases merged into nt.aliases — expose as searchAliases for scoring compat.
@@ -95,10 +103,14 @@ async function loadBundledContext() {
   bundledContext = {
     players: sd.players,
     teams: sd.teams,
-    leagues: sd.leagues,
+    leagues: sd.leagues.map((league) => ({
+      ...league,
+      name: getLeagueDisplayName(league),
+    })),
     nationalTeams: ntMod.getLiveNationalTeams(),
     getTeamName: sd.getTeamName,
-    getLeagueName: sd.getLeagueName,
+    getLeagueName: (id) =>
+      getLeagueDisplayName({ id, name: sd.getLeagueName(id) }),
     getMembership: ntMod.getMembershipForPlayer,
   };
   return bundledContext;
