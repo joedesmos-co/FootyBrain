@@ -2,10 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
 import {
-  countLinkedPlayers,
   getLiveNationalTeams,
-  getNationalTeamQuizReadyCount,
   getViableLiveNationalTeams,
+  isLiveNationalTeamQuizViable,
 } from '../data/nationalTeamData';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { getTodayKey } from '../hooks/useDailyCompletionStatus';
@@ -101,9 +100,9 @@ export default function BrowseDatabase() {
 
   const dailyFeatured = useMemo(() => {
     if (quizStatus !== 'ready' || !quizRegistry?.players || !quizRegistry?.teams) {
-      return { mode: 'club', players: [], teams: [], nationalTeams: [] };
+      return { mode: 'club', players: [], teams: [], leagues: [], nationalTeams: [] };
     }
-    return getDailyFeatured(featuredPickPool, quizRegistry.teams, todayKey);
+    return getDailyFeatured(featuredPickPool, quizRegistry.teams, manifestLeagues, todayKey);
   }, [quizStatus, quizRegistry, featuredPickPool, todayKey]);
 
   const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
@@ -351,6 +350,7 @@ export default function BrowseDatabase() {
         <TodaysPicksSection
           featuredPlayers={dailyFeatured.players}
           featuredTeams={dailyFeatured.teams}
+          featuredLeagues={dailyFeatured.leagues}
           featuredNationalTeams={dailyFeatured.nationalTeams}
           picksMode={dailyFeatured.mode}
         />
@@ -383,7 +383,7 @@ export default function BrowseDatabase() {
       {(showPlayersTab || showNationalTeamsTab) && (
       <section className="national-hub-strip" aria-labelledby="national-hubs-title">
         <div className="national-hub-strip__header">
-          <h2 id="national-hubs-title">National team hubs</h2>
+          <h2 id="national-hubs-title">National teams</h2>
           <Link to="/national-teams" className="national-hub-strip__link">
             All {liveNationalTeams.length} nations
           </Link>
@@ -394,20 +394,28 @@ export default function BrowseDatabase() {
         </p>
         <div className="national-hub-strip__grid">
           {viableNationalTeams.map((team) => (
-            <Link
-              key={team.id}
-              to={`/national-team/${team.id}`}
-              className="national-hub-strip__card"
-            >
-              <NationalTeamBadge nationalTeam={team} size="thumb" />
-              <span>
-                <strong>{team.displayName}</strong>
-                <small>
-                  {countLinkedPlayers(team.id)} linked · {getNationalTeamQuizReadyCount(team.id)}{' '}
-                  with quiz mode
-                </small>
-              </span>
-            </Link>
+            <article key={team.id} className="national-hub-strip__card">
+              <Link to={`/national-team/${team.id}`} className="national-hub-strip__card-main">
+                <NationalTeamBadge nationalTeam={team} size="thumb" />
+                <span>
+                  <strong>{team.displayName}</strong>
+                  <small>{team.confederation ?? team.country}</small>
+                </span>
+              </Link>
+              <div className="national-hub-strip__card-actions">
+                <Link to={`/national-team/${team.id}`} className="btn btn--secondary btn--small">
+                  Explore players
+                </Link>
+                {isLiveNationalTeamQuizViable(team.id) ? (
+                  <Link
+                    to={`/quiz?nationalTeam=${team.id}&poolFocus=national&worldCup=prep`}
+                    className="btn btn--primary btn--small"
+                  >
+                    Start quiz
+                  </Link>
+                ) : null}
+              </div>
+            </article>
           ))}
         </div>
         {viableNationalTeams.length < liveNationalTeams.length && (
@@ -422,8 +430,8 @@ export default function BrowseDatabase() {
       {(showPlayersTab || showLeaguesTab) && (
       <section className="league-hub-strip" aria-labelledby="league-hubs-title">
         <div className="league-hub-strip__header">
-          <h2 id="league-hubs-title">League learning hubs</h2>
-          <p>League hubs — clubs, rivalries, and league quizzes.</p>
+          <h2 id="league-hubs-title">Leagues</h2>
+          <p>Pick a league to explore clubs, rivalries, and standout players.</p>
         </div>
         <div className="league-link-grid">
           {manifestLeagues.map((league) => (
@@ -431,7 +439,7 @@ export default function BrowseDatabase() {
               <LeagueBadge league={league} />
               <span>
                 <strong>{getLeagueDisplayName(league)}</strong>
-                <small>{league.country}</small>
+                <small>{league.country} · Explore</small>
               </span>
             </Link>
           ))}

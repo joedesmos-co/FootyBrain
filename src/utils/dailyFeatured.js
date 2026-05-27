@@ -106,20 +106,34 @@ export function isInternationalPicksDay(dateKey = getTodayKey()) {
  *   nationalTeams: import('../data/nationalTeamData').nationalTeams,
  * }}
  */
-export function getDailyFeatured(allPlayers, allTeams, dateKey = getTodayKey()) {
+export function getDailyFeatured(allPlayers, allTeams, allLeagues = [], dateKey = getTodayKey()) {
   const editorialTeams = allTeams.filter((team) =>
     teamHasQuizReadyPlayer(team.id, allPlayers),
   );
 
-  if (isInternationalPicksDay(dateKey)) {
+  // Keep World Cup prep as an occasional flavor, but make most days feel broad.
+  const rng = makeRng(dateToSeed(dateKey, 7));
+  const shouldUseInternational = rng() < 0.22; // ~1-2 days per week
+
+  const eligibleNations = getEligibleNationalTeamsForPicks();
+  const nationsForCards = eligibleNations.length
+    ? seededSample(eligibleNations, 1, dateKey, 19)
+    : [];
+
+  const leaguesForCards = Array.isArray(allLeagues) && allLeagues.length
+    ? seededSample(allLeagues, 1, dateKey, 23)
+    : [];
+
+  if (shouldUseInternational) {
     const intlPool = getInternationalFeaturedPickPlayers(allPlayers);
-    const eligibleNations = pickTopNationalTeamsForPicks();
-    if (intlPool.length >= 3 && eligibleNations.length >= 2) {
+    const topNations = pickTopNationalTeamsForPicks();
+    if (intlPool.length >= 3 && topNations.length >= 2) {
       return {
         mode: 'international',
         players: seededSample(intlPool, 3, dateKey, 11),
-        teams: [],
-        nationalTeams: seededSample(eligibleNations, 2, dateKey, 29),
+        teams: seededSample(editorialTeams, 2, dateKey, 29),
+        leagues: leaguesForCards,
+        nationalTeams: seededSample(topNations, 2, dateKey, 31),
       };
     }
   }
@@ -127,8 +141,9 @@ export function getDailyFeatured(allPlayers, allTeams, dateKey = getTodayKey()) 
   return {
     mode: 'club',
     players: seededSample(allPlayers, 3, dateKey, 11),
-    teams: seededSample(editorialTeams, 3, dateKey, 29),
-    nationalTeams: [],
+    teams: seededSample(editorialTeams, 2, dateKey, 29),
+    leagues: leaguesForCards,
+    nationalTeams: nationsForCards,
   };
 }
 

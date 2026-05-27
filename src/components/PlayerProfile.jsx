@@ -428,23 +428,6 @@ export default function PlayerProfile() {
         </dl>
       </section>
 
-      {relatedLoading ? (
-        <p className="page-loading" role="status" aria-live="polite">
-          Loading related players…
-        </p>
-      ) : null}
-      <RelatedPlayersSection suggestions={relatedPlayers} />
-      <RelatedPlayersSection
-        title="Similar role"
-        headingId="player-similar-role-title"
-        suggestions={similarRolePlayers}
-      />
-      <RelatedPlayersSection
-        title="You may also like"
-        headingId="player-also-like-title"
-        suggestions={alsoLikePlayers}
-      />
-
       <section className="player-profile__body" aria-label={`${player.name} profile`}>
         <article className="info-card player-snapshot">
           <h2>Snapshot</h2>
@@ -501,6 +484,23 @@ export default function PlayerProfile() {
           </article>
         )}
       </section>
+
+      {relatedLoading ? (
+        <p className="page-loading" role="status" aria-live="polite">
+          Loading related players…
+        </p>
+      ) : null}
+      <RelatedPlayersSection suggestions={relatedPlayers} />
+      <RelatedPlayersSection
+        title="Similar role"
+        headingId="player-similar-role-title"
+        suggestions={similarRolePlayers}
+      />
+      <RelatedPlayersSection
+        title="You may also like"
+        headingId="player-also-like-title"
+        suggestions={alsoLikePlayers}
+      />
     </div>
   );
 }

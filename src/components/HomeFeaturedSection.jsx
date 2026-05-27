@@ -7,6 +7,7 @@ import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import TeamBadge from './TeamBadge';
+import LeagueBadge from './LeagueBadge';
 
 function FeaturedPlayerCard({ player, priority = false }) {
   const clubName = player?._teamName ?? peekTeamName(player.teamId);
@@ -27,6 +28,31 @@ function FeaturedPlayerCard({ player, priority = false }) {
           <PositionLabel position={player.position} className="today-picks-card__pill" />
           <span className="today-picks-card__title">{player.name}</span>
           <span className="today-picks-card__meta">{clubName}</span>
+          {note && <p className="today-picks-card__note">{note}</p>}
+        </div>
+      </Link>
+    </li>
+  );
+}
+
+function FeaturedLeagueCard({ league }) {
+  const note =
+    truncateNote(league.description || league.styleOfPlay || league.fanGuide || '', 58);
+
+  return (
+    <li>
+      <Link
+        to={`/league/${league.id}`}
+        className="today-picks-card today-picks-card--league"
+        aria-label={`${league.name}, ${league.country}`}
+      >
+        <span className="today-picks-card__visual" aria-hidden="true">
+          <LeagueBadge league={league} size="thumb" />
+        </span>
+        <div className="today-picks-card__body">
+          <span className="today-picks-card__pill">League</span>
+          <span className="today-picks-card__title">{league.name}</span>
+          <span className="today-picks-card__meta">{league.country}</span>
           {note && <p className="today-picks-card__note">{note}</p>}
         </div>
       </Link>
@@ -89,6 +115,7 @@ function FeaturedNationalTeamCard({ nationalTeam }) {
 export default function TodaysPicksSection({
   featuredPlayers,
   featuredTeams = [],
+  featuredLeagues = [],
   featuredNationalTeams = [],
   picksMode = 'club',
 }) {
@@ -102,16 +129,14 @@ export default function TodaysPicksSection({
     >
       <div className="today-picks__header">
         <div>
-          <h2 id="today-picks-title">Today&apos;s Picks</h2>
+          <h2 id="today-picks-title">Try these next</h2>
           <p className="today-picks__intro" id="today-picks-desc">
             {isInternational
-              ? 'World Cup prep spotlight — linked national-team players and country pages in the database.'
-              : 'Featured editorial players and clubs to explore before you filter the database.'}
+              ? 'A quick World Cup-flavored mix — players and nations to learn today.'
+              : 'A quick mix of players, clubs, and leagues to explore today.'}
           </p>
         </div>
-        <span className="today-picks__stamp">
-          {isInternational ? 'International day' : 'Daily refresh'}
-        </span>
+        <span className="today-picks__stamp">Daily picks</span>
       </div>
 
       <div className="today-picks__group">
@@ -129,23 +154,7 @@ export default function TodaysPicksSection({
         </ul>
       </div>
 
-      {isInternational ? (
-        <div className="today-picks__group">
-          <h3 className="today-picks__label">National teams</h3>
-          <ul className="today-picks__grid today-picks__grid--duo">
-            {featuredNationalTeams.map((nationalTeam) => (
-              <FeaturedNationalTeamCard key={nationalTeam.id} nationalTeam={nationalTeam} />
-            ))}
-          </ul>
-          <p className="today-picks__footer-link">
-            <Link to="/world-cup">World Cup hub</Link>
-            {' · '}
-            <Link to="/collections/world-cup-watchlist">Watchlist</Link>
-            {' · '}
-            <Link to="/learning-paths">Country learning paths</Link>
-          </p>
-        </div>
-      ) : (
+      {featuredTeams.length > 0 && (
         <div className="today-picks__group">
           <h3 className="today-picks__label">Clubs</h3>
           <ul className="today-picks__grid">
@@ -153,6 +162,35 @@ export default function TodaysPicksSection({
               <FeaturedTeamCard key={team.id} team={team} />
             ))}
           </ul>
+        </div>
+      )}
+
+      {featuredLeagues.length > 0 && (
+        <div className="today-picks__group">
+          <h3 className="today-picks__label">Leagues</h3>
+          <ul className="today-picks__grid today-picks__grid--duo">
+            {featuredLeagues.map((league) => (
+              <FeaturedLeagueCard key={league.id} league={league} />
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {featuredNationalTeams.length > 0 && (
+        <div className="today-picks__group">
+          <h3 className="today-picks__label">National teams</h3>
+          <ul className="today-picks__grid today-picks__grid--duo">
+            {featuredNationalTeams.map((nationalTeam) => (
+              <FeaturedNationalTeamCard key={nationalTeam.id} nationalTeam={nationalTeam} />
+            ))}
+          </ul>
+          {isInternational ? (
+            <p className="today-picks__footer-link">
+              <Link to="/world-cup">World Cup hub</Link>
+              {' · '}
+              <Link to="/learning-paths">Learning paths</Link>
+            </p>
+          ) : null}
         </div>
       )}
     </section>
