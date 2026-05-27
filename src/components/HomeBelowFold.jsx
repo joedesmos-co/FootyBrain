@@ -56,7 +56,7 @@ export default function HomeBelowFold() {
           League hubs
         </h2>
         <p className="home-league-strip__intro">
-          Full league pages with clubs, spotlights, and quizzes where editorial coverage exists.
+          Explore top leagues with club links, featured players, and quizzes when available.
         </p>
         <div className="league-link-grid home-league-strip__grid">
           {getHubLeagues().map((league) => {
@@ -86,7 +86,7 @@ export default function HomeBelowFold() {
             <h2>Optional: personalize picks</h2>
             <p>
               Choose favorite leagues and clubs for sharper recommendations. Skip anytime—FootyBrain
-              works without it.
+              works without an account.
             </p>
             <div className="home-personalize-cta__actions">
               <Link to="/onboarding" className="btn btn--primary">

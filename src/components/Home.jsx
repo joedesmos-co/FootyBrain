@@ -10,22 +10,23 @@ export default function Home() {
     <div className="home">
       <section className="hero">
         <div className="hero__content">
-          <p className="hero__eyebrow">Men&apos;s football learning</p>
+          <p className="hero__eyebrow">Football learning through quizzes</p>
           <h1 className="hero__title">FootyBrain</h1>
-          <p className="hero__tagline">Learn the game. Know the players.</p>
+          <p className="hero__tagline">Learn football players, clubs, and leagues—fast.</p>
           <p className="hero__copy">
-            Browse players and clubs, study curated collections, compare sides, and test yourself
-            in quizzes—saved progress stays on this device.
+            FootyBrain is a football (soccer) learning app with player profiles, club pages, league
+            hubs, and interactive quizzes. Study with collections and learning paths—progress stays
+            on this device.
           </p>
           <div className="hero__actions">
             <Link to="/browse" className="btn btn--primary btn--large">
-              Open database
+              Browse players
             </Link>
             <Link to="/world-cup" className="btn btn--secondary btn--large">
               World Cup 2026
             </Link>
             <Link to="/onboarding" className="btn btn--secondary btn--large">
-              How it works
+              Start learning
             </Link>
           </div>
           <dl className="hero__stats" aria-label="FootyBrain sample data">
