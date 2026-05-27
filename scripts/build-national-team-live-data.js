@@ -75,9 +75,26 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'haiti',
   // Wave 3 batch 9 (World Cup 2026 — mini-import + approvals)
   'tunisia',
+  // Wave 4 (World Cup 2026 — broad national pool, browse-only)
+  'egypt',
+  'qatar',
+  'saudi-arabia',
+  'iran',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
+
+/** Broad national-pool imports can exceed the default live cap. */
+const MAX_MEMBERSHIPS_OVERRIDES = {
+  egypt: 55,
+  qatar: 55,
+  'saudi-arabia': 55,
+  iran: 20,
+};
+
+function getMaxMembershipsForNation(nationalTeamId) {
+  return MAX_MEMBERSHIPS_OVERRIDES[nationalTeamId] ?? MAX_MEMBERSHIPS_PER_NATION;
+}
 
 const ALLOWED_MEMBERSHIP_TAGS = new Set([
   'nationalPool',
@@ -137,6 +154,10 @@ const REGISTRY_NATIONALITY_LABELS = {
   'congo-dr': ['dr congo', 'congo dr', 'democratic republic of the congo', 'drc'],
   haiti: ['haiti', 'haitian'],
   tunisia: ['tunisia', 'tunisian'],
+  egypt: ['egypt', 'egyptian'],
+  iran: ['iran', 'iranian'],
+  'saudi-arabia': ['saudi arabia', 'saudi', 'saudi arabian'],
+  qatar: ['qatar', 'qatari'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -702,6 +723,58 @@ const LIVE_NATION_EDITORIAL = {
     shortHistory:
       'Men’s senior team of Tunisia (FTF). FootyBrain squads link existing club players via Transfermarkt preview links plus nationality registry backfill.',
   },
+  egypt: {
+    displayName: 'Egypt',
+    country: 'Egypt',
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['morocco', 'algeria'],
+    searchAliases: ['egy', 'pharaohs', 'egypt national team', 'egypt nt'],
+    badgeTheme: { from: '#dc2626', to: '#111827', accent: '#fde047' },
+    fanGuide:
+      'The Pharaohs are Africa’s most successful AFCON side, built on technical midfielders and European-based stars. Learn Egypt through Cairo passion, North African rivalries, and a deep national-pool diaspora.',
+    shortHistory:
+      'Men’s senior team of Egypt (EFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  qatar: {
+    displayName: 'Qatar',
+    country: 'Qatar',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['saudi-arabia', 'iran'],
+    searchAliases: ['qat', 'qatar national team', 'qatar nt', 'al annabi'],
+    badgeTheme: { from: '#7f1d1d', to: '#f8fafc', accent: '#fecaca' },
+    fanGuide:
+      'Al-Annabi blend Gulf technical football with a growing European pipeline. Learn Qatar through AFC rivalries and the 2022 host generation — study names from the national pool, not a locked tournament squad.',
+    shortHistory:
+      'Men’s senior team of Qatar (QFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  'saudi-arabia': {
+    displayName: 'Saudi Arabia',
+    country: 'Saudi Arabia',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['iran', 'qatar'],
+    searchAliases: ['ksa', 'green falcons', 'saudi national team', 'saudi nt', 'saudi arabia'],
+    badgeTheme: { from: '#16a34a', to: '#14532d', accent: '#bbf7d0' },
+    fanGuide:
+      'The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path. Learn Saudi Arabia through AFC rivalries and a national pool drawn from FootyBrain’s club registry.',
+    shortHistory:
+      'Men’s senior team of Saudi Arabia (SAFF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  iran: {
+    displayName: 'Iran',
+    country: 'Iran',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['saudi-arabia', 'qatar'],
+    searchAliases: ['ir iran', 'team melli', 'iran national team', 'iran nt', 'persian'],
+    badgeTheme: { from: '#16a34a', to: '#dc2626', accent: '#fef08a' },
+    fanGuide:
+      'Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and linked players in FootyBrain’s national pool.',
+    shortHistory:
+      'Men’s senior team of Iran (FFIRI). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
 };
 
 function normalizePlayerName(value) {
@@ -807,7 +880,7 @@ function addMembership({
   }
 
   const countForNt = memberships.filter((m) => m.nationalTeamId === nationalTeamId).length;
-  if (countForNt >= MAX_MEMBERSHIPS_PER_NATION) return false;
+  if (countForNt >= getMaxMembershipsForNation(nationalTeamId)) return false;
 
   playerToNt.set(player.id, nationalTeamId);
   memberships.push({

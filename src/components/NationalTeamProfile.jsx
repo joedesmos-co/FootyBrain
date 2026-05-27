@@ -167,7 +167,7 @@ export default function NationalTeamProfile() {
         getTeamName={getTeamName}
         eyebrow="Squad database"
         title="Linked players"
-        intro={`Club players in FootyBrain matched to this senior ${nationalTeam.displayName} squad listing (Transfermarkt ∩ database). Sorted by Importance Score.`}
+        intro={`Broad ${nationalTeam.displayName} national player pool in FootyBrain (citizenship and Transfermarkt senior listings) — not an official World Cup roster. Sorted by Importance Score.`}
       />
     </div>
   );

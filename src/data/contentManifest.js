@@ -57,6 +57,10 @@ export const CONTENT_MANIFEST = {
     'congo-dr',
     'haiti',
     'tunisia',
+    'egypt',
+    'qatar',
+    'saudi-arabia',
+    'iran',
   ],
   leagues: [
     {
