@@ -5,10 +5,16 @@ import { useFavorites } from '../hooks/useFavorites';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
-import { truncateClubText } from '../utils/clubIdentity';
+import { formatClubIdentityTags, truncateClubText } from '../utils/clubIdentity';
+import {
+  buildTeamKeyPlayerCards,
+  getTeamHonorsList,
+  resolveRivalEntries,
+} from '../utils/teamPageUtils';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import {
   formatCountryLabel,
+  formatPosition,
   getFootballAccentStyle,
   getLeagueDisplayName,
   isExternalClubStubTeam,
@@ -18,13 +24,14 @@ import DataTrustNotice from './DataTrustNotice';
 import ExternalStubNotice from './ExternalStubNotice';
 import FavoriteButton from './FavoriteButton';
 import PageFallback from './PageFallback';
+import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
 
-function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
+function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeams }) {
   useEffect(() => {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -81,6 +88,13 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
       : 0;
   const hasLeagueQuiz = leagueQuizReadyCount > 0;
   const saved = isTeamSaved(team.id);
+  const identityTags = formatClubIdentityTags(team.identityTags);
+  const keyPlayerCards = buildTeamKeyPlayerCards(team, roster);
+  const rivalEntries = resolveRivalEntries(team.rivals, leagueTeams);
+  const honors = getTeamHonorsList(team);
+  const cultureLine =
+    truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
+
   const fanPathSteps = [
     {
       label: 'Beginner',
@@ -135,20 +149,29 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
       />
 
       <header
-        className="profile__hero profile__hero--team football-accent-surface"
+        className="profile__hero profile__hero--team club-hero football-accent-surface"
         style={getFootballAccentStyle(team)}
       >
-        <div className="profile__identity">
+        <div className="profile__identity club-hero__identity">
           <TeamBadge team={team} size="profile" />
-          <div>
+          <div className="club-hero__copy">
             <Link to={`/league/${team.leagueId}`} className="profile__league profile__league-link">
               {leagueName}
             </Link>
             <h1>{team.name}</h1>
-            <p className="profile__sub">
-              {formatCountryLabel(team.country)} · {team.stadium}
+            <p className="profile__sub club-hero__sub">
+              {formatCountryLabel(team.country)} · Est. {team.founded} · {team.stadium}
             </p>
-            <span className="fan-level-badge">Fan Level: Starter</span>
+            {identityTags.length > 0 && (
+              <ul className="club-hero__tags" aria-label="Playing identity">
+                {identityTags.map(({ key, label }) => (
+                  <li key={key}>
+                    <span className="player-identity-chip">{label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {cultureLine ? <p className="club-hero__lede">{cultureLine}</p> : null}
           </div>
         </div>
         <div className="team-profile__actions">
@@ -185,48 +208,128 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
 
       <ClubHubStrip team={team} leagueName={leagueName} />
 
-      {roster.length > 0 && (
-        <section className="info-card info-card--wide" aria-label="Related players">
-          <h2>Key players</h2>
-          <p className="info-card__note">
-            Quick links to start learning {team.name} without scrolling the full squad.
-          </p>
-          <ul className="tag-list tag-list--accent">
-            {roster
-              .slice()
-              .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
-              .slice(0, 6)
-              .map((p) => (
-                <li key={p.id}>
-                  <Link to={`/player/${p.id}`}>{p.name}</Link>
-                </li>
-              ))}
-          </ul>
-        </section>
-      )}
-
-      <section className="profile__grid" aria-label={`${team.name} details`}>
-        <article className="info-card info-card--wide team-profile__squad-card">
-          {squadLoading ? (
-            <PageFallback label="Loading squad…" />
-          ) : (
-            <TeamSquadView players={roster} teamName={team.name} />
-          )}
-        </article>
-
-        <article className="info-card info-card--wide fan-path">
-          <div className="fan-path__header">
-            <div>
-              <p className="fan-path__eyebrow">Fan Mode</p>
-              <h2>Learning Path</h2>
+      <div className="team-page-rich">
+        {keyPlayerCards.length > 0 && (
+          <section className="team-key-players" aria-labelledby="team-key-players-title">
+            <div className="team-key-players__header">
+              <h2 id="team-key-players-title">Key players</h2>
+              <p className="team-key-players__note">
+                Faces to know before you dive into the full squad.
+              </p>
             </div>
-            <div className="fan-path__actions">
+            <ul className="team-key-players__grid">
+              {keyPlayerCards.map((card) => {
+                if (card.player) {
+                  return (
+                    <li key={card.player.id}>
+                      <Link
+                        to={`/player/${card.player.id}`}
+                        className="team-key-players__card"
+                      >
+                        <PlayerVisual player={card.player} size="card" compact />
+                        <span className="team-key-players__text">
+                          <strong>{card.player.name}</strong>
+                          <span>
+                            {card.note || formatPosition(card.player.position) || 'Squad'}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={card.label}>
+                    <div className="team-key-players__card team-key-players__card--text">
+                      <span className="team-key-players__text">
+                        <strong>{card.label}</strong>
+                        {card.note ? <span>{card.note}</span> : null}
+                      </span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
+        <div className="team-page-rich__body">
+          <div className="team-page-rich__main">
+            <article className="info-card info-card--wide team-profile__squad-card">
+              {squadLoading ? (
+                <PageFallback label="Loading squad…" />
+              ) : (
+                <TeamSquadView players={roster} teamName={team.name} />
+              )}
+            </article>
+          </div>
+
+          <aside className="team-page-rich__aside" aria-label="Club context">
+            {rivalEntries.length > 0 && (
+              <section className="info-card team-rivals-card">
+                <h2>Rival clubs</h2>
+                <ul className="team-rival-cards">
+                  {rivalEntries.map(({ label, team: rivalTeam }) => (
+                    <li key={label}>
+                      {rivalTeam ? (
+                        <Link
+                          to={`/team/${rivalTeam.id}`}
+                          className="team-rival-cards__item"
+                        >
+                          <TeamBadge team={rivalTeam} size="thumb" />
+                          <span>{rivalTeam.name}</span>
+                        </Link>
+                      ) : (
+                        <span className="team-rival-cards__item team-rival-cards__item--pending">
+                          {label}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            <section className="info-card team-honors-card" aria-labelledby="team-honors-title">
+              <h2 id="team-honors-title">Honors</h2>
+              {honors.length > 0 ? (
+                <ul className="team-honors-list">
+                  {honors.map((honor) => (
+                    <li key={honor}>{honor}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="team-honors-card__empty">
+                  Major trophies and titles will appear here as editorial data is added.
+                </p>
+              )}
+            </section>
+
+            {team.legends?.length > 0 && (
+              <section className="info-card team-legends-card">
+                <h2>Club legends</h2>
+                <ul className="team-legends-list">
+                  {team.legends.map((legend) => (
+                    <li key={legend}>{legend}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </aside>
+        </div>
+
+        <details className="fan-path-details info-card info-card--wide">
+          <summary className="fan-path-details__summary">
+            <span className="fan-path__eyebrow">Fan Mode</span>
+            <span className="fan-path-details__title">Learning path</span>
+          </summary>
+          <div className="fan-path-details__body">
+            <div className="fan-path__actions fan-path-details__actions">
               <a href="#team-squad" className="btn btn--secondary">
-                View Squad
+                View squad
               </a>
               {hasTeamQuiz ? (
                 <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-                  Start Team Quiz
+                  Start team quiz
                 </Link>
               ) : (
                 <button type="button" className="btn btn--secondary" disabled>
@@ -234,64 +337,28 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
                 </button>
               )}
             </div>
+            {!hasTeamQuiz && (
+              <p className="player-study__note">
+                {quizReadyRoster.length > 0
+                  ? `Team quiz unlocks at ${QUIZ_MIN_SESSION_POOL}+ players with clues (${quizReadyRoster.length} so far).`
+                  : 'This squad is browse-ready now; team quiz mode unlocks after featured player editorial is approved.'}
+              </p>
+            )}
+            <ol className="fan-path__steps fan-path__steps--stacked">
+              {fanPathSteps.map((step, index) => (
+                <li key={`${step.label}-${step.title}`} className="fan-path__step">
+                  <span className="fan-path__number">{index + 1}</span>
+                  <div>
+                    <span className="fan-path__label">{step.label}</span>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-          {!hasTeamQuiz && (
-            <p className="player-study__note">
-              {quizReadyRoster.length > 0
-                ? `Team quiz unlocks at ${QUIZ_MIN_SESSION_POOL}+ players with clues (${quizReadyRoster.length} so far).`
-                : 'This squad is browse-ready now; team quiz mode unlocks after featured player editorial is approved.'}
-            </p>
-          )}
-
-          <ol className="fan-path__steps">
-            {fanPathSteps.map((step, index) => (
-              <li key={`${step.label}-${step.title}`} className="fan-path__step">
-                <span className="fan-path__number">{index + 1}</span>
-                <div>
-                  <span className="fan-path__label">{step.label}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </article>
-
-        <article className="info-card info-card--wide club-snapshot-card">
-          <h2>Culture snapshot</h2>
-          <p className="club-snapshot-card__text">
-            {truncateClubText(team.fanGuide, 220) || truncateClubText(team.shortHistory, 220)}
-          </p>
-          <p className="info-card__note">Deeper history and culture steps are in Fan Mode below.</p>
-        </article>
-
-        <article className="info-card">
-          <h2>Rivals</h2>
-          <ul className="tag-list">
-            {team.rivals.map((rival) => (
-              <li key={rival}>{rival}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="info-card">
-          <h2>Legends</h2>
-          <ul className="tag-list">
-            {team.legends.map((legend) => (
-              <li key={legend}>{legend}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="info-card">
-          <h2>Current key players</h2>
-          <ul className="tag-list tag-list--accent">
-            {team.currentKeyPlayers.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
-        </article>
-      </section>
+        </details>
+      </div>
     </div>
   );
 }
@@ -303,6 +370,7 @@ export default function TeamProfile() {
   const shellMatchesRoute = shell?.teamId === teamId;
   const team = shellMatchesRoute ? shell.team : null;
   const bundledRoster = shellMatchesRoute ? shell.bundledRoster : null;
+  const bundledLeagueTeams = shellMatchesRoute ? shell.bundledLeagueTeams : null;
 
   useRecordRecentView('team', team?.id);
 
@@ -313,16 +381,24 @@ export default function TeamProfile() {
       if (cancelled) return;
       const resolvedTeam = mod.getTeamById(teamId);
       if (!resolvedTeam) {
-        setShell({ teamId, team: null, getLeagueName: mod.getLeagueName, bundledRoster: null });
+        setShell({
+          teamId,
+          team: null,
+          getLeagueName: mod.getLeagueName,
+          bundledRoster: null,
+          bundledLeagueTeams: null,
+        });
         return;
       }
+      const usesExternalShard = hasExternalLeagueShard(resolvedTeam.leagueId);
       setShell({
         teamId,
         team: resolvedTeam,
         getLeagueName: mod.getLeagueName,
-        bundledRoster: hasExternalLeagueShard(resolvedTeam.leagueId)
+        bundledRoster: usesExternalShard ? null : mod.getPlayersForTeam(teamId),
+        bundledLeagueTeams: usesExternalShard
           ? null
-          : mod.getPlayersForTeam(teamId),
+          : mod.teams.filter((t) => t.leagueId === resolvedTeam.leagueId),
       });
     });
 
@@ -339,6 +415,13 @@ export default function TeamProfile() {
     }
     return bundledRoster ?? [];
   }, [usesShard, shardState.status, shardState.shard, teamId, bundledRoster]);
+
+  const leagueTeams = useMemo(() => {
+    if (usesShard && shardState.status === 'ready' && shardState.shard) {
+      return shardState.shard.teams;
+    }
+    return bundledLeagueTeams ?? [];
+  }, [usesShard, shardState.status, shardState.shard, bundledLeagueTeams]);
 
   const squadLoading = usesShard && shardState.status === 'loading';
   const leagueName =
@@ -381,6 +464,7 @@ export default function TeamProfile() {
       leagueName={leagueName}
       roster={roster}
       squadLoading={squadLoading}
+      leagueTeams={leagueTeams}
     />
   );
 }

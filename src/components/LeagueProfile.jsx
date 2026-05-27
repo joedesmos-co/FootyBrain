@@ -10,18 +10,23 @@ import {
 } from '../utils/leagueFeatured';
 import {
   formatCountryLabel,
+  formatPosition,
   getFootballAccentStyle,
   getLeagueDisplayName,
   isExternalLeagueId,
 } from '../utils/footballDisplay';
 import ExternalStubNotice from './ExternalStubNotice';
-import { truncateLeagueText } from '../utils/leagueIdentity';
+import {
+  formatLeagueIdentityTags,
+  truncateLeagueText,
+} from '../utils/leagueIdentity';
 import DataTrustNotice from './DataTrustNotice';
 import LeagueBadge from './LeagueBadge';
 import LeagueClubChip from './LeagueClubChip';
 import LeagueHubStrip from './LeagueHubStrip';
 import PageFallback from './PageFallback';
-import PlayerCard from './PlayerCard';
+import PlayerVisual from './PlayerVisual';
+import { peekTeamName } from '../data/teamStore';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -97,6 +102,9 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     a.team.name.localeCompare(b.team.name),
   );
   const keyPlayers = getLeagueSpotlightPlayers(league, leaguePlayers, { limit: 6 });
+  const identityTags = formatLeagueIdentityTags(league.id);
+  const leagueDescription = truncateLeagueText(league.description, 280);
+  const playstyleLine = truncateLeagueText(league.styleOfPlay, 200);
 
   return (
     <div className="page league-profile">
@@ -109,15 +117,15 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       />
 
       <header
-        className="profile__hero profile__hero--league football-accent-surface"
+        className="profile__hero profile__hero--league league-hero football-accent-surface"
         style={getFootballAccentStyle(league)}
       >
-        <div className="profile__identity">
+        <div className="profile__identity league-hero__identity">
           <LeagueBadge league={league} size="profile" />
-          <div>
+          <div className="league-hero__copy">
             <p className="profile__league">{formatCountryLabel(league.country)}</p>
             <h1>{getLeagueDisplayName(league)}</h1>
-            <p className="profile__sub">
+            <p className="profile__sub league-hero__sub">
               {leagueTeams.length} clubs · {quizReadyPlayers.length} with quiz mode ·{' '}
               {leaguePlayers.length} players listed
             </p>
@@ -151,35 +159,46 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         famousClubs={league.famousClubs}
       />
 
-      <section className="league-learn-strip" aria-label="Learn this league">
-        <div className="league-learn-strip__header">
-          <h2>Learning path</h2>
-          {hasLeagueQuiz && (
-            <Link to={`/quiz?league=${league.id}`} className="btn btn--primary btn--small">
-              League quiz
-            </Link>
-          )}
-        </div>
-        <ol className="league-learn-strip__steps">
-          {LEARNING_STEPS.map((step, index) => (
-            <li key={step.title} className="league-learn-strip__step">
-              <span className="league-learn-strip__number">{index + 1}</span>
-              <div>
-                <span className="league-learn-strip__label">{step.label}</span>
-                <h3>{step.title}</h3>
-                <p>{stepText(league, step)}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      <section
+        className="league-identity-card football-accent-rail"
+        style={getFootballAccentStyle(league)}
+        aria-labelledby="league-identity-title"
+      >
+        <h2 id="league-identity-title">League identity</h2>
+        {leagueDescription ? (
+          <p className="league-identity-card__description">{leagueDescription}</p>
+        ) : null}
+        {playstyleLine && !leagueDescription ? (
+          <p className="league-identity-card__description">{playstyleLine}</p>
+        ) : playstyleLine && leagueDescription ? (
+          <p className="league-identity-card__playstyle">
+            <span className="league-identity-card__label">How they play</span>
+            {playstyleLine}
+          </p>
+        ) : null}
+        {identityTags.length > 0 && (
+          <ul className="league-identity-card__tags" aria-label="League traits">
+            {identityTags.map(({ key, label }) => (
+              <li key={key}>
+                <span className="player-identity-chip">{label}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {league.fanGuide ? (
+          <p className="league-identity-card__fan-tip">
+            <span className="league-identity-card__label">Fan tip</span>
+            {truncateLeagueText(league.fanGuide, 180)}
+          </p>
+        ) : null}
       </section>
 
       {featuredClubs.length > 0 && (
         <section className="league-section" aria-labelledby="league-featured-title">
           <div className="league-section__header">
-            <h2 id="league-featured-title">Best clubs to quiz</h2>
+            <h2 id="league-featured-title">Featured clubs</h2>
             <p className="league-section__meta">
-              Best starting points for quizzes and squad learning in {league.name}.
+              Big names and strong quiz starting points in {league.name}.
             </p>
           </div>
           <div className="league-club-grid league-club-grid--featured">
@@ -190,31 +209,65 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         </section>
       )}
 
-      <section className="league-quick-facts" aria-label="League quick facts">
-        <article className="league-quick-facts__card">
-          <h2>Rivalries</h2>
-          {league.rivalries.length > 0 ? (
-            <ul className="tag-list tag-list--accent">
-              {league.rivalries.map((rivalry) => (
-                <li key={rivalry}>{rivalry}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="league-quick-facts__empty">Rivalry notes coming soon.</p>
-          )}
-        </article>
-        <article className="league-quick-facts__card">
-          <h2>Star names</h2>
-          <ul className="tag-list">
-            {league.famousPlayers.map((player) => (
-              <li key={player}>{player}</li>
+      {keyPlayers.length > 0 && (
+        <section className="league-section" aria-labelledby="league-players-title">
+          <div className="league-section__header">
+            <h2 id="league-players-title">Featured players</h2>
+            <p className="league-section__meta">
+              Highest Importance Score in {league.name} right now.
+            </p>
+          </div>
+          <ul className="league-spotlight-players">
+            {keyPlayers.map((player) => (
+              <li key={player.id}>
+                <Link
+                  to={`/player/${player.id}`}
+                  className="league-spotlight-players__card"
+                >
+                  <PlayerVisual player={player} size="card" compact />
+                  <span className="league-spotlight-players__text">
+                    <strong>{player.name}</strong>
+                    <span>
+                      {peekTeamName(player.teamId) || 'Club'} ·{' '}
+                      {formatPosition(player.position) || 'Player'}
+                    </span>
+                  </span>
+                </Link>
+              </li>
             ))}
           </ul>
-        </article>
-        <article className="league-quick-facts__card league-quick-facts__card--wide">
-          <h2>Fan tip</h2>
-          <p>{truncateLeagueText(league.fanGuide, 220)}</p>
-        </article>
+        </section>
+      )}
+
+      <section className="league-discovery" aria-label="Rivalries and discovery">
+        <div className="league-section__header">
+          <h2>Derbies & discovery</h2>
+          <p className="league-section__meta">
+            Rivalries and names fans mention when this league comes up.
+          </p>
+        </div>
+        <div className="league-discovery__grid">
+          <article className="league-discovery__card">
+            <h3>Rivalries</h3>
+            {league.rivalries.length > 0 ? (
+              <ul className="league-discovery__list">
+                {league.rivalries.map((rivalry) => (
+                  <li key={rivalry}>{rivalry}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className="league-discovery__empty">Rivalry notes coming soon.</p>
+            )}
+          </article>
+          <article className="league-discovery__card">
+            <h3>Star names</h3>
+            <ul className="league-discovery__list league-discovery__list--names">
+              {league.famousPlayers.map((player) => (
+                <li key={player}>{player}</li>
+              ))}
+            </ul>
+          </article>
+        </div>
       </section>
 
       <section
@@ -236,21 +289,32 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         </div>
       </section>
 
-      {keyPlayers.length > 0 && (
-        <section className="league-section" aria-labelledby="league-players-title">
-          <div className="league-section__header">
-            <h2 id="league-players-title">Featured players</h2>
-            <p className="league-section__meta">
-              Highest Importance Score in {league.name} right now.
-            </p>
-          </div>
-          <div className="card-grid league-profile__players">
-            {keyPlayers.map((player) => (
-              <PlayerCard key={player.id} player={player} />
-            ))}
-          </div>
-        </section>
-      )}
+      <details className="league-learn-strip league-learn-strip--foldable">
+        <summary className="league-learn-strip__summary">
+          <span className="league-learn-strip__summary-label">Learning path</span>
+          {hasLeagueQuiz && (
+            <Link
+              to={`/quiz?league=${league.id}`}
+              className="btn btn--primary btn--small league-learn-strip__summary-quiz"
+              onClick={(event) => event.stopPropagation()}
+            >
+              League quiz
+            </Link>
+          )}
+        </summary>
+        <ol className="league-learn-strip__steps league-learn-strip__steps--stacked">
+          {LEARNING_STEPS.map((step, index) => (
+            <li key={step.title} className="league-learn-strip__step">
+              <span className="league-learn-strip__number">{index + 1}</span>
+              <div>
+                <span className="league-learn-strip__label">{step.label}</span>
+                <h3>{step.title}</h3>
+                <p>{stepText(league, step)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </details>
     </div>
   );
 }
