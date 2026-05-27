@@ -1,6 +1,9 @@
+import { collections } from '../data/collectionsData.js';
 import {
+  getCollectionSearchFields,
   getLeagueSearchFields,
   getNationalTeamSearchFields,
+  getNicknamePlayerId,
   getPlayerSearchFields,
   getTeamSearchFields,
 } from './searchAliases';
@@ -25,13 +28,21 @@ import { isWeakSearchScore, matchScoreForFields, normalizeForSearch } from './te
 export const MIN_PLAYER_QUERY_LENGTH = 2;
 
 /** Display order for grouped results in Universal Search. */
-export const SEARCH_GROUP_ORDER = ['page', 'player', 'team', 'league', 'national-team'];
+export const SEARCH_GROUP_ORDER = [
+  'player',
+  'team',
+  'league',
+  'collection',
+  'national-team',
+  'page',
+];
 
 export const SEARCH_GROUP_LABELS = {
   page: 'Pages',
   player: 'Players',
   team: 'Clubs',
   league: 'Leagues',
+  collection: 'Collections',
   'national-team': 'National teams',
 };
 
@@ -40,15 +51,17 @@ export const RESULT_TYPE_LABELS = {
   player: 'Player',
   team: 'Club',
   league: 'League',
+  collection: 'Collection',
   'national-team': 'National team',
 };
 
 const PER_TYPE_LIMITS = {
-  page: 6,
-  player: 6,
-  team: 4,
-  league: 3,
-  'national-team': 3,
+  page: 5,
+  player: 8,
+  team: 5,
+  league: 4,
+  collection: 4,
+  'national-team': 4,
 };
 
 /** Avoid allocating huge player match arrays on broad queries before sortAndCap. */
@@ -177,6 +190,7 @@ function collectSearchBuckets(query, ctx) {
     player: [],
     team: [],
     league: [],
+    collection: [],
     'national-team': [],
   };
 
@@ -218,6 +232,22 @@ function collectSearchBuckets(query, ctx) {
       path: `/national-team/${nationalTeam.id}`,
       score,
       nationalTeam,
+    });
+  }
+
+  for (const collection of collections) {
+    const score = matchScoreForFields(getCollectionSearchFields(collection), normalizedQuery);
+    if (!passesQueryScoreGate(normalizedQuery, score)) continue;
+    buckets.collection.push({
+      type: 'collection',
+      id: collection.id,
+      name: collection.title,
+      subtitle: [collection.difficulty, ...(collection.tags ?? []).slice(0, 2)]
+        .filter(Boolean)
+        .join(' · '),
+      path: `/collections/${collection.id}`,
+      score: score + 3,
+      collection,
     });
   }
 
@@ -307,6 +337,35 @@ function collectSearchBuckets(query, ctx) {
         },
         PLAYER_MATCH_BUFFER,
       );
+    }
+  }
+
+  const nicknameId = getNicknamePlayerId(normalizedQuery);
+  if (nicknameId) {
+    const already = buckets.player.some((row) => row.id === nicknameId);
+    if (!already) {
+      const player = players.find((p) => p.id === nicknameId);
+      if (player) {
+        const teamName = getTeamName(player.teamId);
+        const leagueName = getLeagueName(player.leagueId);
+        const nationLabel = player.nationalTeam || player.nationality;
+        const subtitle = [nationLabel, teamName, leagueName, player.position]
+          .filter(Boolean)
+          .join(' · ');
+        pushCapped(
+          buckets.player,
+          {
+            type: 'player',
+            id: player.id,
+            name: player.name,
+            subtitle,
+            path: `/player/${player.id}`,
+            score: 99,
+            player,
+          },
+          PLAYER_MATCH_BUFFER,
+        );
+      }
     }
   }
 

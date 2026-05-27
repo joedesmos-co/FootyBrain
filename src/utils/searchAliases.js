@@ -3,6 +3,8 @@
  * Keep this list conservative: short aliases should map to one clear entity.
  */
 
+import { compactForSearch } from './textSearch.js';
+
 const TEAM_ALIASES = {
   'paris-saint-germain': ['psg', 'paris sg'],
   marseille: ['om', 'olympique marseille', 'olympique de marseille'],
@@ -171,15 +173,17 @@ const LEAGUE_ALIASES = {
 };
 
 const PLAYER_ALIASES = {
-  'de-bruyne': ['kdb', 'kevin de bruyne'],
-  vinicius: ['vini', 'vini jr', 'vini junior', 'vinicius jr', 'vinicius junior'],
+  vinicius: ['vini', 'vini jr', 'vini junior', 'vinicius jr', 'vinicius junior', 'vinícius'],
+  'de-bruyne': ['kdb', 'kevin de bruyne', 'de bruyne'],
   trent: ['taa', 'trent alexander arnold'],
   'ter-stegen': ['ter stegen', 'marc andre ter stegen'],
   alisson: ['alisson becker'],
   lautaro: ['lautaro martinez'],
   leao: ['rafael leao'],
-  lewandowski: ['lewy'],
+  lewandowski: ['lewy', 'lewa'],
   bellingham: ['jude bellingham', 'jude'],
+  'tm-91845': ['son', 'heung min son', 'sonny'],
+  'tm-315779': ['puli', 'pulisic', 'captain america'],
   haaland: ['erling haaland', 'erling'],
   saka: ['bukayo saka', 'bukayo'],
   kane: ['harry kane', 'harry'],
@@ -284,6 +288,34 @@ export function getLeagueSearchFields(league) {
   return [league.name, league.country, ...getLeagueAliases(league.id)];
 }
 
+/** Compact nicknames → single player id (unambiguous editorial stars). */
+const PLAYER_NICKNAME_IDS = {
+  kdb: 'de-bruyne',
+  vini: 'vinicius',
+  lewa: 'lewandowski',
+  lewy: 'lewandowski',
+  son: 'tm-91845',
+  puli: 'tm-315779',
+  mo: 'salah',
+  taa: 'trent',
+  vvd: 'van-dijk',
+};
+
+export function getNicknamePlayerId(normalizedQuery) {
+  const compact = compactForSearch(normalizedQuery);
+  if (!compact || compact.length < 2) return null;
+  return PLAYER_NICKNAME_IDS[compact] ?? null;
+}
+
+export function getCollectionSearchFields(collection) {
+  return [
+    collection.title,
+    collection.description,
+    ...(collection.tags ?? []),
+    collection.difficulty,
+  ].filter(Boolean);
+}
+
 export function getPlayerSearchFields(player, helpers = {}) {
   const teamName = helpers.getTeamName?.(player.teamId);
   const leagueName = helpers.getLeagueName?.(player.leagueId);
@@ -291,6 +323,7 @@ export function getPlayerSearchFields(player, helpers = {}) {
   return [
     player.name,
     ...getPlayerAliases(player.id),
+    ...(player.aliases ?? []),
     teamName,
     leagueName,
     player.nationality,

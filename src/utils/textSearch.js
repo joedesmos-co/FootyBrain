@@ -8,12 +8,17 @@ export function normalizeForSearch(text) {
     .toLowerCase()
     .replace(/ø/g, 'o')
     .replace(/æ/g, 'ae')
-    // Decompose accents/diacritics so plain ASCII queries match accented names.
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, ' and ')
     .replace(/[^a-z0-9]+/g, ' ')
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** Spacing/punctuation-insensitive form (e.g. "k d b" → "kdb", "cr-7" → "cr7"). */
+export function compactForSearch(text) {
+  return normalizeForSearch(text).replace(/ /g, '');
 }
 
 export function textMatchesQuery(text, query) {
@@ -27,6 +32,10 @@ export function textMatchesQuery(text, query) {
 
   const lastToken = parts[parts.length - 1];
   if (lastToken && lastToken.startsWith(q)) return true;
+
+  const valueCompact = compactForSearch(text);
+  const qCompact = compactForSearch(query);
+  if (qCompact.length >= 2 && valueCompact.includes(qCompact)) return true;
 
   return false;
 }
@@ -59,16 +68,46 @@ function levenshteinWithin(a, b, maxDist = 1) {
   return prev[n];
 }
 
+function maxTypoDistance(q) {
+  if (q.length >= 8) return 2;
+  if (q.length >= 4) return 1;
+  return 0;
+}
+
 export function typoToleranceScore(value, q) {
-  if (q.length < 4) return 0;
+  const maxDist = maxTypoDistance(q);
+  if (maxDist === 0) return 0;
 
   const parts = value.split(' ').filter(Boolean);
   for (const part of parts) {
-    if (part.length < 4) continue;
-    if (levenshteinWithin(part, q, 1) <= 1) return 55;
+    if (part.length < 3) continue;
+    if (levenshteinWithin(part, q, maxDist) <= maxDist) {
+      return maxDist >= 2 ? 58 : 55;
+    }
   }
 
-  if (value.length >= 4 && levenshteinWithin(value, q, 1) <= 1) return 52;
+  if (value.length >= 3 && levenshteinWithin(value, q, maxDist) <= maxDist) {
+    return maxDist >= 2 ? 56 : 52;
+  }
+
+  const valueCompact = value.replace(/ /g, '');
+  const qCompact = q.replace(/ /g, '');
+  if (
+    qCompact.length >= 3 &&
+    valueCompact.length >= 3 &&
+    levenshteinWithin(valueCompact, qCompact, maxDist) <= maxDist
+  ) {
+    return maxDist >= 2 ? 57 : 54;
+  }
+
+  return 0;
+}
+
+function scoreCompactMatch(valueCompact, qCompact) {
+  if (!qCompact || qCompact.length < 2) return 0;
+  if (valueCompact === qCompact) return 98;
+  if (valueCompact.startsWith(qCompact)) return 92;
+  if (qCompact.length >= 3 && valueCompact.includes(qCompact)) return 68;
   return 0;
 }
 
@@ -76,15 +115,22 @@ export function matchScoreForText(text, query) {
   const value = normalizeForSearch(text);
   const q = normalizeForSearch(query);
   if (!q) return 0;
+
+  const valueCompact = compactForSearch(text);
+  const qCompact = compactForSearch(query);
+  const compactScore = scoreCompactMatch(valueCompact, qCompact);
+  if (compactScore) return compactScore;
+
   if (value === q) return 100;
   if (value.startsWith(q)) return 90;
-  const parts = value.split(' ');
+  const parts = value.split(' ').filter(Boolean);
   if (parts.some((part) => part === q)) return 85;
   if (parts.some((part) => part.startsWith(q))) return 75;
   const lastToken = parts[parts.length - 1];
   if (lastToken === q) return 80;
   if (lastToken?.startsWith(q)) return 70;
   if (q.length >= 3 && value.includes(q)) return 60;
+
   return typoToleranceScore(value, q);
 }
 

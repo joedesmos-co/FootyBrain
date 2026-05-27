@@ -3,6 +3,11 @@ import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
+import {
+  POPULAR_SEARCHES,
+  SEARCH_EMPTY_EXAMPLES,
+  SEARCH_EMPTY_HINT,
+} from '../utils/popularSearches';
 import { RESULT_TYPE_LABELS, searchUniversalGrouped } from '../utils/universalSearch';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
@@ -309,35 +314,97 @@ export default function UniversalSearch({ open, onClose }) {
         />
 
         <p className="universal-search__hint">
-          Partial names work · e.g. saka, brazil, premier league
+          Nicknames work too — KDB, Vini, Son, Puli · fuzzy spelling OK
         </p>
 
         {!showResults && (
-          <>
+          <div className="universal-search__idle">
             <RecentlyViewedPanel
               onNavigate={closeSearch}
               className="universal-search__recent"
             />
-            <p className="universal-search__empty">
-              Search players, clubs, leagues, or national teams.
+            <div className="universal-search__popular" aria-label="Popular searches">
+              <p className="universal-search__popular-label">Popular searches</p>
+              <ul className="universal-search__popular-list">
+                {POPULAR_SEARCHES.map((item) => (
+                  <li key={item.query}>
+                    <button
+                      type="button"
+                      className="universal-search__popular-chip"
+                      onClick={() => {
+                        setQuery(item.query);
+                        setActiveIndex(-1);
+                        inputRef.current?.focus();
+                      }}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="universal-search__empty universal-search__empty--idle">
+              {SEARCH_EMPTY_HINT}
             </p>
-          </>
+            <p className="universal-search__examples">
+              Try{' '}
+              {SEARCH_EMPTY_EXAMPLES.map((example, index) => (
+                <span key={example}>
+                  {index > 0 ? (index === SEARCH_EMPTY_EXAMPLES.length - 1 ? ' or ' : ', ') : ''}
+                  <button
+                    type="button"
+                    className="universal-search__example-link"
+                    onClick={() => {
+                      setQuery(example);
+                      setActiveIndex(-1);
+                      inputRef.current?.focus();
+                    }}
+                  >
+                    {example}
+                  </button>
+                </span>
+              ))}
+            </p>
+          </div>
         )}
 
-        {showResults && isSearchPending && (
-          <p className="universal-search__pending" aria-live="polite">
-            Searching…
-          </p>
-        )}
-
-        {showResults && !isSearchPending && isIndexLoading && (
-          <p className="universal-search__pending" aria-live="polite">
-            Loading search…
-          </p>
+        {showResults && (isSearchPending || isIndexLoading) && (
+          <div className="universal-search__pending-block" aria-live="polite" aria-busy="true">
+            <div className="universal-search__pending-skeleton" aria-hidden="true">
+              <div className="skeleton skeleton--bar" />
+              <div className="skeleton skeleton--bar skeleton--short" />
+              <div className="skeleton skeleton--row" />
+              <div className="skeleton skeleton--row" />
+            </div>
+            <p className="universal-search__pending">
+              {isIndexLoading ? 'Loading search index…' : 'Searching…'}
+            </p>
+          </div>
         )}
 
         {showResults && !isSearchPending && !isIndexLoading && !hasResults && (
-          <p className="universal-search__empty">No matches — try another spelling.</p>
+          <div className="universal-search__no-results">
+            <p className="universal-search__empty">No matches for &ldquo;{query.trim()}&rdquo;</p>
+            <p className="universal-search__examples">
+              {SEARCH_EMPTY_HINT} Try{' '}
+              {SEARCH_EMPTY_EXAMPLES.slice(0, 4).map((example, index) => (
+                <span key={example}>
+                  {index > 0 ? ', ' : ''}
+                  <button
+                    type="button"
+                    className="universal-search__example-link"
+                    onClick={() => {
+                      setQuery(example);
+                      setActiveIndex(-1);
+                    }}
+                  >
+                    {example}
+                  </button>
+                </span>
+              ))}
+              .
+            </p>
+          </div>
         )}
 
         {showResults && !isSearchPending && !isIndexLoading && hasResults && (
@@ -385,6 +452,16 @@ export default function UniversalSearch({ open, onClose }) {
                             )}
                             {result.type === 'national-team' && (
                               <NationalTeamBadge nationalTeam={result.nationalTeam} size="thumb" />
+                            )}
+                            {result.type === 'collection' && (
+                              <span className="universal-search__collection-icon" aria-hidden="true">
+                                📚
+                              </span>
+                            )}
+                            {result.type === 'page' && (
+                              <span className="universal-search__page-icon" aria-hidden="true">
+                                ↗
+                              </span>
                             )}
                           </span>
                           <span className="universal-search__meta">

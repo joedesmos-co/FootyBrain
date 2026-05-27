@@ -257,6 +257,12 @@ a.feature-card:focus-visible,
   border-radius: var(--card-radius);
 }
 
+.skeleton--row {
+  height: 2.85rem;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
 @keyframes skeleton-shimmer {
   0% {
     background-position: 120% 0;
@@ -572,13 +578,14 @@ input:focus-visible {
 
 .universal-search__input {
   width: 100%;
-  padding: 0.75rem 0.85rem;
+  min-height: var(--btn-height-lg);
+  padding: 0.8rem 0.95rem;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-md);
   background: var(--color-surface-2);
   color: var(--color-text);
   font: inherit;
-  font-size: 1rem;
+  font-size: 1.05rem;
   transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
 }
 
@@ -606,11 +613,133 @@ input:focus-visible {
 }
 
 .universal-search__pending {
-  margin: 0.25rem 0 0;
-  padding: 0.5rem 0.75rem;
+  margin: 0;
+  padding: 0;
   color: var(--color-muted);
-  font-size: 0.85rem;
+  font-size: var(--type-meta);
   text-align: center;
+}
+
+.universal-search__pending-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+}
+
+.universal-search__pending-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.universal-search__idle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.universal-search__popular-label {
+  margin: 0 0 0.45rem;
+  font-size: var(--type-label);
+  font-weight: 750;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.universal-search__popular-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.universal-search__popular-chip {
+  min-height: var(--chip-height);
+  padding: 0 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: rgba(16, 26, 23, 0.75);
+  color: var(--color-soft);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.universal-search__popular-chip:hover,
+.universal-search__popular-chip:focus-visible {
+  border-color: var(--color-border-strong);
+  background: rgba(52, 211, 153, 0.12);
+  color: var(--color-text);
+  outline: none;
+}
+
+.universal-search__examples {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.universal-search__example-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-accent);
+  font: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.universal-search__example-link:hover,
+.universal-search__example-link:focus-visible {
+  color: var(--color-soft);
+  outline: none;
+}
+
+.universal-search__empty--idle {
+  margin-top: 0;
+  border-style: solid;
+  background: rgba(7, 17, 13, 0.35);
+}
+
+.universal-search__no-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.universal-search__collection-icon,
+.universal-search__page-icon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius);
+  background: rgba(16, 26, 23, 0.65);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.universal-search__type--collection {
+  background: rgba(167, 139, 250, 0.14);
+  color: #c4b5fd;
+}
+
+.universal-search__type--page {
+  background: rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
 }
 
 .recently-viewed__label {
@@ -712,9 +841,10 @@ input:focus-visible {
   align-items: center;
   gap: 0.65rem;
   width: 100%;
-  padding: 0.55rem 0.5rem;
+  min-height: 3rem;
+  padding: 0.65rem 0.55rem;
   border: none;
-  border-radius: calc(var(--radius) - 2px);
+  border-radius: var(--radius);
   background: transparent;
   color: inherit;
   text-align: left;
@@ -6108,8 +6238,19 @@ div.empty-state > p {
   }
 
   .universal-search__option {
+    min-height: 3.15rem;
+    padding-block: 0.75rem;
+  }
+
+  .universal-search__popular-chip {
     min-height: 2.75rem;
-    padding-block: 0.65rem;
+    padding-inline: 0.85rem;
+  }
+
+  .universal-search__example-link {
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
   }
 
   .universal-search__option {

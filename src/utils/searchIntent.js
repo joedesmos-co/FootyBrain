@@ -115,10 +115,10 @@ export function scorePlayerIntentBoost(player, intent, getMembershipForPlayer) {
 /** Group order for universal search modal. */
 export function getSearchGroupOrder(intent) {
   if (intent.kind === 'country' || intent.kind === 'country-soft') {
-    return ['national-team', 'page', 'player', 'team', 'league'];
+    return ['national-team', 'player', 'team', 'league', 'collection', 'page'];
   }
   if (intent.kind === 'club') {
-    return ['team', 'page', 'player', 'national-team', 'league'];
+    return ['team', 'player', 'league', 'collection', 'national-team', 'page'];
   }
-  return ['page', 'player', 'team', 'league', 'national-team'];
+  return ['player', 'team', 'league', 'collection', 'national-team', 'page'];
 }
