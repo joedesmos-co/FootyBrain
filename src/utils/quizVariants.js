@@ -2,35 +2,57 @@
  * Optional quiz clue variants — reuse editorial player fields only.
  */
 
+import { formatCountryLabel, formatPosition } from './footballDisplay.js';
+
 export const QUIZ_TYPE_OPTIONS = [
   {
     id: 'classic',
     label: 'Classic',
-    description: 'Difficulty-based clues plus revealable hints (default)',
-  },
-  {
-    id: 'nationality',
-    label: 'Nationality',
-    description: 'Guess the player from their national team or country',
+    description: 'Difficulty tiers and revealable hints',
+    icon: '⚽',
   },
   {
     id: 'career',
     label: 'Career path',
-    description: 'Guess from clubs and years in their career history',
+    description: 'Guess from previous clubs and years',
+    icon: '↗',
+  },
+  {
+    id: 'who-am-i',
+    label: 'Who am I?',
+    description: 'Reveal clues one at a time',
+    icon: '?',
+    progressive: true,
+  },
+  {
+    id: 'club-legends',
+    label: 'Club legends',
+    description: 'Famous players from one club',
+    icon: '★',
+    requiresClub: true,
+  },
+  {
+    id: 'nationality',
+    label: 'Nationality',
+    description: 'Guess from country or national team',
+    icon: '🌍',
   },
   {
     id: 'playstyle',
     label: 'Playstyle',
-    description: 'Guess from their FootyBrain playing style summary',
+    description: 'Guess from playing style summary',
+    icon: '✦',
   },
   {
     id: 'club-history',
     label: 'Club history',
-    description: 'Guess from former clubs (not their current team)',
+    description: 'Former clubs (not current team)',
+    icon: '◷',
   },
 ];
 
 const CURRENT_SQUAD_RE = /current squad|present/i;
+const CLUB_LEGEND_IMPORTANCE_MIN = 78;
 
 function careerEntries(player) {
   return Array.isArray(player?.careerHistory)
@@ -49,6 +71,16 @@ function formatCareerStop(entry) {
   return `${club} (${years})`;
 }
 
+function legendNameMatchesPlayer(legendName, playerName) {
+  const legend = String(legendName ?? '').trim().toLowerCase();
+  const player = String(playerName ?? '').trim().toLowerCase();
+  if (!legend || !player) return false;
+  if (legend === player) return true;
+  const legendLast = legend.split(/\s+/).pop();
+  const playerLast = player.split(/\s+/).pop();
+  return Boolean(legendLast && playerLast && legendLast === playerLast);
+}
+
 /**
  * @param {object} player
  * @param {string} [currentClubName]
@@ -63,7 +95,10 @@ export function getUsableCareerStops(player, currentClubName = '') {
   });
 }
 
-export function playerSupportsQuizVariant(player, quizType) {
+/**
+ * @param {object} [context] — { teamFilter, teamLegends }
+ */
+export function playerSupportsQuizVariant(player, quizType, context = {}) {
   if (!player || quizType === 'classic') return true;
 
   switch (quizType) {
@@ -76,6 +111,15 @@ export function playerSupportsQuizVariant(player, quizType) {
       const meaningful = stops.filter((e) => !isCurrentSquadEntry(e) || stops.length === 1);
       return meaningful.length >= 2;
     }
+    case 'who-am-i':
+      return buildWhoAmIClueSteps(player).length >= 3;
+    case 'club-legends': {
+      if (!context.teamFilter) return false;
+      const score = player.importanceScore ?? 0;
+      if (score >= CLUB_LEGEND_IMPORTANCE_MIN) return true;
+      const legends = context.teamLegends ?? [];
+      return legends.some((name) => legendNameMatchesPlayer(name, player.name));
+    }
     case 'playstyle':
       return String(player.playingStyle ?? '').trim().length >= 24;
     case 'club-history':
@@ -83,6 +127,52 @@ export function playerSupportsQuizVariant(player, quizType) {
     default:
       return true;
   }
+}
+
+export function countPlayersForQuizType(players, quizType, context = {}) {
+  if (!Array.isArray(players)) return 0;
+  if (quizType === 'classic') return players.length;
+  return players.filter((p) => playerSupportsQuizVariant(p, quizType, context)).length;
+}
+
+export function getQuizVariantContext(filterState, teams = []) {
+  const teamFilter = filterState?.teamFilter ?? '';
+  const team = teamFilter ? teams.find((t) => t.id === teamFilter) : null;
+  return {
+    teamFilter,
+    teamLegends: team?.legends ?? [],
+  };
+}
+
+export function buildWhoAmIClueSteps(player, getTeamName = () => '', getLeagueName = () => '') {
+  if (!player) return [];
+  const steps = [];
+  if (player.position) {
+    steps.push({ label: 'Position', value: formatPosition(player.position) });
+  }
+  const nation = player.nationalTeam || player.nationality;
+  if (nation) {
+    steps.push({
+      label: player.nationalTeam ? 'National team' : 'Nation',
+      value: formatCountryLabel(nation),
+    });
+  }
+  const club = getTeamName(player.teamId);
+  if (club && club !== 'Unknown') {
+    steps.push({ label: 'Club', value: club });
+  }
+  const league = getLeagueName(player.leagueId);
+  if (league && league !== 'Unknown') {
+    steps.push({ label: 'League', value: league });
+  }
+  return steps;
+}
+
+/** Career stops for timeline display (career order in data). */
+export function getCareerPathTimeline(player, limit = 6) {
+  return careerEntries(player)
+    .slice(0, limit)
+    .map((stop) => formatCareerStop(stop));
 }
 
 export function getQuizVariantLabel(quizType) {
@@ -95,6 +185,10 @@ export function getQuizPromptForType(quizType) {
       return 'Guess from nationality';
     case 'career':
       return 'Guess from career path';
+    case 'who-am-i':
+      return 'Who am I?';
+    case 'club-legends':
+      return 'Name the club legend';
     case 'playstyle':
       return 'Guess from playstyle';
     case 'club-history':
@@ -164,13 +258,34 @@ export function getQuizVariantClue(player, quizType, getTeamName) {
         kind: 'clubs',
       };
     }
+    case 'who-am-i':
+      return null;
+    case 'club-legends': {
+      const club = getTeamName?.(player.teamId) ?? '';
+      return {
+        label: 'Club legend',
+        value: club ? `A famous ${club} player` : 'A famous player from this club',
+        kind: 'legend',
+      };
+    }
     default:
       return null;
   }
 }
 
-export function getQuizTypePoolHint(quizType, poolSize) {
+export function getQuizTypePoolHint(quizType, poolSize, context = {}) {
+  if (quizType === 'club-legends' && !context.teamFilter) {
+    return 'Pick a club below to play Club legends.';
+  }
   if (quizType === 'classic' || poolSize > 0) return null;
   const label = getQuizVariantLabel(quizType);
-  return `No quiz-ready players with enough ${label.toLowerCase()} data for this filter. Try Classic or widen the pool.`;
+  return `Not enough ${label.toLowerCase()} data for this filter. Try Classic or widen the pool.`;
+}
+
+export function isProgressiveQuizType(quizType) {
+  return quizType === 'who-am-i';
+}
+
+export function usesCareerTimeline(quizType) {
+  return quizType === 'career';
 }

@@ -10,8 +10,14 @@ export const QUIZ_MIN_SESSION_POOL = 3;
 export const QUIZ_NATIONAL_TEAM_MIN_POOL = QUIZ_MIN_SESSION_POOL;
 
 export {
+  buildWhoAmIClueSteps,
+  countPlayersForQuizType,
+  getCareerPathTimeline,
   getQuizPromptForType,
   getQuizVariantClue,
+  getQuizVariantContext,
+  isProgressiveQuizType,
+  usesCareerTimeline,
   QUIZ_TYPE_OPTIONS,
 } from './quizVariants';
 
@@ -160,7 +166,7 @@ export function isQuizSessionPoolViable(
  * @param {import('../data/sampleData').players} allPlayers
  * @param {{ poolFocus: string, leagueFilter: string, teamFilter: string, positionFilter: string, nationalTeamFilter: string }} filters
  */
-export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic') {
+export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic', variantContext = {}) {
   const { poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter } = filters;
   const eligible = getQuizEligiblePlayers(allPlayers);
 
@@ -200,7 +206,7 @@ export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic') {
   }
 
   if (quizType === 'classic') return pool;
-  return pool.filter((player) => playerSupportsQuizVariant(player, quizType));
+  return pool.filter((player) => playerSupportsQuizVariant(player, quizType, variantContext));
 }
 
 export function getPoolFocusHint(
@@ -216,12 +222,16 @@ export function getPoolFocusHint(
 
   if (isInternationalQuizScope(poolFocus)) {
     if (poolSize === 0) {
-      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      const variantHint = getQuizTypePoolHint(quizType, poolSize, {
+        teamFilter: filters.teamFilter,
+      });
       if (variantHint) return variantHint;
       return 'Not enough players with clues in the featured international lineup yet.';
     }
     if (poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
-      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      const variantHint = getQuizTypePoolHint(quizType, poolSize, {
+        teamFilter: filters.teamFilter,
+      });
       if (variantHint) return variantHint;
       const noun = poolSize === 1 ? 'player' : 'players';
       return `Only ${poolSize} ${noun} in the international lineup — need at least ${QUIZ_MIN_SESSION_POOL}.`;
@@ -236,7 +246,9 @@ export function getPoolFocusHint(
       return 'Choose a national team to start.';
     }
     if (nationalTeamFilter && poolSize === 0) {
-      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      const variantHint = getQuizTypePoolHint(quizType, poolSize, {
+        teamFilter: filters.teamFilter,
+      });
       if (variantHint) return variantHint;
       return `No players with clues are linked to ${nationalTeamName} yet. Profiles are still being filled in.`;
     }
@@ -245,7 +257,9 @@ export function getPoolFocusHint(
       poolSize > 0 &&
       poolSize < QUIZ_MIN_SESSION_POOL
     ) {
-      const variantHint = getQuizTypePoolHint(quizType, poolSize);
+      const variantHint = getQuizTypePoolHint(quizType, poolSize, {
+        teamFilter: filters.teamFilter,
+      });
       if (variantHint) return variantHint;
       const noun = poolSize === 1 ? 'player' : 'players';
       return `Only ${poolSize} ${noun} for ${nationalTeamName} — need at least ${QUIZ_MIN_SESSION_POOL} for a fair session. Try another country or remove extra filters.`;
@@ -253,7 +267,7 @@ export function getPoolFocusHint(
   }
 
   if (poolFocus === 'club' && teamFilter && poolSize > 0 && poolSize < QUIZ_MIN_SESSION_POOL) {
-    const variantHint = getQuizTypePoolHint(quizType, poolSize);
+    const variantHint = getQuizTypePoolHint(quizType, poolSize, { teamFilter });
     if (variantHint) return variantHint;
     const noun = poolSize === 1 ? 'player' : 'players';
     const teamName = hintContext.teamName ?? 'this club';
@@ -261,7 +275,7 @@ export function getPoolFocusHint(
   }
 
   if (poolSize === 0) {
-    const variantHint = getQuizTypePoolHint(quizType, poolSize);
+    const variantHint = getQuizTypePoolHint(quizType, poolSize, { teamFilter });
     if (variantHint) return variantHint;
     if (poolFocus === 'league' && !leagueFilter) return 'Choose a league to start.';
     if (poolFocus === 'club' && !teamFilter) return 'Choose a club to start.';
@@ -278,10 +292,15 @@ export function getPoolFocusHint(
  * Structured empty copy for international-only World Cup prep sessions.
  * @returns {{ title: string, message: string, showSquadLink: boolean } | null}
  */
-export function getQuizInternationalEmptyState(poolFocus, poolSize, quizType = 'classic') {
+export function getQuizInternationalEmptyState(
+  poolFocus,
+  poolSize,
+  quizType = 'classic',
+  variantContext = {},
+) {
   if (!isInternationalQuizScope(poolFocus)) return null;
 
-  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+  const variantHint = getQuizTypePoolHint(quizType, poolSize, variantContext);
 
   if (poolSize === 0) {
     return {
@@ -333,7 +352,9 @@ export function getQuizCountryEmptyState(
 
   if (!nationalTeamFilter) return null;
 
-  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+  const variantHint = getQuizTypePoolHint(quizType, poolSize, {
+    teamFilter: filters.teamFilter,
+  });
 
   if (poolSize === 0) {
     return {
@@ -374,7 +395,7 @@ export function getQuizClubEmptyState(
   if (!isClubQuizScope(poolFocus, teamFilter)) return null;
 
   const teamName = hintContext.teamName ?? 'this club';
-  const variantHint = getQuizTypePoolHint(quizType, poolSize);
+  const variantHint = getQuizTypePoolHint(quizType, poolSize, { teamFilter });
 
   if (poolSize === 0) {
     return {

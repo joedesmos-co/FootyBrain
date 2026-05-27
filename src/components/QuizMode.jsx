@@ -19,9 +19,15 @@ import {
   getQuizClubEmptyState,
   getQuizCountryEmptyState,
   getQuizInternationalEmptyState,
+  buildWhoAmIClueSteps,
+  countPlayersForQuizType,
+  getCareerPathTimeline,
   getQuizPromptForType,
   getQuizVariantClue,
+  getQuizVariantContext,
+  isProgressiveQuizType,
   isQuizSessionPoolViable,
+  usesCareerTimeline,
   pickRandomPlayer,
   QUIZ_DIFFICULTY_OPTIONS,
   QUIZ_MIN_SESSION_POOL,
@@ -137,6 +143,10 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     (teamId) => teamById?.get(teamId)?.name ?? 'Unknown',
     [teamById],
   );
+  const getLeagueName = useCallback(
+    (leagueId) => leagueById?.get(leagueId)?.name ?? 'Unknown',
+    [leagueById],
+  );
 
   const requestedTeam = useMemo(
     () => teams.find((team) => team.id === requestedTeamId),
@@ -173,6 +183,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const [positionFilter, setPositionFilter] = useState('');
   const [difficulty, setDifficulty] = useState('medium');
   const [quizType, setQuizType] = useState('classic');
+  const [revealedStep, setRevealedStep] = useState(0);
   const [timeLimitSeconds, setTimeLimitSeconds] = useState(0);
   const [currentPlayer, setCurrentPlayer] = useState(null);
   const [hintsShown, setHintsShown] = useState(1);
@@ -239,9 +250,31 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     return teams.filter((t) => t.leagueId === leagueFilter);
   }, [leagueFilter, teams]);
 
+  const variantContext = useMemo(
+    () => getQuizVariantContext(filterState, teams),
+    [filterState, teams],
+  );
+
+  const basePoolForModes = useMemo(
+    () => buildQuizPlayerPool(players, filterState, 'classic'),
+    [players, filterState],
+  );
+
+  const modeCounts = useMemo(() => {
+    const counts = {};
+    for (const option of QUIZ_TYPE_OPTIONS) {
+      counts[option.id] = countPlayersForQuizType(
+        basePoolForModes,
+        option.id,
+        variantContext,
+      );
+    }
+    return counts;
+  }, [basePoolForModes, variantContext]);
+
   const playerPool = useMemo(
-    () => buildQuizPlayerPool(players, filterState, quizType),
-    [players, filterState, quizType],
+    () => buildQuizPlayerPool(players, filterState, quizType, variantContext),
+    [players, filterState, quizType, variantContext],
   );
 
   const ambiguousLastNames = useMemo(
@@ -260,13 +293,14 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   const initialHintsForQuestion = useCallback(
     (nextDifficulty = difficulty) =>
-      quizType === 'classic' ? getInitialHintCount(nextDifficulty) : 1,
+      quizType === 'classic' ? getInitialHintCount(nextDifficulty) : 0,
     [quizType, difficulty],
   );
 
   const resetCurrentQuestion = useCallback((nextDifficulty = difficulty) => {
     setCurrentPlayer(null);
     setHintsShown(initialHintsForQuestion(nextDifficulty));
+    setRevealedStep(0);
     setAnswer('');
     setFeedback(null);
     setLastXpFeedback('');
@@ -281,6 +315,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     lastQuestionPlayerIdRef.current = next?.id ?? null;
     setCurrentPlayer(next);
     setHintsShown(initialHintsForQuestion(difficulty));
+    setRevealedStep(0);
     setAnswer('');
     setFeedback(null);
     setTimedOut(false);
@@ -417,6 +452,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       setTeamFilter('');
       setNationalTeamFilter('');
     }
+    if (quizType === 'club-legends' && value !== 'club' && value !== 'all') {
+      setQuizType('classic');
+    }
     resetCurrentQuestion();
     resetSessionStats();
   };
@@ -429,7 +467,10 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   const handleLeagueChange = (value) => {
     setLeagueFilter(value);
-    if (poolFocus !== 'club') setTeamFilter('');
+    if (poolFocus !== 'club') {
+      setTeamFilter('');
+      if (quizType === 'club-legends') setQuizType('classic');
+    }
     resetCurrentQuestion();
     resetSessionStats();
   };
@@ -439,6 +480,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     if (value) {
       const team = teams.find((t) => t.id === value);
       if (team) setLeagueFilter(team.leagueId);
+    } else if (quizType === 'club-legends') {
+      setQuizType('classic');
     }
     resetCurrentQuestion();
     resetSessionStats();
@@ -456,7 +499,13 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   };
 
   const handleQuizTypeChange = (value) => {
+    const option = QUIZ_TYPE_OPTIONS.find((o) => o.id === value);
+    if (option?.requiresClub && !teamFilter) return;
+    if (value === 'club-legends' && poolFocus !== 'club') {
+      setPoolFocus('club');
+    }
     setQuizType(value);
+    setRevealedStep(0);
     resetCurrentQuestion();
     resetSessionStats();
   };
@@ -485,13 +534,37 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     setHintsShown((n) => Math.min(n + 1, currentPlayer.quizHints.length));
   };
 
-  const visibleHints = currentPlayer ? currentPlayer.quizHints.slice(0, hintsShown) : [];
+  const revealNextWhoAmIClue = () => {
+    setRevealedStep((step) => step + 1);
+  };
 
-  const canShowMoreHints =
-    currentPlayer && hintsShown < currentPlayer.quizHints.length;
+  const isWhoAmI = isProgressiveQuizType(quizType);
+  const whoAmISteps = useMemo(() => {
+    if (!currentPlayer || !isWhoAmI) return [];
+    return buildWhoAmIClueSteps(currentPlayer, getTeamName, getLeagueName);
+  }, [currentPlayer, isWhoAmI, getTeamName, getLeagueName]);
+
+  const careerTimeline = useMemo(() => {
+    if (!currentPlayer || !usesCareerTimeline(quizType)) return [];
+    return getCareerPathTimeline(currentPlayer);
+  }, [currentPlayer, quizType]);
 
   const currentPlayerClub = currentPlayer ? getTeamName(currentPlayer.teamId) : '';
   const isClassicQuiz = quizType === 'classic';
+
+  const visibleHints =
+    isClassicQuiz && currentPlayer ? currentPlayer.quizHints.slice(0, hintsShown) : [];
+
+  const canShowMoreHints =
+    isClassicQuiz &&
+    currentPlayer &&
+    hintsShown < currentPlayer.quizHints.length;
+
+  const canRevealWhoAmI =
+    isWhoAmI &&
+    whoAmISteps.length > 0 &&
+    revealedStep < whoAmISteps.length - 1 &&
+    !feedback;
   const clueFacts = isClassicQuiz
     ? getClueFactsForQuestion(currentPlayer, difficulty, getTeamName)
     : [];
@@ -527,6 +600,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     poolFocus,
     playerPool.length,
     quizType,
+    variantContext,
   );
   const scopedEmptyState = countryEmptyState ?? clubEmptyState ?? internationalEmptyState;
   const showWorldCupPrepNotice = worldCupPrep || poolFocus === 'international';
@@ -585,6 +659,44 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       )}
 
       <section className="filters quiz-filters" aria-label="Quiz setup">
+        <div className="quiz-mode-picker" role="radiogroup" aria-label="Quiz mode">
+          <p className="quiz-mode-picker__label">Mode</p>
+          <div className="quiz-mode-grid">
+            {QUIZ_TYPE_OPTIONS.map((option) => {
+              const count = modeCounts[option.id] ?? 0;
+              const needsClub = Boolean(option.requiresClub) && !teamFilter;
+              const insufficient =
+                option.id !== 'classic' && count < QUIZ_MIN_SESSION_POOL && !needsClub;
+              if (insufficient) return null;
+              const isActive = quizType === option.id;
+              const disabled = needsClub;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={isActive}
+                  aria-disabled={disabled || undefined}
+                  disabled={disabled}
+                  className={`quiz-mode-card${isActive ? ' quiz-mode-card--active' : ''}${disabled ? ' quiz-mode-card--disabled' : ''}`}
+                  onClick={() => handleQuizTypeChange(option.id)}
+                >
+                  <span className="quiz-mode-card__icon" aria-hidden="true">
+                    {option.icon ?? '⚽'}
+                  </span>
+                  <span className="quiz-mode-card__title">{option.label}</span>
+                  <span className="quiz-mode-card__desc">{option.description}</span>
+                  {needsClub ? (
+                    <span className="quiz-mode-card__meta">Pick a club</span>
+                  ) : count > 0 ? (
+                    <span className="quiz-mode-card__meta">{count} ready</span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <label className="filter-field filter-field--wide">
           <span>Quiz focus</span>
           <select value={poolFocus} onChange={(e) => handlePoolFocusChange(e.target.value)}>
@@ -699,17 +811,6 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           )}
 
           <label className="filter-field">
-            <span>Quiz type</span>
-            <select value={quizType} onChange={(e) => handleQuizTypeChange(e.target.value)}>
-              {QUIZ_TYPE_OPTIONS.map((option) => (
-                <option key={option.id} value={option.id}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="filter-field">
             <span>Difficulty</span>
             <select
               value={difficulty}
@@ -756,8 +857,6 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             </ul>
           </div>
         )}
-
-        <p className="quiz-filters__focus-note">{currentQuizType?.description}</p>
 
         <p className="filters__count">
           {poolHint}
@@ -1007,14 +1106,33 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               )}
             </div>
 
-            {variantClue && (
+            {variantClue && !isWhoAmI && (
               <article
                 className={`quiz-variant-clue quiz-variant-clue--${variantClue.kind}`}
                 aria-label="Main clue"
               >
                 <span className="quiz-variant-clue__label">{variantClue.label}</span>
-                <p className="quiz-variant-clue__value">{variantClue.value}</p>
+                {usesCareerTimeline(quizType) && careerTimeline.length >= 2 ? (
+                  <ol className="quiz-career-timeline">
+                    {careerTimeline.map((stop) => (
+                      <li key={stop}>{stop}</li>
+                    ))}
+                  </ol>
+                ) : (
+                  <p className="quiz-variant-clue__value">{variantClue.value}</p>
+                )}
               </article>
+            )}
+
+            {isWhoAmI && whoAmISteps.length > 0 && (
+              <ol className="quiz-progressive-clues" aria-label="Revealed clues">
+                {whoAmISteps.slice(0, revealedStep + 1).map((step) => (
+                  <li key={step.label}>
+                    <span className="quiz-progressive-clues__label">{step.label}</span>
+                    <span className="quiz-progressive-clues__value">{step.value}</span>
+                  </li>
+                ))}
+              </ol>
             )}
 
             {clueFacts.length > 0 && (
@@ -1042,6 +1160,12 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             {canShowMoreHints && !feedback && (
               <button type="button" className="btn btn--secondary" onClick={showAnotherHint}>
                 Show another hint
+              </button>
+            )}
+
+            {canRevealWhoAmI && (
+              <button type="button" className="btn btn--secondary" onClick={revealNextWhoAmIClue}>
+                Reveal next clue
               </button>
             )}
 
