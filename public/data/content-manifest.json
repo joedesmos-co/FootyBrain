@@ -46,42 +46,43 @@
     "ecuador",
     "bosnia-herzegovina",
     "congo-dr",
-    "haiti"
+    "haiti",
+    "tunisia"
   ],
   "leagues": [
     {
       "id": "premier-league",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/premier-league.json",
-      "playerCount": 522,
+      "playerCount": 488,
       "teamCount": 20
     },
     {
       "id": "la-liga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/la-liga.json",
-      "playerCount": 512,
+      "playerCount": 492,
       "teamCount": 20
     },
     {
       "id": "bundesliga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/bundesliga.json",
-      "playerCount": 494,
+      "playerCount": 421,
       "teamCount": 18
     },
     {
       "id": "serie-a",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/serie-a.json",
-      "playerCount": 530,
+      "playerCount": 502,
       "teamCount": 20
     },
     {
       "id": "ligue-1",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/ligue-1.json",
-      "playerCount": 460,
+      "playerCount": 459,
       "teamCount": 18
     },
     {
@@ -95,15 +96,22 @@
       "id": "mls",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/mls.json",
-      "playerCount": 806,
+      "playerCount": 802,
       "teamCount": 30
     },
     {
       "id": "brasileirao",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/brasileirao.json",
-      "playerCount": 627,
+      "playerCount": 592,
       "teamCount": 20
+    },
+    {
+      "id": "external",
+      "shardStatus": "bundled",
+      "shardPath": null,
+      "playerCount": 407,
+      "teamCount": 171
     }
   ]
 }

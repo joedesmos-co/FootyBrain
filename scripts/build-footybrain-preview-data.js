@@ -191,9 +191,12 @@ function externalTeamIdFromTmClubId(tmClubId) {
 
 function parseTmDate(value) {
   if (!value || typeof value !== 'string') return null;
-  const m = value.trim().match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!m) return null;
-  return `${m[3]}-${m[2]}-${m[1]}`;
+  const trimmed = value.trim();
+  const m = trimmed.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (m) return `${m[3]}-${m[2]}-${m[1]}`;
+  const yearOnly = trimmed.match(/^(\d{4})$/);
+  if (yearOnly) return `${yearOnly[1]}-01-01`;
+  return null;
 }
 
 function latestSeasonDir() {

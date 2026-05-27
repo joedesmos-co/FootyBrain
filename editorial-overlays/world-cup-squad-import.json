@@ -1,18 +1,26 @@
 {
-  "description": "Controlled World Cup 2026 squad import (browse-only players; no quiz-ready by default).",
-  "version": 1,
+  "description": "Broad World Cup 2026 national player pool import (browse-only; not official tournament rosters).",
+  "version": 2,
   "notes": [
-    "This drives generation of required-import sourceIds plus external club stubs.",
-    "Keep caps small to protect gzip/mobile load.",
-    "Do not include TM Salah (148455) because MVP manual `salah` already exists."
+    "Imports senior national-pool players for remaining non-live WC nations.",
+    "Do not treat this as official World Cup 2026 roster data.",
+    "Do not include TM Salah (148455) because MVP manual `salah` already exists.",
+    "Per-nation caps are emergency guards only — import all available eligible candidates."
   ],
-  "defaultMaxPlayersPerNation": 12,
+  "emergencyMaxPlayersPerNation": 250,
   "blockedSourceIds": ["148455"],
   "nations": [
-    { "nationalTeamId": "egypt", "maxPlayers": 12 },
-    { "nationalTeamId": "panama", "maxPlayers": 12 },
-    { "nationalTeamId": "south-africa", "maxPlayers": 12 },
-    { "nationalTeamId": "new-zealand", "maxPlayers": 12 }
+    { "nationalTeamId": "cape-verde" },
+    { "nationalTeamId": "curacao" },
+    { "nationalTeamId": "egypt" },
+    { "nationalTeamId": "iran" },
+    { "nationalTeamId": "iraq" },
+    { "nationalTeamId": "jordan" },
+    { "nationalTeamId": "new-zealand" },
+    { "nationalTeamId": "panama" },
+    { "nationalTeamId": "qatar" },
+    { "nationalTeamId": "saudi-arabia" },
+    { "nationalTeamId": "south-africa" },
+    { "nationalTeamId": "uzbekistan" }
   ]
 }
-
