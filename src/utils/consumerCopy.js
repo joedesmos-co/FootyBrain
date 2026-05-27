@@ -5,14 +5,7 @@ export const IMPORTANCE_SCORE_TITLE = 'FootyBrain importance score';
 
 export const QUIZ_COMING_SOON = 'Quiz coming soon';
 
-export function formatQuizReadyCount(count) {
-  const n = Number(count) || 0;
-  if (n <= 0) return '';
-  if (n === 1) return '1 quiz-ready player';
-  return `${n.toLocaleString()} quiz-ready players`;
-}
-
-/** Short inline suffix: " · 12 in quizzes" */
+/** Short inline suffix for club chips when quizzes exist. */
 export function formatQuizReadyInline(count) {
   const n = Number(count) || 0;
   if (n <= 0) return '';
@@ -25,15 +18,12 @@ export function clubChipSubline(quizCount) {
   return n > 0 ? formatQuizReadyInline(n) : 'View squad';
 }
 
-export function leagueMetaLine({ clubs, players, quizReady }) {
-  const parts = [`${clubs} clubs`, `${players} players`];
-  const quizLine = formatQuizReadyCount(quizReady);
-  if (quizLine) parts.push(quizLine);
-  return parts.join(' · ');
+export function leagueMetaLine({ clubs, players }) {
+  return `${clubs} clubs · ${players} players`;
 }
 
 export function leagueHubQuizLabel(quizReadyCount) {
   const n = Number(quizReadyCount) || 0;
-  if (n <= 0) return 'Coming soon';
-  return n === 1 ? '1 player ready' : `${n} players ready`;
+  if (n <= 0) return 'Explore players';
+  return n === 1 ? '1 in quizzes' : `${n} in quizzes`;
 }

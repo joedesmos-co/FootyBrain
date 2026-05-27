@@ -21,14 +21,14 @@ export default function NationalTeamsPage() {
       <header className="page-header">
         <h1>National teams</h1>
         <p>
-          Men&apos;s national sides in FootyBrain—player pools linked from club squads, not official
-          tournament rosters. National quizzes need at least {LIVE_NATIONAL_TEAM_MIN_QUIZ} players
+          Men&apos;s national sides in FootyBrain—squads drawn from club profiles, not official
+          tournament rosters. Nation quizzes need at least {LIVE_NATIONAL_TEAM_MIN_QUIZ} players
           with clues.
         </p>
       </header>
 
       <p className="national-teams-page__meta">
-        {nationCount} nations · {totalLinked.toLocaleString()} linked players
+        {nationCount} nations · {totalLinked.toLocaleString()} players in squads
       </p>
 
       <aside className="learning-hub-cta" aria-label="World Cup learning">

@@ -114,10 +114,8 @@ export default function WorldCupHubPage() {
         <p className="world-cup-hub__prep-title">Prep mode</p>
         <p>{WORLD_CUP_HUB_META.prepNote}</p>
         <p className="world-cup-hub__stats" aria-label="Hub stats">
-          {stats.groupCount} groups · {stats.teamCount} nations in the draw ·{' '}
-          {stats.liveInDraw} live national pools · {stats.poolNotAddedInDraw} pool pages not added
-          yet · {stats.quizViableCount} nations with quizzes ·{' '}
-          {stats.quizReadyMemberships.toLocaleString()} quiz-ready players in featured pools
+          {stats.groupCount} groups · {stats.teamCount} nations in the 2026 draw ·{' '}
+          {stats.quizViableCount} nations with quizzes
         </p>
         <div className="world-cup-hub__prep-actions">
           <Link to={getInternationalQuizHref()} className="btn btn--primary btn--small">
@@ -168,7 +166,7 @@ export default function WorldCupHubPage() {
                       {team.fifaRanking != null ? ` · FIFA rank ${team.fifaRanking}` : ''}
                     </p>
                     <p className="world-cup-nation-card__meta">
-                      {linked} linked
+                      {linked} players
                       {quizReady > 0 ? ` · ${quizReady} in quizzes` : ''}
                       {' · '}
                       {rosterStatus.label}
@@ -196,7 +194,7 @@ export default function WorldCupHubPage() {
           Top quiz nations
         </h2>
         <p className="collections-page__section-desc">
-          Live nations with the deepest quiz pools (minimum three players with clues).
+          Live nations with the deepest squads for quizzes (at least three players with clues).
         </p>
         <ol className="world-cup-quiz-nations">
           {topQuizNations.map((meta, index) => {
@@ -211,7 +209,7 @@ export default function WorldCupHubPage() {
                   <strong>{meta.displayName}</strong>
                 </Link>
                 <p>
-                  {meta.quizReadyCount} quiz-ready · up to {meta.sessionCap} per session
+                  {meta.quizReadyCount} players · up to {meta.sessionCap} per round
                 </p>
               </div>
               <div className="world-cup-quiz-nations__actions">

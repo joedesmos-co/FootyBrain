@@ -1,29 +1,24 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
-import {
-  getLiveNationalTeams,
-  getViableLiveNationalTeams,
-  isLiveNationalTeamQuizViable,
-} from '../data/nationalTeamData';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
-import { getLeagueDisplayName } from '../utils/footballDisplay';
+import { formatCountryLabel, getLeagueDisplayName } from '../utils/footballDisplay';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
 import { getInternationalQuizHref } from '../utils/worldCupQuizPools';
-import NationalTeamBadge from './NationalTeamBadge';
 import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
 
 const manifestLeagues = getManifestLeagues();
 const MAJOR_LEAGUE_IDS = ['premier-league', 'la-liga', 'bundesliga', 'serie-a', 'ligue-1'];
+const BROWSE_RESULT_CAP = 60;
 
 export default function BrowseDatabase() {
   const [searchParams] = useSearchParams();
@@ -34,7 +29,6 @@ export default function BrowseDatabase() {
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
   const [bundled, setBundled] = useState(null);
-  const [forceFullDb, setForceFullDb] = useState(false);
   const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
   const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
 
@@ -44,12 +38,8 @@ export default function BrowseDatabase() {
   const activeLeagueName =
     (leagueFilter && getLeagueDisplayName(getManifestLeague(leagueFilter))) || 'league';
 
-  // Only load bundled sampleData if the user explicitly requests the full database.
-  const needsBundledData = Boolean(!usesExternalShard && forceFullDb);
-
   useEffect(() => {
-    if (usesExternalShard) return undefined;
-    if (!needsBundledData) return undefined;
+    if (usesExternalShard || searchIndexStatus !== 'error') return undefined;
     let cancelled = false;
     import('../data/sampleData.js').then((mod) => {
       if (!cancelled) {
@@ -66,7 +56,7 @@ export default function BrowseDatabase() {
     return () => {
       cancelled = true;
     };
-  }, [usesExternalShard, needsBundledData]);
+  }, [usesExternalShard, searchIndexStatus]);
 
   const todayKey = getTodayKey();
   const leagueShard = shardState.status === 'ready' ? shardState.shard : null;
@@ -107,16 +97,12 @@ export default function BrowseDatabase() {
     return getDailyFeatured(featuredPickPool, quizRegistry.teams, manifestLeagues, todayKey);
   }, [quizStatus, quizRegistry, featuredPickPool, todayKey]);
 
-  const liveNationalTeams = useMemo(() => getLiveNationalTeams(), []);
-  const viableNationalTeams = useMemo(() => getViableLiveNationalTeams(), []);
-
   const intentContext = useMemo(
     () => ({
       teams: usesExternalShard && leagueShard ? leagueShard.teams : (searchIndex?.teams ?? []),
-      nationalTeams: liveNationalTeams,
       getLeagueName,
     }),
-    [usesExternalShard, leagueShard, searchIndex, liveNationalTeams, getLeagueName],
+    [usesExternalShard, leagueShard, searchIndex, getLeagueName],
   );
 
   const teamsInLeague = useMemo(() => {
@@ -143,6 +129,11 @@ export default function BrowseDatabase() {
     return { major, other, international };
   }, []);
 
+  const browseLeagues = useMemo(() => {
+    const { major, other, international } = leagueGroups;
+    return [...major, ...other, ...international];
+  }, [leagueGroups]);
+
   const scopedPlayers = useMemo(() => {
     if (usesExternalShard && leagueShard) {
       if (teamFilter) {
@@ -155,11 +146,6 @@ export default function BrowseDatabase() {
       if (teamFilter) return searchIndex.players.filter((p) => p.teamId === teamFilter);
       if (leagueFilter) return searchIndex.players.filter((p) => p.leagueId === leagueFilter);
       return searchIndex.players;
-    }
-
-    // Fallback: if index isn't ready yet, show the quiz spotlight pool (fast) until full DB is requested.
-    if (!leagueFilter && !teamFilter && !search.trim() && quizStatus === 'ready' && quizRegistry?.players) {
-      return quizRegistry.players;
     }
 
     if (!bundled) return [];
@@ -180,25 +166,30 @@ export default function BrowseDatabase() {
   ]);
 
   const filteredPlayers = useMemo(() => {
-    if (!search.trim()) return scopedPlayers;
-    return orderPlayersByQuery(scopedPlayers, search, {
-      getTeamName,
-      getLeagueName,
-      limit: BROWSE_SEARCH_RESULT_CAP,
-    });
+    if (search.trim()) {
+      return orderPlayersByQuery(scopedPlayers, search, {
+        getTeamName,
+        getLeagueName,
+        limit: BROWSE_SEARCH_RESULT_CAP,
+      });
+    }
+    return [...scopedPlayers].sort(
+      (a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0),
+    );
   }, [scopedPlayers, search, getTeamName, getLeagueName]);
 
   const searchResultCapped =
     search.trim().length > 0 && filteredPlayers.length >= BROWSE_SEARCH_RESULT_CAP;
 
-  const BROWSE_RESULT_CAP = 60;
+  const showPlayersTab = tab === 'players';
+  const showClubsTab = tab === 'clubs';
   const showLeagueClubPicker = Boolean(leagueFilter && !teamFilter && !search.trim());
-  const showPlayerResults = hasPlayerQuery && !showLeagueClubPicker;
+  const playersListReady =
+    searchIndexStatus === 'ready' || Boolean(bundled) || usesExternalShard;
+  const showPlayerResults =
+    showPlayersTab && !showLeagueClubPicker && (hasPlayerQuery || playersListReady);
   const isResultCapped =
-    showPlayerResults &&
-    !search.trim() &&
-    !teamFilter &&
-    filteredPlayers.length > BROWSE_RESULT_CAP;
+    showPlayerResults && !search.trim() && filteredPlayers.length > BROWSE_RESULT_CAP;
   const displayedPlayers = isResultCapped
     ? filteredPlayers.slice(0, BROWSE_RESULT_CAP)
     : filteredPlayers;
@@ -232,18 +223,11 @@ export default function BrowseDatabase() {
   const showPicks = !usesExternalShard && quizStatus === 'ready';
   const browseDataLoading =
     shardLoading ||
-    (needsBundledData && !bundled) ||
-    (usesExternalShard && !leagueShard && !shardLoading);
+    (usesExternalShard && !leagueShard && !shardLoading) ||
+    (!usesExternalShard && searchIndexStatus === 'loading' && !bundled);
 
   const indexLoading =
-    !usesExternalShard &&
-    !needsBundledData &&
-    !bundled &&
-    searchIndexStatus === 'loading' &&
-    (leagueFilter || teamFilter || search.trim());
-
-  const showPlayersTab = tab === 'players';
-  const showClubsTab = tab === 'clubs';
+    !usesExternalShard && !bundled && searchIndexStatus === 'loading' && showPlayersTab;
 
   return (
     <div className="page browse">
@@ -353,26 +337,19 @@ export default function BrowseDatabase() {
         </div>
         <p className="filters__count">
           {shardLoading
-            ? `Loading ${activeLeagueName} data…`
-            : hasPlayerQuery
-              ? searchResultCapped
-                ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or team to see more`
-                : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
-              : searchIndexStatus === 'ready'
-                ? 'Search or choose a league/team to explore players.'
-                : bundled
-                  ? 'Search or choose a league/team to explore players.'
-                  : 'Featured quiz players shown. Load the full player list to explore everyone.'}
+            ? `Loading ${activeLeagueName}…`
+            : browseDataLoading
+              ? 'Loading players…'
+              : hasPlayerQuery
+                ? searchResultCapped
+                  ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or club to see more`
+                  : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
+                : isResultCapped
+                  ? `Showing top ${BROWSE_RESULT_CAP} players — search or filter to narrow the list`
+                  : playersListReady
+                    ? `${filteredPlayers.length.toLocaleString()} players — search or pick a league or club`
+                    : 'Players could not load. Try again in a moment.'}
         </p>
-        {!bundled && !usesExternalShard && !leagueFilter && !teamFilter && !search.trim() ? (
-          <button
-            type="button"
-            className="btn btn--secondary btn--small"
-            onClick={() => setForceFullDb(true)}
-          >
-            Load full list
-          </button>
-        ) : null}
       </section>
       )}
 
@@ -393,8 +370,7 @@ export default function BrowseDatabase() {
         <div className="learning-hub-cta__copy">
           <p className="learning-hub-cta__title">World Cup 2026 prep</p>
           <p>
-            Study featured nations, groups, and collections — or jump into the international quiz
-            pool.
+            Study featured nations, groups, and collections—or jump into the international quiz.
           </p>
         </div>
         <div className="learning-hub-cta__actions">
@@ -409,66 +385,18 @@ export default function BrowseDatabase() {
       )}
 
       {showPlayersTab && (
-      <section className="national-hub-strip" aria-labelledby="national-hubs-title">
-        <div className="national-hub-strip__header">
-          <h2 id="national-hubs-title">National teams</h2>
-          <Link to="/national-teams" className="national-hub-strip__link">
-            All {liveNationalTeams.length} nations
-          </Link>
-        </div>
-        <p className="national-hub-strip__intro">
-          Player pools linked from club squads. Some nations unlock a quiz once enough players have
-          clues.
-        </p>
-        <div className="national-hub-strip__grid">
-          {viableNationalTeams.map((team) => (
-            <article key={team.id} className="national-hub-strip__card">
-              <Link to={`/national-team/${team.id}`} className="national-hub-strip__card-main">
-                <NationalTeamBadge nationalTeam={team} size="thumb" />
-                <span>
-                  <strong>{team.displayName}</strong>
-                  <small>{team.confederation ?? team.country}</small>
-                </span>
-              </Link>
-              <div className="national-hub-strip__card-actions">
-                <Link to={`/national-team/${team.id}`} className="btn btn--secondary btn--small">
-                  Explore players
-                </Link>
-                {isLiveNationalTeamQuizViable(team.id) ? (
-                  <Link
-                    to={`/quiz?nationalTeam=${team.id}&poolFocus=national&worldCup=prep`}
-                    className="btn btn--primary btn--small"
-                  >
-                    Start quiz
-                  </Link>
-                ) : null}
-              </div>
-            </article>
-          ))}
-        </div>
-        {viableNationalTeams.length < liveNationalTeams.length && (
-          <p className="national-hub-strip__note">
-            {liveNationalTeams.length - viableNationalTeams.length} more nations are on{' '}
-            <Link to="/national-teams">National teams</Link>—great for browsing, with smaller quiz
-            pools for now.
-          </p>
-        )}
-      </section>
-      )}
-
-      {showPlayersTab && (
       <section className="league-hub-strip" aria-labelledby="league-hubs-title" id="leagues">
         <div className="league-hub-strip__header">
           <h2 id="league-hubs-title">Leagues</h2>
           <p>Pick a league to explore clubs, rivalries, and standout players.</p>
         </div>
         <div className="league-link-grid">
-          {manifestLeagues.map((league) => (
+          {browseLeagues.map((league) => (
             <Link key={league.id} to={`/league/${league.id}`} className="league-link-card">
               <LeagueBadge league={league} />
               <span>
                 <strong>{getLeagueDisplayName(league)}</strong>
-                <small>{league.country} · Explore</small>
+                <small>{formatCountryLabel(league.country)} · Explore</small>
               </span>
             </Link>
           ))}
@@ -477,9 +405,9 @@ export default function BrowseDatabase() {
       )}
 
       {showPlayersTab ? (
-      shardLoading ? (
+        shardLoading ? (
         <PageFallback label={`Loading ${activeLeagueName}…`} />
-      ) : showLeagueClubPicker ? (
+        ) : showLeagueClubPicker ? (
         <section className="browse-results" aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}>
           <p className="browse-results__cap-notice">
             {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
@@ -498,7 +426,7 @@ export default function BrowseDatabase() {
         </section>
       ) : showPlayerResults ? (
         <section className="browse-results" aria-label="Player results">
-          {needsBundledData && !bundled ? (
+          {browseDataLoading ? (
             <PageFallback label="Loading players…" />
           ) : filteredPlayers.length > 0 ? (
             <>
@@ -533,11 +461,7 @@ export default function BrowseDatabase() {
             </section>
           )}
         </section>
-      ) : (
-        <p className="empty-state browse-results-empty">
-          Search by name or pick a league and club to explore players.
-        </p>
-      )
+        ) : null
       ) : null}
 
       {showClubsTab && (

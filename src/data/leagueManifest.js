@@ -9,12 +9,13 @@ import {
   getManifestLeagues,
 } from './contentManifest';
 
-export const HOME_LEAGUE_HUB_IDS = ['brasileirao', 'mls', 'premier-league'];
+export const HOME_LEAGUE_HUB_IDS = ['premier-league', 'la-liga', 'mls', 'external'];
 
 const HUB_SUBLINES = {
-  brasileirao: (league) => `${league.country} · browse all clubs`,
-  mls: () => 'United States · 30 clubs',
   'premier-league': (league) => league.country,
+  'la-liga': (league) => league.country,
+  mls: () => 'United States · 30 clubs',
+  external: () => 'World · clubs across competitions',
 };
 
 /** League row shaped for LeagueBadge + hub cards. */

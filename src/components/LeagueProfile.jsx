@@ -69,7 +69,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
 
     setSeoMeta({
       title: `${getLeagueDisplayName(league)} · FootyBrain`,
-      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueMetaLine({ clubs: leagueTeams.length, players: leaguePlayers.length, quizReady: getQuizEligiblePlayers(leaguePlayers).length })}.`,
+      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueMetaLine({ clubs: leagueTeams.length, players: leaguePlayers.length })}.`,
       canonicalUrl: canonical,
       og: {
         title: `${getLeagueDisplayName(league)} · FootyBrain`,
@@ -134,7 +134,6 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
               {leagueMetaLine({
                 clubs: leagueTeams.length,
                 players: leaguePlayers.length,
-                quizReady: quizReadyPlayers.length,
               })}
             </p>
           </div>

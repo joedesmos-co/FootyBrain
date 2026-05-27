@@ -29,18 +29,17 @@ export const QUIZ_DIFFICULTY_OPTIONS = [
 
 export const QUIZ_POOL_FOCUS_OPTIONS = [
   { id: 'all', label: 'All filters', description: 'Mix league, club, position, or national team' },
-  { id: 'league', label: 'League only', description: 'Pick a league — quiz-ready clubs' },
+  { id: 'league', label: 'League only', description: 'Pick a league, then a club squad' },
   { id: 'club', label: 'Club only', description: 'Pick one club squad' },
   {
     id: 'national',
     label: 'National team only',
-    description: 'Players with clues linked to one live national team',
+    description: 'One nation’s squad — players with clues on their profile',
   },
   {
     id: 'international',
     label: 'International (World Cup prep)',
-    description:
-      'Curated union across featured nations — capped lineup, no club or league filters',
+    description: 'Featured nations for World Cup prep — no club or league filters',
   },
   { id: 'position', label: 'Position only', description: 'One role across all leagues' },
 ];

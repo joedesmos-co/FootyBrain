@@ -242,7 +242,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   const leaguesForFilter = useMemo(() => {
     const leagueIdsWithQuizPlayers = new Set(players.map((p) => p.leagueId).filter(Boolean));
-    return leagues.filter((league) => leagueIdsWithQuizPlayers.has(league.id));
+    return leagues.filter(
+      (league) => league.id === 'external' || leagueIdsWithQuizPlayers.has(league.id),
+    );
   }, [leagues, players]);
 
   const teamsInLeague = useMemo(() => {
@@ -745,7 +747,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     poolFocus === 'national' && quizCount < QUIZ_MIN_SESSION_POOL;
                   return (
                     <option key={team.id} value={team.id} disabled={isTooSmallForNationalMode}>
-                      {team.displayName} ({quizCount} quiz-ready
+                      {team.displayName} ({quizCount} player{quizCount === 1 ? '' : 's'}
                       {isTooSmallForNationalMode ? ` — needs ${QUIZ_MIN_SESSION_POOL}` : ''})
                     </option>
                   );

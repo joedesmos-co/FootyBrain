@@ -19,7 +19,7 @@ export const WORLD_CUP_HUB_META = {
   eyebrow: 'Men’s football · World Cup learning',
   title: 'World Cup 2026',
   lede:
-    'Featured nations, group draw prep, tournament legends, quiz-ready squads, collections, and country learning paths — all from the FootyBrain player database.',
+    'Featured nations, group draw prep, tournament legends, collections, and country learning paths—study squads and play nation quizzes.',
   prepNote:
     'Prep hub only: study names, nations, and quizzes. No fixtures, brackets, live scores, or external tournament APIs.',
   formatNote: '48-team edition · co-hosted across North America',

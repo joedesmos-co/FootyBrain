@@ -50,7 +50,7 @@ export default function CollectionsPage() {
           </Link>
         </div>
         <p className="collections-page__section-desc">
-          2026 study lists and country paths—built from live squads and quiz-ready players.
+          2026 study lists and country paths—built from live squads and featured players.
         </p>
         <ul className="learning-paths-grid learning-paths-grid--compact">
           {worldCupPaths.map((path) => (

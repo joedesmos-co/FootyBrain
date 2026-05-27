@@ -7,8 +7,6 @@ import NotFoundPage from './components/NotFoundPage';
 import PageFallback from './components/PageFallback';
 import PrivacyPage from './components/PrivacyPage';
 import Seo from './components/Seo';
-import { DATASET_META } from './data/datasetMeta';
-
 const BrowseDatabase = lazy(() => import('./components/BrowseDatabase'));
 const PlayerProfile = lazy(() => import('./components/PlayerProfile'));
 const TeamProfile = lazy(() => import('./components/TeamProfile'));
@@ -157,10 +155,6 @@ export default function App() {
           </main>
           <footer className="app__footer" aria-label="Footer">
             <p>FootyBrain · Learn the game. Know the players.</p>
-            <p className="app__footer__meta">
-              Updated {DATASET_META.dataAsOf} · {DATASET_META.playerCount.toLocaleString()} players
-              · {DATASET_META.quizEligibleCount.toLocaleString()} quiz-ready
-            </p>
             <p className="app__footer__feedback">
               Have feedback, found a bug, or want to suggest a feature? Email us at{' '}
               <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>

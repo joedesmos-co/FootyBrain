@@ -81,11 +81,17 @@ export default function HomeSpotlight() {
   }, [bundle, refreshSalt]);
 
   const slide = slides[activeIndex] ?? slides[0];
+  const slideCount = slides.length;
 
   const goNext = useCallback(() => {
-    if (slides.length < 2) return;
-    setActiveIndex((i) => (i + 1) % slides.length);
-  }, [slides.length]);
+    if (slideCount < 2) return;
+    setActiveIndex((i) => (i + 1) % slideCount);
+  }, [slideCount]);
+
+  const goPrev = useCallback(() => {
+    if (slideCount < 2) return;
+    setActiveIndex((i) => (i - 1 + slideCount) % slideCount);
+  }, [slideCount]);
 
   const handleRefresh = () => {
     setRefreshSalt((n) => n + 1);
@@ -93,14 +99,14 @@ export default function HomeSpotlight() {
   };
 
   useEffect(() => {
-    if (slides.length < 2) return undefined;
+    if (slideCount < 2) return undefined;
     const prefersReduced =
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return undefined;
     const id = window.setInterval(goNext, ROTATE_MS);
     return () => window.clearInterval(id);
-  }, [slides.length, goNext]);
+  }, [slideCount, goNext]);
 
   if (!bundle) {
     return <PageFallback label="Loading featured picks…" />;
@@ -113,27 +119,51 @@ export default function HomeSpotlight() {
       <div className="home-spotlight__header">
         <div>
           <h2 id="home-spotlight-title">Featured today</h2>
-          <p>Fresh picks across players, clubs, leagues, rivalries, and quiz.</p>
+          <p>Fresh picks across players, clubs, leagues, rivalries, and quizzes.</p>
         </div>
         <button type="button" className="btn btn--secondary btn--small" onClick={handleRefresh}>
           Refresh picks
         </button>
       </div>
 
-      <article className="home-spotlight__card">
-        <Link to={slide.to} className="home-spotlight__link">
-          <SpotlightVisual slide={slide} />
-          <div className="home-spotlight__body">
-            <span className="home-spotlight__label">{slide.label}</span>
-            <h3 className="home-spotlight__title">{slide.title}</h3>
-            {slide.meta ? <p className="home-spotlight__meta">{slide.meta}</p> : null}
-            {slide.note ? <p className="home-spotlight__note">{slide.note}</p> : null}
-            <span className="home-spotlight__cta">Open →</span>
-          </div>
-        </Link>
-      </article>
+      <div className="home-spotlight__carousel">
+        {slideCount > 1 ? (
+          <button
+            type="button"
+            className="home-spotlight__arrow home-spotlight__arrow--prev"
+            onClick={goPrev}
+            aria-label="Previous featured pick"
+          >
+            ‹
+          </button>
+        ) : null}
 
-      {slides.length > 1 ? (
+        <article className="home-spotlight__card">
+          <Link to={slide.to} className="home-spotlight__link">
+            <SpotlightVisual slide={slide} />
+            <div className="home-spotlight__body">
+              <span className="home-spotlight__label">{slide.label}</span>
+              <h3 className="home-spotlight__title">{slide.title}</h3>
+              {slide.meta ? <p className="home-spotlight__meta">{slide.meta}</p> : null}
+              {slide.note ? <p className="home-spotlight__note">{slide.note}</p> : null}
+              <span className="home-spotlight__cta">Open →</span>
+            </div>
+          </Link>
+        </article>
+
+        {slideCount > 1 ? (
+          <button
+            type="button"
+            className="home-spotlight__arrow home-spotlight__arrow--next"
+            onClick={goNext}
+            aria-label="Next featured pick"
+          >
+            ›
+          </button>
+        ) : null}
+      </div>
+
+      {slideCount > 1 ? (
         <div className="home-spotlight__nav" role="tablist" aria-label="Featured spotlight">
           {slides.map((item, index) => (
             <button

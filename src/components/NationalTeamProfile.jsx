@@ -188,7 +188,7 @@ export default function NationalTeamProfile() {
             <p className="profile__league">{nationalTeam.confederation}</p>
             <h1>{nationalTeam.displayName}</h1>
             <p className="profile__sub">
-              {countLinkedPlayers(nationalTeam.id)} linked players
+              {countLinkedPlayers(nationalTeam.id)} players in squad
               {quizReady.length > 0 ? ` · ${quizReady.length} in quizzes` : ''}
               {nationalTeam.fifaRanking != null ? ` · FIFA rank ${nationalTeam.fifaRanking}` : ''}
             </p>
@@ -226,7 +226,7 @@ export default function NationalTeamProfile() {
 
       {squadLoading && squadState.total >= 80 ? (
         <p className="page-loading" role="status" aria-live="polite">
-          Loading linked player pool… ({squadState.loaded}/{squadState.total})
+          Loading squad… ({squadState.loaded}/{squadState.total})
         </p>
       ) : null}
 
@@ -293,7 +293,7 @@ export default function NationalTeamProfile() {
         variant="national"
         getTeamName={(teamIdArg) => peekTeamName(teamIdArg)}
         eyebrow="Player pool"
-        title="Linked players"
+        title="Squad players"
         intro={`Players linked to ${nationalTeam.displayName} from club football—sorted by importance score. Not an official tournament roster.`}
       />
     </div>

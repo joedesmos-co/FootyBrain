@@ -28,7 +28,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <dl className="hero__stats" aria-label="FootyBrain stats">
+          <dl className="hero__stats" aria-label="FootyBrain at a glance">
             <div>
               <dt>{DATASET_META.playerCount}</dt>
               <dd>Players</dd>
@@ -42,9 +42,6 @@ export default function Home() {
               <dd>Leagues</dd>
             </div>
           </dl>
-          <p className="hero__data-note">
-            {DATASET_META.quizEligibleCount} quiz-ready · updated {DATASET_META.dataAsOf}
-          </p>
         </div>
 
         <div className="hero-visual" aria-hidden="true">
