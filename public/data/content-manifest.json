@@ -54,28 +54,28 @@
       "id": "premier-league",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/premier-league.json",
-      "playerCount": 488,
+      "playerCount": 522,
       "teamCount": 20
     },
     {
       "id": "la-liga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/la-liga.json",
-      "playerCount": 492,
+      "playerCount": 512,
       "teamCount": 20
     },
     {
       "id": "bundesliga",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/bundesliga.json",
-      "playerCount": 421,
+      "playerCount": 494,
       "teamCount": 18
     },
     {
       "id": "serie-a",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/serie-a.json",
-      "playerCount": 502,
+      "playerCount": 530,
       "teamCount": 20
     },
     {
@@ -103,7 +103,7 @@
       "id": "brasileirao",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/brasileirao.json",
-      "playerCount": 592,
+      "playerCount": 627,
       "teamCount": 20
     },
     {

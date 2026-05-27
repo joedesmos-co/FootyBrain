@@ -25,9 +25,12 @@ import {
   injectRequiredTmPlayers,
   loadGeneratedDraftSourceIds,
   loadRequiredImportSourceIds,
-  trimCuratedTmToCap,
-  trimGeneratedBaseToCap,
 } from './lib/expansion-player-cap.js';
+import {
+  applyCuratedTmCap,
+  applyGeneratedBaseCap,
+  getPlayerHardCap,
+} from './lib/player-cap-policy.js';
 import { checkMergePlayerIntegrity } from './lib/merge-player-integrity.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -366,18 +369,14 @@ function main() {
     tmBySourceId,
     reservedSourceIds,
   });
-  const emergencyCap = EXPANSION_LIMITS.playersHardMax ?? EXPANSION_LIMITS.playersMax;
-  const maxSquadRows = Math.max(0, emergencyCap - mvpBase.length);
-  const { curatedTm: cappedCuratedTm, trimmedBrowse: trimmedCuratedBrowse } = trimCuratedTmToCap(
-    curatedTm,
-    { maxSquadRows, requiredSourceIds },
-  );
+  const hardCap = getPlayerHardCap();
+  const maxSquadRows = Math.max(0, hardCap - mvpBase.length);
+  const { curatedTm: cappedCuratedTm } = applyCuratedTmCap(curatedTm, {
+    maxSquadRows,
+    requiredSourceIds,
+    label: 'merge:phase3-sample curated TM',
+  });
   curatedTm = cappedCuratedTm;
-  if (trimmedCuratedBrowse > 0) {
-    console.log(
-      `Emergency trim: ${trimmedCuratedBrowse} browse-only TM rows (hard cap ${emergencyCap}, draft-required preserved).`,
-    );
-  }
 
   const mvpTeamById = new Map(mvpTeams.map((t) => [t.id, t]));
   const previewTeamById = new Map(
@@ -433,18 +432,13 @@ function main() {
     );
   }
 
-  const maxGenerated = Math.max(0, emergencyCap - mvpBase.length);
+  const maxGenerated = Math.max(0, hardCap - mvpBase.length);
   const {
     players: trimmedGenerated,
     priorityCount,
     browseCount,
     trimmedBrowse,
-  } = trimGeneratedBaseToCap(generatedBase, maxGenerated);
-  if (trimmedBrowse > 0) {
-    console.log(
-      `Trimmed ${trimmedBrowse} browse-only generated players (kept ${priorityCount} draft/editorial-approved, ${browseCount} browse).`,
-    );
-  }
+  } = applyGeneratedBaseCap(generatedBase, maxGenerated, 'merge:phase3-sample generated base');
 
   const allBasePlayers = [...mvpBase, ...trimmedGenerated];
 
@@ -603,7 +597,7 @@ export function getLeagueName(leagueId) {
   );
   console.log(`Quiz-eligible (flag): ${quizEligible}`);
   console.log(
-    `Curated TM rows used: ${generatedBase.length} (emergency cap ${emergencyCap}, import max ${EXPANSION_LIMITS.importMaxPerClub}/club)`,
+    `Curated TM rows used: ${generatedBase.length} (hard cap ${hardCap}, import max ${EXPANSION_LIMITS.importMaxPerClub}/club)`,
   );
 }
 

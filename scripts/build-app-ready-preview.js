@@ -21,8 +21,8 @@ import {
   injectRequiredTmPlayers,
   loadGeneratedDraftSourceIds,
   loadRequiredImportSourceIds,
-  trimCuratedTmToCap,
 } from './lib/expansion-player-cap.js';
+import { applyCuratedTmCap, getPlayerHardCap } from './lib/player-cap-policy.js';
 import { nullImageFields, validatePlayerImageFields } from './player-image-rules.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -259,8 +259,8 @@ function main() {
     mvpPlayers.filter((p) => p.sourceId).map((p) => String(p.sourceId)),
   );
 
-  const emergencyCap = EXPANSION_LIMITS.playersHardMax ?? EXPANSION_LIMITS.playersMax;
-  const maxSquadRows = Math.max(0, emergencyCap - mvpPlayers.length);
+  const hardCap = getPlayerHardCap();
+  const maxSquadRows = Math.max(0, hardCap - mvpPlayers.length);
   let curatedTm = curatePhase1PreviewPlayers(
     preview.players,
     usedSourceIds,
@@ -273,16 +273,12 @@ function main() {
     reservedSourceIds: usedSourceIds,
   });
 
-  const { curatedTm: cappedCuratedTm, trimmedBrowse } = trimCuratedTmToCap(curatedTm, {
+  const { curatedTm: cappedCuratedTm } = applyCuratedTmCap(curatedTm, {
     maxSquadRows,
     requiredSourceIds,
+    label: 'build:app-ready-preview curated TM',
   });
   curatedTm = cappedCuratedTm;
-  if (trimmedBrowse > 0) {
-    warnings.push(
-      `Emergency trim: ${trimmedBrowse} browse-only TM rows (hard cap ${emergencyCap}; draft-approved preserved).`,
-    );
-  }
   if (mvpPlayers.length + curatedTm.length < EXPANSION_LIMITS.playersMin) {
     warnings.push(
       `Total player count ${mvpPlayers.length + curatedTm.length} below target min ${EXPANSION_LIMITS.playersMin} — check preview build / club matches.`,

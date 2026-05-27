@@ -7,12 +7,13 @@ export const EXPANSION_LIMITS = {
   /** Soft planning threshold — warn in validate:dataset-scale when exceeded. */
   playersSoftMax: 3000,
   /**
-   * Emergency merge trim ceiling (browse rows dropped first; draft/editorial preserved).
-   * Raised to 4300 for phase 9 Bundesliga completion (8 L1 clubs; ~4248 projected players).
+   * Hard player-count ceiling — normal merge fails above this (no silent browse trim).
+   * Set ALLOW_EMERGENCY_TRIM=1 only for intentional emergency trim runs.
+   * Raised to 5000 after World Cup national-pool imports (~4.5k players projected).
    */
-  playersHardMax: 4300,
+  playersHardMax: 5000,
   /** @deprecated Use playersHardMax — alias for merge scripts. */
-  playersMax: 4300,
+  playersMax: 5000,
   /**
    * Pipeline import throttle per club (senior TM rows). Not a product squad size cap.
    * Full senior squads (including bench) target ~30–35 when TM data allows.
