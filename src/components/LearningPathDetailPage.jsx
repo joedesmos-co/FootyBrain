@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCollectionById } from '../data/collectionsData';
 import { getLearningPathById } from '../data/learningPathsData';
 import { getCollectionQuizHref } from '../utils/collections';
 import { resolveLearningPathSteps } from '../utils/learningPaths';
+import { getCanonicalUrl } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 export default function LearningPathDetailPage() {
   const { pathId } = useParams();
@@ -14,6 +17,23 @@ export default function LearningPathDetailPage() {
   const primaryQuizHref = primaryCollection
     ? getCollectionQuizHref(primaryCollection.quizLaunch)
     : null;
+
+  useEffect(() => {
+    if (!path || steps.length === 0) return;
+    const canonical = getCanonicalUrl();
+    if (!canonical) return;
+    const title = `${path.title} · Learning path · FootyBrain`;
+    const description = path.description
+      ? path.description
+      : 'A step-by-step learning flow through collections, profiles, and a quiz.';
+    setSeoMeta({
+      title,
+      description,
+      canonicalUrl: canonical,
+      og: { title, description, url: canonical, type: 'website' },
+      twitter: { title, description },
+    });
+  }, [path, steps.length]);
 
   if (!path || steps.length === 0) {
     return (

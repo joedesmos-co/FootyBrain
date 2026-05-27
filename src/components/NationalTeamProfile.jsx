@@ -17,6 +17,8 @@ import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData';
 import { getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters';
 import { isWorldCup2026QualifiedTeam } from '../data/worldCup2026Prep';
 import TeamSquadView from './TeamSquadView';
+import { getCanonicalUrl } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
 const RIVAL_DISPLAY_NAMES = {
@@ -48,6 +50,23 @@ export default function NationalTeamProfile() {
     loaded: 0,
     total: 0,
   }));
+
+  useEffect(() => {
+    if (!nationalTeam) return undefined;
+    const canonical = getCanonicalUrl();
+    if (!canonical) return undefined;
+    const title = `${nationalTeam.displayName} · National team · FootyBrain`;
+    const description =
+      'National-team player pool page based on linked club database players (not an official World Cup roster).';
+    setSeoMeta({
+      title,
+      description,
+      canonicalUrl: canonical,
+      og: { title, description, url: canonical, type: 'website' },
+      twitter: { title, description },
+    });
+    return undefined;
+  }, [nationalTeam]);
 
   useEffect(() => {
     if (!nationalTeam?.id) return undefined;

@@ -27,6 +27,7 @@ import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 function parseDateOfBirth(value) {
   if (!value) return null;
@@ -191,6 +192,21 @@ export default function PlayerProfile() {
         { '@type': 'ListItem', position: 2, name: 'Browse', item: browseUrl },
         { '@type': 'ListItem', position: 3, name: player.name, item: canonical },
       ],
+    });
+
+    const title = `${player.name} · FootyBrain`;
+    const descriptionParts = [
+      player.position ? formatPosition(player.position) : null,
+      resolvedTeamName,
+      player.nationality ? player.nationality : null,
+    ].filter(Boolean);
+    const description = `${player.name} — ${descriptionParts.join(' · ')}. Player profile with club/league context, career notes, and quiz eligibility.`;
+    setSeoMeta({
+      title,
+      description,
+      canonicalUrl: canonical,
+      og: { title, description, url: canonical, type: 'profile' },
+      twitter: { title, description },
     });
 
     const birthDate =

@@ -23,6 +23,7 @@ import LeagueHubStrip from './LeagueHubStrip';
 import PageFallback from './PageFallback';
 import PlayerCard from './PlayerCard';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 const LEARNING_STEPS = [
   { label: 'Basics', title: 'League snapshot', field: 'description' },
@@ -55,6 +56,22 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     const homeUrl = canonical.replace(/\/league\/[^/]+$/, '/');
     const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
 
+    setSeoMeta({
+      title: `${getLeagueDisplayName(league)} · FootyBrain`,
+      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueTeams.length} clubs · ${leaguePlayers.length} players listed · ${getQuizEligiblePlayers(leaguePlayers).length} quiz-ready.`,
+      canonicalUrl: canonical,
+      og: {
+        title: `${getLeagueDisplayName(league)} · FootyBrain`,
+        description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
+        url: canonical,
+        type: 'website',
+      },
+      twitter: {
+        title: `${getLeagueDisplayName(league)} · FootyBrain`,
+        description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
+      },
+    });
+
     upsertJsonLdScript('jsonld-breadcrumb', {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
@@ -68,7 +85,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     return () => {
       upsertJsonLdScript('jsonld-breadcrumb', null);
     };
-  }, [league.id, league.name]);
+  }, [league, leagueTeams, leaguePlayers]);
 
   const quizReadyPlayers = getQuizEligiblePlayers(leaguePlayers);
   const hasLeagueQuiz = quizReadyPlayers.length > 0;

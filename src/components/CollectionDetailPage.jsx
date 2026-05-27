@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   getCollectionById,
@@ -22,6 +22,8 @@ import {
 import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
+import { getCanonicalUrl } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 function XpToast({ message, onDismiss }) {
   if (!message) return null;
@@ -136,6 +138,24 @@ export default function CollectionDetailPage() {
   } = useCollectionProgress();
   const [xpToast, setXpToast] = useState('');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+
+  useEffect(() => {
+    if (!collection) return;
+    const canonical = getCanonicalUrl();
+    if (!canonical) return;
+    const itemCount = collection.items.length;
+    const title = `${collection.title} · Collection · FootyBrain`;
+    const description = collection.description
+      ? `${collection.description} (${itemCount} items).`
+      : `A curated FootyBrain collection (${itemCount} items) to help you learn players, clubs, and history.`;
+    setSeoMeta({
+      title,
+      description,
+      canonicalUrl: canonical,
+      og: { title, description, url: canonical, type: 'website' },
+      twitter: { title, description },
+    });
+  }, [collection]);
 
   const showXp = (xp) => {
     if (xp > 0) setXpToast(`+${xp} XP`);

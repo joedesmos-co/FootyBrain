@@ -21,6 +21,7 @@ import PageFallback from './PageFallback';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
+import { setSeoMeta } from '../utils/seoMeta';
 
 function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
   useEffect(() => {
@@ -29,6 +30,16 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
 
     const homeUrl = canonical.replace(/\/team\/[^/]+$/, '/');
     const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
+
+    const title = `${team.name} · FootyBrain`;
+    const description = `${team.name} (${formatCountryLabel(team.country)}). Squad learning, rivals, legends, and quizzes when available.`;
+    setSeoMeta({
+      title,
+      description,
+      canonicalUrl: canonical,
+      og: { title, description, url: canonical, type: 'website' },
+      twitter: { title, description },
+    });
 
     upsertJsonLdScript('jsonld-breadcrumb', {
       '@context': 'https://schema.org',
@@ -57,7 +68,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
       upsertJsonLdScript('jsonld-breadcrumb', null);
       upsertJsonLdScript('jsonld-sportsteam', null);
     };
-  }, [team.id, team.name, team.leagueId, leagueName]);
+  }, [team.id, team.name, team.leagueId, team.country, leagueName]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
   const quizReadyRoster = getQuizEligiblePlayers(roster);
