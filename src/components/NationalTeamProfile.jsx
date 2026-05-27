@@ -19,6 +19,7 @@ import { isWorldCup2026QualifiedTeam } from '../data/worldCup2026Prep';
 import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import BreadcrumbNav from './BreadcrumbNav';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
 const RIVAL_DISPLAY_NAMES = {
@@ -172,9 +173,13 @@ export default function NationalTeamProfile() {
 
   return (
     <div className="page national-team-profile">
-      <Link to="/national-teams" className="back-link">
-        ← National teams
-      </Link>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'National teams', to: '/national-teams' },
+          { label: nationalTeam.displayName },
+        ]}
+      />
 
       <header className="profile__hero profile__hero--national">
         <div className="profile__identity">

@@ -28,6 +28,7 @@ import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import BreadcrumbNav from './BreadcrumbNav';
 
 function parseDateOfBirth(value) {
   if (!value) return null;
@@ -326,9 +327,16 @@ export default function PlayerProfile() {
 
   return (
     <div className="page profile player-profile">
-      <Link to="/browse" className="back-link">
-        ← Back to database
-      </Link>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Browse', to: '/browse' },
+          teamName && teamName !== 'Unknown'
+            ? { label: teamName, to: `/team/${player.teamId}` }
+            : null,
+          { label: player.name },
+        ]}
+      />
 
       <header
         className="profile__hero profile__hero--player player-profile__hero football-accent-surface"

@@ -22,6 +22,7 @@ import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import BreadcrumbNav from './BreadcrumbNav';
 
 function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
   useEffect(() => {
@@ -124,9 +125,14 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
 
   return (
     <div className="page team-profile">
-      <Link to="/teams" className="back-link">
-        ← Back to Team Learning
-      </Link>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Teams', to: '/teams' },
+          { label: leagueName, to: `/league/${team.leagueId}` },
+          { label: team.name },
+        ]}
+      />
 
       <header
         className="profile__hero profile__hero--team football-accent-surface"
@@ -178,6 +184,26 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading }) {
       {isExternalClubStubTeam(team) ? <ExternalStubNotice compact /> : null}
 
       <ClubHubStrip team={team} leagueName={leagueName} />
+
+      {roster.length > 0 && (
+        <section className="info-card info-card--wide" aria-label="Related players">
+          <h2>Key players</h2>
+          <p className="info-card__note">
+            Quick links to start learning {team.name} without scrolling the full squad.
+          </p>
+          <ul className="tag-list tag-list--accent">
+            {roster
+              .slice()
+              .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
+              .slice(0, 6)
+              .map((p) => (
+                <li key={p.id}>
+                  <Link to={`/player/${p.id}`}>{p.name}</Link>
+                </li>
+              ))}
+          </ul>
+        </section>
+      )}
 
       <section className="profile__grid" aria-label={`${team.name} details`}>
         <article className="info-card info-card--wide team-profile__squad-card">

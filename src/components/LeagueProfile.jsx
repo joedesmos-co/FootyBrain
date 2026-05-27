@@ -24,6 +24,7 @@ import PageFallback from './PageFallback';
 import PlayerCard from './PlayerCard';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import BreadcrumbNav from './BreadcrumbNav';
 
 const LEARNING_STEPS = [
   { label: 'Basics', title: 'League snapshot', field: 'description' },
@@ -99,9 +100,13 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
 
   return (
     <div className="page league-profile">
-      <Link to="/browse" className="back-link">
-        ← Back to Browse Database
-      </Link>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Browse', to: '/browse' },
+          { label: getLeagueDisplayName(league) },
+        ]}
+      />
 
       <header
         className="profile__hero profile__hero--league football-accent-surface"
