@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /dev/
+Disallow: /quiz
+Disallow: /compare
+Disallow: /compare-clubs
+Disallow: /saved
+Disallow: /profile
+Disallow: /daily
+
+Sitemap: /sitemap.xml
+

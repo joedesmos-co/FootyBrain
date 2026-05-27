@@ -41,6 +41,8 @@
     "validate:squad-report": "node scripts/validate-squad-report.js",
     "validate:dataset-scale": "node scripts/validate-dataset-scale.js",
     "validate:dataset-scale:dist": "node scripts/validate-dataset-scale.js --dist",
+    "write:sitemap": "node scripts/generate-sitemap.js",
+    "postbuild": "npm run write:sitemap",
     "editorial:report": "node scripts/editorial-report.js",
     "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
     "audit:expansion-foundation": "node scripts/audit-expansion-foundation.js",

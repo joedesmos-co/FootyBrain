@@ -6,6 +6,7 @@ import Home from './components/Home';
 import NotFoundPage from './components/NotFoundPage';
 import PageFallback from './components/PageFallback';
 import PrivacyPage from './components/PrivacyPage';
+import Seo from './components/Seo';
 import { DATASET_META } from './data/datasetMeta';
 
 const BrowseDatabase = lazy(() => import('./components/BrowseDatabase'));
@@ -61,6 +62,7 @@ export default function App() {
     <BrowserRouter>
       <ErrorBoundary>
         <ScrollToTop />
+        <Seo />
         <div className="app">
           <Navbar />
           <main className="app__main" id="main-content">

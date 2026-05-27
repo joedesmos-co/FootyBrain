@@ -1,0 +1,4 @@
+# FootyBrain ads.txt
+# Placeholder for future ad network declarations (e.g. Google AdSense).
+# Do not add publisher IDs here until monetization is configured.
+
