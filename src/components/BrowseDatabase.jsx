@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
 import {
   countLinkedPlayers,
@@ -26,6 +26,9 @@ import PlayerCard from './PlayerCard';
 const manifestLeagues = getManifestLeagues();
 
 export default function BrowseDatabase() {
+  const [searchParams] = useSearchParams();
+  const tab = searchParams.get('tab') || 'players';
+  const leagueParam = searchParams.get('league') || '';
   const [leagueFilter, setLeagueFilter] = useState('');
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
@@ -188,6 +191,27 @@ export default function BrowseDatabase() {
     setTeamFilter('');
   };
 
+  useEffect(() => {
+    if (tab !== 'teams') return;
+    let cancelled = false;
+    Promise.resolve().then(() => {
+      if (cancelled) return;
+      if (leagueParam && leagueParam !== leagueFilter) {
+        setLeagueFilter(leagueParam);
+        setTeamFilter('');
+        setSearch('');
+      }
+      if (!leagueParam && leagueFilter) {
+        setLeagueFilter('');
+        setTeamFilter('');
+        setSearch('');
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [tab, leagueParam, leagueFilter]);
+
   const showPicks = !usesExternalShard && quizStatus === 'ready';
   const browseDataLoading =
     shardLoading ||
@@ -201,19 +225,56 @@ export default function BrowseDatabase() {
     searchIndexStatus === 'loading' &&
     (leagueFilter || teamFilter || search.trim());
 
+  const showPlayersTab = tab === 'players';
+  const showTeamsTab = tab === 'teams';
+  const showLeaguesTab = tab === 'leagues';
+  const showNationalTeamsTab = tab === 'national-teams';
+  const showWorldCupTab = tab === 'world-cup';
+
   return (
     <div className="page browse">
       <header className="page-header">
-        <h1>Browse Database</h1>
-        <p>
-          Filter by league or club, search by name, then open a profile.{' '}
-          <Link to="/national-teams">Men&apos;s national teams</Link> are listed separately.
-        </p>
+        <h1>Browse</h1>
+        <p>Explore the FootyBrain database by category. Use filters and search to open profiles.</p>
         <DataTrustNotice compact />
+        <nav className="compare-tabs" aria-label="Browse categories">
+          <NavLink
+            to="/browse"
+            end
+            className={`compare-tabs__tab${showPlayersTab ? ' compare-tabs__tab--active' : ''}`}
+          >
+            Players
+          </NavLink>
+          <NavLink
+            to="/browse?tab=teams"
+            className={`compare-tabs__tab${showTeamsTab ? ' compare-tabs__tab--active' : ''}`}
+          >
+            Clubs/Teams
+          </NavLink>
+          <NavLink
+            to="/browse?tab=leagues"
+            className={`compare-tabs__tab${showLeaguesTab ? ' compare-tabs__tab--active' : ''}`}
+          >
+            Leagues
+          </NavLink>
+          <NavLink
+            to="/browse?tab=national-teams"
+            className={`compare-tabs__tab${showNationalTeamsTab ? ' compare-tabs__tab--active' : ''}`}
+          >
+            National teams
+          </NavLink>
+          <NavLink
+            to="/browse?tab=world-cup"
+            className={`compare-tabs__tab${showWorldCupTab ? ' compare-tabs__tab--active' : ''}`}
+          >
+            World Cup
+          </NavLink>
+        </nav>
       </header>
 
-      {indexLoading ? <PageFallback label="Loading search index…" /> : null}
+      {indexLoading && showPlayersTab ? <PageFallback label="Loading search index…" /> : null}
 
+      {showPlayersTab && (
       <section className="filters" aria-label="Player filters">
         <div className="filters__row">
           <label className="filter-field">
@@ -284,8 +345,9 @@ export default function BrowseDatabase() {
           </button>
         ) : null}
       </section>
+      )}
 
-      {showPicks ? (
+      {showPlayersTab && (showPicks ? (
         <TodaysPicksSection
           featuredPlayers={dailyFeatured.players}
           featuredTeams={dailyFeatured.teams}
@@ -296,8 +358,9 @@ export default function BrowseDatabase() {
         <p className="page-loading browse-picks-loading" role="status" aria-live="polite">
           Loading today&apos;s picks…
         </p>
-      )}
+      ))}
 
+      {(showPlayersTab || showWorldCupTab) && (
       <aside className="learning-hub-cta learning-hub-cta--compact" aria-label="World Cup learning">
         <div className="learning-hub-cta__copy">
           <p className="learning-hub-cta__title">World Cup 2026 prep</p>
@@ -315,7 +378,9 @@ export default function BrowseDatabase() {
           </Link>
         </div>
       </aside>
+      )}
 
+      {(showPlayersTab || showNationalTeamsTab) && (
       <section className="national-hub-strip" aria-labelledby="national-hubs-title">
         <div className="national-hub-strip__header">
           <h2 id="national-hubs-title">National team hubs</h2>
@@ -352,7 +417,9 @@ export default function BrowseDatabase() {
           </p>
         )}
       </section>
+      )}
 
+      {(showPlayersTab || showLeaguesTab) && (
       <section className="league-hub-strip" aria-labelledby="league-hubs-title">
         <div className="league-hub-strip__header">
           <h2 id="league-hubs-title">League learning hubs</h2>
@@ -370,8 +437,10 @@ export default function BrowseDatabase() {
           ))}
         </div>
       </section>
+      )}
 
-      {shardLoading ? (
+      {showPlayersTab ? (
+      shardLoading ? (
         <PageFallback label={`Loading ${activeLeagueName}…`} />
       ) : showLeagueClubPicker ? (
         <section className="browse-results" aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}>
@@ -431,6 +500,52 @@ export default function BrowseDatabase() {
         <p className="empty-state browse-results-empty">
           Search or choose a league/team to explore players.
         </p>
+      )
+      ) : null}
+
+      {showTeamsTab && (
+        <section className="browse-results" aria-label="Browse clubs">
+          <p className="browse-results__cap-notice">
+            Pick a league to browse clubs. For curated club learning pages, use{' '}
+            <Link to="/teams">Team Learning</Link>.
+          </p>
+          <div className="league-link-grid">
+            {manifestLeagues.map((league) => (
+              <Link
+                key={league.id}
+                to={`/browse?tab=teams&league=${league.id}`}
+                className="league-link-card"
+              >
+                <LeagueBadge league={league} />
+                <span>
+                  <strong>{getLeagueDisplayName(league)}</strong>
+                  <small>{league.country}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+          {leagueFilter ? (
+            <section
+              className="browse-results"
+              aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}
+            >
+              <p className="browse-results__cap-notice">
+                {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
+                squad.
+              </p>
+              <div className="league-link-grid">
+                {teamsInLeague.map((team) => (
+                  <Link key={team.id} to={`/team/${team.id}`} className="league-link-card">
+                    <span>
+                      <strong>{team.name}</strong>
+                      <small>{team.country}</small>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </section>
       )}
     </div>
   );
