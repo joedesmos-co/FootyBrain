@@ -1,36 +1,40 @@
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, NavLink, useSearchParams } from 'react-router-dom';
-import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
+import { getManifestLeague } from '../data/contentManifest';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { getTodayKey } from '../hooks/useDailyCompletionStatus';
 import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured';
+import {
+  buildBrowseLeagueTaxonomy,
+  getBrowseNationalTeams,
+  normalizeBrowseLeagueParam,
+  normalizeOtherClubRegionParam,
+  OTHER_CLUB_REGION_LABELS,
+  OTHER_CLUB_REGION_ORDER,
+  OTHER_CLUBS_LEAGUE_ID,
+} from '../utils/browseTaxonomy';
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
 import {
   formatCountryLabel,
   getLeagueDisplayName,
   isExternalLeagueId,
 } from '../utils/footballDisplay';
-import { groupExternalClubTeams } from '../utils/externalClubGrouping';
+import { groupOtherClubTeamsForBrowse } from '../utils/externalClubGrouping';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
+import NationalTeamBadge from './NationalTeamBadge';
 import { getInternationalQuizHref } from '../utils/worldCupQuizPools';
 import BrowsePagination from './BrowsePagination';
 import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
 
-const manifestLeagues = getManifestLeagues();
-const MAJOR_LEAGUE_IDS = ['premier-league', 'la-liga', 'bundesliga', 'serie-a', 'ligue-1'];
 const BROWSE_PAGE_SIZE = 60;
-
-function normalizeBrowseLeagueParam(value) {
-  if (!value) return '';
-  if (value === 'international') return 'external';
-  return value;
-}
+const browseLeagueTaxonomy = buildBrowseLeagueTaxonomy();
+const browseNationalTeams = getBrowseNationalTeams();
 
 function LeagueExploreCard({ league, tab, onNavigate }) {
   const browseHref =
@@ -46,6 +50,35 @@ function LeagueExploreCard({ league, tab, onNavigate }) {
   );
 }
 
+function NationalTeamExploreCard({ team, onNavigate }) {
+  return (
+    <Link to={`/national-team/${team.id}`} className="league-link-card" onClick={onNavigate}>
+      <NationalTeamBadge nationalTeam={team} size="thumb" />
+      <span>
+        <strong>{team.displayName}</strong>
+        <small>{team.confederation} · National squad</small>
+      </span>
+    </Link>
+  );
+}
+
+function OtherClubRegionExploreCard({ regionId, tab, clubCount, onNavigate }) {
+  const browseHref =
+    tab === 'clubs'
+      ? `/browse?tab=clubs&league=${OTHER_CLUBS_LEAGUE_ID}&region=${regionId}`
+      : `/browse?league=${OTHER_CLUBS_LEAGUE_ID}&region=${regionId}`;
+  return (
+    <Link to={browseHref} className="league-link-card" onClick={onNavigate}>
+      <span>
+        <strong>{OTHER_CLUB_REGION_LABELS[regionId]}</strong>
+        <small>
+          {clubCount} club{clubCount !== 1 ? 's' : ''} · Browse
+        </small>
+      </span>
+    </Link>
+  );
+}
+
 function BrowseClubGrid({ teams }) {
   return (
     <div className="league-link-grid">
@@ -53,7 +86,7 @@ function BrowseClubGrid({ teams }) {
         <Link key={team.id} to={`/team/${team.id}`} className="league-link-card">
           <span>
             <strong>{team.name}</strong>
-            <small>{team.country ? formatCountryLabel(team.country) : 'International'}</small>
+            <small>{team.country ? formatCountryLabel(team.country) : 'Club'}</small>
           </span>
         </Link>
       ))}
@@ -61,23 +94,69 @@ function BrowseClubGrid({ teams }) {
   );
 }
 
-function BrowseLeagueClubSections({ teams, players, isExternalLeague }) {
+function BrowseTaxonomyHub({ tab, onNavigate, otherClubRegionCounts }) {
+  return (
+    <>
+      <h3 className="section-label section-label--compact">European leagues</h3>
+      <div className="league-link-grid">
+        {browseLeagueTaxonomy.european.map((league) => (
+          <LeagueExploreCard key={league.id} league={league} tab={tab} onNavigate={onNavigate} />
+        ))}
+      </div>
+
+      <h3 className="section-label section-label--compact">American leagues</h3>
+      <div className="league-link-grid">
+        {browseLeagueTaxonomy.american.map((league) => (
+          <LeagueExploreCard key={league.id} league={league} tab={tab} onNavigate={onNavigate} />
+        ))}
+      </div>
+
+      <h3 className="section-label section-label--compact">National teams</h3>
+      <p className="browse-results__cap-notice">
+        Country squads — not club teams. Open a nation for its squad, rivals, and quizzes.
+      </p>
+      <div className="league-link-grid">
+        {browseNationalTeams.map((team) => (
+          <NationalTeamExploreCard key={team.id} team={team} onNavigate={onNavigate} />
+        ))}
+      </div>
+
+      <h3 className="section-label section-label--compact">Other clubs</h3>
+      <p className="browse-results__cap-notice">
+        Smaller and imported clubs outside the main league hubs — pick a region to browse.
+      </p>
+      <div className="league-link-grid">
+        {OTHER_CLUB_REGION_ORDER.map((regionId) => (
+          <OtherClubRegionExploreCard
+            key={regionId}
+            regionId={regionId}
+            tab={tab}
+            clubCount={otherClubRegionCounts[regionId] ?? 0}
+            onNavigate={onNavigate}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
+function BrowseLeagueClubSections({ teams, players, isOtherClubsLeague, otherClubRegion }) {
   if (!teams.length) {
-    return <p className="empty-state">No clubs in this league yet.</p>;
+    return <p className="empty-state">No clubs match this view yet.</p>;
   }
 
-  if (!isExternalLeague) {
+  if (!isOtherClubsLeague) {
     return <BrowseClubGrid teams={teams} />;
   }
 
-  const sections = groupExternalClubTeams(teams, players);
+  if (otherClubRegion) {
+    return <BrowseClubGrid teams={teams} />;
+  }
+
+  const sections = groupOtherClubTeamsForBrowse(teams, players);
 
   return (
     <>
-      <p className="browse-results__cap-notice">
-        Imported clubs from around the world. Men&apos;s national squads (England, Brazil, etc.)
-        live under <Link to="/world-cup">World Cup prep</Link> — not mixed in here as club teams.
-      </p>
       {sections.map((section) => (
         <Fragment key={section.id}>
           <h3 className="section-label section-label--compact">{section.label}</h3>
@@ -88,11 +167,28 @@ function BrowseLeagueClubSections({ teams, players, isExternalLeague }) {
   );
 }
 
+function BrowseOtherClubsRegionPicker({ tab, onNavigate, otherClubRegionCounts }) {
+  return (
+    <div className="league-link-grid">
+      {OTHER_CLUB_REGION_ORDER.map((regionId) => (
+        <OtherClubRegionExploreCard
+          key={regionId}
+          regionId={regionId}
+          tab={tab}
+          clubCount={otherClubRegionCounts[regionId] ?? 0}
+          onNavigate={onNavigate}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function BrowseDatabase() {
   const [searchParams, setSearchParams] = useSearchParams();
   const rawTab = searchParams.get('tab') || 'players';
   const tab = rawTab === 'teams' ? 'clubs' : rawTab;
   const leagueFilter = normalizeBrowseLeagueParam(searchParams.get('league') || '');
+  const otherClubRegion = normalizeOtherClubRegionParam(searchParams.get('region'));
   const [teamFilter, setTeamFilter] = useState('');
   const [search, setSearch] = useState('');
   const [playerPage, setPlayerPage] = useState(1);
@@ -101,11 +197,21 @@ export default function BrowseDatabase() {
   const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
   const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
 
-  const usesExternalShard =
-    Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
+  const isOtherClubsLeague = isExternalLeagueId(leagueFilter);
+  const usesExternalShard = Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
   const shardState = useLeagueShard(usesExternalShard ? leagueFilter : null);
-  const activeLeagueName =
-    (leagueFilter && getLeagueDisplayName(getManifestLeague(leagueFilter))) || 'league';
+  const activeScopeLabel = useMemo(() => {
+    if (isOtherClubsLeague) {
+      if (otherClubRegion) {
+        return `${OTHER_CLUB_REGION_LABELS[otherClubRegion]} · Other clubs`;
+      }
+      return 'Other clubs';
+    }
+    if (leagueFilter) {
+      return getLeagueDisplayName(getManifestLeague(leagueFilter));
+    }
+    return 'league';
+  }, [isOtherClubsLeague, otherClubRegion, leagueFilter]);
 
   useEffect(() => {
     if (usesExternalShard || searchIndexStatus !== 'error') return undefined;
@@ -134,7 +240,7 @@ export default function BrowseDatabase() {
   const getLeagueName = useMemo(() => {
     if (usesExternalShard && leagueShard) return leagueShard.getLeagueName;
     if (bundled) return bundled.getLeagueName;
-    return (id) => manifestLeagues.find((league) => league.id === id)?.name ?? 'Unknown';
+    return (id) => getLeagueDisplayName(getManifestLeague(id));
   }, [usesExternalShard, leagueShard, bundled]);
 
   const teamNameById = useMemo(() => {
@@ -152,6 +258,42 @@ export default function BrowseDatabase() {
     [usesExternalShard, leagueShard, bundled, teamNameById],
   );
 
+  const allTeamsInLeague = useMemo(() => {
+    if (usesExternalShard && leagueShard) {
+      return leagueShard.teams;
+    }
+    if (!leagueFilter) return searchIndex?.teams ?? [];
+    return (searchIndex?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
+  }, [usesExternalShard, leagueShard, leagueFilter, searchIndex]);
+
+  const otherClubPlayersForGrouping = useMemo(() => {
+    if (!isOtherClubsLeague) return [];
+    if (usesExternalShard && leagueShard) return leagueShard.players;
+    if (searchIndexStatus === 'ready' && searchIndex?.players) {
+      return searchIndex.players.filter((p) => p.leagueId === OTHER_CLUBS_LEAGUE_ID);
+    }
+    return [];
+  }, [isOtherClubsLeague, usesExternalShard, leagueShard, searchIndexStatus, searchIndex]);
+
+  const otherClubRegionCounts = useMemo(() => {
+    const externalTeams = (searchIndex?.teams ?? []).filter(
+      (team) => team.leagueId === OTHER_CLUBS_LEAGUE_ID,
+    );
+    const sections = groupOtherClubTeamsForBrowse(externalTeams, otherClubPlayersForGrouping);
+    return Object.fromEntries(sections.map((section) => [section.id, section.teams.length]));
+  }, [searchIndex, otherClubPlayersForGrouping]);
+
+  const otherClubSections = useMemo(() => {
+    if (!isOtherClubsLeague || !allTeamsInLeague.length) return [];
+    return groupOtherClubTeamsForBrowse(allTeamsInLeague, otherClubPlayersForGrouping);
+  }, [isOtherClubsLeague, allTeamsInLeague, otherClubPlayersForGrouping]);
+
+  const teamsInLeague = useMemo(() => {
+    if (!isOtherClubsLeague || !otherClubRegion) return allTeamsInLeague;
+    const section = otherClubSections.find((entry) => entry.id === otherClubRegion);
+    return section?.teams ?? [];
+  }, [allTeamsInLeague, isOtherClubsLeague, otherClubRegion, otherClubSections]);
+
   const hasPlayerQuery = search.trim().length > 0 || Boolean(leagueFilter || teamFilter);
 
   const featuredPickPool = useMemo(() => {
@@ -163,7 +305,12 @@ export default function BrowseDatabase() {
     if (quizStatus !== 'ready' || !quizRegistry?.players || !quizRegistry?.teams) {
       return { mode: 'club', players: [], teams: [], leagues: [], nationalTeams: [] };
     }
-    return getDailyFeatured(featuredPickPool, quizRegistry.teams, manifestLeagues, todayKey);
+    return getDailyFeatured(
+      featuredPickPool,
+      quizRegistry.teams,
+      [...browseLeagueTaxonomy.european, ...browseLeagueTaxonomy.american],
+      todayKey,
+    );
   }, [quizStatus, quizRegistry, featuredPickPool, todayKey]);
 
   const intentContext = useMemo(
@@ -174,49 +321,38 @@ export default function BrowseDatabase() {
     [usesExternalShard, leagueShard, searchIndex, getLeagueName],
   );
 
-  const teamsInLeague = useMemo(() => {
-    if (usesExternalShard && leagueShard) {
-      return leagueShard.teams;
-    }
-    if (!leagueFilter) return searchIndex?.teams ?? [];
-    return (searchIndex?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
-  }, [usesExternalShard, leagueShard, leagueFilter, searchIndex]);
-
-  const leagueGroups = useMemo(() => {
-    const major = [];
-    const other = [];
-    const international = [];
-    for (const league of manifestLeagues) {
-      if (league.id === 'external') {
-        international.push(league);
-      } else if (MAJOR_LEAGUE_IDS.includes(league.id)) {
-        major.push(league);
-      } else {
-        other.push(league);
-      }
-    }
-    return { major, other, international };
-  }, []);
-
-  const isExternalLeague = isExternalLeagueId(leagueFilter);
-
   const scopedPlayers = useMemo(() => {
     if (usesExternalShard && leagueShard) {
+      let players = leagueShard.players;
       if (teamFilter) {
-        return leagueShard.players.filter((player) => player.teamId === teamFilter);
+        players = players.filter((player) => player.teamId === teamFilter);
+      } else if (isOtherClubsLeague && otherClubRegion) {
+        const teamIds = new Set(teamsInLeague.map((team) => team.id));
+        players = players.filter((player) => teamIds.has(player.teamId));
       }
-      return leagueShard.players;
+      return players;
     }
-    // Default to the lightweight search index for browse/search without loading sampleData.
     if (searchIndexStatus === 'ready' && searchIndex?.players) {
-      if (teamFilter) return searchIndex.players.filter((p) => p.teamId === teamFilter);
-      if (leagueFilter) return searchIndex.players.filter((p) => p.leagueId === leagueFilter);
-      return searchIndex.players;
+      let players = searchIndex.players;
+      if (teamFilter) players = players.filter((p) => p.teamId === teamFilter);
+      else if (leagueFilter) players = players.filter((p) => p.leagueId === leagueFilter);
+      if (isOtherClubsLeague && otherClubRegion && !teamFilter) {
+        const teamIds = new Set(teamsInLeague.map((team) => team.id));
+        players = players.filter((player) => teamIds.has(player.teamId));
+      }
+      return players;
     }
 
     if (!bundled) return [];
     if (teamFilter) return bundled.getPlayersForTeam(teamFilter);
-    if (leagueFilter) return bundled.getPlayersForLeague(leagueFilter);
+    if (leagueFilter) {
+      let players = bundled.getPlayersForLeague(leagueFilter);
+      if (isOtherClubsLeague && otherClubRegion) {
+        const teamIds = new Set(teamsInLeague.map((team) => team.id));
+        players = players.filter((player) => teamIds.has(player.teamId));
+      }
+      return players;
+    }
     return bundled.players;
   }, [
     usesExternalShard,
@@ -226,6 +362,9 @@ export default function BrowseDatabase() {
     searchIndexStatus,
     searchIndex,
     bundled,
+    isOtherClubsLeague,
+    otherClubRegion,
+    teamsInLeague,
   ]);
 
   const filteredPlayers = useMemo(() => {
@@ -246,13 +385,20 @@ export default function BrowseDatabase() {
 
   const showPlayersTab = tab === 'players';
   const showClubsTab = tab === 'clubs';
+  const showOtherClubsRegionPicker = Boolean(
+    isOtherClubsLeague && !otherClubRegion && !teamFilter && !search.trim() && !skipClubPicker,
+  );
   const showLeagueClubPicker = Boolean(
-    leagueFilter && !teamFilter && !search.trim() && !skipClubPicker,
+    leagueFilter &&
+      !teamFilter &&
+      !search.trim() &&
+      !skipClubPicker &&
+      !showOtherClubsRegionPicker,
   );
   const playersListReady =
     searchIndexStatus === 'ready' || Boolean(bundled) || usesExternalShard;
   const showPlayerResults =
-    showPlayersTab && !showLeagueClubPicker && (hasPlayerQuery || playersListReady);
+    showPlayersTab && !showLeagueClubPicker && !showOtherClubsRegionPicker && (hasPlayerQuery || playersListReady);
 
   const totalFilteredPlayers = filteredPlayers.length;
   const totalPlayerPages = Math.max(1, Math.ceil(totalFilteredPlayers / BROWSE_PAGE_SIZE));
@@ -264,20 +410,41 @@ export default function BrowseDatabase() {
     playerPageStart + BROWSE_PAGE_SIZE,
   );
 
+  const updateBrowseParams = (mutate) => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        mutate(next);
+        return next;
+      },
+      { replace: true },
+    );
+  };
+
+  const leagueSelectValue = otherClubRegion
+    ? `${OTHER_CLUBS_LEAGUE_ID}:${otherClubRegion}`
+    : leagueFilter;
+
   const handleLeagueChange = (value) => {
     setTeamFilter('');
     setSearch('');
     setSkipClubPicker(false);
     setPlayerPage(1);
-    setSearchParams(
-      (prev) => {
-        const next = new URLSearchParams(prev);
-        if (value) next.set('league', value);
-        else next.delete('league');
-        return next;
-      },
-      { replace: true },
-    );
+    updateBrowseParams((next) => {
+      if (!value) {
+        next.delete('league');
+        next.delete('region');
+        return;
+      }
+      if (value.includes(':')) {
+        const [league, region] = value.split(':');
+        next.set('league', league);
+        next.set('region', region);
+        return;
+      }
+      next.set('league', value);
+      next.delete('region');
+    });
   };
 
   const handleTeamFilterChange = (value) => {
@@ -310,7 +477,7 @@ export default function BrowseDatabase() {
     <div className="page browse">
       <header className="page-header">
         <h1>Browse</h1>
-        <p>Explore players and clubs. Use search and filters to open any profile.</p>
+        <p>Explore players and clubs by league, nation, or region. Use search and filters to narrow results.</p>
         <DataTrustNotice compact />
         <nav className="compare-tabs" aria-label="Browse categories">
           <NavLink
@@ -333,9 +500,9 @@ export default function BrowseDatabase() {
 
       <section className="browse-secondary" aria-label="More to explore">
         <div className="browse-secondary__grid">
-          <Link to="#leagues" className="browse-secondary__card">
-            <strong>Explore leagues</strong>
-            <span>Quick league hubs and quizzes</span>
+          <Link to="#browse-categories" className="browse-secondary__card">
+            <strong>Browse categories</strong>
+            <span>Leagues, nations, and other clubs</span>
           </Link>
           <Link to="/world-cup" className="browse-secondary__card">
             <strong>World Cup prep</strong>
@@ -354,28 +521,32 @@ export default function BrowseDatabase() {
           <label className="filter-field">
             <span>League</span>
             <select
-              value={leagueFilter}
+              value={leagueSelectValue}
               onChange={(e) => handleLeagueChange(e.target.value)}
             >
               <option value="">All leagues</option>
-              <optgroup label="Major leagues">
-                {leagueGroups.major.map((league) => (
+              <optgroup label="European leagues">
+                {browseLeagueTaxonomy.european.map((league) => (
                   <option key={league.id} value={league.id}>
                     {getLeagueDisplayName(league)}
                   </option>
                 ))}
               </optgroup>
-              <optgroup label="International clubs">
-                {leagueGroups.international.map((league) => (
+              <optgroup label="American leagues">
+                {browseLeagueTaxonomy.american.map((league) => (
                   <option key={league.id} value={league.id}>
                     {getLeagueDisplayName(league)}
                   </option>
                 ))}
               </optgroup>
               <optgroup label="Other clubs">
-                {leagueGroups.other.map((league) => (
-                  <option key={league.id} value={league.id}>
-                    {getLeagueDisplayName(league)}
+                <option value={OTHER_CLUBS_LEAGUE_ID}>All other clubs</option>
+                {OTHER_CLUB_REGION_ORDER.map((regionId) => (
+                  <option
+                    key={regionId}
+                    value={`${OTHER_CLUBS_LEAGUE_ID}:${regionId}`}
+                  >
+                    {OTHER_CLUB_REGION_LABELS[regionId]}
                   </option>
                 ))}
               </optgroup>
@@ -414,7 +585,7 @@ export default function BrowseDatabase() {
         </div>
         <p className="filters__count">
           {shardLoading
-            ? `Loading ${activeLeagueName}…`
+            ? `Loading ${activeScopeLabel}…`
             : browseDataLoading
               ? 'Loading players…'
               : hasPlayerQuery
@@ -464,55 +635,43 @@ export default function BrowseDatabase() {
       )}
 
       {showPlayersTab && (
-      <section className="league-hub-strip" aria-labelledby="league-hubs-title" id="leagues">
+      <section
+        className="league-hub-strip"
+        aria-labelledby="browse-categories-title"
+        id="browse-categories"
+      >
         <div className="league-hub-strip__header">
-          <h2 id="league-hubs-title">Leagues</h2>
-          <p>Pick a league to explore clubs, rivalries, and standout players.</p>
+          <h2 id="browse-categories-title">Browse categories</h2>
+          <p>European and American leagues, national squads, and other clubs by region.</p>
         </div>
-        <h3 className="section-label section-label--compact">Major leagues</h3>
-        <div className="league-link-grid">
-          {leagueGroups.major.map((league) => (
-            <LeagueExploreCard
-              key={league.id}
-              league={league}
-              tab={tab}
-              onNavigate={resetLocalBrowseFilters}
-            />
-          ))}
-        </div>
-        <h3 className="section-label section-label--compact">International clubs</h3>
-        <div className="league-link-grid">
-          {leagueGroups.international.map((league) => (
-            <LeagueExploreCard
-              key={league.id}
-              league={league}
-              tab={tab}
-              onNavigate={resetLocalBrowseFilters}
-            />
-          ))}
-        </div>
-        <h3 className="section-label section-label--compact">Other clubs</h3>
-        <div className="league-link-grid">
-          {leagueGroups.other.map((league) => (
-            <LeagueExploreCard
-              key={league.id}
-              league={league}
-              tab={tab}
-              onNavigate={resetLocalBrowseFilters}
-            />
-          ))}
-        </div>
+        <BrowseTaxonomyHub
+          tab={tab}
+          onNavigate={resetLocalBrowseFilters}
+          otherClubRegionCounts={otherClubRegionCounts}
+        />
       </section>
       )}
 
       {showPlayersTab ? (
         shardLoading ? (
-        <PageFallback label={`Loading ${activeLeagueName}…`} />
-        ) : showLeagueClubPicker ? (
-        <section className="browse-results" aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}>
+        <PageFallback label={`Loading ${activeScopeLabel}…`} />
+        ) : showOtherClubsRegionPicker ? (
+        <section className="browse-results" aria-label="Other clubs by region">
           <p className="browse-results__cap-notice">
-            {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
-            full squad ({scopedPlayers.length.toLocaleString()} players in this league).
+            Pick a region to browse imported and smaller clubs. National squads are listed above
+            under National teams.
+          </p>
+          <BrowseOtherClubsRegionPicker
+            tab={tab}
+            onNavigate={resetLocalBrowseFilters}
+            otherClubRegionCounts={otherClubRegionCounts}
+          />
+        </section>
+        ) : showLeagueClubPicker ? (
+        <section className="browse-results" aria-label={`Clubs in ${activeScopeLabel}`}>
+          <p className="browse-results__cap-notice">
+            {teamsInLeague.length} clubs in {activeScopeLabel} — open a club to view its full squad
+            ({scopedPlayers.length.toLocaleString()} players in this view).
           </p>
           <div className="browse-results__club-picker-actions">
             <button
@@ -523,16 +682,27 @@ export default function BrowseDatabase() {
                 setPlayerPage(1);
               }}
             >
-              Browse all players in this league
+              Browse all players in this view
             </button>
-            <Link to={`/league/${leagueFilter}`} className="btn btn--secondary btn--small">
-              Open league page
-            </Link>
+            {!isOtherClubsLeague ? (
+              <Link to={`/league/${leagueFilter}`} className="btn btn--secondary btn--small">
+                Open league page
+              </Link>
+            ) : null}
+            {isOtherClubsLeague && otherClubRegion ? (
+              <Link
+                to={`/browse?league=${OTHER_CLUBS_LEAGUE_ID}${tab === 'clubs' ? '&tab=clubs' : ''}`}
+                className="btn btn--secondary btn--small"
+              >
+                All other-club regions
+              </Link>
+            ) : null}
           </div>
           <BrowseLeagueClubSections
             teams={teamsInLeague}
-            players={scopedPlayers}
-            isExternalLeague={isExternalLeague}
+            players={otherClubPlayersForGrouping}
+            isOtherClubsLeague={isOtherClubsLeague}
+            otherClubRegion={otherClubRegion}
           />
         </section>
       ) : showPlayerResults ? (
@@ -586,56 +756,42 @@ export default function BrowseDatabase() {
       {showClubsTab && (
         <section className="browse-results" aria-label="Browse clubs">
           <p className="browse-results__cap-notice">
-            Pick a league to browse its clubs—or open any club page for squads, rivals, and fan
-            notes from <Link to="/teams">Clubs</Link>.
+            Pick a league or region—or open any club page for squads and fan notes from{' '}
+            <Link to="/teams">Clubs</Link>.
           </p>
-          <h2 className="section-label section-label--compact">Major leagues</h2>
-          <div className="league-link-grid">
-            {leagueGroups.major.map((league) => (
-              <LeagueExploreCard
-                key={league.id}
-                league={league}
-                tab="clubs"
-                onNavigate={resetLocalBrowseFilters}
-              />
-            ))}
-          </div>
-          <h2 className="section-label section-label--compact">International clubs</h2>
-          <div className="league-link-grid">
-            {leagueGroups.international.map((league) => (
-              <LeagueExploreCard
-                key={league.id}
-                league={league}
-                tab="clubs"
-                onNavigate={resetLocalBrowseFilters}
-              />
-            ))}
-          </div>
-          <h2 className="section-label section-label--compact">Other clubs</h2>
-          <div className="league-link-grid">
-            {leagueGroups.other.map((league) => (
-              <LeagueExploreCard
-                key={league.id}
-                league={league}
-                tab="clubs"
-                onNavigate={resetLocalBrowseFilters}
-              />
-            ))}
-          </div>
+          <BrowseTaxonomyHub
+            tab="clubs"
+            onNavigate={resetLocalBrowseFilters}
+            otherClubRegionCounts={otherClubRegionCounts}
+          />
           {leagueFilter ? (
             <section
               className="browse-results"
-              aria-label={`Clubs in ${getLeagueName(leagueFilter)}`}
+              aria-label={`Clubs in ${activeScopeLabel}`}
             >
-              <p className="browse-results__cap-notice">
-                {teamsInLeague.length} clubs in {getLeagueName(leagueFilter)} — open a club to view its
-                squad.
-              </p>
-              <BrowseLeagueClubSections
-                teams={teamsInLeague}
-                players={scopedPlayers}
-                isExternalLeague={isExternalLeague}
-              />
+              {showOtherClubsRegionPicker ? (
+                <>
+                  <p className="browse-results__cap-notice">Choose a region within other clubs.</p>
+                  <BrowseOtherClubsRegionPicker
+                    tab="clubs"
+                    onNavigate={resetLocalBrowseFilters}
+                    otherClubRegionCounts={otherClubRegionCounts}
+                  />
+                </>
+              ) : (
+                <>
+                  <p className="browse-results__cap-notice">
+                    {teamsInLeague.length} clubs in {activeScopeLabel} — open a club to view its
+                    squad.
+                  </p>
+                  <BrowseLeagueClubSections
+                    teams={teamsInLeague}
+                    players={otherClubPlayersForGrouping}
+                    isOtherClubsLeague={isOtherClubsLeague}
+                    otherClubRegion={otherClubRegion}
+                  />
+                </>
+              )}
             </section>
           ) : null}
         </section>

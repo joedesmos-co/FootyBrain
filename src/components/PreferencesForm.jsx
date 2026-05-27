@@ -188,7 +188,7 @@ export default function PreferencesForm({
 
         {internationalLeague ? (
           <details className="prefs-subsection">
-            <summary className="prefs-subsection__summary">International clubs</summary>
+            <summary className="prefs-subsection__summary">Other clubs</summary>
             <div className="prefs-tiles prefs-tiles--compact">
               <ToggleTile
                 id={internationalLeague.id}

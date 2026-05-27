@@ -12,8 +12,8 @@ export const EXTERNAL_CLUB_GROUP_ORDER = /** @type {const} */ ([
 export const EXTERNAL_CLUB_GROUP_LABELS = {
   american: 'American clubs',
   european: 'European clubs',
-  worldTeams: 'World teams',
-  other: 'Other international clubs',
+  worldTeams: 'World / Other clubs',
+  other: 'World / Other clubs',
 };
 
 const AMERICAS_PLAYER_COUNTRIES = new Set([
@@ -215,7 +215,7 @@ function classifyExternalClubTeam(team, players, nationalTeamNames) {
 }
 
 /**
- * Best-effort sections for International clubs (external league) browse UI.
+ * Best-effort sections for Other clubs (external league) browse UI.
  * @param {object[]} teams
  * @param {object[]} [players]
  * @returns {Array<{ id: ExternalClubGroupId, label: string, teams: object[] }>}
@@ -243,4 +243,31 @@ export function groupExternalClubTeams(teams, players = []) {
     label: EXTERNAL_CLUB_GROUP_LABELS[id],
     teams: buckets[id],
   })).filter((section) => section.teams.length > 0);
+}
+
+/**
+ * Browse “Other clubs” regions — American, European, World / Other (3 sections).
+ * @param {object[]} teams
+ * @param {object[]} [players]
+ * @returns {Array<{ id: 'american' | 'european' | 'world', label: string, teams: object[] }>}
+ */
+export function groupOtherClubTeamsForBrowse(teams, players = []) {
+  const raw = groupExternalClubTeams(teams, players);
+  const merged = {
+    american: [],
+    european: [],
+    world: [],
+  };
+
+  for (const section of raw) {
+    if (section.id === 'american') merged.american = section.teams;
+    else if (section.id === 'european') merged.european = section.teams;
+    else merged.world.push(...section.teams);
+  }
+
+  return [
+    { id: 'american', label: 'American clubs', teams: merged.american },
+    { id: 'european', label: 'European clubs', teams: merged.european },
+    { id: 'world', label: 'World / Other clubs', teams: merged.world },
+  ].filter((section) => section.teams.length > 0);
 }

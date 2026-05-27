@@ -83,7 +83,7 @@ const COUNTRY_FLAG = {
 export const EXTERNAL_LEAGUE_ID = 'external';
 
 /** Consumer-facing label — sample data may still say "External clubs". */
-export const EXTERNAL_LEAGUE_DISPLAY_NAME = 'International clubs';
+export const EXTERNAL_LEAGUE_DISPLAY_NAME = 'Other clubs';
 
 export function isExternalLeagueId(leagueId) {
   return leagueId === EXTERNAL_LEAGUE_ID;
