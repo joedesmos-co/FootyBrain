@@ -1,12 +1,12 @@
 import { getLiveNationalTeamForPlayer } from '../data/nationalTeamData';
-import { getTeamName } from '../data/sampleData';
+import { peekTeamName } from '../data/teamStore';
 
 /**
  * One-line sample importance (no position — shown separately on profile).
  * @param {{ importanceScore: number, teamId: string }} player
  */
 export function getRoleSummary(player) {
-  const club = getTeamName(player.teamId);
+  const club = player?._teamName ?? peekTeamName(player.teamId);
   const score = player.importanceScore;
 
   if (score >= 94) {
@@ -34,7 +34,7 @@ function getInternationalRepLabel(player) {
 export function buildCareerSummary(player) {
   const sentences = [];
   const stops = player.careerHistory ?? [];
-  const club = getTeamName(player.teamId);
+  const club = player?._teamName ?? peekTeamName(player.teamId);
   const country = getInternationalRepLabel(player);
 
   if (stops.length === 1) {

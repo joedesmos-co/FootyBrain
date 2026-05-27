@@ -4,6 +4,7 @@ import { getManifestLeague } from '../data/contentManifest';
 import { loadPlayerById } from '../data/playerStore';
 import { peekTeamName } from '../data/teamStore';
 import { useFavorites } from '../hooks/useFavorites';
+import { useSearchIndex } from '../hooks/useSearchIndex';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
 import { buildCareerSummary, getRoleSummary } from '../utils/playerImportance';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
@@ -150,17 +151,23 @@ export default function PlayerProfile() {
     };
   }, [player]);
 
+  const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
+  const relatedPool = useMemo(
+    () => (searchIndexStatus === 'ready' ? (searchIndex?.players ?? []) : []),
+    [searchIndexStatus, searchIndex],
+  );
+
   const relatedPlayers = useMemo(
-    () => (player ? getRelatedPlayers(player) : []),
-    [player],
+    () => (player ? getRelatedPlayers(player, { pool: relatedPool }) : []),
+    [player, relatedPool],
   );
   const similarRolePlayers = useMemo(
-    () => (player ? getSimilarRolePlayers(player) : []),
-    [player],
+    () => (player ? getSimilarRolePlayers(player, { pool: relatedPool }) : []),
+    [player, relatedPool],
   );
   const alsoLikePlayers = useMemo(
-    () => (player ? getYouMayAlsoLikePlayers(player) : []),
-    [player],
+    () => (player ? getYouMayAlsoLikePlayers(player, { pool: relatedPool }) : []),
+    [player, relatedPool],
   );
 
   if (playerStatus === 'loading') {

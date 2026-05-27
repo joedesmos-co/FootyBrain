@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getManifestLeague, getManifestLeagues } from '../data/contentManifest';
 import {
@@ -13,6 +13,7 @@ import { getDailyFeatured, getFeaturedPickPlayers } from '../utils/dailyFeatured
 import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSearch';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
+import { useSearchIndex } from '../hooks/useSearchIndex';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
 import LeagueBadge from './LeagueBadge';
@@ -31,6 +32,7 @@ export default function BrowseDatabase() {
   const [bundled, setBundled] = useState(null);
   const [forceFullDb, setForceFullDb] = useState(false);
   const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
+  const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
 
   const usesExternalShard =
     Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
@@ -38,7 +40,8 @@ export default function BrowseDatabase() {
   const activeLeagueName =
     (leagueFilter && getLeagueDisplayName(getManifestLeague(leagueFilter))) || 'league';
 
-  const needsBundledData = Boolean(!usesExternalShard && (leagueFilter || teamFilter || search.trim() || forceFullDb));
+  // Only load bundled sampleData if the user explicitly requests the full database.
+  const needsBundledData = Boolean(!usesExternalShard && forceFullDb);
 
   useEffect(() => {
     if (usesExternalShard) return undefined;
@@ -71,11 +74,20 @@ export default function BrowseDatabase() {
     return (id) => manifestLeagues.find((league) => league.id === id)?.name ?? 'Unknown';
   }, [usesExternalShard, leagueShard, bundled]);
 
-  const getTeamName = useMemo(() => {
-    if (usesExternalShard && leagueShard) return leagueShard.getTeamName;
-    if (bundled) return bundled.getTeamName;
-    return () => 'Unknown';
-  }, [usesExternalShard, leagueShard, bundled]);
+  const teamNameById = useMemo(() => {
+    if (!searchIndex?.teams?.length) return null;
+    return new Map(searchIndex.teams.map((t) => [t.id, t.name]));
+  }, [searchIndex]);
+
+  const getTeamName = useCallback(
+    (id) => {
+      if (usesExternalShard && leagueShard) return leagueShard.getTeamName(id);
+      if (bundled) return bundled.getTeamName(id);
+      if (teamNameById) return teamNameById.get(id) ?? 'Unknown';
+      return 'Unknown';
+    },
+    [usesExternalShard, leagueShard, bundled, teamNameById],
+  );
 
   const hasPlayerQuery = search.trim().length > 0 || Boolean(leagueFilter || teamFilter);
 
@@ -96,20 +108,20 @@ export default function BrowseDatabase() {
 
   const intentContext = useMemo(
     () => ({
-      teams: usesExternalShard && leagueShard ? leagueShard.teams : (bundled?.teams ?? []),
+      teams: usesExternalShard && leagueShard ? leagueShard.teams : (searchIndex?.teams ?? []),
       nationalTeams: liveNationalTeams,
       getLeagueName,
     }),
-    [usesExternalShard, leagueShard, bundled, liveNationalTeams, getLeagueName],
+    [usesExternalShard, leagueShard, searchIndex, liveNationalTeams, getLeagueName],
   );
 
   const teamsInLeague = useMemo(() => {
     if (usesExternalShard && leagueShard) {
       return leagueShard.teams;
     }
-    if (!leagueFilter) return bundled?.teams ?? [];
-    return (bundled?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
-  }, [usesExternalShard, leagueShard, leagueFilter, bundled]);
+    if (!leagueFilter) return searchIndex?.teams ?? [];
+    return (searchIndex?.teams ?? []).filter((team) => team.leagueId === leagueFilter);
+  }, [usesExternalShard, leagueShard, leagueFilter, searchIndex]);
 
   const scopedPlayers = useMemo(() => {
     if (usesExternalShard && leagueShard) {
@@ -118,17 +130,34 @@ export default function BrowseDatabase() {
       }
       return leagueShard.players;
     }
-    if (!bundled) {
-      // Fast default: quiz registry only until the user opts into full DB.
-      if (!leagueFilter && !teamFilter && !search.trim() && quizStatus === 'ready' && quizRegistry?.players) {
-        return quizRegistry.players;
-      }
-      return [];
+    // Default to the lightweight search index for browse/search without loading sampleData.
+    if (searchIndexStatus === 'ready' && searchIndex?.players) {
+      if (teamFilter) return searchIndex.players.filter((p) => p.teamId === teamFilter);
+      if (leagueFilter) return searchIndex.players.filter((p) => p.leagueId === leagueFilter);
+      return searchIndex.players;
     }
+
+    // Fallback: if index isn't ready yet, show the quiz spotlight pool (fast) until full DB is requested.
+    if (!leagueFilter && !teamFilter && !search.trim() && quizStatus === 'ready' && quizRegistry?.players) {
+      return quizRegistry.players;
+    }
+
+    if (!bundled) return [];
     if (teamFilter) return bundled.getPlayersForTeam(teamFilter);
     if (leagueFilter) return bundled.getPlayersForLeague(leagueFilter);
     return bundled.players;
-  }, [usesExternalShard, leagueShard, teamFilter, leagueFilter, bundled, quizStatus, quizRegistry, search]);
+  }, [
+    usesExternalShard,
+    leagueShard,
+    teamFilter,
+    leagueFilter,
+    searchIndexStatus,
+    searchIndex,
+    quizStatus,
+    quizRegistry,
+    search,
+    bundled,
+  ]);
 
   const filteredPlayers = useMemo(() => {
     if (!search.trim()) return scopedPlayers;
@@ -230,9 +259,11 @@ export default function BrowseDatabase() {
               ? searchResultCapped
                 ? `Showing top ${BROWSE_SEARCH_RESULT_CAP} matches — narrow league or team to see more`
                 : `${filteredPlayers.length} player${filteredPlayers.length !== 1 ? 's' : ''} found`
-              : bundled
+              : searchIndexStatus === 'ready'
                 ? 'Search or choose a league/team to explore players.'
-                : 'Showing quiz-ready spotlight. Load the full database to browse all players.'}
+                : bundled
+                  ? 'Search or choose a league/team to explore players.'
+                  : 'Showing quiz-ready spotlight. Load the full database to browse all players.'}
         </p>
         {!bundled && !usesExternalShard && !leagueFilter && !teamFilter && !search.trim() ? (
           <button

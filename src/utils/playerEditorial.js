@@ -1,4 +1,5 @@
-import { getLeagueName, getTeamName } from '../data/sampleData';
+import { getManifestLeague } from '../data/contentManifest';
+import { peekTeamName } from '../data/teamStore';
 
 /** Squad listing without full editorial (phase 1 generated rows). */
 export function isBrowseOnlyPlayer(player) {
@@ -27,8 +28,8 @@ export function getDisplayQuickFact(player) {
   if (!isBrowseOnlyPlayer(player)) return fact || '—';
 
   if (!fact || isPlaceholderQuickFact(fact)) {
-    const club = getTeamName(player.teamId);
-    const league = getLeagueName(player.leagueId);
+    const club = player?._teamName ?? peekTeamName(player.teamId);
+    const league = getManifestLeague(player.leagueId)?.name ?? 'Unknown';
     const ageBit = typeof player.age === 'number' ? `, age ${player.age}` : '';
     const citizenship = String(player.nationalTeam || player.nationality || '').trim();
     const countryBit = citizenship ? ` · ${citizenship}` : '';
@@ -44,5 +45,6 @@ export function getCardQuickFact(player) {
     return fact || '—';
   }
   const ageBit = typeof player.age === 'number' ? ` · ${player.age}` : '';
-  return `${getTeamName(player.teamId)} · ${player.position}${ageBit}`;
+  const club = player?._teamName ?? peekTeamName(player.teamId);
+  return `${club} · ${player.position}${ageBit}`;
 }

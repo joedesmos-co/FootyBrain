@@ -3,7 +3,6 @@
  */
 
 import { getMembershipForPlayer } from '../data/nationalTeamData';
-import { players as allPlayers } from '../data/sampleData';
 import { getPlayerAliases, getPlayerSearchFields } from './searchAliases';
 import { detectSearchIntent, scorePlayerIntentBoost } from './searchIntent';
 import {
@@ -98,14 +97,11 @@ export function searchPlayers(players, query, options = {}) {
   const excluded = new Set(excludeIds);
   const helpers = { getTeamName, getLeagueName };
   const scored = [];
-  const registryPool = players.length >= allPlayers.length ? players : allPlayers;
+  const registryPool = players;
   const useIndex = registryPool.length > SCOPED_LINEAR_SCAN_MAX;
-  const scopedIds =
-    players.length < registryPool.length ? new Set(players.map((p) => p.id)) : null;
 
   if (useIndex) {
     for (const entry of getPlayerSearchCandidates(registryPool, normalizedQuery)) {
-      if (scopedIds && !scopedIds.has(entry.player.id)) continue;
       if (excluded.has(entry.player.id)) continue;
 
       const score = scoreIndexedPlayerMatch(entry, normalizedQuery, helpers, intent);

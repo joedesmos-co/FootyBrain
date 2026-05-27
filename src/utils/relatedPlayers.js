@@ -1,11 +1,10 @@
 import { getMembershipForPlayer } from '../data/nationalTeamData';
-import { players } from '../data/sampleData';
 
 const MAX_RELATED = 5;
 const POOL_CAP = 12;
 
-/** @type {{ byTeam: Map<string, object[]>, byPosition: Map<string, object[]>, byTacticalRole: Map<string, object[]>, byNationalTeam: Map<string, object[]> } | null} */
-let indexes = null;
+/** @type {WeakMap<object, { byTeam: Map<string, object[]>, byPosition: Map<string, object[]>, byTacticalRole: Map<string, object[]>, byNationalTeam: Map<string, object[]> }>} */
+const indexesByPoolRef = new WeakMap();
 
 function positionKey(position) {
   const p = String(position ?? '').toLowerCase();
@@ -33,13 +32,13 @@ function tacticalRoleKey(position) {
   return positionKey(position);
 }
 
-function buildIndexes() {
+function buildIndexes(pool) {
   const byTeam = new Map();
   const byPosition = new Map();
   const byTacticalRole = new Map();
   const byNationalTeam = new Map();
 
-  for (const player of players) {
+  for (const player of pool) {
     if (!byTeam.has(player.teamId)) byTeam.set(player.teamId, []);
     byTeam.get(player.teamId).push(player);
 
@@ -62,9 +61,13 @@ function buildIndexes() {
   return { byTeam, byPosition, byTacticalRole, byNationalTeam };
 }
 
-function getIndexes() {
-  if (!indexes) indexes = buildIndexes();
-  return indexes;
+function getIndexes(pool) {
+  if (!pool) return null;
+  let cached = indexesByPoolRef.get(pool);
+  if (cached) return cached;
+  cached = buildIndexes(pool);
+  indexesByPoolRef.set(pool, cached);
+  return cached;
 }
 
 function topByImportance(list, excludeId, cap = POOL_CAP) {
@@ -84,15 +87,19 @@ function reasonLabel(reasons) {
 }
 
 /**
- * @param {import('../data/sampleData').players[number]} player
+ * @param {object} player
  * @param {{ limit?: number }} [options]
  * @returns {Array<{ player: object, reasonLabel: string }>}
  */
 export function getRelatedPlayers(player, options = {}) {
   const limit = Math.min(options.limit ?? MAX_RELATED, MAX_RELATED);
   if (!player?.id) return [];
+  const pool = options.pool;
+  if (!Array.isArray(pool) || pool.length === 0) return [];
 
-  const { byTeam, byPosition, byTacticalRole, byNationalTeam } = getIndexes();
+  const indexes = getIndexes(pool);
+  if (!indexes) return [];
+  const { byTeam, byPosition, byTacticalRole, byNationalTeam } = indexes;
   const scored = new Map();
 
   const addPool = (list, points, reason) => {
@@ -146,18 +153,22 @@ export function getRelatedPlayers(player, options = {}) {
 
 /**
  * Same position bucket, different club — for “similar role” discovery (no same-team duplicates).
- * @param {import('../data/sampleData').players[number]} player
+ * @param {object} player
  * @param {{ limit?: number }} [options]
  */
 export function getSimilarRolePlayers(player, options = {}) {
   const limit = Math.min(options.limit ?? 4, 4);
   if (!player?.id) return [];
+  const pool = options.pool;
+  if (!Array.isArray(pool) || pool.length === 0) return [];
 
-  const { byTacticalRole } = getIndexes();
+  const indexes = getIndexes(pool);
+  if (!indexes) return [];
+  const { byTacticalRole } = indexes;
   const tk = tacticalRoleKey(player.position);
-  const pool = byTacticalRole.get(tk) ?? [];
+  const rolePool = byTacticalRole.get(tk) ?? [];
 
-  return pool
+  return rolePool
     .filter((candidate) => candidate.id !== player.id && candidate.teamId !== player.teamId)
     .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
     .slice(0, limit)
@@ -169,15 +180,19 @@ export function getSimilarRolePlayers(player, options = {}) {
 
 /**
  * Diversified “you may also like” suggestions: club + nation + tactical role + same league.
- * @param {import('../data/sampleData').players[number]} player
+ * @param {object} player
  * @param {{ limit?: number }} [options]
  * @returns {Array<{ player: object, reasonLabel: string }>}
  */
 export function getYouMayAlsoLikePlayers(player, options = {}) {
   const limit = Math.min(options.limit ?? 6, 6);
   if (!player?.id) return [];
+  const pool = options.pool;
+  if (!Array.isArray(pool) || pool.length === 0) return [];
 
-  const { byTeam, byTacticalRole, byNationalTeam } = getIndexes();
+  const indexes = getIndexes(pool);
+  if (!indexes) return [];
+  const { byTeam, byTacticalRole, byNationalTeam } = indexes;
   const scored = new Map();
 
   const addPool = (list, points, reason) => {
@@ -212,7 +227,7 @@ export function getYouMayAlsoLikePlayers(player, options = {}) {
   );
 
   const sameLeague = topByImportance(
-    players.filter((p) => p.leagueId === player.leagueId),
+    pool.filter((p) => p.leagueId === player.leagueId),
     player.id,
     10,
   );
