@@ -161,6 +161,10 @@ export default function App() {
               Dataset snapshot {DATASET_META.dataAsOf} · {DATASET_META.playerCount} players ·{' '}
               {DATASET_META.quizEligibleCount} quiz-ready
             </p>
+            <p className="app__footer__feedback">
+              Have feedback, found a bug, or want to suggest a feature? Email us at{' '}
+              <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>
+            </p>
             <p className="app__footer__privacy">
               No accounts. Progress, favorites, and preferences stay in your browser only — not
               sold or synced to a server. <Link to="/privacy">Privacy</Link>

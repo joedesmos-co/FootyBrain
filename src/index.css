@@ -144,7 +144,8 @@ input:focus-visible {
 }
 
 .app__footer__meta,
-.app__footer__privacy {
+.app__footer__privacy,
+.app__footer__feedback {
   margin: 0.35rem 0 0;
   font-size: 0.78rem;
   line-height: 1.45;
@@ -772,8 +773,18 @@ input:focus-visible {
 }
 
 .app__footer__privacy a:hover,
-.app__footer__privacy a:focus-visible {
+.app__footer__privacy a:focus-visible,
+.app__footer__feedback a:hover,
+.app__footer__feedback a:focus-visible {
   color: var(--color-soft);
+}
+
+.app__footer__feedback a {
+  color: var(--color-accent);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-word;
 }
 
 .hero-visual {
