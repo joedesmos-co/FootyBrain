@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:28:05.041Z",
+    "generatedAt": "2026-05-27T00:40:09.774Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -35,15 +35,16 @@
       "austria",
       "ukraine",
       "scotland",
-      "paraguay"
+      "paraguay",
+      "czechia"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 33,
-      "memberships": 1110,
+      "nationalTeams": 34,
+      "memberships": 1130,
       "unmatchedTmSquadRows": 244,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
@@ -81,7 +82,8 @@
       "austria": 37,
       "ukraine": 18,
       "scotland": 20,
-      "paraguay": 21
+      "paraguay": 21,
+      "czechia": 20
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -116,7 +118,8 @@
       "austria": 6,
       "ukraine": 6,
       "scotland": 3,
-      "paraguay": 4
+      "paraguay": 4,
+      "czechia": 5
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -151,7 +154,8 @@
       "austria": 31,
       "ukraine": 12,
       "scotland": 17,
-      "paraguay": 17
+      "paraguay": 17,
+      "czechia": 15
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -186,7 +190,8 @@
       "austria": 9,
       "ukraine": 5,
       "scotland": 7,
-      "paraguay": 5
+      "paraguay": 5,
+      "czechia": 3
     }
   },
   "nationalTeams": [
@@ -1077,6 +1082,35 @@
       "fifaRanking": 40,
       "tmCode": "paraguay",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "czechia",
+      "displayName": "Czechia",
+      "country": "Czechia",
+      "confederationId": "uefa",
+      "confederation": "UEFA",
+      "rivalIds": [
+        "germany",
+        "poland",
+        "slovakia"
+      ],
+      "searchAliases": [
+        "cze",
+        "czech republic",
+        "czechia national team",
+        "czechia nt",
+        "czech nt"
+      ],
+      "badgeTheme": {
+        "from": "#dc2626",
+        "to": "#1e3a8a",
+        "accent": "#dbeafe"
+      },
+      "fanGuide": "Czechia carry Central European football heritage from the Czechoslovak era through modern UEFA competition. Learn them through technical midfielders, organized defending, and rivalry with Germany and Poland.",
+      "shortHistory": "Men’s senior team of Czechia (FAČR). FootyBrain squads link existing club players matched to Czechia memberships.",
+      "fifaRanking": 43,
+      "tmCode": "czech-republic",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1655,6 +1689,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "1005575"
+    },
+    {
+      "playerId": "tm-652061",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "652061"
     },
     {
       "playerId": "tm-128223",
@@ -3205,6 +3248,15 @@
       "tmSourceId": "1064506"
     },
     {
+      "playerId": "tm-337333",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "337333"
+    },
+    {
       "playerId": "tm-800176",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -3943,6 +3995,15 @@
       "tmSourceId": "535955"
     },
     {
+      "playerId": "tm-321195",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "321195"
+    },
+    {
       "playerId": "tm-994266",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -4555,6 +4616,15 @@
       "tmSourceId": "346314"
     },
     {
+      "playerId": "tm-486604",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "486604"
+    },
+    {
       "playerId": "tm-296802",
       "nationalTeamId": "argentina",
       "role": "senior",
@@ -4751,6 +4821,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "663319"
+    },
+    {
+      "playerId": "tm-652054",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "652054"
     },
     {
       "playerId": "tm-436385",
@@ -11064,6 +11143,141 @@
     {
       "playerId": "tm-353032",
       "nationalTeamId": "paraguay",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-283628",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-725912",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-552057",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-724025",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-242086",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-930998",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-620217",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-563033",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-428189",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-95795",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-339079",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-157672",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-345911",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-500053",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-550829",
+      "nationalTeamId": "czechia",
       "role": "senior",
       "status": "active",
       "isPrimary": true,

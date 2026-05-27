@@ -58,6 +58,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'ukraine',
   'scotland',
   'paraguay',
+  // Wave 3 batch 3 (World Cup 2026 — preview-gated)
+  'czechia',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -97,6 +99,7 @@ const REGISTRY_NATIONALITY_LABELS = {
   ukraine: ['ukraine', 'ukrainian'],
   scotland: ['scotland', 'scottish'],
   paraguay: ['paraguay', 'paraguayan'],
+  czechia: ['czechia', 'czech republic', 'czech'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -531,6 +534,19 @@ const LIVE_NATION_EDITORIAL = {
       'Paraguay are CONMEBOL warriors: organized defending, set-piece discipline, and famous Albirroja spirit. Learn them through qualifying battles and physical South American football.',
     shortHistory:
       'Men’s senior team of Paraguay (APF). Memberships are join-only to existing FootyBrain players.',
+  },
+  czechia: {
+    displayName: 'Czechia',
+    country: 'Czechia',
+    confederationId: 'uefa',
+    confederation: 'UEFA',
+    rivalIds: ['germany', 'poland', 'slovakia'],
+    searchAliases: ['cze', 'czech republic', 'czechia national team', 'czechia nt', 'czech nt'],
+    badgeTheme: { from: '#dc2626', to: '#1e3a8a', accent: '#dbeafe' },
+    fanGuide:
+      'Czechia carry Central European football heritage from the Czechoslovak era through modern UEFA competition. Learn them through technical midfielders, organized defending, and rivalry with Germany and Poland.',
+    shortHistory:
+      'Men’s senior team of Czechia (FAČR). FootyBrain squads link existing club players matched to Czechia memberships.',
   },
 };
 
