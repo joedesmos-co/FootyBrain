@@ -132,6 +132,33 @@ function shouldShowNationalityRow(player, liveNationalTeam) {
   return !nationalityMatchesLiveTeam(citizenship, liveNationalTeam);
 }
 
+const STAT_EMPHASIS_CLASS = {
+  Club: 'player-stat--club',
+  League: 'player-stat--league',
+  'National team': 'player-stat--national',
+  Nationality: 'player-stat--nationality',
+  Position: 'player-stat--position',
+};
+
+function PlayerSectionHead({ icon, title, id }) {
+  return (
+    <div className="player-section__head">
+      <span className="player-section__icon" aria-hidden="true">
+        {icon}
+      </span>
+      <h2 id={id}>{title}</h2>
+    </div>
+  );
+}
+
+function PlayerEmptyState({ children }) {
+  return (
+    <p className="player-empty" role="status">
+      {children}
+    </p>
+  );
+}
+
 export default function PlayerProfile() {
   const { playerId } = useParams();
   const [playerState, setPlayerState] = useState(() => ({
@@ -398,34 +425,38 @@ export default function PlayerProfile() {
           <PlayerVisual player={player} size="profile" priority />
           <div className="player-profile__hero-copy">
             <h1>{player.name}</h1>
-            <PositionLabel position={player.position} className="player-profile__position" />
-            <p className="player-profile__meta-line">
-              <Link to={`/team/${player.teamId}`} className="player-profile__fact-link">
+            <PositionLabel
+              position={player.position}
+              className="player-profile__position player-profile__position--hero"
+            />
+            <div className="player-profile__identity" aria-label="Club and country">
+              <Link
+                to={`/team/${player.teamId}`}
+                className="player-identity-chip player-identity-chip--club"
+              >
                 {teamName}
               </Link>
-              <span aria-hidden="true"> · </span>
-              <Link to={`/league/${player.leagueId}`} className="player-profile__fact-link">
+              <Link
+                to={`/league/${player.leagueId}`}
+                className="player-identity-chip player-identity-chip--league"
+              >
                 {leagueName}
               </Link>
               {liveNationalTeam ? (
-                <>
-                  <span aria-hidden="true"> · </span>
-                  <Link
-                    to={`/national-team/${liveNationalTeam.id}`}
-                    className="player-profile__fact-link"
-                  >
-                    {liveNationalTeam.displayName}
-                  </Link>
-                </>
+                <Link
+                  to={`/national-team/${liveNationalTeam.id}`}
+                  className="player-identity-chip player-identity-chip--national"
+                >
+                  {liveNationalTeam.displayName}
+                </Link>
               ) : (
                 nationalTeamPlainLabel && (
-                  <>
-                    <span aria-hidden="true"> · </span>
-                    <span>{nationalTeamPlainLabel}</span>
-                  </>
+                  <span className="player-identity-chip player-identity-chip--national player-identity-chip--plain">
+                    {nationalTeamPlainLabel}
+                  </span>
                 )
               )}
-            </p>
+            </div>
           </div>
         </div>
         <div className="profile__side-actions player-profile__hero-aside">
@@ -468,14 +499,17 @@ export default function PlayerProfile() {
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Quiz</Link>}
       </nav>
 
-      <section className="info-card player-info-card" aria-labelledby="player-info-title">
-        <div className="card-title-row">
-          <h2 id="player-info-title">Snapshot</h2>
-          <span className="card-title-row__meta">RW, CF, DM… stays visible</span>
-        </div>
+      <section
+        className="info-card player-info-card player-section player-section--snapshot"
+        aria-labelledby="player-info-title"
+      >
+        <PlayerSectionHead icon="◎" title="Snapshot" id="player-info-title" />
         <dl className="player-info-grid">
           {playerInfoItems.map((item) => (
-            <div key={item.label} className="player-info-grid__item">
+            <div
+              key={item.label}
+              className={`player-info-grid__item player-stat${STAT_EMPHASIS_CLASS[item.label] ? ` ${STAT_EMPHASIS_CLASS[item.label]}` : ''}`}
+            >
               <dt>{item.label}</dt>
               <dd>{item.value}</dd>
             </div>
@@ -483,14 +517,16 @@ export default function PlayerProfile() {
         </dl>
       </section>
 
+      <div className="player-profile__divider" aria-hidden="true" />
+
       <section className="player-profile__body" aria-label={`${player.name} profile`}>
         {(playStyleTags.length > 0 || playStyleSummary) && (
-          <article className="info-card">
-            <h2>Play style</h2>
+          <article className="info-card player-section player-section--playstyle">
+            <PlayerSectionHead icon="⚡" title="Play style" />
             {playStyleTags.length > 0 && (
-              <ul className="tag-list" aria-label="Play style tags">
+              <ul className="tag-list player-tag-list" aria-label="Play style tags">
                 {playStyleTags.map((tag) => (
-                  <li key={tag} className="tag">
+                  <li key={tag} className="tag tag--playstyle">
                     {tag}
                   </li>
                 ))}
@@ -503,9 +539,9 @@ export default function PlayerProfile() {
         )}
 
         {strengths.length > 0 && (
-          <article className="info-card">
-            <h2>Strengths</h2>
-            <ul className="tag-list tag-list--tight" aria-label="Strengths">
+          <article className="info-card player-section player-section--strengths">
+            <PlayerSectionHead icon="✦" title="Strengths" />
+            <ul className="tag-list tag-list--tight player-tag-list" aria-label="Strengths">
               {strengths.map((s) => (
                 <li key={s} className="tag tag--solid">
                   {s}
@@ -515,8 +551,8 @@ export default function PlayerProfile() {
           </article>
         )}
 
-        <article className="info-card">
-          <h2>Career highlights</h2>
+        <article className="info-card player-section player-section--career">
+          <PlayerSectionHead icon="↗" title="Career highlights" />
           {hasCareerStops ? (
             <ol className="career-timeline career-timeline--compact">
               {careerHistory.map((entry) => (
@@ -527,10 +563,7 @@ export default function PlayerProfile() {
               ))}
             </ol>
           ) : (
-            <p className="player-study__note">
-              Career stops are not in the sample yet — club and league above reflect the current
-              roster listing.
-            </p>
+            <PlayerEmptyState>Career milestones will appear here</PlayerEmptyState>
           )}
           {hasCareerStops && (
             <details className="player-profile__details">
@@ -540,20 +573,24 @@ export default function PlayerProfile() {
           )}
         </article>
 
-        {showHonors ? (
-          <article className="info-card">
-            <h2>Honors</h2>
-            <ul className="bullet-list" aria-label="Honors and trophies">
+        <article
+          className={`info-card player-section player-section--honors${showHonors ? '' : ' player-section--muted'}`}
+        >
+          <PlayerSectionHead icon="🏆" title="Honors" />
+          {showHonors ? (
+            <ul className="bullet-list player-honors-list" aria-label="Honors and trophies">
               {honors.map((h) => (
                 <li key={h}>{h}</li>
               ))}
             </ul>
-          </article>
-        ) : null}
+          ) : (
+            <PlayerEmptyState>More details coming soon</PlayerEmptyState>
+          )}
+        </article>
 
         {showFunFact ? (
-          <article className="info-card">
-            <h2>Fun facts</h2>
+          <article className="info-card player-section player-section--facts">
+            <PlayerSectionHead icon="✨" title="Fun facts" />
             <ul className="bullet-list" aria-label="Fun facts">
               <li>{funFact}</li>
             </ul>
@@ -561,10 +598,10 @@ export default function PlayerProfile() {
         ) : null}
 
         {hasQuizClues && (
-          <article className="info-card player-study">
-            <h2>Quiz clues</h2>
+          <article className="info-card player-study player-section player-section--quiz">
+            <PlayerSectionHead icon="?" title="Quiz clues" />
             <p className="player-study__note">Short hints for recall — not full answers.</p>
-            <ul className="tag-list tag-list--stack" aria-label="Quiz clues">
+            <ul className="tag-list tag-list--stack player-tag-list" aria-label="Quiz clues">
               {quizHints.map((hint, index) => (
                 <li key={index} className="tag tag--hint">
                   {hint}
@@ -574,8 +611,8 @@ export default function PlayerProfile() {
           </article>
         )}
 
-        <article className="info-card">
-          <h2>Player summary</h2>
+        <article className="info-card player-section player-section--summary">
+          <PlayerSectionHead icon="◆" title="At a glance" />
           <ul className="player-snapshot__list">
             <li>
               <span className="player-snapshot__label">Importance</span>

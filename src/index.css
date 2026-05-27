@@ -2522,6 +2522,290 @@ input:focus-visible {
   margin-bottom: 0;
 }
 
+/* Player profile — card polish (pass 2) */
+.player-profile {
+  min-width: 0;
+}
+
+.player-profile .info-card {
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.player-profile .info-card:focus-within {
+  border-color: rgba(167, 243, 208, 0.28);
+}
+
+.player-profile__divider {
+  height: 1px;
+  margin: 0.15rem 0 0.35rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 243, 208, 0.22) 20%,
+    rgba(167, 243, 208, 0.22) 80%,
+    transparent
+  );
+}
+
+.player-profile__body {
+  gap: 0.9rem;
+}
+
+.player-profile__position--hero {
+  display: inline-flex;
+  margin-top: 0.2rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.player-profile__identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  min-width: 0;
+}
+
+.player-identity-chip {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 0.28rem 0.6rem;
+  border: 1px solid rgba(167, 243, 208, 0.14);
+  border-radius: 999px;
+  background: rgba(7, 17, 13, 0.55);
+  color: var(--color-soft);
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.25;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out);
+}
+
+.player-identity-chip--club {
+  border-color: rgba(52, 211, 153, 0.28);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.player-identity-chip--national {
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.player-identity-chip--league {
+  border-color: rgba(167, 243, 208, 0.12);
+}
+
+.player-identity-chip--plain {
+  cursor: default;
+}
+
+a.player-identity-chip:hover,
+a.player-identity-chip:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  outline: none;
+}
+
+a.player-identity-chip:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.player-section__head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(167, 243, 208, 0.1);
+  min-width: 0;
+}
+
+.player-section__head h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.player-section__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: var(--radius-sm);
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.player-section--honors .player-section__icon {
+  background: rgba(234, 179, 8, 0.12);
+  border-color: rgba(234, 179, 8, 0.28);
+  color: var(--color-gold);
+}
+
+.player-section--quiz .player-section__icon {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(148, 163, 184, 0.22);
+  color: var(--color-soft);
+}
+
+.player-info-grid__item {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.player-info-grid__item:hover,
+.player-info-grid__item:focus-within {
+  border-color: rgba(167, 243, 208, 0.22);
+  background: rgba(7, 17, 13, 0.55);
+}
+
+.player-stat--club {
+  border-left: 2px solid rgba(52, 211, 153, 0.65);
+}
+
+.player-stat--national,
+.player-stat--nationality {
+  border-left: 2px solid rgba(56, 189, 248, 0.55);
+}
+
+.player-stat--position {
+  border-left: 2px solid rgba(167, 243, 208, 0.45);
+}
+
+.player-stat--position dd {
+  color: var(--color-accent);
+  font-weight: 900;
+}
+
+.player-stat--club dd a {
+  color: var(--color-soft);
+}
+
+.player-section--honors {
+  border-color: rgba(234, 179, 8, 0.18);
+  background: linear-gradient(
+    165deg,
+    rgba(234, 179, 8, 0.06) 0%,
+    rgba(16, 26, 23, 0.95) 42%
+  );
+}
+
+.player-section--muted {
+  opacity: 0.92;
+}
+
+.player-honors-list li {
+  position: relative;
+  padding-left: 0.15rem;
+  color: var(--color-soft);
+}
+
+.player-honors-list li::marker {
+  color: var(--color-gold);
+}
+
+.player-empty {
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px dashed rgba(167, 243, 208, 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(7, 17, 13, 0.35);
+  color: var(--color-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.player-tag-list .tag,
+.player-tag-list.tag-list li {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.player-tag-list .tag:hover,
+.player-tag-list.tag-list li:hover {
+  border-color: rgba(167, 243, 208, 0.35);
+  transform: translateY(-1px);
+}
+
+.tag--playstyle {
+  border-color: rgba(52, 211, 153, 0.28);
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--color-soft);
+}
+
+.career-timeline--compact .career-timeline__item {
+  padding: 0.5rem 0.35rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.career-timeline--compact .career-timeline__item:hover {
+  background: rgba(52, 211, 153, 0.06);
+}
+
+.player-profile__quick-links a {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.player-profile__quick-links a:hover,
+.player-profile__quick-links a:focus-visible {
+  background: rgba(52, 211, 153, 0.1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .player-profile .info-card,
+  .player-info-card {
+    padding: 0.9rem 0.85rem;
+  }
+
+  .player-profile__body {
+    gap: 0.8rem;
+  }
+
+  .player-info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .player-profile__identity {
+    gap: 0.35rem;
+  }
+
+  .player-identity-chip {
+    font-size: 0.76rem;
+  }
+}
+
 /* Player compare */
 .compare-page__empty {
   margin: 0;
