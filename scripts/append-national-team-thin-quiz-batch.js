@@ -542,6 +542,25 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Sweden Phase A — World Cup live promotion (+1 → 3 quiz-ready)
+  {
+    id: 'tm-111078',
+    sourceId: '111078',
+    displayName: 'Emil Forsberg',
+    quickFact:
+      'Sweden winger who starred for RB Leipzig in the Bundesliga before MLS with New York Red Bulls and long service for the Blågult.',
+    quizHints: [
+      'Swedish left winger linked to Sweden’s national team.',
+      'RB Leipzig and NY Red Bulls attacker — not Alexander Isak the striker.',
+      'Emil who takes set pieces and cuts inside from the left.',
+    ],
+    playingStyle:
+      'Left-sided attacker who drifts inside, strikes from distance, and delivers quality from dead balls.',
+    importanceScore: 84,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({

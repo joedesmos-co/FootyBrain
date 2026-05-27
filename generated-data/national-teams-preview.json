@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:40:10.278Z",
+    "generatedAt": "2026-05-27T00:44:45.135Z",
     "purpose": "staging-only — do not merge into sampleData until reviewed",
     "expansionWave": 3,
     "previewSeason": "2025",
@@ -38,8 +38,7 @@
     "tmBackedTeamsExpected": 47,
     "tmBackedTeamsFound": 47,
     "tmEntityMissingTeamIds": [
-      "cameroon",
-      "cote-divoire"
+      "cameroon"
     ],
     "ntSquadParentDataClean": true,
     "ntParentRowsPriority": 528,
@@ -7761,7 +7760,7 @@
       "internationalGoals": 21,
       "clubTeamId": "new-york-red-bulls",
       "clubLeagueId": "mls",
-      "quizEligible": false,
+      "quizEligible": true,
       "missingFields": []
     },
     {

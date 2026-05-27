@@ -167,9 +167,8 @@ export const NATIONAL_TEAM_TARGETS = [
     tmCode: null,
     displayName: "Côte d'Ivoire",
     expansionWave: 3,
-    tmMissing: true,
     searchAliases: ['ivory coast', 'cote divoire', "côte d'ivoire", 'civ'],
-    registryLabels: ["cote d'ivoire", 'ivory coast', 'ivorian'],
+    registryLabels: ["cote d'ivoire", 'cote divoire', 'ivory coast', 'ivorian'],
   },
   { id: 'australia', tmCode: 'australia', displayName: 'Australia', expansionWave: 3, registryLabels: ['australia', 'australian'] },
   {

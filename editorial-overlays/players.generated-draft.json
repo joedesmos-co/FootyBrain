@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "World Cup national-team quiz tranche — 24 approved linked players across 12 live nations (2026-05-26).",
+  "description": "Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea (2026-05-26).",
   "updatedAt": "2026-05-27",
   "players": [
     {
@@ -7183,6 +7183,22 @@
       ],
       "playingStyle": "Attacking left-back who joins the front line and delivers cut-backs.",
       "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-111078",
+      "sourceId": "111078",
+      "displayName": "Emil Forsberg",
+      "quickFact": "Sweden winger who starred for RB Leipzig in the Bundesliga before MLS with New York Red Bulls and long service for the Blågult.",
+      "quizHints": [
+        "Swedish left winger linked to Sweden’s national team.",
+        "RB Leipzig and NY Red Bulls attacker — not Alexander Isak the striker.",
+        "Emil who takes set pieces and cuts inside from the left."
+      ],
+      "playingStyle": "Left-sided attacker who drifts inside, strikes from distance, and delivers quality from dead balls.",
+      "importanceScore": 84,
       "quizEligible": true,
       "rosterTier": "featured",
       "reviewStatus": "approved"

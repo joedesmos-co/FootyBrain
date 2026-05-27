@@ -47,6 +47,7 @@ export const CONTENT_MANIFEST = {
     'ukraine',
     'scotland',
     'paraguay',
+    'czechia',
   ],
   leagues: [
     {

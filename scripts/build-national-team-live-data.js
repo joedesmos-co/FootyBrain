@@ -60,6 +60,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'paraguay',
   // Wave 3 batch 3 (World Cup 2026 — preview-gated)
   'czechia',
+  'sweden',
+  'cote-divoire',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -100,6 +102,8 @@ const REGISTRY_NATIONALITY_LABELS = {
   scotland: ['scotland', 'scottish'],
   paraguay: ['paraguay', 'paraguayan'],
   czechia: ['czechia', 'czech republic', 'czech'],
+  sweden: ['sweden', 'swedish'],
+  'cote-divoire': ["cote d'ivoire", 'cote divoire', 'ivory coast', 'ivorian'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -547,6 +551,32 @@ const LIVE_NATION_EDITORIAL = {
       'Czechia carry Central European football heritage from the Czechoslovak era through modern UEFA competition. Learn them through technical midfielders, organized defending, and rivalry with Germany and Poland.',
     shortHistory:
       'Men’s senior team of Czechia (FAČR). FootyBrain squads link existing club players matched to Czechia memberships.',
+  },
+  sweden: {
+    displayName: 'Sweden',
+    country: 'Sweden',
+    confederationId: 'uefa',
+    confederation: 'UEFA',
+    rivalIds: ['norway', 'denmark'],
+    searchAliases: ['swe', 'sweden national team', 'sweden nt', 'blågult', 'blagult'],
+    badgeTheme: { from: '#fbbf24', to: '#1e3a8a', accent: '#fef08a' },
+    fanGuide:
+      'Sweden’s Blågult blend Scandinavian organization with Premier League and Bundesliga exports. Learn them through Ibrahimović’s legacy, Nordic rivalries, and modern stars like Isak.',
+    shortHistory:
+      'Men’s senior team of Sweden (SvFF). FootyBrain squads link existing club players matched to Sweden memberships.',
+  },
+  'cote-divoire': {
+    displayName: "Côte d'Ivoire",
+    country: "Côte d'Ivoire",
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['ghana', 'senegal'],
+    searchAliases: ['civ', 'ivory coast', 'cote divoire', "côte d'ivoire", 'cote-divoire nt'],
+    badgeTheme: { from: '#f97316', to: '#16a34a', accent: '#fef08a' },
+    fanGuide:
+      'Les Éléphants are West African giants with AFCON triumphs and a long line of European-based stars. Learn Ivory Coast through orange kits, physical flair, and rivalry with Ghana.',
+    shortHistory:
+      'Men’s senior team of Côte d\'Ivoire (FIF). Squads link existing FootyBrain club players via nationality registry and preview TM field matches.',
   },
 };
 

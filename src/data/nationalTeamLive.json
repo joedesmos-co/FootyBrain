@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:40:09.774Z",
+    "generatedAt": "2026-05-27T00:44:44.614Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -36,16 +36,18 @@
       "ukraine",
       "scotland",
       "paraguay",
-      "czechia"
+      "czechia",
+      "sweden",
+      "cote-divoire"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 34,
-      "memberships": 1130,
-      "unmatchedTmSquadRows": 244,
+      "nationalTeams": 36,
+      "memberships": 1210,
+      "unmatchedTmSquadRows": 251,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
     },
@@ -83,7 +85,9 @@
       "ukraine": 18,
       "scotland": 20,
       "paraguay": 21,
-      "czechia": 20
+      "czechia": 20,
+      "sweden": 40,
+      "cote-divoire": 40
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -119,7 +123,9 @@
       "ukraine": 6,
       "scotland": 3,
       "paraguay": 4,
-      "czechia": 5
+      "czechia": 5,
+      "sweden": 11,
+      "cote-divoire": 10
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -155,7 +161,9 @@
       "ukraine": 12,
       "scotland": 17,
       "paraguay": 17,
-      "czechia": 15
+      "czechia": 15,
+      "sweden": 29,
+      "cote-divoire": 30
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -191,7 +199,9 @@
       "ukraine": 5,
       "scotland": 7,
       "paraguay": 5,
-      "czechia": 3
+      "czechia": 3,
+      "sweden": 3,
+      "cote-divoire": 3
     }
   },
   "nationalTeams": [
@@ -1111,6 +1121,62 @@
       "fifaRanking": 43,
       "tmCode": "czech-republic",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "sweden",
+      "displayName": "Sweden",
+      "country": "Sweden",
+      "confederationId": "uefa",
+      "confederation": "UEFA",
+      "rivalIds": [
+        "norway",
+        "denmark"
+      ],
+      "searchAliases": [
+        "swe",
+        "sweden national team",
+        "sweden nt",
+        "blågult",
+        "blagult"
+      ],
+      "badgeTheme": {
+        "from": "#fbbf24",
+        "to": "#1e3a8a",
+        "accent": "#fef08a"
+      },
+      "fanGuide": "Sweden’s Blågult blend Scandinavian organization with Premier League and Bundesliga exports. Learn them through Ibrahimović’s legacy, Nordic rivalries, and modern stars like Isak.",
+      "shortHistory": "Men’s senior team of Sweden (SvFF). FootyBrain squads link existing club players matched to Sweden memberships.",
+      "fifaRanking": 38,
+      "tmCode": "sweden",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "cote-divoire",
+      "displayName": "Côte d'Ivoire",
+      "country": "Côte d'Ivoire",
+      "confederationId": "caf",
+      "confederation": "CAF",
+      "rivalIds": [
+        "ghana",
+        "senegal"
+      ],
+      "searchAliases": [
+        "civ",
+        "ivory coast",
+        "cote divoire",
+        "côte d'ivoire",
+        "cote-divoire nt"
+      ],
+      "badgeTheme": {
+        "from": "#f97316",
+        "to": "#16a34a",
+        "accent": "#fef08a"
+      },
+      "fanGuide": "Les Éléphants are West African giants with AFCON triumphs and a long line of European-based stars. Learn Ivory Coast through orange kits, physical flair, and rivalry with Ghana.",
+      "shortHistory": "Men’s senior team of Côte d'Ivoire (FIF). Squads link existing FootyBrain club players via nationality registry and preview TM field matches.",
+      "fifaRanking": null,
+      "tmCode": "cote-divoire",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1520,6 +1586,15 @@
       "tmSourceId": "676042"
     },
     {
+      "playerId": "tm-1009596",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1009596"
+    },
+    {
       "playerId": "tm-330659",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -1772,6 +1847,15 @@
       "tmSourceId": "632349"
     },
     {
+      "playerId": "tm-358515",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "358515"
+    },
+    {
       "playerId": "tm-626724",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -1815,6 +1899,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "431475"
+    },
+    {
+      "playerId": "tm-605426",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "605426"
     },
     {
       "playerId": "tm-429014",
@@ -1905,6 +1998,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "631821"
+    },
+    {
+      "playerId": "tm-145988",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "145988"
     },
     {
       "playerId": "tm-743498",
@@ -2022,6 +2124,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "592979"
+    },
+    {
+      "playerId": "tm-667251",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "667251"
     },
     {
       "playerId": "tm-432164",
@@ -2321,6 +2432,15 @@
       "tmSourceId": "1119456"
     },
     {
+      "playerId": "tm-1126894",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1126894"
+    },
+    {
       "playerId": "tm-406634",
       "nationalTeamId": "denmark",
       "role": "senior",
@@ -2474,6 +2594,24 @@
       "tmSourceId": "559328"
     },
     {
+      "playerId": "tm-392964",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "392964"
+    },
+    {
+      "playerId": "tm-1119877",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1119877"
+    },
+    {
       "playerId": "tm-177907",
       "nationalTeamId": "england",
       "role": "senior",
@@ -2589,6 +2727,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "923945"
+    },
+    {
+      "playerId": "tm-730531",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "730531"
     },
     {
       "playerId": "tm-236490",
@@ -2904,6 +3051,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "332705"
+    },
+    {
+      "playerId": "tm-375877",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "375877"
     },
     {
       "playerId": "tm-1061122",
@@ -3239,6 +3395,15 @@
       "tmSourceId": "245337"
     },
     {
+      "playerId": "tm-142310",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "142310"
+    },
+    {
       "playerId": "tm-1064506",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -3275,6 +3440,15 @@
       "tmSourceId": "357498"
     },
     {
+      "playerId": "tm-184528",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "184528"
+    },
+    {
       "playerId": "tm-597000",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -3309,6 +3483,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "169880"
+    },
+    {
+      "playerId": "tm-216569",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "216569"
     },
     {
       "playerId": "tm-283196",
@@ -3480,6 +3663,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "694928"
+    },
+    {
+      "playerId": "tm-579928",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "579928"
     },
     {
       "playerId": "tm-593519",
@@ -3968,6 +4160,15 @@
       "tmSourceId": "676035"
     },
     {
+      "playerId": "tm-992686",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "992686"
+    },
+    {
       "playerId": "tm-880245",
       "nationalTeamId": "portugal",
       "role": "senior",
@@ -4164,6 +4365,24 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "744857"
+    },
+    {
+      "playerId": "tm-111078",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "111078"
+    },
+    {
+      "playerId": "tm-744853",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "744853"
     },
     {
       "playerId": "tm-1012174",
@@ -4859,6 +5078,15 @@
       "tmSourceId": "167850"
     },
     {
+      "playerId": "tm-792331",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "792331"
+    },
+    {
       "playerId": "tm-586429",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -4940,6 +5168,15 @@
       "tmSourceId": "659648"
     },
     {
+      "playerId": "tm-931838",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "931838"
+    },
+    {
       "playerId": "tm-739769",
       "nationalTeamId": "algeria",
       "role": "senior",
@@ -4956,6 +5193,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "571271"
+    },
+    {
+      "playerId": "tm-182894",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "182894"
     },
     {
       "playerId": "tm-391004",
@@ -5118,6 +5364,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "583699"
+    },
+    {
+      "playerId": "tm-249102",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "249102"
     },
     {
       "playerId": "tm-707242",
@@ -11283,6 +11538,537 @@
       "isPrimary": true,
       "source": "registry_nationality",
       "tmSourceId": null
+    },
+    {
+      "playerId": "tm-349066",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-667287",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-322077",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-392179",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-321155",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-866246",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-342405",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-503075",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-300532",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-748382",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-184573",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-258987",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-190280",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-911482",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-362108",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-583189",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-535820",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-292534",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-934527",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-579287",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-258007",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-222855",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-325443",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-151678",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-764859",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1191520",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-496745",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-663237",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-112822",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-371149",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-536835",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-286384",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-658534",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-890368",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-292818",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-962555",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-658536",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-375885",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-62351",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-290017",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1111820",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-343052",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-619461",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-234781",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-827734",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1117771",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-991487",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-711980",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-702441",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-481513",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-806793",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-649490",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1390649",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-620696",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1067904",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-391065",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-787232",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-644771",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-500689",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
     }
   ],
   "unmatchedTmSquadRows": [
@@ -12169,6 +12955,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "sweden",
+      "sourceId": "549440",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Jacob Mikael Widell Zetterström",
+      "position": "Goalkeeper",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "dateOfBirthRaw": "11/07/1998",
+      "internationalCaps": 2,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "korea-republic",
       "sourceId": "970944",
       "linkSource": "tm_nt_squad_parent",
@@ -12347,6 +13147,20 @@
       "dateOfBirthRaw": "08/09/1996",
       "internationalCaps": 12,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "sweden",
+      "sourceId": "252345",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Ken Nlata Sema",
+      "position": "Defender - Left-Back",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "dateOfBirthRaw": "30/09/1993",
+      "internationalCaps": 32,
+      "internationalGoals": 5,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -13359,6 +14173,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "sweden",
+      "sourceId": "322073",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Isac Alexi Sivert Lidberg",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "dateOfBirthRaw": "08/09/1998",
+      "internationalCaps": 3,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "croatia",
       "sourceId": "371013",
       "linkSource": "tm_nt_squad_parent",
@@ -13396,6 +14224,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "19/11/1993",
       "internationalCaps": 7,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "sweden",
+      "sourceId": "579295",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Viktor Melker Widell",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "19/04/2002",
+      "internationalCaps": 1,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -14003,6 +14845,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "sweden",
+      "sourceId": "273742",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Viktor Tobias Johansson",
+      "position": "Goalkeeper",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "dateOfBirthRaw": "14/09/1998",
+      "internationalCaps": 12,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "morocco",
       "sourceId": "1210200",
       "linkSource": "tm_nt_squad_parent",
@@ -14040,6 +14896,20 @@
       "tmNationalTeamCountry": "Nigeria",
       "dateOfBirthRaw": "07/01/2004",
       "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "sweden",
+      "sourceId": "633454",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Alexander Olof Bernhardsson",
+      "position": "Attack - Right Winger",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": "Sweden",
+      "dateOfBirthRaw": "08/09/1998",
+      "internationalCaps": 9,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -14152,6 +15022,20 @@
       "tmNationalTeamCountry": "Nigeria",
       "dateOfBirthRaw": "09/08/2001",
       "internationalCaps": 3,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "sweden",
+      "sourceId": "527329",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Oliver Lukas Dozae Nnonyelu Dovin",
+      "position": "Goalkeeper",
+      "citizenship": "Sweden",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "11/07/2002",
+      "internationalCaps": 2,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []

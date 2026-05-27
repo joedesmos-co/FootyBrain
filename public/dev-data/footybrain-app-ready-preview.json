@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:26:56.080Z",
+    "generatedAt": "2026-05-27T00:44:40.971Z",
     "purpose": "staging-only — do not import into React until reviewed",
     "dataAsOf": "2026-05-25",
     "previewSeason": "2025",
@@ -10,9 +10,9 @@
       "mvpFeatured": 36,
       "mvpLinked": 31,
       "mvpManualOnly": 5,
-      "generatedNeedsEditorial": 3601,
-      "generatedEditorialApproved": 449,
-      "quizEligible": 485
+      "generatedNeedsEditorial": 3600,
+      "generatedEditorialApproved": 450,
+      "quizEligible": 486
     },
     "linkedPlayers": [
       "haaland",
@@ -2372,7 +2372,6 @@
       "tm-699461",
       "tm-670111",
       "tm-638385",
-      "tm-111078",
       "tm-45660",
       "tm-242284",
       "tm-258007",
@@ -3943,6 +3942,7 @@
       "tm-96341",
       "tm-315969",
       "tm-257474",
+      "tm-111078",
       "tm-427568",
       "tm-135343",
       "tm-398065",
@@ -75021,6 +75021,7 @@
       "id": "tm-111078",
       "sourceId": "111078",
       "name": "Emil Forsberg",
+      "displayName": "Emil Forsberg",
       "dateOfBirth": "1991-10-23",
       "age": 34,
       "nationality": "Sweden",
@@ -75028,12 +75029,17 @@
       "position": "Attack - Left Winger",
       "teamId": "new-york-red-bulls",
       "leagueId": "mls",
-      "quickFact": "",
-      "quizHints": [],
-      "playingStyle": "",
-      "importanceScore": null,
-      "quizEligible": false,
-      "rosterTier": "squad",
+      "quickFact": "Sweden winger who starred for RB Leipzig in the Bundesliga before MLS with New York Red Bulls and long service for the Blågult.",
+      "quizHints": [
+        "Swedish left winger linked to Sweden’s national team.",
+        "RB Leipzig and NY Red Bulls attacker — not Alexander Isak the striker.",
+        "Emil who takes set pieces and cuts inside from the left."
+      ],
+      "playingStyle": "Left-sided attacker who drifts inside, strikes from distance, and delivers quality from dead balls.",
+      "importanceScore": 84,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved",
       "imageUrl": null,
       "imageAlt": null,
       "imageCredit": null,
@@ -75041,7 +75047,7 @@
       "imageLicense": null,
       "imageSrcSet": null,
       "careerHistory": [],
-      "dataStatus": "generated-needs-editorial"
+      "dataStatus": "generated-editorial-approved"
     },
     {
       "id": "tm-45660",
