@@ -127,6 +127,7 @@ function buildIndexableRoutes(data) {
     '/learning-paths',
     '/national-teams',
     '/world-cup',
+    '/onboarding',
     '/privacy',
   ];
 

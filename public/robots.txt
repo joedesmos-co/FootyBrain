@@ -6,6 +6,7 @@ Disallow: /compare-clubs
 Disallow: /saved
 Disallow: /profile
 Disallow: /daily
+Disallow: /*?
 
 Sitemap: https://footybrain.pages.dev/sitemap.xml
 
