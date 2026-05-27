@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "description": "Phase 10 — complete Eredivisie (NL1) to 18 clubs. Browse-only TM imports; no auto quiz approval.",
+  "targetCounts": {
+    "clubsMin": 18,
+    "clubsMax": 18,
+    "playersMin": 450,
+    "playersMax": 540
+  },
+  "leagues": [],
+  "clubs": [
+    {
+      "footybrainTeamId": "fc-utrecht",
+      "label": "FC Utrecht",
+      "leagueId": "eredivisie",
+      "codes": ["fc-utrecht"],
+      "nameKeys": ["fc utrecht", "utrecht"]
+    },
+    {
+      "footybrainTeamId": "sc-heerenveen",
+      "label": "sc Heerenveen",
+      "leagueId": "eredivisie",
+      "codes": ["sc-heerenveen"],
+      "nameKeys": ["sc heerenveen", "heerenveen"]
+    },
+    {
+      "footybrainTeamId": "fc-groningen",
+      "label": "FC Groningen",
+      "leagueId": "eredivisie",
+      "codes": ["fc-groningen"],
+      "nameKeys": ["fc groningen", "groningen"]
+    },
+    {
+      "footybrainTeamId": "nec-nijmegen",
+      "label": "NEC Nijmegen",
+      "leagueId": "eredivisie",
+      "codes": ["nec-nijmegen"],
+      "nameKeys": ["nec nijmegen", "nec", "nijmegen"]
+    },
+    {
+      "footybrainTeamId": "sparta-rotterdam",
+      "label": "Sparta Rotterdam",
+      "leagueId": "eredivisie",
+      "codes": ["sparta-rotterdam"],
+      "nameKeys": ["sparta rotterdam", "sparta"]
+    },
+    {
+      "footybrainTeamId": "fortuna-sittard",
+      "label": "Fortuna Sittard",
+      "leagueId": "eredivisie",
+      "codes": ["fortuna-sittard"],
+      "nameKeys": ["fortuna sittard", "fortuna"]
+    },
+    {
+      "footybrainTeamId": "go-ahead-eagles",
+      "label": "Go Ahead Eagles",
+      "leagueId": "eredivisie",
+      "codes": ["go-ahead-eagles", "go-ahead-eagles-deventer", "ga-eagles"],
+      "nameKeys": ["go ahead eagles", "ga eagles", "deventer", "eagles deventer"]
+    },
+    {
+      "footybrainTeamId": "heracles-almelo",
+      "label": "Heracles Almelo",
+      "leagueId": "eredivisie",
+      "codes": ["heracles-almelo"],
+      "nameKeys": ["heracles almelo", "heracles"]
+    },
+    {
+      "footybrainTeamId": "sc-telstar",
+      "label": "Telstar",
+      "leagueId": "eredivisie",
+      "codes": ["sc-telstar", "telstar"],
+      "nameKeys": ["telstar", "sc telstar"]
+    },
+    {
+      "footybrainTeamId": "nac-breda",
+      "label": "NAC Breda",
+      "leagueId": "eredivisie",
+      "codes": ["nac-breda"],
+      "nameKeys": ["nac breda", "nac"]
+    },
+    {
+      "footybrainTeamId": "fc-volendam",
+      "label": "FC Volendam",
+      "leagueId": "eredivisie",
+      "codes": ["fc-volendam"],
+      "nameKeys": ["fc volendam", "volendam"]
+    },
+    {
+      "footybrainTeamId": "pec-zwolle",
+      "label": "PEC Zwolle",
+      "leagueId": "eredivisie",
+      "codes": ["pec-zwolle"],
+      "nameKeys": ["pec zwolle", "zwolle"]
+    },
+    {
+      "footybrainTeamId": "excelsior-rotterdam",
+      "label": "Excelsior",
+      "leagueId": "eredivisie",
+      "codes": ["sbv-excelsior", "excelsior-rotterdam", "sbv-excelsior-rotterdam"],
+      "nameKeys": ["excelsior", "sbv excelsior", "excelsior rotterdam", "sbv excelsior rotterdam"]
+    }
+  ]
+}

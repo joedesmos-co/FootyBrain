@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T02:54:24.101Z",
+    "generatedAt": "2026-05-27T10:27:19.335Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -55,15 +55,17 @@
       "iraq",
       "jordan",
       "uzbekistan",
-      "new-zealand"
+      "new-zealand",
+      "cape-verde",
+      "curacao"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 53,
-      "memberships": 1748,
+      "nationalTeams": 55,
+      "memberships": 1797,
       "unmatchedTmSquadRows": 289,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
@@ -79,11 +81,11 @@
       "italy": 40,
       "netherlands": 40,
       "belgium": 40,
-      "croatia": 35,
+      "croatia": 38,
       "switzerland": 40,
       "denmark": 40,
-      "serbia": 32,
-      "turkey": 19,
+      "serbia": 33,
+      "turkey": 24,
       "united-states": 40,
       "mexico": 15,
       "uruguay": 40,
@@ -92,24 +94,24 @@
       "morocco": 40,
       "senegal": 40,
       "nigeria": 36,
-      "japan": 37,
+      "japan": 40,
       "korea-republic": 10,
       "norway": 40,
       "ghana": 40,
       "algeria": 23,
-      "poland": 33,
-      "austria": 37,
+      "poland": 38,
+      "austria": 38,
       "ukraine": 18,
       "scotland": 20,
       "paraguay": 21,
-      "czechia": 20,
+      "czechia": 21,
       "sweden": 40,
       "cote-divoire": 40,
       "canada": 40,
-      "australia": 13,
+      "australia": 16,
       "ecuador": 23,
-      "bosnia-herzegovina": 13,
-      "congo-dr": 13,
+      "bosnia-herzegovina": 14,
+      "congo-dr": 15,
       "haiti": 10,
       "tunisia": 6,
       "egypt": 46,
@@ -118,10 +120,12 @@
       "iran": 16,
       "south-africa": 73,
       "panama": 41,
-      "iraq": 43,
+      "iraq": 44,
       "jordan": 40,
       "uzbekistan": 42,
-      "new-zealand": 22
+      "new-zealand": 23,
+      "cape-verde": 8,
+      "curacao": 14
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -132,11 +136,11 @@
       "germany": 37,
       "portugal": 9,
       "italy": 31,
-      "netherlands": 29,
-      "belgium": 8,
-      "croatia": 5,
+      "netherlands": 34,
+      "belgium": 9,
+      "croatia": 6,
       "switzerland": 4,
-      "denmark": 21,
+      "denmark": 22,
       "serbia": 7,
       "turkey": 0,
       "united-states": 34,
@@ -147,9 +151,9 @@
       "morocco": 23,
       "senegal": 8,
       "nigeria": 13,
-      "japan": 9,
+      "japan": 11,
       "korea-republic": 0,
-      "norway": 5,
+      "norway": 6,
       "ghana": 8,
       "algeria": 7,
       "poland": 9,
@@ -159,11 +163,11 @@
       "paraguay": 4,
       "czechia": 5,
       "sweden": 11,
-      "cote-divoire": 10,
+      "cote-divoire": 11,
       "canada": 12,
-      "australia": 2,
+      "australia": 4,
       "ecuador": 3,
-      "bosnia-herzegovina": 1,
+      "bosnia-herzegovina": 2,
       "congo-dr": 0,
       "haiti": 2,
       "tunisia": 0,
@@ -176,7 +180,9 @@
       "iraq": 42,
       "jordan": 39,
       "uzbekistan": 41,
-      "new-zealand": 19
+      "new-zealand": 19,
+      "cape-verde": 4,
+      "curacao": 3
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -187,13 +193,13 @@
       "germany": 3,
       "portugal": 31,
       "italy": 9,
-      "netherlands": 11,
-      "belgium": 32,
-      "croatia": 30,
+      "netherlands": 6,
+      "belgium": 31,
+      "croatia": 32,
       "switzerland": 36,
-      "denmark": 19,
-      "serbia": 25,
-      "turkey": 19,
+      "denmark": 18,
+      "serbia": 26,
+      "turkey": 24,
       "united-states": 6,
       "mexico": 7,
       "uruguay": 36,
@@ -202,24 +208,24 @@
       "morocco": 17,
       "senegal": 32,
       "nigeria": 23,
-      "japan": 28,
+      "japan": 29,
       "korea-republic": 10,
-      "norway": 35,
+      "norway": 34,
       "ghana": 32,
       "algeria": 16,
-      "poland": 24,
-      "austria": 31,
+      "poland": 29,
+      "austria": 32,
       "ukraine": 12,
       "scotland": 17,
       "paraguay": 17,
-      "czechia": 15,
+      "czechia": 16,
       "sweden": 29,
-      "cote-divoire": 30,
+      "cote-divoire": 29,
       "canada": 28,
-      "australia": 11,
+      "australia": 12,
       "ecuador": 20,
       "bosnia-herzegovina": 12,
-      "congo-dr": 13,
+      "congo-dr": 15,
       "haiti": 8,
       "tunisia": 6,
       "egypt": 5,
@@ -228,10 +234,12 @@
       "iran": 0,
       "south-africa": 5,
       "panama": 3,
-      "iraq": 1,
+      "iraq": 2,
       "jordan": 1,
       "uzbekistan": 1,
-      "new-zealand": 3
+      "new-zealand": 4,
+      "cape-verde": 4,
+      "curacao": 11
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -242,7 +250,7 @@
       "germany": 7,
       "portugal": 13,
       "italy": 9,
-      "netherlands": 18,
+      "netherlands": 13,
       "belgium": 13,
       "croatia": 11,
       "switzerland": 9,
@@ -286,7 +294,9 @@
       "iraq": 0,
       "jordan": 0,
       "uzbekistan": 1,
-      "new-zealand": 0
+      "new-zealand": 0,
+      "cape-verde": 0,
+      "curacao": 0
     }
   },
   "nationalTeams": [
@@ -1725,6 +1735,60 @@
       "fifaRanking": 85,
       "tmCode": "new-zealand",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "cape-verde",
+      "displayName": "Cabo Verde",
+      "country": "Cape Verde",
+      "confederationId": "caf",
+      "confederation": "CAF",
+      "rivalIds": [
+        "senegal",
+        "morocco"
+      ],
+      "searchAliases": [
+        "cape verde",
+        "cabo verde",
+        "cape verde national team",
+        "cape verde nt"
+      ],
+      "badgeTheme": {
+        "from": "#1d4ed8",
+        "to": "#fbbf24",
+        "accent": "#dc2626"
+      },
+      "fanGuide": "Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and linked players from FootyBrain’s browse-only national pool.",
+      "shortHistory": "Men’s senior team of Cabo Verde. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.",
+      "fifaRanking": null,
+      "tmCode": "cape-verde",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "curacao",
+      "displayName": "Curaçao",
+      "country": "Curaçao",
+      "confederationId": "concacaf",
+      "confederation": "CONCACAF",
+      "rivalIds": [
+        "netherlands",
+        "mexico"
+      ],
+      "searchAliases": [
+        "curacao",
+        "curaçao",
+        "curacao national team",
+        "curacao nt"
+      ],
+      "badgeTheme": {
+        "from": "#1d4ed8",
+        "to": "#fbbf24",
+        "accent": "#dc2626"
+      },
+      "fanGuide": "Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "Men’s senior team of Curaçao. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.",
+      "fifaRanking": null,
+      "tmCode": "curacao",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1841,6 +1905,20 @@
       "tmSourceId": "962090"
     },
     {
+      "playerId": "tm-1064184",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1064184"
+    },
+    {
       "playerId": "tm-431911",
       "nationalTeamId": "uzbekistan",
       "role": "senior",
@@ -1909,6 +1987,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1022814"
+    },
+    {
+      "playerId": "tm-1070645",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1070645"
     },
     {
       "playerId": "tm-585323",
@@ -2877,6 +2969,20 @@
       "tmSourceId": "814446"
     },
     {
+      "playerId": "tm-569470",
+      "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "569470"
+    },
+    {
       "playerId": "tm-294767",
       "nationalTeamId": "iran",
       "role": "senior",
@@ -3169,6 +3275,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "159471"
+    },
+    {
+      "playerId": "tm-507467",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "507467"
     },
     {
       "playerId": "tm-417536",
@@ -4039,6 +4159,20 @@
       "tmSourceId": "1047261"
     },
     {
+      "playerId": "tm-485588",
+      "nationalTeamId": "netherlands",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "485588"
+    },
+    {
       "playerId": "tm-344381",
       "nationalTeamId": "france",
       "role": "senior",
@@ -4655,6 +4789,20 @@
       "tmSourceId": "937941"
     },
     {
+      "playerId": "tm-913289",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "913289"
+    },
+    {
       "playerId": "tm-1208196",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -4821,6 +4969,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "593482"
+    },
+    {
+      "playerId": "tm-182722",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "182722"
     },
     {
       "playerId": "tm-1063338",
@@ -5283,6 +5445,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "795738"
+    },
+    {
+      "playerId": "tm-936006",
+      "nationalTeamId": "netherlands",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "936006"
     },
     {
       "playerId": "tm-885226",
@@ -6039,6 +6215,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "189523"
+    },
+    {
+      "playerId": "tm-715510",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "715510"
     },
     {
       "playerId": "tm-294525",
@@ -6881,6 +7071,20 @@
       "tmSourceId": "928499"
     },
     {
+      "playerId": "tm-566013",
+      "nationalTeamId": "japan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "566013"
+    },
+    {
       "playerId": "tm-453370",
       "nationalTeamId": "south-africa",
       "role": "senior",
@@ -7495,6 +7699,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1004738"
+    },
+    {
+      "playerId": "tm-458418",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "458418"
     },
     {
       "playerId": "tm-955357",
@@ -8197,6 +8415,20 @@
       "tmSourceId": "1154910"
     },
     {
+      "playerId": "tm-571150",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "571150"
+    },
+    {
       "playerId": "tm-635445",
       "nationalTeamId": "canada",
       "role": "senior",
@@ -8251,6 +8483,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "283196"
+    },
+    {
+      "playerId": "tm-957544",
+      "nationalTeamId": "japan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "957544"
     },
     {
       "playerId": "tm-95424",
@@ -8365,6 +8611,20 @@
       "tmSourceId": "1381448"
     },
     {
+      "playerId": "tm-928592",
+      "nationalTeamId": "netherlands",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "928592"
+    },
+    {
       "playerId": "tm-834742",
       "nationalTeamId": "spain",
       "role": "senior",
@@ -8419,6 +8679,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "801734"
+    },
+    {
+      "playerId": "tm-849428",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "849428"
     },
     {
       "playerId": "tm-543435",
@@ -9427,6 +9701,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "869509"
+    },
+    {
+      "playerId": "tm-503640",
+      "nationalTeamId": "netherlands",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "503640"
     },
     {
       "playerId": "tm-75489",
@@ -11515,6 +11803,20 @@
       "tmSourceId": "429874"
     },
     {
+      "playerId": "tm-656132",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "656132"
+    },
+    {
       "playerId": "tm-495271",
       "nationalTeamId": "south-africa",
       "role": "senior",
@@ -12061,6 +12363,20 @@
       "tmSourceId": "195332"
     },
     {
+      "playerId": "tm-181375",
+      "nationalTeamId": "cote-divoire",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "181375"
+    },
+    {
       "playerId": "tm-677986",
       "nationalTeamId": "jordan",
       "role": "senior",
@@ -12395,6 +12711,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "860998"
+    },
+    {
+      "playerId": "tm-747017",
+      "nationalTeamId": "netherlands",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "747017"
     },
     {
       "playerId": "tm-661080",
@@ -13111,6 +13441,20 @@
       "tmSourceId": "493593"
     },
     {
+      "playerId": "tm-1104143",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1104143"
+    },
+    {
       "playerId": "tm-172333",
       "nationalTeamId": "new-zealand",
       "role": "senior",
@@ -13643,6 +13987,20 @@
       "tmSourceId": "217073"
     },
     {
+      "playerId": "tm-916461",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "916461"
+    },
+    {
       "playerId": "tm-994256",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -14131,6 +14489,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "922769"
+    },
+    {
+      "playerId": "tm-915445",
+      "nationalTeamId": "croatia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "915445"
     },
     {
       "playerId": "tm-608832",
@@ -15351,6 +15723,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-387996",
+      "nationalTeamId": "portugal",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-910541",
       "nationalTeamId": "portugal",
       "role": "senior",
@@ -15534,20 +15920,6 @@
     },
     {
       "playerId": "tm-741501",
-      "nationalTeamId": "portugal",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-726701",
       "nationalTeamId": "portugal",
       "role": "senior",
       "status": "active",
@@ -15758,76 +16130,6 @@
     },
     {
       "playerId": "tm-369554",
-      "nationalTeamId": "netherlands",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-412932",
-      "nationalTeamId": "netherlands",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-355861",
-      "nationalTeamId": "netherlands",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-547499",
-      "nationalTeamId": "netherlands",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-129554",
-      "nationalTeamId": "netherlands",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-228645",
       "nationalTeamId": "netherlands",
       "role": "senior",
       "status": "active",
@@ -16093,7 +16395,77 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-565436",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1029376",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-422760",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-381967",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-405892",
+      "nationalTeamId": "belgium",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-535741",
       "nationalTeamId": "belgium",
       "role": "senior",
       "status": "active",
@@ -16191,91 +16563,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-417278",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-926694",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-338668",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-144028",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-429915",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-381963",
-      "nationalTeamId": "belgium",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-368891",
+      "playerId": "tm-502288",
       "nationalTeamId": "belgium",
       "role": "senior",
       "status": "active",
@@ -16444,6 +16732,20 @@
     },
     {
       "playerId": "tm-610190",
+      "nationalTeamId": "croatia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-226074",
       "nationalTeamId": "croatia",
       "role": "senior",
       "status": "active",
@@ -16682,6 +16984,20 @@
     },
     {
       "playerId": "tm-334835",
+      "nationalTeamId": "croatia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-526566",
       "nationalTeamId": "croatia",
       "role": "senior",
       "status": "active",
@@ -17381,6 +17697,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-542684",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-926978",
       "nationalTeamId": "denmark",
       "role": "senior",
@@ -17409,6 +17739,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-541601",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-543822",
       "nationalTeamId": "denmark",
       "role": "senior",
@@ -17424,48 +17768,6 @@
     },
     {
       "playerId": "tm-257324",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-319859",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-288429",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-260827",
       "nationalTeamId": "denmark",
       "role": "senior",
       "status": "active",
@@ -17620,6 +17922,20 @@
     },
     {
       "playerId": "tm-419648",
+      "nationalTeamId": "serbia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-464906",
       "nationalTeamId": "serbia",
       "role": "senior",
       "status": "active",
@@ -17941,6 +18257,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-662131",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-615350",
       "nationalTeamId": "turkey",
       "role": "senior",
@@ -17956,6 +18286,20 @@
     },
     {
       "playerId": "tm-361260",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-864112",
       "nationalTeamId": "turkey",
       "role": "senior",
       "status": "active",
@@ -18053,7 +18397,35 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-835546",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-244940",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-508639",
       "nationalTeamId": "turkey",
       "role": "senior",
       "status": "active",
@@ -18082,6 +18454,20 @@
     },
     {
       "playerId": "tm-816585",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-918445",
       "nationalTeamId": "turkey",
       "role": "senior",
       "status": "active",
@@ -19439,6 +19825,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-541134",
+      "nationalTeamId": "morocco",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-340394",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -19608,20 +20008,6 @@
     },
     {
       "playerId": "tm-232271",
-      "nationalTeamId": "morocco",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-741289",
       "nationalTeamId": "morocco",
       "role": "senior",
       "status": "active",
@@ -20545,6 +20931,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-351567",
+      "nationalTeamId": "japan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-1144627",
       "nationalTeamId": "japan",
       "role": "senior",
@@ -21049,6 +21449,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-670105",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-539665",
       "nationalTeamId": "norway",
       "role": "senior",
@@ -21106,6 +21520,48 @@
     },
     {
       "playerId": "tm-432700",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-869067",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-432694",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-272206",
       "nationalTeamId": "norway",
       "role": "senior",
       "status": "active",
@@ -21259,6 +21715,48 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-218233",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-670116",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-781270",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-661427",
       "nationalTeamId": "norway",
       "role": "senior",
@@ -21301,119 +21799,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-442470",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-374326",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-230140",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-328770",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-794758",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-1002305",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-367284",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-903359",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-504189",
+      "playerId": "tm-894050",
       "nationalTeamId": "norway",
       "role": "senior",
       "status": "active",
@@ -21511,6 +21897,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-564489",
+      "nationalTeamId": "ghana",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-1113451",
       "nationalTeamId": "ghana",
       "role": "senior",
@@ -21568,6 +21968,20 @@
     },
     {
       "playerId": "tm-423604",
+      "nationalTeamId": "ghana",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-45403",
       "nationalTeamId": "ghana",
       "role": "senior",
       "status": "active",
@@ -21680,6 +22094,20 @@
     },
     {
       "playerId": "tm-991054",
+      "nationalTeamId": "ghana",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-59641",
       "nationalTeamId": "ghana",
       "role": "senior",
       "status": "active",
@@ -21820,48 +22248,6 @@
     },
     {
       "playerId": "tm-1246704",
-      "nationalTeamId": "ghana",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-199953",
-      "nationalTeamId": "ghana",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-1355954",
-      "nationalTeamId": "ghana",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-875178",
       "nationalTeamId": "ghana",
       "role": "senior",
       "status": "active",
@@ -22211,6 +22597,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-554282",
+      "nationalTeamId": "poland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-191891",
       "nationalTeamId": "poland",
       "role": "senior",
@@ -22226,6 +22626,20 @@
     },
     {
       "playerId": "tm-1018395",
+      "nationalTeamId": "poland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-463233",
       "nationalTeamId": "poland",
       "role": "senior",
       "status": "active",
@@ -22365,7 +22779,35 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-155158",
+      "nationalTeamId": "poland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-986794",
+      "nationalTeamId": "poland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-232015",
       "nationalTeamId": "poland",
       "role": "senior",
       "status": "active",
@@ -22422,6 +22864,20 @@
     },
     {
       "playerId": "tm-1189626",
+      "nationalTeamId": "poland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-949480",
       "nationalTeamId": "poland",
       "role": "senior",
       "status": "active",
@@ -22660,6 +23116,20 @@
     },
     {
       "playerId": "tm-434116",
+      "nationalTeamId": "austria",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-434110",
       "nationalTeamId": "austria",
       "role": "senior",
       "status": "active",
@@ -23597,6 +24067,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-487924",
+      "nationalTeamId": "czechia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-620217",
       "nationalTeamId": "czechia",
       "role": "senior",
@@ -23779,6 +24263,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-675844",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-321155",
       "nationalTeamId": "sweden",
       "role": "senior",
@@ -23822,6 +24320,20 @@
     },
     {
       "playerId": "tm-503075",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-367992",
       "nationalTeamId": "sweden",
       "role": "senior",
       "status": "active",
@@ -23961,6 +24473,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-899163",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-292534",
       "nationalTeamId": "sweden",
       "role": "senior",
@@ -23990,6 +24516,20 @@
     },
     {
       "playerId": "tm-579287",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-605395",
       "nationalTeamId": "sweden",
       "role": "senior",
       "status": "active",
@@ -24045,77 +24585,21 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-186704",
+      "nationalTeamId": "sweden",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-151678",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-764859",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-1191520",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-496745",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-663237",
-      "nationalTeamId": "sweden",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-112822",
       "nationalTeamId": "sweden",
       "role": "senior",
       "status": "active",
@@ -24522,20 +25006,6 @@
     },
     {
       "playerId": "tm-644771",
-      "nationalTeamId": "cote-divoire",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-500689",
       "nationalTeamId": "cote-divoire",
       "role": "senior",
       "status": "active",
@@ -24956,6 +25426,20 @@
     },
     {
       "playerId": "tm-855731",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-265625",
       "nationalTeamId": "australia",
       "role": "senior",
       "status": "active",
@@ -25627,6 +26111,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-289510",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-342048",
       "nationalTeamId": "congo-dr",
       "role": "senior",
@@ -25712,6 +26210,20 @@
     },
     {
       "playerId": "tm-203348",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-952414",
       "nationalTeamId": "congo-dr",
       "role": "senior",
       "status": "active",
@@ -26131,6 +26643,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-686845",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-551505",
       "nationalTeamId": "jordan",
       "role": "senior",
@@ -26189,6 +26715,230 @@
     {
       "playerId": "tm-81723",
       "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-203357",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-532096",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-203517",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-272930",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-484988",
+      "nationalTeamId": "cape-verde",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-232219",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1025411",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-708989",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-348863",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-315211",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-708005",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-339337",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-663961",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-936581",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-886252",
+      "nationalTeamId": "curacao",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-412937",
+      "nationalTeamId": "curacao",
       "role": "senior",
       "status": "active",
       "isPrimary": true,

@@ -71,6 +71,8 @@ export const WAVE_3_NATIONAL_TEAM_IDS = [
   'jordan',
   'uzbekistan',
   'new-zealand',
+  'cape-verde',
+  'curacao',
 ];
 
 /** FootyBrain id ↔ TM slug ↔ registry nationality labels */
@@ -285,6 +287,24 @@ export const NATIONAL_TEAM_TARGETS = [
     expansionWave: 3,
     searchAliases: ['nzl', 'all whites', 'new zealand national team'],
     registryLabels: ['new zealand', 'kiwi'],
+  },
+  {
+    id: 'cape-verde',
+    tmCode: null,
+    displayName: 'Cabo Verde',
+    expansionWave: 3,
+    tmMissing: true,
+    searchAliases: ['cape verde', 'cabo verde', 'cape verde islands'],
+    registryLabels: ['cape verde', 'cabo verde', 'cape verdean', 'cabo-verde'],
+  },
+  {
+    id: 'curacao',
+    tmCode: null,
+    displayName: 'Curaçao',
+    expansionWave: 3,
+    tmMissing: true,
+    searchAliases: ['curacao', 'curaçao', 'curacao national team'],
+    registryLabels: ['curacao', 'curaçao', 'curacaoan', 'dutch antilles'],
   },
 ];
 

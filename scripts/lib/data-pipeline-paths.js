@@ -43,6 +43,10 @@ export const DATA_PATHS = {
     REPO_ROOT,
     'editorial-overlays/phase9-bundesliga-completion-clubs.json',
   ),
+  phase10EredivisieCompletionClubs: path.join(
+    REPO_ROOT,
+    'editorial-overlays/phase10-eredivisie-completion-clubs.json',
+  ),
   phase4LegacyClubs: path.join(REPO_ROOT, 'editorial-overlays/phase4-clubs.json'),
   phase4MlsClubs: path.join(REPO_ROOT, 'editorial-overlays/phase4-mls-clubs.json'),
   phase4BrasileiraoClubs: path.join(
@@ -95,6 +99,11 @@ export function loadExpansionClubConfigs(options = {}) {
       path: DATA_PATHS.phase9BundesligaCompletionClubs,
       required: false,
       label: 'phase9-bundesliga-completion',
+    },
+    {
+      path: DATA_PATHS.phase10EredivisieCompletionClubs,
+      required: false,
+      label: 'phase10-eredivisie-completion',
     },
     { path: DATA_PATHS.phase4MlsClubs, required: false, label: 'phase4-mls' },
     {

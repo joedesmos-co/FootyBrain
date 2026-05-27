@@ -67,6 +67,8 @@ export const CONTENT_MANIFEST = {
     'jordan',
     'uzbekistan',
     'new-zealand',
+    'cape-verde',
+    'curacao',
   ],
   leagues: [
     {
@@ -123,8 +125,8 @@ export const CONTENT_MANIFEST = {
       id: 'eredivisie',
       name: 'Eredivisie',
       country: 'Netherlands',
-      teamCount: 5,
-      playerCount: 135,
+      teamCount: 18,
+      playerCount: 474,
       shardStatus: 'deferred',
       shardPath: '/data/leagues/eredivisie.json',
       badgeTheme: { from: '#f97316', to: '#7f1d1d', accent: '#ffedd5' },

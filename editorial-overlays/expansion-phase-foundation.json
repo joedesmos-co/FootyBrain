@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "description": "Structured large-scale coverage mode — waves, browse tiers, shard budgets, and graduation rules.",
+  "dataPolicy": {
+    "defaultImportQuizEligible": false,
+    "defaultRosterTier": "squad",
+    "defaultDataStatus": "generated-needs-editorial",
+    "quizApproval": "manual-editorial-only",
+    "noSilentTrim": true,
+    "playersHardMax": 5000,
+    "sampleDataGzipWarnKb": 230,
+    "sampleDataGzipFailKb": 280
+  },
+  "browseTiers": {
+    "featured": "Editorial MVP / approved quiz-ready stars",
+    "squad": "Default browse import — search and club squads",
+    "national-pool": "National membership browse pool — not official WC roster",
+    "external-stub": "Club reference only until graduated"
+  },
+  "leagueWaves": [
+    {
+      "waveId": "wave-top5-complete",
+      "status": "complete",
+      "leagueIds": ["premier-league", "la-liga", "bundesliga", "serie-a", "ligue-1"],
+      "notes": "20/18 clubs with min 18 players per club"
+    },
+    {
+      "waveId": "wave-phase10-eredivisie",
+      "status": "active",
+      "config": "phase10-eredivisie-completion-clubs.json",
+      "leagueIds": ["eredivisie"],
+      "targetClubs": 18,
+      "projectedNewPlayers": 360
+    },
+    {
+      "waveId": "wave-mls-bra",
+      "status": "complete",
+      "leagueIds": ["mls", "brasileirao"]
+    }
+  ],
+  "nationalWaves": [
+    {
+      "waveId": "wave-wc-pool-import",
+      "status": "active",
+      "nationIds": ["cape-verde", "curacao"],
+      "notes": "Final WC 2026 draw nations without live pools — browse-only import + registry membership"
+    }
+  ],
+  "shardStrategy": {
+    "bundledCoreLeagues": ["external"],
+    "deferredLeagueShards": [
+      "premier-league",
+      "la-liga",
+      "bundesliga",
+      "serie-a",
+      "ligue-1",
+      "eredivisie",
+      "mls",
+      "brasileirao"
+    ],
+    "notes": "Shards duplicate league payloads for route-level lazy load; gzip relief at 6k–8k requires excluding deferred leagues from sampleData core (phase 11)."
+  },
+  "externalClubGraduation": {
+    "policy": "Graduate high-traffic TM stubs to proper league clubs only in dedicated waves — never mass-convert 171 stubs in one merge.",
+    "prioritySignals": ["national-pool player count", "quiz editorial backlog", "search volume"],
+    "remainExternalUntil": "phase-11-graduation-wave"
+  },
+  "projections": {
+    "baselinePlayers": 4488,
+    "baselineQuizReady": 500,
+    "achievedPlayers": 4827,
+    "achievedQuizReady": 500,
+    "achievedSampleGzipKb": 275,
+    "achievedDistGzipKb": 265,
+    "sixToEightKRequires": "sampleData core split + external league shard + search index partition"
+  }
+}

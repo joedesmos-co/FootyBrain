@@ -42,6 +42,9 @@
     "validate:dataset-scale:dist": "node scripts/validate-dataset-scale.js --dist",
     "editorial:report": "node scripts/editorial-report.js",
     "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
+    "audit:expansion-foundation": "node scripts/audit-expansion-foundation.js",
+    "append:wc-national-pool": "node scripts/append-wc-national-pool-import.js",
+    "expand:foundation": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run build:national-teams-preview && npm run build:national-team-live && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale && npm run validate:dataset-scale:dist",
     "expand:phase4-mls": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
     "expand:phase4": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
     "expand:phase4-bra": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale"

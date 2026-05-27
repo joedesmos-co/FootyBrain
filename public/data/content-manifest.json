@@ -57,7 +57,9 @@
     "iraq",
     "jordan",
     "uzbekistan",
-    "new-zealand"
+    "new-zealand",
+    "cape-verde",
+    "curacao"
   ],
   "leagues": [
     {
@@ -99,8 +101,8 @@
       "id": "eredivisie",
       "shardStatus": "deferred",
       "shardPath": "/data/leagues/eredivisie.json",
-      "playerCount": 135,
-      "teamCount": 5
+      "playerCount": 474,
+      "teamCount": 18
     },
     {
       "id": "mls",

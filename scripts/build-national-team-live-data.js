@@ -87,6 +87,9 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'jordan',
   'uzbekistan',
   'new-zealand',
+  // Wave 6 (World Cup 2026 — final draw nations, browse-only pool)
+  'cape-verde',
+  'curacao',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -102,6 +105,8 @@ const MAX_MEMBERSHIPS_OVERRIDES = {
   iraq: 45,
   jordan: 45,
   uzbekistan: 45,
+  'cape-verde': 55,
+  curacao: 55,
 };
 
 function getMaxMembershipsForNation(nationalTeamId) {
@@ -176,6 +181,8 @@ const REGISTRY_NATIONALITY_LABELS = {
   jordan: ['jordan', 'jordanian'],
   uzbekistan: ['uzbekistan', 'uzbek', 'uzbekistani'],
   'new-zealand': ['new zealand', 'kiwi'],
+  'cape-verde': ['cape verde', 'cabo verde', 'cape verdean'],
+  curacao: ['curacao', 'curaçao', 'curacaoan'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -870,6 +877,32 @@ const LIVE_NATION_EDITORIAL = {
       'The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyBrain’s registry-linked national pool.',
     shortHistory:
       'Men’s senior team of New Zealand (NZF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  'cape-verde': {
+    displayName: 'Cabo Verde',
+    country: 'Cape Verde',
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['senegal', 'morocco'],
+    searchAliases: ['cape verde', 'cabo verde', 'cape verde national team', 'cape verde nt'],
+    badgeTheme: { from: '#1d4ed8', to: '#fbbf24', accent: '#dc2626' },
+    fanGuide:
+      'Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and linked players from FootyBrain’s browse-only national pool.',
+    shortHistory:
+      'Men’s senior team of Cabo Verde. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.',
+  },
+  curacao: {
+    displayName: 'Curaçao',
+    country: 'Curaçao',
+    confederationId: 'concacaf',
+    confederation: 'CONCACAF',
+    rivalIds: ['netherlands', 'mexico'],
+    searchAliases: ['curacao', 'curaçao', 'curacao national team', 'curacao nt'],
+    badgeTheme: { from: '#1d4ed8', to: '#fbbf24', accent: '#dc2626' },
+    fanGuide:
+      'Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and FootyBrain’s registry-linked national pool.',
+    shortHistory:
+      'Men’s senior team of Curaçao. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.',
   },
 };
 

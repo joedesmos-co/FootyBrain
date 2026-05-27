@@ -44,7 +44,7 @@ const EXPANSION_CLUB_PLACEHOLDER = 'controlled expansion club set';
 const OVERLAY_PATH = DATA_PATHS.manualOverlay;
 const REQUIRED_IMPORTS_PATH = path.join(ROOT, 'editorial-overlays/required-import-sourceIds.json');
 const EXTERNAL_CLUB_STUBS_PATH = path.join(ROOT, 'editorial-overlays/external-club-stubs.json');
-const DATA_AS_OF = '2026-05-25';
+const DATA_AS_OF = '2026-05-26';
 
 function loadJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
