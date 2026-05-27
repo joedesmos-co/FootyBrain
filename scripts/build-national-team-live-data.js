@@ -79,6 +79,14 @@ const LIVE_NATIONAL_TEAM_IDS = [
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
 
+const ALLOWED_MEMBERSHIP_TAGS = new Set([
+  'nationalPool',
+  'currentSquad',
+  'worldCup2026Roster',
+  'projectedWorldCup2026Roster',
+  'worldCup2026Alternate',
+]);
+
 /** Nationality / nationalTeam string labels → nationalTeamId */
 const REGISTRY_NATIONALITY_LABELS = {
   england: ['england', 'english'],
@@ -808,10 +816,46 @@ function addMembership({
     role: 'senior',
     status: 'active',
     isPrimary: true,
+    membershipTags: ['nationalPool'],
     source,
+    membershipSource: source,
+    asOf: null,
     tmSourceId: tmSourceId ? String(tmSourceId) : null,
   });
   return true;
+}
+
+function validateMembershipTags(memberships) {
+  const errors = [];
+  for (const m of memberships) {
+    const tags = m?.membershipTags;
+    if (!Array.isArray(tags) || tags.length === 0) {
+      errors.push(`Missing membershipTags on ${m?.nationalTeamId}::${m?.playerId}`);
+      continue;
+    }
+    if (!tags.includes('nationalPool')) {
+      errors.push(`membershipTags missing nationalPool on ${m?.nationalTeamId}::${m?.playerId}`);
+    }
+    for (const t of tags) {
+      if (!ALLOWED_MEMBERSHIP_TAGS.has(t)) {
+        errors.push(
+          `Invalid membershipTag "${t}" on ${m?.nationalTeamId}::${m?.playerId} (allowed: ${[
+            ...ALLOWED_MEMBERSHIP_TAGS,
+          ].join(', ')})`,
+        );
+      }
+    }
+    // Guardrail: tags must never attempt to encode quiz eligibility.
+    if (tags.some((t) => String(t).toLowerCase().includes('quiz'))) {
+      errors.push(`Disallowed quiz-like tag on ${m?.nationalTeamId}::${m?.playerId}`);
+    }
+  }
+  if (errors.length) {
+    console.error('FAILED membership tag validation:');
+    errors.slice(0, 30).forEach((e) => console.error('  ✗', e));
+    if (errors.length > 30) console.error(`  … and ${errors.length - 30} more`);
+    process.exit(1);
+  }
 }
 
 function main() {
@@ -935,6 +979,8 @@ function main() {
     nationalMemberships: memberships,
     unmatchedTmSquadRows: unmatchedLive,
   };
+
+  validateMembershipTags(memberships);
 
   fs.writeFileSync(OUTPUT_PATH, `${JSON.stringify(output, null, 2)}\n`);
 

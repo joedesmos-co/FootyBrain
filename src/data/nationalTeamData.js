@@ -37,6 +37,22 @@ const quizReadyCountByNationalTeamId = new Map(
 
 const squadCache = new Map();
 
+const DEFAULT_MEMBERSHIP_TAGS = ['nationalPool'];
+const MEMBERSHIP_TAGS = {
+  nationalPool: 'nationalPool',
+  currentSquad: 'currentSquad',
+  worldCup2026Roster: 'worldCup2026Roster',
+  projectedWorldCup2026Roster: 'projectedWorldCup2026Roster',
+  worldCup2026Alternate: 'worldCup2026Alternate',
+};
+
+function getMembershipTags(row) {
+  const tags = Array.isArray(row?.membershipTags) && row.membershipTags.length
+    ? row.membershipTags
+    : DEFAULT_MEMBERSHIP_TAGS;
+  return new Set(tags);
+}
+
 export function isLiveNationalTeamId(id) {
   return nationalTeamById.has(id);
 }
@@ -64,19 +80,56 @@ export function getLiveNationalTeamForPlayer(player) {
   return getNationalTeamById(membership.nationalTeamId);
 }
 
+function getPlayersForNationalTeamByFilter(nationalTeamId, predicate) {
+  const rows = membershipsByNationalTeamId.get(nationalTeamId) ?? [];
+  const list = [];
+  for (const row of rows) {
+    if (predicate && !predicate(row)) continue;
+    const player = getPlayerById(row.playerId);
+    if (player) list.push(player);
+  }
+  list.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
+  return list;
+}
+
+/**
+ * Backward-compatible default “squad” for national-team pages.
+ * Interpreted as the broader nationalPool (not a tournament roster).
+ */
 export function getPlayersForNationalTeam(nationalTeamId) {
   const cached = squadCache.get(nationalTeamId);
   if (cached) return cached;
+  const pool = getNationalPoolPlayers(nationalTeamId);
+  squadCache.set(nationalTeamId, pool);
+  return pool;
+}
 
-  const rows = membershipsByNationalTeamId.get(nationalTeamId) ?? [];
-  const squad = [];
-  for (const row of rows) {
-    const player = getPlayerById(row.playerId);
-    if (player) squad.push(player);
-  }
-  squad.sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0));
-  squadCache.set(nationalTeamId, squad);
-  return squad;
+export function getNationalPoolPlayers(nationalTeamId) {
+  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
+    getMembershipTags(row).has(MEMBERSHIP_TAGS.nationalPool),
+  );
+}
+
+export function getCurrentSquadPlayers(nationalTeamId) {
+  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
+    getMembershipTags(row).has(MEMBERSHIP_TAGS.currentSquad),
+  );
+}
+
+export function getWorldCupRosterPlayers(nationalTeamId) {
+  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
+    getMembershipTags(row).has(MEMBERSHIP_TAGS.worldCup2026Roster),
+  );
+}
+
+export function getProjectedWorldCupRosterPlayers(nationalTeamId) {
+  return getPlayersForNationalTeamByFilter(nationalTeamId, (row) =>
+    getMembershipTags(row).has(MEMBERSHIP_TAGS.projectedWorldCup2026Roster),
+  );
+}
+
+export function getNationalTeamQuizReadyPlayers(nationalTeamId) {
+  return getQuizEligiblePlayers(getNationalPoolPlayers(nationalTeamId));
 }
 
 export function getNationalTeamMeta() {

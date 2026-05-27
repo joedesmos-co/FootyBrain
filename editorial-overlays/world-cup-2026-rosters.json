@@ -1,0 +1,12 @@
+{
+  "description": "World Cup 2026 rosters scaffold (tournament roster vs national pool).",
+  "competitionId": "world-cup-2026",
+  "editionYear": 2026,
+  "asOf": null,
+  "notes": [
+    "Do not infer tournament rosters from broad nationalPool memberships.",
+    "Players listed here should remain browse/search-only unless separately editorially approved for quiz."
+  ],
+  "teams": {}
+}
+
