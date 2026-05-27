@@ -23,6 +23,7 @@ const PHASE4_BRASILEIRAO_CLUBS_PATH = path.join(
   ROOT,
   'editorial-overlays/phase4-brasileirao-clubs.json',
 );
+const EXTERNAL_CLUB_STUBS_PATH = path.join(ROOT, 'editorial-overlays/external-club-stubs.json');
 const EXPANSION_CONFIG_PATHS = [
   PHASE1_CLUBS_PATH,
   PHASE2_CLUBS_PATH,
@@ -40,6 +41,12 @@ function loadKnownTeamIds() {
       if (club.footybrainTeamId) ids.add(club.footybrainTeamId);
     }
   }
+  if (fs.existsSync(EXTERNAL_CLUB_STUBS_PATH)) {
+    const stubs = JSON.parse(fs.readFileSync(EXTERNAL_CLUB_STUBS_PATH, 'utf8'));
+    for (const team of stubs.teams ?? []) {
+      if (team?.id) ids.add(team.id);
+    }
+  }
   return ids;
 }
 
@@ -50,6 +57,12 @@ function loadKnownLeagueIds() {
     const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     for (const league of config.leagues ?? []) {
       if (league.id) ids.add(league.id);
+    }
+  }
+  if (fs.existsSync(EXTERNAL_CLUB_STUBS_PATH)) {
+    const stubs = JSON.parse(fs.readFileSync(EXTERNAL_CLUB_STUBS_PATH, 'utf8'));
+    for (const league of stubs.leagues ?? []) {
+      if (league?.id) ids.add(league.id);
     }
   }
   return ids;

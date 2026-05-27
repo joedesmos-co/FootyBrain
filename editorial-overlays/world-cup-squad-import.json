@@ -1,0 +1,18 @@
+{
+  "description": "Controlled World Cup 2026 squad import (browse-only players; no quiz-ready by default).",
+  "version": 1,
+  "notes": [
+    "This drives generation of required-import sourceIds plus external club stubs.",
+    "Keep caps small to protect gzip/mobile load.",
+    "Do not include TM Salah (148455) because MVP manual `salah` already exists."
+  ],
+  "defaultMaxPlayersPerNation": 12,
+  "blockedSourceIds": ["148455"],
+  "nations": [
+    { "nationalTeamId": "egypt", "maxPlayers": 12 },
+    { "nationalTeamId": "panama", "maxPlayers": 12 },
+    { "nationalTeamId": "south-africa", "maxPlayers": 12 },
+    { "nationalTeamId": "new-zealand", "maxPlayers": 12 }
+  ]
+}
+

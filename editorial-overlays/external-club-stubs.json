@@ -1,0 +1,337 @@
+{
+  "description": "External club stubs for browse-only imported players (no logos/crests).",
+  "leagues": [
+    {
+      "id": "external",
+      "name": "External clubs",
+      "country": "World",
+      "description": "Placeholder league for imported squad players whose real clubs are not yet modeled as full FootyBrain teams."
+    }
+  ],
+  "teams": [
+    {
+      "id": "ext-tm-club-45193",
+      "name": "Academia Puerto Cabello",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "45193",
+      "tmHref": "https://www.transfermarkt.co.uk/academia-puerto-cabello/startseite/verein/45193"
+    },
+    {
+      "id": "ext-tm-club-7",
+      "name": "Al Ahly Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "7",
+      "tmHref": "https://www.transfermarkt.co.uk/al-ahly-fc/startseite/verein/7"
+    },
+    {
+      "id": "ext-tm-club-2524",
+      "name": "Al Jazira Club",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "2524",
+      "tmHref": "https://www.transfermarkt.co.uk/al-jazira-club/startseite/verein/2524"
+    },
+    {
+      "id": "ext-tm-club-13509",
+      "name": "Al Wakrah Sc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "13509",
+      "tmHref": "https://www.transfermarkt.co.uk/al-wakrah-sc/startseite/verein/13509"
+    },
+    {
+      "id": "ext-tm-club-18820",
+      "name": "Alianza Fc Panama",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "18820",
+      "tmHref": "https://www.transfermarkt.co.uk/alianza-fc-panama/startseite/verein/18820"
+    },
+    {
+      "id": "ext-tm-club-9370",
+      "name": "Amazulu Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "9370",
+      "tmHref": "https://www.transfermarkt.co.uk/amazulu-fc/startseite/verein/9370"
+    },
+    {
+      "id": "ext-tm-club-618",
+      "name": "As Saint Etienne",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "618",
+      "tmHref": "https://www.transfermarkt.co.uk/as-saint-etienne/startseite/verein/618"
+    },
+    {
+      "id": "ext-tm-club-6340",
+      "name": "Braintree Town",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "6340",
+      "tmHref": "https://www.transfermarkt.co.uk/braintree-town/startseite/verein/6340"
+    },
+    {
+      "id": "ext-tm-club-2303",
+      "name": "Cape Town City Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "2303",
+      "tmHref": "https://www.transfermarkt.co.uk/cape-town-city-fc/startseite/verein/2303"
+    },
+    {
+      "id": "ext-tm-club-20960",
+      "name": "Cd Plaza Amador",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "20960",
+      "tmHref": "https://www.transfermarkt.co.uk/cd-plaza-amador/startseite/verein/20960"
+    },
+    {
+      "id": "ext-tm-club-57439",
+      "name": "Cleopatra Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "57439",
+      "tmHref": "https://www.transfermarkt.co.uk/cleopatra-fc/startseite/verein/57439"
+    },
+    {
+      "id": "ext-tm-club-9709",
+      "name": "Comunicaciones Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "9709",
+      "tmHref": "https://www.transfermarkt.co.uk/comunicaciones-fc/startseite/verein/9709"
+    },
+    {
+      "id": "ext-tm-club-136989",
+      "name": "Connecticut United Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "136989",
+      "tmHref": "https://www.transfermarkt.co.uk/connecticut-united-fc/startseite/verein/136989"
+    },
+    {
+      "id": "ext-tm-club-14187",
+      "name": "Durban City Football Club",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "14187",
+      "tmHref": "https://www.transfermarkt.co.uk/durban-city-football-club/startseite/verein/14187"
+    },
+    {
+      "id": "ext-tm-club-9094",
+      "name": "El Masry Sc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "9094",
+      "tmHref": "https://www.transfermarkt.co.uk/el-masry-sc/startseite/verein/9094"
+    },
+    {
+      "id": "ext-tm-club-12020",
+      "name": "Harrogate Town",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "12020",
+      "tmHref": "https://www.transfermarkt.co.uk/harrogate-town/startseite/verein/12020"
+    },
+    {
+      "id": "ext-tm-club-1110",
+      "name": "Huddersfield Town",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1110",
+      "tmHref": "https://www.transfermarkt.co.uk/huddersfield-town/startseite/verein/1110"
+    },
+    {
+      "id": "ext-tm-club-6028",
+      "name": "Ironi Kiryat Shmona",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "6028",
+      "tmHref": "https://www.transfermarkt.co.uk/ironi-kiryat-shmona/startseite/verein/6028"
+    },
+    {
+      "id": "ext-tm-club-39252",
+      "name": "Jaguares De Cordoba",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "39252",
+      "tmHref": "https://www.transfermarkt.co.uk/jaguares-de-cordoba/startseite/verein/39252"
+    },
+    {
+      "id": "ext-tm-club-102400",
+      "name": "Los Angeles Fc 2",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "102400",
+      "tmHref": "https://www.transfermarkt.co.uk/los-angeles-fc-2/startseite/verein/102400"
+    },
+    {
+      "id": "ext-tm-club-6356",
+      "name": "Mamelodi Sundowns Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "6356",
+      "tmHref": "https://www.transfermarkt.co.uk/mamelodi-sundowns-fc/startseite/verein/6356"
+    },
+    {
+      "id": "ext-tm-club-1028",
+      "name": "Millwall Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1028",
+      "tmHref": "https://www.transfermarkt.co.uk/millwall-fc/startseite/verein/1028"
+    },
+    {
+      "id": "ext-tm-club-1123",
+      "name": "Norwich City",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1123",
+      "tmHref": "https://www.transfermarkt.co.uk/norwich-city/startseite/verein/1123"
+    },
+    {
+      "id": "ext-tm-club-2557",
+      "name": "Orlando Pirates",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "2557",
+      "tmHref": "https://www.transfermarkt.co.uk/orlando-pirates/startseite/verein/2557"
+    },
+    {
+      "id": "ext-tm-club-1072",
+      "name": "Peterborough United",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1072",
+      "tmHref": "https://www.transfermarkt.co.uk/peterborough-united/startseite/verein/1072"
+    },
+    {
+      "id": "ext-tm-club-21202",
+      "name": "Polokwane City Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "21202",
+      "tmHref": "https://www.transfermarkt.co.uk/polokwane-city-fc/startseite/verein/21202"
+    },
+    {
+      "id": "ext-tm-club-1211",
+      "name": "Port Vale Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1211",
+      "tmHref": "https://www.transfermarkt.co.uk/port-vale-fc/startseite/verein/1211"
+    },
+    {
+      "id": "ext-tm-club-44664",
+      "name": "Pyramids Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "44664",
+      "tmHref": "https://www.transfermarkt.co.uk/pyramids-fc/startseite/verein/44664"
+    },
+    {
+      "id": "ext-tm-club-85501",
+      "name": "Sekhukhune United Fc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "85501",
+      "tmHref": "https://www.transfermarkt.co.uk/sekhukhune-united-fc/startseite/verein/85501"
+    },
+    {
+      "id": "ext-tm-club-350",
+      "name": "Sheffield United",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "350",
+      "tmHref": "https://www.transfermarkt.co.uk/sheffield-united/startseite/verein/350"
+    },
+    {
+      "id": "ext-tm-club-132785",
+      "name": "Siwelele Football Club",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "132785",
+      "tmHref": "https://www.transfermarkt.co.uk/siwelele-football-club/startseite/verein/132785"
+    },
+    {
+      "id": "ext-tm-club-540",
+      "name": "Slovan Bratislava",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "540",
+      "tmHref": "https://www.transfermarkt.co.uk/slovan-bratislava/startseite/verein/540"
+    },
+    {
+      "id": "ext-tm-club-1708",
+      "name": "Sporting San Miguelito",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1708",
+      "tmHref": "https://www.transfermarkt.co.uk/sporting-san-miguelito/startseite/verein/1708"
+    },
+    {
+      "id": "ext-tm-club-2288",
+      "name": "Swansea City",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "2288",
+      "tmHref": "https://www.transfermarkt.co.uk/swansea-city/startseite/verein/2288"
+    },
+    {
+      "id": "ext-tm-club-1112",
+      "name": "Wrexham Afc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "1112",
+      "tmHref": "https://www.transfermarkt.co.uk/wrexham-afc/startseite/verein/1112"
+    },
+    {
+      "id": "ext-tm-club-664",
+      "name": "Zamalek Sc",
+      "country": null,
+      "leagueId": "external",
+      "dataStatus": "external-stub",
+      "tmClubId": "664",
+      "tmHref": "https://www.transfermarkt.co.uk/zamalek-sc/startseite/verein/664"
+    }
+  ]
+}

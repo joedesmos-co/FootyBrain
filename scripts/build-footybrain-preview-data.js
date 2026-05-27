@@ -12,6 +12,7 @@ import path from 'path';
 import readline from 'readline';
 import zlib from 'zlib';
 import { fileURLToPath } from 'url';
+import { loadRequiredImportSourceIds } from './lib/expansion-player-cap.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -54,6 +55,7 @@ const PHASE4_BRASILEIRAO_CLUBS_PATH = path.join(
   ROOT,
   'editorial-overlays/phase4-brasileirao-clubs.json',
 );
+const REQUIRED_IMPORTS_PATH = path.join(ROOT, 'editorial-overlays/required-import-sourceIds.json');
 const PHASE4_ONLY = process.argv.includes('--phase4-only');
 
 const BASE_LEAGUE_BY_TM_CODE = {
@@ -175,6 +177,16 @@ function extractSourceId(href, segment) {
   if (!href) return null;
   const match = href.match(new RegExp(`/${segment}/(\\d+)`));
   return match ? match[1] : null;
+}
+
+function extractTmClubId(currentClubHref) {
+  if (!currentClubHref) return null;
+  const match = String(currentClubHref).match(/\/verein\/(\d+)/);
+  return match ? match[1] : null;
+}
+
+function externalTeamIdFromTmClubId(tmClubId) {
+  return `ext-tm-club-${tmClubId}`;
 }
 
 function parseTmDate(value) {
@@ -542,31 +554,41 @@ async function main() {
   const players = [];
   let skippedWrongClub = 0;
   let skippedNoClubParent = 0;
+  const requiredImportSourceIds = loadRequiredImportSourceIds(REQUIRED_IMPORTS_PATH);
 
   if (!fs.existsSync(playersPath)) {
     warnings.push(`Missing ${playersPath}`);
   } else {
     await readNdjsonGz(playersPath, (player) => {
       const parent = player.parent ?? {};
-      if (parent.type !== 'club') {
+      const sourceId = extractSourceId(player.href, 'spieler');
+      const isRequiredImport = sourceId && requiredImportSourceIds.has(String(sourceId));
+
+      // Standard export: club-parent players from our curated club set only.
+      // Required imports: allow ANY parent type (national_team rows, etc.) as long as current_club exists.
+      if (parent.type !== 'club' && !isRequiredImport) {
         skippedNoClubParent += 1;
         return;
       }
 
-      const clubCode = parent.code;
-      const footybrainTeamId = clubCodeToTeam.get(clubCode);
-      if (!footybrainTeamId) {
+      const clubCode = parent.type === 'club' ? parent.code : null;
+      const footybrainTeamId = clubCode ? clubCodeToTeam.get(clubCode) : null;
+      const tmClubId = extractTmClubId(player.current_club?.href);
+
+      if (!footybrainTeamId && !isRequiredImport) {
         skippedWrongClub += 1;
         return;
       }
 
-      const teamMeta = matchedTeamsById.get(footybrainTeamId);
+      const teamMeta = footybrainTeamId ? matchedTeamsById.get(footybrainTeamId) : null;
       const leagueCode = teamMeta?.tmLeagueCode ?? null;
-      const footybrainLeagueId =
-        teamMeta?.footybrainLeagueId ?? leagueByTmCode[leagueCode]?.id ?? null;
+      const footybrainLeagueId = isRequiredImport
+        ? 'external'
+        : teamMeta?.footybrainLeagueId ?? leagueByTmCode[leagueCode]?.id ?? null;
 
       const fullName = [player.name, player.last_name].filter(Boolean).join(' ').trim();
-      const sourceId = extractSourceId(player.href, 'spieler');
+      const resolvedTeamId =
+        footybrainTeamId ?? (tmClubId ? externalTeamIdFromTmClubId(tmClubId) : null);
 
       if (!sourceId) {
         suspiciousMappings.push({
@@ -575,6 +597,13 @@ async function main() {
           href: player.href,
           reason: 'Could not parse spieler id from href',
         });
+      }
+
+      if (isRequiredImport && (!resolvedTeamId || !tmClubId)) {
+        warnings.push(
+          `Required import skipped: missing current_club href/verein id for sourceId ${sourceId}`,
+        );
+        return;
       }
 
       players.push({
@@ -587,9 +616,9 @@ async function main() {
         nationality: player.citizenship ?? player.place_of_birth?.country ?? null,
         nationalTeam: player.national_team?.name ?? player.national_team?.country ?? null,
         position: player.position ?? null,
-        currentClub: parent.name ?? teamMeta?.sourceClubName ?? null,
+        currentClub: isRequiredImport ? null : parent.name ?? teamMeta?.sourceClubName ?? null,
         sourceClubCode: clubCode,
-        footybrainTeamId,
+        footybrainTeamId: resolvedTeamId,
         tmLeagueCode: leagueCode,
         footybrainLeagueId,
         sourcePlayerHref: player.href ?? null,

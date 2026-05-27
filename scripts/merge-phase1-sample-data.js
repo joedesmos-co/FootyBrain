@@ -40,6 +40,7 @@ const DATASET_META_PATH = path.join(ROOT, 'src/data/datasetMeta.js');
 const EXPANSION_CLUB_PLACEHOLDER = 'controlled expansion club set';
 const OVERLAY_PATH = DATA_PATHS.manualOverlay;
 const REQUIRED_IMPORTS_PATH = path.join(ROOT, 'editorial-overlays/required-import-sourceIds.json');
+const EXTERNAL_CLUB_STUBS_PATH = path.join(ROOT, 'editorial-overlays/external-club-stubs.json');
 const DATA_AS_OF = '2026-05-25';
 
 function loadJson(filePath) {
@@ -49,6 +50,14 @@ function loadJson(filePath) {
 function loadOptionalJson(filePath, fallback) {
   if (!fs.existsSync(filePath)) return fallback;
   return loadJson(filePath);
+}
+
+function loadExternalClubStubs() {
+  const stubs = loadOptionalJson(EXTERNAL_CLUB_STUBS_PATH, { leagues: [], teams: [] });
+  return {
+    leagues: Array.isArray(stubs.leagues) ? stubs.leagues : [],
+    teams: Array.isArray(stubs.teams) ? stubs.teams : [],
+  };
 }
 
 function ageFromDateOfBirth(dateOfBirth, asOf = new Date(DATA_AS_OF)) {
@@ -380,7 +389,21 @@ function main() {
     buildTeamFromConfig(club, mvpTeamById, previewTeamById, expansionIdentityStubs),
   );
 
+  const externalStubs = loadExternalClubStubs();
   const baseLeagues = buildLeagues(expansionLeagues);
+  for (const league of externalStubs.leagues) {
+    if (!league?.id || !league?.name) continue;
+    if (!baseLeagues.find((l) => l.id === league.id)) {
+      baseLeagues.push(league);
+    }
+  }
+
+  for (const team of externalStubs.teams) {
+    if (!team?.id || !team?.name || !team?.leagueId) continue;
+    if (!baseTeams.find((t) => t.id === team.id)) {
+      baseTeams.push(team);
+    }
+  }
 
   const teamNameById = new Map(baseTeams.map((t) => [t.id, t.name]));
   const leagueNameById = new Map(baseLeagues.map((l) => [l.id, l.name]));
