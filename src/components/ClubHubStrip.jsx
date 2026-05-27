@@ -27,8 +27,8 @@ export default function ClubHubStrip({ team, leagueName }) {
           <Link to={`/league/${team.leagueId}`}>{leagueName}</Link>
         </Fact>
         <Fact label="Country">{formatCountryLabel(team.country)}</Fact>
-        <Fact label="Stadium">{team.stadium}</Fact>
-        <Fact label="Founded">{team.founded}</Fact>
+        {team.stadium ? <Fact label="Stadium">{team.stadium}</Fact> : null}
+        {team.founded ? <Fact label="Founded">{team.founded}</Fact> : null}
         <Fact label="Head coach">{manager}</Fact>
       </dl>
 

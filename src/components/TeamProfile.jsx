@@ -32,7 +32,17 @@ import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
 
+function buildTeamProfileSubline(team) {
+  const parts = [];
+  const country = formatCountryLabel(team.country);
+  if (country && country !== '—') parts.push(country);
+  if (team.founded) parts.push(`Est. ${team.founded}`);
+  if (team.stadium) parts.push(team.stadium);
+  return parts.length > 0 ? parts.join(' · ') : null;
+}
+
 function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeams }) {
+  const isExternalStub = isExternalClubStubTeam(team);
   useEffect(() => {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -96,11 +106,16 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
   const cultureLine =
     truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
 
+  const profileSubline = buildTeamProfileSubline(team);
+
   const fanPathSteps = [
     {
       label: 'Beginner',
       title: 'Learn the club basics',
-      text: `${team.name} play in ${leagueName}, call ${team.stadium} home, and were founded in ${team.founded}.`,
+      text:
+        team.stadium && team.founded
+          ? `${team.name} play in ${leagueName}, call ${team.stadium} home, and were founded in ${team.founded}.`
+          : `${team.name} are listed in ${leagueName}. Club history and stadium details are being added.`,
     },
     {
       label: 'Squad',
@@ -114,23 +129,33 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
         ? `Start with ${team.currentKeyPlayers.join(', ')}.`
         : `Start with the highest ${IMPORTANCE_SCORE_LABEL.toLowerCase()} in the squad list below.`,
     },
-    {
-      label: 'History',
-      title: 'Learn the rivals',
-      text: team.rivals?.length
-        ? `Understand why matches against ${team.rivals.join(' and ')} matter to supporters.`
-        : 'Classic derbies and local rivalries are being added soon.',
-    },
-    {
-      label: 'History',
-      title: 'Learn the legends',
-      text: `Recognize names like ${team.legends.slice(0, 3).join(', ')} when fans talk about club history.`,
-    },
-    {
-      label: 'Culture',
-      title: 'Understand the fan culture',
-      text: team.fanGuide,
-    },
+    ...(team.rivals?.length
+      ? [
+          {
+            label: 'History',
+            title: 'Learn the rivals',
+            text: `Understand why matches against ${team.rivals.join(' and ')} matter to supporters.`,
+          },
+        ]
+      : []),
+    ...(team.legends?.length
+      ? [
+          {
+            label: 'History',
+            title: 'Learn the legends',
+            text: `Recognize names like ${team.legends.slice(0, 3).join(', ')} when fans talk about club history.`,
+          },
+        ]
+      : []),
+    ...(team.fanGuide
+      ? [
+          {
+            label: 'Culture',
+            title: 'Understand the fan culture',
+            text: team.fanGuide,
+          },
+        ]
+      : []),
     {
       label: 'Quiz',
       title: 'Take the team quiz',
@@ -160,9 +185,13 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
               {leagueName}
             </Link>
             <h1>{team.name}</h1>
-            <p className="profile__sub club-hero__sub">
-              {formatCountryLabel(team.country)} · Est. {team.founded} · {team.stadium}
-            </p>
+            {profileSubline ? (
+              <p className="profile__sub club-hero__sub">{profileSubline}</p>
+            ) : isExternalStub ? (
+              <p className="profile__sub club-hero__sub">
+                Imported club profile — browse the squad below.
+              </p>
+            ) : null}
             {identityTags.length > 0 && (
               <ul className="club-hero__tags" aria-label="Playing identity">
                 {identityTags.map(({ key, label }) => (
@@ -207,7 +236,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
 
       {isExternalClubStubTeam(team) ? <ExternalStubNotice compact /> : null}
 
-      <ClubHubStrip team={team} leagueName={leagueName} />
+      {!isExternalStub ? <ClubHubStrip team={team} leagueName={leagueName} /> : null}
 
       <div className="team-page-rich">
         {keyPlayerCards.length > 0 && (
@@ -318,6 +347,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
           </aside>
         </div>
 
+        {!isExternalStub ? (
         <details className="fan-path-details info-card info-card--wide">
           <summary className="fan-path-details__summary">
             <span className="fan-path__eyebrow">Fan Mode</span>
@@ -359,6 +389,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             </ol>
           </div>
         </details>
+        ) : null}
       </div>
     </div>
   );

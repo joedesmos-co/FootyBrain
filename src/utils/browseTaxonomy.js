@@ -2,7 +2,7 @@ import { getManifestLeagues } from '../data/contentManifest';
 import { getLiveNationalTeams } from '../data/nationalTeamData';
 import { EXTERNAL_LEAGUE_ID } from './footballDisplay';
 
-/** @typedef {'european' | 'american' | 'world'} OtherClubRegionId */
+/** @typedef {'americas' | 'europe' | 'middle-east-asia' | 'africa' | 'oceania' | 'world'} OtherClubRegionId */
 
 export const EUROPEAN_LEAGUE_IDS = [
   'premier-league',
@@ -17,12 +17,29 @@ export const AMERICAN_LEAGUE_IDS = ['mls', 'brasileirao'];
 
 export const OTHER_CLUBS_LEAGUE_ID = EXTERNAL_LEAGUE_ID;
 
-export const OTHER_CLUB_REGION_ORDER = /** @type {const} */ (['american', 'european', 'world']);
+export const OTHER_CLUB_REGION_ORDER = /** @type {const} */ ([
+  'americas',
+  'europe',
+  'middle-east-asia',
+  'africa',
+  'oceania',
+  'world',
+]);
 
 export const OTHER_CLUB_REGION_LABELS = {
-  american: 'American clubs',
-  european: 'European clubs',
-  world: 'World / Other clubs',
+  americas: 'Americas',
+  europe: 'Europe',
+  'middle-east-asia': 'Middle East & Asia',
+  africa: 'Africa',
+  oceania: 'Oceania',
+  world: 'World / Other',
+};
+
+const LEGACY_OTHER_CLUB_REGION_MAP = {
+  american: 'americas',
+  european: 'europe',
+  worldTeams: 'world',
+  other: 'world',
 };
 
 const EUROPEAN_LEAGUE_COUNTRIES = new Set([
@@ -113,7 +130,7 @@ export function normalizeBrowseLeagueParam(value) {
 /** @param {string | null | undefined} value */
 export function normalizeOtherClubRegionParam(value) {
   if (!value) return '';
-  if (value === 'worldTeams' || value === 'other') return 'world';
-  if (OTHER_CLUB_REGION_ORDER.includes(value)) return value;
+  const mapped = LEGACY_OTHER_CLUB_REGION_MAP[value] ?? value;
+  if (OTHER_CLUB_REGION_ORDER.includes(mapped)) return mapped;
   return '';
 }

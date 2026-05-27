@@ -1,20 +1,28 @@
 import { getLiveNationalTeams } from '../data/nationalTeamData';
+import { AMERICAN_LEAGUE_IDS, EUROPEAN_LEAGUE_IDS } from './browseTaxonomy';
+import { normalizeClubName } from './teamPageUtils';
 
-/** @typedef {'american' | 'european' | 'worldTeams' | 'other'} ExternalClubGroupId */
+/** @typedef {'americas' | 'europe' | 'middle-east-asia' | 'africa' | 'oceania' | 'world'} OtherClubContinentId */
 
-export const EXTERNAL_CLUB_GROUP_ORDER = /** @type {const} */ ([
-  'american',
-  'european',
-  'worldTeams',
-  'other',
+export const OTHER_CLUB_CONTINENT_ORDER = /** @type {const} */ ([
+  'americas',
+  'europe',
+  'middle-east-asia',
+  'africa',
+  'oceania',
+  'world',
 ]);
 
-export const EXTERNAL_CLUB_GROUP_LABELS = {
-  american: 'American clubs',
-  european: 'European clubs',
-  worldTeams: 'World / Other clubs',
-  other: 'World / Other clubs',
+export const OTHER_CLUB_CONTINENT_LABELS = {
+  americas: 'Americas',
+  europe: 'Europe',
+  'middle-east-asia': 'Middle East & Asia',
+  africa: 'Africa',
+  oceania: 'Oceania',
+  world: 'World / Other',
 };
+
+const MAIN_LEAGUE_IDS = new Set([...EUROPEAN_LEAGUE_IDS, ...AMERICAN_LEAGUE_IDS]);
 
 const AMERICAS_PLAYER_COUNTRIES = new Set([
   'United States',
@@ -38,6 +46,9 @@ const AMERICAS_PLAYER_COUNTRIES = new Set([
   'Honduras',
   'Jamaica',
   'Trinidad and Tobago',
+  'Bolivia',
+  'Guatemala',
+  'El Salvador',
 ]);
 
 const EUROPE_PLAYER_COUNTRIES = new Set([
@@ -79,9 +90,77 @@ const EUROPE_PLAYER_COUNTRIES = new Set([
   'Georgia',
   'Armenia',
   'Cyprus',
+  'Luxembourg',
+  'North Macedonia',
+  'Montenegro',
+  'Kosovo',
 ]);
 
-const AMERICAS_TEAM_COUNTRY_HINTS = [
+const MIDDLE_EAST_ASIA_PLAYER_COUNTRIES = new Set([
+  'Saudi Arabia',
+  'Qatar',
+  'United Arab Emirates',
+  'UAE',
+  'Iran',
+  'IR Iran',
+  'Iraq',
+  'Jordan',
+  'Japan',
+  'South Korea',
+  'Korea Republic',
+  'China',
+  "People's Republic of China",
+  'Uzbekistan',
+  'India',
+  'Thailand',
+  'Vietnam',
+  'Indonesia',
+  'Malaysia',
+  'Singapore',
+  'Oman',
+  'Kuwait',
+  'Bahrain',
+  'Lebanon',
+  'Syria',
+  'Palestine',
+  'Israel',
+]);
+
+const AFRICA_PLAYER_COUNTRIES = new Set([
+  'Morocco',
+  'Senegal',
+  'Nigeria',
+  'Ghana',
+  'Egypt',
+  'Cameroon',
+  "Côte d'Ivoire",
+  'Ivory Coast',
+  'South Africa',
+  'Tunisia',
+  'Algeria',
+  'DR Congo',
+  'Congo DR',
+  'Mali',
+  'Burkina Faso',
+  'Guinea',
+  'Zambia',
+  'Zimbabwe',
+  'Angola',
+  'Kenya',
+  'Uganda',
+  'Cape Verde',
+  'Cabo Verde',
+]);
+
+const OCEANIA_PLAYER_COUNTRIES = new Set([
+  'New Zealand',
+  'Fiji',
+  'Papua New Guinea',
+  'Solomon Islands',
+  'Tahiti',
+]);
+
+const AMERICAS_TEAM_HINTS = [
   'united states',
   'usa',
   'u.s.',
@@ -103,14 +182,11 @@ const AMERICAS_TEAM_COUNTRY_HINTS = [
   'costa rica',
   'honduras',
   'jamaica',
-  'mls',
-  'mls ',
-  ' mls',
-  'liga mx',
   'concacaf',
+  'copa libertadores',
 ];
 
-const EUROPE_TEAM_COUNTRY_HINTS = [
+const EUROPE_TEAM_HINTS = [
   'england',
   'france',
   'germany',
@@ -148,9 +224,90 @@ const EUROPE_TEAM_COUNTRY_HINTS = [
   'porto',
   'ajax',
   'psv',
+  'feyenoord',
   'fenerbah',
   'galatasaray',
   'besiktas',
+  'eredivisie',
+  'groningen',
+  'breda',
+  'rotterdam',
+];
+
+const MIDDLE_EAST_ASIA_TEAM_HINTS = [
+  'al hilal',
+  'al nassr',
+  'al ahli',
+  'al ittihad',
+  'al fateh',
+  'al fayha',
+  'al gharafa',
+  'al sadd',
+  'al duhail',
+  'al ain',
+  'al shorta',
+  'al rayyan',
+  'al wakrah',
+  'al arabi',
+  'al shabab',
+  'al taawoun',
+  'al raed',
+  'al ettifaq',
+  'al khaleej',
+  'al wehda',
+  'persepolis',
+  'ulsan',
+  'kawasaki',
+  'kashima',
+  'gamba',
+  'urawa',
+  'jeonbuk',
+  'pohang',
+  'saudi',
+  'qatar',
+  'uae',
+  'emirates',
+  'dubai',
+  'riyadh',
+  'jeddah',
+  'doha',
+  'tehran',
+  'istanbul',
+  'tel aviv',
+  'hong kong',
+];
+
+const AFRICA_TEAM_HINTS = [
+  'morocco',
+  'senegal',
+  'nigeria',
+  'ghana',
+  'egypt',
+  'cameroon',
+  'ivory',
+  "cote d",
+  'caf ',
+  'kaizer',
+  'orlando pirates',
+  'mamelodi',
+  'zamalek',
+  'al ahly sc',
+  'esperance',
+  'wydad',
+  'raja',
+];
+
+const OCEANIA_TEAM_HINTS = [
+  'new zealand',
+  'auckland',
+  'wellington',
+  'sydney fc',
+  'melbourne',
+  'brisbane',
+  'perth glory',
+  'central coast',
+  'a-league',
+  'a league',
 ];
 
 function normalizeKey(value) {
@@ -167,16 +324,42 @@ function isNationalTeamLikeClub(team, nationalTeamNames) {
   return nationalTeamNames.has(name);
 }
 
-function teamCountryHintBucket(team) {
+function buildMainLeagueClubNameSet(allTeams) {
+  const names = new Set();
+  for (const team of allTeams) {
+    if (!team?.leagueId || !MAIN_LEAGUE_IDS.has(team.leagueId)) continue;
+    const key = normalizeClubName(team.name);
+    if (key) names.add(key);
+  }
+  return names;
+}
+
+function shouldExcludeFromOtherClubs(team, mainLeagueClubNames) {
+  const key = normalizeClubName(team.name);
+  return key && mainLeagueClubNames.has(key);
+}
+
+function textMatchesHints(text, hints) {
+  const hay = normalizeKey(text);
+  if (!hay) return false;
+  return hints.some((hint) => hay.includes(hint));
+}
+
+function teamHintContinent(team) {
   const country = normalizeKey(team.country);
   if (country) {
-    if (AMERICAS_TEAM_COUNTRY_HINTS.some((hint) => country.includes(hint))) return 'american';
-    if (EUROPE_TEAM_COUNTRY_HINTS.some((hint) => country.includes(hint))) return 'european';
+    if (textMatchesHints(country, AMERICAS_TEAM_HINTS)) return 'americas';
+    if (textMatchesHints(country, EUROPE_TEAM_HINTS)) return 'europe';
+    if (textMatchesHints(country, MIDDLE_EAST_ASIA_TEAM_HINTS)) return 'middle-east-asia';
+    if (textMatchesHints(country, AFRICA_TEAM_HINTS)) return 'africa';
+    if (textMatchesHints(country, OCEANIA_TEAM_HINTS)) return 'oceania';
   }
-
   const name = normalizeKey(team.name);
-  if (AMERICAS_TEAM_COUNTRY_HINTS.some((hint) => name.includes(hint))) return 'american';
-  if (EUROPE_TEAM_COUNTRY_HINTS.some((hint) => name.includes(hint))) return 'european';
+  if (textMatchesHints(name, AMERICAS_TEAM_HINTS)) return 'americas';
+  if (textMatchesHints(name, EUROPE_TEAM_HINTS)) return 'europe';
+  if (textMatchesHints(name, MIDDLE_EAST_ASIA_TEAM_HINTS)) return 'middle-east-asia';
+  if (textMatchesHints(name, AFRICA_TEAM_HINTS)) return 'africa';
+  if (textMatchesHints(name, OCEANIA_TEAM_HINTS)) return 'oceania';
   return null;
 }
 
@@ -192,82 +375,59 @@ function dominantPlayerNationality(teamId, players) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
 }
 
-function nationalityBucket(nationality) {
+function nationalityContinent(nationality) {
   if (!nationality) return null;
-  if (AMERICAS_PLAYER_COUNTRIES.has(nationality)) return 'american';
-  if (EUROPE_PLAYER_COUNTRIES.has(nationality)) return 'european';
-  return 'other';
+  if (AMERICAS_PLAYER_COUNTRIES.has(nationality)) return 'americas';
+  if (EUROPE_PLAYER_COUNTRIES.has(nationality)) return 'europe';
+  if (MIDDLE_EAST_ASIA_PLAYER_COUNTRIES.has(nationality)) return 'middle-east-asia';
+  if (AFRICA_PLAYER_COUNTRIES.has(nationality)) return 'africa';
+  if (OCEANIA_PLAYER_COUNTRIES.has(nationality)) return 'oceania';
+  return null;
 }
 
-function classifyExternalClubTeam(team, players, nationalTeamNames) {
-  if (isNationalTeamLikeClub(team, nationalTeamNames)) {
-    return 'worldTeams';
-  }
+function classifyOtherClubTeam(team, players, nationalTeamNames) {
+  if (isNationalTeamLikeClub(team, nationalTeamNames)) return null;
 
-  const hintBucket = teamCountryHintBucket(team);
-  if (hintBucket) return hintBucket;
+  const hint = teamHintContinent(team);
+  if (hint) return hint;
 
   const dominantNat = dominantPlayerNationality(team.id, players);
-  const playerBucket = nationalityBucket(dominantNat);
-  if (playerBucket === 'american' || playerBucket === 'european') return playerBucket;
-  if (dominantNat) return 'other';
-  return 'other';
+  const fromNat = nationalityContinent(dominantNat);
+  if (fromNat) return fromNat;
+
+  return 'world';
 }
 
 /**
- * Best-effort sections for Other clubs (external league) browse UI.
- * @param {object[]} teams
+ * Filter and group external-league clubs for Browse “Other clubs”.
+ * @param {object[]} teams — external league teams only
  * @param {object[]} [players]
- * @returns {Array<{ id: ExternalClubGroupId, label: string, teams: object[] }>}
+ * @param {object[]} [allTeams] — full index for main-league duplicate exclusion
+ * @returns {Array<{ id: OtherClubContinentId, label: string, teams: object[] }>}
  */
-export function groupExternalClubTeams(teams, players = []) {
+export function groupOtherClubTeamsForBrowse(teams, players = [], allTeams = []) {
   const nationalTeamNames = buildNationalTeamNameSet();
-  const buckets = {
-    american: [],
-    european: [],
-    worldTeams: [],
-    other: [],
-  };
+  const mainLeagueClubNames = buildMainLeagueClubNameSet(allTeams);
+  const buckets = Object.fromEntries(
+    OTHER_CLUB_CONTINENT_ORDER.map((id) => [id, []]),
+  );
 
   for (const team of teams) {
-    const bucket = classifyExternalClubTeam(team, players, nationalTeamNames);
-    buckets[bucket].push(team);
+    if (shouldExcludeFromOtherClubs(team, mainLeagueClubNames)) continue;
+    const continent = classifyOtherClubTeam(team, players, nationalTeamNames);
+    if (!continent) continue;
+    buckets[continent].push(team);
   }
 
-  for (const id of EXTERNAL_CLUB_GROUP_ORDER) {
-    buckets[id].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', undefined, { sensitivity: 'base' }));
+  for (const id of OTHER_CLUB_CONTINENT_ORDER) {
+    buckets[id].sort((a, b) =>
+      (a.name ?? '').localeCompare(b.name ?? '', undefined, { sensitivity: 'base' }),
+    );
   }
 
-  return EXTERNAL_CLUB_GROUP_ORDER.map((id) => ({
+  return OTHER_CLUB_CONTINENT_ORDER.map((id) => ({
     id,
-    label: EXTERNAL_CLUB_GROUP_LABELS[id],
+    label: OTHER_CLUB_CONTINENT_LABELS[id],
     teams: buckets[id],
   })).filter((section) => section.teams.length > 0);
-}
-
-/**
- * Browse “Other clubs” regions — American, European, World / Other (3 sections).
- * @param {object[]} teams
- * @param {object[]} [players]
- * @returns {Array<{ id: 'american' | 'european' | 'world', label: string, teams: object[] }>}
- */
-export function groupOtherClubTeamsForBrowse(teams, players = []) {
-  const raw = groupExternalClubTeams(teams, players);
-  const merged = {
-    american: [],
-    european: [],
-    world: [],
-  };
-
-  for (const section of raw) {
-    if (section.id === 'american') merged.american = section.teams;
-    else if (section.id === 'european') merged.european = section.teams;
-    else merged.world.push(...section.teams);
-  }
-
-  return [
-    { id: 'american', label: 'American clubs', teams: merged.american },
-    { id: 'european', label: 'European clubs', teams: merged.european },
-    { id: 'world', label: 'World / Other clubs', teams: merged.world },
-  ].filter((section) => section.teams.length > 0);
 }

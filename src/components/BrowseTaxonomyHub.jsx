@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  OTHER_CLUB_REGION_LABELS,
-  OTHER_CLUB_REGION_ORDER,
   OTHER_CLUBS_LEAGUE_ID,
 } from '../utils/browseTaxonomy';
+import { getOtherClubBrowseChipMode } from '../utils/externalClubBrowse';
 import { formatCountryLabel, getLeagueDisplayName } from '../utils/footballDisplay';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
 
 const NATIONAL_TEAM_PREVIEW_COUNT = 8;
+const OTHER_CLUBS_PAGE_SIZE = 24;
 const NATIONAL_PREVIEW_IDS = [
   'england',
   'brazil',
@@ -33,16 +33,51 @@ function hubKeyOtherRegion(regionId) {
   return `other:${regionId}`;
 }
 
-function BrowseClubGrid({ teams, compact = false }) {
+function BrowseClubChip({ team, rosterCount = 0, onBrowsePlayers }) {
+  const mode = getOtherClubBrowseChipMode(team, rosterCount);
+
+  if (mode === 'team') {
+    return (
+      <Link to={`/team/${team.id}`} className="browse-club-chip">
+        <span className="browse-club-chip__name">{team.name}</span>
+        {team.country ? (
+          <span className="browse-club-chip__meta">{formatCountryLabel(team.country)}</span>
+        ) : null}
+      </Link>
+    );
+  }
+
+  if (mode === 'players') {
+    return (
+      <button
+        type="button"
+        className="browse-club-chip browse-club-chip--action"
+        onClick={() => onBrowsePlayers?.(OTHER_CLUBS_LEAGUE_ID, undefined, team.id)}
+      >
+        <span className="browse-club-chip__name">{team.name}</span>
+        <span className="browse-club-chip__meta">View players</span>
+      </button>
+    );
+  }
+
+  return (
+    <span className="browse-club-chip browse-club-chip--muted" aria-disabled="true">
+      <span className="browse-club-chip__name">{team.name}</span>
+      <span className="browse-club-chip__meta">Coming soon</span>
+    </span>
+  );
+}
+
+function BrowseClubGrid({ teams, rosterCountByTeamId, onBrowsePlayers, compact = false }) {
   return (
     <div className={`browse-club-grid${compact ? ' browse-club-grid--compact' : ''}`}>
       {teams.map((team) => (
-        <Link key={team.id} to={`/team/${team.id}`} className="browse-club-chip">
-          <span className="browse-club-chip__name">{team.name}</span>
-          {team.country ? (
-            <span className="browse-club-chip__meta">{formatCountryLabel(team.country)}</span>
-          ) : null}
-        </Link>
+        <BrowseClubChip
+          key={team.id}
+          team={team}
+          rosterCount={rosterCountByTeamId?.get(team.id) ?? 0}
+          onBrowsePlayers={onBrowsePlayers}
+        />
       ))}
     </div>
   );
@@ -85,7 +120,7 @@ function BrowseLeagueAccordionItem({
           ) : clubCount === 0 ? (
             <p className="browse-accordion__empty">No clubs listed for this league yet.</p>
           ) : (
-            <BrowseClubGrid teams={teams} compact />
+            <BrowseClubGrid teams={teams} compact onBrowsePlayers={onBrowsePlayers} />
           )}
           <div className="browse-accordion__actions">
             <Link to={`/league/${league.id}`} className="btn btn--secondary btn--small">
@@ -107,14 +142,31 @@ function BrowseLeagueAccordionItem({
 
 function BrowseOtherRegionAccordionItem({
   regionId,
+  regionLabel,
   teams,
   clubCount,
   expanded,
   onToggle,
   onBrowsePlayers,
   indexReady,
+  rosterCountByTeamId,
 }) {
   const regionKey = hubKeyOtherRegion(regionId);
+  const [regionSearch, setRegionSearch] = useState('');
+  const [visibleCount, setVisibleCount] = useState(OTHER_CLUBS_PAGE_SIZE);
+
+  const filteredTeams = useMemo(() => {
+    const query = regionSearch.trim().toLowerCase();
+    if (!query) return teams;
+    return teams.filter((team) => {
+      const name = (team.name ?? '').toLowerCase();
+      const country = (team.country ?? '').toLowerCase();
+      return name.includes(query) || country.includes(query);
+    });
+  }, [teams, regionSearch]);
+
+  const visibleTeams = filteredTeams.slice(0, visibleCount);
+  const hasMore = filteredTeams.length > visibleCount;
 
   return (
     <li className="browse-accordion__item">
@@ -125,7 +177,7 @@ function BrowseOtherRegionAccordionItem({
         onClick={() => onToggle(regionKey)}
       >
         <span className="browse-accordion__trigger-text">
-          <strong>{OTHER_CLUB_REGION_LABELS[regionId]}</strong>
+          <strong>{regionLabel}</strong>
           <small>
             {clubCount} club{clubCount !== 1 ? 's' : ''}
           </small>
@@ -141,7 +193,49 @@ function BrowseOtherRegionAccordionItem({
           ) : teams.length === 0 ? (
             <p className="browse-accordion__empty">No clubs in this group yet.</p>
           ) : (
-            <BrowseClubGrid teams={teams} compact />
+            <>
+              {teams.length > 12 ? (
+                <label className="browse-other-search">
+                  <span className="visually-hidden">Search clubs in {regionLabel}</span>
+                  <input
+                    type="search"
+                    className="browse-other-search__input"
+                    placeholder={`Search ${regionLabel.toLowerCase()}…`}
+                    value={regionSearch}
+                    onChange={(event) => {
+                      setRegionSearch(event.target.value);
+                      setVisibleCount(OTHER_CLUBS_PAGE_SIZE);
+                    }}
+                    autoComplete="off"
+                  />
+                </label>
+              ) : null}
+              {filteredTeams.length === 0 ? (
+                <p className="browse-accordion__empty">No clubs match your search.</p>
+              ) : (
+                <BrowseClubGrid
+                  teams={visibleTeams}
+                  rosterCountByTeamId={rosterCountByTeamId}
+                  onBrowsePlayers={onBrowsePlayers}
+                  compact
+                />
+              )}
+              {hasMore ? (
+                <button
+                  type="button"
+                  className="btn btn--secondary btn--small browse-other-show-more"
+                  onClick={() => setVisibleCount((count) => count + OTHER_CLUBS_PAGE_SIZE)}
+                >
+                  Show more ({filteredTeams.length - visibleCount} remaining)
+                </button>
+              ) : null}
+              {regionSearch && filteredTeams.length > 0 && filteredTeams.length <= visibleCount ? (
+                <p className="browse-taxonomy__hint">
+                  Showing {filteredTeams.length} club{filteredTeams.length !== 1 ? 's' : ''} matching
+                  &ldquo;{regionSearch.trim()}&rdquo;
+                </p>
+              ) : null}
+            </>
           )}
           <div className="browse-accordion__actions">
             <Link
@@ -166,9 +260,9 @@ function BrowseOtherRegionAccordionItem({
 
 function NationalTeamExploreCard({ team }) {
   return (
-    <Link to={`/national-team/${team.id}`} className="browse-nation-chip">
+    <Link to={`/national-team/${team.id}`} className="browse-club-chip browse-club-chip--nation">
       <NationalTeamBadge nationalTeam={team} size="thumb" />
-      <span className="browse-nation-chip__name">{team.displayName}</span>
+      <span className="browse-club-chip__name">{team.displayName}</span>
     </Link>
   );
 }
@@ -180,8 +274,9 @@ function NationalTeamExploreCard({ team }) {
  *   nationalTeams: object[],
  *   teamsByLeagueId: Record<string, object[]>,
  *   otherClubSections: Array<{ id: string, label: string, teams: object[] }>,
+ *   otherClubRosterCountByTeamId: Map<string, number>,
  *   indexReady: boolean,
- *   onBrowsePlayers: (leagueId: string, regionId?: string) => void,
+ *   onBrowsePlayers: (leagueId: string, regionId?: string, teamId?: string) => void,
  *   expandedKey: string | null,
  *   onExpandedChange: (key: string | null) => void,
  * }} props
@@ -192,6 +287,7 @@ export default function BrowseTaxonomyHub({
   nationalTeams,
   teamsByLeagueId,
   otherClubSections,
+  otherClubRosterCountByTeamId,
   indexReady,
   onBrowsePlayers,
   expandedKey,
@@ -213,10 +309,6 @@ export default function BrowseTaxonomyHub({
   }, [nationalTeams]);
 
   const visibleNationalTeams = showAllNationalTeams ? nationalTeams : nationalPreview;
-  const otherClubByRegion = useMemo(
-    () => Object.fromEntries(otherClubSections.map((section) => [section.id, section.teams])),
-    [otherClubSections],
-  );
 
   return (
     <div className="browse-taxonomy">
@@ -277,7 +369,7 @@ export default function BrowseTaxonomyHub({
         <p className="browse-results__cap-notice">
           Country squads — not club teams. Open a nation for its squad, rivals, and quizzes.
         </p>
-        <div className="browse-nation-grid">
+        <div className="browse-club-grid browse-club-grid--nations">
           {visibleNationalTeams.map((team) => (
             <NationalTeamExploreCard key={team.id} team={team} />
           ))}
@@ -297,16 +389,18 @@ export default function BrowseTaxonomyHub({
           Smaller and imported clubs outside the main league hubs — expand a region to browse.
         </p>
         <ul className="browse-accordion">
-          {OTHER_CLUB_REGION_ORDER.map((regionId) => (
+          {otherClubSections.map((section) => (
             <BrowseOtherRegionAccordionItem
-              key={regionId}
-              regionId={regionId}
-              teams={otherClubByRegion[regionId] ?? []}
-              clubCount={(otherClubByRegion[regionId] ?? []).length}
-              expanded={expandedKey === hubKeyOtherRegion(regionId)}
+              key={section.id}
+              regionId={section.id}
+              regionLabel={section.label}
+              teams={section.teams}
+              clubCount={section.teams.length}
+              expanded={expandedKey === hubKeyOtherRegion(section.id)}
               onToggle={toggleExpanded}
               onBrowsePlayers={onBrowsePlayers}
               indexReady={indexReady}
+              rosterCountByTeamId={otherClubRosterCountByTeamId}
             />
           ))}
         </ul>

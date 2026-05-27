@@ -141,8 +141,20 @@ export default function BrowseDatabase() {
 
   const otherClubSections = useMemo(() => {
     const externalTeams = teamsByLeagueId[OTHER_CLUBS_LEAGUE_ID] ?? [];
-    return groupOtherClubTeamsForBrowse(externalTeams, otherClubPlayersForGrouping);
-  }, [teamsByLeagueId, otherClubPlayersForGrouping]);
+    return groupOtherClubTeamsForBrowse(
+      externalTeams,
+      otherClubPlayersForGrouping,
+      searchIndex?.teams ?? [],
+    );
+  }, [teamsByLeagueId, otherClubPlayersForGrouping, searchIndex?.teams]);
+
+  const otherClubRosterCountByTeamId = useMemo(() => {
+    const counts = new Map();
+    for (const player of otherClubPlayersForGrouping) {
+      counts.set(player.teamId, (counts.get(player.teamId) ?? 0) + 1);
+    }
+    return counts;
+  }, [otherClubPlayersForGrouping]);
 
   const teamsInLeague = useMemo(() => {
     if (!isOtherClubsLeague || !otherClubRegion) return allTeamsInLeague;
@@ -320,8 +332,8 @@ export default function BrowseDatabase() {
     setManualHubExpandedKey(key);
   };
 
-  const handleBrowsePlayersFromHub = (leagueId, regionId) => {
-    setTeamFilter('');
+  const handleBrowsePlayersFromHub = (leagueId, regionId, teamId) => {
+    setTeamFilter(teamId ?? '');
     setSearch('');
     setPlayerPage(1);
     setSkipClubPicker(true);
@@ -524,6 +536,7 @@ export default function BrowseDatabase() {
           nationalTeams={browseNationalTeams}
           teamsByLeagueId={teamsByLeagueId}
           otherClubSections={otherClubSections}
+          otherClubRosterCountByTeamId={otherClubRosterCountByTeamId}
           indexReady={indexReady}
           expandedKey={hubExpandedKey}
           onExpandedChange={handleHubExpandedChange}
