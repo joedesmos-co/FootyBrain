@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "description": "La Liga completion quiz tranche — 30 approved players across 10 newly completed clubs (2026-05-26).",
-  "updatedAt": "2026-05-26",
+  "description": "Bundesliga completion quiz tranche — 24 approved players across 8 newly completed clubs (2026-05-26).",
+  "updatedAt": "2026-05-27",
   "players": [
     {
       "id": "tm-240306",
@@ -6415,6 +6415,390 @@
       ],
       "playingStyle": "Energetic right-back who joins attacks and recovers quickly in transition.",
       "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-160963",
+      "sourceId": "160963",
+      "displayName": "Robin Zentner",
+      "quickFact": "German goalkeeper and first-choice keeper for Mainz 05 in the Bundesliga.",
+      "quizHints": [
+        "Mainz 05 goalkeeper in the Bundesliga.",
+        "German keeper in red and white.",
+        "Goalkeeper — not midfielder Amiri."
+      ],
+      "playingStyle": "Reliable goalkeeper who commands the penalty area and organises the back line.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-223974",
+      "sourceId": "223974",
+      "displayName": "Stefan Posch",
+      "quickFact": "Austrian international centre-back in Mainz 05’s Bundesliga defence.",
+      "quizHints": [
+        "Austrian centre-back at Mainz 05.",
+        "Plays in the Bundesliga.",
+        "Defender — not midfielder Amiri."
+      ],
+      "playingStyle": "Physical centre-back who defends aggressively and steps out to intercept.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-232454",
+      "sourceId": "232454",
+      "displayName": "Nadiem Amiri",
+      "quickFact": "German international central midfielder in Mainz 05’s Bundesliga squad.",
+      "quizHints": [
+        "German midfielder at Mainz 05.",
+        "Plays in the Bundesliga.",
+        "Central midfielder — not goalkeeper Zentner."
+      ],
+      "playingStyle": "Technical central midfielder who carries the ball forward and finds line-breaking passes.",
+      "importanceScore": 80,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-160929",
+      "sourceId": "160929",
+      "displayName": "Marvin Schwäbe",
+      "quickFact": "German goalkeeper and first-choice keeper for 1. FC Köln in the Bundesliga.",
+      "quizHints": [
+        "Köln goalkeeper in the Bundesliga.",
+        "German keeper in red and white.",
+        "Goalkeeper — not striker Waldschmidt."
+      ],
+      "playingStyle": "Composed goalkeeper who stays calm under pressure and distributes cleanly.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-106270",
+      "sourceId": "106270",
+      "displayName": "Florian Kainz",
+      "quickFact": "Austrian international attacking midfielder and longtime Köln creative outlet in the Bundesliga.",
+      "quizHints": [
+        "Austrian midfielder at 1. FC Köln.",
+        "Plays in the Bundesliga.",
+        "Attacking midfielder — not Waldschmidt the striker."
+      ],
+      "playingStyle": "Left-footed attacking midfielder who delivers set pieces and combines in the final third.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-196095",
+      "sourceId": "196095",
+      "displayName": "Luca Waldschmidt",
+      "quickFact": "German international centre-forward in 1. FC Köln’s Bundesliga attack.",
+      "quizHints": [
+        "German striker at 1. FC Köln.",
+        "Plays in the Bundesliga.",
+        "Centre-forward — not Kainz the midfielder."
+      ],
+      "playingStyle": "Mobile centre-forward who links play and finishes inside the penalty area.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-448705",
+      "sourceId": "448705",
+      "displayName": "Diant Ramaj",
+      "quickFact": "German goalkeeper and first-choice keeper for 1. FC Heidenheim in the Bundesliga.",
+      "quizHints": [
+        "Heidenheim goalkeeper in the Bundesliga.",
+        "German keeper.",
+        "Goalkeeper — not centre-back Mainka."
+      ],
+      "playingStyle": "Athletic goalkeeper who commands his area and plays out from the back.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-133731",
+      "sourceId": "133731",
+      "displayName": "Patrick Mainka",
+      "quickFact": "German centre-back and defensive leader for 1. FC Heidenheim in the Bundesliga.",
+      "quizHints": [
+        "German centre-back at Heidenheim.",
+        "Plays in the Bundesliga.",
+        "Defender — not midfielder Dorsch."
+      ],
+      "playingStyle": "Composed centre-back who reads danger early and wins aerial duels.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-251302",
+      "sourceId": "251302",
+      "displayName": "Niklas Dorsch",
+      "quickFact": "German defensive midfielder in 1. FC Heidenheim’s Bundesliga squad.",
+      "quizHints": [
+        "German defensive midfielder at Heidenheim.",
+        "Plays in the Bundesliga.",
+        "Midfielder — not Mainka the defender."
+      ],
+      "playingStyle": "Tenacious defensive midfielder who breaks up play and recycles possession.",
+      "importanceScore": 72,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-107775",
+      "sourceId": "107775",
+      "displayName": "Frederik Rönnow",
+      "quickFact": "Danish international goalkeeper for Union Berlin in the Bundesliga.",
+      "quizHints": [
+        "Danish goalkeeper at Union Berlin.",
+        "Plays in the Bundesliga.",
+        "Keeper — not right-back Trimmel."
+      ],
+      "playingStyle": "Agile goalkeeper who reacts quickly to close-range shots and commands his box.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-75921",
+      "sourceId": "75921",
+      "displayName": "Christopher Trimmel",
+      "quickFact": "Austrian international right-back and longtime Union Berlin mainstay in the Bundesliga.",
+      "quizHints": [
+        "Austrian right-back at Union Berlin.",
+        "Plays in the Bundesliga.",
+        "Defender — not winger Skov."
+      ],
+      "playingStyle": "Attacking right-back who delivers long throws and crosses from wide areas.",
+      "importanceScore": 80,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-270393",
+      "sourceId": "270393",
+      "displayName": "Robert Skov",
+      "quickFact": "Denmark international wide player in Union Berlin’s Bundesliga squad.",
+      "quizHints": [
+        "Danish winger at Union Berlin.",
+        "Plays in the Bundesliga.",
+        "Left-sided attacker — not Trimmel the full-back."
+      ],
+      "playingStyle": "Direct wide player who cuts inside from the left and shoots from distance.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-251299",
+      "sourceId": "251299",
+      "displayName": "Finn Dahmen",
+      "quickFact": "German goalkeeper and first-choice keeper for FC Augsburg in the Bundesliga.",
+      "quizHints": [
+        "Augsburg goalkeeper in the Bundesliga.",
+        "German keeper.",
+        "Goalkeeper — not striker Gregoritsch."
+      ],
+      "playingStyle": "Modern goalkeeper who sweeps behind the defence and plays accurate short passes.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-106405",
+      "sourceId": "106405",
+      "displayName": "Jeffrey Gouweleeuw",
+      "quickFact": "Dutch centre-back and longtime Augsburg captain in the Bundesliga.",
+      "quizHints": [
+        "Dutch centre-back at FC Augsburg.",
+        "Plays in the Bundesliga.",
+        "Defender — not Gregoritsch the striker."
+      ],
+      "playingStyle": "Experienced centre-back who organises the back line and steps into midfield with the ball.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-120205",
+      "sourceId": "120205",
+      "displayName": "Michael Gregoritsch",
+      "quickFact": "Austrian international striker and main attacking threat for FC Augsburg in the Bundesliga.",
+      "quizHints": [
+        "Austrian striker at FC Augsburg.",
+        "Plays in the Bundesliga.",
+        "Centre-forward — not Gouweleeuw the defender."
+      ],
+      "playingStyle": "Powerful centre-forward who holds up play and finishes with both feet in the box.",
+      "importanceScore": 82,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-248454",
+      "sourceId": "248454",
+      "displayName": "Nikola Vasilj",
+      "quickFact": "Bosnian international goalkeeper and first-choice keeper for FC St. Pauli in the Bundesliga.",
+      "quizHints": [
+        "St. Pauli goalkeeper in the Bundesliga.",
+        "Bosnian keeper in brown and white.",
+        "Goalkeeper — not midfielder Irvine."
+      ],
+      "playingStyle": "Reliable goalkeeper who stays compact and makes strong reflex saves.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-154147",
+      "sourceId": "154147",
+      "displayName": "Hauke Wahl",
+      "quickFact": "German centre-back in FC St. Pauli’s Bundesliga defence.",
+      "quizHints": [
+        "German centre-back at St. Pauli.",
+        "Plays in the Bundesliga.",
+        "Defender — not midfielder Irvine."
+      ],
+      "playingStyle": "Physical centre-back who tackles firmly and clears danger from set pieces.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-192557",
+      "sourceId": "192557",
+      "displayName": "Jackson Irvine",
+      "quickFact": "Australia captain and central midfielder in FC St. Pauli’s Bundesliga squad.",
+      "quizHints": [
+        "Australian midfielder at St. Pauli.",
+        "Plays in the Bundesliga.",
+        "Central midfielder — not Vasilj the goalkeeper."
+      ],
+      "playingStyle": "Box-to-box midfielder who covers ground, wins headers, and links defence to attack.",
+      "importanceScore": 82,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-84993",
+      "sourceId": "84993",
+      "displayName": "Daniel Heuer Fernandes",
+      "quickFact": "Portuguese goalkeeper and first-choice keeper for Hamburger SV in the Bundesliga.",
+      "quizHints": [
+        "Hamburger SV goalkeeper in the Bundesliga.",
+        "Portuguese keeper in blue and white.",
+        "Goalkeeper — not striker Poulsen."
+      ],
+      "playingStyle": "Experienced goalkeeper who commands the penalty area and communicates with his defence.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-298603",
+      "sourceId": "298603",
+      "displayName": "Miro Muheim",
+      "quickFact": "Switzerland international left-back in Hamburger SV’s Bundesliga squad.",
+      "quizHints": [
+        "Swiss left-back at Hamburger SV.",
+        "Plays in the Bundesliga.",
+        "Defender — not Poulsen the striker."
+      ],
+      "playingStyle": "Overlapping left-back who supports attacks and delivers crosses from wide areas.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-157635",
+      "sourceId": "157635",
+      "displayName": "Yussuf Poulsen",
+      "quickFact": "Denmark international striker in Hamburger SV’s Bundesliga attack.",
+      "quizHints": [
+        "Danish striker at Hamburger SV.",
+        "Plays in the Bundesliga.",
+        "Centre-forward — not Muheim the full-back."
+      ],
+      "playingStyle": "Target-style centre-forward who holds up play and brings teammates into the attack.",
+      "importanceScore": 84,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-55089",
+      "sourceId": "55089",
+      "displayName": "Oliver Baumann",
+      "quickFact": "German goalkeeper, club captain, and long-serving Hoffenheim No. 1 in the Bundesliga.",
+      "quizHints": [
+        "Hoffenheim goalkeeper in the Bundesliga.",
+        "German keeper and club captain.",
+        "Goalkeeper — not playmaker Kramaric."
+      ],
+      "playingStyle": "Commanding goalkeeper who organises the defence and distributes accurately from the back.",
+      "importanceScore": 82,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-46580",
+      "sourceId": "46580",
+      "displayName": "Andrej Kramaric",
+      "quickFact": "Croatia international playmaker and Hoffenheim’s main creative star in the Bundesliga.",
+      "quizHints": [
+        "Croatian attacking midfielder at Hoffenheim.",
+        "Plays in the Bundesliga.",
+        "Attacking midfielder — not goalkeeper Baumann."
+      ],
+      "playingStyle": "Two-footed attacking midfielder who drifts into space, shoots from range, and creates chances.",
+      "importanceScore": 86,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-552057",
+      "sourceId": "552057",
+      "displayName": "Adam Hlozek",
+      "quickFact": "Czech Republic international centre-forward in TSG Hoffenheim’s Bundesliga attack.",
+      "quizHints": [
+        "Czech striker at Hoffenheim.",
+        "Plays in the Bundesliga.",
+        "Centre-forward — not Kramaric the playmaker."
+      ],
+      "playingStyle": "Mobile centre-forward who runs in behind the defence and finishes inside the box.",
+      "importanceScore": 80,
       "quizEligible": true,
       "rosterTier": "featured",
       "reviewStatus": "approved"
