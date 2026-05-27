@@ -63,6 +63,7 @@ export const WAVE_3_NATIONAL_TEAM_IDS = [
   'ecuador',
   'peru',
   'bosnia-herzegovina',
+  'congo-dr',
 ];
 
 /** FootyBrain id ↔ TM slug ↔ registry nationality labels */
@@ -205,6 +206,20 @@ export const NATIONAL_TEAM_TARGETS = [
     expansionWave: 3,
     searchAliases: ['bosnia', 'bosnia-herzegovina', 'bosnia and herzegovina', 'bih'],
     registryLabels: ['bosnia-herzegovina', 'bosnia and herzegovina', 'bosnian', 'bosnia'],
+  },
+  {
+    id: 'congo-dr',
+    tmCode: null,
+    displayName: 'Congo DR',
+    expansionWave: 3,
+    tmMissing: true,
+    searchAliases: ['dr congo', 'congo dr', 'drc', 'democratic republic of the congo'],
+    registryLabels: [
+      'dr congo',
+      'congo dr',
+      'democratic republic of the congo',
+      'drc',
+    ],
   },
   { id: 'peru', tmCode: 'peru', displayName: 'Peru', expansionWave: 3, registryLabels: ['peru', 'peruvian'] },
 ];

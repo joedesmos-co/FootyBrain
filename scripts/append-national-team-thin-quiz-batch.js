@@ -708,13 +708,32 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Congo DR — World Cup live promotion (+1 quiz-ready → 3)
+  {
+    id: 'tm-127048',
+    sourceId: '127048',
+    displayName: 'Cédric Bakambu',
+    quickFact:
+      'DR Congo centre-forward and Olympique Marseille youth product who became a La Liga and Chinese Super League goal threat for Les Léopards.',
+    quizHints: [
+      'DR Congo attacker in the linked national pool — not Wan-Bissaka at full-back.',
+      'Real Betis striker with prior Villarreal and Beijing Guoan scoring runs.',
+      'Former Africa Cup of Nations joint top scorer for the Leopards.',
+    ],
+    playingStyle:
+      'Explosive runs in behind, strong one-on-one finishing, and poacher instinct in the box.',
+    importanceScore: 78,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({
   draftPath: DATA_PATHS.draftOverlay,
   batch: THIN_NATIONAL_QUIZ_BATCH,
   description:
-    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea (2026-05-26).',
+    'Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR (2026-05-26).',
 });
 
 console.log(

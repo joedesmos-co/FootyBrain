@@ -69,6 +69,8 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'ecuador',
   // Wave 3 batch 6 (World Cup 2026 — preview-gated)
   'bosnia-herzegovina',
+  // Wave 3 batch 7 (World Cup 2026 — registry-only TM stub)
+  'congo-dr',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -120,6 +122,7 @@ const REGISTRY_NATIONALITY_LABELS = {
     'bosnian',
     'bosnia',
   ],
+  'congo-dr': ['dr congo', 'congo dr', 'democratic republic of the congo', 'drc'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -645,6 +648,19 @@ const LIVE_NATION_EDITORIAL = {
       'Bosnia and Herzegovina’s Zmajevi tie mountain football passion to Serie A and Bundesliga exports. Learn them through Yugoslav heritage, derby tension with Serbia, and gritty defensive football.',
     shortHistory:
       'Men’s senior team of Bosnia and Herzegovina (NFSBiH). FootyBrain squads link existing club players matched to Bosnia memberships.',
+  },
+  'congo-dr': {
+    displayName: 'Congo DR',
+    country: 'DR Congo',
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['senegal', 'ghana'],
+    searchAliases: ['drc', 'congo dr', 'dr congo', 'leopards'],
+    badgeTheme: { from: '#1d4ed8', to: '#16a34a', accent: '#fef08a' },
+    fanGuide:
+      'Les Léopards blend Central African athleticism with a European club diaspora across Ligue 1 and La Liga. Learn Congo DR through fast transitions and rivalry with neighbouring West African powers.',
+    shortHistory:
+      'Men’s senior team of DR Congo (FECOFA). FootyBrain squads link existing club players via nationality registry; TM national-team scraper lacks a stable row.',
   },
 };
 

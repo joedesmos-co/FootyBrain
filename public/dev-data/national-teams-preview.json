@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:08:19.722Z",
+    "generatedAt": "2026-05-27T01:11:18.929Z",
     "purpose": "staging-only — do not merge into sampleData until reviewed",
     "expansionWave": 3,
     "previewSeason": "2025",
@@ -9,14 +9,14 @@
     "waveCounts": {
       "wave1": 5,
       "wave2": 20,
-      "wave3": 25,
-      "total": 50
+      "wave3": 26,
+      "total": 51
     },
     "counts": {
-      "nationalTeams": 50,
+      "nationalTeams": 51,
       "playerLinks": 530,
       "unmatchedNationalTeamPlayers": 539,
-      "warnings": 51
+      "warnings": 52
     }
   },
   "inspection": {
@@ -34,11 +34,12 @@
     "expansionWave": 3,
     "wave1TeamCount": 5,
     "wave2TeamCount": 20,
-    "wave3TeamCount": 25,
+    "wave3TeamCount": 26,
     "tmBackedTeamsExpected": 48,
     "tmBackedTeamsFound": 48,
     "tmEntityMissingTeamIds": [
-      "cameroon"
+      "cameroon",
+      "congo-dr"
     ],
     "ntSquadParentDataClean": true,
     "ntParentRowsPriority": 539,
@@ -1220,6 +1221,34 @@
       "playerLinksFromNtSquad": 0,
       "playerLinksFromNationalTeamField": 1,
       "unmatchedCount": 11
+    },
+    {
+      "id": "congo-dr",
+      "displayName": "Congo DR",
+      "tmCode": null,
+      "tmTeamId": null,
+      "confederationId": null,
+      "confederation": null,
+      "fifaRanking": null,
+      "squadSizeReported": null,
+      "averageAge": null,
+      "coachName": null,
+      "sourceUrl": null,
+      "searchAliases": [
+        "dr congo",
+        "congo dr",
+        "drc",
+        "democratic republic of the congo"
+      ],
+      "crestPolicy": "text-only",
+      "expansionWave": 3,
+      "tmEntityMissing": true,
+      "squadScrapedCount": 0,
+      "tmNationalTeamFieldCount": 39,
+      "playerLinksCount": 0,
+      "playerLinksFromNtSquad": 0,
+      "playerLinksFromNationalTeamField": 0,
+      "unmatchedCount": 0
     },
     {
       "id": "peru",
@@ -17808,6 +17837,7 @@
   "warnings": [
     "cameroon: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
     "cote-divoire: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
+    "congo-dr: no TM national_teams.json entity — registry-only preview until raw TM adds squad",
     "england: NT-parent squad 0 ≠ TM squad_size 35",
     "france: NT-parent squad 0 ≠ TM squad_size 25",
     "spain: NT-parent squad 0 ≠ TM squad_size 27",
@@ -17866,6 +17896,10 @@
       },
       {
         "nationalTeamId": "cote-divoire",
+        "reason": "tm_entity_missing"
+      },
+      {
+        "nationalTeamId": "congo-dr",
         "reason": "tm_entity_missing"
       }
     ],

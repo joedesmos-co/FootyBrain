@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:08:16.156Z",
+    "generatedAt": "2026-05-27T01:11:07.954Z",
     "purpose": "staging-only — do not import into React until reviewed",
     "dataAsOf": "2026-05-25",
     "previewSeason": "2025",
@@ -10,9 +10,9 @@
       "mvpFeatured": 36,
       "mvpLinked": 31,
       "mvpManualOnly": 5,
-      "generatedNeedsEditorial": 3592,
-      "generatedEditorialApproved": 458,
-      "quizEligible": 494
+      "generatedNeedsEditorial": 3591,
+      "generatedEditorialApproved": 459,
+      "quizEligible": 495
     },
     "linkedPlayers": [
       "haaland",
@@ -2741,7 +2741,6 @@
       "tm-417913",
       "tm-933908",
       "tm-602105",
-      "tm-127048",
       "tm-167721",
       "tm-246291",
       "tm-191217",
@@ -3985,6 +3984,7 @@
       "tm-71271",
       "tm-378139",
       "tm-261503",
+      "tm-127048",
       "tm-459463",
       "tm-348795",
       "tm-85288",
@@ -86247,6 +86247,7 @@
       "id": "tm-127048",
       "sourceId": "127048",
       "name": "Cédric Bakambu",
+      "displayName": "Cédric Bakambu",
       "dateOfBirth": "1991-04-11",
       "age": 35,
       "nationality": "DR Congo",
@@ -86254,12 +86255,17 @@
       "position": "Attack - Centre-Forward",
       "teamId": "real-betis",
       "leagueId": "la-liga",
-      "quickFact": "",
-      "quizHints": [],
-      "playingStyle": "",
-      "importanceScore": null,
-      "quizEligible": false,
-      "rosterTier": "squad",
+      "quickFact": "DR Congo centre-forward and Olympique Marseille youth product who became a La Liga and Chinese Super League goal threat for Les Léopards.",
+      "quizHints": [
+        "DR Congo attacker in the linked national pool — not Wan-Bissaka at full-back.",
+        "Real Betis striker with prior Villarreal and Beijing Guoan scoring runs.",
+        "Former Africa Cup of Nations joint top scorer for the Leopards."
+      ],
+      "playingStyle": "Explosive runs in behind, strong one-on-one finishing, and poacher instinct in the box.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved",
       "imageUrl": null,
       "imageAlt": null,
       "imageCredit": null,
@@ -86267,7 +86273,7 @@
       "imageLicense": null,
       "imageSrcSet": null,
       "careerHistory": [],
-      "dataStatus": "generated-needs-editorial"
+      "dataStatus": "generated-editorial-approved"
     },
     {
       "id": "tm-167721",

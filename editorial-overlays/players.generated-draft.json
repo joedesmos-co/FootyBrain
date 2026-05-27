@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "description": "Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea (2026-05-26).",
+  "description": "Thin live national-team quiz batch — Poland, Austria, Ukraine, Scotland, Paraguay, Serbia, Mexico, Chile, Turkey, South Korea, Congo DR (2026-05-26).",
   "updatedAt": "2026-05-27",
   "players": [
     {
@@ -7327,6 +7327,22 @@
       ],
       "playingStyle": "Athletic defender who overlaps on the flank, tackles aggressively, and delivers set-piece threat.",
       "importanceScore": 82,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-127048",
+      "sourceId": "127048",
+      "displayName": "Cédric Bakambu",
+      "quickFact": "DR Congo centre-forward and Olympique Marseille youth product who became a La Liga and Chinese Super League goal threat for Les Léopards.",
+      "quizHints": [
+        "DR Congo attacker in the linked national pool — not Wan-Bissaka at full-back.",
+        "Real Betis striker with prior Villarreal and Beijing Guoan scoring runs.",
+        "Former Africa Cup of Nations joint top scorer for the Leopards."
+      ],
+      "playingStyle": "Explosive runs in behind, strong one-on-one finishing, and poacher instinct in the box.",
+      "importanceScore": 78,
       "quizEligible": true,
       "rosterTier": "featured",
       "reviewStatus": "approved"

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T01:08:19.122Z",
+    "generatedAt": "2026-05-27T01:11:18.442Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -42,15 +42,16 @@
       "canada",
       "australia",
       "ecuador",
-      "bosnia-herzegovina"
+      "bosnia-herzegovina",
+      "congo-dr"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 40,
-      "memberships": 1299,
+      "nationalTeams": 41,
+      "memberships": 1312,
       "unmatchedTmSquadRows": 281,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
@@ -95,7 +96,8 @@
       "canada": 40,
       "australia": 13,
       "ecuador": 23,
-      "bosnia-herzegovina": 13
+      "bosnia-herzegovina": 13,
+      "congo-dr": 13
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -137,7 +139,8 @@
       "canada": 12,
       "australia": 2,
       "ecuador": 3,
-      "bosnia-herzegovina": 1
+      "bosnia-herzegovina": 1,
+      "congo-dr": 0
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -179,7 +182,8 @@
       "canada": 28,
       "australia": 11,
       "ecuador": 20,
-      "bosnia-herzegovina": 12
+      "bosnia-herzegovina": 12,
+      "congo-dr": 13
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -221,7 +225,8 @@
       "canada": 3,
       "australia": 3,
       "ecuador": 3,
-      "bosnia-herzegovina": 3
+      "bosnia-herzegovina": 3,
+      "congo-dr": 3
     }
   },
   "nationalTeams": [
@@ -1306,6 +1311,33 @@
       "shortHistory": "Men’s senior team of Bosnia and Herzegovina (NFSBiH). FootyBrain squads link existing club players matched to Bosnia memberships.",
       "fifaRanking": 65,
       "tmCode": "bosnia-herzegovina",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "congo-dr",
+      "displayName": "Congo DR",
+      "country": "DR Congo",
+      "confederationId": "caf",
+      "confederation": "CAF",
+      "rivalIds": [
+        "senegal",
+        "ghana"
+      ],
+      "searchAliases": [
+        "drc",
+        "congo dr",
+        "dr congo",
+        "leopards"
+      ],
+      "badgeTheme": {
+        "from": "#1d4ed8",
+        "to": "#16a34a",
+        "accent": "#fef08a"
+      },
+      "fanGuide": "Les Léopards blend Central African athleticism with a European club diaspora across Ligue 1 and La Liga. Learn Congo DR through fast transitions and rivalry with neighbouring West African powers.",
+      "shortHistory": "Men’s senior team of DR Congo (FECOFA). FootyBrain squads link existing club players via nationality registry; TM national-team scraper lacks a stable row.",
+      "fifaRanking": null,
+      "tmCode": "congo-dr",
       "crestPolicy": "text-only"
     }
   ],
@@ -12995,6 +13027,123 @@
     {
       "playerId": "tm-67556",
       "nationalTeamId": "bosnia-herzegovina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-388165",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-477758",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-127048",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-164915",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-181380",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-342046",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-342048",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-243879",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1016015",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-612826",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-727089",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-75471",
+      "nationalTeamId": "congo-dr",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-203348",
+      "nationalTeamId": "congo-dr",
       "role": "senior",
       "status": "active",
       "isPrimary": true,
