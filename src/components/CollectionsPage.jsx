@@ -50,8 +50,7 @@ export default function CollectionsPage() {
           </Link>
         </div>
         <p className="collections-page__section-desc">
-          2026 study lists and country paths — built from live squads and players with quiz mode
-          (not full World Cup Mode).
+          2026 study lists and country paths—built from live squads and quiz-ready players.
         </p>
         <ul className="learning-paths-grid learning-paths-grid--compact">
           {worldCupPaths.map((path) => (
@@ -63,8 +62,8 @@ export default function CollectionsPage() {
         <h3 className="collections-subsection-title">National team learning</h3>
         <p className="collections-page__section-desc">
           Curated international lists — legends, golden generations, captains, midfielders, and
-          tournament stars. Every player has quiz mode; use Compare on player-only lists, then the
-          linked national-team quiz.
+          tournament stars. Open profiles, compare players, then finish with the linked national-team
+          quiz.
         </p>
         <ul className="collections-grid collections-grid--compact">
           {nationalTeamLearningCollections.map((collection) => (
@@ -95,8 +94,8 @@ export default function CollectionsPage() {
         </h2>
         <p className="collections-page__section-desc">
           Curated tactical lists — press-resistant mids, playmakers, modern full-backs, and more.
-          Every player has quiz mode; open profiles, save favorites, compare from{' '}
-          <Link to="/compare">Compare</Link>, then launch the linked quiz.
+          Study each player, save favorites, compare from <Link to="/compare">Compare</Link>, then
+          take the linked quiz.
         </p>
         <ul className="collections-grid collections-grid--compact">
           {advancedCollections.map((collection) => (

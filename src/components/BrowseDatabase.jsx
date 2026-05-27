@@ -268,7 +268,7 @@ export default function BrowseDatabase() {
         </nav>
       </header>
 
-      {indexLoading && showPlayersTab ? <PageFallback label="Loading search index…" /> : null}
+      {indexLoading && showPlayersTab ? <PageFallback label="Loading search…" /> : null}
 
       <section className="browse-secondary" aria-label="More to explore">
         <div className="browse-secondary__grid">
@@ -322,13 +322,13 @@ export default function BrowseDatabase() {
           </label>
 
           <label className="filter-field">
-            <span>Team</span>
+            <span>Club</span>
             <select
               value={teamFilter}
               onChange={(e) => setTeamFilter(e.target.value)}
               disabled={!leagueFilter || shardLoading}
             >
-              <option value="">All teams</option>
+              <option value="">All clubs</option>
               {teamsInLeague.map((team) => (
                 <option key={team.id} value={team.id}>
                   {team.name}
@@ -362,7 +362,7 @@ export default function BrowseDatabase() {
                 ? 'Search or choose a league/team to explore players.'
                 : bundled
                   ? 'Search or choose a league/team to explore players.'
-                  : 'Showing featured quiz players. Load the full list to browse everyone.'}
+                  : 'Featured quiz players shown. Load the full player list to explore everyone.'}
         </p>
         {!bundled && !usesExternalShard && !leagueFilter && !teamFilter && !search.trim() ? (
           <button
@@ -417,8 +417,8 @@ export default function BrowseDatabase() {
           </Link>
         </div>
         <p className="national-hub-strip__intro">
-          Player pools built from club squads — one profile per player. Some nations unlock a quiz
-          once enough players have clues.
+          Player pools linked from club squads. Some nations unlock a quiz once enough players have
+          clues.
         </p>
         <div className="national-hub-strip__grid">
           {viableNationalTeams.map((team) => (
@@ -448,8 +448,9 @@ export default function BrowseDatabase() {
         </div>
         {viableNationalTeams.length < liveNationalTeams.length && (
           <p className="national-hub-strip__note">
-            {liveNationalTeams.length - viableNationalTeams.length} more nations are listed on{' '}
-            <Link to="/national-teams">National teams</Link> with thinner quiz pools.
+            {liveNationalTeams.length - viableNationalTeams.length} more nations are on{' '}
+            <Link to="/national-teams">National teams</Link>—great for browsing, with smaller quiz
+            pools for now.
           </p>
         )}
       </section>
@@ -515,7 +516,7 @@ export default function BrowseDatabase() {
             </>
           ) : (
             <section className="empty-state" aria-label="No matching players">
-              <p>No players match. Try another league, team, or spelling.</p>
+              <p>No players match those filters. Try another league, club, or spelling.</p>
               <div className="empty-state__actions">
                 <button
                   type="button"
@@ -534,7 +535,7 @@ export default function BrowseDatabase() {
         </section>
       ) : (
         <p className="empty-state browse-results-empty">
-          Search or choose a league/team to explore players.
+          Search by name or pick a league and club to explore players.
         </p>
       )
       ) : null}
@@ -542,8 +543,8 @@ export default function BrowseDatabase() {
       {showClubsTab && (
         <section className="browse-results" aria-label="Browse clubs">
           <p className="browse-results__cap-notice">
-            Pick a league to browse clubs. For curated club learning pages, use{' '}
-            <Link to="/teams">Team Learning</Link>.
+            Pick a league to browse its clubs—or open any club page for squads, rivals, and fan
+            notes from <Link to="/teams">Clubs</Link>.
           </p>
           <div className="league-link-grid">
             {leagueGroups.major.map((league) => (

@@ -28,7 +28,7 @@ export default function OnboardingPage() {
         <p className="onboarding-page__intro">
           {isEdit
             ? 'Adjust leagues, clubs, and goals. Saved on this device only.'
-            : 'A short tour of FootyBrain—local snapshot data, no accounts. Personalize below only if you want to.'}
+            : 'A quick tour of players, clubs, leagues, and quizzes—saved on this device, no account needed. Personalize below only if you want.'}
         </p>
         {!isEdit && (
           <p className="onboarding-page__skip-top">

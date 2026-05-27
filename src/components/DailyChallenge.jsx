@@ -139,7 +139,7 @@ function CompletionScreen({
 
       <div className="daily-complete__actions">
         <Link to="/profile" className="btn btn--secondary">View profile</Link>
-        <Link to="/quiz" className="btn btn--primary">Play Quiz Mode</Link>
+        <Link to="/quiz" className="btn btn--primary">Play quiz</Link>
       </div>
     </div>
   );

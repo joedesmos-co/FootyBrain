@@ -29,7 +29,7 @@ export const QUIZ_DIFFICULTY_OPTIONS = [
 
 export const QUIZ_POOL_FOCUS_OPTIONS = [
   { id: 'all', label: 'All filters', description: 'Mix league, club, position, or national team' },
-  { id: 'league', label: 'League only', description: 'Pick a league — clubs with quiz mode' },
+  { id: 'league', label: 'League only', description: 'Pick a league — quiz-ready clubs' },
   { id: 'club', label: 'Club only', description: 'Pick one club squad' },
   {
     id: 'national',
@@ -361,7 +361,7 @@ export function getQuizCountryEmptyState(
       title: `No quiz players for ${nationalTeamName}`,
       message:
         variantHint ??
-        'No linked players have an approved editorial quiz profile yet. Browse the full squad or try another country.',
+        'Not enough players with quiz clues yet. Browse the full squad or try another country.',
       showSquadLink: true,
     };
   }
@@ -402,7 +402,7 @@ export function getQuizClubEmptyState(
       title: `No quiz players for ${teamName}`,
       message:
         variantHint ??
-        'No approved editorial quiz profiles for this squad yet. Browse the full roster or pick another club.',
+        'Not enough players with quiz clues for this squad yet. Browse the full roster or pick another club.',
       showSquadLink: true,
     };
   }

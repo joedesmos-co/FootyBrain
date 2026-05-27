@@ -25,7 +25,7 @@ export default function ComparePage() {
     <div className="page compare-page">
       <header className="page-header">
         <h1>Compare</h1>
-        <p>Side-by-side player or club research from the database.</p>
+        <p>Compare two players or two clubs side by side—roles, squads, and importance score.</p>
         <nav className="compare-tabs" aria-label="Compare type">
           <NavLink
             to="/compare"

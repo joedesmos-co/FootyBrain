@@ -377,7 +377,7 @@ export default function UniversalSearch({ open, onClose }) {
               <div className="skeleton skeleton--row" />
             </div>
             <p className="universal-search__pending">
-              {isIndexLoading ? 'Loading search index…' : 'Searching…'}
+              {isIndexLoading ? 'Loading search…' : 'Searching…'}
             </p>
           </div>
         )}

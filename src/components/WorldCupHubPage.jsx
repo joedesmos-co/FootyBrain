@@ -117,7 +117,7 @@ export default function WorldCupHubPage() {
           {stats.groupCount} groups · {stats.teamCount} nations in the draw ·{' '}
           {stats.liveInDraw} live national pools · {stats.poolNotAddedInDraw} pool pages not added
           yet · {stats.quizViableCount} nations with quizzes ·{' '}
-          {stats.quizReadyMemberships.toLocaleString()} players with quiz mode in featured pools
+          {stats.quizReadyMemberships.toLocaleString()} quiz-ready players in featured pools
         </p>
         <div className="world-cup-hub__prep-actions">
           <Link to={getInternationalQuizHref()} className="btn btn--primary btn--small">
@@ -169,7 +169,7 @@ export default function WorldCupHubPage() {
                     </p>
                     <p className="world-cup-nation-card__meta">
                       {linked} linked
-                      {quizReady > 0 ? ` · ${quizReady} with quiz mode` : ''}
+                      {quizReady > 0 ? ` · ${quizReady} in quizzes` : ''}
                       {' · '}
                       {rosterStatus.label}
                     </p>
@@ -211,7 +211,7 @@ export default function WorldCupHubPage() {
                   <strong>{meta.displayName}</strong>
                 </Link>
                 <p>
-                  {meta.quizReadyCount} with quiz mode · up to {meta.sessionCap} per session
+                  {meta.quizReadyCount} quiz-ready · up to {meta.sessionCap} per session
                 </p>
               </div>
               <div className="world-cup-quiz-nations__actions">

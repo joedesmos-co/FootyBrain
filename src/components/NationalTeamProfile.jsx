@@ -58,7 +58,7 @@ export default function NationalTeamProfile() {
     if (!canonical) return undefined;
     const title = `${nationalTeam.displayName} · National team · FootyBrain`;
     const description =
-      'National-team player pool page based on linked club database players (not an official World Cup roster).';
+      `${nationalTeam.displayName} national team—player pool linked from club squads (not an official tournament roster).`;
     setSeoMeta({
       title,
       description,
@@ -188,8 +188,8 @@ export default function NationalTeamProfile() {
             <p className="profile__league">{nationalTeam.confederation}</p>
             <h1>{nationalTeam.displayName}</h1>
             <p className="profile__sub">
-              {countLinkedPlayers(nationalTeam.id)} players in database
-              {quizReady.length > 0 ? ` · ${quizReady.length} with quiz mode` : ''}
+              {countLinkedPlayers(nationalTeam.id)} linked players
+              {quizReady.length > 0 ? ` · ${quizReady.length} in quizzes` : ''}
               {nationalTeam.fifaRanking != null ? ` · FIFA rank ${nationalTeam.fifaRanking}` : ''}
             </p>
             {wcRosterStatus ? (
@@ -232,8 +232,8 @@ export default function NationalTeamProfile() {
 
       {showBrowseOnlyPoolBanner ? (
         <p className="national-team-profile__pool-banner" role="status">
-          This national pool is available for browsing. Quiz mode unlocks after more players are
-          editorially approved.
+          Browse the full player pool now—the national team quiz unlocks as more players get quiz
+          clues.
         </p>
       ) : null}
 
@@ -292,9 +292,9 @@ export default function NationalTeamProfile() {
         teamName={nationalTeam.displayName}
         variant="national"
         getTeamName={(teamIdArg) => peekTeamName(teamIdArg)}
-        eyebrow="Squad database"
+        eyebrow="Player pool"
         title="Linked players"
-        intro={`Broad ${nationalTeam.displayName} national player pool in FootyBrain (citizenship and Transfermarkt senior listings) — not an official World Cup roster. Sorted by Importance Score.`}
+        intro={`Players linked to ${nationalTeam.displayName} from club football—sorted by importance score. Not an official tournament roster.`}
       />
     </div>
   );

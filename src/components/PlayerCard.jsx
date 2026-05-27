@@ -22,7 +22,7 @@ function PlayerCard({ player }) {
           <h3 className="player-card__name">{player.name}</h3>
         </div>
         <div className="player-card__actions">
-          <span className="player-card__score" title="FootyBrain Importance Score">
+          <span className="player-card__score" title="FootyBrain importance score">
             {player.importanceScore}
           </span>
           <FavoriteButton

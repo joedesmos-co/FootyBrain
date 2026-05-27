@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { getLiveNationalTeams } from '../data/nationalTeamData';
 import { getManifestLeague } from '../data/contentManifest';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
+import { IMPORTANCE_SCORE_LABEL } from '../utils/consumerCopy';
 import {
   buildCompareInsights,
   getPlayerRoleSummary,
@@ -62,7 +63,7 @@ function ComparePlayerColumn({ player, side, getTeamName }) {
             </dd>
           </div>
           <div className="compare-ref-card__wide">
-            <dt>Importance Score</dt>
+            <dt>{IMPORTANCE_SCORE_LABEL}</dt>
             <dd className="compare-column__score">{player.importanceScore}</dd>
           </div>
         </dl>
@@ -79,7 +80,7 @@ function ComparePlayerColumn({ player, side, getTeamName }) {
 
       {browseOnly && (
         <p className="player-study__note">
-          Browse-only profile — compare facts are available, but quiz/editorial notes are pending.
+          Profile preview—compare facts are available; quiz clues for this player are coming soon.
         </p>
       )}
 

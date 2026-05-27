@@ -345,7 +345,9 @@ export default function PreferencesForm({
             <small>Coming soon</small>
           </span>
         </summary>
-        <p className="prefs-future-note">Future options like difficulty, time limits, and quiz modes will live here.</p>
+        <p className="prefs-future-note">
+          More options—difficulty presets, timers, and quiz styles—will land here later.
+        </p>
       </details>
 
       <details className="prefs-section prefs-section--future">

@@ -21,9 +21,9 @@ export default function NationalTeamsPage() {
       <header className="page-header">
         <h1>National teams</h1>
         <p>
-          Men&apos;s national sides in FootyBrain. Pages show broad national player pools from the
-          club database — not official World Cup rosters. National quizzes need at least{' '}
-          {LIVE_NATIONAL_TEAM_MIN_QUIZ} players with clues.
+          Men&apos;s national sides in FootyBrain—player pools linked from club squads, not official
+          tournament rosters. National quizzes need at least {LIVE_NATIONAL_TEAM_MIN_QUIZ} players
+          with clues.
         </p>
       </header>
 
@@ -35,8 +35,7 @@ export default function NationalTeamsPage() {
         <div className="learning-hub-cta__copy">
           <p className="learning-hub-cta__title">World Cup 2026 prep</p>
           <p>
-            Featured nations, group draw, tournament collections, and international quiz — same
-            player registry as club football.
+            Featured nations, the group draw, tournament collections, and international quizzes.
           </p>
         </div>
         <div className="learning-hub-cta__actions">
@@ -76,7 +75,7 @@ export default function NationalTeamsPage() {
                       </p>
                       <p className="national-teams-page__count">
                         {linked} players
-                        {quizReady > 0 ? ` · ${quizReady} with quiz mode` : ''}
+                        {quizReady > 0 ? ` · ${quizReady} in quizzes` : ''}
                         {linked > 0 && !isLiveNationalTeamQuizViable(team.id) ? (
                           <span className="national-teams-page__quiz-pending">
                             {' '}

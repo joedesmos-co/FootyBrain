@@ -71,7 +71,7 @@ export default function App() {
             <Route path="/onboarding" element={withPageSuspense(OnboardingPage, 'Loading…')} />
             <Route
               path="/browse"
-              element={withPageSuspense(BrowseDatabase, 'Loading database…')}
+              element={withPageSuspense(BrowseDatabase, 'Loading browse…')}
             />
             <Route path="/compare" element={withPageSuspense(ComparePage, 'Loading compare…')} />
             <Route path="/compare-clubs" element={withPageSuspense(ComparePage, 'Loading compare…')} />
@@ -158,8 +158,8 @@ export default function App() {
           <footer className="app__footer" aria-label="Footer">
             <p>FootyBrain · Learn the game. Know the players.</p>
             <p className="app__footer__meta">
-              Updated {DATASET_META.dataAsOf} · {DATASET_META.playerCount} players ·{' '}
-              {DATASET_META.quizEligibleCount} with quiz mode
+              Updated {DATASET_META.dataAsOf} · {DATASET_META.playerCount.toLocaleString()} players
+              · {DATASET_META.quizEligibleCount.toLocaleString()} quiz-ready
             </p>
             <p className="app__footer__feedback">
               Have feedback, found a bug, or want to suggest a feature? Email us at{' '}

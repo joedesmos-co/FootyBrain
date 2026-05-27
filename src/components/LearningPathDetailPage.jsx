@@ -70,8 +70,8 @@ export default function LearningPathDetailPage() {
         <h1>{path.title}</h1>
         <p className="learning-path-detail__desc">{path.description}</p>
         <p className="learning-path-detail__flow">
-          Database flow: <strong>collection → profiles → quiz</strong> (optional extra collection
-          at the end).
+          Study flow: <strong>collection → profiles → quiz</strong> (optional extra collection at
+          the end).
         </p>
         <div className="learning-path-detail__actions">
           <Link to={steps[0].href} className="btn btn--primary">

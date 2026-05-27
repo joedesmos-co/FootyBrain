@@ -642,9 +642,10 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   return (
     <div className="page quiz">
       <header className="page-header">
-        <h1>Quiz Mode</h1>
+        <h1>Quizzes</h1>
         <p>
-          Guess players from clues. Pick a focus, set difficulty, and optionally race the clock.
+          Guess the player from hints—pick a league, club, or nation, set difficulty, and race the
+          clock if you like.
         </p>
       </header>
 
@@ -659,8 +660,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       )}
 
       <section className="filters quiz-filters" aria-label="Quiz setup">
-        <div className="quiz-mode-picker" role="radiogroup" aria-label="Quiz mode">
-          <p className="quiz-mode-picker__label">Mode</p>
+        <div className="quiz-mode-picker" role="radiogroup" aria-label="Quiz type">
+          <p className="quiz-mode-picker__label">Quiz type</p>
           <div className="quiz-mode-grid">
             {QUIZ_TYPE_OPTIONS.map((option) => {
               const count = modeCounts[option.id] ?? 0;
@@ -744,7 +745,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     poolFocus === 'national' && quizCount < QUIZ_MIN_SESSION_POOL;
                   return (
                     <option key={team.id} value={team.id} disabled={isTooSmallForNationalMode}>
-                      {team.displayName} ({quizCount} with quiz mode
+                      {team.displayName} ({quizCount} quiz-ready
                       {isTooSmallForNationalMode ? ` — needs ${QUIZ_MIN_SESSION_POOL}` : ''})
                     </option>
                   );

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { formatClubIdentityTags } from '../utils/clubIdentity';
+import { clubChipSubline } from '../utils/consumerCopy';
 import TeamBadge from './TeamBadge';
 
 export default function LeagueClubChip({ team, quizCount = 0, featured = false }) {
@@ -17,9 +18,7 @@ export default function LeagueClubChip({ team, quizCount = 0, featured = false }
             {identityTag ? (
               <span className="league-club-chip__identity">{identityTag.label}</span>
             ) : null}
-            {quizCount > 0
-              ? `${quizCount} with quiz mode`
-              : 'Browse squad'}
+            {clubChipSubline(quizCount)}
           </span>
         </span>
       </Link>

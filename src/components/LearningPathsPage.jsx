@@ -19,8 +19,8 @@ export default function LearningPathsPage() {
         <p className="page-header__eyebrow">Study flows</p>
         <h1>Learning paths</h1>
         <p>
-          Short, ordered routes through the database—each path chains a collection, profile
-          pages, and a quiz. No accounts required.
+          Short, guided routes—each path chains a collection, player profiles, and a quiz. No
+          account required.
         </p>
         <p className="learning-paths-page__back">
           <Link to="/collections">← All collections</Link>

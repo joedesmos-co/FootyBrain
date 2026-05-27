@@ -82,7 +82,7 @@ function CompareClubColumn({ team, snapshot }) {
             <dd>{avgScore > 0 ? avgScore : '—'}</dd>
           </div>
           <div>
-            <dt>Quiz mode</dt>
+            <dt>Quizzes</dt>
             <dd>{quizReady}</dd>
           </div>
           <div>

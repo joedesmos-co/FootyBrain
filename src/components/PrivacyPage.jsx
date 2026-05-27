@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           Player photos use licensed or placeholder visuals only where available. Many cards show
-          silhouettes or initials until editorial image assets are added.
+          silhouettes or initials until official player photos are added.
         </p>
       </section>
 

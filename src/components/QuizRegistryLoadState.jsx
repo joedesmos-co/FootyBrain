@@ -22,10 +22,10 @@ export default function QuizRegistryLoadState({
     return (
       <div className={`page shell-error ${pageClass}`.trim()}>
         <header className="page-header">
-          <h1>Quiz data unavailable</h1>
+          <h1>Quizzes unavailable right now</h1>
           <p>
-            FootyBrain could not load quiz players. Check your connection and try again, or browse
-            the database while offline recovery loads.
+            We could not load quiz players. Check your connection and try again, or browse players
+            and clubs while things catch up.
           </p>
         </header>
         <div className="empty-state__actions">
@@ -36,7 +36,7 @@ export default function QuizRegistryLoadState({
             Home
           </Link>
           <Link to="/browse" className="btn btn--secondary">
-            Browse database
+            Browse players
           </Link>
         </div>
       </div>

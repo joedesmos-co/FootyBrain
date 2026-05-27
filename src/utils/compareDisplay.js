@@ -23,7 +23,7 @@ export function getPlayerRoleSummary(player) {
  */
 export function getPlayerStrengths(player) {
   if (isBrowseOnlyPlayer(player)) {
-    return ['Browse-only listing — editorial strengths pending review.'];
+    return ['Profile preview—playing strengths coming soon.'];
   }
 
   const style = String(player.playingStyle ?? '').trim();
@@ -64,7 +64,7 @@ export function getSquadStrengthSummary(rosterStats) {
 
   const top =
     topPlayer != null
-      ? `top Importance Score ${topPlayer.importanceScore} (${topPlayer.name})`
+      ? `top importance score ${topPlayer.importanceScore} (${topPlayer.name})`
       : 'no rated leader in sample';
 
   return `${total} players · ${depth} · ${top}`;

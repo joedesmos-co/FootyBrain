@@ -57,7 +57,7 @@ export default function SavedPage() {
               Browse players
             </Link>
             <Link to="/teams" className="btn btn--secondary">
-              Explore teams
+              Explore clubs
             </Link>
           </div>
         </section>

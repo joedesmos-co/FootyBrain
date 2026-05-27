@@ -70,7 +70,7 @@ function titleForPath(pathname) {
 function descriptionForPath(pathname) {
   if (pathname === '/') return SITE_DESCRIPTION;
   if (pathname === '/browse')
-    return 'Search and filter the FootyBrain player database by league, club, nationality, position, and quiz readiness.';
+    return 'Search and filter FootyBrain players by league, club, nationality, position, and more.';
   if (pathname === '/teams')
     return 'Explore club learning pages with squad breakdowns, rivals, legends, and team quizzes when available.';
   if (pathname === '/collections')

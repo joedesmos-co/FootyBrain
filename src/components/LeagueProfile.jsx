@@ -20,6 +20,11 @@ import {
   formatLeagueIdentityTags,
   truncateLeagueText,
 } from '../utils/leagueIdentity';
+import {
+  IMPORTANCE_SCORE_LABEL,
+  QUIZ_COMING_SOON,
+  leagueMetaLine,
+} from '../utils/consumerCopy';
 import DataTrustNotice from './DataTrustNotice';
 import LeagueBadge from './LeagueBadge';
 import LeagueClubChip from './LeagueClubChip';
@@ -64,7 +69,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
 
     setSeoMeta({
       title: `${getLeagueDisplayName(league)} · FootyBrain`,
-      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueTeams.length} clubs · ${leaguePlayers.length} players listed · ${getQuizEligiblePlayers(leaguePlayers).length} with quiz mode.`,
+      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueMetaLine({ clubs: leagueTeams.length, players: leaguePlayers.length, quizReady: getQuizEligiblePlayers(leaguePlayers).length })}.`,
       canonicalUrl: canonical,
       og: {
         title: `${getLeagueDisplayName(league)} · FootyBrain`,
@@ -126,8 +131,11 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             <p className="profile__league">{formatCountryLabel(league.country)}</p>
             <h1>{getLeagueDisplayName(league)}</h1>
             <p className="profile__sub league-hero__sub">
-              {leagueTeams.length} clubs · {quizReadyPlayers.length} with quiz mode ·{' '}
-              {leaguePlayers.length} players listed
+              {leagueMetaLine({
+                clubs: leagueTeams.length,
+                players: leaguePlayers.length,
+                quizReady: quizReadyPlayers.length,
+              })}
             </p>
           </div>
         </div>
@@ -138,7 +146,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             </Link>
           ) : (
             <button type="button" className="btn btn--secondary" disabled>
-              Quiz after editorial review
+              {QUIZ_COMING_SOON}
             </button>
           )}
           <a href="#league-clubs" className="btn btn--secondary">
@@ -214,7 +222,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           <div className="league-section__header">
             <h2 id="league-players-title">Featured players</h2>
             <p className="league-section__meta">
-              Highest Importance Score in {league.name} right now.
+              Top {IMPORTANCE_SCORE_LABEL.toLowerCase()} in {league.name} right now.
             </p>
           </div>
           <ul className="league-spotlight-players">
@@ -256,7 +264,9 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
                 ))}
               </ul>
             ) : (
-              <p className="league-discovery__empty">Rivalry notes coming soon.</p>
+              <p className="league-discovery__empty">
+                Derby and rivalry notes for this league are on the way.
+              </p>
             )}
           </article>
           <article className="league-discovery__card">
@@ -328,9 +338,9 @@ export default function LeagueProfile() {
   if (loadState.status === 'missing') {
     return (
       <div className="page">
-        <p className="empty-state">League not found.</p>
+        <p className="empty-state">We could not find that league.</p>
         <Link to="/browse" className="btn btn--secondary">
-          Back to Browse Database
+          Back to browse
         </Link>
       </div>
     );
@@ -343,9 +353,9 @@ export default function LeagueProfile() {
   if (loadState.status === 'error' || !loadState.shard?.league) {
     return (
       <div className="page">
-        <p className="empty-state">Could not load this league. Try again from Browse.</p>
+        <p className="empty-state">This league did not load. Check your connection and try again.</p>
         <Link to="/browse" className="btn btn--secondary">
-          Back to Browse Database
+          Back to browse
         </Link>
       </div>
     );

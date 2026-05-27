@@ -6,6 +6,7 @@ import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { formatClubIdentityTags, truncateClubText } from '../utils/clubIdentity';
+import { IMPORTANCE_SCORE_LABEL, QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import {
   buildTeamKeyPlayerCards,
   getTeamHonorsList,
@@ -104,21 +105,21 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     {
       label: 'Squad',
       title: 'Know the current squad',
-      text: `Review ${roster.length} player${roster.length === 1 ? '' : 's'} in the squad database, grouped by position with Importance Scores.`,
+      text: `Review ${roster.length} player${roster.length === 1 ? '' : 's'} in the squad, grouped by position and ${IMPORTANCE_SCORE_LABEL.toLowerCase()}.`,
     },
     {
       label: 'Squad',
       title: 'Know the key players',
       text: team.currentKeyPlayers?.length
         ? `Start with ${team.currentKeyPlayers.join(', ')}.`
-        : 'Start with the highest Importance Scores in the squad list below.',
+        : `Start with the highest ${IMPORTANCE_SCORE_LABEL.toLowerCase()} in the squad list below.`,
     },
     {
       label: 'History',
       title: 'Learn the rivals',
       text: team.rivals?.length
         ? `Understand why matches against ${team.rivals.join(' and ')} matter to supporters.`
-        : 'Club rivalries and local clássicos are being added in a later editorial pass.',
+        : 'Classic derbies and local rivalries are being added soon.',
     },
     {
       label: 'History',
@@ -187,7 +188,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
           ) : (
             <>
               <button type="button" className="btn btn--secondary" disabled>
-                Quiz after editorial review
+                {QUIZ_COMING_SOON}
               </button>
               <a href="#team-squad" className="btn btn--secondary">
                 Browse squad
@@ -299,7 +300,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
                 </ul>
               ) : (
                 <p className="team-honors-card__empty">
-                  Major trophies and titles will appear here as editorial data is added.
+                  Trophy history and honours will be added here as we expand club profiles.
                 </p>
               )}
             </section>
@@ -333,7 +334,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
                 </Link>
               ) : (
                 <button type="button" className="btn btn--secondary" disabled>
-                  Quiz after editorial review
+                  {QUIZ_COMING_SOON}
                 </button>
               )}
             </div>
@@ -341,7 +342,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
               <p className="player-study__note">
                 {quizReadyRoster.length > 0
                   ? `Team quiz unlocks at ${QUIZ_MIN_SESSION_POOL}+ players with clues (${quizReadyRoster.length} so far).`
-                  : 'This squad is browse-ready now; team quiz mode unlocks after featured player editorial is approved.'}
+                  : 'Explore the full squad now—the club quiz unlocks once more players have quiz clues.'}
               </p>
             )}
             <ol className="fan-path__steps fan-path__steps--stacked">
@@ -441,7 +442,7 @@ export default function TeamProfile() {
       <div className="page">
         <p className="empty-state">Team not found.</p>
         <Link to="/teams" className="btn btn--secondary">
-          Back to Team Learning
+          Back to clubs
         </Link>
       </div>
     );
@@ -450,9 +451,9 @@ export default function TeamProfile() {
   if (usesShard && shardState.status === 'error') {
     return (
       <div className="page">
-        <p className="empty-state">Could not load this squad. Try again from Browse.</p>
+        <p className="empty-state">Could not load this squad. Check your connection and try again.</p>
         <Link to="/teams" className="btn btn--secondary">
-          Back to Team Learning
+          Back to clubs
         </Link>
       </div>
     );

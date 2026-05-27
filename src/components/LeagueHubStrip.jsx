@@ -3,6 +3,7 @@ import {
   parseFamousClubLabel,
   truncateLeagueText,
 } from '../utils/leagueIdentity';
+import { leagueHubQuizLabel } from '../utils/consumerCopy';
 import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
 
 function Fact({ label, children }) {
@@ -34,7 +35,7 @@ export default function LeagueHubStrip({
       <dl className="league-hub__facts">
         <Fact label="Country">{formatCountryLabel(league.country)}</Fact>
         <Fact label="Clubs">{clubCount}</Fact>
-        <Fact label="Quiz mode">{quizReadyCount} players</Fact>
+        <Fact label="Quizzes">{leagueHubQuizLabel(quizReadyCount)}</Fact>
       </dl>
 
       {playstyleSnapshot && (

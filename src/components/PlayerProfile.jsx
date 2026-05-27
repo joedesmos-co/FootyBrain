@@ -6,6 +6,7 @@ import { peekTeamName } from '../data/teamStore';
 import { useFavorites } from '../hooks/useFavorites';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
+import { IMPORTANCE_SCORE_LABEL } from '../utils/consumerCopy';
 import { buildCareerSummary, getRoleSummary } from '../utils/playerImportance';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
@@ -309,7 +310,7 @@ export default function PlayerProfile() {
       <div className="page">
         <p className="empty-state">Player not found.</p>
         <Link to="/browse" className="btn btn--secondary">
-          Back to database
+          Back to browse
         </Link>
       </div>
     );
@@ -461,7 +462,7 @@ export default function PlayerProfile() {
         </div>
         <div className="profile__side-actions player-profile__hero-aside">
           <div className="profile__score-block">
-            <span className="profile__score-label">Importance Score</span>
+            <span className="profile__score-label">{IMPORTANCE_SCORE_LABEL}</span>
             <span className="profile__score-value">{player.importanceScore}</span>
           </div>
           <FavoriteButton
@@ -476,8 +477,8 @@ export default function PlayerProfile() {
 
       {browseOnly && (
         <p className="player-study__note" role="status">
-          Browse-only profile — factual squad data shown below. Editorial quiz hints are pending;
-          Quiz and Daily still use approved featured players only.
+          Profile preview—facts and career stops below are ready to study. Full quiz clues for this
+          player are on the way.
         </p>
       )}
 
@@ -563,7 +564,7 @@ export default function PlayerProfile() {
               ))}
             </ol>
           ) : (
-            <PlayerEmptyState>Career milestones will appear here</PlayerEmptyState>
+            <PlayerEmptyState>Career milestones are on the way for this player.</PlayerEmptyState>
           )}
           {hasCareerStops && (
             <details className="player-profile__details">
@@ -584,7 +585,7 @@ export default function PlayerProfile() {
               ))}
             </ul>
           ) : (
-            <PlayerEmptyState>More details coming soon</PlayerEmptyState>
+            <PlayerEmptyState>More player details are on the way.</PlayerEmptyState>
           )}
         </article>
 

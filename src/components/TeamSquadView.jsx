@@ -109,7 +109,7 @@ export default function TeamSquadView({
   teamName,
   variant = 'club',
   getTeamName,
-  eyebrow = 'Squad database',
+  eyebrow = 'Squad',
   title = 'Club Squad View',
   intro,
 }) {
@@ -145,7 +145,7 @@ export default function TeamSquadView({
           <h2 id="team-squad-title">{title}</h2>
           <p className="team-squad__intro">
             {intro ??
-              `Players for ${teamName}, grouped by position and sorted by Importance Score.`}
+              `Players for ${teamName}, grouped by position and sorted by importance score.`}
           </p>
           <DataTrustNotice compact />
         </div>
@@ -161,7 +161,7 @@ export default function TeamSquadView({
           <dd>{formatAverageAge(summary.ageStats)}</dd>
         </div>
         <div className="team-squad__stat">
-          <dt>Quiz mode</dt>
+          <dt>Quizzes</dt>
           <dd>
             {summary.quizReady}
             <span className="team-squad__stat-note">players</span>
@@ -230,7 +230,7 @@ export default function TeamSquadView({
                         {squadRowMeta(player, variant, getTeamName)}
                       </span>
                     </span>
-                    <span className="team-squad__row-score" title="Importance Score">
+                    <span className="team-squad__row-score" title="Importance score">
                       <span className="team-squad__row-score-label">Score</span>
                       <span className="team-squad__row-score-value">{player.importanceScore}</span>
                     </span>

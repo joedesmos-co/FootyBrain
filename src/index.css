@@ -6599,6 +6599,20 @@ div.empty-state > p {
   gap: 0.65rem;
 }
 
+p.empty-state,
+p.browse-results-empty {
+  margin: 0;
+  padding: 1.35rem 1.1rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(16, 26, 23, 0.88);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: center;
+  max-width: 100%;
+}
+
 @media (max-width: 980px) {
   .hero {
     grid-template-columns: 1fr;

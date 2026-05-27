@@ -1,5 +1,5 @@
 /**
- * Lightweight notice for external TM club stubs (national-pool imports).
+ * Notice for minimal club references tied to national-team player pools.
  */
 export default function ExternalStubNotice({ compact = false }) {
   return (
@@ -7,8 +7,7 @@ export default function ExternalStubNotice({ compact = false }) {
       className={`external-stub-notice${compact ? ' external-stub-notice--compact' : ''}`}
       role="note"
     >
-      This is a lightweight club reference used for national-pool players. A full club profile
-      may be added later.
+      Quick club reference for national-team players—a full club profile is on the way.
     </p>
   );
 }

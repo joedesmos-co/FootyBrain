@@ -77,10 +77,10 @@ const PAGE_RESULTS = [
   },
   {
     id: 'browse',
-    name: 'Browse Database',
-    subtitle: 'Players, leagues, clubs',
+    name: 'Browse',
+    subtitle: 'Players, clubs, leagues',
     path: '/browse',
-    searchAliases: ['browse', 'database', 'players database'],
+    searchAliases: ['browse', 'database', 'players', 'clubs'],
   },
   {
     id: 'quiz',

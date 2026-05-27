@@ -23,11 +23,11 @@ export default function TeamLearning() {
   return (
     <div className="page teams-page">
       <header className="page-header">
-        <h1>Team Learning</h1>
-        <p>Club history, squads, rivals, and fan notes.</p>
+        <h1>Clubs</h1>
+        <p>Squads, rivals, legends, and fan culture for every club.</p>
       </header>
 
-      <section className="filters" aria-label="Team filters">
+      <section className="filters" aria-label="Club filters">
         <div className="filters__row">
           <label className="filter-field">
             <span>League</span>
@@ -48,14 +48,14 @@ export default function TeamLearning() {
             <span>Search</span>
             <input
               type="search"
-              placeholder="Search by team name…"
+              placeholder="Search clubs…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </label>
         </div>
         <p className="filters__count">
-          {filteredTeams.length} team{filteredTeams.length !== 1 ? 's' : ''} found
+          {filteredTeams.length} club{filteredTeams.length !== 1 ? 's' : ''} found
         </p>
       </section>
 
@@ -64,8 +64,8 @@ export default function TeamLearning() {
         {filteredTeams.length > 0 ? (
           filteredTeams.map((team) => <TeamCard key={team.id} team={team} />)
         ) : (
-          <section className="empty-state" aria-label="No matching teams">
-            <p>No teams match your search.</p>
+          <section className="empty-state" aria-label="No matching clubs">
+            <p>No clubs match your search. Try another league or spelling.</p>
             <div className="empty-state__actions">
               <button
                 type="button"

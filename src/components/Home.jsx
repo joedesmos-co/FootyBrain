@@ -21,7 +21,7 @@ export default function Home() {
             </Link>
             <div className="hero__actions-row">
               <Link to="/quiz" className="btn btn--secondary">
-                Quiz mode
+                Play quiz
               </Link>
               <Link to="/daily" className="btn btn--secondary">
                 Daily challenge

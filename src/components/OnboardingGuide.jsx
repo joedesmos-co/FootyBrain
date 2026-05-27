@@ -10,7 +10,8 @@ export default function OnboardingGuide({ showLinks = true }) {
         How FootyBrain works
       </h2>
       <p className="onboarding-guide__lead">
-        One men’s football database on this device—browse first, then quiz and compare when you are ready.
+        Learn players, clubs, and leagues on this device—browse first, then quizzes and compare when
+        you are ready.
       </p>
       <ol className="onboarding-guide__list">
         {steps.map((step, index) => (

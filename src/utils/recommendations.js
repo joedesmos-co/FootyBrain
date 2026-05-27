@@ -108,7 +108,7 @@ function scorePlayers(context) {
 
   for (const player of players) {
     let score = player.importanceScore / 20;
-    let reason = 'High-impact player in the database';
+    let reason = 'Standout player worth knowing';
 
     if (savedSet.has(player.id)) {
       score += 12;
