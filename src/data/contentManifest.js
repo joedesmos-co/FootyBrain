@@ -61,6 +61,12 @@ export const CONTENT_MANIFEST = {
     'qatar',
     'saudi-arabia',
     'iran',
+    'south-africa',
+    'panama',
+    'iraq',
+    'jordan',
+    'uzbekistan',
+    'new-zealand',
   ],
   leagues: [
     {

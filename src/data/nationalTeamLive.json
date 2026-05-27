@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T02:45:37.861Z",
+    "generatedAt": "2026-05-27T02:54:24.101Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -49,15 +49,21 @@
       "egypt",
       "qatar",
       "saudi-arabia",
-      "iran"
+      "iran",
+      "south-africa",
+      "panama",
+      "iraq",
+      "jordan",
+      "uzbekistan",
+      "new-zealand"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 47,
-      "memberships": 1487,
+      "nationalTeams": 53,
+      "memberships": 1748,
       "unmatchedTmSquadRows": 289,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
@@ -109,7 +115,13 @@
       "egypt": 46,
       "qatar": 51,
       "saudi-arabia": 46,
-      "iran": 16
+      "iran": 16,
+      "south-africa": 73,
+      "panama": 41,
+      "iraq": 43,
+      "jordan": 40,
+      "uzbekistan": 42,
+      "new-zealand": 22
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -158,7 +170,13 @@
       "egypt": 41,
       "qatar": 51,
       "saudi-arabia": 45,
-      "iran": 16
+      "iran": 16,
+      "south-africa": 68,
+      "panama": 38,
+      "iraq": 42,
+      "jordan": 39,
+      "uzbekistan": 41,
+      "new-zealand": 19
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -207,7 +225,13 @@
       "egypt": 5,
       "qatar": 0,
       "saudi-arabia": 1,
-      "iran": 0
+      "iran": 0,
+      "south-africa": 5,
+      "panama": 3,
+      "iraq": 1,
+      "jordan": 1,
+      "uzbekistan": 1,
+      "new-zealand": 3
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -256,7 +280,13 @@
       "egypt": 1,
       "qatar": 0,
       "saudi-arabia": 0,
-      "iran": 0
+      "iran": 0,
+      "south-africa": 0,
+      "panama": 0,
+      "iraq": 0,
+      "jordan": 0,
+      "uzbekistan": 1,
+      "new-zealand": 0
     }
   },
   "nationalTeams": [
@@ -1534,6 +1564,167 @@
       "fifaRanking": 21,
       "tmCode": "iran",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "south-africa",
+      "displayName": "South Africa",
+      "country": "South Africa",
+      "confederationId": "caf",
+      "confederation": "CAF",
+      "rivalIds": [
+        "ghana",
+        "nigeria"
+      ],
+      "searchAliases": [
+        "rsa",
+        "bafana bafana",
+        "south africa national team",
+        "south africa nt"
+      ],
+      "badgeTheme": {
+        "from": "#16a34a",
+        "to": "#fbbf24",
+        "accent": "#1f2937"
+      },
+      "fanGuide": "Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names linked from FootyBrain’s club registry national pool.",
+      "shortHistory": "Men’s senior team of South Africa (SAFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 60,
+      "tmCode": "south-africa",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "panama",
+      "displayName": "Panama",
+      "country": "Panama",
+      "confederationId": "concacaf",
+      "confederation": "CONCACAF",
+      "rivalIds": [
+        "mexico",
+        "united-states"
+      ],
+      "searchAliases": [
+        "pan",
+        "los canaleros",
+        "panama national team",
+        "panama nt"
+      ],
+      "badgeTheme": {
+        "from": "#dc2626",
+        "to": "#1d4ed8",
+        "accent": "#fde047"
+      },
+      "fanGuide": "Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and linked players in FootyBrain’s national pool.",
+      "shortHistory": "Men’s senior team of Panama (FEPAFUT). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 33,
+      "tmCode": "panama",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "iraq",
+      "displayName": "Iraq",
+      "country": "Iraq",
+      "confederationId": "afc",
+      "confederation": "AFC",
+      "rivalIds": [
+        "iran",
+        "jordan"
+      ],
+      "searchAliases": [
+        "irq",
+        "lions of mesopotamia",
+        "iraq national team",
+        "iraq nt"
+      ],
+      "badgeTheme": {
+        "from": "#16a34a",
+        "to": "#111827",
+        "accent": "#dc2626"
+      },
+      "fanGuide": "The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and linked names from FootyBrain’s club registry pool.",
+      "shortHistory": "Men’s senior team of Iraq (IFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 57,
+      "tmCode": "iraq",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "jordan",
+      "displayName": "Jordan",
+      "country": "Jordan",
+      "confederationId": "afc",
+      "confederation": "AFC",
+      "rivalIds": [
+        "iraq",
+        "saudi-arabia"
+      ],
+      "searchAliases": [
+        "jor",
+        "nashama",
+        "jordan national team",
+        "jordan nt"
+      ],
+      "badgeTheme": {
+        "from": "#111827",
+        "to": "#dc2626",
+        "accent": "#f8fafc"
+      },
+      "fanGuide": "Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "Men’s senior team of Jordan (JFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 63,
+      "tmCode": "jordan",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "uzbekistan",
+      "displayName": "Uzbekistan",
+      "country": "Uzbekistan",
+      "confederationId": "afc",
+      "confederation": "AFC",
+      "rivalIds": [
+        "iran",
+        "korea-republic"
+      ],
+      "searchAliases": [
+        "uzb",
+        "white wolves",
+        "uzbekistan national team",
+        "uzbekistan nt"
+      ],
+      "badgeTheme": {
+        "from": "#38bdf8",
+        "to": "#16a34a",
+        "accent": "#f8fafc"
+      },
+      "fanGuide": "The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and linked players in FootyBrain’s national pool.",
+      "shortHistory": "Men’s senior team of Uzbekistan (UFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 50,
+      "tmCode": "uzbekistan",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "new-zealand",
+      "displayName": "New Zealand",
+      "country": "New Zealand",
+      "confederationId": "ofc",
+      "confederation": "OFC",
+      "rivalIds": [
+        "australia"
+      ],
+      "searchAliases": [
+        "nzl",
+        "all whites",
+        "new zealand national team",
+        "new zealand nt"
+      ],
+      "badgeTheme": {
+        "from": "#111827",
+        "to": "#1d4ed8",
+        "accent": "#f8fafc"
+      },
+      "fanGuide": "The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "Men’s senior team of New Zealand (NZF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fifaRanking": 85,
+      "tmCode": "new-zealand",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1552,6 +1743,34 @@
       "tmSourceId": "853672"
     },
     {
+      "playerId": "tm-682225",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "682225"
+    },
+    {
+      "playerId": "tm-561699",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "561699"
+    },
+    {
       "playerId": "tm-884820",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -1564,6 +1783,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "884820"
+    },
+    {
+      "playerId": "tm-651375",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "651375"
     },
     {
       "playerId": "tm-933908",
@@ -1606,6 +1839,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "962090"
+    },
+    {
+      "playerId": "tm-431911",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "431911"
     },
     {
       "playerId": "tm-382478",
@@ -1692,6 +1939,20 @@
       "tmSourceId": "184892"
     },
     {
+      "playerId": "tm-509709",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "509709"
+    },
+    {
       "playerId": "tm-286047",
       "nationalTeamId": "italy",
       "role": "senior",
@@ -1718,6 +1979,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "340303"
+    },
+    {
+      "playerId": "tm-1032334",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1032334"
+    },
+    {
+      "playerId": "tm-867662",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "867662"
     },
     {
       "playerId": "tm-272622",
@@ -1776,6 +2065,34 @@
       "tmSourceId": "585973"
     },
     {
+      "playerId": "tm-698415",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "698415"
+    },
+    {
+      "playerId": "tm-234006",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "234006"
+    },
+    {
       "playerId": "tm-1146988",
       "nationalTeamId": "japan",
       "role": "senior",
@@ -1790,6 +2107,20 @@
       "tmSourceId": "1146988"
     },
     {
+      "playerId": "tm-492558",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "492558"
+    },
+    {
       "playerId": "tm-967000",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -1802,6 +2133,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "967000"
+    },
+    {
+      "playerId": "tm-401086",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "401086"
     },
     {
       "playerId": "tm-308526",
@@ -1916,6 +2261,20 @@
       "tmSourceId": "331505"
     },
     {
+      "playerId": "tm-877682",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "877682"
+    },
+    {
       "playerId": "tm-202886",
       "nationalTeamId": "england",
       "role": "senior",
@@ -1928,6 +2287,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "202886"
+    },
+    {
+      "playerId": "tm-561481",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "561481"
     },
     {
       "playerId": "tm-552955",
@@ -1986,6 +2359,34 @@
       "tmSourceId": "495752"
     },
     {
+      "playerId": "tm-538416",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "538416"
+    },
+    {
+      "playerId": "tm-311958",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "311958"
+    },
+    {
       "playerId": "tm-646707",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -2000,6 +2401,20 @@
       "tmSourceId": "646707"
     },
     {
+      "playerId": "tm-596913",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "596913"
+    },
+    {
       "playerId": "tm-865104",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -2012,6 +2427,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "865104"
+    },
+    {
+      "playerId": "tm-882538",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "882538"
     },
     {
       "playerId": "tm-947143",
@@ -2210,6 +2639,20 @@
       "tmSourceId": "401530"
     },
     {
+      "playerId": "tm-502842",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "502842"
+    },
+    {
       "playerId": "tm-371436",
       "nationalTeamId": "chile",
       "role": "senior",
@@ -2350,6 +2793,20 @@
       "tmSourceId": "1154876"
     },
     {
+      "playerId": "tm-733234",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "733234"
+    },
+    {
       "playerId": "tm-372542",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -2476,6 +2933,20 @@
       "tmSourceId": "415381"
     },
     {
+      "playerId": "tm-207843",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "207843"
+    },
+    {
       "playerId": "tm-863204",
       "nationalTeamId": "poland",
       "role": "senior",
@@ -2518,6 +2989,20 @@
       "tmSourceId": "735812"
     },
     {
+      "playerId": "tm-591431",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "591431"
+    },
+    {
       "playerId": "tm-361914",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -2530,6 +3015,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "361914"
+    },
+    {
+      "playerId": "tm-734751",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "734751"
     },
     {
       "playerId": "tm-617059",
@@ -2602,6 +3101,20 @@
       "tmSourceId": "265707"
     },
     {
+      "playerId": "tm-512979",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "512979"
+    },
+    {
       "playerId": "tm-432092",
       "nationalTeamId": "italy",
       "role": "senior",
@@ -2658,6 +3171,34 @@
       "tmSourceId": "159471"
     },
     {
+      "playerId": "tm-417536",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "417536"
+    },
+    {
+      "playerId": "tm-844485",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "844485"
+    },
+    {
       "playerId": "tm-1005575",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -2672,6 +3213,20 @@
       "tmSourceId": "1005575"
     },
     {
+      "playerId": "tm-684307",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "684307"
+    },
+    {
       "playerId": "tm-652061",
       "nationalTeamId": "czechia",
       "role": "senior",
@@ -2684,6 +3239,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "652061"
+    },
+    {
+      "playerId": "tm-1195704",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1195704"
     },
     {
       "playerId": "tm-480990",
@@ -2728,6 +3297,20 @@
       "tmSourceId": "128223"
     },
     {
+      "playerId": "tm-744040",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "744040"
+    },
+    {
       "playerId": "tm-532776",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -2768,6 +3351,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "272278"
+    },
+    {
+      "playerId": "tm-419247",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "419247"
     },
     {
       "playerId": "tm-557407",
@@ -2896,6 +3493,20 @@
       "tmSourceId": "730581"
     },
     {
+      "playerId": "tm-735984",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "735984"
+    },
+    {
       "playerId": "tm-569384",
       "nationalTeamId": "france",
       "role": "senior",
@@ -2992,6 +3603,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1083245"
+    },
+    {
+      "playerId": "tm-952341",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "952341"
+    },
+    {
+      "playerId": "tm-746535",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "746535"
     },
     {
       "playerId": "tm-531065",
@@ -3190,6 +3829,34 @@
       "tmSourceId": "943837"
     },
     {
+      "playerId": "tm-1279745",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1279745"
+    },
+    {
+      "playerId": "tm-734749",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "734749"
+    },
+    {
       "playerId": "tm-559324",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -3202,6 +3869,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "559324"
+    },
+    {
+      "playerId": "tm-801354",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "801354"
     },
     {
       "playerId": "tm-1188907",
@@ -3260,6 +3941,20 @@
       "tmSourceId": "956588"
     },
     {
+      "playerId": "tm-736043",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "736043"
+    },
+    {
       "playerId": "tm-344069",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -3272,6 +3967,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "344069"
+    },
+    {
+      "playerId": "tm-353432",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "353432"
+    },
+    {
+      "playerId": "tm-539502",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "539502"
     },
     {
       "playerId": "tm-999127",
@@ -3358,6 +4081,34 @@
       "tmSourceId": "321247"
     },
     {
+      "playerId": "tm-746781",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "746781"
+    },
+    {
+      "playerId": "tm-377268",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "377268"
+    },
+    {
       "playerId": "tm-565822",
       "nationalTeamId": "england",
       "role": "senior",
@@ -3428,6 +4179,20 @@
       "tmSourceId": "786436"
     },
     {
+      "playerId": "tm-274536",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "274536"
+    },
+    {
       "playerId": "tm-429217",
       "nationalTeamId": "canada",
       "role": "senior",
@@ -3440,6 +4205,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "429217"
+    },
+    {
+      "playerId": "tm-542073",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "542073"
+    },
+    {
+      "playerId": "tm-804472",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "804472"
     },
     {
       "playerId": "tm-735570",
@@ -3510,6 +4303,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "80894"
+    },
+    {
+      "playerId": "tm-1317634",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1317634"
     },
     {
       "playerId": "tm-391766",
@@ -3652,6 +4459,20 @@
       "tmSourceId": "266935"
     },
     {
+      "playerId": "tm-850132",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "850132"
+    },
+    {
       "playerId": "tm-736005",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -3664,6 +4485,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "736005"
+    },
+    {
+      "playerId": "tm-636981",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "636981"
     },
     {
       "playerId": "tm-709187",
@@ -3694,6 +4529,20 @@
       "tmSourceId": "324358"
     },
     {
+      "playerId": "tm-261842",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "261842"
+    },
+    {
       "playerId": "tm-357992",
       "nationalTeamId": "italy",
       "role": "senior",
@@ -3706,6 +4555,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "357992"
+    },
+    {
+      "playerId": "tm-926690",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "926690"
     },
     {
       "playerId": "tm-328784",
@@ -3750,6 +4613,20 @@
       "tmSourceId": "830604"
     },
     {
+      "playerId": "tm-1404746",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1404746"
+    },
+    {
       "playerId": "tm-731466",
       "nationalTeamId": "england",
       "role": "senior",
@@ -3790,6 +4667,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1208196"
+    },
+    {
+      "playerId": "tm-500289",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "500289"
     },
     {
       "playerId": "tm-658533",
@@ -3848,6 +4739,48 @@
       "tmSourceId": "141805"
     },
     {
+      "playerId": "tm-1115028",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1115028"
+    },
+    {
+      "playerId": "tm-576265",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "576265"
+    },
+    {
+      "playerId": "tm-264903",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "264903"
+    },
+    {
       "playerId": "tm-1063329",
       "nationalTeamId": "spain",
       "role": "senior",
@@ -3860,6 +4793,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1063329"
+    },
+    {
+      "playerId": "tm-401054",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "401054"
     },
     {
       "playerId": "tm-593482",
@@ -4030,6 +4977,20 @@
       "tmSourceId": "255508"
     },
     {
+      "playerId": "tm-102683",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "102683"
+    },
+    {
       "playerId": "tm-1264176",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -4042,6 +5003,48 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1264176"
+    },
+    {
+      "playerId": "tm-403809",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "403809"
+    },
+    {
+      "playerId": "tm-900540",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "900540"
+    },
+    {
+      "playerId": "tm-450806",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "450806"
     },
     {
       "playerId": "tm-575998",
@@ -4086,6 +5089,20 @@
       "tmSourceId": "1126894"
     },
     {
+      "playerId": "tm-931188",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "931188"
+    },
+    {
       "playerId": "tm-1244173",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -4098,6 +5115,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1244173"
+    },
+    {
+      "playerId": "tm-1210357",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1210357"
     },
     {
       "playerId": "tm-406634",
@@ -4128,6 +5159,20 @@
       "tmSourceId": "659543"
     },
     {
+      "playerId": "tm-732828",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "732828"
+    },
+    {
       "playerId": "tm-712192",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -4154,6 +5199,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "864537"
+    },
+    {
+      "playerId": "tm-589646",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "589646"
+    },
+    {
+      "playerId": "tm-1236525",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1236525"
     },
     {
       "playerId": "tm-845605",
@@ -4310,6 +5383,20 @@
       "tmSourceId": "890385"
     },
     {
+      "playerId": "tm-295469",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "295469"
+    },
+    {
       "playerId": "tm-518350",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -4336,6 +5423,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1183281"
+    },
+    {
+      "playerId": "tm-949320",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "949320"
+    },
+    {
+      "playerId": "tm-562022",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "562022"
     },
     {
       "playerId": "tm-607034",
@@ -4394,6 +5509,48 @@
       "tmSourceId": "798404"
     },
     {
+      "playerId": "tm-295483",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "295483"
+    },
+    {
+      "playerId": "tm-617021",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "617021"
+    },
+    {
+      "playerId": "tm-312690",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "312690"
+    },
+    {
       "playerId": "tm-622380",
       "nationalTeamId": "italy",
       "role": "senior",
@@ -4420,6 +5577,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "699488"
+    },
+    {
+      "playerId": "tm-923177",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "923177"
     },
     {
       "playerId": "tm-559328",
@@ -4548,6 +5719,20 @@
       "tmSourceId": "455181"
     },
     {
+      "playerId": "tm-619087",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "619087"
+    },
+    {
       "playerId": "tm-496094",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -4588,6 +5773,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "463618"
+    },
+    {
+      "playerId": "tm-630015",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "630015"
     },
     {
       "playerId": "tm-897505",
@@ -4632,6 +5831,20 @@
       "tmSourceId": "743386"
     },
     {
+      "playerId": "tm-866345",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "866345"
+    },
+    {
       "playerId": "tm-994604",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -4658,6 +5871,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "876298"
+    },
+    {
+      "playerId": "tm-617019",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "617019"
     },
     {
       "playerId": "tm-1092876",
@@ -4772,6 +5999,20 @@
       "tmSourceId": "730531"
     },
     {
+      "playerId": "tm-561485",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "561485"
+    },
+    {
       "playerId": "tm-236490",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -4784,6 +6025,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "236490"
+    },
+    {
+      "playerId": "tm-189523",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "189523"
+    },
+    {
+      "playerId": "tm-294525",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "294525"
     },
     {
       "playerId": "tm-228727",
@@ -4840,6 +6109,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "507486"
+    },
+    {
+      "playerId": "tm-1106548",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1106548"
     },
     {
       "playerId": "tm-1129222",
@@ -4912,6 +6195,20 @@
       "tmSourceId": "943150"
     },
     {
+      "playerId": "tm-1015991",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1015991"
+    },
+    {
       "playerId": "tm-242631",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -4924,6 +6221,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "242631"
+    },
+    {
+      "playerId": "tm-664057",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "664057"
+    },
+    {
+      "playerId": "tm-630017",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "630017"
     },
     {
       "playerId": "tm-323872",
@@ -5010,6 +6335,20 @@
       "tmSourceId": "222669"
     },
     {
+      "playerId": "tm-440383",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "440383"
+    },
+    {
       "playerId": "tm-358143",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -5052,6 +6391,20 @@
       "tmSourceId": "524000"
     },
     {
+      "playerId": "tm-1105078",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1105078"
+    },
+    {
       "playerId": "tm-432773",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -5064,6 +6417,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "432773"
+    },
+    {
+      "playerId": "tm-345716",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "345716"
+    },
+    {
+      "playerId": "tm-704545",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "704545"
     },
     {
       "playerId": "tm-85288",
@@ -5150,6 +6531,34 @@
       "tmSourceId": "672381"
     },
     {
+      "playerId": "tm-443379",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "443379"
+    },
+    {
+      "playerId": "tm-1053568",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1053568"
+    },
+    {
       "playerId": "tm-393325",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -5178,6 +6587,20 @@
       "tmSourceId": "362977"
     },
     {
+      "playerId": "tm-436370",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "436370"
+    },
+    {
       "playerId": "tm-470394",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -5204,6 +6627,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "463600"
+    },
+    {
+      "playerId": "tm-945266",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "945266"
     },
     {
       "playerId": "tm-326031",
@@ -5248,6 +6685,20 @@
       "tmSourceId": "1143173"
     },
     {
+      "playerId": "tm-895249",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "895249"
+    },
+    {
       "playerId": "tm-901019",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -5260,6 +6711,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "901019"
+    },
+    {
+      "playerId": "tm-560463",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "560463"
     },
     {
       "playerId": "tm-822331",
@@ -5318,6 +6783,20 @@
       "tmSourceId": "1061336"
     },
     {
+      "playerId": "tm-110303",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "110303"
+    },
+    {
       "playerId": "tm-662242",
       "nationalTeamId": "senegal",
       "role": "senior",
@@ -5344,6 +6823,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "206040"
+    },
+    {
+      "playerId": "tm-258304",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "258304"
     },
     {
       "playerId": "tm-961297",
@@ -5386,6 +6879,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "928499"
+    },
+    {
+      "playerId": "tm-453370",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "453370"
     },
     {
       "playerId": "tm-287579",
@@ -5542,6 +7049,20 @@
       "tmSourceId": "1061122"
     },
     {
+      "playerId": "tm-1248272",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1248272"
+    },
+    {
       "playerId": "tm-187987",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -5556,6 +7077,20 @@
       "tmSourceId": "187987"
     },
     {
+      "playerId": "tm-881506",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "881506"
+    },
+    {
       "playerId": "tm-509898",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -5568,6 +7103,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "509898"
+    },
+    {
+      "playerId": "tm-610581",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "610581"
     },
     {
       "playerId": "tm-185363",
@@ -5654,6 +7203,20 @@
       "tmSourceId": "420064"
     },
     {
+      "playerId": "tm-741098",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "741098"
+    },
+    {
       "playerId": "tm-689637",
       "nationalTeamId": "morocco",
       "role": "senior",
@@ -5696,6 +7259,20 @@
       "tmSourceId": "701819"
     },
     {
+      "playerId": "tm-514175",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "514175"
+    },
+    {
       "playerId": "tm-981693",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -5722,6 +7299,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "607854"
+    },
+    {
+      "playerId": "tm-310943",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "310943"
     },
     {
       "playerId": "tm-1071956",
@@ -5850,6 +7441,20 @@
       "tmSourceId": "698678"
     },
     {
+      "playerId": "tm-337884",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "337884"
+    },
+    {
       "playerId": "tm-724547",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -5962,6 +7567,20 @@
       "tmSourceId": "1234622"
     },
     {
+      "playerId": "tm-617018",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "617018"
+    },
+    {
       "playerId": "tm-933797",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -5990,6 +7609,20 @@
       "tmSourceId": "563963"
     },
     {
+      "playerId": "tm-877687",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "877687"
+    },
+    {
       "playerId": "tm-185524",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -6016,6 +7649,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "215094"
+    },
+    {
+      "playerId": "tm-435086",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "435086"
     },
     {
       "playerId": "tm-1020855",
@@ -6102,6 +7749,20 @@
       "tmSourceId": "557613"
     },
     {
+      "playerId": "tm-892175",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "892175"
+    },
+    {
       "playerId": "tm-351809",
       "nationalTeamId": "spain",
       "role": "senior",
@@ -6170,6 +7831,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1093277"
+    },
+    {
+      "playerId": "tm-801989",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "801989"
+    },
+    {
+      "playerId": "tm-579037",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "579037"
     },
     {
       "playerId": "tm-696164",
@@ -6270,6 +7959,20 @@
       "tmSourceId": "1064506"
     },
     {
+      "playerId": "tm-485549",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "485549"
+    },
+    {
       "playerId": "tm-465966",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -6282,6 +7985,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "465966"
+    },
+    {
+      "playerId": "tm-126019",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "126019"
     },
     {
       "playerId": "tm-337333",
@@ -6312,6 +8029,20 @@
       "tmSourceId": "249360"
     },
     {
+      "playerId": "tm-553452",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "553452"
+    },
+    {
       "playerId": "tm-800176",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -6324,6 +8055,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "800176"
+    },
+    {
+      "playerId": "tm-294502",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "294502"
     },
     {
       "playerId": "tm-357498",
@@ -6368,6 +8113,20 @@
       "tmSourceId": "597000"
     },
     {
+      "playerId": "tm-866378",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "866378"
+    },
+    {
       "playerId": "tm-350219",
       "nationalTeamId": "spain",
       "role": "senior",
@@ -6408,6 +8167,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "169880"
+    },
+    {
+      "playerId": "tm-1101761",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1101761"
+    },
+    {
+      "playerId": "tm-1154910",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1154910"
     },
     {
       "playerId": "tm-635445",
@@ -6536,6 +8323,20 @@
       "tmSourceId": "1158001"
     },
     {
+      "playerId": "tm-467616",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "467616"
+    },
+    {
       "playerId": "tm-469909",
       "nationalTeamId": "iran",
       "role": "senior",
@@ -6618,6 +8419,48 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "801734"
+    },
+    {
+      "playerId": "tm-543435",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "543435"
+    },
+    {
+      "playerId": "tm-658052",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "658052"
+    },
+    {
+      "playerId": "tm-1430687",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1430687"
     },
     {
       "playerId": "tm-462348",
@@ -6774,6 +8617,20 @@
       "tmSourceId": "327251"
     },
     {
+      "playerId": "tm-658807",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "658807"
+    },
+    {
       "playerId": "tm-694928",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -6786,6 +8643,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "694928"
+    },
+    {
+      "playerId": "tm-889365",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "889365"
     },
     {
       "playerId": "tm-579928",
@@ -6844,6 +8715,20 @@
       "tmSourceId": "336665"
     },
     {
+      "playerId": "tm-353057",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "353057"
+    },
+    {
       "playerId": "tm-683571",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -6870,6 +8755,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "641537"
+    },
+    {
+      "playerId": "tm-888630",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "888630"
     },
     {
       "playerId": "tm-776798",
@@ -6928,6 +8827,20 @@
       "tmSourceId": "308472"
     },
     {
+      "playerId": "tm-560952",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "560952"
+    },
+    {
       "playerId": "tm-405865",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -6970,6 +8883,20 @@
       "tmSourceId": "294772"
     },
     {
+      "playerId": "tm-295450",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "295450"
+    },
+    {
       "playerId": "tm-336667",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -6982,6 +8909,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "336667"
+    },
+    {
+      "playerId": "tm-431912",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "431912"
     },
     {
       "playerId": "tm-626913",
@@ -7068,6 +9009,20 @@
       "tmSourceId": "237846"
     },
     {
+      "playerId": "tm-968496",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "968496"
+    },
+    {
       "playerId": "tm-1005656",
       "nationalTeamId": "brazil",
       "role": "senior",
@@ -7094,6 +9049,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "251299"
+    },
+    {
+      "playerId": "tm-584358",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "584358"
     },
     {
       "playerId": "tm-885445",
@@ -7164,6 +9133,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "192557"
+    },
+    {
+      "playerId": "tm-989069",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "989069"
     },
     {
       "playerId": "tm-604113",
@@ -7264,6 +9247,48 @@
       "tmSourceId": "654461"
     },
     {
+      "playerId": "tm-1283140",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1283140"
+    },
+    {
+      "playerId": "tm-704549",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "704549"
+    },
+    {
+      "playerId": "tm-581429",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "581429"
+    },
+    {
       "playerId": "tm-548348",
       "nationalTeamId": "france",
       "role": "senior",
@@ -7276,6 +9301,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "548348"
+    },
+    {
+      "playerId": "tm-312317",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "312317"
     },
     {
       "playerId": "tm-972875",
@@ -7306,6 +9345,20 @@
       "tmSourceId": "486046"
     },
     {
+      "playerId": "tm-663153",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "663153"
+    },
+    {
       "playerId": "tm-1175410",
       "nationalTeamId": "chile",
       "role": "senior",
@@ -7332,6 +9385,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "938729"
+    },
+    {
+      "playerId": "tm-959330",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "959330"
     },
     {
       "playerId": "tm-1164513",
@@ -7404,6 +9471,20 @@
       "tmSourceId": "340456"
     },
     {
+      "playerId": "tm-400799",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "400799"
+    },
+    {
       "playerId": "tm-637803",
       "nationalTeamId": "portugal",
       "role": "senior",
@@ -7460,6 +9541,20 @@
       "tmSourceId": "704772"
     },
     {
+      "playerId": "tm-288883",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "288883"
+    },
+    {
       "playerId": "tm-668167",
       "nationalTeamId": "algeria",
       "role": "senior",
@@ -7502,6 +9597,62 @@
       "tmSourceId": "592387"
     },
     {
+      "playerId": "tm-608537",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "608537"
+    },
+    {
+      "playerId": "tm-1109254",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1109254"
+    },
+    {
+      "playerId": "tm-297509",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "297509"
+    },
+    {
+      "playerId": "tm-54381",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "54381"
+    },
+    {
       "playerId": "tm-406040",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -7514,6 +9665,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "406040"
+    },
+    {
+      "playerId": "tm-987291",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "987291"
+    },
+    {
+      "playerId": "tm-933541",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "933541"
     },
     {
       "playerId": "tm-336646",
@@ -7558,6 +9737,34 @@
       "tmSourceId": "618801"
     },
     {
+      "playerId": "tm-744137",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "744137"
+    },
+    {
+      "playerId": "tm-844350",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "844350"
+    },
+    {
       "playerId": "tm-461883",
       "nationalTeamId": "nigeria",
       "role": "senior",
@@ -7600,6 +9807,20 @@
       "tmSourceId": "880626"
     },
     {
+      "playerId": "tm-937710",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "937710"
+    },
+    {
       "playerId": "tm-901082",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -7614,6 +9835,34 @@
       "tmSourceId": "901082"
     },
     {
+      "playerId": "tm-478520",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "478520"
+    },
+    {
+      "playerId": "tm-370663",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "370663"
+    },
+    {
       "playerId": "tm-999299",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -7626,6 +9875,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "999299"
+    },
+    {
+      "playerId": "tm-166460",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "166460"
     },
     {
       "playerId": "tm-509897",
@@ -7656,6 +9919,20 @@
       "tmSourceId": "268414"
     },
     {
+      "playerId": "tm-535744",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "535744"
+    },
+    {
       "playerId": "tm-485585",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -7670,6 +9947,34 @@
       "tmSourceId": "485585"
     },
     {
+      "playerId": "tm-560957",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "560957"
+    },
+    {
+      "playerId": "tm-185372",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "185372"
+    },
+    {
       "playerId": "tm-675178",
       "nationalTeamId": "paraguay",
       "role": "senior",
@@ -7682,6 +9987,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "675178"
+    },
+    {
+      "playerId": "tm-604953",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "604953"
     },
     {
       "playerId": "tm-470794",
@@ -7710,6 +10029,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "293281"
+    },
+    {
+      "playerId": "tm-716687",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "716687"
     },
     {
       "playerId": "tm-597432",
@@ -7852,6 +10185,20 @@
       "tmSourceId": "880245"
     },
     {
+      "playerId": "tm-965991",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "965991"
+    },
+    {
       "playerId": "tm-595650",
       "nationalTeamId": "serbia",
       "role": "senior",
@@ -7878,6 +10225,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "535955"
+    },
+    {
+      "playerId": "tm-288915",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "288915"
+    },
+    {
+      "playerId": "tm-290838",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "290838"
     },
     {
       "playerId": "tm-321195",
@@ -7978,6 +10353,62 @@
       "tmSourceId": "361104"
     },
     {
+      "playerId": "tm-445610",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "445610"
+    },
+    {
+      "playerId": "tm-466249",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "466249"
+    },
+    {
+      "playerId": "tm-984304",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "984304"
+    },
+    {
+      "playerId": "tm-579124",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "579124"
+    },
+    {
       "playerId": "tm-610795",
       "nationalTeamId": "japan",
       "role": "senior",
@@ -8020,6 +10451,34 @@
       "tmSourceId": "789082"
     },
     {
+      "playerId": "tm-282407",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "282407"
+    },
+    {
+      "playerId": "tm-1028883",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1028883"
+    },
+    {
       "playerId": "tm-343153",
       "nationalTeamId": "ukraine",
       "role": "senior",
@@ -8032,6 +10491,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "343153"
+    },
+    {
+      "playerId": "tm-748641",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "748641"
+    },
+    {
+      "playerId": "tm-1132850",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1132850"
     },
     {
       "playerId": "tm-531835",
@@ -8132,6 +10619,20 @@
       "tmSourceId": "345095"
     },
     {
+      "playerId": "tm-997180",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "997180"
+    },
+    {
       "playerId": "tm-1268954",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -8160,6 +10661,20 @@
       "tmSourceId": "683620"
     },
     {
+      "playerId": "tm-1090167",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1090167"
+    },
+    {
       "playerId": "tm-476836",
       "nationalTeamId": "norway",
       "role": "senior",
@@ -8172,6 +10687,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "476836"
+    },
+    {
+      "playerId": "tm-538764",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "538764"
     },
     {
       "playerId": "tm-433188",
@@ -8272,6 +10801,20 @@
       "tmSourceId": "111078"
     },
     {
+      "playerId": "tm-43030",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "43030"
+    },
+    {
       "playerId": "tm-582527",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -8284,6 +10827,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "582527"
+    },
+    {
+      "playerId": "tm-553453",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "553453"
     },
     {
       "playerId": "tm-744853",
@@ -8396,6 +10953,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "691482"
+    },
+    {
+      "playerId": "tm-1378210",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1378210"
     },
     {
       "playerId": "tm-377243",
@@ -8524,6 +11095,20 @@
       "tmSourceId": "994268"
     },
     {
+      "playerId": "tm-996512",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "996512"
+    },
+    {
       "playerId": "tm-1020859",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -8538,6 +11123,20 @@
       "tmSourceId": "1020859"
     },
     {
+      "playerId": "tm-883732",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "883732"
+    },
+    {
       "playerId": "tm-509911",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -8550,6 +11149,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "509911"
+    },
+    {
+      "playerId": "tm-363901",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "363901"
     },
     {
       "playerId": "tm-741238",
@@ -8608,6 +11221,34 @@
       "tmSourceId": "624942"
     },
     {
+      "playerId": "tm-1125037",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1125037"
+    },
+    {
+      "playerId": "tm-175577",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "175577"
+    },
+    {
       "playerId": "tm-345458",
       "nationalTeamId": "poland",
       "role": "senior",
@@ -8636,6 +11277,34 @@
       "tmSourceId": "903693"
     },
     {
+      "playerId": "tm-1159786",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1159786"
+    },
+    {
+      "playerId": "tm-436374",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "436374"
+    },
+    {
       "playerId": "tm-512913",
       "nationalTeamId": "canada",
       "role": "senior",
@@ -8650,6 +11319,20 @@
       "tmSourceId": "512913"
     },
     {
+      "playerId": "tm-175699",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "175699"
+    },
+    {
       "playerId": "tm-616344",
       "nationalTeamId": "portugal",
       "role": "senior",
@@ -8662,6 +11345,48 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "616344"
+    },
+    {
+      "playerId": "tm-1007720",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1007720"
+    },
+    {
+      "playerId": "tm-989049",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "989049"
+    },
+    {
+      "playerId": "tm-1245612",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1245612"
     },
     {
       "playerId": "tm-468249",
@@ -8704,6 +11429,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "610400"
+    },
+    {
+      "playerId": "tm-570272",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "570272"
     },
     {
       "playerId": "tm-881297",
@@ -8774,6 +11513,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "429874"
+    },
+    {
+      "playerId": "tm-495271",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "495271"
     },
     {
       "playerId": "tm-353366",
@@ -8860,6 +11613,34 @@
       "tmSourceId": "1191444"
     },
     {
+      "playerId": "tm-596250",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "596250"
+    },
+    {
+      "playerId": "tm-704546",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "704546"
+    },
+    {
       "playerId": "tm-978562",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -8872,6 +11653,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "978562"
+    },
+    {
+      "playerId": "tm-831589",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "831589"
     },
     {
       "playerId": "tm-640428",
@@ -8930,6 +11725,20 @@
       "tmSourceId": "530742"
     },
     {
+      "playerId": "tm-877945",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "877945"
+    },
+    {
       "playerId": "tm-316889",
       "nationalTeamId": "mexico",
       "role": "senior",
@@ -8956,6 +11765,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "948278"
+    },
+    {
+      "playerId": "tm-260857",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "260857"
     },
     {
       "playerId": "tm-765467",
@@ -8998,6 +11821,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "420243"
+    },
+    {
+      "playerId": "tm-994370",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "994370"
     },
     {
       "playerId": "tm-473050",
@@ -9054,6 +11891,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "822935"
+    },
+    {
+      "playerId": "tm-310801",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "310801"
     },
     {
       "playerId": "tm-1181852",
@@ -9154,6 +12005,48 @@
       "tmSourceId": "735701"
     },
     {
+      "playerId": "tm-754040",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "754040"
+    },
+    {
+      "playerId": "tm-274615",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "274615"
+    },
+    {
+      "playerId": "tm-851569",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "851569"
+    },
+    {
       "playerId": "tm-195332",
       "nationalTeamId": "saudi-arabia",
       "role": "senior",
@@ -9166,6 +12059,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "195332"
+    },
+    {
+      "playerId": "tm-677986",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "677986"
     },
     {
       "playerId": "tm-745181",
@@ -9194,6 +12101,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "406556"
+    },
+    {
+      "playerId": "tm-735697",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "735697"
     },
     {
       "playerId": "tm-228948",
@@ -9252,6 +12173,34 @@
       "tmSourceId": "296802"
     },
     {
+      "playerId": "tm-493725",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "493725"
+    },
+    {
+      "playerId": "tm-496062",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "496062"
+    },
+    {
       "playerId": "tm-1074523",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -9294,6 +12243,20 @@
       "tmSourceId": "292808"
     },
     {
+      "playerId": "tm-261850",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "261850"
+    },
+    {
       "playerId": "tm-289446",
       "nationalTeamId": "colombia",
       "role": "senior",
@@ -9320,6 +12283,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "589099"
+    },
+    {
+      "playerId": "tm-931147",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "931147"
     },
     {
       "playerId": "tm-724520",
@@ -9406,6 +12383,34 @@
       "tmSourceId": "897424"
     },
     {
+      "playerId": "tm-860998",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "860998"
+    },
+    {
+      "playerId": "tm-661080",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "661080"
+    },
+    {
       "playerId": "tm-479999",
       "nationalTeamId": "england",
       "role": "senior",
@@ -9434,6 +12439,48 @@
       "tmSourceId": "344888"
     },
     {
+      "playerId": "tm-734746",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "734746"
+    },
+    {
+      "playerId": "tm-753817",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "753817"
+    },
+    {
+      "playerId": "tm-957634",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "957634"
+    },
+    {
       "playerId": "tm-1035765",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -9446,6 +12493,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1035765"
+    },
+    {
+      "playerId": "tm-741097",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "741097"
     },
     {
       "playerId": "tm-1063574",
@@ -9532,6 +12593,20 @@
       "tmSourceId": "923667"
     },
     {
+      "playerId": "tm-433646",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "433646"
+    },
+    {
       "playerId": "tm-567129",
       "nationalTeamId": "scotland",
       "role": "senior",
@@ -9574,6 +12649,20 @@
       "tmSourceId": "1051589"
     },
     {
+      "playerId": "tm-659775",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "659775"
+    },
+    {
       "playerId": "tm-753162",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -9586,6 +12675,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "753162"
+    },
+    {
+      "playerId": "tm-579077",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "579077"
+    },
+    {
+      "playerId": "tm-234019",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "234019"
     },
     {
       "playerId": "tm-663424",
@@ -9628,6 +12745,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "663319"
+    },
+    {
+      "playerId": "tm-1105075",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1105075"
     },
     {
       "playerId": "tm-652054",
@@ -9712,6 +12843,48 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "127701"
+    },
+    {
+      "playerId": "tm-399068",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "399068"
+    },
+    {
+      "playerId": "tm-1041478",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1041478"
+    },
+    {
+      "playerId": "tm-492556",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "492556"
     },
     {
       "playerId": "tm-792331",
@@ -9826,6 +12999,20 @@
       "tmSourceId": "441191"
     },
     {
+      "playerId": "tm-743864",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "743864"
+    },
+    {
       "playerId": "tm-670659",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -9852,6 +13039,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1060901"
+    },
+    {
+      "playerId": "tm-298417",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "298417"
     },
     {
       "playerId": "tm-264909",
@@ -9894,6 +13095,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "701055"
+    },
+    {
+      "playerId": "tm-493593",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "493593"
+    },
+    {
+      "playerId": "tm-172333",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "172333"
     },
     {
       "playerId": "tm-293194",
@@ -9966,6 +13195,20 @@
       "tmSourceId": "659648"
     },
     {
+      "playerId": "tm-1198808",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1198808"
+    },
+    {
       "playerId": "tm-931838",
       "nationalTeamId": "sweden",
       "role": "senior",
@@ -9978,6 +13221,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "931838"
+    },
+    {
+      "playerId": "tm-895291",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "895291"
+    },
+    {
+      "playerId": "tm-709974",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "709974"
     },
     {
       "playerId": "tm-739769",
@@ -10006,6 +13277,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "571271"
+    },
+    {
+      "playerId": "tm-206782",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "206782"
+    },
+    {
+      "playerId": "tm-345343",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "345343"
     },
     {
       "playerId": "tm-182894",
@@ -10064,6 +13363,20 @@
       "tmSourceId": "534435"
     },
     {
+      "playerId": "tm-469211",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "469211"
+    },
+    {
       "playerId": "tm-997646",
       "nationalTeamId": "netherlands",
       "role": "senior",
@@ -10120,6 +13433,20 @@
       "tmSourceId": "283735"
     },
     {
+      "playerId": "tm-217498",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "217498"
+    },
+    {
       "playerId": "tm-560423",
       "nationalTeamId": "qatar",
       "role": "senior",
@@ -10160,6 +13487,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "184818"
+    },
+    {
+      "playerId": "tm-714581",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "714581"
+    },
+    {
+      "playerId": "tm-883111",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "883111"
     },
     {
       "playerId": "tm-503871",
@@ -10232,6 +13587,62 @@
       "tmSourceId": "471936"
     },
     {
+      "playerId": "tm-673381",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "673381"
+    },
+    {
+      "playerId": "tm-555606",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "555606"
+    },
+    {
+      "playerId": "tm-312239",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "312239"
+    },
+    {
+      "playerId": "tm-217073",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "217073"
+    },
+    {
       "playerId": "tm-994256",
       "nationalTeamId": "united-states",
       "role": "senior",
@@ -10274,6 +13685,20 @@
       "tmSourceId": "698259"
     },
     {
+      "playerId": "tm-569205",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "569205"
+    },
+    {
       "playerId": "tm-234189",
       "nationalTeamId": "egypt",
       "role": "senior",
@@ -10286,6 +13711,48 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "234189"
+    },
+    {
+      "playerId": "tm-658805",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "658805"
+    },
+    {
+      "playerId": "tm-882197",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "882197"
+    },
+    {
+      "playerId": "tm-527866",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "527866"
     },
     {
       "playerId": "tm-251183",
@@ -10342,6 +13809,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "114276"
+    },
+    {
+      "playerId": "tm-712357",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "712357"
     },
     {
       "playerId": "tm-196948",
@@ -10442,6 +13923,34 @@
       "tmSourceId": "162959"
     },
     {
+      "playerId": "tm-892174",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "892174"
+    },
+    {
+      "playerId": "tm-121791",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "121791"
+    },
+    {
       "playerId": "tm-216683",
       "nationalTeamId": "haiti",
       "role": "senior",
@@ -10454,6 +13963,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "216683"
+    },
+    {
+      "playerId": "tm-212499",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "212499"
+    },
+    {
+      "playerId": "tm-500288",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "500288"
     },
     {
       "playerId": "tm-449710",
@@ -10496,6 +14033,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "393321"
+    },
+    {
+      "playerId": "tm-1232953",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1232953"
     },
     {
       "playerId": "tm-532937",
@@ -10666,6 +14217,62 @@
       "tmSourceId": "1034853"
     },
     {
+      "playerId": "tm-261837",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "261837"
+    },
+    {
+      "playerId": "tm-1252820",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1252820"
+    },
+    {
+      "playerId": "tm-95429",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "95429"
+    },
+    {
+      "playerId": "tm-430824",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "430824"
+    },
+    {
       "playerId": "tm-159088",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -10678,6 +14285,34 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "159088"
+    },
+    {
+      "playerId": "tm-763092",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "763092"
+    },
+    {
+      "playerId": "tm-1439952",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "1439952"
     },
     {
       "playerId": "tm-569389",
@@ -10706,6 +14341,20 @@
       "membershipSource": "national_teams_preview_player_link",
       "asOf": null,
       "tmSourceId": "1143849"
+    },
+    {
+      "playerId": "tm-436372",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "national_teams_preview_player_link",
+      "membershipSource": "national_teams_preview_player_link",
+      "asOf": null,
+      "tmSourceId": "436372"
     },
     {
       "playerId": "tm-955448",
@@ -22344,6 +25993,202 @@
     {
       "playerId": "tm-631927",
       "nationalTeamId": "saudi-arabia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1151605",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1069801",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-669202",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-467623",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1378320",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-628806",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-161671",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1002223",
+      "nationalTeamId": "panama",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-833817",
+      "nationalTeamId": "iraq",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-551505",
+      "nationalTeamId": "jordan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-763079",
+      "nationalTeamId": "uzbekistan",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-108725",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-724809",
+      "nationalTeamId": "new-zealand",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-81723",
+      "nationalTeamId": "new-zealand",
       "role": "senior",
       "status": "active",
       "isPrimary": true,

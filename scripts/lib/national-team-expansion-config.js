@@ -65,6 +65,12 @@ export const WAVE_3_NATIONAL_TEAM_IDS = [
   'bosnia-herzegovina',
   'congo-dr',
   'haiti',
+  'south-africa',
+  'panama',
+  'iraq',
+  'jordan',
+  'uzbekistan',
+  'new-zealand',
 ];
 
 /** FootyBrain id ↔ TM slug ↔ registry nationality labels */
@@ -232,6 +238,54 @@ export const NATIONAL_TEAM_TARGETS = [
     registryLabels: ['haiti', 'haitian'],
   },
   { id: 'peru', tmCode: 'peru', displayName: 'Peru', expansionWave: 3, registryLabels: ['peru', 'peruvian'] },
+  {
+    id: 'south-africa',
+    tmCode: 'south-africa',
+    displayName: 'South Africa',
+    expansionWave: 3,
+    searchAliases: ['rsa', 'bafana bafana', 'south africa national team'],
+    registryLabels: ['south africa', 'south african'],
+  },
+  {
+    id: 'panama',
+    tmCode: 'panama',
+    displayName: 'Panama',
+    expansionWave: 3,
+    searchAliases: ['pan', 'los canaleros', 'panama national team'],
+    registryLabels: ['panama', 'panamanian'],
+  },
+  {
+    id: 'iraq',
+    tmCode: 'iraq',
+    displayName: 'Iraq',
+    expansionWave: 3,
+    searchAliases: ['irq', 'lions of mesopotamia', 'iraq national team'],
+    registryLabels: ['iraq', 'iraqi'],
+  },
+  {
+    id: 'jordan',
+    tmCode: 'jordan',
+    displayName: 'Jordan',
+    expansionWave: 3,
+    searchAliases: ['jor', 'nashama', 'jordan national team'],
+    registryLabels: ['jordan', 'jordanian'],
+  },
+  {
+    id: 'uzbekistan',
+    tmCode: 'uzbekistan',
+    displayName: 'Uzbekistan',
+    expansionWave: 3,
+    searchAliases: ['uzb', 'white wolves', 'uzbekistan national team'],
+    registryLabels: ['uzbekistan', 'uzbek', 'uzbekistani'],
+  },
+  {
+    id: 'new-zealand',
+    tmCode: 'new-zealand',
+    displayName: 'New Zealand',
+    expansionWave: 3,
+    searchAliases: ['nzl', 'all whites', 'new zealand national team'],
+    registryLabels: ['new zealand', 'kiwi'],
+  },
 ];
 
 export const PRIORITY_NATIONAL_TEAMS = NATIONAL_TEAM_TARGETS;

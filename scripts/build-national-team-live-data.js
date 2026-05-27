@@ -80,6 +80,13 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'qatar',
   'saudi-arabia',
   'iran',
+  // Wave 5 (World Cup 2026 — registry-only national pool completion)
+  'south-africa',
+  'panama',
+  'iraq',
+  'jordan',
+  'uzbekistan',
+  'new-zealand',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -90,6 +97,11 @@ const MAX_MEMBERSHIPS_OVERRIDES = {
   qatar: 55,
   'saudi-arabia': 55,
   iran: 20,
+  'south-africa': 75,
+  panama: 45,
+  iraq: 45,
+  jordan: 45,
+  uzbekistan: 45,
 };
 
 function getMaxMembershipsForNation(nationalTeamId) {
@@ -158,6 +170,12 @@ const REGISTRY_NATIONALITY_LABELS = {
   iran: ['iran', 'iranian'],
   'saudi-arabia': ['saudi arabia', 'saudi', 'saudi arabian'],
   qatar: ['qatar', 'qatari'],
+  'south-africa': ['south africa', 'south african'],
+  panama: ['panama', 'panamanian'],
+  iraq: ['iraq', 'iraqi'],
+  jordan: ['jordan', 'jordanian'],
+  uzbekistan: ['uzbekistan', 'uzbek', 'uzbekistani'],
+  'new-zealand': ['new zealand', 'kiwi'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -774,6 +792,84 @@ const LIVE_NATION_EDITORIAL = {
       'Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and linked players in FootyBrain’s national pool.',
     shortHistory:
       'Men’s senior team of Iran (FFIRI). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  'south-africa': {
+    displayName: 'South Africa',
+    country: 'South Africa',
+    confederationId: 'caf',
+    confederation: 'CAF',
+    rivalIds: ['ghana', 'nigeria'],
+    searchAliases: ['rsa', 'bafana bafana', 'south africa national team', 'south africa nt'],
+    badgeTheme: { from: '#16a34a', to: '#fbbf24', accent: '#1f2937' },
+    fanGuide:
+      'Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names linked from FootyBrain’s club registry national pool.',
+    shortHistory:
+      'Men’s senior team of South Africa (SAFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  panama: {
+    displayName: 'Panama',
+    country: 'Panama',
+    confederationId: 'concacaf',
+    confederation: 'CONCACAF',
+    rivalIds: ['mexico', 'united-states'],
+    searchAliases: ['pan', 'los canaleros', 'panama national team', 'panama nt'],
+    badgeTheme: { from: '#dc2626', to: '#1d4ed8', accent: '#fde047' },
+    fanGuide:
+      'Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and linked players in FootyBrain’s national pool.',
+    shortHistory:
+      'Men’s senior team of Panama (FEPAFUT). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  iraq: {
+    displayName: 'Iraq',
+    country: 'Iraq',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['iran', 'jordan'],
+    searchAliases: ['irq', 'lions of mesopotamia', 'iraq national team', 'iraq nt'],
+    badgeTheme: { from: '#16a34a', to: '#111827', accent: '#dc2626' },
+    fanGuide:
+      'The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and linked names from FootyBrain’s club registry pool.',
+    shortHistory:
+      'Men’s senior team of Iraq (IFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  jordan: {
+    displayName: 'Jordan',
+    country: 'Jordan',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['iraq', 'saudi-arabia'],
+    searchAliases: ['jor', 'nashama', 'jordan national team', 'jordan nt'],
+    badgeTheme: { from: '#111827', to: '#dc2626', accent: '#f8fafc' },
+    fanGuide:
+      'Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and FootyBrain’s registry-linked national pool.',
+    shortHistory:
+      'Men’s senior team of Jordan (JFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  uzbekistan: {
+    displayName: 'Uzbekistan',
+    country: 'Uzbekistan',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['iran', 'korea-republic'],
+    searchAliases: ['uzb', 'white wolves', 'uzbekistan national team', 'uzbekistan nt'],
+    badgeTheme: { from: '#38bdf8', to: '#16a34a', accent: '#f8fafc' },
+    fanGuide:
+      'The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and linked players in FootyBrain’s national pool.',
+    shortHistory:
+      'Men’s senior team of Uzbekistan (UFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+  },
+  'new-zealand': {
+    displayName: 'New Zealand',
+    country: 'New Zealand',
+    confederationId: 'ofc',
+    confederation: 'OFC',
+    rivalIds: ['australia'],
+    searchAliases: ['nzl', 'all whites', 'new zealand national team', 'new zealand nt'],
+    badgeTheme: { from: '#111827', to: '#1d4ed8', accent: '#f8fafc' },
+    fanGuide:
+      'The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyBrain’s registry-linked national pool.',
+    shortHistory:
+      'Men’s senior team of New Zealand (NZF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
   },
 };
 
