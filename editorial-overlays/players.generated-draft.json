@@ -7426,6 +7426,294 @@
       "quizEligible": true,
       "rosterTier": "featured",
       "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-669202",
+      "sourceId": "669202",
+      "displayName": "Bongokuhle Hlongwane",
+      "quickFact": "South Africa winger whose direct runs and finishing make him one of Minnesota United’s key transition threats.",
+      "quizHints": [
+        "South Africa international playing club football in MLS.",
+        "Minnesota United winger who attacks space in behind full-backs.",
+        "Known for direct dribbling and quick shots after cut-ins."
+      ],
+      "playingStyle": "Direct wide forward who stretches the back line with pace, takes defenders on, and arrives in the box to finish moves.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-628806",
+      "sourceId": "628806",
+      "displayName": "Carlos Harvey",
+      "quickFact": "Panama defensive midfielder who balances ball-winning with simple distribution in Minnesota United’s midfield.",
+      "quizHints": [
+        "Panama international in MLS, often used as a midfield screen.",
+        "Minnesota United ball-winner who protects the centre-backs.",
+        "Defensive midfielder who keeps possession moving with short passes."
+      ],
+      "playingStyle": "Defensive midfielder who breaks up play, covers passing lanes, and recycles possession with low-risk distribution.",
+      "importanceScore": 72,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-424043",
+      "sourceId": "424043",
+      "displayName": "Joaquín Pereyra",
+      "quickFact": "Argentine central midfielder who adds tempo control and progressive passing to Minnesota United’s build-up.",
+      "quizHints": [
+        "Argentine midfielder playing in MLS with Minnesota United.",
+        "Central midfielder who looks to receive, turn, and play forward early.",
+        "Often used to connect deeper midfield work to the final third."
+      ],
+      "playingStyle": "Pass-first central midfielder who helps circulation, plays through pressure, and progresses the ball with forward passing.",
+      "importanceScore": 73,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-349699",
+      "sourceId": "349699",
+      "displayName": "Kyle Duncan",
+      "quickFact": "Jamaica right-back whose athletic overlaps and recovery speed fit MLS’s transition-heavy rhythm at Minnesota United.",
+      "quizHints": [
+        "Jamaica international playing as a right-back in MLS.",
+        "Minnesota United defender who overlaps to support wide attacks.",
+        "Known for pace, recovery defending, and quick crossing from the flank."
+      ],
+      "playingStyle": "Attack-minded full-back who overlaps on the right, defends one-on-ones with speed, and crosses early into the box.",
+      "importanceScore": 71,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-342389",
+      "sourceId": "342389",
+      "displayName": "Anders Dreyer",
+      "quickFact": "Danish winger with a left foot built for curling shots and clever final balls, a headline creator for San Diego FC.",
+      "quizHints": [
+        "Danish wide attacker playing in MLS with San Diego FC.",
+        "Left-footed winger who likes to cut inside from the right.",
+        "Creates chances with crosses and through-balls after drifting into half-spaces."
+      ],
+      "playingStyle": "Inverted winger who comes inside to create, combines quickly around the box, and threatens with left-footed shots.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-311351",
+      "sourceId": "311351",
+      "displayName": "Lewis Morgan",
+      "quickFact": "Scotland winger who brings pace and end product from wide areas, a recognizable attacking outlet in MLS.",
+      "quizHints": [
+        "Scotland international winger playing club football in MLS.",
+        "Wide forward known for direct running and shots from the edge of the box.",
+        "Often used to stretch defences and attack the far post."
+      ],
+      "playingStyle": "Direct winger who attacks space early, drives at defenders, and looks to finish moves with shots or crosses.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-257324",
+      "sourceId": "257324",
+      "displayName": "Jeppe Tverskov",
+      "quickFact": "Denmark midfielder who does the quiet work—screening, tackling, and keeping possession tidy for San Diego FC.",
+      "quizHints": [
+        "Danish midfielder used as a defensive screen and tempo stabilizer.",
+        "Plays in MLS with San Diego FC.",
+        "Known for positioning, ball recoveries, and simple passes under pressure."
+      ],
+      "playingStyle": "Defensive midfielder who reads danger early, wins second balls, and keeps structure with steady passing.",
+      "importanceScore": 72,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-218278",
+      "sourceId": "218278",
+      "displayName": "Amahl Pellegrino",
+      "quickFact": "Norway winger with a scorer’s mentality from wide areas, adding direct threat and movement for San Diego FC.",
+      "quizHints": [
+        "Norway wide attacker playing in MLS.",
+        "San Diego FC winger who attacks the box from the flank.",
+        "Known for timing runs and finishing chances after quick transitions."
+      ],
+      "playingStyle": "Goal-minded winger who arrives in scoring zones, attacks the far post, and finishes quickly when space opens.",
+      "importanceScore": 72,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-578419",
+      "sourceId": "578419",
+      "displayName": "Federico Viñas",
+      "quickFact": "Uruguay striker whose physical presence and penalty-box instincts give Real Oviedo a classic number nine profile.",
+      "quizHints": [
+        "Uruguay centre-forward playing in La Liga with Real Oviedo.",
+        "Penalty-area striker who attacks crosses and second balls.",
+        "Known for physical duels and finishing from close range."
+      ],
+      "playingStyle": "Box striker who battles centre-backs, attacks crosses, and looks for quick finishes inside the area.",
+      "importanceScore": 72,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-525438",
+      "sourceId": "525438",
+      "displayName": "Horațiu Moldovan",
+      "quickFact": "Romania goalkeeper who brings reflex saves and calm distribution to Real Oviedo’s back line.",
+      "quizHints": [
+        "Romania international goalkeeper playing in La Liga with Real Oviedo.",
+        "Shot-stopper who commands his box and stays composed under pressure.",
+        "Goalkeeper whose job is to turn tight matches with key saves."
+      ],
+      "playingStyle": "Goalkeeper who focuses on strong positioning, quick reactions, and reliable distribution to start build-up play.",
+      "importanceScore": 73,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-361260",
+      "sourceId": "361260",
+      "displayName": "Ozan Kabak",
+      "quickFact": "Türkiye centre-back whose power in duels and aerial ability made him a Bundesliga name at Hoffenheim.",
+      "quizHints": [
+        "Türkiye international centre-back playing in the Bundesliga.",
+        "Hoffenheim defender known for physical duels and aerial battles.",
+        "Centre-back who defends the box and attacks set-piece headers."
+      ],
+      "playingStyle": "Physical centre-back who wins tackles and headers, defends the box aggressively, and keeps passes simple under pressure.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-237164",
+      "sourceId": "237164",
+      "displayName": "Ihlas Bebou",
+      "quickFact": "Togo attacker whose pace and pressing energy have been a long-running Hoffenheim outlet in transition.",
+      "quizHints": [
+        "Togo forward playing club football in Germany.",
+        "Hoffenheim attacker used for pace and direct transition threat.",
+        "Known for pressing from the front and runs in behind."
+      ],
+      "playingStyle": "Fast forward who presses aggressively, attacks space behind defences, and finishes moves at speed on counters.",
+      "importanceScore": 75,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-914681",
+      "sourceId": "914681",
+      "displayName": "David Ruíz",
+      "quickFact": "Honduras midfielder who adds ball-winning and energy to Inter Miami’s supporting cast around its stars.",
+      "quizHints": [
+        "Honduras international playing in MLS.",
+        "Inter Miami midfielder who helps win the ball and keep shape in transition.",
+        "A supporting-piece profile around Miami’s superstar attackers."
+      ],
+      "playingStyle": "Energetic midfielder who pressures the ball, wins duels, and plays quick passes to move attacks forward.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-613873",
+      "sourceId": "613873",
+      "displayName": "Álvaro Barreal",
+      "quickFact": "Argentine winger whose crossing and ball-carrying give Santos a wide creator to support its star forwards.",
+      "quizHints": [
+        "Argentine winger playing club football in Brazil’s Série A.",
+        "Santos wide creator who looks to cross and combine in the final third.",
+        "Often used to stretch the pitch and deliver from the left side."
+      ],
+      "playingStyle": "Creative winger who carries the ball into the final third, delivers crosses, and links play with quick combinations.",
+      "importanceScore": 75,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-565009",
+      "sourceId": "565009",
+      "displayName": "Rodrigo Garro",
+      "quickFact": "Argentine attacking midfielder who supplies final passes and set-piece quality for Corinthians’ front line.",
+      "quizHints": [
+        "Argentine number 10 profile playing in Brazil’s Série A.",
+        "Corinthians creator who looks for through-balls and set-piece delivery.",
+        "Attacking midfielder who operates between the lines behind the striker."
+      ],
+      "playingStyle": "Attacking midfielder who creates with through-balls and set pieces, receiving between lines and turning quickly to attack.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-436332",
+      "sourceId": "436332",
+      "displayName": "Nouhou",
+      "quickFact": "Cameroon left-back known for intensity and one-on-one defending, a recognizable Seattle Sounders personality on the flank.",
+      "quizHints": [
+        "Cameroon defender playing in MLS with Seattle Sounders FC.",
+        "Left-back famous for aggressive duels and recovery defending.",
+        "Known as an energetic, physical wide defender who can shut down wingers."
+      ],
+      "playingStyle": "Defensive full-back who defends one-on-ones aggressively, wins duels, and uses pace to recover in transition.",
+      "importanceScore": 74,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-72441",
+      "sourceId": "72441",
+      "displayName": "Rafael Tolói",
+      "quickFact": "Veteran centre-back with Italy experience who brings leadership and organisation to São Paulo’s back line.",
+      "quizHints": [
+        "Italy international centre-back playing club football in Brazil.",
+        "São Paulo defender known for leadership and box defending.",
+        "Veteran centre-back who organises the line and attacks aerial balls."
+      ],
+      "playingStyle": "Experienced centre-back who reads danger early, organises the defence, and clears the box decisively under pressure.",
+      "importanceScore": 78,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "tm-496268",
+      "sourceId": "496268",
+      "displayName": "Joaquín Piquerez",
+      "quickFact": "Uruguay left-back whose overlapping runs and delivery make him a key Palmeiras wide outlet in Série A.",
+      "quizHints": [
+        "Uruguay international full-back playing for Palmeiras.",
+        "Left-back known for overlaps, crossing, and set-piece delivery from wide areas.",
+        "A modern full-back who supports attacks while defending hard in transitions."
+      ],
+      "playingStyle": "Attack-minded left-back who overlaps consistently, delivers crosses, and defends transitions with strong recovery runs.",
+      "importanceScore": 76,
+      "quizEligible": true,
+      "rosterTier": "featured",
+      "reviewStatus": "approved"
     }
   ]
 }

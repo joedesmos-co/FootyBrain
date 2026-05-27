@@ -7,5 +7,5 @@ export const DATASET_META = {
   playerCount: 4827,
   teamCount: 335,
   leagueCount: 9,
-  quizEligibleCount: 500,
+  quizEligibleCount: 518,
 };
