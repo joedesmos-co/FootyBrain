@@ -561,6 +561,79 @@ const THIN_NATIONAL_QUIZ_BATCH = [
     rosterTier: 'featured',
     reviewStatus: 'approved',
   },
+  // Australia + Canada — World Cup live promotion (+4 quiz-ready)
+  {
+    id: 'tm-533738',
+    sourceId: '533738',
+    displayName: 'Jonathan David',
+    quickFact:
+      'Canada striker who scored prolifically for Lille and Gent before Juventus and leads the Les Rouges line alongside Alphonso Davies.',
+    quizHints: [
+      'Canadian centre-forward linked to Canada’s national team.',
+      'Juventus striker — not Alphonso Davies the left-back.',
+      'Jonathan who wears no. 10 for Canada in the FootyBrain pool.',
+    ],
+    playingStyle:
+      'Mobile centre-forward who finds space in the box, links play, and finishes with both feet.',
+    importanceScore: 86,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-921655',
+    sourceId: '921655',
+    displayName: 'Ismaël Koné',
+    quickFact:
+      'Canada midfielder who broke through at Watford and Marseille before Serie A with Sassuolo in the linked Canada squad.',
+    quizHints: [
+      'Canadian midfielder linked to Canada’s national team.',
+      'Sassuolo central player — not Jonathan David the striker.',
+      'Ismaël who carries the ball forward from midfield for Canada.',
+    ],
+    playingStyle:
+      'Box-to-box midfielder who drives with the ball, breaks lines, and supports both phases.',
+    importanceScore: 80,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-128969',
+    sourceId: '128969',
+    displayName: 'Mathew Ryan',
+    quickFact:
+      'Australia’s long-serving goalkeeper with Brighton and Valencia pedigree who captains the Socceroos in the linked pool.',
+    quizHints: [
+      'Australian goalkeeper linked to the Socceroos.',
+      'Shot-stopper — not Jackson Irvine the midfielder.',
+      'Mathew who kept clean sheets in La Liga with Levante.',
+    ],
+    playingStyle:
+      'Traditional goalkeeper who commands the area, spreads quickly, and organises the defence.',
+    importanceScore: 82,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
+  {
+    id: 'tm-855731',
+    sourceId: '855731',
+    displayName: 'Jordan Bos',
+    quickFact:
+      'Australia left-back in the linked Socceroos squad who developed in the A-League before Eredivisie football with Feyenoord.',
+    quizHints: [
+      'Australian left-back linked to the Socceroos.',
+      'Feyenoord defender — not Mathew Ryan the goalkeeper.',
+      'Jordan who overlaps and delivers from the left for Australia.',
+    ],
+    playingStyle:
+      'Attacking full-back who pushes high, crosses early, and recovers with pace.',
+    importanceScore: 78,
+    quizEligible: true,
+    rosterTier: 'featured',
+    reviewStatus: 'approved',
+  },
 ];
 
 const result = upsertDraftPlayers({

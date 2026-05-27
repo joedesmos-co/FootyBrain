@@ -62,6 +62,9 @@ const LIVE_NATIONAL_TEAM_IDS = [
   'czechia',
   'sweden',
   'cote-divoire',
+  // Wave 3 batch 4 (World Cup 2026 — preview-gated)
+  'canada',
+  'australia',
 ];
 
 const MAX_MEMBERSHIPS_PER_NATION = 40;
@@ -104,6 +107,8 @@ const REGISTRY_NATIONALITY_LABELS = {
   czechia: ['czechia', 'czech republic', 'czech'],
   sweden: ['sweden', 'swedish'],
   'cote-divoire': ["cote d'ivoire", 'cote divoire', 'ivory coast', 'ivorian'],
+  canada: ['canada', 'canadian'],
+  australia: ['australia', 'australian'],
   ...Object.fromEntries(
     Object.entries(EXPANSION_REGISTRY_LABELS).filter(([id]) => !LIVE_NATIONAL_TEAM_IDS.includes(id)),
   ),
@@ -577,6 +582,32 @@ const LIVE_NATION_EDITORIAL = {
       'Les Éléphants are West African giants with AFCON triumphs and a long line of European-based stars. Learn Ivory Coast through orange kits, physical flair, and rivalry with Ghana.',
     shortHistory:
       'Men’s senior team of Côte d\'Ivoire (FIF). Squads link existing FootyBrain club players via nationality registry and preview TM field matches.',
+  },
+  canada: {
+    displayName: 'Canada',
+    country: 'Canada',
+    confederationId: 'concacaf',
+    confederation: 'CONCACAF',
+    rivalIds: ['united-states', 'mexico'],
+    searchAliases: ['can', 'canada national team', 'canada nt', 'canmnt', 'les rouges'],
+    badgeTheme: { from: '#dc2626', to: '#f8fafc', accent: '#fecaca' },
+    fanGuide:
+      'Canada’s Les Rouges are 2026 co-hosts building on MLS depth and European exports like Davies and David. Learn them through CONCACAF rivalries and a growing World Cup generation.',
+    shortHistory:
+      'Men’s senior team of Canada (Canada Soccer). FootyBrain squads link existing club players matched to Canada memberships.',
+  },
+  australia: {
+    displayName: 'Australia',
+    country: 'Australia',
+    confederationId: 'afc',
+    confederation: 'AFC',
+    rivalIds: ['japan', 'korea-republic'],
+    searchAliases: ['aus', 'socceroos', 'australia national team', 'australia nt'],
+    badgeTheme: { from: '#fbbf24', to: '#16a34a', accent: '#fef08a' },
+    fanGuide:
+      'The Socceroos carry Asia-Pacific pride with a physical, direct style and a strong European diaspora pipeline. Learn Australia through World Cup runs and AFC rivalry with Japan.',
+    shortHistory:
+      'Men’s senior team of Australia (Football Australia). Squads link existing FootyBrain club players matched to Australia memberships.',
   },
 };
 

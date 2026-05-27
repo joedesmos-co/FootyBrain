@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T00:44:44.614Z",
+    "generatedAt": "2026-05-27T00:54:22.464Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -38,16 +38,18 @@
       "paraguay",
       "czechia",
       "sweden",
-      "cote-divoire"
+      "cote-divoire",
+      "canada",
+      "australia"
     ],
     "membershipSources": [
       "national_teams_preview_player_link",
       "registry_nationality"
     ],
     "counts": {
-      "nationalTeams": 36,
-      "memberships": 1210,
-      "unmatchedTmSquadRows": 251,
+      "nationalTeams": 38,
+      "memberships": 1263,
+      "unmatchedTmSquadRows": 268,
       "skippedUnknownPlayerId": 0,
       "skippedDuplicateMembership": 0
     },
@@ -87,7 +89,9 @@
       "paraguay": 21,
       "czechia": 20,
       "sweden": 40,
-      "cote-divoire": 40
+      "cote-divoire": 40,
+      "canada": 40,
+      "australia": 13
     },
     "previewMembershipsPerTeam": {
       "england": 25,
@@ -125,7 +129,9 @@
       "paraguay": 4,
       "czechia": 5,
       "sweden": 11,
-      "cote-divoire": 10
+      "cote-divoire": 10,
+      "canada": 12,
+      "australia": 2
     },
     "registryBackfillPerTeam": {
       "england": 15,
@@ -163,7 +169,9 @@
       "paraguay": 17,
       "czechia": 15,
       "sweden": 29,
-      "cote-divoire": 30
+      "cote-divoire": 30,
+      "canada": 28,
+      "australia": 11
     },
     "quizEligibleMembershipsPerTeam": {
       "england": 24,
@@ -201,7 +209,9 @@
       "paraguay": 5,
       "czechia": 3,
       "sweden": 3,
-      "cote-divoire": 3
+      "cote-divoire": 3,
+      "canada": 3,
+      "australia": 3
     }
   },
   "nationalTeams": [
@@ -1177,6 +1187,61 @@
       "fifaRanking": null,
       "tmCode": "cote-divoire",
       "crestPolicy": "text-only"
+    },
+    {
+      "id": "canada",
+      "displayName": "Canada",
+      "country": "Canada",
+      "confederationId": "concacaf",
+      "confederation": "CONCACAF",
+      "rivalIds": [
+        "united-states",
+        "mexico"
+      ],
+      "searchAliases": [
+        "can",
+        "canada national team",
+        "canada nt",
+        "canmnt",
+        "les rouges"
+      ],
+      "badgeTheme": {
+        "from": "#dc2626",
+        "to": "#f8fafc",
+        "accent": "#fecaca"
+      },
+      "fanGuide": "Canada’s Les Rouges are 2026 co-hosts building on MLS depth and European exports like Davies and David. Learn them through CONCACAF rivalries and a growing World Cup generation.",
+      "shortHistory": "Men’s senior team of Canada (Canada Soccer). FootyBrain squads link existing club players matched to Canada memberships.",
+      "fifaRanking": 30,
+      "tmCode": "canada",
+      "crestPolicy": "text-only"
+    },
+    {
+      "id": "australia",
+      "displayName": "Australia",
+      "country": "Australia",
+      "confederationId": "afc",
+      "confederation": "AFC",
+      "rivalIds": [
+        "japan",
+        "korea-republic"
+      ],
+      "searchAliases": [
+        "aus",
+        "socceroos",
+        "australia national team",
+        "australia nt"
+      ],
+      "badgeTheme": {
+        "from": "#fbbf24",
+        "to": "#16a34a",
+        "accent": "#fef08a"
+      },
+      "fanGuide": "The Socceroos carry Asia-Pacific pride with a physical, direct style and a strong European diaspora pipeline. Learn Australia through World Cup runs and AFC rivalry with Japan.",
+      "shortHistory": "Men’s senior team of Australia (Football Australia). Squads link existing FootyBrain club players matched to Australia memberships.",
+      "fifaRanking": 27,
+      "tmCode": "australia",
+      "crestPolicy": "text-only"
     }
   ],
   "nationalMemberships": [
@@ -1296,6 +1361,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "472249"
+    },
+    {
+      "playerId": "tm-1223311",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1223311"
     },
     {
       "playerId": "tm-585973",
@@ -1604,6 +1678,15 @@
       "tmSourceId": "330659"
     },
     {
+      "playerId": "tm-1154876",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1154876"
+    },
+    {
       "playerId": "tm-815563",
       "nationalTeamId": "italy",
       "role": "senior",
@@ -1746,6 +1829,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "646991"
+    },
+    {
+      "playerId": "tm-287578",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "287578"
     },
     {
       "playerId": "tm-159471",
@@ -2151,6 +2243,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "786436"
+    },
+    {
+      "playerId": "tm-429217",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "429217"
     },
     {
       "playerId": "tm-735570",
@@ -2619,6 +2720,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "177907"
+    },
+    {
+      "playerId": "tm-637632",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "637632"
     },
     {
       "playerId": "tm-1112486",
@@ -3485,6 +3595,15 @@
       "tmSourceId": "169880"
     },
     {
+      "playerId": "tm-635445",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "635445"
+    },
+    {
       "playerId": "tm-216569",
       "nationalTeamId": "cote-divoire",
       "role": "senior",
@@ -3546,6 +3665,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "1158001"
+    },
+    {
+      "playerId": "tm-1381448",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1381448"
     },
     {
       "playerId": "tm-834742",
@@ -3818,6 +3946,15 @@
       "tmSourceId": "1178488"
     },
     {
+      "playerId": "tm-192557",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "192557"
+    },
+    {
       "playerId": "tm-604113",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -3879,6 +4016,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "548348"
+    },
+    {
+      "playerId": "tm-972875",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "972875"
     },
     {
       "playerId": "tm-486046",
@@ -4286,6 +4432,15 @@
       "tmSourceId": "343153"
     },
     {
+      "playerId": "tm-531835",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "531835"
+    },
+    {
       "playerId": "tm-730484",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -4538,6 +4693,15 @@
       "tmSourceId": "903693"
     },
     {
+      "playerId": "tm-512913",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "512913"
+    },
+    {
       "playerId": "tm-616344",
       "nationalTeamId": "portugal",
       "role": "senior",
@@ -4581,6 +4745,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "881297"
+    },
+    {
+      "playerId": "tm-1108459",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1108459"
     },
     {
       "playerId": "tm-40433",
@@ -4817,6 +4990,15 @@
       "tmSourceId": "745181"
     },
     {
+      "playerId": "tm-406556",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "406556"
+    },
+    {
       "playerId": "tm-228948",
       "nationalTeamId": "germany",
       "role": "senior",
@@ -4968,6 +5150,15 @@
       "isPrimary": true,
       "source": "national_teams_preview_player_link",
       "tmSourceId": "747720"
+    },
+    {
+      "playerId": "tm-1067259",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "national_teams_preview_player_link",
+      "tmSourceId": "1067259"
     },
     {
       "playerId": "tm-1190411",
@@ -12069,6 +12260,357 @@
       "isPrimary": true,
       "source": "registry_nationality",
       "tmSourceId": null
+    },
+    {
+      "playerId": "tm-424204",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-533738",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-921655",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-494826",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-459842",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-990585",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-657940",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1001937",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1010899",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-417348",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1128512",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-790733",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-568535",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-893148",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-439750",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-638798",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-189014",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-260807",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-802143",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-638793",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-589006",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1010912",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-972465",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-670119",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1135160",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-683625",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1004299",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-640852",
+      "nationalTeamId": "canada",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-128969",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-855731",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1013240",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-385918",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-1109953",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-865590",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-399990",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-867137",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-691326",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-867762",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-522223",
+      "nationalTeamId": "australia",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "source": "registry_nationality",
+      "tmSourceId": null
     }
   ],
   "unmatchedTmSquadRows": [
@@ -12297,6 +12839,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "428061",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Riley Patrick McGree",
+      "position": "Midfield - Central Midfield",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "02/11/1998",
+      "internationalCaps": 35,
+      "internationalGoals": 1,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "korea-republic",
       "sourceId": "282689",
       "linkSource": "tm_nt_squad_parent",
@@ -12409,6 +12965,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "1154164",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "James Harrison Overy",
+      "position": "Defender - Right-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "09/11/2007",
+      "internationalCaps": 4,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "morocco",
       "sourceId": "235412",
       "linkSource": "tm_nt_squad_parent",
@@ -12503,6 +13073,20 @@
       "dateOfBirthRaw": "01/08/2003",
       "internationalCaps": 2,
       "internationalGoals": 1,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "956920",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Nestory Irankunda",
+      "position": "Attack - Right Winger",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "09/02/2006",
+      "internationalCaps": 13,
+      "internationalGoals": 5,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -12759,6 +13343,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "187353",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Милош Дегенек",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "28/04/1994",
+      "internationalCaps": 56,
+      "internationalGoals": 1,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "korea-republic",
       "sourceId": "1004327",
       "linkSource": "tm_nt_squad_parent",
@@ -12769,6 +13367,20 @@
       "dateOfBirthRaw": "16/04/2006",
       "internationalCaps": 1,
       "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "742770",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Mohamed Touré",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "26/03/2004",
+      "internationalCaps": 8,
+      "internationalGoals": 2,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -12796,6 +13408,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "17/08/2004",
       "internationalCaps": 6,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "canada",
+      "sourceId": "814848",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Owen Olamidayo Goodman",
+      "position": "Goalkeeper",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "27/11/2003",
+      "internationalCaps": 0,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -13081,6 +13707,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "canada",
+      "sourceId": "340990",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Alfie Charles Jones",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": "Canada",
+      "dateOfBirthRaw": "07/10/1997",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "norway",
       "sourceId": "587222",
       "linkSource": "tm_nt_squad_parent",
@@ -13133,6 +13773,20 @@
       "dateOfBirthRaw": "15/02/1999",
       "internationalCaps": 8,
       "internationalGoals": 1,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "591844",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Joe Anthony Gauci",
+      "position": "Goalkeeper",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "04/07/2000",
+      "internationalCaps": 8,
+      "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -13277,6 +13931,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "603864",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Lewis Miller",
+      "position": "Defender - Right-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "24/08/2000",
+      "internationalCaps": 20,
+      "internationalGoals": 2,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "algeria",
       "sourceId": "784575",
       "linkSource": "tm_nt_squad_parent",
@@ -13371,6 +14039,20 @@
       "dateOfBirthRaw": "02/05/2003",
       "internationalCaps": 8,
       "internationalGoals": 4,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "867760",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Adrian Segečić",
+      "position": "Attack - Right Winger",
+      "citizenship": "Croatia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "01/06/2004",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
     },
@@ -13510,6 +14192,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "29/03/1988",
       "internationalCaps": 29,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "335615",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Thomas William Glover",
+      "position": "Goalkeeper",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "24/12/1997",
+      "internationalCaps": 0,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -13851,6 +14547,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "185175",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Jason Kato Geria",
+      "position": "Defender - Right-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "10/05/1993",
+      "internationalCaps": 13,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "denmark",
       "sourceId": "391005",
       "linkSource": "tm_nt_squad_parent",
@@ -13958,6 +14668,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "17/05/2000",
       "internationalCaps": 2,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "canada",
+      "sourceId": "746740",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Daniel David Jebbison",
+      "position": "Attack - Centre-Forward",
+      "citizenship": "Canada",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "13/08/2003",
+      "internationalCaps": 7,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -14145,6 +14869,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "1109824",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Hayden John Matthews",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "19/06/2004",
+      "internationalCaps": 1,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "korea-republic",
       "sourceId": "550957",
       "linkSource": "tm_nt_squad_parent",
@@ -14322,6 +15060,20 @@
       "tmNationalTeamCountry": "Senegal",
       "dateOfBirthRaw": "10/10/2003",
       "internationalCaps": 5,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "255788",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Cameron Robert Burgess",
+      "position": "Defender - Centre-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": null,
+      "dateOfBirthRaw": "21/10/1995",
+      "internationalCaps": 25,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
@@ -15055,6 +15807,20 @@
       "missingFields": []
     },
     {
+      "nationalTeamId": "australia",
+      "sourceId": "680531",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Samuel Miles Silvera",
+      "position": "Attack - Left Winger",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "25/10/2000",
+      "internationalCaps": 8,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
       "nationalTeamId": "ghana",
       "sourceId": "327536",
       "linkSource": "tm_nt_squad_parent",
@@ -15386,6 +16152,20 @@
       "tmNationalTeamCountry": null,
       "dateOfBirthRaw": "19/07/1993",
       "internationalCaps": 2,
+      "internationalGoals": 0,
+      "reason": "not_in_club_registry",
+      "missingFields": []
+    },
+    {
+      "nationalTeamId": "australia",
+      "sourceId": "271997",
+      "linkSource": "tm_nt_squad_parent",
+      "tmDisplayName": "Callum Roddie Elder",
+      "position": "Defender - Left-Back",
+      "citizenship": "Australia",
+      "tmNationalTeamCountry": "Australia",
+      "dateOfBirthRaw": "27/01/1995",
+      "internationalCaps": 3,
       "internationalGoals": 0,
       "reason": "not_in_club_registry",
       "missingFields": []
