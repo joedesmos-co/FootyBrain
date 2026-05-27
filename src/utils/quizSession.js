@@ -1,7 +1,7 @@
-import { getQuizEligiblePlayers } from './quizEligibility';
-import { formatCountryLabel, formatPosition } from './footballDisplay';
-import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants';
-import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants';
+import { getQuizEligiblePlayers } from './quizEligibility.js';
+import { formatCountryLabel, formatPosition } from './footballDisplay.js';
+import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants.js';
+import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants.js';
 
 /** Minimum quiz-ready players for a fair club or national-team session. */
 export const QUIZ_MIN_SESSION_POOL = 3;

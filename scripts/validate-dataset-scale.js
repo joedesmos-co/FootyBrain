@@ -85,6 +85,8 @@ function validateQuizRegistry() {
   const registry = JSON.parse(fs.readFileSync(QUIZ_REGISTRY_PATH, 'utf8'));
   const registryCount = registry?.players?.length ?? 0;
   const metaCount = registry?.meta?.quizEligibleCount;
+  const registryLeagues = registry?.leagues ?? [];
+  const nationalBuckets = registry?.national?.quizReadyPlayerIdsByNationalTeamId ?? {};
 
   console.log(`  quiz-registry.json players: ${registryCount}`);
   if (typeof metaCount === 'number') {
@@ -100,6 +102,20 @@ function validateQuizRegistry() {
     fail(
       `quiz-registry has ${registryCount} players but live quiz-ready count is ${liveCount} — run npm run write:post-merge-artifacts`,
     );
+  }
+
+  if (registryLeagues.some((l) => l?.id === 'external')) {
+    fail('quiz-registry.leagues must not include external');
+  }
+
+  for (const [nationalTeamId, ids] of Object.entries(nationalBuckets)) {
+    const count = Array.isArray(ids) ? ids.length : 0;
+    if (count > 0 && count < 3) {
+      fail(
+        `quizReadyPlayerIdsByNationalTeamId contains under-min bucket: ${nationalTeamId} (${count})`,
+      );
+      break;
+    }
   }
 
   const registryIds = new Set((registry.players ?? []).map((p) => p.id));

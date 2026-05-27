@@ -18,6 +18,9 @@ import {
   INTERNATIONAL_UNION_POOL_CAP,
 } from '../src/data/worldCupQuizConstants.js';
 
+// Keep this script dependency-light: do not import quizSession.js (it’s browser-bundled).
+const QUIZ_MIN_SESSION_POOL = 3;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'public/data');
@@ -78,7 +81,12 @@ for (const [nationalTeamId, ids] of quizReadyPlayerIdsByNationalTeamId) {
 const viableIds = [];
 for (const [nationalTeamId, ids] of quizReadyPlayerIdsByNationalTeamId.entries()) {
   if (!liveNationalTeamIds.has(String(nationalTeamId))) continue;
-  if (ids.length >= 3) viableIds.push(nationalTeamId);
+  if (ids.length >= QUIZ_MIN_SESSION_POOL) viableIds.push(nationalTeamId);
+}
+
+// Drop under-min buckets so the map itself never implies viability.
+for (const [nationalTeamId, ids] of quizReadyPlayerIdsByNationalTeamId.entries()) {
+  if (ids.length < QUIZ_MIN_SESSION_POOL) quizReadyPlayerIdsByNationalTeamId.delete(nationalTeamId);
 }
 
 const internationalCandidates = new Map();
@@ -138,7 +146,7 @@ const slimLeagues = leagues.map((l) => ({
   id: l.id,
   name: l.name,
   country: l.country ?? null,
-}));
+})).filter((l) => l.id !== 'external');
 
 const registry = {
   schemaVersion: 1,
@@ -154,6 +162,7 @@ const registry = {
   leagues: slimLeagues,
   national: {
     liveNationalTeamIds: [...liveNationalTeamIds],
+    viableNationalTeamIds: viableIds,
     nationalTeams: liveNationalTeams,
     quizReadyPlayerIdsByNationalTeamId: Object.fromEntries(
       [...quizReadyPlayerIdsByNationalTeamId.entries()],
