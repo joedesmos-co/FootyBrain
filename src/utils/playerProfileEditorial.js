@@ -2,6 +2,11 @@ import { formatClubIdentityTags } from './clubIdentity';
 import { formatPosition } from './footballDisplay';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from './playerEditorial';
 import { buildCareerSummary } from './playerImportance';
+import {
+  buildPlayStyleBlurb,
+  buildTopPlayerMetaDescription,
+  isHighImportancePlayer,
+} from './topImportanceProfile';
 
 export const PLAYER_PLACEHOLDER_FACT_RE =
   /editorial profile coming soon|editorial quiz profile pending|footybrain|footycompass sample/i;
@@ -147,6 +152,14 @@ export function buildPlayerKnownFor(player, ctx = {}) {
  * @param {{ teamName?: string, leagueName?: string, team?: object | null }} ctx
  */
 export function buildPlayerProfileDescription(player, ctx = {}) {
+  if (isHighImportancePlayer(player)) {
+    return buildTopPlayerMetaDescription(player, {
+      teamName: ctx.teamName,
+      leagueName: ctx.leagueName,
+      quizReady: !isBrowseOnlyPlayer(player),
+    });
+  }
+
   const about = buildPlayerAboutParagraph(player, ctx);
   const position = formatPosition(player.position);
   const teamName = ctx.teamName ?? 'club';
@@ -185,8 +198,10 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
   const knownFor = buildPlayerKnownFor(player, ctx);
   const displayFact = getDisplayQuickFact(player);
   const careerSummary = buildCareerSummary(player);
+  const playStyleBlurb = buildPlayStyleBlurb(player);
   const depth = countPlayerEditorialDepth(player);
   const isThin = depth <= 2;
+  const enrichThin = isThin && isHighImportancePlayer(player);
 
   return {
     about,
@@ -194,9 +209,12 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
     description: buildPlayerProfileDescription(player, ctx),
     displayFact,
     careerSummary,
+    playStyleBlurb,
     depth,
     isThin,
+    enrichThin,
     showAbout: Boolean(about),
     showKnownFor: knownFor.length > 0,
+    showPlayStyleBlurb: Boolean(playStyleBlurb) && enrichThin,
   };
 }

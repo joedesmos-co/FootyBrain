@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
+import { buildStructuredExploreLead } from '../utils/topImportanceProfile';
 
 /**
  * @param {{
@@ -12,6 +13,8 @@ import { getProfileExploreLead } from '../data/profileExploreEnhancements';
  *   leagueName?: string,
  *   quizReady?: boolean,
  *   lead?: string,
+ *   team?: object | null,
+ *   league?: object | null,
  * }} props
  */
 export default function ProfileKeepExploring({
@@ -23,8 +26,17 @@ export default function ProfileKeepExploring({
   leagueName = '',
   quizReady = false,
   lead = '',
+  team = null,
+  league = null,
 }) {
-  const exploreLead = lead || getProfileExploreLead(entityId, { teamId });
+  const structuredLead = buildStructuredExploreLead({
+    team,
+    league,
+    leagueId,
+    quizReady,
+  });
+  const exploreLead =
+    lead || getProfileExploreLead(entityId, { teamId }) || structuredLead;
   const hasLinks = Boolean(teamId || leagueId);
 
   if (!exploreLead && !hasLinks) return null;

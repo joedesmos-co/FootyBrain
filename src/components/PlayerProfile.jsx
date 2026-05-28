@@ -613,6 +613,16 @@ export default function PlayerProfile() {
         </section>
       ) : null}
 
+      {profileEditorial.showPlayStyleBlurb ? (
+        <section
+          className="info-card player-section player-section--playstyle-blurb"
+          aria-labelledby="player-playstyle-blurb-title"
+        >
+          <PlayerSectionHead icon="⚡" title="How they play" id="player-playstyle-blurb-title" />
+          <p className="player-profile__about">{profileEditorial.playStyleBlurb}</p>
+        </section>
+      ) : null}
+
       <div className="player-profile__divider" aria-hidden="true" />
 
       <section className="player-profile__body" aria-label={`${player.name} profile`}>
@@ -733,6 +743,7 @@ export default function PlayerProfile() {
           teamName={teamName}
           leagueName={leagueName}
           quizReady={quizReady}
+          team={teamContext}
         />
       ) : null}
 

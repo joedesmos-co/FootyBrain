@@ -57,8 +57,17 @@ export default function NationalTeamProfile() {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
     const title = `${nationalTeam.displayName} · National team · FootyCompass`;
-    const description =
-      `${nationalTeam.displayName} national team—player pool linked from club squads (not an official tournament roster).`;
+    const fanLead = String(nationalTeam.fanGuide ?? '').trim();
+    const rivalCount = nationalTeam.rivalIds?.length ?? 0;
+    const description = [
+      `${nationalTeam.displayName} national team—player pool linked from club squads (not an official tournament roster).`,
+      fanLead ? fanLead.slice(0, 120).trimEnd() + (fanLead.length > 120 ? '…' : '') : '',
+      rivalCount > 0 ? `${rivalCount} rival nations listed.` : '',
+      'Squad browse, World Cup hub, and national quizzes on FootyCompass.',
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .replace(/\s+/g, ' ');
     setSeoMeta({
       title,
       description,

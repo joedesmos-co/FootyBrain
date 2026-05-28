@@ -35,7 +35,9 @@ import PlayerVisual from './PlayerVisual';
 import { peekTeamName } from '../data/teamStore';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import { buildTopLeagueMetaDescription } from '../utils/topImportanceProfile';
 import BreadcrumbNav from './BreadcrumbNav';
+import ProfileKeepExploring from './ProfileKeepExploring';
 
 const LEARNING_STEPS = [
   { label: 'Basics', title: 'League snapshot', field: 'description' },
@@ -61,6 +63,8 @@ function stepText(league, step) {
 }
 
 function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
+  const quizReadyPlayers = getQuizEligiblePlayers(leaguePlayers);
+
   useEffect(() => {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -68,19 +72,25 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     const homeUrl = canonical.replace(/\/league\/[^/]+$/, '/');
     const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
 
+    const leagueDescription = buildTopLeagueMetaDescription(league, {
+      clubs: leagueTeams.length,
+      players: leaguePlayers.length,
+      quizReady: quizReadyPlayers.length,
+    });
+
     setSeoMeta({
       title: `${getLeagueDisplayName(league)} · FootyCompass`,
-      description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueMetaLine({ clubs: leagueTeams.length, players: leaguePlayers.length })}.`,
+      description: leagueDescription,
       canonicalUrl: canonical,
       og: {
         title: `${getLeagueDisplayName(league)} · FootyCompass`,
-        description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
+        description: leagueDescription,
         url: canonical,
         type: 'website',
       },
       twitter: {
         title: `${getLeagueDisplayName(league)} · FootyCompass`,
-        description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
+        description: leagueDescription,
       },
     });
 
@@ -97,9 +107,8 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     return () => {
       upsertJsonLdScript('jsonld-breadcrumb', null);
     };
-  }, [league, leagueTeams, leaguePlayers]);
+  }, [league, leagueTeams, leaguePlayers, quizReadyPlayers.length]);
 
-  const quizReadyPlayers = getQuizEligiblePlayers(leaguePlayers);
   const hasLeagueQuiz = quizReadyPlayers.length > 0;
   const featuredClubs = getLeagueFeaturedTeams(league, leagueTeams, leaguePlayers, {
     limit: 6,
@@ -354,6 +363,15 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           ))}
         </ol>
       </details>
+
+      <ProfileKeepExploring
+        variant="team"
+        entityId={league.id}
+        leagueId={league.id}
+        leagueName={getLeagueDisplayName(league)}
+        quizReady={hasLeagueQuiz}
+        league={league}
+      />
     </div>
   );
 }

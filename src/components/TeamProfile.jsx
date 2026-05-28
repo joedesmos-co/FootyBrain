@@ -31,6 +31,11 @@ import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
+import {
+  buildTopTeamMetaDescription,
+  isHighTrafficTeam,
+} from '../utils/topImportanceProfile';
+import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
 
@@ -54,7 +59,13 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
 
     const title = `${team.name} · FootyCompass`;
-    const description = buildClubProfileDescription(team, leagueName, roster.length);
+    const description = isHighTrafficTeam(team, roster)
+      ? buildTopTeamMetaDescription(team, {
+          rosterSize: roster.length,
+          quizReady: getQuizEligiblePlayers(roster).length,
+          leagueName,
+        })
+      : buildClubProfileDescription(team, leagueName, roster.length);
     setSeoMeta({
       title,
       description,
@@ -90,7 +101,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
       upsertJsonLdScript('jsonld-breadcrumb', null);
       upsertJsonLdScript('jsonld-sportsteam', null);
     };
-  }, [team, leagueName, roster.length]);
+  }, [team, leagueName, roster]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
   const { status: quizRegistryStatus, registry: quizRegistry } = useQuizRegistry();
@@ -356,6 +367,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             teamName={team.name}
             leagueName={leagueName}
             quizReady={hasTeamQuiz}
+            team={team}
           />
         ) : null}
 
