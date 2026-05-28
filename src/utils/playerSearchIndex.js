@@ -78,6 +78,12 @@ export function getPlayerSearchIndex(players) {
       ...entry.aliasNorms,
       ...entry.aliasNorms.map(compactForSearch).filter((c) => c.length >= 2),
     ]);
+    if (entry.parts.length >= 2) {
+      const initials = entry.parts.map((part) => part[0]).join('');
+      if (initials.length >= 2) tokens.add(initials);
+      const firstInitialLast = `${entry.parts[0][0] ?? ''}${entry.lastName}`.trim();
+      if (firstInitialLast.length >= 3) tokens.add(firstInitialLast);
+    }
     indexTokens(prefixMap, entry, tokens);
   }
 
@@ -179,6 +185,19 @@ export function playerSearchQuickScoreForEntry(entry, normalizedQuery) {
     if (nameCompact === qCompact) best = Math.max(best, 98);
     else if (nameCompact.startsWith(qCompact)) best = Math.max(best, 92);
     else if (qCompact.length >= 3 && nameCompact.includes(qCompact)) best = Math.max(best, 65);
+  }
+
+  if (best < 85 && entry.parts.length >= 2) {
+    const initials = entry.parts.map((part) => part[0]).join('');
+    if (initials === normalizedQuery || initials === qCompact) best = Math.max(best, 82);
+    const firstInitialLast = `${entry.parts[0][0] ?? ''}${entry.lastName}`;
+    if (
+      firstInitialLast === normalizedQuery ||
+      firstInitialLast.startsWith(normalizedQuery) ||
+      firstInitialLast.startsWith(qCompact)
+    ) {
+      best = Math.max(best, 78);
+    }
   }
 
   return best;

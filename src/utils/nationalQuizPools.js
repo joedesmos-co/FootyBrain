@@ -12,7 +12,7 @@ import {
   getNationalTeamQuizReadyCount,
   getViableLiveNationalTeams,
 } from '../data/nationalTeamData';
-import { isQuizEligiblePlayer } from './quizPlayerRules';
+import { canAppearInQuizSession } from './quizEcosystem';
 
 /** Matches `QUIZ_MIN_SESSION_POOL` in quizSession.js — avoid circular import. */
 const QUIZ_MIN_SESSION_POOL = 3;
@@ -80,9 +80,14 @@ export function getInternationalQuizSessionPool() {
  * Build a country quiz pool from an explicit quiz-player set (e.g. quiz-registry players).
  * This avoids importing `sampleData.js` on hot paths.
  */
-export function buildCountryQuizSessionPool(nationalTeamId, quizPlayers, getMembershipForPlayer) {
+export function buildCountryQuizSessionPool(
+  nationalTeamId,
+  quizPlayers,
+  getMembershipForPlayer,
+  difficulty = 'medium',
+) {
   const eligible = (quizPlayers ?? []).filter((p) => {
-    if (!isQuizEligiblePlayer(p)) return false;
+    if (!canAppearInQuizSession(p, difficulty)) return false;
     const membership = getMembershipForPlayer?.(p.id);
     return membership?.nationalTeamId === nationalTeamId;
   });

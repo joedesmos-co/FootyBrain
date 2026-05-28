@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { useFavorites } from '../hooks/useFavorites';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
-import { getQuizEligiblePlayers } from '../utils/quizEligibility';
+import { getPlayableQuizPlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { formatClubIdentityTags, truncateClubText } from '../utils/clubIdentity';
 import { IMPORTANCE_SCORE_LABEL, QUIZ_COMING_SOON } from '../utils/consumerCopy';
@@ -93,8 +93,15 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
   }, [team, leagueName, roster.length]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
-  const hasTeamQuiz = getQuizEligiblePlayers(roster).length >= QUIZ_MIN_SESSION_POOL;
   const { status: quizRegistryStatus, registry: quizRegistry } = useQuizRegistry();
+  const registryRoster = useMemo(() => {
+    if (quizRegistryStatus !== 'ready' || !quizRegistry?.players) return null;
+    return quizRegistry.players.filter((player) => player.teamId === team.id);
+  }, [quizRegistry, quizRegistryStatus, team.id]);
+  const quizPool = registryRoster ?? roster;
+  const hasTeamQuiz =
+    quizPool.length >= QUIZ_MIN_SESSION_POOL ||
+    getPlayableQuizPlayers(roster, 'medium').length >= QUIZ_MIN_SESSION_POOL;
   const hasLeagueQuiz =
     quizRegistryStatus === 'ready' && quizRegistry?.players
       ? quizRegistry.players.some((player) => player.leagueId === team.leagueId)

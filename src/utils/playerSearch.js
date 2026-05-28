@@ -56,7 +56,8 @@ function scorePlayerMatch(player, normalizedQuery, helpers, intent) {
     score = matchScoreForFields(getPlayerSearchFields(player, helpers), normalizedQuery);
   }
   if (score <= 0) return 0;
-  return score + scorePlayerIntentBoost(player, intent, getMembershipForPlayer);
+  const importanceBoost = Math.min(14, Math.floor((Number(player.importanceScore) || 0) / 10));
+  return score + scorePlayerIntentBoost(player, intent, getMembershipForPlayer) + importanceBoost;
 }
 
 function scoreIndexedPlayerMatch(entry, normalizedQuery, helpers, intent) {
@@ -65,7 +66,13 @@ function scoreIndexedPlayerMatch(entry, normalizedQuery, helpers, intent) {
     score = matchScoreForFields(getPlayerSearchFields(entry.player, helpers), normalizedQuery);
   }
   if (score <= 0) return 0;
-  return score + scorePlayerIntentBoost(entry.player, intent, getMembershipForPlayer);
+  const importanceBoost = Math.min(
+    14,
+    Math.floor((Number(entry.player.importanceScore) || 0) / 10),
+  );
+  return (
+    score + scorePlayerIntentBoost(entry.player, intent, getMembershipForPlayer) + importanceBoost
+  );
 }
 
 /**

@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 import { gzipSync } from 'zlib';
 import { players } from '../src/data/sampleData.js';
 import { DATASET_META } from '../src/data/datasetMeta.js';
-import { isQuizEligiblePlayer } from '../src/utils/quizPlayerRules.js';
+import { isInQuizEcosystem, isQuizEligiblePlayer } from '../src/utils/quizPlayerRules.js';
 import { EXPANSION_LIMITS } from './phase1-curation.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -19,6 +19,8 @@ const QUIZ_REGISTRY_PATH = path.join(ROOT, 'public/data/quiz-registry.json');
 
 const SAMPLE_DATA_GZIP_WARN_KB = 230;
 const SAMPLE_DATA_GZIP_FAIL_KB = 280;
+const QUIZ_REGISTRY_GZIP_WARN_KB = 900;
+const QUIZ_REGISTRY_GZIP_FAIL_KB = 1400;
 
 const errors = [];
 const warnings = [];
@@ -63,16 +65,29 @@ function validatePlayerCount() {
 }
 
 function validateQuizRegistry() {
-  const liveQuizReady = players.filter(isQuizEligiblePlayer);
-  const liveCount = liveQuizReady.length;
+  const liveEditorial = players.filter(isQuizEligiblePlayer);
+  const liveEcosystem = players.filter(isInQuizEcosystem);
+  const editorialCount = liveEditorial.length;
+  const ecosystemCount = liveEcosystem.length;
 
   console.log(`\nQuiz registry:`);
-  console.log(`  Live quiz-ready (rules): ${liveCount}`);
+  console.log(`  Live editorial quiz-ready: ${editorialCount}`);
+  console.log(`  Live quiz ecosystem (in-league): ${ecosystemCount}`);
+
   if (typeof DATASET_META?.quizEligibleCount === 'number') {
     console.log(`  DATASET_META.quizEligibleCount: ${DATASET_META.quizEligibleCount}`);
-    if (DATASET_META.quizEligibleCount !== liveCount) {
+    if (DATASET_META.quizEligibleCount !== editorialCount) {
       fail(
-        `DATASET_META.quizEligibleCount (${DATASET_META.quizEligibleCount}) != live quiz-ready (${liveCount}) — re-run merge`,
+        `DATASET_META.quizEligibleCount (${DATASET_META.quizEligibleCount}) != live editorial (${editorialCount}) — re-run merge`,
+      );
+    }
+  }
+
+  if (typeof DATASET_META?.quizEcosystemCount === 'number') {
+    console.log(`  DATASET_META.quizEcosystemCount: ${DATASET_META.quizEcosystemCount}`);
+    if (DATASET_META.quizEcosystemCount !== ecosystemCount) {
+      fail(
+        `DATASET_META.quizEcosystemCount (${DATASET_META.quizEcosystemCount}) != live ecosystem (${ecosystemCount}) — re-run merge`,
       );
     }
   }
@@ -84,23 +99,33 @@ function validateQuizRegistry() {
 
   const registry = JSON.parse(fs.readFileSync(QUIZ_REGISTRY_PATH, 'utf8'));
   const registryCount = registry?.players?.length ?? 0;
-  const metaCount = registry?.meta?.quizEligibleCount;
+  const metaEditorial = registry?.meta?.quizEligibleCount;
+  const metaEcosystem = registry?.meta?.quizEcosystemCount;
   const registryLeagues = registry?.leagues ?? [];
   const nationalBuckets = registry?.national?.quizReadyPlayerIdsByNationalTeamId ?? {};
 
   console.log(`  quiz-registry.json players: ${registryCount}`);
-  if (typeof metaCount === 'number') {
-    console.log(`  quiz-registry meta.quizEligibleCount: ${metaCount}`);
-    if (metaCount !== registryCount) {
+  if (typeof metaEditorial === 'number') {
+    console.log(`  quiz-registry meta.quizEligibleCount (editorial): ${metaEditorial}`);
+    if (metaEditorial !== editorialCount) {
       fail(
-        `quiz-registry meta.quizEligibleCount (${metaCount}) != players.length (${registryCount})`,
+        `quiz-registry meta.quizEligibleCount (${metaEditorial}) != live editorial (${editorialCount})`,
       );
     }
   }
 
-  if (registryCount !== liveCount) {
+  if (typeof metaEcosystem === 'number') {
+    console.log(`  quiz-registry meta.quizEcosystemCount: ${metaEcosystem}`);
+    if (metaEcosystem !== registryCount) {
+      fail(
+        `quiz-registry meta.quizEcosystemCount (${metaEcosystem}) != players.length (${registryCount})`,
+      );
+    }
+  }
+
+  if (registryCount !== ecosystemCount) {
     fail(
-      `quiz-registry has ${registryCount} players but live quiz-ready count is ${liveCount} — run npm run write:post-merge-artifacts`,
+      `quiz-registry has ${registryCount} players but live ecosystem count is ${ecosystemCount} — run npm run write:post-merge-artifacts`,
     );
   }
 
@@ -119,15 +144,35 @@ function validateQuizRegistry() {
   }
 
   const registryIds = new Set((registry.players ?? []).map((p) => p.id));
-  const liveIds = new Set(liveQuizReady.map((p) => p.id));
+  const liveIds = new Set(liveEcosystem.map((p) => p.id));
   if (registryIds.size !== liveIds.size) {
-    fail('quiz-registry player ids do not match live quiz-ready set (duplicate or missing ids)');
+    fail('quiz-registry player ids do not match live ecosystem set (duplicate or missing ids)');
   }
   for (const id of liveIds) {
     if (!registryIds.has(id)) {
-      fail(`quiz-registry missing quiz-ready player id: ${id}`);
+      fail(`quiz-registry missing ecosystem player id: ${id}`);
       break;
     }
+  }
+
+  for (const row of registry.players ?? []) {
+    const hints = row?.quizHints ?? [];
+    if (hints.length < 2) {
+      fail(`quiz-registry player ${row.id} has fewer than 2 quiz hints`);
+      break;
+    }
+  }
+
+  const { gzipKb } = measureGzipKb(QUIZ_REGISTRY_PATH);
+  console.log(`  quiz-registry.json gzip: ${gzipKb.toFixed(1)} KB`);
+  if (gzipKb >= QUIZ_REGISTRY_GZIP_FAIL_KB) {
+    fail(
+      `quiz-registry gzip ${gzipKb.toFixed(1)} KB >= fail threshold ${QUIZ_REGISTRY_GZIP_FAIL_KB} KB`,
+    );
+  } else if (gzipKb >= QUIZ_REGISTRY_GZIP_WARN_KB) {
+    warn(
+      `quiz-registry gzip ${gzipKb.toFixed(1)} KB >= warn threshold ${QUIZ_REGISTRY_GZIP_WARN_KB} KB`,
+    );
   }
 }
 

@@ -1,6 +1,7 @@
 import { collections } from '../data/collectionsData';
 import { getQuizThemeById, QUIZ_THEME_CATALOG } from '../data/quizThemes';
-import { getQuizEligiblePlayers } from './quizEligibility';
+import { getPlayableQuizPlayers, getQuizEcosystemPlayers } from './quizEligibility';
+import { pickWeightedFromQuizPool, resolveThemePoolCap } from './quizEcosystem';
 import { pickRandomPlayer } from './quizSession';
 
 const DEFAULT_POOL_CAP = 100;
@@ -43,11 +44,21 @@ export function getRecognizabilityScore(player) {
 /**
  * Rank by recognizability and cap pool size to avoid obscure filler dominating sessions.
  */
-export function rankAndCapQuizPool(pool, { minImportance = MIN_RECOGNIZABLE_IMPORTANCE, cap = DEFAULT_POOL_CAP } = {}) {
-  return [...pool]
+export function rankAndCapQuizPool(
+  pool,
+  {
+    minImportance = MIN_RECOGNIZABLE_IMPORTANCE,
+    cap = DEFAULT_POOL_CAP,
+    difficulty = 'medium',
+  } = {},
+) {
+  const ranked = [...pool]
     .filter((p) => (Number(p.importanceScore) || 0) >= minImportance)
-    .sort((a, b) => getRecognizabilityScore(b) - getRecognizabilityScore(a))
-    .slice(0, cap);
+    .sort((a, b) => getRecognizabilityScore(b) - getRecognizabilityScore(a));
+  const limit = resolveThemePoolCap(ranked.length, cap);
+  const sessionPool = getPlayableQuizPlayers(ranked, difficulty);
+  const source = sessionPool.length >= Math.min(12, ranked.length) ? sessionPool : ranked;
+  return source.slice(0, limit);
 }
 
 export function getPlayerRarity(player, pool) {
@@ -69,58 +80,61 @@ export function getPlayerRarity(player, pool) {
   return { label: 'Deep cut', tone: 'elite' };
 }
 
-function poolFromCollectionIds(players, collectionIds) {
+function poolFromCollectionIds(players, collectionIds, difficulty = 'medium') {
   const ids = playerIdsFromCollections(collectionIds);
-  const eligible = getQuizEligiblePlayers(players);
-  return rankAndCapQuizPool(eligible.filter((p) => ids.has(p.id)), { minImportance: 60 });
+  const eligible = getQuizEcosystemPlayers(players);
+  return rankAndCapQuizPool(eligible.filter((p) => ids.has(p.id)), {
+    minImportance: 60,
+    difficulty,
+  });
 }
 
-function poolWonderkids(players) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolWonderkids(players, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => typeof p.age === 'number' && p.age <= 23),
-    { minImportance: 62, cap: 80 },
+    { minImportance: 62, cap: 80, difficulty },
   );
 }
 
-function poolLegends(players, theme) {
-  const fromCollections = poolFromCollectionIds(players, theme.collectionIds);
-  const eligible = getQuizEligiblePlayers(players);
+function poolLegends(players, theme, difficulty = 'medium') {
+  const fromCollections = poolFromCollectionIds(players, theme.collectionIds, difficulty);
+  const eligible = getQuizEcosystemPlayers(players);
   const headline = eligible.filter((p) => (Number(p.importanceScore) || 0) >= 88);
   const merged = new Map();
   for (const p of [...fromCollections, ...headline]) merged.set(p.id, p);
-  return rankAndCapQuizPool([...merged.values()], { minImportance: 80, cap: 90 });
+  return rankAndCapQuizPool([...merged.values()], { minImportance: 80, cap: 90, difficulty });
 }
 
-function poolCultHeroes(players) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolCultHeroes(players, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => {
       const score = Number(p.importanceScore) || 0;
       return score >= 52 && score <= 78;
     }),
-    { minImportance: 52, cap: 70 },
+    { minImportance: 52, cap: 70, difficulty },
   );
 }
 
-function poolTopScorers(players) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolTopScorers(players, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => isForwardPosition(p.position) && (Number(p.importanceScore) || 0) >= 78),
-    { minImportance: 78, cap: 80 },
+    { minImportance: 78, cap: 80, difficulty },
   );
 }
 
-function poolVeterans(players) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolVeterans(players, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => typeof p.age === 'number' && p.age >= 32),
-    { minImportance: 65, cap: 90 },
+    { minImportance: 65, cap: 90, difficulty },
   );
 }
 
-function poolDerbyRivalries(players, teams) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolDerbyRivalries(players, teams, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   const rivalryTeamIds = new Set();
 
   for (const team of teams ?? []) {
@@ -138,53 +152,55 @@ function poolDerbyRivalries(players, teams) {
 
   return rankAndCapQuizPool(
     eligible.filter((p) => rivalryTeamIds.has(p.teamId)),
-    { minImportance: 58, cap: 100 },
+    { minImportance: 58, cap: 100, difficulty },
   );
 }
 
-function poolInternational(players) {
-  const eligible = getQuizEligiblePlayers(players);
+function poolInternational(players, difficulty = 'medium') {
+  const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => p._inInternationalPool === true),
-    { minImportance: 60, cap: 120 },
+    { minImportance: 60, cap: 120, difficulty },
   );
 }
 
 /**
  * @param {any[]} allPlayers
  * @param {string} themeId
- * @param {{ teams?: any[], leagues?: any[] }} [context]
+ * @param {{ teams?: any[], leagues?: any[], difficulty?: string }} [context]
  */
 export function buildThemedQuizPool(allPlayers, themeId, context = {}) {
   const theme = getQuizThemeById(themeId);
   if (!theme) return [];
+  const difficulty = context.difficulty ?? theme.defaultDifficulty ?? 'medium';
+  const capOpts = (extra = {}) => ({ difficulty, ...extra });
 
   switch (theme.id) {
     case 'wonderkids':
-      return poolWonderkids(allPlayers);
+      return poolWonderkids(allPlayers, difficulty);
     case 'legends':
-      return poolLegends(allPlayers, theme);
+      return poolLegends(allPlayers, theme, difficulty);
     case 'cult-heroes':
-      return poolCultHeroes(allPlayers);
+      return poolCultHeroes(allPlayers, difficulty);
     case 'top-scorers':
-      return poolTopScorers(allPlayers);
+      return poolTopScorers(allPlayers, difficulty);
     case 'veterans':
-      return poolVeterans(allPlayers);
+      return poolVeterans(allPlayers, difficulty);
     case 'champions-league':
-      return poolFromCollectionIds(allPlayers, theme.collectionIds);
+      return poolFromCollectionIds(allPlayers, theme.collectionIds, difficulty);
     case 'world-cup':
-      return poolInternational(allPlayers);
+      return poolInternational(allPlayers, difficulty);
     case 'derby-rivalries':
-      return poolDerbyRivalries(allPlayers, context.teams);
+      return poolDerbyRivalries(allPlayers, context.teams, difficulty);
     case 'premier-league':
     case 'la-liga':
     case 'serie-a':
     case 'bundesliga': {
       const leagueId = theme.preset?.leagueId;
-      const eligible = getQuizEligiblePlayers(allPlayers);
+      const eligible = getQuizEcosystemPlayers(allPlayers);
       return rankAndCapQuizPool(
         eligible.filter((p) => p.leagueId === leagueId),
-        { minImportance: 58, cap: 100 },
+        capOpts({ minImportance: 58, cap: 100 }),
       );
     }
     default:
@@ -208,28 +224,8 @@ export function getAllThemePoolCounts(allPlayers, context = {}) {
 /**
  * Weighted pick favours recognizable players while keeping variety.
  */
-export function pickWeightedQuizPlayer(pool, excludePlayerId = '') {
-  const candidates = excludePlayerId
-    ? pool.filter((p) => p.id !== excludePlayerId)
-    : pool;
-  if (candidates.length === 0) return pickRandomPlayer(pool, excludePlayerId);
-  if (candidates.length <= 6) return pickRandomPlayer(candidates, excludePlayerId);
-
-  const ranked = [...candidates].sort(
-    (a, b) => getRecognizabilityScore(b) - getRecognizabilityScore(a),
-  );
-  const topSlice = ranked.slice(0, Math.max(6, Math.ceil(ranked.length * 0.65)));
-  let totalWeight = 0;
-  const weights = topSlice.map((_, index) => {
-    const w = topSlice.length - index;
-    totalWeight += w;
-    return w;
-  });
-
-  let roll = Math.random() * totalWeight;
-  for (let i = 0; i < topSlice.length; i += 1) {
-    roll -= weights[i];
-    if (roll <= 0) return topSlice[i];
-  }
-  return topSlice[topSlice.length - 1];
+export function pickWeightedQuizPlayer(pool, excludePlayerId = '', difficulty = 'medium') {
+  const picked = pickWeightedFromQuizPool(pool, excludePlayerId, difficulty);
+  if (picked) return picked;
+  return pickRandomPlayer(pool, excludePlayerId);
 }

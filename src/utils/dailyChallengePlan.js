@@ -1,4 +1,4 @@
-import { getQuizEligiblePlayers } from './quizEligibility';
+import { getPlayableQuizPlayers, getQuizEligiblePlayers } from './quizEligibility';
 
 export const DAILY_QUESTION_COUNT = 5;
 
@@ -51,11 +51,12 @@ function seededSample(arr, n, dateKey, salt) {
  */
 
 /**
- * Build eligible pools from the quiz registry (quiz-ready players only).
+ * Build eligible pools from the quiz registry (difficulty-weighted ecosystem).
  * @param {QuizRegistryPayload} registry
  */
 function getEligiblePools(registry) {
-  const quizReady = getQuizEligiblePlayers(registry?.players ?? []);
+  const quizReady = getPlayableQuizPlayers(registry?.players ?? [], 'medium');
+  const editorial = getQuizEligiblePlayers(registry?.players ?? []);
   const teams = registry?.teams ?? [];
   const leagues = registry?.leagues ?? [];
 
@@ -90,7 +91,13 @@ function getEligiblePools(registry) {
     }))
     .filter(({ players }) => players.length >= DAILY_THEMED_MIN_POOL);
 
-  return { national, clubs, leagues: leaguePools, quizReady };
+  return {
+    national,
+    clubs,
+    leagues: leaguePools,
+    sessionPlayers: quizReady,
+    editorialPlayers: editorial,
+  };
 }
 
 const challengePlanByDate = new Map();
@@ -193,7 +200,11 @@ export function generateDailyChallengeFromRegistry(dateKey, registry) {
       },
     };
   } else {
-    const questions = seededSample(eligible.quizReady, DAILY_QUESTION_COUNT, dateKey, 804);
+    const generalPool =
+      eligible.editorialPlayers.length >= DAILY_QUESTION_COUNT
+        ? eligible.editorialPlayers
+        : eligible.sessionPlayers;
+    const questions = seededSample(generalPool, DAILY_QUESTION_COUNT, dateKey, 804);
     plan = {
       kind: 'general',
       label: DAILY_CHALLENGE_LABELS.general,

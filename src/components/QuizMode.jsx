@@ -246,7 +246,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     [poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter],
   );
 
-  const themePoolContext = useMemo(() => ({ teams }), [teams]);
+  const themePoolContext = useMemo(() => ({ teams, difficulty }), [teams, difficulty]);
   const themePoolCounts = useMemo(
     () => getAllThemePoolCounts(players, themePoolContext),
     [players, themePoolContext],
@@ -296,8 +296,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   );
 
   const basePoolForModes = useMemo(
-    () => buildQuizPlayerPool(players, filterState, 'classic'),
-    [players, filterState],
+    () => buildQuizPlayerPool(players, filterState, 'classic', {}, difficulty),
+    [players, filterState, difficulty],
   );
 
   const modeCounts = useMemo(() => {
@@ -319,8 +319,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   const playerPool = useMemo(() => {
     const source = themedSourcePool ?? players;
-    return buildQuizPlayerPool(source, filterState, quizType, variantContext);
-  }, [themedSourcePool, players, filterState, quizType, variantContext]);
+    return buildQuizPlayerPool(source, filterState, quizType, variantContext, difficulty);
+  }, [themedSourcePool, players, filterState, quizType, variantContext, difficulty]);
 
   const ambiguousLastNames = useMemo(
     () => buildAmbiguousLastNames(playerPool),
@@ -356,7 +356,11 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   }, [difficulty, initialHintsForQuestion]);
 
   const startQuestion = useCallback(() => {
-    const next = pickWeightedQuizPlayer(playerPool, lastQuestionPlayerIdRef.current ?? '');
+    const next = pickWeightedQuizPlayer(
+      playerPool,
+      lastQuestionPlayerIdRef.current ?? '',
+      difficulty,
+    );
     lastQuestionPlayerIdRef.current = next?.id ?? null;
     setCurrentPlayer(next);
     setHintsShown(initialHintsForQuestion(difficulty));

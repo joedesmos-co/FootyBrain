@@ -1,4 +1,4 @@
-import { getQuizEligiblePlayers } from './quizEligibility.js';
+import { getPlayableQuizPlayers } from './quizEligibility.js';
 import { formatCountryLabel, formatPosition } from './footballDisplay.js';
 import { getQuizTypePoolHint, playerSupportsQuizVariant } from './quizVariants.js';
 import { COUNTRY_SESSION_POOL_CAP } from '../data/worldCupQuizConstants.js';
@@ -187,9 +187,15 @@ export function isQuizSessionPoolViable(
  * @param {import('../data/sampleData').players} allPlayers
  * @param {{ poolFocus: string, leagueFilter: string, teamFilter: string, positionFilter: string, nationalTeamFilter: string }} filters
  */
-export function buildQuizPlayerPool(allPlayers, filters, quizType = 'classic', variantContext = {}) {
+export function buildQuizPlayerPool(
+  allPlayers,
+  filters,
+  quizType = 'classic',
+  variantContext = {},
+  difficulty = 'medium',
+) {
   const { poolFocus, leagueFilter, teamFilter, positionFilter, nationalTeamFilter } = filters;
-  const eligible = getQuizEligiblePlayers(allPlayers);
+  const eligible = getPlayableQuizPlayers(allPlayers, difficulty);
 
   let pool;
 
