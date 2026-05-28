@@ -144,10 +144,10 @@ export default function CollectionDetailPage() {
     const canonical = getCanonicalUrl();
     if (!canonical) return;
     const itemCount = collection.items.length;
-    const title = `${collection.title} · Collection · FootyBrain`;
+    const title = `${collection.title} · Collection · FootyCompass`;
     const description = collection.description
       ? `${collection.description} (${itemCount} profiles).`
-      : `A curated FootyBrain checklist (${itemCount} profiles) to help you learn players, clubs, and history.`;
+      : `A curated FootyCompass checklist (${itemCount} profiles) to help you learn players, clubs, and history.`;
     setSeoMeta({
       title,
       description,

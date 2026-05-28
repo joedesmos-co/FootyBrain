@@ -47,7 +47,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     const homeUrl = canonical.replace(/\/team\/[^/]+$/, '/');
     const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
 
-    const title = `${team.name} · FootyBrain`;
+    const title = `${team.name} · FootyCompass`;
     const description = `${team.name} (${formatCountryLabel(team.country)}). Squad learning, rivals, legends, and quizzes when available.`;
     setSeoMeta({
       title,

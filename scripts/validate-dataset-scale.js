@@ -175,7 +175,7 @@ function main() {
   const checkDist = process.argv.includes('--dist');
   const distDir = path.join(ROOT, 'dist');
 
-  console.log('FootyBrain dataset scale validation\n');
+  console.log('FootyCompass dataset scale validation\n');
   validatePlayerCount();
   validateQuizRegistry();
   validateSampleDataSource();

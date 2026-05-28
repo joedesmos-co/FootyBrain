@@ -257,7 +257,7 @@ export default function PlayerProfile() {
       ],
     });
 
-    const title = `${player.name} · FootyBrain`;
+    const title = `${player.name} · FootyCompass`;
     const descriptionParts = [
       player.position ? formatPosition(player.position) : null,
       resolvedTeamName,

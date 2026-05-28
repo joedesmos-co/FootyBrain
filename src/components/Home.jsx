@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { DATASET_META } from '../data/datasetMeta';
+import { SITE_DESCRIPTION_SHORT, SITE_NAME, SITE_TAGLINE } from '../utils/brand';
 import PageFallback from './PageFallback';
 import HomeStartHere from './HomeStartHere';
 
@@ -12,9 +13,10 @@ export default function Home() {
     <div className="home">
       <section className="hero hero--home">
         <div className="hero__content">
-          <p className="hero__eyebrow">Football learning · quizzes · collections</p>
-          <h1 className="hero__title">FootyBrain</h1>
-          <p className="hero__tagline">Learn the game. Know the players. Become a real fan.</p>
+          <p className="hero__eyebrow">Discovery · profiles · quizzes</p>
+          <h1 className="hero__title">{SITE_NAME}</h1>
+          <p className="hero__tagline">{SITE_TAGLINE}</p>
+          <p className="hero__subcopy">{SITE_DESCRIPTION_SHORT}</p>
           <div className="hero__actions">
             <Link to="/browse" className="btn btn--primary btn--large hero__cta-primary">
               Browse players
@@ -28,7 +30,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <dl className="hero__stats" aria-label="FootyBrain at a glance">
+          <dl className="hero__stats" aria-label="FootyCompass at a glance">
             <div>
               <dt>{DATASET_META.playerCount}</dt>
               <dd>Players</dd>

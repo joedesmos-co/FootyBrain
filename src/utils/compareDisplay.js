@@ -46,7 +46,7 @@ export function getPlayerStrengths(player) {
  */
 export function getSquadStrengthSummary(rosterStats) {
   const { total, topPlayer, counts } = rosterStats;
-  if (total === 0) return 'No players in the FootyBrain sample for this club yet.';
+  if (total === 0) return 'No players in the FootyCompass sample for this club yet.';
 
   let dominantId = 'midfielders';
   let dominantCount = 0;

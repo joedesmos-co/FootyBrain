@@ -27,7 +27,7 @@ function normalizeManifestEntry(playerId, entry) {
     alt: String(entry.alt ?? '').trim() || null,
     credit: String(entry.credit ?? '').trim() || null,
     license: String(entry.license ?? '').trim() || null,
-    imageSource: String(entry.imageSource ?? entry.sourceLabel ?? 'FootyBrain image manifest').trim(),
+    imageSource: String(entry.imageSource ?? entry.sourceLabel ?? 'FootyCompass image manifest').trim(),
     srcSet: String(entry.srcSet ?? '').trim() || null,
   };
 }
@@ -115,9 +115,9 @@ export function resolvePlayerImageSource(player) {
       tier: 'genericPlaceholder',
       url: generic,
       alt: `${player.name ?? 'Player'} — placeholder silhouette`,
-      credit: 'FootyBrain',
-      license: 'FootyBrain asset',
-      imageSource: 'FootyBrain placeholders',
+      credit: 'FootyCompass',
+      license: 'FootyCompass asset',
+      imageSource: 'FootyCompass placeholders',
     };
   }
 

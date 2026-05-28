@@ -5,7 +5,7 @@ export default function NotFoundPage() {
     <div className="page">
       <header className="page-header">
         <h1>Page not found</h1>
-        <p>That page is not in FootyBrain yet. Try search or start from browse.</p>
+        <p>That page is not in FootyCompass yet. Try search or start from browse.</p>
       </header>
       <div className="empty-state__actions">
         <Link to="/" className="btn btn--primary">

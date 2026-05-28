@@ -1,11 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { pageTitle, SITE_DESCRIPTION, SITE_NAME } from '../utils/brand';
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
-
-const SITE_NAME = 'FootyBrain';
-const SITE_DESCRIPTION =
-  'FootyBrain helps you learn football players, clubs, leagues, history, and national teams through interactive quizzes and profiles.';
 
 function buildCanonical(pathname) {
   const origin = window.location.origin;
@@ -44,58 +41,58 @@ function isNoIndexPath(pathname) {
 
 function titleForPath(pathname) {
   if (pathname === '/') return SITE_NAME;
-  if (pathname === '/browse') return 'Browse players · FootyBrain';
-  if (pathname === '/teams') return 'Teams · FootyBrain';
-  if (pathname === '/collections') return 'Collections & paths · FootyBrain';
-  if (pathname === '/learning-paths') return 'Learning paths · FootyBrain';
-  if (pathname === '/national-teams') return 'National teams · FootyBrain';
-  if (pathname === '/world-cup') return 'World Cup 2026 · FootyBrain';
-  if (pathname === '/privacy') return 'Privacy Policy · FootyBrain';
-  if (pathname === '/onboarding') return 'How it works · FootyBrain';
-  if (pathname === '/compare') return 'Compare players · FootyBrain';
-  if (pathname === '/compare-clubs') return 'Compare clubs · FootyBrain';
-  if (pathname === '/saved') return 'Saved · FootyBrain';
-  if (pathname === '/profile') return 'Progress · FootyBrain';
-  if (pathname === '/daily') return 'Daily challenge · FootyBrain';
-  if (pathname === '/quiz') return 'Quiz · FootyBrain';
-  if (pathname.startsWith('/collections/')) return 'Collection · FootyBrain';
-  if (pathname.startsWith('/learning-paths/')) return 'Learning path · FootyBrain';
-  if (pathname.startsWith('/national-team/')) return 'National team · FootyBrain';
-  if (pathname.startsWith('/league/')) return 'League · FootyBrain';
-  if (pathname.startsWith('/team/')) return 'Club · FootyBrain';
-  if (pathname.startsWith('/player/')) return 'Player · FootyBrain';
+  if (pathname === '/browse') return pageTitle('Browse players');
+  if (pathname === '/teams') return pageTitle('Clubs');
+  if (pathname === '/collections') return pageTitle('Collections & paths');
+  if (pathname === '/learning-paths') return pageTitle('Learning paths');
+  if (pathname === '/national-teams') return pageTitle('National teams');
+  if (pathname === '/world-cup') return pageTitle('World Cup 2026');
+  if (pathname === '/privacy') return pageTitle('Privacy Policy');
+  if (pathname === '/onboarding') return pageTitle('How it works');
+  if (pathname === '/compare') return pageTitle('Compare players');
+  if (pathname === '/compare-clubs') return pageTitle('Compare clubs');
+  if (pathname === '/saved') return pageTitle('Saved');
+  if (pathname === '/profile') return pageTitle('Progress');
+  if (pathname === '/daily') return pageTitle('Daily challenge');
+  if (pathname === '/quiz') return pageTitle('Quiz');
+  if (pathname.startsWith('/collections/')) return pageTitle('Collection');
+  if (pathname.startsWith('/learning-paths/')) return pageTitle('Learning path');
+  if (pathname.startsWith('/national-team/')) return pageTitle('National team');
+  if (pathname.startsWith('/league/')) return pageTitle('League');
+  if (pathname.startsWith('/team/')) return pageTitle('Club');
+  if (pathname.startsWith('/player/')) return pageTitle('Player');
   return SITE_NAME;
 }
 
 function descriptionForPath(pathname) {
   if (pathname === '/') return SITE_DESCRIPTION;
   if (pathname === '/browse')
-    return 'Search and filter FootyBrain players by league, club, nationality, position, and more.';
+    return 'Search and explore players across leagues, clubs, and nationalities on FootyCompass.';
   if (pathname === '/teams')
-    return 'Explore club learning pages with squad breakdowns, rivals, legends, and team quizzes when available.';
+    return 'Explore club profiles with squads, rivals, legends, and quizzes when available.';
   if (pathname === '/collections')
-    return 'Curated study lists and learning paths to help you recognize players, clubs, and national teams faster.';
+    return 'Curated study lists and learning paths to explore players, clubs, and national teams.';
   if (pathname === '/learning-paths')
-    return 'Step-by-step learning flows through collections, profiles, and quizzes—no accounts required.';
+    return 'Guided routes through collections, profiles, and quizzes—no accounts required.';
   if (pathname === '/national-teams')
     return 'Browse men’s national-team pages with linked player pools and quiz readiness indicators.';
   if (pathname === '/world-cup')
-    return 'World Cup 2026 prep hub with featured nations, groups, learning collections, and international quizzes.';
+    return 'World Cup 2026 hub with featured nations, groups, collections, and international quizzes.';
   if (pathname === '/privacy')
-    return 'How FootyBrain handles data, cookies, analytics, and future advertising (AdSense) readiness.';
+    return 'How FootyCompass handles data, cookies, analytics, and future advertising (AdSense) readiness.';
   if (pathname === '/onboarding')
-    return 'How FootyBrain works: browse, learn, compare, and quiz yourself on football players and clubs.';
+    return 'How FootyCompass works: explore players and clubs, compare sides, and test yourself with quizzes.';
   if (pathname === '/compare') return 'Compare players side-by-side: roles, clues, and key profile details.';
   if (pathname === '/compare-clubs') return 'Compare clubs: culture, rivals, legends, and squad context.';
   if (pathname === '/saved') return 'Your saved players and clubs—stored locally in your browser.';
   if (pathname === '/profile')
-    return 'Your local progress and learning stats—stored on this device only.';
-  if (pathname === '/daily') return 'Daily football learning challenge—short sessions, saved locally.';
+    return 'Your local progress and quiz stats—stored on this device only.';
+  if (pathname === '/daily') return 'Daily football challenge—short sessions, saved locally.';
   if (pathname === '/quiz') return 'Football quizzes across leagues, clubs, and national teams.';
   if (pathname.startsWith('/league/'))
     return 'League profile with featured clubs, key players, rivalry notes, and league quiz options.';
   if (pathname.startsWith('/team/'))
-    return 'Club profile with squad learning, rivalries, legends, fan context, and team quiz options.';
+    return 'Club profile with squad context, rivalries, legends, fan culture, and team quiz options.';
   if (pathname.startsWith('/player/'))
     return 'Player profile with club, league, national-team context, and quiz eligibility.';
   if (pathname.startsWith('/national-team/'))
@@ -142,7 +139,6 @@ export default function Seo() {
       },
     });
 
-    // JSON-LD
     upsertJsonLdScript('jsonld-website', websiteJsonLd(origin));
     if (!isBreadcrumbPath(pathname)) upsertJsonLdScript('jsonld-breadcrumb', null);
     if (!pathname.startsWith('/player/')) upsertJsonLdScript('jsonld-person', null);
@@ -151,4 +147,3 @@ export default function Seo() {
 
   return null;
 }
-

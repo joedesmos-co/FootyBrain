@@ -8,7 +8,7 @@ export default function PrivacyPage() {
         <p className="page-header__eyebrow">Privacy Policy</p>
         <h1>Privacy Policy</h1>
         <p>
-          FootyBrain is a frontend-only learning app. This page explains how data is handled today,
+          FootyCompass is a frontend-only learning app. This page explains how data is handled today,
           including how we plan to approach analytics and future advertising (AdSense) in a
           privacy-respecting way.
         </p>
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
       <section className="privacy-page__section">
         <h2>User data</h2>
         <p>
-          There is <strong>no sign-in</strong> today, and FootyBrain does not ask you for personal
+          There is <strong>no sign-in</strong> today, and FootyCompass does not ask you for personal
           information like your name, email, or password to use the app.
         </p>
         <p>
@@ -40,14 +40,14 @@ export default function PrivacyPage() {
         </p>
         <p>
           This data stays on your device. It is <strong>not sold</strong> and not synced to
-          FootyBrain servers in the current version.
+          FootyCompass servers in the current version.
         </p>
       </section>
 
       <section className="privacy-page__section">
         <h2>Cookies</h2>
         <p>
-          FootyBrain itself does not need cookies for core functionality. Your browser may still
+          FootyCompass itself does not need cookies for core functionality. Your browser may still
           store site data (such as local storage) to remember your progress.
         </p>
         <p>
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
       <section className="privacy-page__section">
         <h2>Analytics and third parties</h2>
         <p>
-          Today, FootyBrain aims to keep the app shell lightweight and does not bundle third-party
+          Today, FootyCompass aims to keep the app shell lightweight and does not bundle third-party
           advertising SDKs or heavy analytics trackers by default.
         </p>
         <p>
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
       <section className="privacy-page__section">
         <h2>Advertising (AdSense readiness)</h2>
         <p>
-          FootyBrain does not show ads today, and we do not include ad units in the app right now.
+          FootyCompass does not show ads today, and we do not include ad units in the app right now.
         </p>
         <p>
           If we integrate Google AdSense in the future, AdSense may collect information such as your

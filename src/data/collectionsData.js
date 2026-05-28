@@ -102,7 +102,7 @@ export const collections = [
     id: 'ballon-dor-winners',
     title: "Ballon d'Or Winners",
     description:
-      'Quiz-ready men who have won the Ballon d’Or in the FootyBrain database — trophies, clubs, and playing roles.',
+      'Quiz-ready men who have won the Ballon d’Or in the FootyCompass database — trophies, clubs, and playing roles.',
     difficulty: 'Advanced',
     tags: ['Awards', 'History', 'Players'],
     quizLaunch: null,
@@ -240,7 +240,7 @@ export const collections = [
     id: 'one-club-players',
     title: 'One-Club Players',
     description:
-      'Loyalty stories — quiz-ready players whose FootyBrain career arc stays at one senior club.',
+      'Loyalty stories — quiz-ready players whose FootyCompass career arc stays at one senior club.',
     difficulty: 'Intermediate',
     tags: ['Loyalty', 'Culture', 'Players'],
     quizLaunch: null,
@@ -409,7 +409,7 @@ export const collections = [
     id: 'ucl-clubs',
     title: 'UCL Club Identity',
     description:
-      'Six European giants in FootyBrain — open each club page before knockout-era player quizzes.',
+      'Six European giants in FootyCompass — open each club page before knockout-era player quizzes.',
     difficulty: 'Intermediate',
     tags: ['Champions League', 'Clubs', 'Path'],
     quizLaunch: { teamId: 'real-madrid' },
@@ -450,7 +450,7 @@ export const collections = [
     id: 'world-cup-watchlist',
     title: 'World Cup Watchlist',
     description:
-      'All five live FootyBrain national teams for 2026 prep — open each country page before knockout quizzes.',
+      'All five live FootyCompass national teams for 2026 prep — open each country page before knockout quizzes.',
     difficulty: 'Beginner',
     tags: ['World Cup', 'National teams', '2026'],
     quizLaunch: { nationalTeamId: 'brazil' },
@@ -511,7 +511,7 @@ export const collections = [
     quizLaunch: { nationalTeamId: 'england' },
     items: [
       { type: 'national-team', id: 'england', note: 'Three Lions — open the full squad list.' },
-      { type: 'national-team', id: 'france', note: 'Les Bleus — rivals Germany in FootyBrain.' },
+      { type: 'national-team', id: 'france', note: 'Les Bleus — rivals Germany in FootyCompass.' },
       { type: 'national-team', id: 'germany', note: 'Die Mannschaft — pressing and pedigree.' },
       { type: 'player', id: 'bellingham', note: 'England — Real Madrid, leadership in midfield.' },
       { type: 'player', id: 'kane', note: 'England — target striker, link play.' },
@@ -1089,7 +1089,7 @@ export const collections = [
     id: 'tournament-stars',
     title: 'Tournament Stars',
     description:
-      'Eight men who lit up World Cups or Euros in FootyBrain — final heroes, Golden Boot, and breakout nights.',
+      'Eight men who lit up World Cups or Euros in FootyCompass — final heroes, Golden Boot, and breakout nights.',
     difficulty: 'Advanced',
     tags: ['World Cup', 'National teams', 'Tournaments'],
     quizLaunch: { nationalTeamId: 'argentina' },

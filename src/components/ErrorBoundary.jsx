@@ -27,7 +27,7 @@ export default class ErrorBoundary extends Component {
             <header className="page-header">
               <h1>Something went wrong</h1>
               <p>
-                FootyBrain hit an unexpected error. Reload the page or return home to keep
+                FootyCompass hit an unexpected error. Reload the page or return home to keep
                 learning.
               </p>
             </header>

@@ -21,7 +21,7 @@ export default function NationalTeamsPage() {
       <header className="page-header">
         <h1>National teams</h1>
         <p>
-          Men&apos;s national sides in FootyBrain—squads drawn from club profiles, not official
+          Men&apos;s national sides in FootyCompass—squads drawn from club profiles, not official
           tournament rosters. Nation quizzes need at least {LIVE_NATIONAL_TEAM_MIN_QUIZ} players
           with clues.
         </p>

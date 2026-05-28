@@ -1,7 +1,7 @@
 /** Shared consumer-facing labels (football-first, consistent terminology). */
 
 export const IMPORTANCE_SCORE_LABEL = 'Importance score';
-export const IMPORTANCE_SCORE_TITLE = 'FootyBrain importance score';
+export const IMPORTANCE_SCORE_TITLE = 'FootyCompass importance score';
 
 export const QUIZ_COMING_SOON = 'Quiz coming soon';
 

@@ -39,7 +39,7 @@ export function buildCareerSummary(player) {
 
   if (stops.length === 1) {
     sentences.push(
-      `Listed at ${stops[0].club} (${stops[0].years}) in the FootyBrain sample.`,
+      `Listed at ${stops[0].club} (${stops[0].years}) in the FootyCompass sample.`,
     );
   } else if (stops.length > 1) {
     const path = stops.map((entry) => `${entry.club} (${entry.years})`).join(', then ');

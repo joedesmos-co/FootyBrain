@@ -56,7 +56,7 @@ export default function NationalTeamProfile() {
     if (!nationalTeam) return undefined;
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
-    const title = `${nationalTeam.displayName} · National team · FootyBrain`;
+    const title = `${nationalTeam.displayName} · National team · FootyCompass`;
     const description =
       `${nationalTeam.displayName} national team—player pool linked from club squads (not an official tournament roster).`;
     setSeoMeta({
@@ -133,7 +133,7 @@ export default function NationalTeamProfile() {
         </p>
         {poolNotAddedYet ? (
           <p className="collections-page__section-desc">
-            This World Cup team is in the 2026 draw for orientation only — FootyBrain does not
+            This World Cup team is in the 2026 draw for orientation only — FootyCompass does not
             have a national player pool page yet. Browse live pools from the{' '}
             <Link to="/world-cup">World Cup hub</Link> or the{' '}
             <Link to="/national-teams">national teams</Link> list.
@@ -272,7 +272,7 @@ export default function NationalTeamProfile() {
           <h2>Nation → club flow</h2>
           <p className="collections-page__section-desc">
             Start with the national squad, then jump into the clubs that supply the most linked
-            players in FootyBrain.
+            players in FootyCompass.
           </p>
           <ul className="national-team-profile__club-flows">
             {clubFlows.map((row) => (

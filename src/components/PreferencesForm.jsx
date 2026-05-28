@@ -146,7 +146,7 @@ export default function PreferencesForm({
   return (
     <form className="prefs-form" onSubmit={handleSubmit}>
       <p className="prefs-lead">
-        Customize FootyBrain to get smarter quizzes, recommendations, and daily picks.
+        Customize FootyCompass to get smarter quizzes, recommendations, and daily picks.
       </p>
 
       <details className="prefs-section" open>
@@ -326,7 +326,7 @@ export default function PreferencesForm({
         </div>
       </fieldset>
 
-      <ChipGroup label="Learning goals" hint="Optional — what should FootyBrain emphasize?">
+      <ChipGroup label="Learning goals" hint="Optional — what should FootyCompass emphasize?">
         {LEARNING_GOALS.map((goal) => (
           <ToggleChip
             key={goal.id}

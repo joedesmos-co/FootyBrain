@@ -68,17 +68,17 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
 
     setSeoMeta({
-      title: `${getLeagueDisplayName(league)} · FootyBrain`,
+      title: `${getLeagueDisplayName(league)} · FootyCompass`,
       description: `${getLeagueDisplayName(league)} (${formatCountryLabel(league.country)}). ${leagueMetaLine({ clubs: leagueTeams.length, players: leaguePlayers.length })}.`,
       canonicalUrl: canonical,
       og: {
-        title: `${getLeagueDisplayName(league)} · FootyBrain`,
+        title: `${getLeagueDisplayName(league)} · FootyCompass`,
         description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
         url: canonical,
         type: 'website',
       },
       twitter: {
-        title: `${getLeagueDisplayName(league)} · FootyBrain`,
+        title: `${getLeagueDisplayName(league)} · FootyCompass`,
         description: `${getLeagueDisplayName(league)} league profile: clubs, featured players, rivalry notes, and quizzes when available.`,
       },
     });

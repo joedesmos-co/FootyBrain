@@ -4,7 +4,7 @@ const START_STEPS = [
   {
     id: 'learn',
     icon: '👤',
-    title: 'Learn players',
+    title: 'Explore players',
     description: 'Profiles, positions, clubs, and career paths.',
     to: '/browse',
     cta: 'Browse players',
@@ -32,7 +32,7 @@ export default function HomeStartHere() {
     <section className="home-start" aria-labelledby="home-start-title">
       <div className="home-start__header">
         <h2 id="home-start-title">Start here</h2>
-        <p>New to FootyBrain? Pick a lane.</p>
+        <p>New to FootyCompass? Pick a lane.</p>
       </div>
       <ul className="home-start__grid">
         {START_STEPS.map((step) => (

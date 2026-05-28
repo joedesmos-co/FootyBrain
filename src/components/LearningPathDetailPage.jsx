@@ -22,7 +22,7 @@ export default function LearningPathDetailPage() {
     if (!path || steps.length === 0) return;
     const canonical = getCanonicalUrl();
     if (!canonical) return;
-    const title = `${path.title} · Learning path · FootyBrain`;
+    const title = `${path.title} · Learning path · FootyCompass`;
     const description = path.description
       ? path.description
       : 'A step-by-step learning flow through collections, profiles, and a quiz.';

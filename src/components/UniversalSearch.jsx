@@ -284,7 +284,7 @@ export default function UniversalSearch({ open, onClose }) {
       >
         <div className="universal-search__header">
           <label id={`${inputId}-label`} className="universal-search__label" htmlFor={inputId}>
-            Search FootyBrain
+            Search FootyCompass
           </label>
           <button type="button" className="universal-search__close" onClick={closeSearch}>
             Close

@@ -98,7 +98,7 @@ export default function HomeBelowFold() {
       </section>
 
       {showPersonalizeCta && (
-        <section className="home-personalize-cta" aria-label="Personalize FootyBrain">
+        <section className="home-personalize-cta" aria-label="Personalize FootyCompass">
           <div className="home-personalize-cta__body">
             <h2>Sharpen your picks</h2>
             <p>Favorite leagues and clubs — optional, no account needed.</p>

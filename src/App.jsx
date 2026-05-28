@@ -158,7 +158,7 @@ export default function App() {
             </Routes>
           </main>
           <footer className="app__footer" aria-label="Footer">
-            <p>FootyBrain · Learn the game. Know the players.</p>
+            <p>FootyCompass · Navigate the world of football.</p>
             <p className="app__footer__feedback">
               Have feedback, found a bug, or want to suggest a feature? Email us at{' '}
               <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>

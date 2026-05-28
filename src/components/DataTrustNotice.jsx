@@ -11,7 +11,7 @@ export default function DataTrustNotice({ compact = false }) {
       className={`data-trust-notice${compact ? ' data-trust-notice--compact' : ''}`}
       role="note"
     >
-      Updated {DATASET_META.dataAsOf}. FootyBrain is built for learning — not a live transfer feed.
+      Updated {DATASET_META.dataAsOf}. FootyCompass is a discovery platform — not a live transfer feed.
       Your favorites and progress stay on this device (no accounts).
     </p>
   );

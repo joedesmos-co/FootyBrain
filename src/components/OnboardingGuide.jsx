@@ -7,11 +7,11 @@ export default function OnboardingGuide({ showLinks = true }) {
   return (
     <section className="onboarding-guide" aria-labelledby="onboarding-guide-title">
       <h2 id="onboarding-guide-title" className="onboarding-guide__title">
-        How FootyBrain works
+        How FootyCompass works
       </h2>
       <p className="onboarding-guide__lead">
-        Learn players, clubs, and leagues on this device—browse first, then quizzes and compare when
-        you are ready.
+        Find your way around the football world on this device—explore profiles first, then quizzes
+        and compare when you are ready.
       </p>
       <ol className="onboarding-guide__list">
         {steps.map((step, index) => (

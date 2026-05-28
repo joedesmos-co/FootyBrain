@@ -1000,6 +1000,14 @@ input:focus-visible {
   font-weight: 800;
 }
 
+.hero__subcopy {
+  margin: 0.65rem 0 0;
+  max-width: 34rem;
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
 .hero__copy {
   margin: 0.8rem 0 0;
   max-width: 34rem;

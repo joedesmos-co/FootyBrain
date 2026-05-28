@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="navbar__start">
         <NavLink to="/" className="navbar__brand">
           <span className="navbar__logo">⚽</span>
-          <span className="navbar__title">FootyBrain</span>
+          <span className="navbar__title">FootyCompass</span>
         </NavLink>
         <button
           ref={searchButtonRef}

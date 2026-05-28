@@ -13,7 +13,7 @@
         "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/teams"
       ],
       "verifiedAt": "2026-05-25",
-      "notes": "Reconcile against FIFA before enabling live national-team pages or competition quiz. Slugs are FootyBrain nationalTeamId conventions (not FIFA three-letter codes)."
+      "notes": "Reconcile against FIFA before enabling live national-team pages or competition quiz. Slugs are FootyCompass nationalTeamId conventions (not FIFA three-letter codes)."
     },
     "inspectionPassed": false,
     "counts": {
@@ -164,7 +164,7 @@
         "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/teams"
       ],
       "verifiedAt": "2026-05-25",
-      "notes": "Reconcile against FIFA before enabling live national-team pages or competition quiz. Slugs are FootyBrain nationalTeamId conventions (not FIFA three-letter codes)."
+      "notes": "Reconcile against FIFA before enabling live national-team pages or competition quiz. Slugs are FootyCompass nationalTeamId conventions (not FIFA three-letter codes)."
     }
   },
   "inspection": {

@@ -1,4 +1,4 @@
-// Achievement definitions for FootyBrain's progression system.
+// Achievement definitions for FootyCompass's progression system.
 // category: quiz_streak | league_mastery | club_mastery | collections | compare | general
 //
 // TODO: Future Firebase sync — achievements can be verified and stored server-side
@@ -50,7 +50,7 @@ export const ACHIEVEMENTS = [
   {
     id: 'level_5',
     icon: '⭐',
-    label: 'FootyBrain Pro',
+    label: 'FootyCompass Pro',
     description: 'Reach level 5.',
     tier: 'intermediate',
     category: 'general',
@@ -155,7 +155,7 @@ export const ACHIEVEMENTS = [
     id: 'league_quiz_all',
     icon: '🏆',
     label: 'League Master',
-    description: 'Complete a quiz session milestone in every FootyBrain league.',
+    description: 'Complete a quiz session milestone in every FootyCompass league.',
     tier: 'intermediate',
     category: 'league_mastery',
   },

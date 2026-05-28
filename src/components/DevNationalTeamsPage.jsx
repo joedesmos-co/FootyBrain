@@ -5,8 +5,8 @@ const PREVIEW_URL = `${import.meta.env.BASE_URL}dev-data/national-teams-preview.
 
 const LINK_FILTERS = [
   { value: '', label: 'All players' },
-  { value: 'linked', label: 'Linked (in FootyBrain)' },
-  { value: 'unmatched', label: 'Unmatched (not in FootyBrain)' },
+  { value: 'linked', label: 'Linked (in FootyCompass)' },
+  { value: 'unmatched', label: 'Unmatched (not in FootyCompass)' },
 ];
 
 function displayPlayerName(row) {
@@ -67,7 +67,7 @@ export default function DevNationalTeamsPage() {
     const linked = links.map((row) => ({
       kind: 'linked',
       nationalTeamId: row.nationalTeamId,
-      inFootyBrain: true,
+      inFootyCompass: true,
       playerId: row.playerId,
       sourceId: row.sourceId,
       name: displayPlayerName(row),
@@ -82,7 +82,7 @@ export default function DevNationalTeamsPage() {
     const unlinked = unmatched.map((row) => ({
       kind: 'unmatched',
       nationalTeamId: row.nationalTeamId,
-      inFootyBrain: false,
+      inFootyCompass: false,
       playerId: null,
       sourceId: row.sourceId,
       name: displayPlayerName(row),
@@ -157,7 +157,7 @@ export default function DevNationalTeamsPage() {
               <strong>{counts.nationalTeams ?? teams.length}</strong>
             </div>
             <div className="dev-expanded__stat">
-              <span className="dev-expanded__stat-label">Linked (FootyBrain)</span>
+              <span className="dev-expanded__stat-label">Linked (FootyCompass)</span>
               <strong>{counts.playerLinks ?? links.length}</strong>
             </div>
             <div className="dev-expanded__stat">
@@ -277,7 +277,7 @@ export default function DevNationalTeamsPage() {
                       <dd>{team.tmNationalTeamFieldCount ?? 0}</dd>
                     </div>
                     <div>
-                      <dt>Linked in FootyBrain</dt>
+                      <dt>Linked in FootyCompass</dt>
                       <dd>{team.playerLinksCount ?? 0}</dd>
                     </div>
                     <div>
@@ -297,9 +297,9 @@ export default function DevNationalTeamsPage() {
                 <tr>
                   <th>National team</th>
                   <th>Player</th>
-                  <th>In FootyBrain</th>
-                  <th>FootyBrain ID</th>
-                  <th>Club (FootyBrain)</th>
+                  <th>In FootyCompass</th>
+                  <th>FootyCompass ID</th>
+                  <th>Club (FootyCompass)</th>
                   <th>Position</th>
                   <th>Citizenship</th>
                   <th>Caps</th>
@@ -317,7 +317,7 @@ export default function DevNationalTeamsPage() {
                     <tr key={rowKey} className={row.kind === 'unmatched' ? 'dev-national__row--unmatched' : ''}>
                       <td data-label="National team">{teamName}</td>
                       <td data-label="Player">
-                        {row.inFootyBrain && row.playerId ? (
+                        {row.inFootyCompass && row.playerId ? (
                           <Link to={`/player/${row.playerId}`} className="dev-national__player-link">
                             {row.name}
                           </Link>
@@ -328,18 +328,18 @@ export default function DevNationalTeamsPage() {
                           <small className="dev-expanded__id">tm-{row.sourceId}</small>
                         )}
                       </td>
-                      <td data-label="In FootyBrain">
+                      <td data-label="In FootyCompass">
                         <span
                           className={`dev-expanded__pill ${
-                            row.inFootyBrain
+                            row.inFootyCompass
                               ? 'dev-expanded__pill--mvp-linked'
                               : 'dev-expanded__pill--generated-needs-editorial'
                           }`}
                         >
-                          {row.inFootyBrain ? 'yes' : 'no'}
+                          {row.inFootyCompass ? 'yes' : 'no'}
                         </span>
                       </td>
-                      <td data-label="FootyBrain ID">
+                      <td data-label="FootyCompass ID">
                         {row.playerId ? (
                           <code className="dev-expanded__id">{row.playerId}</code>
                         ) : (

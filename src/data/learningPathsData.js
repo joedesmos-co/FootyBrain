@@ -1,6 +1,6 @@
 /**
  * Curated learning paths — chains existing collections, quizzes, and profiles.
- * No lesson engine; each step is a normal FootyBrain route.
+ * No lesson engine; each step is a normal FootyCompass route.
  */
 
 export const learningPaths = [
@@ -202,7 +202,7 @@ export const learningPaths = [
         type: 'collection',
         collectionId: 'brazil-stars',
         title: 'Brazil Stars collection',
-        hint: 'Linked Seleção quiz-ready players in FootyBrain.',
+        hint: 'Linked Seleção quiz-ready players in FootyCompass.',
       },
       {
         type: 'profile',
@@ -351,7 +351,7 @@ export const learningPaths = [
         entityType: 'national-team',
         id: 'portugal',
         title: 'Portugal national team page',
-        hint: 'Linked squad and Iberian rivals in FootyBrain.',
+        hint: 'Linked squad and Iberian rivals in FootyCompass.',
       },
       {
         type: 'profile',

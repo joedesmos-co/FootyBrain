@@ -88,7 +88,7 @@ export function getPlayerImageAlt(player, source = null) {
   if (custom) return custom;
   const name = player?.name ?? 'Player';
   const position = player?.position ? `, ${player.position}` : '';
-  return `${name}${position} — FootyBrain player photo`;
+  return `${name}${position} — FootyCompass player photo`;
 }
 
 export function hasImageAttribution(player, source = null) {
@@ -110,6 +110,6 @@ export function warnMissingImageAttribution(player) {
   if (warnedMissingAttribution.has(key)) return;
   warnedMissingAttribution.add(key);
   console.warn(
-    `[FootyBrain] Player "${player?.name ?? key}" (${source.tier}) has image without imageCredit/imageLicense. See PLAYER_IMAGE_POLICY.md.`,
+    `[FootyCompass] Player "${player?.name ?? key}" (${source.tier}) has image without imageCredit/imageLicense. See PLAYER_IMAGE_POLICY.md.`,
   );
 }
