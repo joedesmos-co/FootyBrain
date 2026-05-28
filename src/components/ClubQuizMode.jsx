@@ -30,6 +30,7 @@ import {
   scrollPageTop,
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
+import QuizFeedbackActions from './QuizFeedbackActions';
 
 function getStreakTier(value) {
   if (value >= 10) return 10;
@@ -305,13 +306,16 @@ export default function ClubQuizMode() {
           <Link to="/quiz">player quizzes</Link>.
         </p>
         {activeCat ? (
-          <p className="quiz-active-theme">
-            Mode: <strong>{activeCat.label}</strong>
-            {' · '}
-            <Link to={getClubQuizCategoryHubHref(activeCat.id)} className="quiz-active-theme__link">
-              About this format
-            </Link>
-          </p>
+          <aside className="quiz-active-theme" aria-label="Active club quiz mode">
+            <p className="quiz-active-theme__title">
+              Mode: <strong>{activeCat.label}</strong>
+            </p>
+            <p className="quiz-active-theme__meta">
+              <Link to={getClubQuizCategoryHubHref(activeCat.id)} className="quiz-active-theme__link">
+                About this format
+              </Link>
+            </p>
+          </aside>
         ) : null}
       </header>
 
@@ -324,7 +328,7 @@ export default function ClubQuizMode() {
           </span>
         </summary>
         <section
-          className="quiz-filters club-quiz__filters quiz-filters-details__body"
+          className="filters quiz-filters club-quiz__filters quiz-filters-details__body"
           aria-label="Club quiz settings"
         >
         <div className="club-quiz__category-grid" role="list">
@@ -427,30 +431,32 @@ export default function ClubQuizMode() {
         ) : null}
       </section>
 
-      {!currentQuestion && !sessionEnded && (
-        <div className="quiz-panel__empty">
-          <p>
-            {categoryId
-              ? poolReady
-                ? 'Ready when you are — club questions use editorial data (stadiums, rivals, history).'
-                : `Not enough clubs in this pool. Try another category or clear the league filter.`
-              : 'Pick a club quiz category above to start.'}
-          </p>
-          <div className="quiz-panel__empty-actions">
-            {categoryId && poolReady ? (
-              <button type="button" className="btn btn--primary" onClick={handleStart}>
-                Start club quiz
-              </button>
-            ) : null}
-            <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
-              Club quiz guides
-            </Link>
-            <Link to="/quiz" className="btn btn--secondary">
-              Player quiz
-            </Link>
+      {!currentQuestion && !sessionEnded ? (
+        <section className="quiz-panel quiz-panel--idle" aria-label="Start club quiz">
+          <div className="quiz-panel__empty">
+            <p>
+              {categoryId
+                ? poolReady
+                  ? 'Ready when you are — club questions use editorial data (stadiums, rivals, history).'
+                  : 'Not enough clubs in this pool. Try another category or clear the league filter.'
+                : 'Pick a club quiz category above to start.'}
+            </p>
+            <div className="quiz-panel__empty-actions">
+              {categoryId && poolReady ? (
+                <button type="button" className="btn btn--primary btn--large" onClick={handleStart}>
+                  Start club quiz
+                </button>
+              ) : null}
+              <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
+                Club quiz guides
+              </Link>
+              <Link to="/quiz" className="btn btn--secondary">
+                Player quiz
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        </section>
+      ) : null}
 
       {currentQuestion && !sessionEnded ? (
         <section className="quiz-panel club-quiz__panel" aria-live="polite">
@@ -493,7 +499,7 @@ export default function ClubQuizMode() {
                 autoComplete="off"
                 autoCapitalize="words"
               />
-              <button type="submit" className="btn btn--primary">
+              <button type="submit" className="btn btn--primary btn--large">
                 Submit
               </button>
             </form>
@@ -531,14 +537,14 @@ export default function ClubQuizMode() {
               >
                 Open club profile
               </Link>
-              <div className="quiz-feedback__actions">
+              <QuizFeedbackActions>
                 <button type="button" className="btn btn--primary btn--large" onClick={handleNext}>
                   {nextQuestionLabel}
                 </button>
                 <button type="button" className="btn btn--secondary" onClick={handleEndSession}>
                   End session
                 </button>
-              </div>
+              </QuizFeedbackActions>
             </article>
           ) : null}
         </section>

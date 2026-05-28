@@ -342,7 +342,7 @@ export default function PreferencesForm({
         <summary className="prefs-section__summary">
           <span>
             <strong>Quiz settings</strong>
-            <small>Coming soon</small>
+            <small className="ui-badge ui-badge--soon">Soon</small>
           </span>
         </summary>
         <p className="prefs-future-note">
@@ -354,7 +354,7 @@ export default function PreferencesForm({
         <summary className="prefs-section__summary">
           <span>
             <strong>Appearance</strong>
-            <small>Coming soon</small>
+            <small className="ui-badge ui-badge--soon">Soon</small>
           </span>
         </summary>
         <p className="prefs-future-note">Future options like themes and display density will live here.</p>

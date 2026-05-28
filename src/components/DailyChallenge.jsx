@@ -20,7 +20,13 @@ import {
   buildMissedPlayerStudyCards,
   getMissedLearningIntro,
 } from '../utils/quizMissedLearning';
-import { getSessionEncouragement } from '../utils/quizUiPolish';
+import {
+  getNextQuestionButtonLabel,
+  getSessionEncouragement,
+  scrollQuizPanelIntoView,
+} from '../utils/quizUiPolish';
+import QuizPlayerFeedback from './QuizPlayerFeedback';
+import QuizFeedbackActions from './QuizFeedbackActions';
 
 function formatDateKey(dateKey) {
   const [y, m, d] = dateKey.split('-').map(Number);
@@ -231,6 +237,21 @@ export default function DailyChallenge() {
   const canShowMoreHints =
     currentPlayer && hintsShown < currentPlayer.quizHints.length;
 
+  const answerStreak = (() => {
+    if (feedback !== 'correct') return 0;
+    let streak = 1;
+    for (let i = results.length - 1; i >= 0; i -= 1) {
+      if (results[i].isCorrect) streak += 1;
+      else break;
+    }
+    return streak;
+  })();
+
+  const nextQuestionLabel =
+    currentIndex >= questions.length - 1
+      ? 'See results'
+      : getNextQuestionButtonLabel(answerStreak, feedback ?? 'incorrect');
+
   // Fixed set for today's 5 questions — blocks last-name shortcuts when two players share a surname
   const ambiguousLastNames = buildAmbiguousLastNames(questions);
 
@@ -272,6 +293,7 @@ export default function DailyChallenge() {
       setAnswer('');
       setFeedback(null);
       setHintsShown(1);
+      scrollQuizPanelIntoView();
     }
   };
 
@@ -357,7 +379,10 @@ export default function DailyChallenge() {
         />
       </header>
 
-      <section className="daily-question-panel" aria-label={`Question ${currentIndex + 1} of ${questions.length}`}>
+      <section
+        className="quiz-panel daily-question-panel"
+        aria-label={`Question ${currentIndex + 1} of ${questions.length}`}
+      >
         <p className="daily-question-panel__label">
           Question {currentIndex + 1} of {questions.length} — Guess the player
         </p>
@@ -428,7 +453,7 @@ export default function DailyChallenge() {
           {!feedback && (
             <button
               type="submit"
-              className="btn btn--primary"
+              className="btn btn--primary btn--large quiz-form__submit"
               disabled={!answer.trim()}
             >
               Check answer
@@ -436,60 +461,31 @@ export default function DailyChallenge() {
           )}
         </form>
 
-        {/* Feedback */}
-        {feedback === 'correct' && (
-          <article className="quiz-feedback quiz-feedback--correct" role="status">
-            <div className="quiz-feedback__header">
-              <h3>Correct! It was {currentPlayer.name}.</h3>
-            </div>
-            <dl className="quiz-feedback__details">
-              <div>
-                <dt>Club</dt>
-                <dd>{currentClub}</dd>
-              </div>
-              <div>
-                <dt>National team</dt>
-                <dd className="football-meta-line">
-                  <CountryFlag label={currentPlayer.nationalTeam} />
-                  {currentPlayer.nationalTeam || '—'}
-                </dd>
-              </div>
-            </dl>
-            <p>{currentPlayer.quickFact}</p>
-            <Link to={`/player/${currentPlayer.id}`} className="quiz-feedback__link">
-              Learn this player
-            </Link>
-          </article>
-        )}
+        {feedback === 'correct' ? (
+          <QuizPlayerFeedback
+            variant="correct"
+            player={currentPlayer}
+            clubLabel={currentClub}
+            profileLabel="Learn this player"
+          />
+        ) : null}
 
-        {feedback === 'incorrect' && (
-          <article className="quiz-feedback quiz-feedback--incorrect" role="status">
-            <h3>Not quite. The answer was {currentPlayer.name}.</h3>
-            <dl className="quiz-feedback__details">
-              <div>
-                <dt>Club</dt>
-                <dd>{currentClub}</dd>
-              </div>
-              <div>
-                <dt>National team</dt>
-                <dd className="football-meta-line">
-                  <CountryFlag label={currentPlayer.nationalTeam} />
-                  {currentPlayer.nationalTeam || '—'}
-                </dd>
-              </div>
-            </dl>
-            <p>{currentPlayer.quickFact}</p>
-            <Link to={`/player/${currentPlayer.id}`} className="quiz-feedback__link">
-              Learn this player
-            </Link>
-          </article>
-        )}
+        {feedback === 'incorrect' ? (
+          <QuizPlayerFeedback
+            variant="incorrect"
+            player={currentPlayer}
+            clubLabel={currentClub}
+            profileLabel="Learn this player"
+          />
+        ) : null}
 
-        {feedback && (
-          <button type="button" className="btn btn--primary" onClick={handleNext}>
-            {currentIndex < questions.length - 1 ? 'Next question' : 'See results'}
-          </button>
-        )}
+        {feedback ? (
+          <QuizFeedbackActions>
+            <button type="button" className="btn btn--primary btn--large" onClick={handleNext}>
+              {nextQuestionLabel}
+            </button>
+          </QuizFeedbackActions>
+        ) : null}
       </section>
     </div>
   );

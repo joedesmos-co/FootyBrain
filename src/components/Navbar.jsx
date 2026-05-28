@@ -47,6 +47,12 @@ export default function Navbar() {
         <NavLink to="/quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
           Quiz
         </NavLink>
+        <NavLink to="/club-quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Club
+        </NavLink>
+        <NavLink to="/daily" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Daily
+        </NavLink>
         <NavLink
           to="/collections"
           className={({ isActive }) => (isActive ? 'active' : '')}

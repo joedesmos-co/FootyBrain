@@ -61,7 +61,7 @@ function BrowseClubChip({ team, rosterCount = 0, onBrowsePlayers }) {
   return (
     <span className="browse-club-chip browse-club-chip--muted" aria-disabled="true">
       <span className="browse-club-chip__name">{team.name}</span>
-      <span className="browse-club-chip__meta">Coming soon</span>
+      <span className="browse-club-chip__meta ui-badge ui-badge--soon">Soon</span>
     </span>
   );
 }

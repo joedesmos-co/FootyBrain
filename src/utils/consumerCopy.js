@@ -3,7 +3,7 @@
 export const IMPORTANCE_SCORE_LABEL = 'Importance score';
 export const IMPORTANCE_SCORE_TITLE = 'FootyCompass importance score';
 
-export const QUIZ_COMING_SOON = 'Quiz coming soon';
+export const QUIZ_COMING_SOON = 'More quiz clues on the way';
 
 /** Short inline suffix for club chips when quizzes exist. */
 export function formatQuizReadyInline(count) {

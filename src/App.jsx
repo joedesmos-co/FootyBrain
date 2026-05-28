@@ -259,27 +259,27 @@ export default function App() {
           </main>
           <footer className="app__footer" aria-label="Footer">
             <p className="app__footer__brand">FootyCompass · Learn players, clubs, and leagues through quizzes.</p>
+            <nav className="app__footer__links" aria-label="Play and explore">
+              <Link to="/quiz">Player quiz</Link>
+              <Link to="/club-quiz">Club quiz</Link>
+              <Link to="/daily">Daily challenge</Link>
+              <Link to="/browse">Browse</Link>
+              <Link to="/teams">Clubs</Link>
+              <Link to="/hubs">Hubs</Link>
+            </nav>
+            <nav className="app__footer__links app__footer__links--meta" aria-label="Trust and policy">
+              <Link to="/about">About</Link>
+              <Link to="/editorial">Editorial</Link>
+              <Link to="/privacy">Privacy</Link>
+            </nav>
             <p className="app__footer__feedback">
               Feedback or corrections?{' '}
               <a href="mailto:joedesmos.co@gmail.com?subject=FootyCompass%20feedback">
                 joedesmos.co@gmail.com
               </a>
             </p>
-            <nav className="app__footer__links" aria-label="Footer navigation">
-              <Link to="/quiz">Player quiz</Link>
-              <Link to="/club-quiz">Club quiz</Link>
-              <Link to="/daily">Daily</Link>
-              <Link to="/browse">Browse</Link>
-              <Link to="/teams">Clubs</Link>
-              <Link to="/hubs">Hubs</Link>
-              <Link to="/about">About</Link>
-              <Link to="/editorial">Editorial</Link>
-              <Link to="/privacy">Privacy</Link>
-            </nav>
             <p className="app__footer__privacy">
-              No account required. Progress and favorites stay in your browser. Dataset &amp; policy
-              links: <Link to="/about">About</Link>, <Link to="/editorial">Editorial</Link>,{' '}
-              <Link to="/privacy">Privacy</Link>.
+              No account required — progress and favorites stay on your device.
             </p>
           </footer>
         </div>

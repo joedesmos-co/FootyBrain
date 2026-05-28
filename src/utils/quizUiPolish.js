@@ -3,7 +3,7 @@
 export function scrollQuizPanelIntoView() {
   if (typeof window === 'undefined') return;
   requestAnimationFrame(() => {
-    const panel = document.querySelector('.quiz-panel, .club-quiz__panel');
+    const panel = document.querySelector('.quiz-panel, .club-quiz__panel, .daily-question-panel');
     panel?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 }

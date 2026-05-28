@@ -62,6 +62,7 @@ import {
   scrollPageTop,
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
+import QuizFeedbackActions from './QuizFeedbackActions';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
 //       users/{uid}/quizSessions so progress carries across devices.
@@ -1599,8 +1600,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               </article>
             )}
 
-            {feedback && (
-              <div className="quiz-feedback__actions">
+            {feedback ? (
+              <QuizFeedbackActions>
                 <button type="button" className="btn btn--primary btn--large" onClick={startQuestion}>
                   {nextQuestionLabel}
                 </button>
@@ -1611,8 +1612,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 >
                   End session
                 </button>
-              </div>
-            )}
+              </QuizFeedbackActions>
+            ) : null}
           </>
         )}
       </section>

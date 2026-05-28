@@ -28,13 +28,13 @@ export default function Home() {
               Club knowledge quiz
             </Link>
             <div className="hero__actions-row">
-              <Link to="/daily" className="btn btn--secondary">
+              <Link to="/daily" className="btn btn--secondary btn--small">
                 Daily challenge
               </Link>
-              <Link to="/browse" className="btn btn--secondary">
+              <Link to="/browse" className="btn btn--secondary btn--small">
                 Browse players
               </Link>
-              <Link to="/hubs" className="btn btn--secondary">
+              <Link to="/hubs" className="btn btn--secondary btn--small">
                 Explore hubs
               </Link>
             </div>

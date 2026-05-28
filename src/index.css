@@ -9224,7 +9224,7 @@ p.browse-results-empty {
 }
 
 /* ── Question panel ───────────────────────────────────────── */
-.daily-question-panel {
+.daily-question-panel:not(.quiz-panel) {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: calc(var(--radius) * 1.5);
@@ -12706,5 +12706,197 @@ p.browse-results-empty {
   .hero__cta-primary,
   .hero__cta-secondary {
     width: 100%;
+  }
+}
+
+/* —— UX polish pass: shared quiz filters, badges, nav/footer touch —— */
+.page-header__lead {
+  max-width: 42rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.quiz-filters__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.quiz-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1 1 12rem;
+  min-width: min(100%, 12rem);
+}
+
+.quiz-filters__field > span {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.quiz-filters__field select {
+  width: 100%;
+  min-height: var(--btn-height-sm);
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.quiz-filters__field select:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.quiz-filters__difficulty {
+  border: none;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 100%;
+}
+
+.quiz-filters__difficulty legend {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.quiz-difficulty-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.quiz-difficulty-pill {
+  min-height: var(--chip-height);
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: rgba(16, 26, 23, 0.85);
+  color: var(--color-soft);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 750;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.quiz-difficulty-pill:hover,
+.quiz-difficulty-pill:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  outline: none;
+}
+
+.quiz-difficulty-pill--active {
+  border-color: rgba(52, 211, 153, 0.55);
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--color-accent);
+}
+
+.quiz-panel--idle .quiz-panel__empty {
+  padding: 0;
+}
+
+.quiz-panel.daily-question-panel {
+  gap: var(--space-md);
+}
+
+.daily-question-panel.quiz-panel {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.ui-badge--soon {
+  border: 1px solid rgba(167, 243, 208, 0.22);
+  background: rgba(52, 211, 153, 0.08);
+  color: var(--color-muted);
+}
+
+.prefs-section__summary .ui-badge--soon {
+  margin-left: 0.35rem;
+}
+
+.browse-club-chip__meta.ui-badge--soon {
+  font-size: 0.62rem;
+}
+
+.navbar__links a {
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar__search-btn {
+  min-height: var(--touch-target-min);
+}
+
+.app__footer__links--meta {
+  margin-top: 0.35rem;
+  opacity: 0.92;
+}
+
+.app__footer__links a {
+  min-height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.1rem;
+}
+
+.hero__actions-row .btn {
+  min-height: var(--touch-target-min);
+}
+
+.quiz-summary__actions .btn,
+.quiz-panel__empty-actions .btn {
+  min-height: var(--touch-target-min);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .home-start-card:hover,
+  .home-explore-card:hover,
+  .quiz-theme-card:hover,
+  .club-quiz__category-card:hover,
+  .card-interactive:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .quiz-feedback--pop {
+    animation: none;
   }
 }
