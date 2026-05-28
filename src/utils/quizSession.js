@@ -25,6 +25,16 @@ export const QUIZ_DIFFICULTY_OPTIONS = [
   { id: 'easy', label: 'Easy', description: 'Club, position, and nationality shown' },
   { id: 'medium', label: 'Medium', description: 'Position, national team, and one hint' },
   { id: 'hard', label: 'Hard', description: 'No free clues — reveal hints yourself' },
+  {
+    id: 'hardcore',
+    label: 'Hardcore',
+    description: 'Full names only, max one quiz hint, no free clues',
+  },
+  {
+    id: 'nerd',
+    label: 'Football nerd',
+    description: 'No club/position giveaways — quiz hints only',
+  },
 ];
 
 export const QUIZ_POOL_FOCUS_OPTIONS = [
@@ -57,8 +67,20 @@ export function getInitialHintCount(difficulty) {
   return 0;
 }
 
+export function getMaxVisibleQuizHints(difficulty) {
+  if (difficulty === 'hardcore') return 1;
+  if (difficulty === 'nerd') return 2;
+  return Number.POSITIVE_INFINITY;
+}
+
+export function requiresFullNameMatch(difficulty) {
+  return difficulty === 'hardcore';
+}
+
 export function getClueFactsForQuestion(player, difficulty, getTeamName) {
-  if (!player || difficulty === 'hard') return [];
+  if (!player || difficulty === 'hard' || difficulty === 'hardcore' || difficulty === 'nerd') {
+    return [];
+  }
 
   const clubName = getTeamName(player.teamId);
   return [
@@ -469,10 +491,16 @@ export function buildAmbiguousLastNames(pool) {
   return new Set(Object.keys(counts).filter((k) => counts[k] > 1));
 }
 
-export function answersMatch(guess, correctName, ambiguousLastNames = new Set()) {
+export function answersMatch(
+  guess,
+  correctName,
+  ambiguousLastNames = new Set(),
+  { requireFullName = false } = {},
+) {
   const g = normalizeAnswer(guess);
   const c = normalizeAnswer(correctName);
   if (g === c) return true;
+  if (requireFullName) return false;
   const lastName = getNormalizedLastNameToken(c);
   return g === lastName && lastName.length > 3 && !ambiguousLastNames.has(lastName);
 }
@@ -487,6 +515,7 @@ export function getWrongAnswerTip({
   correctName,
   ambiguousLastNames = new Set(),
   timedOut = false,
+  requireFullName = false,
 }) {
   if (timedOut) {
     return { title: "Time's up", tip: 'Tip: timed mode gives a fixed time per question.' };
@@ -496,6 +525,13 @@ export function getWrongAnswerTip({
   if (!g || !c) return null;
 
   const lastName = getNormalizedLastNameToken(c);
+  if (requireFullName && g === lastName && lastName.length > 3) {
+    return {
+      title: 'Full name required',
+      tip: 'Tip: hardcore mode needs the player’s full name — surnames alone do not count.',
+    };
+  }
+
   if (g === lastName && lastName.length > 3 && ambiguousLastNames.has(lastName)) {
     return {
       title: 'Surname shortcut blocked',

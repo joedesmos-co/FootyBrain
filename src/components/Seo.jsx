@@ -95,7 +95,17 @@ function descriptionForPath(pathname) {
   if (pathname === '/daily')
     return 'Daily football challenge: a quick quiz session designed for streaks and repeat play.';
   if (pathname === '/quiz')
-    return 'Football player quizzes by league, club, and nation. Learn squads fast and test yourself in minutes.';
+    return 'Football quizzes by league, club, nation, and themed pools (wonderkids, legends, rivalries). Set difficulty and build streaks on FootyCompass.';
+  if (pathname === '/club-quiz')
+    return 'Club football quizzes: stadiums, leagues, rivalries, history, kits, and legends — multiple choice or hardcore typing, with streaks and XP.';
+  if (pathname === '/hubs/quizzes/clubs')
+    return 'Index of club knowledge quizzes — stadium, league, rivalry, country, history, trophies, and kit formats.';
+  if (pathname.startsWith('/hubs/quizzes/clubs/'))
+    return 'Club football quiz landing page — format guide, pool size, and play link on FootyCompass.';
+  if (pathname.startsWith('/hubs/quizzes/theme/'))
+    return 'Themed football player quiz — curated quiz-ready pool with hints, difficulty tiers, and links to player profiles.';
+  if (pathname === '/hubs/quizzes/themes')
+    return 'Index of themed football quizzes: wonderkids, legends, World Cup squads, league pools, and rivalry quizzes.';
   if (pathname.startsWith('/league/'))
     return 'League guide with clubs, key players, and quiz links. Explore squads and learn the league faster.';
   if (pathname.startsWith('/team/'))

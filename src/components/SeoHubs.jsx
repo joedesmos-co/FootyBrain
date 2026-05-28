@@ -243,12 +243,29 @@ export function SeoQuizzesHub() {
         <p className="page-header__eyebrow">Quizzes</p>
         <h1>Football player quizzes</h1>
         <p>
-          Pick a league or club landing page, then play on <Link to="/quiz">Quizzes</Link>.
+          Pick a league or club landing page, or try a{' '}
+          <Link to="/hubs/quizzes/themes">themed quiz pool</Link>, then play on{' '}
+          <Link to="/quiz">Quizzes</Link>.
         </p>
         <p className="page-header__meta">
           Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
+
+      <div className="empty-state__actions">
+        <Link to="/hubs/quizzes/themes" className="btn btn--primary">
+          Themed quiz pools
+        </Link>
+        <Link to="/hubs/quizzes/clubs" className="btn btn--primary">
+          Club quizzes
+        </Link>
+        <Link to="/quiz" className="btn btn--secondary">
+          Player quiz
+        </Link>
+        <Link to="/club-quiz" className="btn btn--secondary">
+          Play club quiz
+        </Link>
+      </div>
 
       <HubSection title="Player quizzes by league">
         <ul className="card-grid" aria-label="League quiz hubs">

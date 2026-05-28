@@ -216,12 +216,17 @@ export default function NationalTeamProfile() {
             </Link>
           ) : null}
           {canLaunchNationalQuiz ? (
-            <Link
-              to={`/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`}
-              className="btn btn--primary"
-            >
-              National team quiz
-            </Link>
+            <>
+              <Link
+                to={`/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`}
+                className="btn btn--primary"
+              >
+                National team quiz
+              </Link>
+              <Link to="/quiz?theme=world-cup" className="btn btn--secondary">
+                World Cup quiz pool
+              </Link>
+            </>
           ) : (
             <button type="button" className="btn btn--secondary" disabled>
               Quiz unlocks at {QUIZ_NATIONAL_TEAM_MIN_POOL}+ players with clues (

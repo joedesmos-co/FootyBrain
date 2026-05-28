@@ -6,8 +6,12 @@ import { peekTeamName } from '../data/teamStore';
 import { useFavorites } from '../hooks/useFavorites';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from '../utils/playerEditorial';
+import {
+  buildPlayerProfileEditorial,
+  PLAYER_PLACEHOLDER_FACT_RE,
+} from '../utils/playerProfileEditorial';
 import { IMPORTANCE_SCORE_LABEL } from '../utils/consumerCopy';
-import { buildCareerSummary, getRoleSummary } from '../utils/playerImportance';
+import { getRoleSummary } from '../utils/playerImportance';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import {
@@ -195,6 +199,33 @@ export default function PlayerProfile() {
     playerId: null,
     mod: null,
   }));
+  const [teamBundle, setTeamBundle] = useState(() => ({
+    teamId: null,
+    team: null,
+    pool: [],
+  }));
+
+  useEffect(() => {
+    if (!player?.teamId) return undefined;
+
+    let cancelled = false;
+    const teamId = player.teamId;
+    import('../data/sampleData.js').then((mod) => {
+      if (cancelled) return;
+      setTeamBundle({
+        teamId,
+        team: mod.getTeamById(teamId) ?? null,
+        pool: mod.getPlayersForTeam(teamId) ?? [],
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [player?.teamId]);
+
+  const teamContext = teamBundle.teamId === player?.teamId ? teamBundle.team : null;
+  const teamMatePool = teamBundle.teamId === player?.teamId ? teamBundle.pool : [];
 
   // Only load nationalTeamData when the player has a relevant label.
   // This keeps the nationalTeamData chunk off routes that never need it.
@@ -219,10 +250,12 @@ export default function PlayerProfile() {
   }, [player]);
 
   const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
-  const relatedPool = useMemo(
-    () => (searchIndexStatus === 'ready' ? (searchIndex?.players ?? []) : []),
-    [searchIndexStatus, searchIndex],
-  );
+  const relatedPool = useMemo(() => {
+    if (searchIndexStatus === 'ready' && searchIndex?.players?.length) {
+      return searchIndex.players;
+    }
+    return teamMatePool;
+  }, [searchIndexStatus, searchIndex, teamMatePool]);
   const relatedLoading = Boolean(player && searchIndexStatus === 'loading');
 
   const relatedPlayers = useMemo(
@@ -259,12 +292,15 @@ export default function PlayerProfile() {
     });
 
     const title = `${player.name} · FootyCompass`;
-    const descriptionParts = [
-      player.position ? formatPosition(player.position) : null,
-      resolvedTeamName,
-      player.nationality ? player.nationality : null,
-    ].filter(Boolean);
-    const description = `${player.name} — ${descriptionParts.join(' · ')}. Player profile with club/league context, career notes, and quiz eligibility.`;
+    const leagueNameForSeo = getLeagueDisplayName({
+      id: player.leagueId,
+      name: getManifestLeague(player.leagueId)?.name ?? 'Unknown',
+    });
+    const description = buildPlayerProfileEditorial(player, {
+      teamName: resolvedTeamName,
+      leagueName: leagueNameForSeo,
+      team: teamContext,
+    }).description;
     setSeoMeta({
       title,
       description,
@@ -296,7 +332,7 @@ export default function PlayerProfile() {
       upsertJsonLdScript('jsonld-breadcrumb', null);
       upsertJsonLdScript('jsonld-person', null);
     };
-  }, [player]);
+  }, [player, teamContext]);
 
   if (playerStatus === 'loading') {
     return (
@@ -328,8 +364,13 @@ export default function PlayerProfile() {
     ntModuleState.mod && ntModuleState.playerId === player.id
       ? ntModuleState.mod.getLiveNationalTeamForPlayer(player)
       : null;
+  const profileEditorial = buildPlayerProfileEditorial(player, {
+    teamName,
+    leagueName,
+    team: teamContext,
+  });
   const roleSummary = getRoleSummary(player);
-  const careerSummary = buildCareerSummary(player);
+  const careerSummary = profileEditorial.careerSummary;
   const browseOnly = isBrowseOnlyPlayer(player);
   const quizReady = isQuizEligiblePlayer(player);
   const displayFact = getDisplayQuickFact(player);
@@ -355,9 +396,17 @@ export default function PlayerProfile() {
 
   const honors = toStringList(player.honors ?? player.honours ?? player.trophies, 12);
   const showHonors = honors.length > 0;
+  const hasPlayStyleSection = playStyleTags.length > 0 || Boolean(playStyleSummary);
+  const hasStrengthsSection = strengths.length > 0;
+  const showKnownForSection =
+    profileEditorial.showKnownFor &&
+    (profileEditorial.isThin || (!hasPlayStyleSection && !hasStrengthsSection));
 
-  const funFact = normalizeLabel(player.quickFact || displayFact);
-  const showFunFact = Boolean(funFact);
+  const funFact = normalizeLabel(player.quickFact || '');
+  const showFunFact =
+    Boolean(funFact) &&
+    !PLAYER_PLACEHOLDER_FACT_RE.test(funFact) &&
+    funFact !== profileEditorial.about;
 
   const playerInfoItems = [
     {
@@ -487,8 +536,7 @@ export default function PlayerProfile() {
 
       {browseOnly && (
         <p className="player-study__note" role="status">
-          Profile preview—facts and career stops below are ready to study. Full quiz clues for this
-          player are on the way.
+          Study profile from the current dataset—quiz clues for this player are still being added.
         </p>
       )}
 
@@ -507,7 +555,17 @@ export default function PlayerProfile() {
         {!liveNationalTeam && nationalTeamPlainLabel ? (
           <span className="player-profile__quick-link--disabled">National team page coming</span>
         ) : null}
-        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Quiz</Link>}
+        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Player club quiz</Link>}
+        <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>
+        {player.teamId ? (
+          <Link to={`/club-quiz?category=stadium&league=${player.leagueId}`}>Stadium quiz</Link>
+        ) : null}
+        {quizReady && typeof player.age === 'number' && player.age <= 23 ? (
+          <Link to="/quiz?theme=wonderkids">Wonderkids quiz</Link>
+        ) : null}
+        {quizReady && (player.importanceScore ?? 0) >= 88 ? (
+          <Link to="/quiz?theme=legends">Legends quiz</Link>
+        ) : null}
       </nav>
 
       <section
@@ -527,6 +585,32 @@ export default function PlayerProfile() {
           ))}
         </dl>
       </section>
+
+      {profileEditorial.showAbout ? (
+        <section
+          className="info-card player-section player-section--about"
+          aria-labelledby="player-about-title"
+        >
+          <PlayerSectionHead icon="📋" title="About the player" id="player-about-title" />
+          <p className="player-profile__about">{profileEditorial.about}</p>
+        </section>
+      ) : null}
+
+      {showKnownForSection ? (
+        <section
+          className="info-card player-section player-section--known-for"
+          aria-labelledby="player-known-for-title"
+        >
+          <PlayerSectionHead icon="★" title="Known for" id="player-known-for-title" />
+          <ul className="tag-list tag-list--tight player-tag-list" aria-label="Known for">
+            {profileEditorial.knownFor.map((item) => (
+              <li key={item} className="tag tag--solid">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <div className="player-profile__divider" aria-hidden="true" />
 

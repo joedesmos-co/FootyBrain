@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { formatClubIdentityTags } from '../utils/clubIdentity';
 import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
+import { buildClubLeagueContext, buildSyntheticClubStory } from '../utils/clubProfileEditorial';
 import {
   buildTeamQuickFacts,
   getTeamProfileEditorial,
@@ -64,10 +65,17 @@ export default function TeamClubProfileHub({
   const showNicknames = editorial.nicknames.length > 0;
   const showFanGuide = editorial.hasFanGuide;
   const showStory = editorial.hasStory;
+  const syntheticStory = !showStory
+    ? buildSyntheticClubStory(team, leagueName, rosterSize)
+    : '';
+  const leagueContext = buildClubLeagueContext(team, leagueName);
+  const showSyntheticStory = Boolean(syntheticStory);
+  const showLeagueContext = Boolean(leagueContext);
 
   if (
     isExternalStub &&
     !editorial.hasContext &&
+    !showSyntheticStory &&
     quickFacts.length === 0 &&
     !showRivals &&
     !showLegends
@@ -115,9 +123,32 @@ export default function TeamClubProfileHub({
       {showStory ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-why-matters-title">
           <h2 id="team-why-matters-title" className="team-club-hub__card-title">
-            Why this club matters
+            Club identity &amp; history
           </h2>
           <p className="team-club-hub__prose">{editorial.shortHistory}</p>
+        </section>
+      ) : null}
+
+      {showSyntheticStory ? (
+        <section className="team-club-hub__panel info-card" aria-labelledby="team-club-identity-title">
+          <h2 id="team-club-identity-title" className="team-club-hub__card-title">
+            Club identity
+          </h2>
+          <p className="team-club-hub__prose">{syntheticStory}</p>
+        </section>
+      ) : null}
+
+      {showLeagueContext ? (
+        <section className="team-club-hub__panel info-card" aria-labelledby="team-league-context-title">
+          <h2 id="team-league-context-title" className="team-club-hub__card-title">
+            League context
+          </h2>
+          <p className="team-club-hub__prose">{leagueContext}</p>
+          <p className="team-fan-guide__meta">
+            <Link to={`/league/${team.leagueId}`}>Open {leagueName} hub</Link>
+            {' · '}
+            <Link to={`/hubs/quizzes/league/${team.leagueId}`}>League quiz page</Link>
+          </p>
         </section>
       ) : null}
 

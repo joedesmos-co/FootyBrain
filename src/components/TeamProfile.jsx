@@ -24,9 +24,13 @@ import PageFallback from './PageFallback';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
+import { buildClubProfileDescription } from '../utils/clubProfileEditorial';
+import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
+import { getClubQuizPlayHref } from '../data/clubQuizCategories';
+import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
 
 function buildTeamProfileSubline(team) {
   const parts = [];
@@ -48,7 +52,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
 
     const title = `${team.name} · FootyCompass`;
-    const description = `${team.name} (${formatCountryLabel(team.country)}). Squad learning, rivals, legends, and quizzes when available.`;
+    const description = buildClubProfileDescription(team, leagueName, roster.length);
     setSeoMeta({
       title,
       description,
@@ -84,7 +88,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
       upsertJsonLdScript('jsonld-breadcrumb', null);
       upsertJsonLdScript('jsonld-sportsteam', null);
     };
-  }, [team.id, team.name, team.leagueId, team.country, leagueName]);
+  }, [team, leagueName, roster.length]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
   const hasTeamQuiz = getQuizEligiblePlayers(roster).length >= QUIZ_MIN_SESSION_POOL;
@@ -93,9 +97,20 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     quizRegistryStatus === 'ready' && quizRegistry?.players
       ? quizRegistry.players.some((player) => player.leagueId === team.leagueId)
       : false;
+  const leagueThemeId = getQuizThemeIdForLeague(team.leagueId);
+  const leagueThemeQuizHref = leagueThemeId ? getQuizThemePlayHref(leagueThemeId) : null;
+  const stadiumClubQuizHref = team.stadium
+    ? getClubQuizPlayHref('stadium', { leagueId: team.leagueId })
+    : null;
+  const rivalryClubQuizHref =
+    Array.isArray(team.rivals) && team.rivals.length > 0
+      ? getClubQuizPlayHref('rivalry', { leagueId: team.leagueId })
+      : null;
   const saved = isTeamSaved(team.id);
   const identityTags = formatClubIdentityTags(team.identityTags);
   const keyPlayerCards = buildTeamKeyPlayerCards(team, roster);
+  const teamEditorial = getTeamProfileEditorial(team);
+  const keyPlayersTitle = teamEditorial.hasStory ? 'Current star players' : 'Players to know';
   const cultureLine =
     truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
   const profileSubline = buildTeamProfileSubline(team);
@@ -205,9 +220,32 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             onToggle={() => toggleTeam(team.id)}
           />
           {hasTeamQuiz ? (
-            <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-              Start Team Quiz
-            </Link>
+            <>
+              <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
+                Start Team Quiz
+              </Link>
+              <Link to={`/hubs/quizzes/team/${team.id}`} className="btn btn--secondary">
+                Quiz hub
+              </Link>
+              {leagueThemeQuizHref ? (
+                <Link to={leagueThemeQuizHref} className="btn btn--secondary">
+                  {leagueName} quiz pool
+                </Link>
+              ) : null}
+              {stadiumClubQuizHref ? (
+                <Link to={stadiumClubQuizHref} className="btn btn--secondary">
+                  Stadium quiz
+                </Link>
+              ) : null}
+              {rivalryClubQuizHref ? (
+                <Link to={rivalryClubQuizHref} className="btn btn--secondary">
+                  Rivalry quiz
+                </Link>
+              ) : null}
+              <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
+                Club quizzes
+              </Link>
+            </>
           ) : (
             <>
               <button type="button" className="btn btn--secondary" disabled>
@@ -242,9 +280,11 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
         {keyPlayerCards.length > 0 && (
           <section className="team-key-players info-card" aria-labelledby="team-key-players-title">
             <div className="team-key-players__header">
-              <h2 id="team-key-players-title">Current star players</h2>
+              <h2 id="team-key-players-title">{keyPlayersTitle}</h2>
               <p className="team-key-players__note">
-                Faces to know before you dive into the full squad.
+                {teamEditorial.hasStory
+                  ? 'Faces to know before you dive into the full squad.'
+                  : 'Top names in the FootyCompass squad list—open profiles, then try the club quiz.'}
               </p>
             </div>
             <ul className="team-key-players__grid">

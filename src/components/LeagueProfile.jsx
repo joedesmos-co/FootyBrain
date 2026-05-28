@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLeagueShard } from '../hooks/useLeagueShard';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
+import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import {
   getLeagueFeaturedTeams,
@@ -153,6 +154,21 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             className="btn btn--secondary"
           >
             League quiz hub
+          </Link>
+          <Link
+            to={getClubQuizPlayHref('league', { leagueId: league.id })}
+            className="btn btn--secondary"
+          >
+            Club league quiz
+          </Link>
+          <Link
+            to={getClubQuizPlayHref('stadium', { leagueId: league.id })}
+            className="btn btn--secondary"
+          >
+            Stadium quiz
+          </Link>
+          <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
+            Club quiz guides
           </Link>
           {league.country ? (
             <Link

@@ -56,6 +56,19 @@ const SeoWorldCupPlayerQuizHub = lazy(() =>
 const SeoLearnFootballPlayersHub = lazy(() =>
   import('./components/SeoHubs').then((m) => ({ default: m.SeoLearnFootballPlayersHub })),
 );
+const SeoQuizThemesHub = lazy(() =>
+  import('./components/SeoQuizThemes').then((m) => ({ default: m.SeoQuizThemesHub })),
+);
+const SeoQuizThemeHub = lazy(() =>
+  import('./components/SeoQuizThemes').then((m) => ({ default: m.SeoQuizThemeHub })),
+);
+const ClubQuizMode = lazy(() => import('./components/ClubQuizMode'));
+const SeoClubQuizzesHub = lazy(() =>
+  import('./components/SeoClubQuizzes').then((m) => ({ default: m.SeoClubQuizzesHub })),
+);
+const SeoClubQuizCategoryHub = lazy(() =>
+  import('./components/SeoClubQuizzes').then((m) => ({ default: m.SeoClubQuizCategoryHub })),
+);
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -72,6 +85,15 @@ function QuizRoute() {
   return (
     <Suspense fallback={<PageFallback label="Loading quiz…" />}>
       <QuizMode key={search} />
+    </Suspense>
+  );
+}
+
+function ClubQuizRoute() {
+  const { search } = useLocation();
+  return (
+    <Suspense fallback={<PageFallback label="Loading club quiz…" />}>
+      <ClubQuizMode key={search} />
     </Suspense>
   );
 }
@@ -139,6 +161,7 @@ export default function App() {
               element={withPageSuspense(TeamLearning, 'Loading teams…')}
             />
             <Route path="/quiz" element={<QuizRoute />} />
+            <Route path="/club-quiz" element={<ClubQuizRoute />} />
             <Route path="/about" element={withPageSuspense(AboutPage, 'Loading…')} />
             <Route path="/editorial" element={withPageSuspense(EditorialPolicyPage, 'Loading…')} />
             <Route path="/saved" element={withPageSuspense(SavedPage, 'Loading saved…')} />
@@ -162,6 +185,22 @@ export default function App() {
             />
             <Route path="/hubs" element={withPageSuspense(SeoHubsIndex, 'Loading…')} />
             <Route path="/hubs/quizzes" element={withPageSuspense(SeoQuizzesHub, 'Loading…')} />
+            <Route
+              path="/hubs/quizzes/themes"
+              element={withPageSuspense(SeoQuizThemesHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/quizzes/theme/:themeId"
+              element={withPageSuspense(SeoQuizThemeHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/quizzes/clubs"
+              element={withPageSuspense(SeoClubQuizzesHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/quizzes/clubs/:categoryId"
+              element={withPageSuspense(SeoClubQuizCategoryHub, 'Loading…')}
+            />
             <Route
               path="/hubs/quizzes/league/:leagueId"
               element={withPageSuspense(SeoLeagueQuizHub, 'Loading…')}

@@ -100,6 +100,8 @@ function writeSitemapIndex(files) {
 
 async function loadData() {
   const { players, teams, leagues } = await import('../src/data/sampleData.js');
+  const { QUIZ_THEME_CATALOG } = await import('../src/data/quizThemes.js');
+  const { CLUB_QUIZ_CATEGORY_CATALOG } = await import('../src/data/clubQuizCategories.js');
   const ntLive = JSON.parse(
     fs.readFileSync(path.join(ROOT, 'src/data/nationalTeamLive.json'), 'utf8'),
   );
@@ -112,6 +114,8 @@ async function loadData() {
     liveNationalTeamIds: ntLive?.meta?.liveNationalTeamIds ?? [],
     collections,
     learningPaths,
+    quizThemes: QUIZ_THEME_CATALOG,
+    clubQuizCategories: CLUB_QUIZ_CATEGORY_CATALOG,
   };
 }
 
@@ -135,6 +139,9 @@ function buildIndexableRoutes(data) {
     '/privacy',
     '/hubs',
     '/hubs/quizzes',
+    '/hubs/quizzes/themes',
+    '/hubs/quizzes/clubs',
+    '/club-quiz',
     '/hubs/players/by-nationality',
     '/hubs/players/best-young-footballers',
     '/hubs/world-cup/player-quiz',
@@ -143,6 +150,16 @@ function buildIndexableRoutes(data) {
 
   for (const p of staticIndexable) {
     urls.push({ loc: absUrl(p), lastmod: DATA_AS_OF });
+  }
+
+  for (const theme of data.quizThemes ?? []) {
+    if (!theme?.id) continue;
+    urls.push({ loc: absUrl(`/hubs/quizzes/theme/${theme.id}`), lastmod: DATA_AS_OF });
+  }
+
+  for (const cat of data.clubQuizCategories ?? []) {
+    if (!cat?.id) continue;
+    urls.push({ loc: absUrl(`/hubs/quizzes/clubs/${cat.id}`), lastmod: DATA_AS_OF });
   }
 
   // Leagues
