@@ -2,35 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getHomeFeatureCards } from '../data/onboardingGuide';
 import { DATASET_META } from '../data/datasetMeta';
-import { getHubLeagues } from '../data/leagueManifest';
-import {
-  formatCountryLabel,
-  getFootballAccentStyle,
-  getLeagueAccentStyle,
-} from '../utils/footballDisplay';
 import { usePreferences } from '../hooks/usePreferences';
-import LeagueBadge from './LeagueBadge';
 
 const PERSONALIZE_DISMISS_KEY = 'footybrain:personalize-cta-dismissed';
-
-const EXPLORE_SHORTCUTS = [
-  { to: '/quiz', label: 'Player quiz', hint: 'Hints & streaks' },
-  { to: '/club-quiz', label: 'Club quiz', hint: 'Stadiums & rivalries' },
-  { to: '/daily', label: 'Daily challenge', hint: 'Quick return visit' },
-  { to: '/hubs', label: 'Search hubs', hint: 'SEO quiz & learn pages' },
-  { to: '/learning-paths', label: 'Learning paths', hint: 'Curated study routes' },
-  { to: '/collections', label: 'Collections', hint: 'Themed player lists' },
-];
-
-const POPULAR_SEARCHES = [
-  { to: '/hubs/quizzes/clubs/stadium', label: 'Guess the club by stadium' },
-  { to: '/hubs/quizzes/league/premier-league', label: 'Premier League player quiz' },
-  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona player quiz' },
-  { to: '/hubs/players/by-nationality', label: 'Football players by nationality' },
-  { to: '/hubs/players/best-young-footballers', label: 'Best young footballers' },
-  { to: '/hubs/world-cup/player-quiz', label: 'World Cup player quiz' },
-  { to: '/hubs/learn/football-players', label: 'Learn football players' },
-];
 
 function readPersonalizeDismissed() {
   if (typeof window === 'undefined') return false;
@@ -70,72 +44,29 @@ export default function HomeBelowFold() {
 
   return (
     <>
-      <section className="home-explore-strip" aria-label="Quick explore">
-        <ul className="home-explore-strip__grid">
-          {EXPLORE_SHORTCUTS.map((item) => (
-            <li key={item.to}>
-              <Link to={item.to} className="home-explore-card">
-                <strong>{item.label}</strong>
-                <span>{item.hint}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="home-popular-searches" aria-labelledby="home-popular-searches-title">
-        <div className="home-popular-searches__head">
-          <h2 id="home-popular-searches-title">Popular searches</h2>
-          <p>Fast entry points designed for Google and for humans.</p>
+      <section className="home-return-cta" aria-label="Return visits">
+        <div className="home-return-cta__copy">
+          <h2 className="home-return-cta__title">Build a daily habit</h2>
+          <p>
+            Five fresh football questions each day — streak XP and study cards for misses. Come back
+            tomorrow without an account.
+          </p>
         </div>
-        <div className="home-popular-searches__grid" role="list">
-          {POPULAR_SEARCHES.map((item) => (
-            <Link key={item.to} to={item.to} className="home-popular-searches__chip" role="listitem">
-              {item.label} →
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="home-league-strip" aria-labelledby="home-league-hubs-title">
-        <h2 id="home-league-hubs-title" className="home-league-strip__title">
-          League hubs
-        </h2>
-        <div className="league-link-grid home-league-strip__grid">
-          {getHubLeagues().map((league) => {
-            const accentStyle =
-              getFootballAccentStyle(league) ?? getLeagueAccentStyle(league.id);
-            return (
-              <Link
-                key={league.id}
-                to={`/league/${league.id}`}
-                className="league-link-card football-accent-chip"
-                style={accentStyle}
-              >
-                <LeagueBadge league={league} size="thumb" />
-                <span>
-                  <strong>{league.name}</strong>
-                  <small>{formatCountryLabel(league.hubSubline)}</small>
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-        <div className="empty-state__actions">
-          <Link to="/hubs/quizzes" className="btn btn--primary">
-            Explore quiz hubs
+        <div className="home-return-cta__actions">
+          <Link to="/daily" className="btn btn--primary btn--large">
+            Play today&apos;s daily
           </Link>
           <Link to="/quiz" className="btn btn--secondary">
-            Play quizzes
+            Free-play player quiz
           </Link>
         </div>
       </section>
 
-      {showPersonalizeCta && (
+      {showPersonalizeCta ? (
         <section className="home-personalize-cta" aria-label="Personalize FootyCompass">
           <div className="home-personalize-cta__body">
-            <h2>Sharpen your picks</h2>
-            <p>Favorite leagues and clubs — optional, no account needed.</p>
+            <h2>Sharpen your home feed</h2>
+            <p>Favorite leagues and clubs for faster browse — optional, stored on your device only.</p>
             <div className="home-personalize-cta__actions">
               <Link to="/onboarding" className="btn btn--primary">
                 Set preferences
@@ -150,11 +81,11 @@ export default function HomeBelowFold() {
             </div>
           </div>
         </section>
-      )}
+      ) : null}
 
       <section className="home-tools" aria-labelledby="home-tools-title">
         <h2 id="home-tools-title" className="home-tools__title">
-          More to explore
+          More football tools
         </h2>
         <div className="feature-grid home-tools__grid">
           {features.map((feature) => (

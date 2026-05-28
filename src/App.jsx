@@ -263,13 +263,15 @@ export default function App() {
               <Link to="/quiz">Player quiz</Link>
               <Link to="/club-quiz">Club quiz</Link>
               <Link to="/daily">Daily challenge</Link>
-              <Link to="/browse">Browse</Link>
+              <Link to="/browse">Browse players</Link>
               <Link to="/teams">Clubs</Link>
+              <Link to="/world-cup">World Cup 2026</Link>
+              <Link to="/national-teams">National teams</Link>
               <Link to="/hubs">Hubs</Link>
             </nav>
             <nav className="app__footer__links app__footer__links--meta" aria-label="Trust and policy">
               <Link to="/about">About</Link>
-              <Link to="/editorial">Editorial</Link>
+              <Link to="/editorial">Editorial policy</Link>
               <Link to="/privacy">Privacy</Link>
             </nav>
             <p className="app__footer__feedback">

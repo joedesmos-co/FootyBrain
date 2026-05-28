@@ -6,9 +6,9 @@ import { pageTitle } from './brand.js';
 
 const STATIC_ROUTE_SEO = {
   '/': {
-    title: pageTitle('Learn football with free player & club quizzes'),
+    title: pageTitle('Football player & club quizzes — learn & test yourself'),
     description:
-      'FootyCompass helps you learn football: 4,800+ player profiles, club guides, league hubs, national teams, and daily quizzes — free, no account.',
+      'Free football quizzes: guess players from hints, test club knowledge (stadiums, rivals), daily challenges, Premier League & La Liga hubs, World Cup 2026 prep — 4,800+ profiles, no account.',
     faqs: [
       {
         question: 'What is FootyCompass?',
