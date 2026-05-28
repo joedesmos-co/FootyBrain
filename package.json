@@ -49,6 +49,7 @@
     "audit:top-importance-depth": "node scripts/audit-top-importance-depth.js",
     "audit:internal-linking": "node scripts/audit-internal-linking.js",
     "audit:seo-meta": "node scripts/audit-seo-meta.js",
+    "audit:adsense-readiness": "node scripts/audit-adsense-readiness.js",
     "append:wc-national-pool": "node scripts/append-wc-national-pool-import.js",
     "expand:foundation": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run build:national-teams-preview && npm run build:national-team-live && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale && npm run validate:dataset-scale:dist",
     "expand:phase4-mls": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:overlays && npm run merge:phase1-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",

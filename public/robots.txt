@@ -1,8 +1,9 @@
 User-agent: *
+# Dev and personal routes (also noindex in app SEO)
 Disallow: /dev/
 Disallow: /saved
 Disallow: /profile
+# Block query-string URLs (quiz sessions, compare params) — canonical paths are path-only
 Disallow: /*?
 
 Sitemap: https://footycompass.com/sitemap.xml
-

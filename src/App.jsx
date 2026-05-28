@@ -261,7 +261,9 @@ export default function App() {
             <p className="app__footer__brand">FootyCompass · Learn players, clubs, and leagues through quizzes.</p>
             <p className="app__footer__feedback">
               Feedback or corrections?{' '}
-              <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>
+              <a href="mailto:joedesmos.co@gmail.com?subject=FootyCompass%20feedback">
+                joedesmos.co@gmail.com
+              </a>
             </p>
             <nav className="app__footer__links" aria-label="Footer navigation">
               <Link to="/quiz">Player quiz</Link>
@@ -275,7 +277,9 @@ export default function App() {
               <Link to="/privacy">Privacy</Link>
             </nav>
             <p className="app__footer__privacy">
-              No account required. Progress and favorites are stored locally in your browser.
+              No account required. Progress and favorites stay in your browser. Dataset &amp; policy
+              links: <Link to="/about">About</Link>, <Link to="/editorial">Editorial</Link>,{' '}
+              <Link to="/privacy">Privacy</Link>.
             </p>
           </footer>
         </div>
