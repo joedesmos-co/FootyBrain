@@ -27,6 +27,7 @@ import FavoriteButton from './FavoriteButton';
 import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
+import ShareButton from './ShareButton';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -470,6 +471,15 @@ export default function PlayerProfile() {
             saved={saved}
             onToggle={() => togglePlayer(player.id)}
           />
+          <ShareButton
+            title={`${player.name} · FootyCompass`}
+            text={`Check out ${player.name} on FootyCompass.`}
+            url={typeof window !== 'undefined' ? window.location.href : undefined}
+            copiedLabel="Copied player link"
+            sharedLabel="Shared"
+          >
+            Share
+          </ShareButton>
         </div>
       </header>
 

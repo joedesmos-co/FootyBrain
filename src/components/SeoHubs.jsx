@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { leagues, players, teams } from '../data/sampleData';
 import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from '../utils/brand';
+import { DATASET_META } from '../data/datasetMeta';
 import { formatCountryLabel, getLeagueDisplayName, isExternalLeagueId } from '../utils/footballDisplay';
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
@@ -9,6 +10,24 @@ import PlayerCard from './PlayerCard';
 import TeamCard from './TeamCard';
 import { getManifestLeague } from '../data/contentManifest';
 import LeagueBadge from './LeagueBadge';
+import BreadcrumbNav from './BreadcrumbNav';
+
+function buildFaqJsonLd({ canonical, faqs }) {
+  const mainEntity = (faqs ?? []).slice(0, 10).map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  }));
+
+  if (!mainEntity.length) return null;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    url: canonical,
+    mainEntity,
+  };
+}
 
 function buildLandingJsonLd({ title, description, canonical, links }) {
   const itemList = (links ?? []).slice(0, 24).map((link, idx) => ({
@@ -33,7 +52,7 @@ function buildLandingJsonLd({ title, description, canonical, links }) {
   };
 }
 
-function useLandingSeo({ title, description, canonical, links }) {
+function useLandingSeo({ title, description, canonical, links, faqs }) {
   const image = `${SITE_URL}/og.svg`;
   useEffect(() => {
     setSeoMeta({
@@ -58,11 +77,13 @@ function useLandingSeo({ title, description, canonical, links }) {
       'jsonld-landing',
       buildLandingJsonLd({ title, description, canonical, links }),
     );
+    upsertJsonLdScript('jsonld-faq', buildFaqJsonLd({ canonical, faqs }));
 
     return () => {
       upsertJsonLdScript('jsonld-landing', null);
+      upsertJsonLdScript('jsonld-faq', null);
     };
-  }, [title, description, canonical, links, image]);
+  }, [title, description, canonical, links, faqs, image]);
 }
 
 function sortByImportanceDesc(a, b) {
@@ -116,16 +137,36 @@ export function SeoHubsIndex() {
     { label: 'World Cup player quiz', url: canonicalUrlForPath('/hubs/world-cup/player-quiz') },
     { label: 'Learn football players', url: canonicalUrlForPath('/hubs/learn/football-players') },
   ];
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: 'What are FootyCompass hubs?',
+        answer:
+          'Hubs are indexable landing pages designed for search and browsing. They link into player, club, league, and quiz pages to help you discover content quickly.',
+      },
+      {
+        question: 'Are hubs updated live?',
+        answer: `No—FootyCompass ships with a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs' }]} />
       <header className="page-header">
         <p className="page-header__eyebrow">Search hubs</p>
         <h1>Football discovery hubs</h1>
         <p>
           Built for search and browsing: focused pages that link into player, club, league, and quiz
           content.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -177,15 +218,35 @@ export function SeoQuizzesHub() {
       url: canonicalUrlForPath(`/hubs/quizzes/league/${l.id}`),
     }));
 
-  useLandingSeo({ title, description, canonical, links: leagueLinks.slice(0, 12) });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links: leagueLinks.slice(0, 12),
+    faqs: [
+      {
+        question: 'How do the football player quizzes work?',
+        answer:
+          'Open a league or club hub to explore players, then play on the Quizzes page to guess players from hints.',
+      },
+      {
+        question: 'Do I need an account?',
+        answer: 'No. You can play without signing in. Progress can be stored locally on your device.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Quizzes' }]} />
       <header className="page-header">
         <p className="page-header__eyebrow">Quizzes</p>
         <h1>Football player quizzes</h1>
         <p>
           Pick a league or club landing page, then play on <Link to="/quiz">Quizzes</Link>.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -248,16 +309,43 @@ export function SeoLeagueQuizHub() {
     ...topTeams.map((t) => ({ label: t.name, url: canonicalUrlForPath(`/team/${t.id}`) })),
     ...topPlayers.map((p) => ({ label: p.name, url: canonicalUrlForPath(`/player/${p.id}`) })),
   ];
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: `What is the “Guess the ${leagueName} player” hub?`,
+        answer:
+          'It’s a landing page to browse clubs and players in the league, with direct links into profiles and the Quizzes page.',
+      },
+      {
+        question: 'Is this an official league quiz?',
+        answer: 'No. FootyCompass is an independent learning project and not an official league property.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'Quizzes', to: '/hubs/quizzes' },
+          { label: leagueName },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">League quiz</p>
         <h1>Guess the {leagueName} player</h1>
         <p>
           A fast way to explore the league: open a few club profiles, then head to{' '}
           <Link to="/quiz">Quizzes</Link> to play.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -315,11 +403,36 @@ export function SeoTeamQuizHub() {
   );
   const topPlayers = useMemo(() => clubPlayers.slice(0, 18), [clubPlayers]);
   const links = topPlayers.map((p) => ({ label: p.name, url: canonicalUrlForPath(`/player/${p.id}`) }));
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: team
+      ? [
+          {
+            question: `How do I use the ${teamName} player quiz hub?`,
+            answer:
+              'Start by opening the club profile to learn the squad, then go to Quizzes to play and reinforce recognition.',
+          },
+          {
+            question: 'Is the squad list live?',
+            answer: `No—this hub is based on a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
+          },
+        ]
+      : [
+          {
+            question: 'How do club quiz hubs work?',
+            answer:
+              'Club hubs link to key player profiles and the main Quizzes page. Use them to learn a squad quickly before playing.',
+          },
+        ],
+  });
 
   if (!team) {
     return (
       <div className="page">
+        <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Quizzes', to: '/hubs/quizzes' }, { label: 'Club' }]} />
         <header className="page-header">
           <h1>Club player quiz</h1>
           <p>Club not found. Try the main quiz page or browse clubs.</p>
@@ -338,6 +451,14 @@ export function SeoTeamQuizHub() {
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'Quizzes', to: '/hubs/quizzes' },
+          { label: teamName },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Club quiz</p>
         <h1>{teamName} player quiz</h1>
@@ -347,6 +468,9 @@ export function SeoTeamQuizHub() {
         </p>
         <p>
           {formatCountryLabel(team.country)} · {leagueName}
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -394,15 +518,42 @@ export function SeoPlayersByNationalityHub() {
     label: `${row.nation} football players`,
     url: canonicalUrlForPath(`/hubs/players/nationality/${encodeURIComponent(row.nation)}`),
   }));
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: 'How are players grouped by nationality?',
+        answer:
+          'Nationality pages are generated from the current dataset snapshot and are meant for learning and discovery, not as official rosters.',
+      },
+      {
+        question: 'Can I use this to study for quizzes?',
+        answer:
+          'Yes—open a few profiles from a nationality page for context, then jump to Quizzes to reinforce recognition.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'Players by nationality' },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Players</p>
         <h1>Football players by nationality</h1>
         <p>
           Pick a nationality to see a curated list of players and direct links to their profiles.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -450,15 +601,43 @@ export function SeoNationalityPlayersHub() {
   );
   const topPlayers = useMemo(() => nationPlayers.slice(0, 24), [nationPlayers]);
   const links = topPlayers.map((p) => ({ label: p.name, url: canonicalUrlForPath(`/player/${p.id}`) }));
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: `What will I find on the ${formatCountryLabel(nationLabel)} players page?`,
+        answer:
+          'A curated set of player profiles from the current dataset, with quick links to keep exploring and to jump into quizzes.',
+      },
+      {
+        question: 'Is this an official roster?',
+        answer:
+          'No. It’s a learning list built from a dataset snapshot and is not an official federation roster.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'Players by nationality', to: '/hubs/players/by-nationality' },
+          { label: formatCountryLabel(nationLabel) },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Nationality</p>
         <h1>{formatCountryLabel(nationLabel)} football players</h1>
         <p>
           Open a few profiles, then jump to <Link to="/quiz">Quizzes</Link> to test yourself.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -508,16 +687,43 @@ export function SeoBestYoungFootballersHub() {
     label: row.player.name,
     url: canonicalUrlForPath(`/player/${row.player.id}`),
   }));
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: 'How are “best young footballers” selected?',
+        answer:
+          'This hub uses players with birth dates in the dataset and ranks them by importance score to create a practical shortlist.',
+      },
+      {
+        question: 'Is the list definitive?',
+        answer:
+          'No—think of it as a learning starting point. Open profiles for context and use quizzes to reinforce recognition.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'Best young footballers' },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Players</p>
         <h1>Best young footballers</h1>
         <p>
           A starter list of young players based on importance score in the current FootyCompass
           dataset. Open profiles to learn clubs, leagues, and roles.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -553,16 +759,43 @@ export function SeoWorldCupPlayerQuizHub() {
     { label: 'National teams', url: canonicalUrlForPath('/national-teams') },
     { label: 'Quizzes', url: canonicalUrlForPath('/quiz') },
   ];
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: 'Is this an official World Cup roster?',
+        answer:
+          'No. This hub is for learning and prep and is based on a dataset snapshot, not official tournament squads.',
+      },
+      {
+        question: 'How should I use this for prep?',
+        answer:
+          'Start with the World Cup hub and national teams, open a few player profiles, then play quizzes to practice recognition.',
+      },
+    ],
+  });
 
   return (
     <div className="page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Hubs', to: '/hubs' },
+          { label: 'World Cup player quiz' },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">World Cup</p>
         <h1>World Cup player quiz</h1>
         <p>
           Start with the <Link to="/world-cup">World Cup hub</Link>, then use{' '}
           <Link to="/quiz">Quizzes</Link> to play international sessions.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
@@ -594,15 +827,35 @@ export function SeoLearnFootballPlayersHub() {
     { label: 'Learning paths', url: canonicalUrlForPath('/learning-paths') },
     { label: 'Quizzes', url: canonicalUrlForPath('/quiz') },
   ];
-  useLandingSeo({ title, description, canonical, links });
+  useLandingSeo({
+    title,
+    description,
+    canonical,
+    links,
+    faqs: [
+      {
+        question: 'What is the fastest way to learn football players?',
+        answer:
+          'Browse a league or club, open 5–10 player profiles for context, then do a short quiz session. Repeat daily for retention.',
+      },
+      {
+        question: 'Do I need an account?',
+        answer: 'No. You can start immediately. Progress can be stored locally on your device.',
+      },
+    ],
+  });
 
   return (
     <div className="page collections-page">
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Learn football players' }]} />
       <header className="page-header">
         <p className="page-header__eyebrow">Start here</p>
         <h1>Learn football players</h1>
         <p>
           A simple route: browse, open profiles, then quiz yourself. No accounts needed.
+        </p>
+        <p className="page-header__meta">
+          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 

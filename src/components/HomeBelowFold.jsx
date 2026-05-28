@@ -14,10 +14,20 @@ import LeagueBadge from './LeagueBadge';
 const PERSONALIZE_DISMISS_KEY = 'footybrain:personalize-cta-dismissed';
 
 const EXPLORE_SHORTCUTS = [
+  { to: '/hubs', label: 'Search hubs', hint: 'League & club quiz pages' },
   { to: '/learning-paths', label: 'Learning paths', hint: 'Curated study routes' },
   { to: '/collections', label: 'Collections', hint: 'Themed player lists' },
   { to: '/world-cup', label: 'World Cup 2026', hint: 'Nations & prep quiz' },
   { to: '/compare', label: 'Compare', hint: 'Players or clubs side by side' },
+];
+
+const POPULAR_SEARCHES = [
+  { to: '/hubs/quizzes/league/premier-league', label: 'Guess the Premier League player' },
+  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona player quiz' },
+  { to: '/hubs/players/by-nationality', label: 'Football players by nationality' },
+  { to: '/hubs/players/best-young-footballers', label: 'Best young footballers' },
+  { to: '/hubs/world-cup/player-quiz', label: 'World Cup player quiz' },
+  { to: '/hubs/learn/football-players', label: 'Learn football players' },
 ];
 
 function readPersonalizeDismissed() {
@@ -71,6 +81,20 @@ export default function HomeBelowFold() {
         </ul>
       </section>
 
+      <section className="home-popular-searches" aria-labelledby="home-popular-searches-title">
+        <div className="home-popular-searches__head">
+          <h2 id="home-popular-searches-title">Popular searches</h2>
+          <p>Fast entry points designed for Google and for humans.</p>
+        </div>
+        <div className="home-popular-searches__grid" role="list">
+          {POPULAR_SEARCHES.map((item) => (
+            <Link key={item.to} to={item.to} className="home-popular-searches__chip" role="listitem">
+              {item.label} →
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="home-league-strip" aria-labelledby="home-league-hubs-title">
         <h2 id="home-league-hubs-title" className="home-league-strip__title">
           League hubs
@@ -94,6 +118,14 @@ export default function HomeBelowFold() {
               </Link>
             );
           })}
+        </div>
+        <div className="empty-state__actions">
+          <Link to="/hubs/quizzes" className="btn btn--primary">
+            Explore quiz hubs
+          </Link>
+          <Link to="/quiz" className="btn btn--secondary">
+            Play quizzes
+          </Link>
         </div>
       </section>
 

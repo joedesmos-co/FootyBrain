@@ -44,6 +44,8 @@ function titleForPath(pathname) {
   if (pathname === '/learning-paths') return pageTitle('Learning paths');
   if (pathname === '/national-teams') return pageTitle('National teams');
   if (pathname === '/world-cup') return pageTitle('World Cup 2026');
+  if (pathname === '/about') return pageTitle('About');
+  if (pathname === '/editorial') return pageTitle('Editorial policy');
   if (pathname === '/privacy') return pageTitle('Privacy Policy');
   if (pathname === '/onboarding') return pageTitle('How it works');
   if (pathname === '/compare') return pageTitle('Compare players');
@@ -64,34 +66,42 @@ function titleForPath(pathname) {
 function descriptionForPath(pathname) {
   if (pathname === '/') return SITE_DESCRIPTION;
   if (pathname === '/browse')
-    return 'Search and explore players across leagues, clubs, and nationalities on FootyCompass.';
+    return 'Browse football players by club, league, and nationality. Open profiles, then quiz yourself to remember them.';
   if (pathname === '/teams')
-    return 'Explore club profiles with squads, rivals, legends, and quizzes when available.';
+    return 'Explore football clubs: squads, rivalries, legends, and quick links into quizzes and player profiles.';
   if (pathname === '/collections')
-    return 'Curated study lists and learning paths to explore players, clubs, and national teams.';
+    return 'Curated football study lists and learning paths—open profiles, follow a route, then finish with a quiz.';
   if (pathname === '/learning-paths')
-    return 'Guided routes through collections, profiles, and quizzes—no accounts required.';
+    return 'Guided football learning routes through collections, profiles, and quizzes. No accounts required.';
   if (pathname === '/national-teams')
-    return 'Browse men’s national-team pages with linked player pools and quiz readiness indicators.';
+    return 'Explore national teams and player pools. Open profiles by country, then try quizzes to lock in recognition.';
   if (pathname === '/world-cup')
-    return 'World Cup 2026 hub with featured nations, groups, collections, and international quizzes.';
+    return 'World Cup 2026 hub: featured nations, player pools, study collections, and international quiz prep.';
+  if (pathname === '/about')
+    return 'About FootyCompass: a football discovery platform for learning players, clubs, and leagues with quizzes.';
+  if (pathname === '/editorial')
+    return 'Editorial policy & data sources for FootyCompass: snapshot data, original quiz hints, and corrections process.';
   if (pathname === '/privacy')
     return 'Privacy Policy for FootyCompass: local storage, cookies, analytics, and Google AdSense advertising.';
   if (pathname === '/onboarding')
     return 'How FootyCompass works: explore players and clubs, compare sides, and test yourself with quizzes.';
-  if (pathname === '/compare') return 'Compare players side-by-side: roles, clues, and key profile details.';
-  if (pathname === '/compare-clubs') return 'Compare clubs: culture, rivals, legends, and squad context.';
+  if (pathname === '/compare')
+    return 'Compare football players side-by-side. Use clues, roles, and profiles to settle debates fast.';
+  if (pathname === '/compare-clubs')
+    return 'Compare football clubs: rivals, culture, squad context, and key players—then explore profiles.';
   if (pathname === '/saved') return 'Your saved players and clubs—stored locally in your browser.';
   if (pathname === '/profile')
     return 'Your local progress and quiz stats—stored on this device only.';
-  if (pathname === '/daily') return 'Daily football challenge—short sessions, saved locally.';
-  if (pathname === '/quiz') return 'Football quizzes across leagues, clubs, and national teams.';
+  if (pathname === '/daily')
+    return 'Daily football challenge: a quick quiz session designed for streaks and repeat play.';
+  if (pathname === '/quiz')
+    return 'Football player quizzes by league, club, and nation. Learn squads fast and test yourself in minutes.';
   if (pathname.startsWith('/league/'))
-    return 'League profile with featured clubs, key players, rivalry notes, and league quiz options.';
+    return 'League guide with clubs, key players, and quiz links. Explore squads and learn the league faster.';
   if (pathname.startsWith('/team/'))
-    return 'Club profile with squad context, rivalries, legends, fan culture, and team quiz options.';
+    return 'Club guide with squad context, rivals, legends, and quiz links. Open player profiles and learn the team.';
   if (pathname.startsWith('/player/'))
-    return 'Player profile with club, league, national-team context, and quiz eligibility.';
+    return 'Football player profile with club, league, and national-team context—plus quick links to related players.';
   if (pathname.startsWith('/national-team/'))
     return 'National-team pool page with linked players and quiz readiness, separate from official World Cup rosters.';
   if (pathname.startsWith('/collections/'))

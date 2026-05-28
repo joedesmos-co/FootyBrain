@@ -9,6 +9,7 @@ import { answersMatch, buildAmbiguousLastNames } from '../utils/quizSession';
 import CountryFlag from './CountryFlag';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PositionLabel from './PositionLabel';
+import BreadcrumbNav from './BreadcrumbNav';
 
 function formatDateKey(dateKey) {
   const [y, m, d] = dateKey.split('-').map(Number);
@@ -241,6 +242,7 @@ export default function DailyChallenge() {
 
     return (
       <div className="page daily-page">
+        <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Daily challenge' }]} />
         <CompletionScreen
           todayKey={todayKey}
           questions={questions}
@@ -268,6 +270,7 @@ export default function DailyChallenge() {
 
   return (
     <div className="page daily-page">
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Daily challenge' }]} />
       <header className="daily-header">
         <div>
           <h1 className="daily-header__title">Daily Challenge</h1>

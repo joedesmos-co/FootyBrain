@@ -25,6 +25,8 @@ const OnboardingPage = lazy(() => import('./components/OnboardingPage'));
 const NationalTeamsPage = lazy(() => import('./components/NationalTeamsPage'));
 const NationalTeamProfile = lazy(() => import('./components/NationalTeamProfile'));
 const WorldCupHubPage = lazy(() => import('./components/WorldCupHubPage'));
+const AboutPage = lazy(() => import('./components/AboutPage'));
+const EditorialPolicyPage = lazy(() => import('./components/EditorialPolicyPage'));
 const DevExpandedDataPage = lazy(() => import('./components/DevExpandedDataPage'));
 const DevNationalTeamsPage = lazy(() => import('./components/DevNationalTeamsPage'));
 const SeoHubsIndex = lazy(() =>
@@ -137,6 +139,8 @@ export default function App() {
               element={withPageSuspense(TeamLearning, 'Loading teams…')}
             />
             <Route path="/quiz" element={<QuizRoute />} />
+            <Route path="/about" element={withPageSuspense(AboutPage, 'Loading…')} />
+            <Route path="/editorial" element={withPageSuspense(EditorialPolicyPage, 'Loading…')} />
             <Route path="/saved" element={withPageSuspense(SavedPage, 'Loading saved…')} />
             <Route
               path="/daily"
@@ -224,6 +228,7 @@ export default function App() {
               <Link to="/browse">Browse</Link> · <Link to="/teams">Clubs</Link> ·{' '}
               <Link to="/national-teams">National teams</Link> · <Link to="/world-cup">World Cup</Link> ·{' '}
               <Link to="/quiz">Quiz</Link> · <Link to="/hubs">Hubs</Link> ·{' '}
+              <Link to="/about">About</Link> · <Link to="/editorial">Editorial policy</Link> ·{' '}
               <Link to="/onboarding">How it works</Link> · <Link to="/privacy">Privacy Policy</Link>
             </p>
             <p className="app__footer__privacy">

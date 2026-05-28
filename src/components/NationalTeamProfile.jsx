@@ -171,6 +171,15 @@ export default function NationalTeamProfile() {
       .slice(0, 6);
   })();
 
+  const relatedLinks = [
+    { to: '/quiz', label: 'Play quizzes' },
+    { to: '/hubs', label: 'Explore hubs' },
+    {
+      to: `/hubs/players/nationality/${encodeURIComponent(nationalTeam.displayName)}`,
+      label: 'Players by nationality hub',
+    },
+  ];
+
   return (
     <div className="page national-team-profile">
       <BreadcrumbNav
@@ -223,6 +232,20 @@ export default function NationalTeamProfile() {
       </header>
 
       <DataTrustNotice compact />
+
+      <section className="profile__section" aria-labelledby="related-discovery-title">
+        <h2 id="related-discovery-title">Keep exploring</h2>
+        <p className="collections-page__section-desc">
+          Continue learning with discovery hubs, quizzes, and related pages.
+        </p>
+        <div className="empty-state__actions">
+          {relatedLinks.map((link) => (
+            <Link key={link.to} to={link.to} className="btn btn--secondary">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {squadLoading && squadState.total >= 80 ? (
         <p className="page-loading" role="status" aria-live="polite">

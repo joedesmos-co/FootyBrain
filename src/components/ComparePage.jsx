@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate, useSearchParams } from 'react-router
 import { getManifestLeagues } from '../data/leagueManifest';
 import ClubCompare from './ClubCompare';
 import PlayerCompare from './PlayerCompare';
+import BreadcrumbNav from './BreadcrumbNav';
 
 export default function ComparePage() {
   const [leagueFilter, setLeagueFilter] = useState('');
@@ -23,6 +24,7 @@ export default function ComparePage() {
 
   return (
     <div className="page compare-page">
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Compare' }]} />
       <header className="page-header">
         <h1>Compare</h1>
         <p>Compare two players or two clubs side by side—roles, squads, and importance score.</p>

@@ -148,6 +148,20 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
               {QUIZ_COMING_SOON}
             </button>
           )}
+          <Link
+            to={`/hubs/quizzes/league/${league.id}`}
+            className="btn btn--secondary"
+          >
+            League quiz hub
+          </Link>
+          {league.country ? (
+            <Link
+              to={`/hubs/players/nationality/${encodeURIComponent(league.country)}`}
+              className="btn btn--secondary"
+            >
+              {league.country} players
+            </Link>
+          ) : null}
           <a href="#league-clubs" className="btn btn--secondary">
             Browse clubs
           </a>

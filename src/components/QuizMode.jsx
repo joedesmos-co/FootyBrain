@@ -40,6 +40,7 @@ import { isWorldCupQuizPrepParam } from '../data/worldCupQuizConstants';
 import { formatPosition, getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
+import ShareButton from './ShareButton';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
 //       users/{uid}/quizSessions so progress carries across devices.
@@ -649,6 +650,11 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           Guess the player from hints—pick a league, club, or nation, set difficulty, and race the
           clock if you like.
         </p>
+        <p>
+          Try search hubs like{' '}
+          <Link to="/hubs/quizzes">football player quizzes</Link> or{' '}
+          <Link to="/hubs/quizzes/league/premier-league">Guess the Premier League player</Link>.
+        </p>
       </header>
 
       {showWorldCupPrepNotice && (
@@ -1015,6 +1021,22 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               <button type="button" className="btn btn--primary btn--large" onClick={handlePlayAgain}>
                 Play again
               </button>
+              <ShareButton
+                className="btn btn--secondary"
+                title="FootyCompass quiz results"
+                text={`I scored ${sessionSummary.correctCount}/${sessionSummary.total} (${sessionSummary.accuracy}% accuracy) on FootyCompass.`}
+                url={typeof window !== 'undefined' ? window.location.href : undefined}
+                copiedLabel="Copied result link"
+                sharedLabel="Shared results"
+              >
+                Share results
+              </ShareButton>
+              <Link to="/daily" className="btn btn--secondary">
+                Try daily challenge
+              </Link>
+              <Link to="/hubs/learn/football-players" className="btn btn--secondary">
+                Continue learning
+              </Link>
               {sessionSummary.missed.length > 0 ? (
                 <a href="#quiz-missed-players" className="btn btn--secondary">
                   Explore missed players

@@ -13,20 +13,23 @@ export default function Home() {
     <div className="home">
       <section className="hero hero--home">
         <div className="hero__content">
-          <p className="hero__eyebrow">Discovery · profiles · quizzes</p>
+          <p className="hero__eyebrow">Football players · clubs · leagues · quizzes</p>
           <h1 className="hero__title">{SITE_NAME}</h1>
           <p className="hero__tagline">{SITE_TAGLINE}</p>
-          <p className="hero__subcopy">{SITE_DESCRIPTION_SHORT}</p>
+          <p className="hero__subcopy">
+            {SITE_DESCRIPTION_SHORT} Search by name, jump into a club or league, then test yourself with
+            player quizzes.
+          </p>
           <div className="hero__actions">
-            <Link to="/browse" className="btn btn--primary btn--large hero__cta-primary">
-              Browse players
+            <Link to="/quiz" className="btn btn--primary btn--large hero__cta-primary">
+              Play a player quiz
             </Link>
             <div className="hero__actions-row">
-              <Link to="/quiz" className="btn btn--secondary">
-                Play quiz
+              <Link to="/browse" className="btn btn--secondary">
+                Browse players
               </Link>
-              <Link to="/daily" className="btn btn--secondary">
-                Daily challenge
+              <Link to="/hubs" className="btn btn--secondary">
+                Explore hubs
               </Link>
             </div>
           </div>
@@ -44,6 +47,14 @@ export default function Home() {
               <dd>Leagues</dd>
             </div>
           </dl>
+          <div className="hero__proof" aria-label="Social proof">
+            <p className="hero__proof-line">
+              Built for fast discovery: profiles + quizzes + collections. No accounts.
+            </p>
+            <p className="hero__proof-note">
+              Social proof placeholder: “Loved by football nerds” · “Great for learning squads”
+            </p>
+          </div>
         </div>
 
         <div className="hero-visual" aria-hidden="true">

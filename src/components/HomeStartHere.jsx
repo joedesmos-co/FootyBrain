@@ -25,6 +25,14 @@ const START_STEPS = [
     to: '/quiz',
     cta: 'Play quiz',
   },
+  {
+    id: 'hubs',
+    icon: '🧭',
+    title: 'Try search hubs',
+    description: 'Long-tail pages for leagues, clubs, and player discovery.',
+    to: '/hubs',
+    cta: 'Open hubs',
+  },
 ];
 
 export default function HomeStartHere() {
@@ -32,7 +40,7 @@ export default function HomeStartHere() {
     <section className="home-start" aria-labelledby="home-start-title">
       <div className="home-start__header">
         <h2 id="home-start-title">Start here</h2>
-        <p>New to FootyCompass? Pick a lane.</p>
+        <p>New to FootyCompass? Pick a lane and start exploring.</p>
       </div>
       <ul className="home-start__grid">
         {START_STEPS.map((step) => (
