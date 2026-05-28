@@ -127,8 +127,18 @@ function buildIndexableRoutes(data) {
     '/learning-paths',
     '/national-teams',
     '/world-cup',
+    '/quiz',
+    '/compare',
+    '/compare-clubs',
+    '/daily',
     '/onboarding',
     '/privacy',
+    '/hubs',
+    '/hubs/quizzes',
+    '/hubs/players/by-nationality',
+    '/hubs/players/best-young-footballers',
+    '/hubs/world-cup/player-quiz',
+    '/hubs/learn/football-players',
   ];
 
   for (const p of staticIndexable) {
@@ -138,18 +148,40 @@ function buildIndexableRoutes(data) {
   // Leagues
   for (const league of data.leagues ?? []) {
     urls.push({ loc: absUrl(`/league/${league.id}`), lastmod: DATA_AS_OF });
+    if (league.id !== 'external') {
+      urls.push({ loc: absUrl(`/hubs/quizzes/league/${league.id}`), lastmod: DATA_AS_OF });
+    }
   }
 
   // Teams (exclude external league: still valid routes, but keep sitemap focused on core clubs)
   for (const team of data.teams ?? []) {
     if (team.leagueId === 'external') continue;
     urls.push({ loc: absUrl(`/team/${team.id}`), lastmod: DATA_AS_OF });
+    urls.push({ loc: absUrl(`/hubs/quizzes/team/${team.id}`), lastmod: DATA_AS_OF });
   }
 
   // Players (exclude external league players to avoid indexing low-signal stubs)
   for (const player of data.players ?? []) {
     if (player.leagueId === 'external') continue;
     urls.push({ loc: absUrl(`/player/${player.id}`), lastmod: DATA_AS_OF });
+  }
+
+  // Nationality hubs (index top N by player count to avoid sitemap bloat).
+  const nationCounts = new Map();
+  for (const player of data.players ?? []) {
+    const nation = String(player?.nationality ?? '').trim();
+    if (!nation) continue;
+    nationCounts.set(nation, (nationCounts.get(nation) ?? 0) + 1);
+  }
+  const topNations = [...nationCounts.entries()]
+    .sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])))
+    .slice(0, 80)
+    .map(([nation]) => nation);
+  for (const nation of topNations) {
+    urls.push({
+      loc: absUrl(`/hubs/players/nationality/${encodeURIComponent(nation)}`),
+      lastmod: DATA_AS_OF,
+    });
   }
 
   // National teams (live only)

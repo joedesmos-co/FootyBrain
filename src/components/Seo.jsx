@@ -29,12 +29,8 @@ function websiteJsonLd() {
 function isNoIndexPath(pathname) {
   return (
     pathname.startsWith('/dev/') ||
-    pathname === '/quiz' ||
-    pathname === '/compare' ||
-    pathname === '/compare-clubs' ||
     pathname === '/saved' ||
-    pathname === '/profile' ||
-    pathname === '/daily'
+    pathname === '/profile'
   );
 }
 
@@ -141,6 +137,7 @@ export default function Seo() {
     if (!isBreadcrumbPath(pathname)) upsertJsonLdScript('jsonld-breadcrumb', null);
     if (!pathname.startsWith('/player/')) upsertJsonLdScript('jsonld-person', null);
     if (!pathname.startsWith('/team/')) upsertJsonLdScript('jsonld-sportsteam', null);
+    if (!pathname.startsWith('/hubs')) upsertJsonLdScript('jsonld-landing', null);
   }, [pathname]);
 
   return null;

@@ -1,10 +1,7 @@
 User-agent: *
 Disallow: /dev/
-Disallow: /compare
-Disallow: /compare-clubs
 Disallow: /saved
 Disallow: /profile
-Disallow: /daily
 Disallow: /*?
 
 Sitemap: https://footycompass.com/sitemap.xml

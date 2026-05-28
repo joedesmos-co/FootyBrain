@@ -27,6 +27,33 @@ const NationalTeamProfile = lazy(() => import('./components/NationalTeamProfile'
 const WorldCupHubPage = lazy(() => import('./components/WorldCupHubPage'));
 const DevExpandedDataPage = lazy(() => import('./components/DevExpandedDataPage'));
 const DevNationalTeamsPage = lazy(() => import('./components/DevNationalTeamsPage'));
+const SeoHubsIndex = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoHubsIndex })),
+);
+const SeoQuizzesHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoQuizzesHub })),
+);
+const SeoLeagueQuizHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoLeagueQuizHub })),
+);
+const SeoTeamQuizHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoTeamQuizHub })),
+);
+const SeoPlayersByNationalityHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoPlayersByNationalityHub })),
+);
+const SeoNationalityPlayersHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoNationalityPlayersHub })),
+);
+const SeoBestYoungFootballersHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoBestYoungFootballersHub })),
+);
+const SeoWorldCupPlayerQuizHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoWorldCupPlayerQuizHub })),
+);
+const SeoLearnFootballPlayersHub = lazy(() =>
+  import('./components/SeoHubs').then((m) => ({ default: m.SeoLearnFootballPlayersHub })),
+);
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -128,6 +155,36 @@ export default function App() {
             <Route
               path="/world-cup"
               element={withPageSuspense(WorldCupHubPage, 'Loading World Cup hub…')}
+            />
+            <Route path="/hubs" element={withPageSuspense(SeoHubsIndex, 'Loading…')} />
+            <Route path="/hubs/quizzes" element={withPageSuspense(SeoQuizzesHub, 'Loading…')} />
+            <Route
+              path="/hubs/quizzes/league/:leagueId"
+              element={withPageSuspense(SeoLeagueQuizHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/quizzes/team/:teamId"
+              element={withPageSuspense(SeoTeamQuizHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/players/by-nationality"
+              element={withPageSuspense(SeoPlayersByNationalityHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/players/nationality/:nation"
+              element={withPageSuspense(SeoNationalityPlayersHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/players/best-young-footballers"
+              element={withPageSuspense(SeoBestYoungFootballersHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/world-cup/player-quiz"
+              element={withPageSuspense(SeoWorldCupPlayerQuizHub, 'Loading…')}
+            />
+            <Route
+              path="/hubs/learn/football-players"
+              element={withPageSuspense(SeoLearnFootballPlayersHub, 'Loading…')}
             />
             {!import.meta.env.PROD ? (
               <>
