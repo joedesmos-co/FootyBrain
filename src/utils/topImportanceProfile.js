@@ -3,6 +3,7 @@
  */
 
 import { isQuizEligiblePlayer } from './quizPlayerRules.js';
+import { buildRichTeamMetaDescription } from './clubProfileEditorial.js';
 import {
   buildPlayerMetaDescription,
   buildKeepExploringLinks,
@@ -102,14 +103,7 @@ export function buildTopLeagueMetaDescription(league, stats) {
 }
 
 export function buildTopTeamMetaDescription(team, stats) {
-  const bits = [
-    `${team.name}${stats.leagueName ? ` (${stats.leagueName})` : ''}`,
-    `${stats.rosterSize} players listed`,
-  ];
-  if (team.stadium) bits.push(`home: ${team.stadium}`);
-  if (team.rivals?.length) bits.push(`rivals: ${team.rivals.slice(0, 2).join(', ')}`);
-  if (stats.quizReady > 0) bits.push(`${stats.quizReady} quiz-ready`);
-  return `${bits.join(' · ')}. Club profile, squad, and quizzes on FootyCompass.`;
+  return buildRichTeamMetaDescription(team, stats);
 }
 
 export { resolveThemePoolCap } from './quizEcosystem.js';

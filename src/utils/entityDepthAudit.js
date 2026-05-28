@@ -72,6 +72,7 @@ export function auditTeamGaps(team) {
   const fanGuide = String(team?.fanGuide ?? '').trim();
   return {
     missingQuickFacts: !team?.stadium && !team?.founded && !team?.manager,
+    missingStadium: !String(team?.stadium ?? '').trim(),
     missingClubIdentity: !(team?.identityTags?.length > 0),
     missingRivalries: !(team?.rivals?.length > 0),
     missingLegends: !(team?.legends?.length > 0),

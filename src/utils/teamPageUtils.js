@@ -47,8 +47,21 @@ function playerMatchesName(player, name) {
   return pn === norm || pn.startsWith(norm) || norm.startsWith(pn);
 }
 
+function playerCardNote(player, editorialNote = '') {
+  if (editorialNote) return editorialNote;
+  const fact = String(player?.quickFact ?? '').trim();
+  if (fact.length >= 12 && fact.length <= 72) return fact;
+  return '';
+}
+
+function playerQuizReady(player) {
+  return (player?.quizHints?.length ?? 0) >= 2 || player?.hasEditorialClues === true;
+}
+
 /** Key player cards: editorial notes first, then top importance from roster. */
 export function buildTeamKeyPlayerCards(team, roster, { limit = 6 } = {}) {
+  const rosterSum = roster.reduce((s, p) => s + (Number(p.importanceScore) || 0), 0);
+  const cap = rosterSum >= 1200 ? 8 : limit;
   const cards = [];
   const usedIds = new Set();
   const editorial = Array.isArray(team.currentKeyPlayers) ? team.currentKeyPlayers : [];
@@ -59,23 +72,35 @@ export function buildTeamKeyPlayerCards(team, roster, { limit = 6 } = {}) {
     const player = roster.find((p) => playerMatchesName(p, name));
     if (player && !usedIds.has(player.id)) {
       usedIds.add(player.id);
-      cards.push({ player, note: note || '' });
+      cards.push({
+        player,
+        note: playerCardNote(player, note),
+        quizReady: playerQuizReady(player),
+      });
     } else if (!player) {
-      cards.push({ player: null, label: name, note });
+      cards.push({ player: null, label: name, note, quizReady: false });
     }
   }
 
-  const byImportance = [...roster].sort(
-    (a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0),
-  );
+  const byImportance = [...roster].sort((a, b) => {
+    const qa = playerQuizReady(a) ? 1 : 0;
+    const qb = playerQuizReady(b) ? 1 : 0;
+    if (qb !== qa) return qb - qa;
+    return (b.importanceScore ?? 0) - (a.importanceScore ?? 0);
+  });
+
   for (const player of byImportance) {
-    if (cards.length >= limit) break;
+    if (cards.length >= cap) break;
     if (usedIds.has(player.id)) continue;
     usedIds.add(player.id);
-    cards.push({ player, note: '' });
+    cards.push({
+      player,
+      note: playerCardNote(player, ''),
+      quizReady: playerQuizReady(player),
+    });
   }
 
-  return cards.slice(0, limit);
+  return cards.slice(0, cap);
 }
 
 export function getTeamHonorsList(team, max = 12) {

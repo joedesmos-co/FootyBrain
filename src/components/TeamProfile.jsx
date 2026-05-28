@@ -16,6 +16,7 @@ import {
   getLeagueDisplayName,
   isExternalClubStubTeam,
 } from '../utils/footballDisplay';
+import ClubQuizDiscoveryStrip from './ClubQuizDiscoveryStrip';
 import TeamClubProfileHub from './TeamClubProfileHub';
 import DataTrustNotice from './DataTrustNotice';
 import ExternalStubNotice from './ExternalStubNotice';
@@ -35,7 +36,11 @@ import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { dedupeInternalLinks } from '../utils/internalLinking.js';
-import { buildKeepExploringLinks } from '../utils/topImportanceProfile';
+import {
+  buildKeepExploringLinks,
+  isHighTrafficTeam,
+} from '../utils/topImportanceProfile';
+import { isThinTeam } from '../utils/entityDepthAudit';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
@@ -50,7 +55,7 @@ function buildTeamProfileSubline(team) {
   return parts.length > 0 ? parts.join(' · ') : null;
 }
 
-function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeams }) {
+function TeamProfileContent({ team, leagueName, league, roster, squadLoading, leagueTeams }) {
   const isExternalStub = isExternalClubStubTeam(team);
 
   useEffect(() => {
@@ -65,6 +70,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     const description = buildTeamSeoDescription(team, {
       roster,
       leagueName,
+      league,
       quizReady,
     });
 
@@ -97,7 +103,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
       upsertJsonLdScript('jsonld-breadcrumb', null);
       upsertJsonLdScript('jsonld-sportsteam', null);
     };
-  }, [team, leagueName, roster]);
+  }, [team, leagueName, league, roster]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
   const { status: quizRegistryStatus, registry: quizRegistry } = useQuizRegistry();
@@ -130,8 +136,12 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
   const cultureLine =
     truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
   const profileSubline = buildTeamProfileSubline(team);
+  const thinClub = isThinTeam(team, 4);
+  const highTraffic = isHighTrafficTeam(team, roster);
   const showKeepExploring =
     Boolean(getProfileExploreLead(team.id)) ||
+    thinClub ||
+    highTraffic ||
     !teamEditorial.hasStory ||
     (!team.rivals?.length && !team.legends?.length);
 
@@ -291,10 +301,20 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
       <TeamClubProfileHub
         team={team}
         leagueName={leagueName}
+        league={league}
         rosterSize={roster.length}
         leagueTeams={leagueTeams}
         isExternalStub={isExternalStub}
       />
+
+      {!isExternalStub ? (
+        <ClubQuizDiscoveryStrip
+          team={team}
+          leagueName={leagueName}
+          hasTeamQuiz={hasTeamQuiz}
+          hasLeagueQuiz={hasLeagueQuiz}
+        />
+      ) : null}
 
       <div className="team-page-rich">
         {keyPlayerCards.length > 0 && (
@@ -303,8 +323,8 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
               <h2 id="team-key-players-title">{keyPlayersTitle}</h2>
               <p className="team-key-players__note">
                 {teamEditorial.hasStory
-                  ? 'Faces to know before you dive into the full squad.'
-                  : 'Top names in the FootyCompass squad list—open profiles, then try the club quiz.'}
+                  ? 'Faces to know before you dive into the full squad — quiz-ready names marked.'
+                  : 'Top importance in the squad list — open profiles for hints, then try the club quiz.'}
               </p>
             </div>
             <ul className="team-key-players__grid">
@@ -321,6 +341,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
                           <strong>{card.player.name}</strong>
                           <span>
                             {card.note || formatPosition(card.player.position) || 'Squad'}
+                            {card.quizReady ? ' · Quiz ready' : ''}
                           </span>
                         </span>
                       </Link>
@@ -364,6 +385,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             leagueName={leagueName}
             quizReady={hasTeamQuiz}
             team={team}
+            league={league}
             leagueTeams={leagueTeams}
           />
         ) : (
@@ -371,6 +393,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             links={dedupeInternalLinks(
               buildKeepExploringLinks({
                 team,
+                league,
                 leagueId: team.leagueId,
                 leagueName,
                 leagueTeams,
@@ -436,6 +459,7 @@ export default function TeamProfile() {
   const team = shellMatchesRoute ? shell.team : null;
   const bundledRoster = shellMatchesRoute ? shell.bundledRoster : null;
   const bundledLeagueTeams = shellMatchesRoute ? shell.bundledLeagueTeams : null;
+  const league = shellMatchesRoute ? shell.league : null;
 
   useRecordRecentView('team', team?.id);
 
@@ -452,6 +476,7 @@ export default function TeamProfile() {
           getLeagueName: mod.getLeagueName,
           bundledRoster: null,
           bundledLeagueTeams: null,
+          league: null,
         });
         return;
       }
@@ -464,6 +489,7 @@ export default function TeamProfile() {
         bundledLeagueTeams: usesExternalShard
           ? null
           : mod.teams.filter((t) => t.leagueId === resolvedTeam.leagueId),
+        league: mod.getLeagueById(resolvedTeam.leagueId) ?? null,
       });
     });
 
@@ -527,6 +553,7 @@ export default function TeamProfile() {
     <TeamProfileContent
       team={team}
       leagueName={leagueName}
+      league={league}
       roster={roster}
       squadLoading={squadLoading}
       leagueTeams={leagueTeams}

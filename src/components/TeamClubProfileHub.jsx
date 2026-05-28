@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { formatClubIdentityTags } from '../utils/clubIdentity';
 import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
-import { buildClubLeagueContext, buildSyntheticClubStory } from '../utils/clubProfileEditorial';
+import {
+  buildStructuredClubProfile,
+} from '../utils/clubProfileEditorial';
 import { isThinTeam } from '../utils/entityDepthAudit';
 import {
   buildTeamQuickFacts,
@@ -35,6 +37,7 @@ function QuickFact({ fact }) {
  * @param {{
  *   team: object,
  *   leagueName: string,
+ *   league?: object | null,
  *   rosterSize: number,
  *   leagueTeams: object[],
  *   isExternalStub?: boolean,
@@ -43,6 +46,7 @@ function QuickFact({ fact }) {
 export default function TeamClubProfileHub({
   team,
   leagueName,
+  league = null,
   rosterSize,
   leagueTeams,
   isExternalStub = false,
@@ -51,6 +55,14 @@ export default function TeamClubProfileHub({
   const identityTags = formatClubIdentityTags(team.identityTags);
   const rivalEntries = resolveRivalEntries(team.rivals, leagueTeams);
   const legendEntries = parseTeamLegendLines(team.legends);
+  const profile = buildStructuredClubProfile({
+    team,
+    leagueName,
+    league,
+    leagueTeams,
+    rosterSize,
+  });
+
   const quickFacts = buildTeamQuickFacts({
     team,
     leagueName,
@@ -60,23 +72,25 @@ export default function TeamClubProfileHub({
   });
 
   const showRivals = rivalEntries.length > 0;
-  const showHonors = editorial.honors.length > 0;
+  const showHonors = profile.honors.length > 0;
   const showLegends = legendEntries.length > 0;
   const showIdentity = identityTags.length > 0;
   const showNicknames = editorial.nicknames.length > 0;
   const showFanGuide = editorial.hasFanGuide;
-  const showStory = editorial.hasStory;
-  const syntheticStory = !showStory
-    ? buildSyntheticClubStory(team, leagueName, rosterSize)
-    : '';
-  const leagueContext = buildClubLeagueContext(team, leagueName);
-  const showSyntheticStory = Boolean(syntheticStory) || (isThinTeam(team, 4) && !showStory);
-  const showLeagueContext = Boolean(leagueContext);
+  const showStory = profile.hasAuthoritativeStory;
+  const showSyntheticStory =
+    !showStory && Boolean(profile.story) && (isThinTeam(team, 4) || !editorial.hasContext);
+  const showStadium = Boolean(profile.stadium);
+  const showLeagueContext = Boolean(profile.league);
+  const showFanIdentity = Boolean(profile.fanIdentity) && !showFanGuide;
+  const showRivalsBlurb = Boolean(profile.rivals) && !showRivals;
+  const showLegendsBlurb = Boolean(profile.legends) && !showLegends;
 
   if (
     isExternalStub &&
     !editorial.hasContext &&
     !showSyntheticStory &&
+    !showStadium &&
     quickFacts.length === 0 &&
     !showRivals &&
     !showLegends
@@ -133,9 +147,21 @@ export default function TeamClubProfileHub({
       {showSyntheticStory ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-club-identity-title">
           <h2 id="team-club-identity-title" className="team-club-hub__card-title">
-            Club identity
+            About this club
           </h2>
-          <p className="team-club-hub__prose">{syntheticStory}</p>
+          <p className="team-club-hub__prose">{profile.story}</p>
+          <p className="team-fan-guide__meta team-club-hub__synthesis-note">
+            Summary built from dataset fields — not live news.
+          </p>
+        </section>
+      ) : null}
+
+      {showStadium ? (
+        <section className="team-club-hub__panel info-card" aria-labelledby="team-stadium-title">
+          <h2 id="team-stadium-title" className="team-club-hub__card-title">
+            Stadium &amp; setup
+          </h2>
+          <p className="team-club-hub__prose">{profile.stadium}</p>
         </section>
       ) : null}
 
@@ -144,7 +170,7 @@ export default function TeamClubProfileHub({
           <h2 id="team-league-context-title" className="team-club-hub__card-title">
             League context
           </h2>
-          <p className="team-club-hub__prose">{leagueContext}</p>
+          <p className="team-club-hub__prose">{profile.league}</p>
           <p className="team-fan-guide__meta">
             <Link to={`/league/${team.leagueId}`}>Open {leagueName} hub</Link>
             {' · '}
@@ -170,6 +196,15 @@ export default function TeamClubProfileHub({
         </details>
       ) : null}
 
+      {showFanIdentity ? (
+        <section className="team-club-hub__panel info-card" aria-labelledby="team-fan-identity-title">
+          <h2 id="team-fan-identity-title" className="team-club-hub__card-title">
+            Fan identity
+          </h2>
+          <p className="team-club-hub__prose">{profile.fanIdentity}</p>
+        </section>
+      ) : null}
+
       {(showRivals || showHonors || showLegends) && (
         <div className="team-club-hub__grid">
           {showRivals ? (
@@ -177,6 +212,9 @@ export default function TeamClubProfileHub({
               <h2 id="team-rivals-title" className="team-club-hub__card-title">
                 Rival clubs
               </h2>
+              {profile.rivals ? (
+                <p className="team-club-hub__prose team-club-hub__prose--tight">{profile.rivals}</p>
+              ) : null}
               <ul className="team-rival-cards team-rival-cards--dense">
                 {rivalEntries.map(({ label, team: rivalTeam }) => (
                   <li key={label}>
@@ -202,7 +240,7 @@ export default function TeamClubProfileHub({
                 Honours & trophies
               </h2>
               <ul className="team-profile-chips team-profile-chips--honors">
-                {editorial.honors.map((honor) => (
+                {profile.honors.map((honor) => (
                   <li key={honor}>{honor}</li>
                 ))}
               </ul>
@@ -217,6 +255,9 @@ export default function TeamClubProfileHub({
               <h2 id="team-legends-title" className="team-club-hub__card-title">
                 Club legends
               </h2>
+              {profile.legends ? (
+                <p className="team-club-hub__prose team-club-hub__prose--tight">{profile.legends}</p>
+              ) : null}
               <ul className="team-legends-timeline">
                 {legendEntries.map(({ name, note }) => (
                   <li key={name} className="team-legends-timeline__item">
@@ -228,6 +269,17 @@ export default function TeamClubProfileHub({
             </section>
           ) : null}
         </div>
+      )}
+
+      {(showRivalsBlurb || showLegendsBlurb) && (
+        <section className="team-club-hub__panel info-card" aria-label="Additional club notes">
+          {showRivalsBlurb ? (
+            <p className="team-club-hub__prose">{profile.rivals}</p>
+          ) : null}
+          {showLegendsBlurb ? (
+            <p className="team-club-hub__prose">{profile.legends}</p>
+          ) : null}
+        </section>
       )}
     </div>
   );

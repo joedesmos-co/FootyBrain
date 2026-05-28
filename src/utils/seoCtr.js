@@ -192,16 +192,19 @@ export function buildTeamSeoTitle(team, { leagueName = '' } = {}) {
 }
 
 export function buildTeamSeoDescription(team, ctx = {}) {
-  const { roster = [], leagueName = '', quizReady = 0 } = ctx;
+  const { roster = [], leagueName = '', league = null, quizReady = 0 } = ctx;
   const base = isHighTrafficTeam(team, roster)
     ? buildTopTeamMetaDescription(team, {
         rosterSize: roster.length,
         quizReady,
         leagueName,
+        league,
       })
     : buildClubProfileDescription(team, leagueName, roster.length);
+  const rivalsBit =
+    team.rivals?.length > 0 ? ` Rivals: ${team.rivals.slice(0, 2).join(', ')}.` : '';
   return truncateMetaDescription(
-    `${base} Open the squad, rivals, and ${quizReady > 0 ? 'club quiz' : 'player profiles'} on FootyCompass.`,
+    `${base}${rivalsBit} ${quizReady > 0 ? 'Club quiz and' : ''} squad study on FootyCompass.`,
   );
 }
 

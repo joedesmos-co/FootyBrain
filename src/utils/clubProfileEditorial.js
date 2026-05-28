@@ -1,7 +1,241 @@
-import { truncateClubText } from './clubIdentity';
+import { formatClubIdentityTags, truncateClubText } from './clubIdentity';
 import { buildClubIdentitySection } from './entityEditorialSynthesis';
 import { formatCountryLabel } from './footballDisplay';
-import { getTeamProfileEditorial } from './teamProfileDisplay';
+import { getClubQuizPlayHref } from '../data/clubQuizCategories';
+import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
+import { getTeamHonorsList, parseKeyPlayerLine, resolveRivalEntries } from './teamPageUtils';
+import { getTeamProfileEditorial, inferTeamNicknames, parseTeamLegendLines } from './teamProfileDisplay';
+
+/**
+ * Stadium / home context — existing fields only.
+ * @param {object} team
+ */
+export function buildStadiumContext(team) {
+  const parts = [];
+  if (team?.stadium) parts.push(`${team.name} play home matches at ${team.stadium}.`);
+  if (team?.founded) parts.push(`The club was founded in ${team.founded}.`);
+  const manager = String(team?.manager ?? '').trim();
+  if (manager) parts.push(`Head coach listed in the dataset: ${manager}.`);
+  return parts.join(' ');
+}
+
+/**
+ * @param {object} team
+ * @param {Array<{ label: string, team: object | null }>} rivalEntries
+ */
+export function buildRivalsContext(team, rivalEntries = []) {
+  const names = (team?.rivals ?? []).map((r) => String(r).trim()).filter(Boolean);
+  if (!names.length) return '';
+
+  const linked = rivalEntries.filter((e) => e.team?.id).map((e) => e.team.name);
+  const base = `${team.name} list${names.length === 1 ? 's' : ''} ${names.slice(0, 4).join(', ')} as rival${names.length === 1 ? '' : 's'}.`;
+  if (linked.length) {
+    return `${base} FootyCompass has profile pages for ${linked.slice(0, 3).join(', ')}.`;
+  }
+  return `${base} Open other clubs in the same league to compare squads.`;
+}
+
+/**
+ * @param {object} team
+ */
+export function buildLegendsContext(team) {
+  const lines = Array.isArray(team?.legends) ? team.legends : [];
+  if (!lines.length) return '';
+
+  const parsed = lines.slice(0, 4).map((line) => parseKeyPlayerLine(line));
+  const names = parsed.map((p) => p.name).filter(Boolean);
+  if (!names.length) return '';
+
+  const notes = parsed
+    .filter((p) => p.note)
+    .slice(0, 2)
+    .map((p) => `${p.name} (${p.note})`);
+  if (notes.length) {
+    return `Club legends noted in the dataset include ${names.join(', ')} — e.g. ${notes.join('; ')}.`;
+  }
+  return `Club legends noted in the dataset: ${names.join(', ')}.`;
+}
+
+/**
+ * Fan identity from fanGuide, identity tags, nicknames — no invented culture.
+ * @param {object} team
+ */
+export function buildFanIdentityContext(team) {
+  const editorial = getTeamProfileEditorial(team);
+  if (editorial.fanGuide) return editorial.fanGuide;
+
+  const parts = [];
+  const nicknames = inferTeamNicknames(team);
+  if (nicknames.length) parts.push(`Supporters often use the nickname ${nicknames[0]}.`);
+
+  const tags = formatClubIdentityTags(team?.identityTags ?? []);
+  if (tags.length) {
+    parts.push(
+      `Playing identity tags in the dataset: ${tags
+        .slice(0, 4)
+        .map((t) => t.label.toLowerCase())
+        .join(', ')}.`,
+    );
+  }
+
+  return parts.join(' ');
+}
+
+/**
+ * @param {object} team
+ * @param {string} leagueName
+ * @param {object} [league]
+ */
+export function buildClubLeagueContext(team, leagueName, league = null) {
+  if (!leagueName) return '';
+
+  const country = formatCountryLabel(team?.country ?? league?.country);
+  const region =
+    country && country !== '—' ? `${leagueName} (${country})` : leagueName;
+
+  const parts = [`${team.name} are tracked in ${region} on FootyCompass.`];
+
+  const style = String(league?.styleOfPlay ?? '').trim();
+  if (style) {
+    parts.push(truncateClubText(style, 200));
+  } else {
+    const desc = String(league?.description ?? '').trim();
+    if (desc) parts.push(truncateClubText(desc, 180));
+  }
+
+  const famous = Array.isArray(league?.famousClubs) ? league.famousClubs : [];
+  const teamInFamous = famous.some((line) =>
+    String(line).toLowerCase().includes(String(team.name).toLowerCase().slice(0, 6)),
+  );
+  if (famous.length && !teamInFamous) {
+    parts.push(
+      `Other featured clubs in this league include ${famous
+        .slice(0, 2)
+        .map((c) => c.split(' — ')[0])
+        .join(' and ')}.`,
+    );
+  }
+
+  if (league?.rivalries?.length) {
+    parts.push(`League rivalries noted: ${league.rivalries.slice(0, 2).join('; ')}.`);
+  }
+
+  return parts.join(' ');
+}
+
+/**
+ * Structured synthesis blocks for thin club pages (existing data only).
+ * @param {{
+ *   team: object,
+ *   leagueName: string,
+ *   league?: object | null,
+ *   leagueTeams?: object[],
+ *   rosterSize?: number,
+ *   roster?: object[],
+ * }} ctx
+ */
+export function buildStructuredClubProfile(ctx) {
+  const { team, leagueName, league = null, leagueTeams = [], rosterSize = 0, roster = [] } = ctx;
+  const editorial = getTeamProfileEditorial(team);
+  const rivalEntries = resolveRivalEntries(team.rivals, leagueTeams);
+  const legendEntries = parseTeamLegendLines(team.legends);
+  const honors = getTeamHonorsList(team);
+
+  const story = editorial.shortHistory
+    ? editorial.shortHistory
+    : buildClubIdentitySection(team, leagueName, rosterSize);
+
+  const quizReadyCount = roster.filter((p) => p?.quizHints?.length >= 2).length;
+
+  return {
+    story,
+    hasAuthoritativeStory: editorial.hasStory,
+    stadium: buildStadiumContext(team),
+    league: buildClubLeagueContext(team, leagueName, league),
+    fanIdentity: buildFanIdentityContext(team),
+    rivals: buildRivalsContext(team, rivalEntries),
+    legends: buildLegendsContext(team),
+    honors,
+    rivalEntries,
+    legendEntries,
+    nicknames: editorial.nicknames,
+    quizReadyCount,
+    rosterSize: rosterSize || roster.length,
+  };
+}
+
+/**
+ * Crawlable quiz / study links for club profiles.
+ * @param {object} team
+ * @param {{
+ *   leagueName?: string,
+ *   hasTeamQuiz?: boolean,
+ *   hasLeagueQuiz?: boolean,
+ * }} opts
+ */
+export function buildClubQuizDiscoveryLinks(team, opts = {}) {
+  const { leagueName = '', hasTeamQuiz = false, hasLeagueQuiz = false } = opts;
+  /** @type {{ label: string, to: string, hint?: string }[]} */
+  const links = [];
+
+  if (hasTeamQuiz) {
+    links.push({
+      label: `${team.name} player quiz`,
+      to: `/quiz?team=${team.id}`,
+      hint: 'Guess squad players from hints',
+    });
+  }
+  links.push({
+    label: 'Team quiz hub',
+    to: `/hubs/quizzes/team/${team.id}`,
+    hint: 'Filters and difficulty',
+  });
+
+  if (team.leagueId) {
+    links.push({ label: `${leagueName || 'League'} hub`, to: `/league/${team.leagueId}` });
+    links.push({
+      label: 'League quiz hub',
+      to: `/hubs/quizzes/league/${team.leagueId}`,
+    });
+    if (hasLeagueQuiz) {
+      links.push({
+        label: `${leagueName || 'League'} player quiz`,
+        to: `/quiz?league=${team.leagueId}`,
+      });
+    }
+  }
+
+  const themeId = getQuizThemeIdForLeague(team.leagueId);
+  if (themeId) {
+    links.push({
+      label: 'Themed league quiz',
+      to: getQuizThemePlayHref(themeId),
+    });
+  }
+
+  if (team.stadium) {
+    links.push({
+      label: 'Stadium quiz',
+      to: getClubQuizPlayHref('stadium', { leagueId: team.leagueId }),
+    });
+  }
+  if (team.rivals?.length) {
+    links.push({
+      label: 'Rivalry quiz',
+      to: getClubQuizPlayHref('rivalry', { leagueId: team.leagueId }),
+    });
+  }
+
+  links.push({ label: 'Club quiz categories', to: '/hubs/quizzes/clubs' });
+  links.push({ label: 'Daily challenge', to: '/daily' });
+
+  const seen = new Set();
+  return links.filter((l) => {
+    if (seen.has(l.to)) return false;
+    seen.add(l.to);
+    return true;
+  });
+}
 
 /**
  * @param {object} team
@@ -10,18 +244,6 @@ import { getTeamProfileEditorial } from './teamProfileDisplay';
  */
 export function buildSyntheticClubStory(team, leagueName, rosterSize = 0) {
   return buildClubIdentitySection(team, leagueName, rosterSize);
-}
-
-/**
- * @param {object} team
- * @param {string} leagueName
- */
-export function buildClubLeagueContext(team, leagueName) {
-  const country = formatCountryLabel(team.country);
-  if (!leagueName) return '';
-  const region =
-    country && country !== '—' ? `${leagueName} (${country})` : leagueName;
-  return `League context: ${team.name} are tracked in ${region}. Open the league page for rivalries, featured clubs, and quiz links.`;
 }
 
 /**
@@ -37,10 +259,37 @@ export function buildClubProfileDescription(team, leagueName, rosterSize = 0) {
   }
 
   const story = truncateClubText(buildSyntheticClubStory(team, leagueName, rosterSize), 160);
-  return `${team.name} (${leagueName}) — ${story}`;
+  const extra = [];
+  if (team.stadium) extra.push(`Home: ${team.stadium}`);
+  if (team.rivals?.length) extra.push(`Rivals: ${team.rivals.slice(0, 2).join(', ')}`);
+  const tail = extra.length ? ` ${extra.join('. ')}.` : '';
+  return `${team.name} (${leagueName}) — ${story}${tail}`;
 }
 
 /**
+ * Rich meta for high-traffic clubs — dataset fields only.
  * @param {object} team
+ * @param {{ leagueName?: string, rosterSize?: number, quizReady?: number, league?: object }} stats
  */
+export function buildRichTeamMetaDescription(team, stats = {}) {
+  const profile = buildStructuredClubProfile({
+    team,
+    leagueName: stats.leagueName ?? '',
+    league: stats.league ?? null,
+    rosterSize: stats.rosterSize ?? 0,
+  });
+
+  const bits = [`${team.name}${stats.leagueName ? ` (${stats.leagueName})` : ''}`];
+  if (stats.rosterSize) bits.push(`${stats.rosterSize} players`);
+  if (team.stadium) bits.push(team.stadium);
+  if (team.rivals?.length) bits.push(`vs ${team.rivals.slice(0, 2).join(', ')}`);
+  if (stats.quizReady > 0) bits.push(`${stats.quizReady} quiz-ready`);
+
+  const hook = truncateClubText(
+    profile.hasAuthoritativeStory ? profile.story : profile.stadium || profile.league,
+    90,
+  );
+  return `${bits.join(' · ')}. ${hook} Squad, rivals, and quizzes on FootyCompass.`;
+}
+
 export { countClubEditorialDepth } from './entityDepthAudit';
