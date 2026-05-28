@@ -22,18 +22,30 @@ export {
 } from './quizVariants';
 
 export const QUIZ_DIFFICULTY_OPTIONS = [
-  { id: 'easy', label: 'Easy', description: 'Club, position, and nationality shown' },
-  { id: 'medium', label: 'Medium', description: 'Position, national team, and one hint' },
-  { id: 'hard', label: 'Hard', description: 'No free clues — reveal hints yourself' },
+  {
+    id: 'easy',
+    label: 'Easy',
+    description: 'Household names — club, position, and nationality shown',
+  },
+  {
+    id: 'medium',
+    label: 'Medium',
+    description: 'Recognizable squads — position, nation, and one hint',
+  },
+  {
+    id: 'hard',
+    label: 'Hard',
+    description: 'Mix of stars and squad players — reveal hints yourself',
+  },
   {
     id: 'hardcore',
     label: 'Hardcore',
-    description: 'Full names only, max one quiz hint, no free clues',
+    description: 'Full names only, deeper cuts, max one quiz hint',
   },
   {
     id: 'nerd',
     label: 'Football nerd',
-    description: 'No club/position giveaways — quiz hints only',
+    description: 'Widest pool — squad depth and fan-tier names, hints only',
   },
 ];
 

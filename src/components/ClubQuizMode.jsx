@@ -73,6 +73,7 @@ export default function ClubQuizMode() {
   const [sessionResults, setSessionResults] = useState([]);
   const [sessionEnded, setSessionEnded] = useState(false);
   const askedQuestionIdsRef = useRef([]);
+  const askedTeamIdsRef = useRef([]);
 
   const sessionMilestoneRef = useRef(false);
   const questionIndexRef = useRef(0);
@@ -114,6 +115,7 @@ export default function ClubQuizMode() {
     setSessionResults([]);
     setSessionEnded(false);
     askedQuestionIdsRef.current = [];
+    askedTeamIdsRef.current = [];
     sessionMilestoneRef.current = false;
     questionIndexRef.current = 0;
   }, [resetQuestionState]);
@@ -129,12 +131,21 @@ export default function ClubQuizMode() {
         questionIndexRef.current,
         askedQuestionIdsRef.current.at(-1),
       );
-      const q = generateClubQuizQuestion(teams, leagues, activeId, {
+      let q = generateClubQuizQuestion(teams, leagues, activeId, {
         difficulty,
         leagueId: leagueFilter,
-        excludeTeamIds: [],
+        excludeTeamIds: askedTeamIdsRef.current,
         seed,
       });
+      if (!q && askedTeamIdsRef.current.length > 0) {
+        askedTeamIdsRef.current = [];
+        q = generateClubQuizQuestion(teams, leagues, activeId, {
+          difficulty,
+          leagueId: leagueFilter,
+          excludeTeamIds: [],
+          seed: seed + 1,
+        });
+      }
       questionIndexRef.current += 1;
       if (!q) return;
       setCurrentQuestion(q);
@@ -142,6 +153,9 @@ export default function ClubQuizMode() {
       setFeedback(null);
       if (!askedQuestionIdsRef.current.includes(q.id)) {
         askedQuestionIdsRef.current.push(q.id);
+      }
+      if (q.correctTeamId && !askedTeamIdsRef.current.includes(q.correctTeamId)) {
+        askedTeamIdsRef.current.push(q.correctTeamId);
       }
       scrollQuizPanelIntoView();
     },

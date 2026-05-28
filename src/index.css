@@ -7596,6 +7596,46 @@ a.player-identity-chip:focus-visible {
   font-weight: 900;
 }
 
+.quiz-summary__missed-intro {
+  margin: 0 0 0.65rem;
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.quiz-summary__missed-link--study {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.quiz-summary__missed-name {
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.quiz-summary__missed-meta {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.quiz-summary__missed-tip {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.quiz-summary__missed-replay {
+  margin: 0.65rem 0 0;
+  font-size: 0.85rem;
+}
+
+.quiz-summary__missed-replay a {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
 .quiz-summary__perfect {
   margin: 0 0 0.85rem;
   padding: 0.65rem;

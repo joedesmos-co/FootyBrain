@@ -7,11 +7,13 @@ export function formatQuizXpFeedback(result) {
 
   const parts = [];
   if (result.baseXp > 0) parts.push(`+${result.baseXp} correct`);
-  if (result.streakBonus > 0) parts.push(`+${result.streakBonus} streak`);
+  if (result.streakBonus > 0) parts.push(`+${result.streakBonus} streak bonus`);
   if (result.milestoneXp > 0) parts.push(`+${result.milestoneXp} session bonus`);
 
   const detail = parts.length > 0 ? ` (${parts.join(', ')})` : '';
-  return `+${result.totalXp} XP${detail}`;
+  const streakNote =
+    result.newSessionStreak >= 5 ? ' · 5+ streak!' : result.newSessionStreak >= 3 ? ' · streak building' : '';
+  return `+${result.totalXp} XP${detail}${streakNote}`;
 }
 
 export function formatMilestoneMessage(result) {

@@ -1,9 +1,13 @@
 import { getPlayableQuizPlayers, getQuizEligiblePlayers } from './quizEligibility';
+import { getQuizPickWeight } from './quizEcosystem';
 
 export const DAILY_QUESTION_COUNT = 5;
 
 /** Minimum quiz-ready players required for a themed daily (club, league, or nation). */
 export const DAILY_THEMED_MIN_POOL = 5;
+
+/** Daily uses medium gates but importance-weighted sampling (stars more likely). */
+const DAILY_SAMPLE_DIFFICULTY = 'medium';
 
 export const DAILY_CHALLENGE_LABELS = {
   club: 'Club challenge',
@@ -39,6 +43,41 @@ function seededSample(arr, n, dateKey, salt) {
 }
 
 /**
+ * Importance-weighted daily sample — aligns daily feel with main quiz (recognizable bias).
+ */
+function seededImportanceSample(arr, n, dateKey, salt, difficulty = DAILY_SAMPLE_DIFFICULTY) {
+  if (n >= arr.length) return [...arr];
+  const rng = makeRng(dateToSeed(dateKey, salt));
+  const weighted = arr.map((player) => ({
+    player,
+    w: getQuizPickWeight(player, difficulty) * (0.7 + rng() * 0.6),
+  }));
+  weighted.sort((a, b) => b.w - a.w);
+  const pool = weighted.slice(0, Math.max(n, Math.ceil(weighted.length * 0.55)));
+  const picked = [];
+
+  while (picked.length < n && pool.length > 0) {
+    const total = pool.reduce((sum, row) => sum + row.w, 0);
+    let roll = rng() * total;
+    for (let i = 0; i < pool.length; i += 1) {
+      roll -= pool[i].w;
+      if (roll <= 0) {
+        picked.push(pool[i].player);
+        pool.splice(i, 1);
+        break;
+      }
+    }
+  }
+
+  if (picked.length < n) {
+    const used = new Set(picked.map((p) => p.id));
+    const rest = arr.filter((p) => !used.has(p.id));
+    picked.push(...seededSample(rest, n - picked.length, dateKey, salt + 9001));
+  }
+  return picked.slice(0, n);
+}
+
+/**
  * @typedef {{
  *   players: any[],
  *   teams: any[],
@@ -55,7 +94,7 @@ function seededSample(arr, n, dateKey, salt) {
  * @param {QuizRegistryPayload} registry
  */
 function getEligiblePools(registry) {
-  const quizReady = getPlayableQuizPlayers(registry?.players ?? [], 'medium');
+  const quizReady = getPlayableQuizPlayers(registry?.players ?? [], DAILY_SAMPLE_DIFFICULTY);
   const editorial = getQuizEligiblePlayers(registry?.players ?? []);
   const teams = registry?.teams ?? [];
   const leagues = registry?.leagues ?? [];
@@ -144,11 +183,6 @@ function pickIndex(length, dateKey, salt) {
 /**
  * Deterministic daily challenge for a date — same plan on every device/refresh.
  * @param {string} dateKey `YYYY-MM-DD`
- * @returns {DailyChallengePlan}
- */
-/**
- * Deterministic daily challenge for a date — same plan on every device/refresh.
- * @param {string} dateKey `YYYY-MM-DD`
  * @param {QuizRegistryPayload} registry
  */
 export function generateDailyChallengeFromRegistry(dateKey, registry) {
@@ -162,7 +196,12 @@ export function generateDailyChallengeFromRegistry(dateKey, registry) {
 
   if (kind === 'national-team') {
     const pick = eligible.national[pickIndex(eligible.national.length, dateKey, 601)];
-    const questions = seededSample(pick.players, DAILY_QUESTION_COUNT, dateKey, 801);
+    const questions = seededImportanceSample(
+      pick.players,
+      DAILY_QUESTION_COUNT,
+      dateKey,
+      801,
+    );
     plan = {
       kind,
       label: DAILY_CHALLENGE_LABELS['national-team'],
@@ -175,7 +214,12 @@ export function generateDailyChallengeFromRegistry(dateKey, registry) {
     };
   } else if (kind === 'club') {
     const pick = eligible.clubs[pickIndex(eligible.clubs.length, dateKey, 602)];
-    const questions = seededSample(pick.players, DAILY_QUESTION_COUNT, dateKey, 802);
+    const questions = seededImportanceSample(
+      pick.players,
+      DAILY_QUESTION_COUNT,
+      dateKey,
+      802,
+    );
     plan = {
       kind,
       label: DAILY_CHALLENGE_LABELS.club,
@@ -188,7 +232,12 @@ export function generateDailyChallengeFromRegistry(dateKey, registry) {
     };
   } else if (kind === 'league') {
     const pick = eligible.leagues[pickIndex(eligible.leagues.length, dateKey, 603)];
-    const questions = seededSample(pick.players, DAILY_QUESTION_COUNT, dateKey, 803);
+    const questions = seededImportanceSample(
+      pick.players,
+      DAILY_QUESTION_COUNT,
+      dateKey,
+      803,
+    );
     plan = {
       kind,
       label: DAILY_CHALLENGE_LABELS.league,
@@ -202,9 +251,14 @@ export function generateDailyChallengeFromRegistry(dateKey, registry) {
   } else {
     const generalPool =
       eligible.editorialPlayers.length >= DAILY_QUESTION_COUNT
-        ? eligible.editorialPlayers
+        ? getPlayableQuizPlayers(eligible.editorialPlayers, DAILY_SAMPLE_DIFFICULTY)
         : eligible.sessionPlayers;
-    const questions = seededSample(generalPool, DAILY_QUESTION_COUNT, dateKey, 804);
+    const questions = seededImportanceSample(
+      generalPool,
+      DAILY_QUESTION_COUNT,
+      dateKey,
+      804,
+    );
     plan = {
       kind: 'general',
       label: DAILY_CHALLENGE_LABELS.general,

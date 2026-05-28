@@ -16,6 +16,10 @@ import CountryFlag from './CountryFlag';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PositionLabel from './PositionLabel';
 import BreadcrumbNav from './BreadcrumbNav';
+import {
+  buildMissedPlayerStudyCards,
+  getMissedLearningIntro,
+} from '../utils/quizMissedLearning';
 import { getSessionEncouragement } from '../utils/quizUiPolish';
 
 function formatDateKey(dateKey) {
@@ -70,7 +74,9 @@ function CompletionScreen({
   const perfect = correct === total;
   const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
   const missed = questions.filter((player, i) => !results[i]?.isCorrect);
-  const encouragement = getSessionEncouragement(accuracy, dailyStreak);
+  const missedCards = buildMissedPlayerStudyCards(missed, { limit: 5 });
+  const missedIntro = getMissedLearningIntro(missed.length);
+  const encouragement = getSessionEncouragement(accuracy, dailyStreak, missed.length);
 
   const scopeLabel =
     challengeScope?.name && challengeScope.type !== 'general'
@@ -111,15 +117,17 @@ function CompletionScreen({
         </p>
       </div>
 
-      {missed.length > 0 ? (
+      {missedCards.length > 0 ? (
         <div className="quiz-summary__missed-block" id="daily-missed-players">
-          <h3 className="quiz-summary__subtitle">Review missed players</h3>
+          <h3 className="quiz-summary__subtitle">Study missed players</h3>
+          {missedIntro ? <p className="quiz-summary__missed-intro">{missedIntro}</p> : null}
           <ul className="quiz-summary__missed">
-            {missed.map((player) => (
-              <li key={player.id}>
-                <Link to={`/player/${player.id}`} className="quiz-summary__missed-link">
-                  <span>{player.name}</span>
-                  <span className="quiz-summary__missed-cta">Learn more →</span>
+            {missedCards.map((card) => (
+              <li key={card.id}>
+                <Link to={card.profileHref} className="quiz-summary__missed-link quiz-summary__missed-link--study">
+                  <span className="quiz-summary__missed-name">{card.name}</span>
+                  <span className="quiz-summary__missed-tip">{card.tip}</span>
+                  <span className="quiz-summary__missed-cta">Profile &amp; hints →</span>
                 </Link>
               </li>
             ))}

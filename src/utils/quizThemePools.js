@@ -1,11 +1,17 @@
 import { collections } from '../data/collectionsData';
+import {
+  getThemeMinImportance,
+  MIN_RECOGNIZABLE_IMPORTANCE,
+  THEME_IMPORTANCE_FLOORS,
+} from '../data/quizThemeConfig.js';
 import { getQuizThemeById, QUIZ_THEME_CATALOG } from '../data/quizThemes';
 import { getPlayableQuizPlayers, getQuizEcosystemPlayers } from './quizEligibility';
 import { pickWeightedFromQuizPool, resolveThemePoolCap } from './quizEcosystem';
 import { pickRandomPlayer } from './quizSession';
 
+export { getThemeMinImportance } from '../data/quizThemeConfig.js';
+
 const DEFAULT_POOL_CAP = 100;
-const MIN_RECOGNIZABLE_IMPORTANCE = 52;
 
 function playerIdsFromCollections(collectionIds) {
   const ids = new Set();
@@ -50,10 +56,16 @@ export function rankAndCapQuizPool(
     minImportance = MIN_RECOGNIZABLE_IMPORTANCE,
     cap = DEFAULT_POOL_CAP,
     difficulty = 'medium',
+    themeId = '',
   } = {},
 ) {
+  const floor =
+    themeId && THEME_IMPORTANCE_FLOORS[themeId]
+      ? getThemeMinImportance(themeId, difficulty)
+      : minImportance;
+
   const ranked = [...pool]
-    .filter((p) => (Number(p.importanceScore) || 0) >= minImportance)
+    .filter((p) => (Number(p.importanceScore) || 0) >= floor)
     .sort((a, b) => getRecognizabilityScore(b) - getRecognizabilityScore(a));
   const limit = resolveThemePoolCap(ranked.length, cap);
   const sessionPool = getPlayableQuizPlayers(ranked, difficulty);
@@ -80,12 +92,14 @@ export function getPlayerRarity(player, pool) {
   return { label: 'Deep cut', tone: 'elite' };
 }
 
-function poolFromCollectionIds(players, collectionIds, difficulty = 'medium') {
+function poolFromCollectionIds(players, collectionIds, difficulty = 'medium', themeId = 'champions-league') {
   const ids = playerIdsFromCollections(collectionIds);
   const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(eligible.filter((p) => ids.has(p.id)), {
-    minImportance: 60,
+    minImportance: getThemeMinImportance(themeId, difficulty),
+    cap: 95,
     difficulty,
+    themeId,
   });
 }
 
@@ -93,35 +107,43 @@ function poolWonderkids(players, difficulty = 'medium') {
   const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => typeof p.age === 'number' && p.age <= 23),
-    { minImportance: 62, cap: 80, difficulty },
+    { minImportance: getThemeMinImportance('wonderkids', difficulty), cap: 85, difficulty, themeId: 'wonderkids' },
   );
 }
 
 function poolLegends(players, theme, difficulty = 'medium') {
-  const fromCollections = poolFromCollectionIds(players, theme.collectionIds, difficulty);
+  const fromCollections = poolFromCollectionIds(players, theme.collectionIds, difficulty, 'legends');
   const eligible = getQuizEcosystemPlayers(players);
   const headline = eligible.filter((p) => (Number(p.importanceScore) || 0) >= 88);
   const merged = new Map();
   for (const p of [...fromCollections, ...headline]) merged.set(p.id, p);
-  return rankAndCapQuizPool([...merged.values()], { minImportance: 80, cap: 90, difficulty });
+  return rankAndCapQuizPool([...merged.values()], {
+    minImportance: getThemeMinImportance('legends', difficulty),
+    cap: 95,
+    difficulty,
+    themeId: 'legends',
+  });
 }
 
 function poolCultHeroes(players, difficulty = 'medium') {
   const eligible = getQuizEcosystemPlayers(players);
+  const floor = getThemeMinImportance('cult-heroes', difficulty);
+  const ceiling = difficulty === 'easy' || difficulty === 'medium' ? 80 : 85;
   return rankAndCapQuizPool(
     eligible.filter((p) => {
       const score = Number(p.importanceScore) || 0;
-      return score >= 52 && score <= 78;
+      return score >= floor && score <= ceiling;
     }),
-    { minImportance: 52, cap: 70, difficulty },
+    { minImportance: floor, cap: 75, difficulty, themeId: 'cult-heroes' },
   );
 }
 
 function poolTopScorers(players, difficulty = 'medium') {
   const eligible = getQuizEcosystemPlayers(players);
+  const floor = getThemeMinImportance('top-scorers', difficulty);
   return rankAndCapQuizPool(
-    eligible.filter((p) => isForwardPosition(p.position) && (Number(p.importanceScore) || 0) >= 78),
-    { minImportance: 78, cap: 80, difficulty },
+    eligible.filter((p) => isForwardPosition(p.position) && (Number(p.importanceScore) || 0) >= floor),
+    { minImportance: floor, cap: 85, difficulty, themeId: 'top-scorers' },
   );
 }
 
@@ -129,7 +151,12 @@ function poolVeterans(players, difficulty = 'medium') {
   const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => typeof p.age === 'number' && p.age >= 32),
-    { minImportance: 65, cap: 90, difficulty },
+    {
+      minImportance: getThemeMinImportance('veterans', difficulty),
+      cap: 95,
+      difficulty,
+      themeId: 'veterans',
+    },
   );
 }
 
@@ -152,7 +179,12 @@ function poolDerbyRivalries(players, teams, difficulty = 'medium') {
 
   return rankAndCapQuizPool(
     eligible.filter((p) => rivalryTeamIds.has(p.teamId)),
-    { minImportance: 58, cap: 100, difficulty },
+    {
+      minImportance: getThemeMinImportance('derby-rivalries', difficulty),
+      cap: 105,
+      difficulty,
+      themeId: 'derby-rivalries',
+    },
   );
 }
 
@@ -160,7 +192,12 @@ function poolInternational(players, difficulty = 'medium') {
   const eligible = getQuizEcosystemPlayers(players);
   return rankAndCapQuizPool(
     eligible.filter((p) => p._inInternationalPool === true),
-    { minImportance: 60, cap: 120, difficulty },
+    {
+      minImportance: getThemeMinImportance('world-cup', difficulty),
+      cap: 130,
+      difficulty,
+      themeId: 'world-cup',
+    },
   );
 }
 
@@ -173,7 +210,6 @@ export function buildThemedQuizPool(allPlayers, themeId, context = {}) {
   const theme = getQuizThemeById(themeId);
   if (!theme) return [];
   const difficulty = context.difficulty ?? theme.defaultDifficulty ?? 'medium';
-  const capOpts = (extra = {}) => ({ difficulty, ...extra });
 
   switch (theme.id) {
     case 'wonderkids':
@@ -187,7 +223,7 @@ export function buildThemedQuizPool(allPlayers, themeId, context = {}) {
     case 'veterans':
       return poolVeterans(allPlayers, difficulty);
     case 'champions-league':
-      return poolFromCollectionIds(allPlayers, theme.collectionIds, difficulty);
+      return poolFromCollectionIds(allPlayers, theme.collectionIds, difficulty, 'champions-league');
     case 'world-cup':
       return poolInternational(allPlayers, difficulty);
     case 'derby-rivalries':
@@ -200,7 +236,12 @@ export function buildThemedQuizPool(allPlayers, themeId, context = {}) {
       const eligible = getQuizEcosystemPlayers(allPlayers);
       return rankAndCapQuizPool(
         eligible.filter((p) => p.leagueId === leagueId),
-        capOpts({ minImportance: 58, cap: 100 }),
+        {
+          minImportance: getThemeMinImportance(theme.id, difficulty),
+          cap: 105,
+          difficulty,
+          themeId: theme.id,
+        },
       );
     }
     default:
@@ -223,9 +264,18 @@ export function getAllThemePoolCounts(allPlayers, context = {}) {
 
 /**
  * Weighted pick favours recognizable players while keeping variety.
+ * @param {object[]} pool
+ * @param {string} [excludePlayerId]
+ * @param {string} [difficulty]
+ * @param {Set<string> | string[] | null} [askedPlayerIds]
  */
-export function pickWeightedQuizPlayer(pool, excludePlayerId = '', difficulty = 'medium') {
-  const picked = pickWeightedFromQuizPool(pool, excludePlayerId, difficulty);
+export function pickWeightedQuizPlayer(
+  pool,
+  excludePlayerId = '',
+  difficulty = 'medium',
+  askedPlayerIds = null,
+) {
+  const picked = pickWeightedFromQuizPool(pool, excludePlayerId, difficulty, askedPlayerIds);
   if (picked) return picked;
   return pickRandomPlayer(pool, excludePlayerId);
 }

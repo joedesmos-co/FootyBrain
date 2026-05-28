@@ -53,6 +53,10 @@ import PlayerAutocomplete from './PlayerAutocomplete';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
 import ShareButton from './ShareButton';
 import {
+  buildMissedPlayerStudyCards,
+  getMissedLearningIntro,
+} from '../utils/quizMissedLearning';
+import {
   getNextQuestionButtonLabel,
   getSessionEncouragement,
   scrollPageTop,
@@ -240,6 +244,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   const sessionMilestoneRef = useRef(false);
   const lastQuestionPlayerIdRef = useRef(null);
+  const askedPlayerIdsRef = useRef(new Set());
   const handleTimeoutRef = useRef(() => {});
   const progression = useProgression();
 
@@ -345,6 +350,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     setSessionResults([]);
     setSessionEnded(false);
     sessionMilestoneRef.current = false;
+    askedPlayerIdsRef.current = new Set();
+    lastQuestionPlayerIdRef.current = null;
   }, []);
 
   const initialHintsForQuestion = useCallback(
@@ -371,7 +378,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       playerPool,
       lastQuestionPlayerIdRef.current ?? '',
       difficulty,
+      askedPlayerIdsRef.current,
     );
+    if (next?.id) askedPlayerIdsRef.current.add(next.id);
     lastQuestionPlayerIdRef.current = next?.id ?? null;
     setCurrentPlayer(next);
     setHintsShown(initialHintsForQuestion(difficulty));
@@ -745,12 +754,27 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       leagueFilter,
       teamFilter,
       nationalTeamFilter,
+      difficulty,
       accuracy,
+      bestStreak,
+      missedCount: missed.length,
       players,
       teams,
     });
-    const encouragement = getSessionEncouragement(accuracy, bestStreak);
-    return { correctCount, total, accuracy, insights, missed, nextQuizzes, encouragement };
+    const missedCards = buildMissedPlayerStudyCards(missed, { getTeamName, limit: 8 });
+    const encouragement = getSessionEncouragement(accuracy, bestStreak, missed.length);
+    const missedIntro = getMissedLearningIntro(missed.length);
+    return {
+      correctCount,
+      total,
+      accuracy,
+      insights,
+      missed,
+      missedCards,
+      missedIntro,
+      nextQuizzes,
+      encouragement,
+    };
   }, [
     sessionResults,
     getTeamName,
@@ -759,6 +783,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     leagueFilter,
     teamFilter,
     nationalTeamFilter,
+    difficulty,
     players,
     teams,
     bestStreak,
@@ -1193,22 +1218,36 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               </div>
             )}
 
-            {sessionSummary.missed.length > 0 ? (
+            {sessionSummary.missedCards?.length > 0 ? (
               <div className="quiz-summary__missed-block" id="quiz-missed-players">
-                <h3 className="quiz-summary__subtitle">Explore missed players</h3>
+                <h3 className="quiz-summary__subtitle">Study missed players</h3>
+                {sessionSummary.missedIntro ? (
+                  <p className="quiz-summary__missed-intro">{sessionSummary.missedIntro}</p>
+                ) : null}
                 <ul className="quiz-summary__missed">
-                  {sessionSummary.missed
-                    .slice(-10)
-                    .reverse()
-                    .map((player) => (
-                      <li key={`miss-${player.id}`}>
-                        <Link to={`/player/${player.id}`} className="quiz-summary__missed-link">
-                          <span>{player.name}</span>
-                          <span className="quiz-summary__missed-cta">Learn more →</span>
-                        </Link>
-                      </li>
-                    ))}
+                  {sessionSummary.missedCards.map((card) => (
+                    <li key={`miss-${card.id}`}>
+                      <Link
+                        to={card.profileHref}
+                        className="quiz-summary__missed-link quiz-summary__missed-link--study"
+                      >
+                        <span className="quiz-summary__missed-name">{card.name}</span>
+                        {card.club ? (
+                          <span className="quiz-summary__missed-meta">{card.club}</span>
+                        ) : null}
+                        <span className="quiz-summary__missed-tip">{card.tip}</span>
+                        <span className="quiz-summary__missed-cta">Profile &amp; hints →</span>
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
+                <p className="quiz-summary__missed-replay">
+                  <Link to={`/quiz?difficulty=easy${requestedThemeId ? `&theme=${requestedThemeId}` : ''}`}>
+                    Replay on Easy
+                  </Link>
+                  {' · '}
+                  <Link to="/daily">Daily challenge</Link>
+                </p>
               </div>
             ) : (
               <p className="quiz-summary__perfect">Perfect run — no misses this session.</p>

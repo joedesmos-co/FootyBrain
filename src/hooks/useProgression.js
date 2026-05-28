@@ -302,6 +302,7 @@ export function useProgression() {
         streakBonus,
         milestoneXp,
         totalXp: baseXp + milestoneXp,
+        newSessionStreak: isCorrect ? newSessionStreak : 0,
         newAchievementIds,
         sessionMilestoneHit: sessionMilestone,
       };
