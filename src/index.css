@@ -5238,6 +5238,27 @@ a.player-identity-chip:focus-visible {
   color: var(--color-muted);
 }
 
+.national-team-hub__prose {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-soft);
+}
+
+.national-team-hub__prose--tight {
+  margin-bottom: 0.65rem;
+}
+
+.national-team-hub__meta {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+.national-team-hub__meta a {
+  color: var(--color-accent);
+}
+
 .team-club-hub__chip-row {
   display: flex;
   flex-wrap: wrap;

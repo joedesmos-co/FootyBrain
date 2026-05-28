@@ -4,7 +4,7 @@
  */
 
 import { getClubQuizPlayHref } from '../data/clubQuizCategories.js';
-import { getLiveNationalTeams } from '../data/nationalTeamData.js';
+import { getLiveNationalTeams, getNationalTeamById } from '../data/nationalTeamData.js';
 import { getQuizThemePlayHref, getQuizThemeIdForLeague } from '../data/quizThemes.js';
 import { formatCountryLabel } from './footballDisplay.js';
 import { normalizeClubName, parseKeyPlayerLine, resolveRivalEntries } from './teamPageUtils.js';
@@ -213,7 +213,7 @@ export function buildLeagueInternalLinks(ctx = {}) {
  * @param {object} ctx
  */
 export function buildNationalTeamInternalLinks(ctx = {}) {
-  const { nationalTeam, quizReady = false } = ctx;
+  const { nationalTeam, quizReady = false, squad = [] } = ctx;
   const links = [];
   const add = (label, to) => {
     if (to) links.push({ label, to });
@@ -221,14 +221,36 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
 
   if (nationalTeam?.id) {
     if (quizReady) {
-      add('National team quiz', `/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national`);
+      add('National team quiz', `/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`);
     }
     add('World Cup hub', '/world-cup');
+    add('World Cup quiz pool', '/quiz?theme=world-cup');
   }
 
   const country = nationalTeam?.country ?? nationalTeam?.displayName;
   const natPath = getNationalityHubPath(country);
   if (natPath) add(`${formatCountryLabel(country)} player hub`, natPath);
+
+  if (nationalTeam?.rivalIds?.length) {
+    for (const rivalId of nationalTeam.rivalIds.slice(0, 2)) {
+      const rival = getNationalTeamById(rivalId);
+      const label = rival?.displayName
+        ? `Rival: ${rival.displayName}`
+        : `Rival nation (${rivalId.replace(/-/g, ' ')})`;
+      add(label, `/national-team/${rivalId}`);
+    }
+  }
+
+  const leagueCounts = new Map();
+  for (const player of squad ?? []) {
+    if (!player?.leagueId) continue;
+    leagueCounts.set(player.leagueId, (leagueCounts.get(player.leagueId) ?? 0) + 1);
+  }
+  const topLeague = [...leagueCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+  if (topLeague) {
+    add('League hub (top pool)', `/league/${topLeague}`);
+    add('League quiz hub', `/hubs/quizzes/league/${topLeague}`);
+  }
 
   add('All national teams', '/national-teams');
   add('Players by nationality', '/hubs/players/by-nationality');
@@ -236,7 +258,7 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
   add('Discovery hubs', '/hubs');
   add('Browse players', '/browse');
 
-  return dedupeInternalLinks(links, 8);
+  return dedupeInternalLinks(links, 10);
 }
 
 /**

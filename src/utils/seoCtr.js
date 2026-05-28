@@ -14,6 +14,8 @@ import { buildPlayerProfileDescription } from './playerProfileEditorial.js';
 import { setSeoMeta } from './seoMeta.js';
 import { isQuizEligiblePlayer } from './quizPlayerRules.js';
 import { buildClubProfileDescription } from './clubProfileEditorial.js';
+import { buildRichNationalTeamMetaDescription } from './nationalProfileEditorial.js';
+import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData.js';
 import {
   buildTopLeagueMetaDescription,
   buildTopTeamMetaDescription,
@@ -218,20 +220,20 @@ export function buildLeagueSeoDescription(league, stats) {
 }
 
 export function buildNationalTeamSeoTitle(nationalTeam) {
-  return pageTitle(`${nationalTeam.displayName} — national team squad & quiz`);
+  const confed = nationalTeam.confederation ? ` · ${nationalTeam.confederation}` : '';
+  const wc = FEATURED_NATIONAL_TEAM_IDS.includes(nationalTeam.id) ? ' · World Cup 2026' : '';
+  return pageTitle(`${nationalTeam.displayName} national team squad & quiz${confed}${wc}`);
 }
 
 export function buildNationalTeamSeoDescription(nationalTeam, ctx = {}) {
-  const { linkedCount = 0, quizReady = 0, canQuiz = false } = ctx;
-  const country = nationalTeam.country ?? nationalTeam.displayName;
-  const parts = [
-    `${nationalTeam.displayName} (${country}): ${linkedCount} players linked from club squads in our dataset.`,
-    canQuiz
-      ? `${quizReady} names have quiz clues — play the national team quiz or browse profiles first.`
-      : 'Browse linked profiles, then try international quizzes as the pool grows.',
-    'Learning tool — not an official federation roster.',
-  ];
-  return truncateMetaDescription(parts.join(' '));
+  return truncateMetaDescription(
+    buildRichNationalTeamMetaDescription(nationalTeam, {
+      linkedCount: ctx.linkedCount ?? 0,
+      quizReady: ctx.quizReady ?? 0,
+      canQuiz: ctx.canQuiz ?? false,
+      squad: ctx.squad ?? [],
+    }),
+  );
 }
 
 export function buildQuizSeoTitle(ctx = {}) {

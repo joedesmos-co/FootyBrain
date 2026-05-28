@@ -15,6 +15,7 @@ import {
   parsePlayStyleTags,
   parseStrengths,
 } from './entityDepthAudit';
+import { buildSquadIdentityContext } from './nationalProfileEditorial.js';
 
 function normalizeList(raw, max = 8) {
   if (!raw) return [];
@@ -113,9 +114,16 @@ export function buildLeagueIdentitySection(league) {
 /**
  * @param {object} nationalTeam
  */
-export function buildNationalIdentitySection(nationalTeam) {
+export function buildNationalIdentitySection(nationalTeam, stats = {}) {
   const history = String(nationalTeam?.shortHistory ?? '').trim();
   if (history) return history;
+
+  const synthesized = buildSquadIdentityContext(nationalTeam, {
+    linkedCount: stats.linkedCount ?? 0,
+    quizReadyCount: stats.quizReadyCount ?? 0,
+    squad: stats.squad ?? [],
+  });
+  if (synthesized.length >= 80) return synthesized;
 
   const guide = String(nationalTeam?.fanGuide ?? '').trim();
   if (guide) return guide.length > 320 ? `${guide.slice(0, 317).trimEnd()}…` : guide;

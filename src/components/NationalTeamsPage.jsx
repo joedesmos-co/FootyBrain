@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   countLinkedPlayers,
@@ -8,6 +9,8 @@ import {
 } from '../data/nationalTeamData';
 import NationalTeamBadge from './NationalTeamBadge';
 import BreadcrumbNav from './BreadcrumbNav';
+import { pageTitle } from '../utils/brand.js';
+import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 
 export default function NationalTeamsPage() {
   const confederationGroups = getLiveNationalTeamsByConfederation();
@@ -16,6 +19,19 @@ export default function NationalTeamsPage() {
     0,
   );
   const nationCount = confederationGroups.reduce((sum, group) => sum + group.teams.length, 0);
+
+  useEffect(() => {
+    applyPageSeo({
+      title: pageTitle('National teams — World Cup squads & international quizzes'),
+      description: truncateMetaDescription(
+        `${nationCount} men's national sides with ${totalLinked.toLocaleString()} linked club players. Browse squad identity, rivalries, and World Cup 2026 prep—or play nation quizzes on FootyCompass.`,
+      ),
+      breadcrumbs: [
+        { name: 'Home', item: '/' },
+        { name: 'National teams', item: '/national-teams' },
+      ],
+    });
+  }, [nationCount, totalLinked]);
 
   return (
     <div className="page national-teams-page">
