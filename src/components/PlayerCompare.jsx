@@ -205,6 +205,7 @@ export default function PlayerCompare({
           placeholder="Search player A…"
           excludeIds={rightId ? [rightId] : []}
           maxResults={8}
+          poolStatus={playerSearchPool.status}
           intentContext={searchIntentContext}
           getTeamName={(id) => playerSearchPool.getTeamName(id) || bundled?.getTeamName(id)}
           getLeagueName={(id) => playerSearchPool.getLeagueName(id) || bundled?.getLeagueName(id)}
@@ -223,6 +224,7 @@ export default function PlayerCompare({
           placeholder="Search player B…"
           excludeIds={leftId ? [leftId] : []}
           maxResults={8}
+          poolStatus={playerSearchPool.status}
           intentContext={searchIntentContext}
           getTeamName={(id) => playerSearchPool.getTeamName(id) || bundled?.getTeamName(id)}
           getLeagueName={(id) => playerSearchPool.getLeagueName(id) || bundled?.getLeagueName(id)}

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchIndex } from './useSearchIndex';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
+import { getPlayerSearchIndex } from '../utils/playerSearchIndex.js';
 
 /**
  * Full player list for autocomplete / lookup (search index, with sampleData fallback).
@@ -27,17 +28,35 @@ export function usePlayerSearchPool() {
     };
   }, [indexStatus, fallback]);
 
+  const readyPlayers = useMemo(() => {
+    if (!index?.players?.length) return null;
+    const teamMap = new Map(index.teams.map((team) => [team.id, team.name]));
+    const leagueMap = new Map(index.leagues.map((league) => [league.id, league]));
+    return index.players.map((player) => {
+      const league = leagueMap.get(player.leagueId);
+      return {
+        ...player,
+        _teamName: player.teamName ?? teamMap.get(player.teamId) ?? 'Unknown',
+        leagueName: player.leagueName ?? (league ? getLeagueDisplayName(league) : ''),
+      };
+    });
+  }, [index]);
+
+  useEffect(() => {
+    const pool = readyPlayers ?? fallback?.players;
+    if (pool?.length) {
+      getPlayerSearchIndex(pool);
+    }
+  }, [readyPlayers, fallback]);
+
   return useMemo(() => {
-    if (index?.players?.length) {
+    if (readyPlayers?.length) {
       const teamMap = new Map(index.teams.map((team) => [team.id, team.name]));
       const leagueMap = new Map(index.leagues.map((league) => [league.id, league]));
 
       return {
         status: 'ready',
-        players: index.players.map((player) => ({
-          ...player,
-          _teamName: player.teamName ?? teamMap.get(player.teamId) ?? 'Unknown',
-        })),
+        players: readyPlayers,
         getTeamName: (id) => teamMap.get(id) ?? 'Unknown',
         getLeagueName: (id) => {
           const league = leagueMap.get(id);
@@ -61,5 +80,5 @@ export function usePlayerSearchPool() {
       getTeamName: () => 'Unknown',
       getLeagueName: () => 'Unknown',
     };
-  }, [index, fallback, indexStatus]);
+  }, [index, readyPlayers, fallback, indexStatus]);
 }

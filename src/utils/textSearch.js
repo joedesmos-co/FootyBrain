@@ -70,7 +70,7 @@ function levenshteinWithin(a, b, maxDist = 1) {
 
 function maxTypoDistance(q) {
   if (q.length >= 8) return 2;
-  if (q.length >= 4) return 1;
+  if (q.length >= 3) return 1;
   return 0;
 }
 
@@ -82,7 +82,8 @@ export function typoToleranceScore(value, q) {
   for (const part of parts) {
     if (part.length < 3) continue;
     if (levenshteinWithin(part, q, maxDist) <= maxDist) {
-      return maxDist >= 2 ? 58 : 55;
+      if (maxDist >= 2) return 58;
+      return q.length <= 3 ? 50 : 55;
     }
   }
 

@@ -469,9 +469,10 @@ export default function BrowseDatabase() {
             showNationalTeam
             navigateOnSelect
             intentContext={intentContext}
+            poolStatus={playerSearchPool.status}
             label="Search"
             placeholder="Search all players — name, club, country…"
-            disabled={browseDataLoading || playerSearchPool.status === 'loading'}
+            disabled={browseDataLoading}
             getTeamName={(id) => playerSearchPool.getTeamName(id) || getTeamName(id)}
             getLeagueName={(id) => playerSearchPool.getLeagueName(id) || getLeagueName(id)}
           />

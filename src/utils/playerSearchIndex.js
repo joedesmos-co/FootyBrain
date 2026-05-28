@@ -6,10 +6,14 @@
 import { getPlayerAliases } from './searchAliases.js';
 import { compactForSearch, normalizeForSearch, typoToleranceScore } from './textSearch';
 
-/** @typedef {{ player: object, normalizedName: string, parts: string[], lastName: string, aliasNorms: string[] }} PlayerSearchEntry */
+/** @typedef {{ player: object, normalizedName: string, parts: string[], lastName: string, aliasNorms: string[], teamNameNorm: string, leagueNameNorm: string }} PlayerSearchEntry */
 
-/** @type {WeakMap<object, { entries: PlayerSearchEntry[], prefixMap: Map<string, PlayerSearchEntry[]> }>} */
+/** @type {WeakMap<object, { entries: PlayerSearchEntry[], prefixMap: Map<string, PlayerSearchEntry[]>, importanceSorted: PlayerSearchEntry[] }>} */
 const indexByPlayersRef = new WeakMap();
+
+const MAX_CANDIDATES = 450;
+const PREFIX_BUCKET_CAP = 500;
+const IMPORTANCE_SCAN_CAP = 1400;
 
 function playerAliasList(player) {
   return [...getPlayerAliases(player.id), ...(player.aliases ?? [])];
@@ -21,12 +25,16 @@ function buildEntry(player) {
   const aliasNorms = playerAliasList(player)
     .map((alias) => normalizeForSearch(alias))
     .filter(Boolean);
+  const teamNameNorm = normalizeForSearch(player.teamName ?? player._teamName ?? '');
+  const leagueNameNorm = normalizeForSearch(player.leagueName ?? '');
   return {
     player,
     normalizedName,
     parts,
     lastName: parts[parts.length - 1] ?? '',
     aliasNorms,
+    teamNameNorm,
+    leagueNameNorm,
   };
 }
 
@@ -78,6 +86,8 @@ export function getPlayerSearchIndex(players) {
       ...entry.aliasNorms,
       ...entry.aliasNorms.map(compactForSearch).filter((c) => c.length >= 2),
     ]);
+    if (entry.teamNameNorm) tokens.add(entry.teamNameNorm);
+    if (entry.leagueNameNorm) tokens.add(entry.leagueNameNorm);
     if (entry.parts.length >= 2) {
       const initials = entry.parts.map((part) => part[0]).join('');
       if (initials.length >= 2) tokens.add(initials);
@@ -87,32 +97,18 @@ export function getPlayerSearchIndex(players) {
     indexTokens(prefixMap, entry, tokens);
   }
 
-  cached = { entries, prefixMap };
+  const importanceSorted = [...entries].sort(
+    (a, b) =>
+      (Number(b.player.importanceScore) || 0) - (Number(a.player.importanceScore) || 0),
+  );
+
+  cached = { entries, prefixMap, importanceSorted };
   indexByPlayersRef.set(players, cached);
   return cached;
 }
 
-const FULL_SCAN_FALLBACK = 500;
-
-/**
- * Narrow player candidates before scoring (full registry only).
- * @param {object[]} players — full `players` export from sampleData
- * @param {string} normalizedQuery
- * @returns {PlayerSearchEntry[]}
- */
-export function getPlayerSearchCandidates(players, normalizedQuery) {
-  const { entries, prefixMap } = getPlayerSearchIndex(players);
-  if (!normalizedQuery || normalizedQuery.length < 2) return entries;
-
-  const compact = compactForSearch(normalizedQuery);
-  const prefixKeys = new Set([
-    normalizedQuery.slice(0, Math.min(4, normalizedQuery.length)),
-    compact.slice(0, Math.min(4, compact.length)),
-  ]);
-
-  const merged = [];
-  const seen = new Set();
-  for (const prefixKey of prefixKeys) {
+function mergePrefixBuckets(prefixMap, keys, merged, seen) {
+  for (const prefixKey of keys) {
     const bucket = prefixMap.get(prefixKey);
     if (!bucket) continue;
     for (const entry of bucket) {
@@ -121,12 +117,80 @@ export function getPlayerSearchCandidates(players, normalizedQuery) {
       merged.push(entry);
     }
   }
+}
 
-  if (merged.length > 0 && merged.length <= FULL_SCAN_FALLBACK) {
-    return merged;
+function prefixKeysForToken(token) {
+  const compact = compactForSearch(token);
+  return [
+    token.slice(0, Math.min(4, token.length)),
+    compact.slice(0, Math.min(4, compact.length)),
+  ].filter((key) => key.length >= 2);
+}
+
+function capCandidatesByImportance(merged) {
+  if (merged.length <= MAX_CANDIDATES) return merged;
+  merged.sort(
+    (a, b) =>
+      (Number(b.player.importanceScore) || 0) - (Number(a.player.importanceScore) || 0),
+  );
+  return merged.slice(0, MAX_CANDIDATES);
+}
+
+/**
+ * Narrow player candidates before scoring (full registry only).
+ * @param {object[]} players — full `players` export from sampleData
+ * @param {string} normalizedQuery
+ * @returns {PlayerSearchEntry[]}
+ */
+export function getPlayerSearchCandidates(players, normalizedQuery) {
+  const { entries, prefixMap, importanceSorted } = getPlayerSearchIndex(players);
+  if (!normalizedQuery || normalizedQuery.length < 2) return entries;
+
+  const tokens = normalizedQuery.split(' ').filter((t) => t.length >= 2);
+  const merged = [];
+  const seen = new Set();
+
+  if (tokens.length > 1) {
+    for (const token of tokens) {
+      mergePrefixBuckets(prefixMap, prefixKeysForToken(token), merged, seen);
+    }
+  } else {
+    mergePrefixBuckets(prefixMap, prefixKeysForToken(normalizedQuery), merged, seen);
   }
 
-  return entries;
+  if (merged.length === 0 || merged.length > PREFIX_BUCKET_CAP) {
+    const compactQ = compactForSearch(normalizedQuery);
+    let scanned = 0;
+    for (const entry of importanceSorted) {
+      if (scanned >= IMPORTANCE_SCAN_CAP && merged.length >= MAX_CANDIDATES) break;
+      scanned += 1;
+      if (seen.has(entry.player.id)) continue;
+
+      const quick = playerSearchQuickScoreForEntry(entry, normalizedQuery);
+      if (quick > 0) {
+        seen.add(entry.player.id);
+        merged.push(entry);
+        continue;
+      }
+
+      if (normalizedQuery.length >= 3) {
+        const lastTypo = typoToleranceScore(entry.lastName, normalizedQuery);
+        const nameTypo = typoToleranceScore(entry.normalizedName, normalizedQuery);
+        if (lastTypo > 0 || nameTypo > 0) {
+          seen.add(entry.player.id);
+          merged.push(entry);
+          continue;
+        }
+      }
+
+      if (compactQ.length >= 3 && entry.teamNameNorm.includes(compactQ)) {
+        seen.add(entry.player.id);
+        merged.push(entry);
+      }
+    }
+  }
+
+  return capCandidatesByImportance(merged);
 }
 
 function scoreAliasNorms(aliasNorms, normalizedQuery) {
@@ -147,8 +211,7 @@ function scoreAliasNorms(aliasNorms, normalizedQuery) {
   return best;
 }
 
-/** Quick score using a precomputed entry (same rules as playerSearchQuickScore). */
-export function playerSearchQuickScoreForEntry(entry, normalizedQuery) {
+function scoreSingleTokenForEntry(entry, normalizedQuery) {
   if (!normalizedQuery) return 0;
 
   const name = entry.normalizedName;
@@ -177,6 +240,10 @@ export function playerSearchQuickScoreForEntry(entry, normalizedQuery) {
       const aliasTypo = typoToleranceScore(alias, normalizedQuery);
       if (aliasTypo > best) best = aliasTypo;
     }
+    if (entry.lastName.length >= 3) {
+      const lastTypo = typoToleranceScore(entry.lastName, normalizedQuery);
+      if (lastTypo > best) best = lastTypo;
+    }
   }
 
   const nameCompact = name.replace(/ /g, '');
@@ -200,5 +267,26 @@ export function playerSearchQuickScoreForEntry(entry, normalizedQuery) {
     }
   }
 
+  if (normalizedQuery.length >= 3) {
+    if (entry.teamNameNorm.includes(normalizedQuery)) best = Math.max(best, 68);
+    if (entry.leagueNameNorm.includes(normalizedQuery)) best = Math.max(best, 62);
+  }
+
   return best;
+}
+
+/** Quick score using a precomputed entry (same rules as playerSearchQuickScore). */
+export function playerSearchQuickScoreForEntry(entry, normalizedQuery) {
+  const tokens = normalizedQuery.split(' ').filter((t) => t.length >= 2);
+  if (tokens.length <= 1) {
+    return scoreSingleTokenForEntry(entry, normalizedQuery);
+  }
+
+  let min = 100;
+  for (const token of tokens) {
+    const tokenScore = scoreSingleTokenForEntry(entry, token);
+    if (tokenScore === 0) return 0;
+    min = Math.min(min, tokenScore);
+  }
+  return Math.min(92, min + 6);
 }
