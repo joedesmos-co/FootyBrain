@@ -255,7 +255,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
                 Start Team Quiz
               </Link>
               <Link to={`/hubs/quizzes/team/${team.id}`} className="btn btn--secondary">
-                Quiz hub
+                Club quiz guide
               </Link>
               {leagueThemeQuizHref ? (
                 <Link to={leagueThemeQuizHref} className="btn btn--secondary">

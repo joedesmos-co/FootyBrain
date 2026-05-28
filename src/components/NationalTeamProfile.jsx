@@ -209,7 +209,7 @@ export default function NationalTeamProfile() {
           <p className="collections-page__section-desc">
             This World Cup team is in the 2026 draw for orientation only — FootyCompass does not
             have a national player pool page yet. Browse live pools from the{' '}
-            <Link to="/world-cup">World Cup hub</Link> or the{' '}
+            <Link to="/world-cup">World Cup 2026 prep</Link> or the{' '}
             <Link to="/national-teams">national teams</Link> list.
           </p>
         ) : null}
@@ -289,12 +289,12 @@ export default function NationalTeamProfile() {
         <div className="team-profile__actions">
           {isFeatured ? (
             <Link to="/world-cup" className="btn btn--secondary">
-              World Cup hub
+              World Cup 2026
             </Link>
           ) : null}
           {nationalityHubPath ? (
             <Link to={nationalityHubPath} className="btn btn--secondary">
-              {nationalTeam.country ?? nationalTeam.displayName} players hub
+              {nationalTeam.country ?? nationalTeam.displayName} players
             </Link>
           ) : null}
           {canLaunchNationalQuiz ? (

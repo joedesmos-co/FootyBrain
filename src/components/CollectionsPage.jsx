@@ -50,7 +50,7 @@ export default function CollectionsPage() {
             World Cup prep
           </h2>
           <Link to="/world-cup" className="collections-page__section-link">
-            World Cup hub
+            World Cup 2026
           </Link>
           <Link to="/national-teams" className="collections-page__section-link">
             National teams

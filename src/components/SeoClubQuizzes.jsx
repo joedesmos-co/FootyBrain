@@ -68,7 +68,7 @@ export function SeoClubQuizzesHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: 'Explore', to: '/hubs' },
           { label: 'Quizzes', to: '/hubs/quizzes' },
           { label: 'Club quizzes' },
         ]}
@@ -202,7 +202,7 @@ export function SeoClubQuizCategoryHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: 'Explore', to: '/hubs' },
           { label: 'Quizzes', to: '/hubs/quizzes' },
           { label: 'Club quizzes', to: '/hubs/quizzes/clubs' },
           { label: category.label },

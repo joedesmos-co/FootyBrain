@@ -526,7 +526,7 @@ export default function BrowseDatabase() {
         </div>
         <div className="learning-hub-cta__actions">
           <Link to="/world-cup" className="btn btn--primary btn--small">
-            World Cup hub
+            World Cup 2026
           </Link>
           <Link to={getInternationalQuizHref()} className="btn btn--secondary btn--small">
             International quiz

@@ -8,7 +8,7 @@ const STATIC_ROUTE_SEO = {
   '/': {
     title: pageTitle('Football player & club quizzes — learn & test yourself'),
     description:
-      'Free football quizzes: guess players from hints, test club knowledge (stadiums, rivals), daily challenges, Premier League & La Liga hubs, World Cup 2026 prep — 4,800+ profiles, no account.',
+      'Free football quizzes: guess players from hints, test club knowledge (stadiums, rivals), daily challenges, Premier League & La Liga guides, World Cup 2026 prep — 4,800+ profiles, no account.',
     faqs: [
       {
         question: 'What is FootyCompass?',
@@ -44,17 +44,17 @@ const STATIC_ROUTE_SEO = {
   '/national-teams': {
     title: pageTitle('National football teams — squads & quizzes'),
     description:
-      'Browse men\'s national teams on FootyCompass: linked club players, quiz pools, World Cup prep, and nationality discovery hubs.',
+      'Browse men\'s national teams on FootyCompass: linked club players, quiz pools, World Cup prep, and nationality browse paths.',
   },
   '/world-cup': {
-    title: pageTitle('World Cup 2026 hub — nations, quizzes & study'),
+    title: pageTitle('World Cup 2026 — nations, quizzes & study'),
     description:
       'World Cup 2026 prep on FootyCompass: featured nations, group draw, study collections, international quizzes, and links to every national team page.',
   },
   '/about': {
     title: pageTitle('About FootyCompass'),
     description:
-      'FootyCompass is an independent football learning project — player profiles, quizzes, and discovery hubs built for fans who want to remember names faster.',
+      'FootyCompass is an independent football learning project — player profiles, quizzes, and explore paths built for fans who want to remember names faster.',
   },
   '/editorial': {
     title: pageTitle('Editorial policy & data sources'),
@@ -92,14 +92,14 @@ const STATIC_ROUTE_SEO = {
       'Club football quizzes: stadiums, leagues, rivalries, history, kits, and legends. Multiple choice or typing — streaks and XP on FootyCompass.',
   },
   '/hubs': {
-    title: pageTitle('Football discovery hubs — quizzes & players'),
+    title: pageTitle('Explore football — quizzes, players & clubs'),
     description:
-      'SEO-friendly football hubs: quizzes by league and club, players by nationality, young stars, and World Cup prep — all linking into FootyCompass profiles.',
+      'Explore football on FootyCompass: quizzes by league and club, players by nationality, young stars, and World Cup prep — all linking into profiles and play modes.',
   },
   '/hubs/quizzes': {
-    title: pageTitle('Football quiz hubs by league & club'),
+    title: pageTitle('Explore football quizzes by league & club'),
     description:
-      'Find football quizzes by league, club, and theme. Landing pages link to squads, player profiles, and play modes on FootyCompass.',
+      'Find football quizzes by league, club, and theme. Study squads and player profiles, then play guess-the-player and club quizzes on FootyCompass.',
   },
   '/hubs/quizzes/themes': {
     title: pageTitle('Themed football quizzes — legends, wonderkids & more'),
@@ -122,7 +122,7 @@ const STATIC_ROUTE_SEO = {
       'Best young footballers in the FootyCompass dataset: high-importance U23 players with profiles, clubs, and wonderkid quiz links.',
   },
   '/hubs/world-cup/player-quiz': {
-    title: pageTitle('World Cup player quiz hub'),
+    title: pageTitle('World Cup player quiz — explore & play'),
     description:
       'World Cup player quiz landing page — international pools, featured nations, and links to national team profiles on FootyCompass.',
   },
@@ -159,7 +159,7 @@ export function getStaticRouteSeo(pathname) {
 
   if (pathname.startsWith('/hubs/quizzes/league/')) {
     return {
-      title: pageTitle('League player quiz hub'),
+      title: pageTitle('League player quiz — explore & play'),
       description:
         'League quiz landing page — browse clubs and star players, then play the guess-the-player quiz on FootyCompass.',
     };
@@ -167,7 +167,7 @@ export function getStaticRouteSeo(pathname) {
 
   if (pathname.startsWith('/hubs/quizzes/team/')) {
     return {
-      title: pageTitle('Club player quiz hub'),
+      title: pageTitle('Club player quiz — explore & play'),
       description:
         'Club quiz landing page — key squad players with profile links and a focused team quiz on FootyCompass.',
     };

@@ -61,7 +61,7 @@ export default function Navbar() {
           Collections
         </NavLink>
         <NavLink to="/hubs" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Hubs
+          Explore
         </NavLink>
         <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active' : '')}>
           Profile

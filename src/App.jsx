@@ -181,7 +181,7 @@ export default function App() {
             />
             <Route
               path="/world-cup"
-              element={withPageSuspense(WorldCupHubPage, 'Loading World Cup hub…')}
+              element={withPageSuspense(WorldCupHubPage, 'Loading World Cup…')}
             />
             <Route path="/hubs" element={withPageSuspense(SeoHubsIndex, 'Loading…')} />
             <Route path="/hubs/quizzes" element={withPageSuspense(SeoQuizzesHub, 'Loading…')} />
@@ -267,7 +267,7 @@ export default function App() {
               <Link to="/teams">Clubs</Link>
               <Link to="/world-cup">World Cup 2026</Link>
               <Link to="/national-teams">National teams</Link>
-              <Link to="/hubs">Hubs</Link>
+              <Link to="/hubs">Explore</Link>
             </nav>
             <nav className="app__footer__links app__footer__links--meta" aria-label="Trust and policy">
               <Link to="/about">About</Link>

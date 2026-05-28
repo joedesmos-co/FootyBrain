@@ -62,7 +62,7 @@ export default function NationalTeamProfileHub({
           <p className="national-team-hub__prose">{profile.tournament}</p>
           {profile.isWorldCupFeatured ? (
             <p className="national-team-hub__meta">
-              <Link to="/world-cup">World Cup 2026 hub</Link>
+              <Link to="/world-cup">World Cup 2026 prep</Link>
               {' · '}
               <Link to="/quiz?theme=world-cup">World Cup quiz pool</Link>
             </p>

@@ -4,11 +4,11 @@ const PILLARS = [
   {
     id: 'learn',
     title: 'Learn',
-    summary: 'Football player profiles, club squads, league hubs, and national team pools.',
+    summary: 'Football player profiles, club squads, leagues, and national team pools.',
     links: [
       { to: '/browse', label: 'Browse players' },
       { to: '/teams', label: 'Browse clubs' },
-      { to: '/hubs', label: 'Search hubs' },
+      { to: '/hubs', label: 'Explore football' },
     ],
   },
   {
@@ -26,7 +26,7 @@ const PILLARS = [
     title: 'Discover',
     summary: 'World Cup 2026 prep, collections, learning paths, and long-tail football study pages.',
     links: [
-      { to: '/world-cup', label: 'World Cup hub' },
+      { to: '/world-cup', label: 'World Cup 2026' },
       { to: '/national-teams', label: 'National teams' },
       { to: '/collections', label: 'Collections' },
     ],

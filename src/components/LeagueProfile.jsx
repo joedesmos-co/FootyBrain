@@ -167,7 +167,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             to={`/hubs/quizzes/league/${league.id}`}
             className="btn btn--secondary"
           >
-            League quiz hub
+            League quiz guide
           </Link>
           <Link
             to={getClubQuizPlayHref('league', { leagueId: league.id })}

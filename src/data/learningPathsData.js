@@ -8,7 +8,7 @@ export const learningPaths = [
     id: 'learn-premier-league',
     title: 'Learn the Premier League',
     description:
-      'League hub, flagship clubs, headline players, then a Premier League quiz pool.',
+      'League page, flagship clubs, headline players, then a Premier League quiz pool.',
     difficulty: 'Beginner',
     tags: ['England', 'League'],
     collectionId: 'learn-premier-league',
@@ -23,7 +23,7 @@ export const learningPaths = [
         type: 'profile',
         entityType: 'league',
         id: 'premier-league',
-        title: 'Premier League hub',
+        title: 'Premier League league page',
         hint: 'Clubs, quiz-ready count, and league context in the database.',
       },
       {

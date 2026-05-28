@@ -63,7 +63,7 @@ export default function NationalTeamsPage() {
         </div>
         <div className="learning-hub-cta__actions">
           <Link to="/world-cup" className="btn btn--primary btn--small">
-            Open World Cup hub
+            World Cup 2026 prep
           </Link>
           <Link to="/hubs/players/by-nationality" className="btn btn--secondary btn--small">
             Players by nationality

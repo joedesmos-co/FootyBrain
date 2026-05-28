@@ -570,12 +570,12 @@ export default function PlayerProfile() {
           <span className="player-profile__quick-link--disabled">National team page coming</span>
         ) : null}
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Player club quiz</Link>}
-        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Team quiz hub</Link>
+        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Club quiz guide</Link>
         {player.nationality ? (
           <Link
             to={`/hubs/players/nationality/${encodeURIComponent(String(player.nationality).trim())}`}
           >
-            {player.nationality} players hub
+            {player.nationality} players
           </Link>
         ) : null}
         <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>

@@ -99,7 +99,7 @@ export function buildTournamentRelevanceContext(nationalTeam) {
 
   if (isFeatured) {
     parts.push(
-      `${nationalTeam.displayName} are featured on the FootyCompass World Cup 2026 prep hub (study draw, collections, and nation quizzes).`,
+      `${nationalTeam.displayName} are featured on the FootyCompass World Cup 2026 prep page (study draw, collections, and nation quizzes).`,
     );
   }
 
@@ -188,14 +188,14 @@ export function buildNationalQuizDiscoveryLinks(nationalTeam, opts = {}) {
     );
   }
 
-  add('World Cup 2026 hub', '/world-cup', 'Featured nations and draw prep');
+  add('World Cup 2026 prep', '/world-cup', 'Featured nations and draw');
   add('World Cup player quiz', '/quiz?theme=world-cup', 'International themed pool');
   add('International quiz', '/quiz?poolFocus=international&worldCup=prep', 'Multi-nation pool');
 
   const natPath = getNationalityHubPath(nationalTeam.country ?? nationalTeam.displayName);
   if (natPath) {
     add(
-      `${formatCountryLabel(nationalTeam.country)} players hub`,
+      `${formatCountryLabel(nationalTeam.country)} players`,
       natPath,
       'Browse by nationality',
     );
@@ -221,7 +221,7 @@ export function buildNationalQuizDiscoveryLinks(nationalTeam, opts = {}) {
   const topLeague = [...leagueCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
   if (topLeague) {
     add('Top league in pool', `/league/${topLeague}`, 'Where most linked players play');
-    add('League quiz hub', `/hubs/quizzes/league/${topLeague}`);
+    add('League quiz guide', `/hubs/quizzes/league/${topLeague}`);
   }
 
   add('Daily challenge', '/daily');

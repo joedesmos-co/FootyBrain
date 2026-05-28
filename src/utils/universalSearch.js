@@ -71,9 +71,9 @@ const PAGE_RESULTS = [
   {
     id: 'world-cup',
     name: 'World Cup 2026',
-    subtitle: 'Prep hub · nations, groups, quizzes',
+    subtitle: 'World Cup prep · nations & quizzes',
     path: '/world-cup',
-    searchAliases: ['world cup', 'wc', 'world cup 2026', 'worldcup', 'world cup hub'],
+    searchAliases: ['world cup', 'wc', 'world cup 2026', 'worldcup', 'world cup explore'],
   },
   {
     id: 'browse',
@@ -92,7 +92,7 @@ const PAGE_RESULTS = [
   {
     id: 'national-teams',
     name: 'National Teams',
-    subtitle: 'Live team hubs',
+    subtitle: 'National team pages',
     path: '/national-teams',
     searchAliases: ['national teams', 'nations', 'country teams', 'international teams'],
   },

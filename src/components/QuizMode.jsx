@@ -813,8 +813,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         <p>
           Try{' '}
           <Link to="/hubs/quizzes/themes">themed quiz pools</Link>,{' '}
-          <Link to="/club-quiz">club quizzes</Link>, search hubs like{' '}
-          <Link to="/hubs/quizzes">football player quizzes</Link>, or{' '}
+          <Link to="/club-quiz">club quizzes</Link>, or explore{' '}
+          <Link to="/hubs/quizzes">football quizzes by league</Link>, or{' '}
           <Link to="/hubs/quizzes/league/premier-league">Guess the Premier League player</Link>.
         </p>
       </header>
@@ -830,7 +830,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             {themedSourcePool ? ` (from ${themedSourcePool.length} themed)` : ''}
           </p>
           <Link to={`/hubs/quizzes/theme/${activeTheme.id}`} className="quiz-active-theme__link">
-            Theme hub page
+            Theme guide
           </Link>
         </aside>
       ) : null}

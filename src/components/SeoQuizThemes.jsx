@@ -68,7 +68,7 @@ export function SeoQuizThemesHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: 'Explore', to: '/hubs' },
           { label: 'Themed quizzes' },
         ]}
       />
@@ -106,7 +106,7 @@ export function SeoQuizThemesHub() {
                       to={`/hubs/quizzes/theme/${theme.id}`}
                       className="btn btn--secondary btn--small"
                     >
-                      Hub page
+                      Theme guide
                     </Link>
                     {viable ? (
                       <Link
@@ -173,7 +173,7 @@ export function SeoQuizThemeHub() {
         <BreadcrumbNav
           items={[
             { label: 'Home', to: '/' },
-            { label: 'Hubs', to: '/hubs' },
+            { label: 'Explore', to: '/hubs' },
             { label: 'Themed quizzes', to: '/hubs/quizzes/themes' },
             { label: 'Not found' },
           ]}
@@ -193,7 +193,7 @@ export function SeoQuizThemeHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: 'Explore', to: '/hubs' },
           { label: 'Themed quizzes', to: '/hubs/quizzes/themes' },
           { label: theme.label },
         ]}

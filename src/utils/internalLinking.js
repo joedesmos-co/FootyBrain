@@ -162,9 +162,9 @@ export function buildPlayerInternalLinks(ctx = {}) {
     add(`${formatCountryLabel(nationality)} players`, natPath);
   }
 
-  if (teamId) add('Team quiz hub', `/hubs/quizzes/team/${teamId}`);
+  if (teamId) add('Club quiz guide', `/hubs/quizzes/team/${teamId}`);
   if (quizReady && teamId) add('Club player quiz', `/quiz?team=${teamId}`);
-  if (leagueId) add('League quiz hub', `/hubs/quizzes/league/${leagueId}`);
+  if (leagueId) add('League quiz guide', `/hubs/quizzes/league/${leagueId}`);
   if (leagueId && quizReady) add('League player quiz', `/quiz?league=${leagueId}`);
 
   add('Discovery hubs', '/hubs');
@@ -184,7 +184,7 @@ export function buildLeagueInternalLinks(ctx = {}) {
     if (to) links.push({ label, to });
   };
 
-  if (lid) add('League quiz hub', `/hubs/quizzes/league/${lid}`);
+  if (lid) add('League quiz guide', `/hubs/quizzes/league/${lid}`);
   if (quizReady && lid) add('League player quiz', `/quiz?league=${lid}`);
   if (lid) add('Stadium quiz', getClubQuizPlayHref('stadium', { leagueId: lid }));
   if (lid) add('Rivalry quiz', getClubQuizPlayHref('rivalry', { leagueId: lid }));
@@ -223,13 +223,13 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
     if (quizReady) {
       add('National team quiz', `/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`);
     }
-    add('World Cup hub', '/world-cup');
+    add('World Cup 2026 prep', '/world-cup');
     add('World Cup quiz pool', '/quiz?theme=world-cup');
   }
 
   const country = nationalTeam?.country ?? nationalTeam?.displayName;
   const natPath = getNationalityHubPath(country);
-  if (natPath) add(`${formatCountryLabel(country)} player hub`, natPath);
+  if (natPath) add(`${formatCountryLabel(country)} players`, natPath);
 
   if (nationalTeam?.rivalIds?.length) {
     for (const rivalId of nationalTeam.rivalIds.slice(0, 2)) {
@@ -248,8 +248,8 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
   }
   const topLeague = [...leagueCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
   if (topLeague) {
-    add('League hub (top pool)', `/league/${topLeague}`);
-    add('League quiz hub', `/hubs/quizzes/league/${topLeague}`);
+    add('Top league', `/league/${topLeague}`);
+    add('League quiz guide', `/hubs/quizzes/league/${topLeague}`);
   }
 
   add('All national teams', '/national-teams');

@@ -120,7 +120,7 @@ export default function WorldCupHubPage() {
       <aside className="world-cup-hub__prep" aria-label="World Cup prep notice">
         <p className="world-cup-hub__prep-title">Prep mode</p>
         <p>{WORLD_CUP_HUB_META.prepNote}</p>
-        <p className="world-cup-hub__stats" aria-label="Hub stats">
+        <p className="world-cup-hub__stats" aria-label="World Cup overview">
           {stats.groupCount} groups · {stats.teamCount} nations in the 2026 draw ·{' '}
           {stats.quizViableCount} nations with quizzes
         </p>

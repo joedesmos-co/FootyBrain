@@ -160,9 +160,9 @@ export function buildKeepExploringLinks(ctx = {}) {
   const lid = leagueId ?? team?.leagueId ?? league?.id ?? '';
 
   if (team?.id) add(`${team.name} squad`, `/team/${team.id}`);
-  if (team?.id) add('Team quiz hub', `/hubs/quizzes/team/${team.id}`);
-  if (lid) add(ctx.leagueName ? `${ctx.leagueName} hub` : 'League hub', `/league/${lid}`);
-  if (lid) add('League quiz hub', `/hubs/quizzes/league/${lid}`);
+  if (team?.id) add('Club quiz guide', `/hubs/quizzes/team/${team.id}`);
+  if (lid) add(ctx.leagueName ? `${ctx.leagueName} league` : 'League page', `/league/${lid}`);
+  if (lid) add('League quiz guide', `/hubs/quizzes/league/${lid}`);
 
   if (team?.rivals?.length && leagueTeams?.length) {
     for (const { label, team: rival } of resolveRivalEntries(team.rivals, leagueTeams).slice(0, 2)) {
@@ -172,12 +172,12 @@ export function buildKeepExploringLinks(ctx = {}) {
 
   if (nationalTeamId) {
     add('National team', `/national-team/${nationalTeamId}`);
-    add('World Cup hub', '/world-cup');
+    add('World Cup 2026', '/world-cup');
   }
 
   const natLabel = nationality ?? team?.country ?? league?.country;
   const natPath = getNationalityHubPath(natLabel);
-  if (natPath) add(`${natLabel} players hub`, natPath);
+  if (natPath) add(`${natLabel} players`, natPath);
 
   if (league?.country && !nationalTeamId) {
     const ntId = findNationalTeamIdForCountry(league.country);
@@ -194,7 +194,7 @@ export function buildKeepExploringLinks(ctx = {}) {
   }
 
   add('Daily challenge', '/daily');
-  add('Discovery hubs', '/hubs');
+  add('Explore football', '/hubs');
 
   return links.slice(0, 10);
 }

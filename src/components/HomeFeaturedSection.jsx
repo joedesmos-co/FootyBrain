@@ -186,7 +186,7 @@ export default function TodaysPicksSection({
           </ul>
           {isInternational ? (
             <p className="today-picks__footer-link">
-              <Link to="/world-cup">World Cup hub</Link>
+              <Link to="/world-cup">World Cup 2026</Link>
               {' · '}
               <Link to="/learning-paths">Learning paths</Link>
             </p>

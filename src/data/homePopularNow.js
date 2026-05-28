@@ -24,14 +24,14 @@ const TOP_CLUB_LINKS = [
   { to: '/team/arsenal', label: 'Arsenal', hint: 'Premier League' },
   { to: '/team/liverpool', label: 'Liverpool', hint: 'Premier League' },
   { to: '/team/manchester-city', label: 'Manchester City', hint: 'Premier League' },
-  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona quiz hub', hint: 'Player pool' },
+  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona quiz guide', hint: 'Player pool' },
 ];
 
 const DISCOVER_LINKS = [
-  { to: '/hubs/quizzes/league/premier-league', label: 'Premier League quiz hub', hint: 'League study' },
-  { to: '/hubs/quizzes/clubs/stadium', label: 'Guess club by stadium', hint: 'Club quiz SEO' },
-  { to: '/hubs/players/by-nationality', label: 'Players by nationality', hint: 'Browse hubs' },
-  { to: '/world-cup', label: 'World Cup 2026 hub', hint: 'Nations & prep' },
+  { to: '/hubs/quizzes/league/premier-league', label: 'Premier League quiz guide', hint: 'League study' },
+  { to: '/hubs/quizzes/clubs/stadium', label: 'Guess club by stadium', hint: 'Club quiz' },
+  { to: '/hubs/players/by-nationality', label: 'Players by nationality', hint: 'Explore' },
+  { to: '/world-cup', label: 'World Cup 2026 prep', hint: 'Nations & quizzes' },
   { to: '/national-teams', label: 'National teams', hint: 'International squads' },
   { to: '/collections', label: 'Study collections', hint: 'Themed lists' },
 ];
@@ -79,7 +79,7 @@ export function getHomePopularSections() {
     },
     {
       id: 'leagues',
-      title: 'League hubs',
+      title: 'Explore by league',
       subtitle: 'Squads, quizzes, and league context',
       items: getHubLeagues().map((league) => ({
         to: `/league/${league.id}`,
@@ -97,7 +97,7 @@ export function getHomePopularSections() {
       title: 'World Cup & national teams',
       subtitle: 'International squads from club football — not official rosters',
       items: [
-        { to: '/world-cup', label: 'World Cup 2026 prep hub', hint: 'Featured nations' },
+        { to: '/world-cup', label: 'World Cup 2026 prep', hint: 'Featured nations' },
         ...FEATURED_NATION_LINKS.slice(0, 6).map((nation) => ({
           to: `/national-team/${nation.id}`,
           label: nation.label,

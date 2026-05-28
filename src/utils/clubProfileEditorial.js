@@ -186,15 +186,15 @@ export function buildClubQuizDiscoveryLinks(team, opts = {}) {
     });
   }
   links.push({
-    label: 'Team quiz hub',
+    label: 'Club quiz guide',
     to: `/hubs/quizzes/team/${team.id}`,
     hint: 'Filters and difficulty',
   });
 
   if (team.leagueId) {
-    links.push({ label: `${leagueName || 'League'} hub`, to: `/league/${team.leagueId}` });
+    links.push({ label: `${leagueName || 'League'} league`, to: `/league/${team.leagueId}` });
     links.push({
-      label: 'League quiz hub',
+      label: 'League quiz guide',
       to: `/hubs/quizzes/league/${team.leagueId}`,
     });
     if (hasLeagueQuiz) {

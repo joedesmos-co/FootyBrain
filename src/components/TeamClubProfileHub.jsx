@@ -172,7 +172,7 @@ export default function TeamClubProfileHub({
           </h2>
           <p className="team-club-hub__prose">{profile.league}</p>
           <p className="team-fan-guide__meta">
-            <Link to={`/league/${team.leagueId}`}>Open {leagueName} hub</Link>
+            <Link to={`/league/${team.leagueId}`}>Explore {leagueName}</Link>
             {' · '}
             <Link to={`/hubs/quizzes/league/${team.leagueId}`}>League quiz page</Link>
           </p>

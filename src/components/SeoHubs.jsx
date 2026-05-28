@@ -18,6 +18,23 @@ import { getManifestLeague } from '../data/contentManifest';
 import LeagueBadge from './LeagueBadge';
 import BreadcrumbNav from './BreadcrumbNav';
 import { NATIONALITY_HUB_INDEX_LIMIT } from '../utils/internalLinking.js';
+import {
+  EXPLORE_INDEX_EYEBROW,
+  EXPLORE_INDEX_LEDE,
+  EXPLORE_INDEX_TITLE,
+  EXPLORE_NAV_LABEL,
+  EXPLORE_PATH,
+  EXPLORE_QUIZZES_LEDE,
+  EXPLORE_QUIZZES_TITLE,
+  LINK_CLUB_QUIZ_GUIDES,
+  LINK_EXPLORE_QUIZZES,
+  LINK_LEARN_PLAYERS,
+  LINK_PLAYERS_BY_NATIONALITY,
+  LINK_THEMED_QUIZZES,
+  LINK_WORLD_CUP_PREP,
+  exploreBreadcrumbs,
+  leagueQuizGuideLabel,
+} from '../utils/exploreCopy.js';
 
 function useLandingSeo({ title, description, canonical, links, faqs }) {
   useEffect(() => {
@@ -55,7 +72,7 @@ function yearsBetween(earlier, later) {
   return hadBirthday ? years : years - 1;
 }
 
-function HubSection({ title, children, linkTo, linkLabel }) {
+function ExploreSection({ title, children, linkTo, linkLabel }) {
   return (
     <section className="collections-page__section" aria-label={title}>
       <div className="collections-page__section-head">
@@ -74,11 +91,11 @@ function HubSection({ title, children, linkTo, linkLabel }) {
 export function SeoHubsIndex() {
   const { pathname } = useLocation();
   const canonical = canonicalUrlForPath(pathname);
-  const title = pageTitle('Football hubs');
+  const title = pageTitle('Explore football — quizzes & players');
   const description =
-    'Indexable football discovery hubs: quizzes, players by nationality, best young footballers, and World Cup prep.';
+    'Explore football on FootyCompass: quizzes by league and club, players by nationality, young stars, and World Cup prep.';
   const links = [
-    { label: 'Quizzes hub', url: canonicalUrlForPath('/hubs/quizzes') },
+    { label: 'Football quizzes', url: canonicalUrlForPath('/hubs/quizzes') },
     { label: 'Players by nationality', url: canonicalUrlForPath('/hubs/players/by-nationality') },
     { label: 'Best young footballers', url: canonicalUrlForPath('/hubs/players/best-young-footballers') },
     { label: 'World Cup player quiz', url: canonicalUrlForPath('/hubs/world-cup/player-quiz') },
@@ -91,59 +108,63 @@ export function SeoHubsIndex() {
     links,
     faqs: [
       {
-        question: 'What are FootyCompass hubs?',
+        question: 'What is Explore on FootyCompass?',
         answer:
-          'Hubs are indexable landing pages designed for search and browsing. They link into player, club, league, and quiz pages to help you discover content quickly.',
+          'Explore groups quizzes, nationalities, and study topics so you can jump into player and club profiles, then play without hunting through menus.',
       },
       {
-        question: 'Are hubs updated live?',
+        question: 'Is the dataset updated live?',
         answer: `No—FootyCompass ships with a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
       },
     ],
   });
 
   return (
-    <div className="page collections-page">
-      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs' }]} />
+    <div className="page collections-page explore-page">
+      <BreadcrumbNav items={exploreBreadcrumbs()} />
       <header className="page-header">
-        <p className="page-header__eyebrow">Search hubs</p>
-        <h1>Football discovery hubs</h1>
-        <p>
-          Built for search and browsing: focused pages that link into player, club, league, and quiz
-          content.
-        </p>
+        <p className="page-header__eyebrow">{EXPLORE_INDEX_EYEBROW}</p>
+        <h1>{EXPLORE_INDEX_TITLE}</h1>
+        <p>{EXPLORE_INDEX_LEDE}</p>
         <p className="page-header__meta">
-          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
+          Dataset updated <strong>{DATASET_META.dataAsOf}</strong> · No account required
         </p>
       </header>
 
-      <ul className="card-grid" aria-label="Hubs">
-        <li className="player-card">
+      <ul className="explore-index-grid" aria-label="Explore topics">
+        <li className="explore-index-card">
           <h3>Quizzes</h3>
-          <p>Find player quizzes by league and club.</p>
+          <p>Player and club quizzes by league, theme, and format.</p>
           <Link to="/hubs/quizzes" className="btn btn--primary btn--small">
-            Open quizzes hub
+            {LINK_EXPLORE_QUIZZES}
           </Link>
         </li>
-        <li className="player-card">
-          <h3>Players by nationality</h3>
-          <p>Browse football players grouped by nationality.</p>
+        <li className="explore-index-card">
+          <h3>By nationality</h3>
+          <p>Browse football players grouped by country.</p>
           <Link to="/hubs/players/by-nationality" className="btn btn--primary btn--small">
-            Browse nationalities
+            {LINK_PLAYERS_BY_NATIONALITY}
           </Link>
         </li>
-        <li className="player-card">
-          <h3>Best young footballers</h3>
-          <p>High-importance young players in the current dataset.</p>
+        <li className="explore-index-card">
+          <h3>Young players</h3>
+          <p>High-importance U23 players in the dataset.</p>
           <Link to="/hubs/players/best-young-footballers" className="btn btn--primary btn--small">
-            View young players
+            Best young footballers
           </Link>
         </li>
-        <li className="player-card">
-          <h3>World Cup prep</h3>
-          <p>International and World Cup discovery paths and quizzes.</p>
+        <li className="explore-index-card">
+          <h3>World Cup</h3>
+          <p>International quizzes and nation study paths.</p>
           <Link to="/hubs/world-cup/player-quiz" className="btn btn--primary btn--small">
-            World Cup hub
+            {LINK_WORLD_CUP_PREP}
+          </Link>
+        </li>
+        <li className="explore-index-card">
+          <h3>Learn players</h3>
+          <p>A short study route before you quiz.</p>
+          <Link to="/hubs/learn/football-players" className="btn btn--secondary btn--small">
+            {LINK_LEARN_PLAYERS}
           </Link>
         </li>
       </ul>
@@ -174,7 +195,7 @@ export function SeoQuizzesHub() {
       {
         question: 'How do the football player quizzes work?',
         answer:
-          'Open a league or club hub to explore players, then play on the Quizzes page to guess players from hints.',
+          'Open a league or club quiz guide to browse players, then play on the Quizzes page to guess from hints.',
       },
       {
         question: 'Do I need an account?',
@@ -184,39 +205,39 @@ export function SeoQuizzesHub() {
   });
 
   return (
-    <div className="page collections-page">
-      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Quizzes' }]} />
+    <div className="page collections-page explore-page">
+      <BreadcrumbNav items={exploreBreadcrumbs([{ label: 'Quizzes' }])} />
       <header className="page-header">
         <p className="page-header__eyebrow">Quizzes</p>
-        <h1>Football quizzes</h1>
+        <h1>{EXPLORE_QUIZZES_TITLE}</h1>
         <p>
-          Player quizzes (guess from hints) and{' '}
-          <Link to="/hubs/quizzes/clubs">club quizzes</Link> (stadiums, leagues, rivalries). Pick a
-          hub below or jump straight to{' '}
+          {EXPLORE_QUIZZES_LEDE}{' '}
+          <Link to="/hubs/quizzes/clubs">Club quizzes</Link> cover stadiums, leagues, and rivalries.
+          Pick a league below or jump to{' '}
           <Link to="/quiz">player quiz</Link> / <Link to="/club-quiz">club quiz</Link>.
         </p>
         <p className="page-header__meta">
-          Last updated: <strong>{DATASET_META.dataAsOf}</strong>
+          Dataset updated <strong>{DATASET_META.dataAsOf}</strong>
         </p>
       </header>
 
-      <div className="empty-state__actions">
-        <Link to="/hubs/quizzes/themes" className="btn btn--primary">
-          Themed quiz pools
+      <div className="explore-cta-row">
+        <Link to="/quiz" className="btn btn--primary">
+          Play player quiz
         </Link>
-        <Link to="/hubs/quizzes/clubs" className="btn btn--primary">
-          Club quizzes
-        </Link>
-        <Link to="/quiz" className="btn btn--secondary">
-          Player quiz
-        </Link>
-        <Link to="/club-quiz" className="btn btn--secondary">
+        <Link to="/club-quiz" className="btn btn--primary">
           Play club quiz
+        </Link>
+        <Link to="/hubs/quizzes/themes" className="btn btn--secondary">
+          {LINK_THEMED_QUIZZES}
+        </Link>
+        <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
+          {LINK_CLUB_QUIZ_GUIDES}
         </Link>
       </div>
 
-      <HubSection title="Player quizzes by league">
-        <ul className="card-grid" aria-label="League quiz hubs">
+      <ExploreSection title="Player quizzes by league">
+        <ul className="card-grid explore-league-grid" aria-label="League quiz guides">
           {leagues
             .filter((league) => league?.id && !isExternalLeagueId(league.id))
             .map((league) => (
@@ -235,7 +256,7 @@ export function SeoQuizzesHub() {
                     to={`/hubs/quizzes/league/${league.id}`}
                     className="btn btn--primary btn--small"
                   >
-                    Open league quiz page
+                    {leagueQuizGuideLabel(getLeagueDisplayName(league))}
                   </Link>
                   <Link to="/quiz" className="btn btn--secondary btn--small" style={{ marginLeft: '0.5rem' }}>
                     Play quizzes
@@ -244,7 +265,7 @@ export function SeoQuizzesHub() {
               </li>
             ))}
         </ul>
-      </HubSection>
+      </ExploreSection>
     </div>
   );
 }
@@ -281,9 +302,9 @@ export function SeoLeagueQuizHub() {
     links,
     faqs: [
       {
-        question: `What is the “Guess the ${leagueName} player” hub?`,
+        question: `What is the “Guess the ${leagueName} player” quiz guide?`,
         answer:
-          'It’s a landing page to browse clubs and players in the league, with direct links into profiles and the Quizzes page.',
+          'A focused page to browse clubs and players in the league, with links into profiles and the main quiz.',
       },
       {
         question: 'Is this an official league quiz?',
@@ -297,7 +318,7 @@ export function SeoLeagueQuizHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'Quizzes', to: '/hubs/quizzes' },
           { label: leagueName },
         ]}
@@ -314,7 +335,7 @@ export function SeoLeagueQuizHub() {
         </p>
       </header>
 
-      <HubSection title={`${leagueName} clubs`}>
+      <ExploreSection title={`${leagueName} clubs`}>
         <ul className="card-grid" aria-label={`${leagueName} clubs`}>
           {topTeams.map((team) => (
             <li key={team.id}>
@@ -322,9 +343,9 @@ export function SeoLeagueQuizHub() {
             </li>
           ))}
         </ul>
-      </HubSection>
+      </ExploreSection>
 
-      <HubSection title={`${leagueName} players (start here)`} linkTo={`/league/${leagueId}`} linkLabel="League page">
+      <ExploreSection title={`${leagueName} players (start here)`} linkTo={`/league/${leagueId}`} linkLabel="League page">
         <ul className="card-grid" aria-label={`${leagueName} players`}>
           {topPlayers.map((player) => (
             <li key={player.id}>
@@ -343,7 +364,7 @@ export function SeoLeagueQuizHub() {
             Browse {leagueName} players
           </Link>
         </div>
-      </HubSection>
+      </ExploreSection>
 
       <EntityRelatedNav
         title="Related pages"
@@ -389,20 +410,20 @@ export function SeoTeamQuizHub() {
     faqs: team
       ? [
           {
-            question: `How do I use the ${teamName} player quiz hub?`,
+            question: `How do I use the ${teamName} player quiz guide?`,
             answer:
               'Start by opening the club profile to learn the squad, then go to Quizzes to play and reinforce recognition.',
           },
           {
             question: 'Is the squad list live?',
-            answer: `No—this hub is based on a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
+            answer: `No—this page uses a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
           },
         ]
       : [
           {
-            question: 'How do club quiz hubs work?',
+            question: 'How do club quiz guides work?',
             answer:
-              'Club hubs link to key player profiles and the main Quizzes page. Use them to learn a squad quickly before playing.',
+              'Each guide links to key player profiles and the main Quizzes page—study a squad quickly before playing.',
           },
         ],
   });
@@ -410,7 +431,7 @@ export function SeoTeamQuizHub() {
   if (!team) {
     return (
       <div className="page">
-        <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Quizzes', to: '/hubs/quizzes' }, { label: 'Club' }]} />
+        <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH }, { label: 'Quizzes', to: '/hubs/quizzes' }, { label: 'Club' }]} />
         <header className="page-header">
           <h1>Club player quiz</h1>
           <p>Club not found. Try the main quiz page or browse clubs.</p>
@@ -432,7 +453,7 @@ export function SeoTeamQuizHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'Quizzes', to: '/hubs/quizzes' },
           { label: teamName },
         ]}
@@ -452,7 +473,7 @@ export function SeoTeamQuizHub() {
         </p>
       </header>
 
-      <HubSection title="Key players (from the current dataset)" linkTo={`/team/${team.id}`} linkLabel="Club profile">
+      <ExploreSection title="Key players (from the current dataset)" linkTo={`/team/${team.id}`} linkLabel="Club profile">
         <ul className="card-grid" aria-label={`${teamName} players`}>
           {topPlayers.map((player) => (
             <li key={player.id}>
@@ -471,7 +492,7 @@ export function SeoTeamQuizHub() {
             {leagueName}
           </Link>
         </div>
-      </HubSection>
+      </ExploreSection>
 
       <EntityRelatedNav
         title="Related pages"
@@ -480,7 +501,7 @@ export function SeoTeamQuizHub() {
             { label: `${teamName} squad`, to: `/team/${team.id}` },
             { label: `${leagueName} league`, to: `/league/${team.leagueId}` },
             { label: 'Club player quiz', to: `/quiz?team=${team.id}` },
-            { label: 'Discovery hubs', to: '/hubs' },
+            { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           ],
           8,
         )}
@@ -536,7 +557,7 @@ export function SeoPlayersByNationalityHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'Players by nationality' },
         ]}
       />
@@ -551,7 +572,7 @@ export function SeoPlayersByNationalityHub() {
         </p>
       </header>
 
-      <HubSection title="Top nationalities in the dataset">
+      <ExploreSection title="Top nationalities in the dataset">
         <ul className="card-grid" aria-label="Nationalities">
           {nations.slice(0, 48).map((row) => (
             <li key={row.nation} className="player-card">
@@ -587,7 +608,7 @@ export function SeoPlayersByNationalityHub() {
             </ul>
           </section>
         ) : null}
-      </HubSection>
+      </ExploreSection>
     </div>
   );
 }
@@ -648,7 +669,7 @@ export function SeoNationalityPlayersHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'Players by nationality', to: '/hubs/players/by-nationality' },
           { label: formatCountryLabel(nationLabel) },
         ]}
@@ -664,7 +685,7 @@ export function SeoNationalityPlayersHub() {
         </p>
       </header>
 
-      <HubSection title="Players (start here)">
+      <ExploreSection title="Players (start here)">
         <ul className="card-grid" aria-label={`${nationLabel} players`}>
           {topPlayers.map((player) => (
             <li key={player.id}>
@@ -680,7 +701,7 @@ export function SeoNationalityPlayersHub() {
             All nationalities
           </Link>
         </div>
-      </HubSection>
+      </ExploreSection>
 
       <EntityRelatedNav title="Related pages" links={hubRelatedLinks} />
     </div>
@@ -721,7 +742,7 @@ export function SeoBestYoungFootballersHub() {
       {
         question: 'How are “best young footballers” selected?',
         answer:
-          'This hub uses players with birth dates in the dataset and ranks them by importance score to create a practical shortlist.',
+          'This list uses players with birth dates in the dataset and ranks them by importance score.',
       },
       {
         question: 'Is the list definitive?',
@@ -736,7 +757,7 @@ export function SeoBestYoungFootballersHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'Best young footballers' },
         ]}
       />
@@ -752,7 +773,7 @@ export function SeoBestYoungFootballersHub() {
         </p>
       </header>
 
-      <HubSection title="Young players (≤ 23)">
+      <ExploreSection title="Young players (≤ 23)">
         <ul className="card-grid" aria-label="Young players">
           {youngPlayers.slice(0, 30).map((row) => (
             <li key={row.player.id}>
@@ -768,7 +789,7 @@ export function SeoBestYoungFootballersHub() {
             Browse players
           </Link>
         </div>
-      </HubSection>
+      </ExploreSection>
     </div>
   );
 }
@@ -778,9 +799,9 @@ export function SeoWorldCupPlayerQuizHub() {
   const canonical = canonicalUrlForPath(pathname);
   const title = pageTitle('World Cup player quiz');
   const description =
-    'World Cup player quiz hub: explore featured nations and players, then play international quizzes and prep sessions.';
+    'World Cup player quiz: explore featured nations and players, then play international quizzes and prep sessions.';
   const links = [
-    { label: 'World Cup hub', url: canonicalUrlForPath('/world-cup') },
+    { label: 'World Cup 2026 prep', url: canonicalUrlForPath('/world-cup') },
     { label: 'National teams', url: canonicalUrlForPath('/national-teams') },
     { label: 'Quizzes', url: canonicalUrlForPath('/quiz') },
   ];
@@ -793,12 +814,12 @@ export function SeoWorldCupPlayerQuizHub() {
       {
         question: 'Is this an official World Cup roster?',
         answer:
-          'No. This hub is for learning and prep and is based on a dataset snapshot, not official tournament squads.',
+          'No. This page is for learning and prep and uses a dataset snapshot—not official tournament squads.',
       },
       {
         question: 'How should I use this for prep?',
         answer:
-          'Start with the World Cup hub and national teams, open a few player profiles, then play quizzes to practice recognition.',
+          'Start with World Cup prep and national teams, open player profiles, then play quizzes to practice recognition.',
       },
     ],
   });
@@ -808,7 +829,7 @@ export function SeoWorldCupPlayerQuizHub() {
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
-          { label: 'Hubs', to: '/hubs' },
+          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
           { label: 'World Cup player quiz' },
         ]}
       />
@@ -816,7 +837,7 @@ export function SeoWorldCupPlayerQuizHub() {
         <p className="page-header__eyebrow">World Cup</p>
         <h1>World Cup player quiz</h1>
         <p>
-          Start with the <Link to="/world-cup">World Cup hub</Link>, then use{' '}
+          Start with <Link to="/world-cup">World Cup 2026 prep</Link>, then use{' '}
           <Link to="/quiz">Quizzes</Link> to play international sessions.
         </p>
         <p className="page-header__meta">
@@ -826,7 +847,7 @@ export function SeoWorldCupPlayerQuizHub() {
 
       <div className="empty-state__actions">
         <Link to="/world-cup" className="btn btn--primary">
-          Open World Cup hub
+          {LINK_WORLD_CUP_PREP}
         </Link>
         <Link to="/quiz" className="btn btn--secondary">
           Play quizzes
@@ -872,7 +893,7 @@ export function SeoLearnFootballPlayersHub() {
 
   return (
     <div className="page collections-page">
-      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Learn football players' }]} />
+      <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH }, { label: 'Learn football players' }]} />
       <header className="page-header">
         <p className="page-header__eyebrow">Start here</p>
         <h1>Learn football players</h1>
@@ -884,7 +905,7 @@ export function SeoLearnFootballPlayersHub() {
         </p>
       </header>
 
-      <HubSection title="A fast route to learn players">
+      <ExploreSection title="A fast route to learn players">
         <ul className="card-grid" aria-label="Learning steps">
           <li className="player-card">
             <h3>1) Browse players</h3>
@@ -915,7 +936,7 @@ export function SeoLearnFootballPlayersHub() {
             </Link>
           </li>
         </ul>
-      </HubSection>
+      </ExploreSection>
     </div>
   );
 }

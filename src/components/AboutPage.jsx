@@ -78,7 +78,7 @@ export default function AboutPage() {
             Play quizzes
           </Link>
           <Link to="/hubs" className="btn btn--secondary">
-            Discovery hubs
+            Explore football
           </Link>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function AboutPage() {
         <h2 id="about-eeat-title">Editorial standards (E-E-A-T)</h2>
         <p>
           We aim for pages that teach something useful: original quiz hints, fan-context blurbs,
-          learning paths, and discovery hubs—not empty SEO shells. Thin or duplicate pages are
+          learning paths, and explore pages—not empty placeholders. Thin or duplicate pages are
           expanded when we find gaps in our audits.
         </p>
         <p>
