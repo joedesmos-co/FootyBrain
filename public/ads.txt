@@ -1,4 +1,1 @@
-# FootyCompass ads.txt
-# Placeholder for future ad network declarations (e.g. Google AdSense).
-# Do not add publisher IDs here until monetization is configured.
-
+google.com, pub-8017727208750483, DIRECT, f08c47fec0942fa0
