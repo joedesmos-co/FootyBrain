@@ -20,8 +20,12 @@ import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
-import ProfileKeepExploring from './ProfileKeepExploring';
+import EntityRelatedNav from './EntityRelatedNav';
 import { buildNationalIdentitySection } from '../utils/entityEditorialSynthesis';
+import {
+  buildNationalTeamInternalLinks,
+  getNationalityHubPath,
+} from '../utils/internalLinking.js';
 import { isThinNationalTeam } from '../utils/entityDepthAudit';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
@@ -186,6 +190,9 @@ export default function NationalTeamProfile() {
   const nationalIdentityBlurb = buildNationalIdentitySection(nationalTeam);
   const showNationalIdentity =
     isThinNationalTeam(nationalTeam, 4) || !String(nationalTeam.shortHistory ?? '').trim();
+  const nationalityHubPath = getNationalityHubPath(
+    nationalTeam.country ?? nationalTeam.displayName,
+  );
 
   return (
     <div className="page national-team-profile">
@@ -222,6 +229,11 @@ export default function NationalTeamProfile() {
               World Cup hub
             </Link>
           ) : null}
+          {nationalityHubPath ? (
+            <Link to={nationalityHubPath} className="btn btn--secondary">
+              {nationalTeam.country ?? nationalTeam.displayName} players hub
+            </Link>
+          ) : null}
           {canLaunchNationalQuiz ? (
             <>
               <Link
@@ -252,12 +264,11 @@ export default function NationalTeamProfile() {
         </section>
       ) : null}
 
-      <ProfileKeepExploring
-        variant="player"
-        entityId={nationalTeam.id}
-        nationalTeamId={nationalTeam.id}
-        quizReady={canLaunchNationalQuiz}
-        lead={`Browse ${nationalTeam.displayName} linked players, then test recognition with national-team and World Cup quiz routes.`}
+      <EntityRelatedNav
+        links={buildNationalTeamInternalLinks({
+          nationalTeam,
+          quizReady: canLaunchNationalQuiz,
+        })}
       />
 
       {squadLoading && squadState.total >= 80 ? (

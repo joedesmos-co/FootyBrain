@@ -9,6 +9,7 @@ import { getWorldCupLearningPaths, learningPaths } from '../data/learningPathsDa
 import { useCollectionProgress } from '../hooks/useCollectionProgress';
 import CollectionCard from './CollectionCard';
 import LearningPathCard from './LearningPathCard';
+import BreadcrumbNav from './BreadcrumbNav';
 
 export default function CollectionsPage() {
   const { getProgress } = useCollectionProgress();
@@ -28,6 +29,12 @@ export default function CollectionsPage() {
 
   return (
     <div className="collections-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Collections & paths' },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Study tools</p>
         <h1>Collections & paths</h1>

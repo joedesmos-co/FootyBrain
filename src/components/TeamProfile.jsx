@@ -29,7 +29,10 @@ import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
+import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
+import { dedupeInternalLinks } from '../utils/internalLinking.js';
+import { buildKeepExploringLinks } from '../utils/topImportanceProfile';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
 import {
   buildTopTeamMetaDescription,
@@ -370,7 +373,20 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             team={team}
             leagueTeams={leagueTeams}
           />
-        ) : null}
+        ) : (
+          <EntityRelatedNav
+            links={dedupeInternalLinks(
+              buildKeepExploringLinks({
+                team,
+                leagueId: team.leagueId,
+                leagueName,
+                leagueTeams,
+                quizReady: hasTeamQuiz,
+              }),
+              8,
+            )}
+          />
+        )}
 
         {!isExternalStub ? (
           <details className="fan-path-details info-card info-card--wide">

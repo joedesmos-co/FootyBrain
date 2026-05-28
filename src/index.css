@@ -2122,6 +2122,71 @@ input:focus-visible {
   color: var(--color-muted) !important;
 }
 
+.entity-related-nav__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+}
+
+.entity-related-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entity-related-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-soft);
+  font-size: 0.84rem;
+  text-decoration: none;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.entity-related-nav__link:hover,
+.entity-related-nav__link:focus-visible {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.1);
+  outline: none;
+}
+
+.hub-more-links {
+  margin-top: 1.25rem;
+}
+
+.hub-more-links__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.hub-more-links__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hub-more-links__list a {
+  font-size: 0.88rem;
+}
+
+.league-discovery__list--linked a {
+  color: var(--color-accent, #34d399);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .player-visual--thumb {
   width: 3.25rem;
   height: 4rem;

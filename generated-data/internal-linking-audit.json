@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-05-28T20:40:51.533Z",
+  "sitemapUrlCount": 4991,
+  "zeroInboundCount": 4966,
+  "weakInboundCount": 7,
+  "zeroInboundSample": [
+    "/compare-clubs",
+    "/hubs/quizzes/theme/wonderkids",
+    "/hubs/quizzes/theme/legends",
+    "/hubs/quizzes/theme/cult-heroes",
+    "/hubs/quizzes/theme/top-scorers",
+    "/hubs/quizzes/theme/champions-league",
+    "/hubs/quizzes/theme/world-cup",
+    "/hubs/quizzes/theme/veterans",
+    "/hubs/quizzes/theme/premier-league",
+    "/hubs/quizzes/theme/la-liga",
+    "/hubs/quizzes/theme/serie-a",
+    "/hubs/quizzes/theme/bundesliga",
+    "/hubs/quizzes/theme/derby-rivalries",
+    "/hubs/quizzes/clubs/stadium",
+    "/hubs/quizzes/clubs/league",
+    "/hubs/quizzes/clubs/rivalry",
+    "/hubs/quizzes/clubs/country",
+    "/hubs/quizzes/clubs/player-to-club",
+    "/hubs/quizzes/clubs/history",
+    "/hubs/quizzes/clubs/trophy",
+    "/hubs/quizzes/clubs/kit",
+    "/league/premier-league",
+    "/league/la-liga",
+    "/hubs/quizzes/league/la-liga",
+    "/league/bundesliga",
+    "/hubs/quizzes/league/bundesliga",
+    "/league/serie-a",
+    "/hubs/quizzes/league/serie-a",
+    "/league/ligue-1",
+    "/hubs/quizzes/league/ligue-1",
+    "/league/eredivisie",
+    "/hubs/quizzes/league/eredivisie",
+    "/league/mls",
+    "/hubs/quizzes/league/mls",
+    "/league/brasileirao",
+    "/hubs/quizzes/league/brasileirao",
+    "/team/manchester-city",
+    "/hubs/quizzes/team/manchester-city",
+    "/team/arsenal",
+    "/hubs/quizzes/team/arsenal"
+  ],
+  "weakInboundSample": [
+    {
+      "path": "/hubs/players/best-young-footballers",
+      "inbound": 1
+    },
+    {
+      "path": "/hubs/world-cup/player-quiz",
+      "inbound": 1
+    },
+    {
+      "path": "/hubs/learn/football-players",
+      "inbound": 1
+    },
+    {
+      "path": "/hubs/quizzes/league/premier-league",
+      "inbound": 1
+    },
+    {
+      "path": "/league/external",
+      "inbound": 1
+    },
+    {
+      "path": "/learning-paths/learn-world-cup-legends",
+      "inbound": 1
+    },
+    {
+      "path": "/learning-paths/learn-tournament-stars",
+      "inbound": 1
+    }
+  ],
+  "notes": [
+    "Heuristic only: counts static to=/href in src, not runtime nav or footer in App.jsx.",
+    "Entity profiles gain inbound via EntityRelatedNav, hubs, and browse cards."
+  ]
+}

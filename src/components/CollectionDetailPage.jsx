@@ -24,6 +24,7 @@ import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import BreadcrumbNav from './BreadcrumbNav';
 
 function XpToast({ message, onDismiss }) {
   if (!message) return null;
@@ -209,11 +210,13 @@ export default function CollectionDetailPage() {
     <div className="collections-page collections-page--detail">
       <XpToast message={xpToast} onDismiss={() => setXpToast('')} />
 
-      <nav className="collections-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/collections">Collections</Link>
-        <span aria-hidden="true"> / </span>
-        <span>{collection.title}</span>
-      </nav>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Collections', to: '/collections' },
+          { label: collection.title },
+        ]}
+      />
 
       <header className="page-header collection-detail-header">
         <div className="collection-detail-header__meta">

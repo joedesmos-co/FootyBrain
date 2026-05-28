@@ -6,11 +6,19 @@ import { DATASET_META } from '../data/datasetMeta';
 import { formatCountryLabel, getLeagueDisplayName, isExternalLeagueId } from '../utils/footballDisplay';
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
+import EntityRelatedNav from './EntityRelatedNav';
 import PlayerCard from './PlayerCard';
 import TeamCard from './TeamCard';
+import {
+  buildLeagueInternalLinks,
+  buildNationalTeamInternalLinks,
+  dedupeInternalLinks,
+  findNationalTeamIdForCountry,
+} from '../utils/internalLinking.js';
 import { getManifestLeague } from '../data/contentManifest';
 import LeagueBadge from './LeagueBadge';
 import BreadcrumbNav from './BreadcrumbNav';
+import { NATIONALITY_HUB_INDEX_LIMIT } from '../utils/internalLinking.js';
 
 function buildFaqJsonLd({ canonical, faqs }) {
   const mainEntity = (faqs ?? []).slice(0, 10).map((faq) => ({
@@ -386,14 +394,27 @@ export function SeoLeagueQuizHub() {
           ))}
         </ul>
         <div className="empty-state__actions">
-          <Link to="/quiz" className="btn btn--primary">
-            Play quizzes
+          <Link to={`/quiz?league=${leagueId}`} className="btn btn--primary">
+            Play {leagueName} quiz
+          </Link>
+          <Link to={`/league/${leagueId}`} className="btn btn--secondary">
+            {leagueName} league page
           </Link>
           <Link to={`/browse?league=${leagueId}`} className="btn btn--secondary">
             Browse {leagueName} players
           </Link>
         </div>
       </HubSection>
+
+      <EntityRelatedNav
+        title="Related pages"
+        links={buildLeagueInternalLinks({
+          league,
+          leagueTeams,
+          leaguePlayers,
+          quizReady: leaguePlayers.length >= 8,
+        })}
+      />
     </div>
   );
 }
@@ -501,14 +522,30 @@ export function SeoTeamQuizHub() {
           ))}
         </ul>
         <div className="empty-state__actions">
-          <Link to="/quiz" className="btn btn--primary">
-            Play quizzes
+          <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
+            Play {teamName} quiz
           </Link>
-          <Link to={`/browse?tab=clubs`} className="btn btn--secondary">
-            Browse clubs
+          <Link to={`/team/${team.id}`} className="btn btn--secondary">
+            Club profile
+          </Link>
+          <Link to={`/league/${team.leagueId}`} className="btn btn--secondary">
+            {leagueName}
           </Link>
         </div>
       </HubSection>
+
+      <EntityRelatedNav
+        title="Related pages"
+        links={dedupeInternalLinks(
+          [
+            { label: `${teamName} squad`, to: `/team/${team.id}` },
+            { label: `${leagueName} league`, to: `/league/${team.leagueId}` },
+            { label: 'Club player quiz', to: `/quiz?team=${team.id}` },
+            { label: 'Discovery hubs', to: '/hubs' },
+          ],
+          8,
+        )}
+      />
     </div>
   );
 }
@@ -595,6 +632,22 @@ export function SeoPlayersByNationalityHub() {
             </li>
           ))}
         </ul>
+        {nations.length > 48 ? (
+          <section className="hub-more-links" aria-label="More nationalities">
+            <h3 className="hub-more-links__title">More nationalities</h3>
+            <ul className="hub-more-links__list">
+              {nations.slice(48, NATIONALITY_HUB_INDEX_LIMIT).map((row) => (
+                <li key={row.nation}>
+                  <Link
+                    to={`/hubs/players/nationality/${encodeURIComponent(row.nation)}`}
+                  >
+                    {formatCountryLabel(row.nation)} ({row.count})
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </HubSection>
     </div>
   );
@@ -618,6 +671,19 @@ export function SeoNationalityPlayersHub() {
     [nationLabel],
   );
   const topPlayers = useMemo(() => nationPlayers.slice(0, 24), [nationPlayers]);
+  const nationalTeamId = findNationalTeamIdForCountry(nationLabel);
+  const hubRelatedLinks = useMemo(
+    () =>
+      buildNationalTeamInternalLinks({
+        nationalTeam: {
+          id: nationalTeamId ?? nationLabel,
+          country: nationLabel,
+          displayName: nationLabel,
+        },
+        quizReady: nationPlayers.length >= 8,
+      }),
+    [nationLabel, nationalTeamId, nationPlayers.length],
+  );
   const links = topPlayers.map((p) => ({ label: p.name, url: canonicalUrlForPath(`/player/${p.id}`) }));
   useLandingSeo({
     title,
@@ -676,6 +742,8 @@ export function SeoNationalityPlayersHub() {
           </Link>
         </div>
       </HubSection>
+
+      <EntityRelatedNav title="Related pages" links={hubRelatedLinks} />
     </div>
   );
 }

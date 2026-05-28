@@ -38,7 +38,13 @@ import { setSeoMeta } from '../utils/seoMeta';
 import { buildLeagueIdentitySection, buildTopLeagueMetaDescription } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
-import ProfileKeepExploring from './ProfileKeepExploring';
+import EntityRelatedNav from './EntityRelatedNav';
+import {
+  buildLeagueInternalLinks,
+  findNationalTeamIdForCountry,
+  resolveFamousPlayerLinks,
+  resolveLeagueRivalryLinks,
+} from '../utils/internalLinking.js';
 
 const LEARNING_STEPS = [
   { label: 'Basics', title: 'League snapshot', field: 'description' },
@@ -123,6 +129,11 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   const playstyleLine = truncateLeagueText(league.styleOfPlay, 200);
   const leagueIdentityBlurb = buildLeagueIdentitySection(league);
   const showLeagueIdentity = isThinLeague(league, 4) || !leagueDescription;
+  const rivalryLinks = resolveLeagueRivalryLinks(league.rivalries, leagueTeams, 6);
+  const famousPlayerLinks = resolveFamousPlayerLinks(league.famousPlayers, leaguePlayers, 6);
+  const leagueNationalTeamId = league.country
+    ? findNationalTeamIdForCountry(league.country)
+    : null;
 
   return (
     <div className="page league-profile">
@@ -179,9 +190,23 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           >
             Stadium quiz
           </Link>
+          <Link
+            to={getClubQuizPlayHref('rivalry', { leagueId: league.id })}
+            className="btn btn--secondary"
+          >
+            Rivalry quiz
+          </Link>
           <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
             Club quiz guides
           </Link>
+          {leagueNationalTeamId ? (
+            <Link
+              to={`/national-team/${leagueNationalTeamId}`}
+              className="btn btn--secondary"
+            >
+              {league.country} national team
+            </Link>
+          ) : null}
           {league.country ? (
             <Link
               to={`/hubs/players/nationality/${encodeURIComponent(league.country)}`}
@@ -305,7 +330,15 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         <div className="league-discovery__grid">
           <article className="league-discovery__card">
             <h3>Rivalries</h3>
-            {league.rivalries.length > 0 ? (
+            {rivalryLinks.length > 0 ? (
+              <ul className="league-discovery__list league-discovery__list--linked">
+                {rivalryLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : league.rivalries.length > 0 ? (
               <ul className="league-discovery__list">
                 {league.rivalries.map((rivalry) => (
                   <li key={rivalry}>{rivalry}</li>
@@ -319,11 +352,21 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           </article>
           <article className="league-discovery__card">
             <h3>Star names</h3>
-            <ul className="league-discovery__list league-discovery__list--names">
-              {league.famousPlayers.map((player) => (
-                <li key={player}>{player}</li>
-              ))}
-            </ul>
+            {famousPlayerLinks.length > 0 ? (
+              <ul className="league-discovery__list league-discovery__list--linked">
+                {famousPlayerLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ul className="league-discovery__list league-discovery__list--names">
+                {league.famousPlayers.map((player) => (
+                  <li key={player}>{player}</li>
+                ))}
+              </ul>
+            )}
           </article>
         </div>
       </section>
@@ -374,14 +417,13 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         </ol>
       </details>
 
-      <ProfileKeepExploring
-        variant="team"
-        entityId={league.id}
-        leagueId={league.id}
-        leagueName={getLeagueDisplayName(league)}
-        quizReady={hasLeagueQuiz}
-        league={league}
-        leagueTeams={leagueTeams}
+      <EntityRelatedNav
+        links={buildLeagueInternalLinks({
+          league,
+          leagueTeams,
+          leaguePlayers,
+          quizReady: hasLeagueQuiz,
+        })}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import {
   LIVE_NATIONAL_TEAM_MIN_QUIZ,
 } from '../data/nationalTeamData';
 import NationalTeamBadge from './NationalTeamBadge';
+import BreadcrumbNav from './BreadcrumbNav';
 
 export default function NationalTeamsPage() {
   const confederationGroups = getLiveNationalTeamsByConfederation();
@@ -18,6 +19,12 @@ export default function NationalTeamsPage() {
 
   return (
     <div className="page national-teams-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'National teams' },
+        ]}
+      />
       <header className="page-header">
         <h1>National teams</h1>
         <p>
@@ -41,6 +48,9 @@ export default function NationalTeamsPage() {
         <div className="learning-hub-cta__actions">
           <Link to="/world-cup" className="btn btn--primary btn--small">
             Open World Cup hub
+          </Link>
+          <Link to="/hubs/players/by-nationality" className="btn btn--secondary btn--small">
+            Players by nationality
           </Link>
           <Link to="/quiz?poolFocus=international&worldCup=prep" className="btn btn--secondary btn--small">
             International quiz

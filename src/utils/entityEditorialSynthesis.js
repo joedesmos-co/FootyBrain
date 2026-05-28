@@ -5,6 +5,10 @@
 import { formatClubIdentityTags } from './clubIdentity';
 import { formatCountryLabel, formatPosition } from './footballDisplay';
 import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
+import {
+  findNationalTeamIdForCountry,
+  getNationalityHubPath,
+} from './internalLinking.js';
 import { resolveRivalEntries } from './teamPageUtils';
 import {
   hasSubstantiveQuickFact,
@@ -144,11 +148,13 @@ export function buildKeepExploringLinks(ctx = {}) {
     links.push({ label, to });
   };
 
-  const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady } = ctx;
+  const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady, nationality } = ctx;
   const lid = leagueId ?? team?.leagueId ?? league?.id ?? '';
 
   if (team?.id) add(`${team.name} squad`, `/team/${team.id}`);
+  if (team?.id) add('Team quiz hub', `/hubs/quizzes/team/${team.id}`);
   if (lid) add(ctx.leagueName ? `${ctx.leagueName} hub` : 'League hub', `/league/${lid}`);
+  if (lid) add('League quiz hub', `/hubs/quizzes/league/${lid}`);
 
   if (team?.rivals?.length && leagueTeams?.length) {
     for (const { label, team: rival } of resolveRivalEntries(team.rivals, leagueTeams).slice(0, 2)) {
@@ -159,6 +165,15 @@ export function buildKeepExploringLinks(ctx = {}) {
   if (nationalTeamId) {
     add('National team', `/national-team/${nationalTeamId}`);
     add('World Cup hub', '/world-cup');
+  }
+
+  const natLabel = nationality ?? team?.country ?? league?.country;
+  const natPath = getNationalityHubPath(natLabel);
+  if (natPath) add(`${natLabel} players hub`, natPath);
+
+  if (league?.country && !nationalTeamId) {
+    const ntId = findNationalTeamIdForCountry(league.country);
+    if (ntId) add(`${league.country} national team`, `/national-team/${ntId}`);
   }
 
   const themeId = lid ? getQuizThemeIdForLeague(lid) : '';

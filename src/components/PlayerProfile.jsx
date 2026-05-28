@@ -32,7 +32,9 @@ import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
 import ShareButton from './ShareButton';
+import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
+import { buildPlayerInternalLinks } from '../utils/internalLinking.js';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -564,6 +566,14 @@ export default function PlayerProfile() {
           <span className="player-profile__quick-link--disabled">National team page coming</span>
         ) : null}
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Player club quiz</Link>}
+        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Team quiz hub</Link>
+        {player.nationality ? (
+          <Link
+            to={`/hubs/players/nationality/${encodeURIComponent(String(player.nationality).trim())}`}
+          >
+            {player.nationality} players hub
+          </Link>
+        ) : null}
         <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>
         {player.teamId ? (
           <Link to={`/club-quiz?category=stadium&league=${player.leagueId}`}>Stadium quiz</Link>
@@ -754,7 +764,20 @@ export default function PlayerProfile() {
           leagueTeams={leagueTeamsForExplore}
           nationalTeamId={liveNationalTeam?.id}
         />
-      ) : null}
+      ) : (
+        <EntityRelatedNav
+          links={buildPlayerInternalLinks({
+            player,
+            teamId: player.teamId,
+            leagueId: player.leagueId,
+            teamName,
+            leagueName,
+            quizReady,
+            nationalTeamId: liveNationalTeam?.id,
+            nationality: player.nationality,
+          })}
+        />
+      )}
 
       {relatedLoading ? (
         <p className="page-loading" role="status" aria-live="polite">

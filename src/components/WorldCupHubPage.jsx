@@ -37,6 +37,7 @@ import CollectionCard from './CollectionCard';
 import LearningPathCard from './LearningPathCard';
 import NationalTeamBadge from './NationalTeamBadge';
 import WorldCupPlayerSpotlight from './WorldCupPlayerSpotlight';
+import BreadcrumbNav from './BreadcrumbNav';
 
 function WorldCupNationActions({ team }) {
   const learnPath = getLearningPathForNationalTeam(team.id);
@@ -100,6 +101,12 @@ export default function WorldCupHubPage() {
 
   return (
     <div className="page world-cup-hub">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'World Cup 2026' },
+        ]}
+      />
       <header className="page-header world-cup-hub__header">
         <p className="page-header__eyebrow">{WORLD_CUP_HUB_META.eyebrow}</p>
         <h1>{WORLD_CUP_HUB_META.title}</h1>

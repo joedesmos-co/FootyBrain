@@ -27,6 +27,7 @@ import BrowsePagination from './BrowsePagination';
 import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerCard from './PlayerCard';
+import BreadcrumbNav from './BreadcrumbNav';
 
 const BROWSE_PAGE_SIZE = 60;
 const browseLeagueTaxonomy = buildBrowseLeagueTaxonomy();
@@ -360,6 +361,12 @@ export default function BrowseDatabase() {
 
   return (
     <div className="page browse">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: showClubsTab ? 'Clubs' : 'Players' },
+        ]}
+      />
       <header className="page-header">
         <h1>Browse</h1>
         <p>Explore players and clubs by league, nation, or region. Use search and filters to narrow results.</p>

@@ -5,6 +5,7 @@ import {
   learningPaths,
 } from '../data/learningPathsData';
 import LearningPathCard from './LearningPathCard';
+import BreadcrumbNav from './BreadcrumbNav';
 
 export default function LearningPathsPage() {
   const worldCupPaths = getWorldCupLearningPaths();
@@ -15,6 +16,13 @@ export default function LearningPathsPage() {
 
   return (
     <div className="learning-paths-page">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Collections', to: '/collections' },
+          { label: 'Learning paths' },
+        ]}
+      />
       <header className="page-header">
         <p className="page-header__eyebrow">Study flows</p>
         <h1>Learning paths</h1>
