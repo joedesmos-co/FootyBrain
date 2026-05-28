@@ -20,6 +20,9 @@ import TeamSquadView from './TeamSquadView';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
+import ProfileKeepExploring from './ProfileKeepExploring';
+import { buildNationalIdentitySection } from '../utils/entityEditorialSynthesis';
+import { isThinNationalTeam } from '../utils/entityDepthAudit';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
 const RIVAL_DISPLAY_NAMES = {
@@ -180,14 +183,9 @@ export default function NationalTeamProfile() {
       .slice(0, 6);
   })();
 
-  const relatedLinks = [
-    { to: '/quiz', label: 'Play quizzes' },
-    { to: '/hubs', label: 'Explore hubs' },
-    {
-      to: `/hubs/players/nationality/${encodeURIComponent(nationalTeam.displayName)}`,
-      label: 'Players by nationality hub',
-    },
-  ];
+  const nationalIdentityBlurb = buildNationalIdentitySection(nationalTeam);
+  const showNationalIdentity =
+    isThinNationalTeam(nationalTeam, 4) || !String(nationalTeam.shortHistory ?? '').trim();
 
   return (
     <div className="page national-team-profile">
@@ -247,19 +245,20 @@ export default function NationalTeamProfile() {
 
       <DataTrustNotice compact />
 
-      <section className="profile__section" aria-labelledby="related-discovery-title">
-        <h2 id="related-discovery-title">Keep exploring</h2>
-        <p className="collections-page__section-desc">
-          Continue learning with discovery hubs, quizzes, and related pages.
-        </p>
-        <div className="empty-state__actions">
-          {relatedLinks.map((link) => (
-            <Link key={link.to} to={link.to} className="btn btn--secondary">
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </section>
+      {showNationalIdentity && nationalIdentityBlurb ? (
+        <section className="info-card profile__section" aria-labelledby="national-identity-title">
+          <h2 id="national-identity-title">About this national team</h2>
+          <p>{nationalIdentityBlurb}</p>
+        </section>
+      ) : null}
+
+      <ProfileKeepExploring
+        variant="player"
+        entityId={nationalTeam.id}
+        nationalTeamId={nationalTeam.id}
+        quizReady={canLaunchNationalQuiz}
+        lead={`Browse ${nationalTeam.displayName} linked players, then test recognition with national-team and World Cup quiz routes.`}
+      />
 
       {squadLoading && squadState.total >= 80 ? (
         <p className="page-loading" role="status" aria-live="polite">

@@ -35,7 +35,8 @@ import PlayerVisual from './PlayerVisual';
 import { peekTeamName } from '../data/teamStore';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
-import { buildTopLeagueMetaDescription } from '../utils/topImportanceProfile';
+import { buildLeagueIdentitySection, buildTopLeagueMetaDescription } from '../utils/topImportanceProfile';
+import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 
@@ -120,6 +121,8 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   const identityTags = formatLeagueIdentityTags(league.id);
   const leagueDescription = truncateLeagueText(league.description, 280);
   const playstyleLine = truncateLeagueText(league.styleOfPlay, 200);
+  const leagueIdentityBlurb = buildLeagueIdentitySection(league);
+  const showLeagueIdentity = isThinLeague(league, 4) || !leagueDescription;
 
   return (
     <div className="page league-profile">
@@ -194,6 +197,13 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       </header>
 
       <DataTrustNotice compact />
+
+      {showLeagueIdentity && leagueIdentityBlurb ? (
+        <section className="info-card league-section" aria-labelledby="league-identity-title">
+          <h2 id="league-identity-title">About this league</h2>
+          <p className="league-section__meta league-profile__about">{leagueIdentityBlurb}</p>
+        </section>
+      ) : null}
 
       {isExternalLeagueId(league.id) ? <ExternalStubNotice compact /> : null}
 
@@ -371,6 +381,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         leagueName={getLeagueDisplayName(league)}
         quizReady={hasLeagueQuiz}
         league={league}
+        leagueTeams={leagueTeams}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { formatClubIdentityTags } from '../utils/clubIdentity';
 import { formatCountryLabel, getFootballAccentStyle } from '../utils/footballDisplay';
 import { buildClubLeagueContext, buildSyntheticClubStory } from '../utils/clubProfileEditorial';
+import { isThinTeam } from '../utils/entityDepthAudit';
 import {
   buildTeamQuickFacts,
   getTeamProfileEditorial,
@@ -69,7 +70,7 @@ export default function TeamClubProfileHub({
     ? buildSyntheticClubStory(team, leagueName, rosterSize)
     : '';
   const leagueContext = buildClubLeagueContext(team, leagueName);
-  const showSyntheticStory = Boolean(syntheticStory);
+  const showSyntheticStory = Boolean(syntheticStory) || (isThinTeam(team, 4) && !showStory);
   const showLeagueContext = Boolean(leagueContext);
 
   if (

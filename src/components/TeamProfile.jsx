@@ -368,6 +368,7 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             leagueName={leagueName}
             quizReady={hasTeamQuiz}
             team={team}
+            leagueTeams={leagueTeams}
           />
         ) : null}
 

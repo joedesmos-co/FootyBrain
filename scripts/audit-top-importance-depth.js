@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 /**
- * Audit editorial depth for top-importance players, clubs, leagues, and national teams.
- * Uses only fields already present in the dataset — no generated copy.
+ * Full top-importance content depth audit — players, clubs, leagues, national teams.
+ * Synthesis fields are flagged only; copy is generated at runtime from existing data.
  *
- * Run: node scripts/audit-top-importance-depth.js
+ * Run: npm run audit:top-importance-depth
+ * Outputs:
+ *   generated-data/top-importance-depth-audit.json
+ *   generated-data/top-importance-depth-summary.md
  */
 
 import fs from 'fs';
@@ -12,54 +15,29 @@ import { fileURLToPath } from 'url';
 
 import { players, teams, leagues } from '../src/data/sampleData.js';
 import liveNt from '../src/data/nationalTeamLive.json' with { type: 'json' };
+import {
+  TOP_PLAYER_COUNT,
+  auditLeagueGaps,
+  auditNationalTeamGaps,
+  auditPlayerGaps,
+  auditTeamGaps,
+  countClubEditorialDepth,
+  countLeagueEditorialDepth,
+  countNationalEditorialDepth,
+  countPlayerEditorialDepth,
+  gapCount,
+  isMajorClub,
+  isThinLeague,
+  isThinNationalTeam,
+  isThinPlayer,
+  isThinTeam,
+} from '../src/utils/entityDepthAudit.js';
 import { isQuizEligiblePlayer } from '../src/utils/quizPlayerRules.js';
-
-function countPlayerEditorialDepth(player) {
-  let depth = 0;
-  const qf = String(player?.quickFact ?? '');
-  if (qf && !/pending|coming soon/i.test(qf)) depth += 3;
-  if (player?.playingStyle || player?.playStyleSummary) depth += 2;
-  const strengths = player?.strengths ?? player?.keyStrengths;
-  if (Array.isArray(strengths) ? strengths.length : strengths) depth += 2;
-  if (player?.careerHistory?.length) depth += 2;
-  if (player?.honors?.length || player?.honours?.length) depth += 1;
-  if (player?.quizHints?.length) depth += 1;
-  return depth;
-}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const OUT_PATH = path.join(ROOT, 'generated-data/top-importance-depth-audit.json');
-
-const TOP_N = 300;
-
-function teamDepth(team) {
-  let score = 0;
-  if (String(team.shortHistory ?? '').trim()) score += 3;
-  if (String(team.fanGuide ?? '').trim()) score += 3;
-  if (team.rivals?.length) score += 2;
-  if (team.legends?.length) score += 2;
-  if (team.currentKeyPlayers?.length) score += 1;
-  if (team.identityTags?.length) score += 1;
-  return score;
-}
-
-function leagueDepth(league) {
-  let score = 0;
-  if (String(league.description ?? '').trim()) score += 2;
-  if (String(league.styleOfPlay ?? '').trim()) score += 2;
-  if (league.famousClubs?.length) score += 2;
-  if (league.rivalries?.length) score += 2;
-  return score;
-}
-
-function nationalDepth(nt) {
-  let score = 0;
-  if (String(nt.fanGuide ?? '').trim()) score += 3;
-  if (String(nt.shortHistory ?? '').trim()) score += 2;
-  if (nt.rivals?.length) score += 2;
-  return score;
-}
+const OUT_JSON = path.join(ROOT, 'generated-data/top-importance-depth-audit.json');
+const OUT_MD = path.join(ROOT, 'generated-data/top-importance-depth-summary.md');
 
 function rosterImportanceSum(teamId) {
   return players
@@ -67,96 +45,223 @@ function rosterImportanceSum(teamId) {
     .reduce((s, p) => s + (Number(p.importanceScore) || 0), 0);
 }
 
-const topPlayers = [...players]
-  .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
-  .slice(0, TOP_N)
-  .map((p) => ({
-    id: p.id,
-    name: p.name,
-    importanceScore: p.importanceScore ?? 0,
-    depth: countPlayerEditorialDepth(p),
-    quizReady: isQuizEligiblePlayer(p),
-    teamId: p.teamId,
-    leagueId: p.leagueId,
-  }));
+function auditPlayerRow(player) {
+  const gaps = auditPlayerGaps(player);
+  const depth = countPlayerEditorialDepth(player);
+  return {
+    id: player.id,
+    name: player.name,
+    importanceScore: player.importanceScore ?? 0,
+    teamId: player.teamId,
+    leagueId: player.leagueId,
+    depth,
+    gapCount: gapCount(gaps),
+    gaps,
+    thin: isThinPlayer(player, 2),
+    contentGaps: gapCount(gaps) >= 3,
+    needsRuntimeSynthesis:
+      (gaps.missingPlayStyle || gaps.missingQuickFact) &&
+      (player.importanceScore ?? 0) >= 68,
+  };
+}
 
-const topTeams = [...teams]
-  .map((t) => ({ team: t, rosterSum: rosterImportanceSum(t.id) }))
-  .sort((a, b) => b.rosterSum - a.rosterSum)
-  .slice(0, TOP_N)
-  .map(({ team: t, rosterSum }) => ({
-    id: t.id,
-    name: t.name,
-    leagueId: t.leagueId,
-    rosterImportanceSum: rosterSum,
-    depth: teamDepth(t),
-    hasStory: Boolean(String(t.shortHistory ?? '').trim()),
-    hasFanGuide: Boolean(String(t.fanGuide ?? '').trim()),
-    rivalCount: t.rivals?.length ?? 0,
-  }));
+function auditTeamRow(team, rosterSize) {
+  const gaps = auditTeamGaps(team);
+  const depth = countClubEditorialDepth(team);
+  return {
+    id: team.id,
+    name: team.name,
+    leagueId: team.leagueId,
+    rosterSize,
+    rosterImportanceSum: rosterImportanceSum(team.id),
+    depth,
+    gapCount: gapCount(gaps),
+    gaps,
+    thin: isThinTeam(team, 3),
+    contentGaps: gapCount(gaps) >= 3,
+    needsRuntimeSynthesis: gaps.missingHistory && !gaps.hasStory,
+  };
+}
 
-const topLeagues = [...leagues]
-  .filter((l) => l.id !== 'external')
-  .map((l) => {
-    const leaguePlayers = players.filter((p) => p.leagueId === l.id);
-    const imp = leaguePlayers.reduce((s, p) => s + (Number(p.importanceScore) || 0), 0);
-    return { league: l, imp };
-  })
-  .sort((a, b) => b.imp - a.imp)
-  .slice(0, Math.min(TOP_N, leagues.length))
-  .map(({ league: l }) => ({
-    id: l.id,
-    name: l.name,
-    depth: leagueDepth(l),
-    playerCount: players.filter((p) => p.leagueId === l.id).length,
-    quizReady: players.filter((p) => p.leagueId === l.id && isQuizEligiblePlayer(p)).length,
-  }));
+function auditLeagueRow(league) {
+  const leaguePlayers = players.filter((p) => p.leagueId === league.id);
+  const gaps = auditLeagueGaps(league);
+  const depth = countLeagueEditorialDepth(league);
+  return {
+    id: league.id,
+    name: league.name,
+    depth,
+    gapCount: gapCount(gaps),
+    gaps,
+    playerCount: leaguePlayers.length,
+    quizReady: leaguePlayers.filter(isQuizEligiblePlayer).length,
+    clubCount: teams.filter((t) => t.leagueId === league.id).length,
+    thin: isThinLeague(league, 4),
+  };
+}
 
-const nationalTeams = liveNt.nationalTeams ?? [];
-const topNational = [...nationalTeams]
-  .map((nt) => {
-    const linked = (liveNt.nationalMemberships ?? []).filter(
-      (m) => m.nationalTeamId === nt.id,
-    ).length;
-    return { nt, linked };
-  })
-  .sort((a, b) => b.linked - a.linked)
-  .slice(0, Math.min(TOP_N, nationalTeams.length))
-  .map(({ nt, linked }) => ({
+function auditNationalRow(nt, membershipCount) {
+  const gaps = auditNationalTeamGaps(nt);
+  const depth = countNationalEditorialDepth(nt);
+  return {
     id: nt.id,
     displayName: nt.displayName,
-    depth: nationalDepth(nt),
-    membershipCount: linked,
-  }));
+    depth,
+    gapCount: gapCount(gaps),
+    gaps,
+    membershipCount,
+    thin: isThinNationalTeam(nt, 4),
+  };
+}
 
-const thinPlayers = topPlayers.filter((p) => p.depth <= 2);
-const thinTeams = topTeams.filter((t) => t.depth <= 3);
+const topPlayers = [...players]
+  .sort((a, b) => (b.importanceScore ?? 0) - (a.importanceScore ?? 0))
+  .slice(0, TOP_PLAYER_COUNT)
+  .map(auditPlayerRow);
+
+const majorClubs = teams.filter(isMajorClub).map((team) => {
+  const rosterSize = players.filter((p) => p.teamId === team.id).length;
+  return auditTeamRow(team, rosterSize);
+});
+
+const allLeagues = leagues
+  .filter((l) => l.id !== 'external')
+  .map(auditLeagueRow);
+
+const allNational = (liveNt.nationalTeams ?? []).map((nt) => {
+  const membershipCount = (liveNt.nationalMemberships ?? []).filter(
+    (m) => m.nationalTeamId === nt.id,
+  ).length;
+  return auditNationalRow(nt, membershipCount);
+});
+
+const thinTopPlayers = topPlayers.filter((p) => p.thin || p.contentGaps);
+const thinClubs = majorClubs.filter((t) => t.thin || t.contentGaps);
+const thinLeagues = allLeagues.filter((l) => l.thin || l.gapCount >= 2);
+const thinNational = allNational.filter((n) => n.thin || n.gapCount >= 2);
+
+const playerGapTotals = {
+  missingQuickFact: topPlayers.filter((p) => p.gaps.missingQuickFact).length,
+  missingPlayStyle: topPlayers.filter((p) => p.gaps.missingPlayStyle).length,
+  missingCareerHistory: topPlayers.filter((p) => p.gaps.missingCareerHistory).length,
+  missingQuizHints: topPlayers.filter((p) => p.gaps.missingQuizHints).length,
+};
+
+const clubGapTotals = {
+  missingHistory: majorClubs.filter((t) => t.gaps.missingHistory).length,
+  missingRivalries: majorClubs.filter((t) => t.gaps.missingRivalries).length,
+  missingClubIdentity: majorClubs.filter((t) => t.gaps.missingClubIdentity).length,
+  missingLegends: majorClubs.filter((t) => t.gaps.missingLegends).length,
+};
 
 const report = {
   generatedAt: new Date().toISOString(),
-  topN: TOP_N,
+  scope: {
+    topPlayers: TOP_PLAYER_COUNT,
+    majorClubs: majorClubs.length,
+    leagues: allLeagues.length,
+    nationalTeams: allNational.length,
+  },
   summary: {
-    playersAudited: topPlayers.length,
-    thinPlayersInTop: thinPlayers.length,
-    teamsAudited: topTeams.length,
-    thinTeamsInTop: thinTeams.length,
-    leaguesAudited: topLeagues.length,
-    nationalTeamsAudited: topNational.length,
+    thinTopPlayers: thinTopPlayers.length,
+    thinMajorClubs: thinClubs.length,
+    thinLeagues: thinLeagues.length,
+    thinNationalTeams: thinNational.length,
+    topPlayersWithContentGaps: topPlayers.filter((p) => p.contentGaps).length,
+    clubsWithContentGaps: majorClubs.filter((t) => t.contentGaps).length,
+    topPlayersNeedingSynthesis: topPlayers.filter((p) => p.needsRuntimeSynthesis).length,
+    clubsNeedingSynthesis: majorClubs.filter((t) => t.needsRuntimeSynthesis).length,
+    playerGapTotals,
+    clubGapTotals,
   },
   topPlayers,
-  thinPlayersInTop: thinPlayers.slice(0, 40),
-  topTeams,
-  thinTeamsInTop: thinTeams.slice(0, 40),
-  topLeagues,
-  topNational,
+  thinTopPlayers: thinTopPlayers.slice(0, 50),
+  majorClubs,
+  thinMajorClubs: thinClubs
+    .sort((a, b) => b.rosterImportanceSum - a.rosterImportanceSum)
+    .slice(0, 50),
+  leagues: allLeagues,
+  thinLeagues,
+  nationalTeams: allNational,
+  thinNationalTeams: thinNational,
 };
 
-fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
-fs.writeFileSync(OUT_PATH, `${JSON.stringify(report, null, 2)}\n`);
+function mdList(title, rows, formatter) {
+  if (!rows.length) return `### ${title}\n\n_None._\n\n`;
+  return `### ${title}\n\n${rows.map(formatter).join('\n')}\n\n`;
+}
 
-console.log('Top-importance depth audit');
-console.log(`  Players (top ${TOP_N}): ${topPlayers.length}, thin: ${thinPlayers.length}`);
-console.log(`  Teams (top ${TOP_N}): ${topTeams.length}, thin: ${thinTeams.length}`);
-console.log(`  Leagues: ${topLeagues.length}`);
-console.log(`  National teams: ${topNational.length}`);
-console.log(`Wrote ${path.relative(ROOT, OUT_PATH)}`);
+const md = `# Top-importance depth audit
+
+Generated: ${report.generatedAt}
+
+## Scope
+
+| Entity | Count audited |
+|--------|----------------|
+| Top players | ${TOP_PLAYER_COUNT} |
+| Major clubs | ${majorClubs.length} |
+| Leagues | ${allLeagues.length} |
+| National teams | ${allNational.length} |
+
+## Summary
+
+- **Thin top players** (depth ≤3): ${thinTopPlayers.length}
+- **Thin major clubs** (depth ≤4): ${thinClubs.length}
+- **Thin leagues**: ${thinLeagues.length}
+- **Thin national teams**: ${thinNational.length}
+- **Players with runtime synthesis** (thin + missing style/fact, importance ≥68): ${report.summary.topPlayersNeedingSynthesis}
+- **Clubs with runtime Club identity synthesis**: ${report.summary.clubsNeedingSynthesis}
+
+### Player gaps (top ${TOP_PLAYER_COUNT})
+
+| Gap | Count |
+|-----|------:|
+| Missing quick fact | ${playerGapTotals.missingQuickFact} |
+| Missing play style | ${playerGapTotals.missingPlayStyle} |
+| Missing career history | ${playerGapTotals.missingCareerHistory} |
+| Missing quiz hints | ${playerGapTotals.missingQuizHints} |
+
+### Club gaps (all in-league clubs)
+
+| Gap | Count |
+|-----|------:|
+| Missing short history | ${clubGapTotals.missingHistory} |
+| Missing rivalries | ${clubGapTotals.missingRivalries} |
+| Missing identity tags | ${clubGapTotals.missingClubIdentity} |
+| Missing legends | ${clubGapTotals.missingLegends} |
+
+## Thin top players (sample)
+
+${thinTopPlayers
+  .slice(0, 25)
+  .map((p) => `- **${p.name}** (${p.importanceScore}) — ${p.gapCount} gaps`)
+  .join('\n')}
+
+## Thin major clubs (sample)
+
+${thinClubs
+  .slice(0, 25)
+  .map((t) => `- **${t.name}** (roster sum ${t.rosterImportanceSum}) — ${t.gapCount} gaps`)
+  .join('\n')}
+
+## Rerun
+
+\`\`\`bash
+npm run audit:top-importance-depth
+\`\`\`
+
+Runtime synthesis modules: \`src/utils/entityEditorialSynthesis.js\`, \`src/utils/entityDepthAudit.js\`.
+`;
+
+fs.mkdirSync(path.dirname(OUT_JSON), { recursive: true });
+fs.writeFileSync(OUT_JSON, `${JSON.stringify(report, null, 2)}\n`);
+fs.writeFileSync(OUT_MD, md);
+
+console.log('Top-importance depth audit\n');
+console.log(`  Top players: ${topPlayers.length} (${thinTopPlayers.length} thin)`);
+console.log(`  Major clubs: ${majorClubs.length} (${thinClubs.length} thin)`);
+console.log(`  Leagues: ${allLeagues.length} (${thinLeagues.length} thin)`);
+console.log(`  National teams: ${allNational.length} (${thinNational.length} thin)`);
+console.log(`\nWrote ${path.relative(ROOT, OUT_JSON)}`);
+console.log(`Wrote ${path.relative(ROOT, OUT_MD)}`);

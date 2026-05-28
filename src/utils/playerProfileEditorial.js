@@ -2,11 +2,9 @@ import { formatClubIdentityTags } from './clubIdentity';
 import { formatPosition } from './footballDisplay';
 import { getDisplayQuickFact, isBrowseOnlyPlayer } from './playerEditorial';
 import { buildCareerSummary } from './playerImportance';
-import {
-  buildPlayStyleBlurb,
-  buildTopPlayerMetaDescription,
-  isHighImportancePlayer,
-} from './topImportanceProfile';
+import { countPlayerEditorialDepth, isThinPlayer } from './entityDepthAudit';
+import { buildHowTheyPlaySection } from './entityEditorialSynthesis';
+import { buildTopPlayerMetaDescription, isHighImportancePlayer } from './topImportanceProfile';
 
 export const PLAYER_PLACEHOLDER_FACT_RE =
   /editorial profile coming soon|editorial quiz profile pending|footybrain|footycompass sample/i;
@@ -178,16 +176,7 @@ export function buildPlayerProfileDescription(player, ctx = {}) {
 /**
  * @param {object} player
  */
-export function countPlayerEditorialDepth(player) {
-  let depth = 0;
-  if (hasSubstantiveQuickFact(player)) depth += 3;
-  if (player?.playingStyle || player?.playStyleSummary) depth += 2;
-  if (parseStrengths(player).length) depth += 2;
-  if (player?.careerHistory?.length) depth += 2;
-  if (player?.honors?.length || player?.honours?.length) depth += 1;
-  if (player?.quizHints?.length) depth += 1;
-  return depth;
-}
+export { countPlayerEditorialDepth } from './entityDepthAudit';
 
 /**
  * @param {object} player
@@ -198,9 +187,9 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
   const knownFor = buildPlayerKnownFor(player, ctx);
   const displayFact = getDisplayQuickFact(player);
   const careerSummary = buildCareerSummary(player);
-  const playStyleBlurb = buildPlayStyleBlurb(player);
+  const playStyleBlurb = buildHowTheyPlaySection(player);
   const depth = countPlayerEditorialDepth(player);
-  const isThin = depth <= 2;
+  const isThin = isThinPlayer(player, 3);
   const enrichThin = isThin && isHighImportancePlayer(player);
 
   return {
@@ -215,6 +204,6 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
     enrichThin,
     showAbout: Boolean(about),
     showKnownFor: knownFor.length > 0,
-    showPlayStyleBlurb: Boolean(playStyleBlurb) && enrichThin,
+    showPlayStyleBlurb: Boolean(playStyleBlurb) && (enrichThin || isHighImportancePlayer(player)),
   };
 }

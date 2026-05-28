@@ -204,6 +204,7 @@ export default function PlayerProfile() {
     teamId: null,
     team: null,
     pool: [],
+    leagueTeams: [],
   }));
 
   useEffect(() => {
@@ -213,10 +214,14 @@ export default function PlayerProfile() {
     const teamId = player.teamId;
     import('../data/sampleData.js').then((mod) => {
       if (cancelled) return;
+      const team = mod.getTeamById(teamId) ?? null;
       setTeamBundle({
         teamId,
-        team: mod.getTeamById(teamId) ?? null,
+        team,
         pool: mod.getPlayersForTeam(teamId) ?? [],
+        leagueTeams: team?.leagueId
+          ? mod.teams.filter((t) => t.leagueId === team.leagueId)
+          : [],
       });
     });
 
@@ -227,6 +232,8 @@ export default function PlayerProfile() {
 
   const teamContext = teamBundle.teamId === player?.teamId ? teamBundle.team : null;
   const teamMatePool = teamBundle.teamId === player?.teamId ? teamBundle.pool : [];
+  const leagueTeamsForExplore =
+    teamBundle.teamId === player?.teamId ? teamBundle.leagueTeams : [];
 
   // Only load nationalTeamData when the player has a relevant label.
   // This keeps the nationalTeamData chunk off routes that never need it.
@@ -744,6 +751,8 @@ export default function PlayerProfile() {
           leagueName={leagueName}
           quizReady={quizReady}
           team={teamContext}
+          leagueTeams={leagueTeamsForExplore}
+          nationalTeamId={liveNationalTeam?.id}
         />
       ) : null}
 
