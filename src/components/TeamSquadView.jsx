@@ -112,6 +112,7 @@ export default function TeamSquadView({
   eyebrow = 'Squad',
   title = 'Club Squad View',
   intro,
+  hideQuizSummary = false,
 }) {
   const groups = useMemo(() => groupPlayersByPositionCategory(players), [players]);
   const summary = useMemo(() => getSquadSummary(players), [players]);
@@ -160,13 +161,15 @@ export default function TeamSquadView({
           <dt>Avg age</dt>
           <dd>{formatAverageAge(summary.ageStats)}</dd>
         </div>
-        <div className="team-squad__stat">
-          <dt>Quizzes</dt>
-          <dd>
-            {summary.quizReady}
-            <span className="team-squad__stat-note">players</span>
-          </dd>
-        </div>
+        {!hideQuizSummary ? (
+          <div className="team-squad__stat">
+            <dt>Quizzes</dt>
+            <dd>
+              {summary.quizReady}
+              <span className="team-squad__stat-note">players</span>
+            </dd>
+          </div>
+        ) : null}
         <div className="team-squad__stat">
           <dt>Strongest</dt>
           <dd className="team-squad__stat-strongest">{strongestLine}</dd>

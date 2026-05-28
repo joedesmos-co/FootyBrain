@@ -294,6 +294,7 @@ export default function UniversalSearch({ open, onClose }) {
         <input
           ref={inputRef}
           id={inputId}
+          name="footybrainUniversalLookup"
           type="search"
           className="universal-search__input"
           placeholder="Players, clubs, leagues, national teams…"
@@ -306,6 +307,14 @@ export default function UniversalSearch({ open, onClose }) {
           aria-activedescendant={
             showResults && activeIndex >= 0 ? `${listId}-opt-${activeIndex}` : undefined
           }
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          spellCheck={false}
+          inputMode="search"
+          data-lpignore="true"
+          data-1p-ignore="true"
+          data-form-type="other"
           onChange={(e) => {
             setQuery(e.target.value);
             setActiveIndex(-1);

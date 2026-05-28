@@ -7,12 +7,8 @@ import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { formatClubIdentityTags, truncateClubText } from '../utils/clubIdentity';
 import { IMPORTANCE_SCORE_LABEL, QUIZ_COMING_SOON } from '../utils/consumerCopy';
-import {
-  buildTeamKeyPlayerCards,
-  getTeamHonorsList,
-  resolveRivalEntries,
-} from '../utils/teamPageUtils';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
+import { buildTeamKeyPlayerCards } from '../utils/teamPageUtils';
 import {
   formatCountryLabel,
   formatPosition,
@@ -20,7 +16,7 @@ import {
   getLeagueDisplayName,
   isExternalClubStubTeam,
 } from '../utils/footballDisplay';
-import ClubHubStrip from './ClubHubStrip';
+import TeamClubProfileHub from './TeamClubProfileHub';
 import DataTrustNotice from './DataTrustNotice';
 import ExternalStubNotice from './ExternalStubNotice';
 import FavoriteButton from './FavoriteButton';
@@ -43,6 +39,7 @@ function buildTeamProfileSubline(team) {
 
 function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeams }) {
   const isExternalStub = isExternalClubStubTeam(team);
+
   useEffect(() => {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -90,22 +87,17 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
   }, [team.id, team.name, team.leagueId, team.country, leagueName]);
 
   const { isTeamSaved, toggleTeam } = useFavorites();
-  const quizReadyRoster = getQuizEligiblePlayers(roster);
-  const hasTeamQuiz = quizReadyRoster.length >= QUIZ_MIN_SESSION_POOL;
+  const hasTeamQuiz = getQuizEligiblePlayers(roster).length >= QUIZ_MIN_SESSION_POOL;
   const { status: quizRegistryStatus, registry: quizRegistry } = useQuizRegistry();
-  const leagueQuizReadyCount =
+  const hasLeagueQuiz =
     quizRegistryStatus === 'ready' && quizRegistry?.players
-      ? quizRegistry.players.filter((p) => p.leagueId === team.leagueId).length
-      : 0;
-  const hasLeagueQuiz = leagueQuizReadyCount > 0;
+      ? quizRegistry.players.some((player) => player.leagueId === team.leagueId)
+      : false;
   const saved = isTeamSaved(team.id);
   const identityTags = formatClubIdentityTags(team.identityTags);
   const keyPlayerCards = buildTeamKeyPlayerCards(team, roster);
-  const rivalEntries = resolveRivalEntries(team.rivals, leagueTeams);
-  const honors = getTeamHonorsList(team);
   const cultureLine =
     truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
-
   const profileSubline = buildTeamProfileSubline(team);
 
   const fanPathSteps = [
@@ -201,7 +193,9 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
                 ))}
               </ul>
             )}
-            {cultureLine ? <p className="club-hero__lede">{cultureLine}</p> : null}
+            {cultureLine && !isExternalStub ? (
+              <p className="club-hero__lede">{cultureLine}</p>
+            ) : null}
           </div>
         </div>
         <div className="team-profile__actions">
@@ -234,15 +228,21 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
 
       <DataTrustNotice compact />
 
-      {isExternalClubStubTeam(team) ? <ExternalStubNotice compact /> : null}
+      {isExternalStub ? <ExternalStubNotice compact /> : null}
 
-      {!isExternalStub ? <ClubHubStrip team={team} leagueName={leagueName} /> : null}
+      <TeamClubProfileHub
+        team={team}
+        leagueName={leagueName}
+        rosterSize={roster.length}
+        leagueTeams={leagueTeams}
+        isExternalStub={isExternalStub}
+      />
 
       <div className="team-page-rich">
         {keyPlayerCards.length > 0 && (
-          <section className="team-key-players" aria-labelledby="team-key-players-title">
+          <section className="team-key-players info-card" aria-labelledby="team-key-players-title">
             <div className="team-key-players__header">
-              <h2 id="team-key-players-title">Key players</h2>
+              <h2 id="team-key-players-title">Current star players</h2>
               <p className="team-key-players__note">
                 Faces to know before you dive into the full squad.
               </p>
@@ -282,113 +282,59 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
           </section>
         )}
 
-        <div className="team-page-rich__body">
-          <div className="team-page-rich__main">
-            <article className="info-card info-card--wide team-profile__squad-card">
-              {squadLoading ? (
-                <PageFallback label="Loading squad…" />
-              ) : (
-                <TeamSquadView players={roster} teamName={team.name} />
-              )}
-            </article>
-          </div>
-
-          <aside className="team-page-rich__aside" aria-label="Club context">
-            {rivalEntries.length > 0 && (
-              <section className="info-card team-rivals-card">
-                <h2>Rival clubs</h2>
-                <ul className="team-rival-cards">
-                  {rivalEntries.map(({ label, team: rivalTeam }) => (
-                    <li key={label}>
-                      {rivalTeam ? (
-                        <Link
-                          to={`/team/${rivalTeam.id}`}
-                          className="team-rival-cards__item"
-                        >
-                          <TeamBadge team={rivalTeam} size="thumb" />
-                          <span>{rivalTeam.name}</span>
-                        </Link>
-                      ) : (
-                        <span className="team-rival-cards__item team-rival-cards__item--pending">
-                          {label}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            <section className="info-card team-honors-card" aria-labelledby="team-honors-title">
-              <h2 id="team-honors-title">Honors</h2>
-              {honors.length > 0 ? (
-                <ul className="team-honors-list">
-                  {honors.map((honor) => (
-                    <li key={honor}>{honor}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="team-honors-card__empty">
-                  Trophy history and honours will be added here as we expand club profiles.
-                </p>
-              )}
-            </section>
-
-            {team.legends?.length > 0 && (
-              <section className="info-card team-legends-card">
-                <h2>Club legends</h2>
-                <ul className="team-legends-list">
-                  {team.legends.map((legend) => (
-                    <li key={legend}>{legend}</li>
-                  ))}
-                </ul>
-              </section>
-            )}
-          </aside>
-        </div>
+        <article className="info-card info-card--wide team-profile__squad-card">
+          {squadLoading ? (
+            <PageFallback label="Loading squad…" />
+          ) : (
+            <TeamSquadView
+              players={roster}
+              teamName={team.name}
+              hideQuizSummary
+            />
+          )}
+        </article>
 
         {!isExternalStub ? (
-        <details className="fan-path-details info-card info-card--wide">
-          <summary className="fan-path-details__summary">
-            <span className="fan-path__eyebrow">Fan Mode</span>
-            <span className="fan-path-details__title">Learning path</span>
-          </summary>
-          <div className="fan-path-details__body">
-            <div className="fan-path__actions fan-path-details__actions">
-              <a href="#team-squad" className="btn btn--secondary">
-                View squad
-              </a>
-              {hasTeamQuiz ? (
-                <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-                  Start team quiz
-                </Link>
-              ) : (
-                <button type="button" className="btn btn--secondary" disabled>
-                  {QUIZ_COMING_SOON}
-                </button>
-              )}
+          <details className="fan-path-details info-card info-card--wide">
+            <summary className="fan-path-details__summary">
+              <span className="fan-path__eyebrow">Fan mode</span>
+              <span className="fan-path-details__title">Learning path</span>
+            </summary>
+            <div className="fan-path-details__body">
+              <div className="fan-path__actions fan-path-details__actions">
+                <a href="#team-squad" className="btn btn--secondary">
+                  View squad
+                </a>
+                {hasTeamQuiz ? (
+                  <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
+                    Start team quiz
+                  </Link>
+                ) : (
+                  <button type="button" className="btn btn--secondary" disabled>
+                    {QUIZ_COMING_SOON}
+                  </button>
+                )}
+              </div>
+              {!hasTeamQuiz ? (
+                <p className="player-study__note">
+                  Explore the full squad now — the club quiz unlocks once more players have quiz
+                  clues.
+                </p>
+              ) : null}
+              <ol className="fan-path__steps fan-path__steps--stacked">
+                {fanPathSteps.map((step, index) => (
+                  <li key={`${step.label}-${step.title}`} className="fan-path__step">
+                    <span className="fan-path__number">{index + 1}</span>
+                    <div>
+                      <span className="fan-path__label">{step.label}</span>
+                      <h3>{step.title}</h3>
+                      <p>{step.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
-            {!hasTeamQuiz && (
-              <p className="player-study__note">
-                {quizReadyRoster.length > 0
-                  ? `Team quiz unlocks at ${QUIZ_MIN_SESSION_POOL}+ players with clues (${quizReadyRoster.length} so far).`
-                  : 'Explore the full squad now—the club quiz unlocks once more players have quiz clues.'}
-              </p>
-            )}
-            <ol className="fan-path__steps fan-path__steps--stacked">
-              {fanPathSteps.map((step, index) => (
-                <li key={`${step.label}-${step.title}`} className="fan-path__step">
-                  <span className="fan-path__number">{index + 1}</span>
-                  <div>
-                    <span className="fan-path__label">{step.label}</span>
-                    <h3>{step.title}</h3>
-                    <p>{step.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </details>
+          </details>
         ) : null}
       </div>
     </div>

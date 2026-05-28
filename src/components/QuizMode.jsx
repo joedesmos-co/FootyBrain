@@ -1175,6 +1175,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             <form className="quiz-form" onSubmit={handleCheckAnswer}>
               <div className="quiz-form__answer">
                 <PlayerAutocomplete
+                  searchPool={players}
                   players={playerPool}
                   value={answer}
                   onChange={setAnswer}

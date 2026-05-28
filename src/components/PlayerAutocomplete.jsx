@@ -8,6 +8,7 @@ import PlayerVisual from './PlayerVisual';
 
 export default function PlayerAutocomplete({
   players,
+  searchPool,
   value,
   onChange,
   onSelect,
@@ -23,6 +24,7 @@ export default function PlayerAutocomplete({
   getTeamName = () => 'Unknown',
   getLeagueName = () => 'Unknown',
 }) {
+  const lookupPool = searchPool ?? players;
   const navigate = useNavigate();
   const listId = useId();
   const rootRef = useRef(null);
@@ -34,14 +36,14 @@ export default function PlayerAutocomplete({
 
   const suggestions = useMemo(
     () =>
-      searchPlayers(players, debouncedValue, {
+      searchPlayers(lookupPool, debouncedValue, {
         limit: maxResults,
         excludeIds,
         getTeamName,
         getLeagueName,
         intentContext,
       }),
-    [players, debouncedValue, maxResults, excludeIds, intentContext, getTeamName, getLeagueName],
+    [lookupPool, debouncedValue, maxResults, excludeIds, intentContext, getTeamName, getLeagueName],
   );
 
   const ambiguousSuggestionNames = useMemo(() => {
@@ -55,8 +57,8 @@ export default function PlayerAutocomplete({
   }, [suggestions]);
 
   const ambiguousLastNames = useMemo(
-    () => (showClubWhenAmbiguous ? buildAmbiguousLastNames(players) : new Set()),
-    [players, showClubWhenAmbiguous],
+    () => (showClubWhenAmbiguous ? buildAmbiguousLastNames(lookupPool) : new Set()),
+    [lookupPool, showClubWhenAmbiguous],
   );
 
   const showList =
@@ -129,6 +131,8 @@ export default function PlayerAutocomplete({
         <span>{label}</span>
         <input
           ref={inputRef}
+          id={`${listId}-input`}
+          name="footybrainPlayerLookup"
           type="search"
           role="combobox"
           aria-expanded={showList}
@@ -141,6 +145,13 @@ export default function PlayerAutocomplete({
           value={value}
           disabled={disabled}
           autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="none"
+          spellCheck={false}
+          inputMode="search"
+          data-lpignore="true"
+          data-1p-ignore="true"
+          data-form-type="other"
           onChange={(e) => {
             onChange(e.target.value);
             setOpen(true);

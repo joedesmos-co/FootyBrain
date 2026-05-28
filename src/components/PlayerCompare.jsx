@@ -11,6 +11,7 @@ import {
   getPlayerRoleSummary,
   getPlayerStrengths,
 } from '../utils/playerCompare';
+import { usePlayerSearchPool } from '../hooks/usePlayerSearchPool';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerVisual from './PlayerVisual';
 
@@ -113,6 +114,7 @@ export default function PlayerCompare({
   initialRightId = '',
 }) {
   const { recordCompare } = useProgression();
+  const playerSearchPool = usePlayerSearchPool();
   const [bundled, setBundled] = useState(null);
 
   useEffect(() => {
@@ -190,6 +192,7 @@ export default function PlayerCompare({
 
       <section className="compare-pickers" aria-label="Select players to compare">
         <PlayerAutocomplete
+          searchPool={playerSearchPool.players}
           players={playersForCompare}
           value={leftQuery}
           onChange={handleLeftQueryChange}
@@ -203,10 +206,11 @@ export default function PlayerCompare({
           excludeIds={rightId ? [rightId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
-          getTeamName={bundled?.getTeamName}
-          getLeagueName={bundled?.getLeagueName}
+          getTeamName={(id) => playerSearchPool.getTeamName(id) || bundled?.getTeamName(id)}
+          getLeagueName={(id) => playerSearchPool.getLeagueName(id) || bundled?.getLeagueName(id)}
         />
         <PlayerAutocomplete
+          searchPool={playerSearchPool.players}
           players={playersForCompare}
           value={rightQuery}
           onChange={handleRightQueryChange}
@@ -220,8 +224,8 @@ export default function PlayerCompare({
           excludeIds={leftId ? [leftId] : []}
           maxResults={8}
           intentContext={searchIntentContext}
-          getTeamName={bundled?.getTeamName}
-          getLeagueName={bundled?.getLeagueName}
+          getTeamName={(id) => playerSearchPool.getTeamName(id) || bundled?.getTeamName(id)}
+          getLeagueName={(id) => playerSearchPool.getLeagueName(id) || bundled?.getLeagueName(id)}
         />
       </section>
 

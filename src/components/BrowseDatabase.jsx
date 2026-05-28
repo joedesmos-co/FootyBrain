@@ -17,6 +17,7 @@ import { BROWSE_SEARCH_RESULT_CAP, orderPlayersByQuery } from '../utils/playerSe
 import { getLeagueDisplayName, isExternalLeagueId } from '../utils/footballDisplay';
 import { groupOtherClubTeamsForBrowse } from '../utils/externalClubGrouping';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
+import { usePlayerSearchPool } from '../hooks/usePlayerSearchPool';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import DataTrustNotice from './DataTrustNotice';
 import TodaysPicksSection from './HomeFeaturedSection';
@@ -46,6 +47,7 @@ export default function BrowseDatabase() {
   const [bundled, setBundled] = useState(null);
   const { status: quizStatus, registry: quizRegistry } = useQuizRegistry();
   const { index: searchIndex, status: searchIndexStatus } = useSearchIndex();
+  const playerSearchPool = usePlayerSearchPool();
 
   const isOtherClubsLeague = isExternalLeagueId(leagueFilter);
   const usesExternalShard = Boolean(leagueFilter) && hasExternalLeagueShard(leagueFilter);
@@ -460,6 +462,7 @@ export default function BrowseDatabase() {
           </label>
 
           <PlayerAutocomplete
+            searchPool={playerSearchPool.players}
             players={scopedPlayers}
             value={search}
             onChange={handleSearchChange}
@@ -467,10 +470,10 @@ export default function BrowseDatabase() {
             navigateOnSelect
             intentContext={intentContext}
             label="Search"
-            placeholder="Search players — name, partial match…"
-            disabled={browseDataLoading}
-            getTeamName={getTeamName}
-            getLeagueName={getLeagueName}
+            placeholder="Search all players — name, club, country…"
+            disabled={browseDataLoading || playerSearchPool.status === 'loading'}
+            getTeamName={(id) => playerSearchPool.getTeamName(id) || getTeamName(id)}
+            getLeagueName={(id) => playerSearchPool.getLeagueName(id) || getLeagueName(id)}
           />
         </div>
         <p className="filters__count">
