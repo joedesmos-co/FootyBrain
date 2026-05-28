@@ -23,7 +23,7 @@ import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
 import { getCanonicalUrl } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 
 function XpToast({ message, onDismiss }) {
@@ -145,16 +145,17 @@ export default function CollectionDetailPage() {
     const canonical = getCanonicalUrl();
     if (!canonical) return;
     const itemCount = collection.items.length;
-    const title = `${collection.title} · Collection · FootyCompass`;
-    const description = collection.description
-      ? `${collection.description} (${itemCount} profiles).`
-      : `A curated FootyCompass checklist (${itemCount} profiles) to help you learn players, clubs, and history.`;
-    setSeoMeta({
+    const title = `${collection.title} — football study collection · FootyCompass`;
+    const description = truncateMetaDescription(
+      collection.description
+        ? `${collection.description} Study ${itemCount} profiles, track progress, then finish with the linked quiz on FootyCompass.`
+        : `Curated football study list with ${itemCount} player and club profiles — mark progress and practice with quizzes on FootyCompass.`,
+    );
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
-      og: { title, description, url: canonical, type: 'website' },
-      twitter: { title, description },
+      robots: 'index,follow',
     });
   }, [collection]);
 

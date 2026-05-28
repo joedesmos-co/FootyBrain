@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { canonicalUrlForPath } from '../utils/brand';
+import { applyPageSeo, buildQuizSeoFromSearchParams } from '../utils/seoCtr.js';
 import { getQuizThemeById, QUIZ_THEME_CATALOG } from '../data/quizThemes';
 import { getRecommendedNextQuizzes } from '../utils/quizRecommendations';
 import {
@@ -326,6 +328,15 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     () => buildAmbiguousLastNames(playerPool),
     [playerPool],
   );
+
+  useEffect(() => {
+    const seo = buildQuizSeoFromSearchParams(searchParams, { poolSize: playerPool.length });
+    applyPageSeo({
+      ...seo,
+      canonicalUrl: canonicalUrlForPath('/quiz'),
+      robots: 'index,follow',
+    });
+  }, [searchParams, playerPool.length]);
 
   const resetSessionStats = useCallback(() => {
     setScore({ correct: 0, incorrect: 0, totalAnswered: 0 });

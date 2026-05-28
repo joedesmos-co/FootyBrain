@@ -9,59 +9,30 @@ import {
   getClubQuizPlayHref,
 } from '../data/clubQuizCategories';
 import { CLUB_QUIZ_MIN_POOL, countClubQuizPool } from '../utils/clubQuizEngine';
-import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from '../utils/brand';
-import { upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { canonicalUrlForPath, pageTitle } from '../utils/brand';
+import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 
-function buildFaqJsonLd({ canonical, faqs }) {
-  const mainEntity = (faqs ?? []).slice(0, 8).map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  }));
-  if (!mainEntity.length) return null;
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    url: canonical,
-    mainEntity,
-  };
-}
-
 function useClubQuizLandingSeo({ title, description, canonical, faqs }) {
-  const image = `${SITE_URL}/og.svg`;
   useEffect(() => {
-    setSeoMeta({
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
-      og: {
-        title,
-        description,
-        url: canonical,
-        type: 'website',
-        site_name: SITE_NAME,
-        image,
-        imageWidth: 1200,
-        imageHeight: 630,
-      },
-      twitter: { title, description, card: 'summary_large_image', image },
+      faqs,
+      webPageName: title,
     });
-    upsertJsonLdScript('jsonld-faq', buildFaqJsonLd({ canonical, faqs }));
-    return () => {
-      upsertJsonLdScript('jsonld-faq', null);
-    };
-  }, [title, description, canonical, faqs, image]);
+  }, [title, description, canonical, faqs]);
 }
 
 export function SeoClubQuizzesHub() {
   const { pathname } = useLocation();
   const canonical = canonicalUrlForPath(pathname);
   const title = pageTitle('Club football quizzes');
-  const description =
-    'Club knowledge quizzes: stadiums, leagues, rivalries, history, kits, and legends — distinct from player guess-the-name quizzes on FootyCompass.';
+  const description = truncateMetaDescription(
+    'Club knowledge quizzes: stadiums, leagues, rivalries, history, kits, and legends. Multiple choice or typing — free on FootyCompass.',
+  );
 
   const counts = useMemo(() => {
     const out = {};

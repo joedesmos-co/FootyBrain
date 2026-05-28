@@ -5,7 +5,7 @@ import { getLearningPathById } from '../data/learningPathsData';
 import { getCollectionQuizHref } from '../utils/collections';
 import { resolveLearningPathSteps } from '../utils/learningPaths';
 import { getCanonicalUrl } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 
 export default function LearningPathDetailPage() {
   const { pathId } = useParams();
@@ -22,16 +22,17 @@ export default function LearningPathDetailPage() {
     if (!path || steps.length === 0) return;
     const canonical = getCanonicalUrl();
     if (!canonical) return;
-    const title = `${path.title} · Learning path · FootyCompass`;
-    const description = path.description
-      ? path.description
-      : 'A step-by-step learning flow through collections, profiles, and a quiz.';
-    setSeoMeta({
+    const title = `${path.title} — guided football learning path · FootyCompass`;
+    const description = truncateMetaDescription(
+      path.description
+        ? `${path.description} Follow ${steps.length} steps through profiles, collections, and a quiz on FootyCompass.`
+        : `Guided football study path: ${steps.length} steps through profiles and quizzes on FootyCompass.`,
+    );
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
-      og: { title, description, url: canonical, type: 'website' },
-      twitter: { title, description },
+      robots: 'index,follow',
     });
   }, [path, steps.length]);
 

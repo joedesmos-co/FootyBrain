@@ -34,8 +34,12 @@ import PageFallback from './PageFallback';
 import PlayerVisual from './PlayerVisual';
 import { peekTeamName } from '../data/teamStore';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
-import { buildLeagueIdentitySection, buildTopLeagueMetaDescription } from '../utils/topImportanceProfile';
+import {
+  applyPageSeo,
+  buildLeagueSeoDescription,
+  buildLeagueSeoTitle,
+} from '../utils/seoCtr.js';
+import { buildLeagueIdentitySection } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
@@ -79,35 +83,22 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     const homeUrl = canonical.replace(/\/league\/[^/]+$/, '/');
     const browseUrl = `${homeUrl.replace(/\/$/, '')}/browse`;
 
-    const leagueDescription = buildTopLeagueMetaDescription(league, {
+    const stats = {
       clubs: leagueTeams.length,
       players: leaguePlayers.length,
       quizReady: quizReadyPlayers.length,
-    });
+    };
+    const title = buildLeagueSeoTitle(league);
+    const description = buildLeagueSeoDescription(league, stats);
 
-    setSeoMeta({
-      title: `${getLeagueDisplayName(league)} · FootyCompass`,
-      description: leagueDescription,
+    applyPageSeo({
+      title,
+      description,
       canonicalUrl: canonical,
-      og: {
-        title: `${getLeagueDisplayName(league)} · FootyCompass`,
-        description: leagueDescription,
-        url: canonical,
-        type: 'website',
-      },
-      twitter: {
-        title: `${getLeagueDisplayName(league)} · FootyCompass`,
-        description: leagueDescription,
-      },
-    });
-
-    upsertJsonLdScript('jsonld-breadcrumb', {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
-        { '@type': 'ListItem', position: 2, name: 'Browse', item: browseUrl },
-        { '@type': 'ListItem', position: 3, name: league.name, item: canonical },
+      breadcrumbs: [
+        { name: 'Home', item: homeUrl },
+        { name: 'Browse', item: browseUrl },
+        { name: getLeagueDisplayName(league), item: canonical },
       ],
     });
 

@@ -12,6 +12,12 @@ import {
   getPlayerStrengths,
 } from '../utils/playerCompare';
 import { usePlayerSearchPool } from '../hooks/usePlayerSearchPool';
+import { canonicalUrlForPath } from '../utils/brand';
+import {
+  applyPageSeo,
+  buildCompareSeoDescription,
+  buildCompareSeoTitle,
+} from '../utils/seoCtr.js';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerVisual from './PlayerVisual';
 
@@ -181,6 +187,25 @@ export default function PlayerCompare({
   };
 
   const showComparison = leftPlayer && rightPlayer;
+
+  useEffect(() => {
+    if (!embedded) return undefined;
+    applyPageSeo({
+      title: buildCompareSeoTitle({
+        tab: 'players',
+        leftName: leftPlayer?.name,
+        rightName: rightPlayer?.name,
+      }),
+      description: buildCompareSeoDescription({
+        tab: 'players',
+        leftName: leftPlayer?.name,
+        rightName: rightPlayer?.name,
+      }),
+      canonicalUrl: canonicalUrlForPath('/compare'),
+      robots: 'index,follow',
+    });
+    return undefined;
+  }, [embedded, leftPlayer?.name, rightPlayer?.name]);
 
   const body = (
     <>

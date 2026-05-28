@@ -1,11 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { leagues, players, teams } from '../data/sampleData';
-import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from '../utils/brand';
+import { canonicalUrlForPath, pageTitle } from '../utils/brand';
 import { DATASET_META } from '../data/datasetMeta';
 import { formatCountryLabel, getLeagueDisplayName, isExternalLeagueId } from '../utils/footballDisplay';
-import { upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { applyPageSeo } from '../utils/seoCtr.js';
 import EntityRelatedNav from './EntityRelatedNav';
 import PlayerCard from './PlayerCard';
 import TeamCard from './TeamCard';
@@ -20,78 +19,18 @@ import LeagueBadge from './LeagueBadge';
 import BreadcrumbNav from './BreadcrumbNav';
 import { NATIONALITY_HUB_INDEX_LIMIT } from '../utils/internalLinking.js';
 
-function buildFaqJsonLd({ canonical, faqs }) {
-  const mainEntity = (faqs ?? []).slice(0, 10).map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  }));
-
-  if (!mainEntity.length) return null;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    url: canonical,
-    mainEntity,
-  };
-}
-
-function buildLandingJsonLd({ title, description, canonical, links }) {
-  const itemList = (links ?? []).slice(0, 24).map((link, idx) => ({
-    '@type': 'ListItem',
-    position: idx + 1,
-    name: link.label,
-    url: link.url,
-  }));
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: title,
-    url: canonical,
-    description,
-    mainEntity: itemList.length
-      ? {
-          '@type': 'ItemList',
-          itemListElement: itemList,
-        }
-      : undefined,
-  };
-}
-
 function useLandingSeo({ title, description, canonical, links, faqs }) {
-  const image = `${SITE_URL}/og.svg`;
   useEffect(() => {
-    setSeoMeta({
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
-      og: {
-        title,
-        description,
-        url: canonical,
-        type: 'website',
-        site_name: SITE_NAME,
-        image,
-        imageWidth: 1200,
-        imageHeight: 630,
-      },
-      twitter: { title, description, card: 'summary_large_image', image },
+      faqs,
+      itemList: links,
+      webPageName: title,
     });
-
-    upsertJsonLdScript(
-      'jsonld-landing',
-      buildLandingJsonLd({ title, description, canonical, links }),
-    );
-    upsertJsonLdScript('jsonld-faq', buildFaqJsonLd({ canonical, faqs }));
-
-    return () => {
-      upsertJsonLdScript('jsonld-landing', null);
-      upsertJsonLdScript('jsonld-faq', null);
-    };
-  }, [title, description, canonical, links, faqs, image]);
+  }, [title, description, canonical, links, faqs]);
 }
 
 function sortByImportanceDesc(a, b) {

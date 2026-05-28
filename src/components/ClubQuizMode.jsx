@@ -1,5 +1,7 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { canonicalUrlForPath } from '../utils/brand';
+import { applyPageSeo, buildClubQuizSeoFromSearchParams } from '../utils/seoCtr.js';
 import { leagues, teams } from '../data/sampleData';
 import {
   CLUB_QUIZ_CATEGORY_CATALOG,
@@ -88,6 +90,15 @@ export default function ClubQuizMode() {
 
   const poolReady = poolSize >= CLUB_QUIZ_MIN_POOL;
   const useMcq = usesClubQuizMultipleChoice(difficulty);
+
+  useEffect(() => {
+    const seo = buildClubQuizSeoFromSearchParams(searchParams, { poolSize });
+    applyPageSeo({
+      ...seo,
+      canonicalUrl: canonicalUrlForPath('/club-quiz'),
+      robots: 'index,follow',
+    });
+  }, [searchParams, poolSize]);
 
   const resetQuestionState = useCallback(() => {
     setCurrentQuestion(null);

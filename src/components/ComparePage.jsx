@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { canonicalUrlForPath } from '../utils/brand';
 import { getManifestLeagues } from '../data/leagueManifest';
+import {
+  applyPageSeo,
+  buildCompareSeoDescription,
+  buildCompareSeoTitle,
+} from '../utils/seoCtr.js';
 import ClubCompare from './ClubCompare';
 import PlayerCompare from './PlayerCompare';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -21,6 +27,15 @@ export default function ComparePage() {
     location.pathname === '/compare-clubs' || searchParams.get('tab') === 'clubs'
       ? 'clubs'
       : 'players';
+
+  useEffect(() => {
+    applyPageSeo({
+      title: buildCompareSeoTitle({ tab }),
+      description: buildCompareSeoDescription({ tab }),
+      canonicalUrl: canonicalUrlForPath('/compare'),
+      robots: 'index,follow',
+    });
+  }, [tab]);
 
   return (
     <div className="page compare-page">

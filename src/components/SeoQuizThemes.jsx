@@ -8,62 +8,34 @@ import {
   getQuizThemePlayHref,
 } from '../data/quizThemes';
 import { DATASET_META } from '../data/datasetMeta';
-import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from '../utils/brand';
+import { canonicalUrlForPath, pageTitle } from '../utils/brand';
 import { buildThemedQuizPool } from '../utils/quizThemePools';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
 import { useEffect } from 'react';
-import { upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 
-function buildFaqJsonLd({ canonical, faqs }) {
-  const mainEntity = (faqs ?? []).slice(0, 8).map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  }));
-  if (!mainEntity.length) return null;
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    url: canonical,
-    mainEntity,
-  };
-}
-
-function useThemeLandingSeo({ title, description, canonical, faqs }) {
-  const image = `${SITE_URL}/og.svg`;
+function useThemeLandingSeo({ title, description, canonical, faqs, itemList }) {
   useEffect(() => {
-    setSeoMeta({
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
-      og: {
-        title,
-        description,
-        url: canonical,
-        type: 'website',
-        site_name: SITE_NAME,
-        image,
-        imageWidth: 1200,
-        imageHeight: 630,
-      },
-      twitter: { title, description, card: 'summary_large_image', image },
+      faqs,
+      itemList,
+      webPageName: title,
     });
-    upsertJsonLdScript('jsonld-faq', buildFaqJsonLd({ canonical, faqs }));
-    return () => {
-      upsertJsonLdScript('jsonld-faq', null);
-    };
-  }, [title, description, canonical, faqs, image]);
+  }, [title, description, canonical, faqs, itemList]);
 }
 
 export function SeoQuizThemesHub() {
   const { pathname } = useLocation();
   const canonical = canonicalUrlForPath(pathname);
   const title = pageTitle('Themed football quizzes');
-  const description =
-    'Themed football player quizzes: wonderkids, legends, rivalries, leagues, World Cup squads, and more — all using quiz-ready players.';
+  const description = truncateMetaDescription(
+    'Themed football player quizzes: wonderkids, legends, Premier League stars, World Cup squads, and more. See pool sizes and play free on FootyCompass.',
+  );
 
   const poolContext = useMemo(() => ({ teams }), []);
   const counts = useMemo(() => {

@@ -36,7 +36,11 @@ import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { buildPlayerInternalLinks } from '../utils/internalLinking.js';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import {
+  applyPageSeo,
+  buildPlayerSeoDescription,
+  buildPlayerSeoTitle,
+} from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 
 function parseDateOfBirth(value) {
@@ -291,32 +295,32 @@ export default function PlayerProfile() {
     const teamUrl = `${homeUrl.replace(/\/$/, '')}/team/${player.teamId}`;
     const resolvedTeamName = player?._teamName ?? peekTeamName(player.teamId) ?? 'Unknown';
 
-    upsertJsonLdScript('jsonld-breadcrumb', {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
-        { '@type': 'ListItem', position: 2, name: 'Browse', item: browseUrl },
-        { '@type': 'ListItem', position: 3, name: player.name, item: canonical },
-      ],
-    });
-
-    const title = `${player.name} · FootyCompass`;
     const leagueNameForSeo = getLeagueDisplayName({
       id: player.leagueId,
       name: getManifestLeague(player.leagueId)?.name ?? 'Unknown',
     });
-    const description = buildPlayerProfileEditorial(player, {
+    const seoCtx = {
       teamName: resolvedTeamName,
       leagueName: leagueNameForSeo,
       team: teamContext,
-    }).description;
-    setSeoMeta({
+      quizReady: !isBrowseOnlyPlayer(player),
+    };
+    const title = buildPlayerSeoTitle(player, { teamName: resolvedTeamName });
+    const description = buildPlayerSeoDescription(player, seoCtx);
+
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
-      og: { title, description, url: canonical, type: 'profile' },
-      twitter: { title, description },
+      ogType: 'profile',
+      breadcrumbs: [
+        { name: 'Home', item: homeUrl },
+        { name: 'Browse', item: browseUrl },
+        resolvedTeamName && resolvedTeamName !== 'Unknown'
+          ? { name: resolvedTeamName, item: teamUrl }
+          : null,
+        { name: player.name, item: canonical },
+      ].filter(Boolean),
     });
 
     const birthDate =

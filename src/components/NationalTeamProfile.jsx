@@ -7,7 +7,9 @@ import {
   countLinkedPlayers,
   getNationalTeamById,
   getMembershipRowsForNationalTeam,
+  getNationalTeamQuizReadyCount,
   isLiveNationalTeamId,
+  isLiveNationalTeamQuizViable,
 } from '../data/nationalTeamData';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { QUIZ_NATIONAL_TEAM_MIN_POOL } from '../utils/quizSession';
@@ -17,8 +19,12 @@ import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData';
 import { getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters';
 import { isWorldCup2026QualifiedTeam } from '../data/worldCup2026Prep';
 import TeamSquadView from './TeamSquadView';
-import { getCanonicalUrl } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
+import {
+  applyPageSeo,
+  buildNationalTeamSeoDescription,
+  buildNationalTeamSeoTitle,
+} from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import { buildNationalIdentitySection } from '../utils/entityEditorialSynthesis';
@@ -63,26 +69,30 @@ export default function NationalTeamProfile() {
     if (!nationalTeam) return undefined;
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
-    const title = `${nationalTeam.displayName} · National team · FootyCompass`;
-    const fanLead = String(nationalTeam.fanGuide ?? '').trim();
-    const rivalCount = nationalTeam.rivalIds?.length ?? 0;
-    const description = [
-      `${nationalTeam.displayName} national team—player pool linked from club squads (not an official tournament roster).`,
-      fanLead ? fanLead.slice(0, 120).trimEnd() + (fanLead.length > 120 ? '…' : '') : '',
-      rivalCount > 0 ? `${rivalCount} rival nations listed.` : '',
-      'Squad browse, World Cup hub, and national quizzes on FootyCompass.',
-    ]
-      .filter(Boolean)
-      .join(' ')
-      .replace(/\s+/g, ' ');
-    setSeoMeta({
+    const homeUrl = canonical.replace(/\/national-team\/[^/]+$/, '/');
+    const nationalTeamsUrl = `${homeUrl.replace(/\/$/, '')}/national-teams`;
+    const linkedCount = countLinkedPlayers(nationalTeam.id);
+    const title = buildNationalTeamSeoTitle(nationalTeam);
+    const description = buildNationalTeamSeoDescription(nationalTeam, {
+      linkedCount,
+      quizReady: getNationalTeamQuizReadyCount(nationalTeam.id),
+      canQuiz: isLiveNationalTeamQuizViable(nationalTeam.id),
+    });
+
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
-      og: { title, description, url: canonical, type: 'website' },
-      twitter: { title, description },
+      breadcrumbs: [
+        { name: 'Home', item: homeUrl },
+        { name: 'National teams', item: nationalTeamsUrl },
+        { name: nationalTeam.displayName, item: canonical },
+      ],
     });
-    return undefined;
+
+    return () => {
+      upsertJsonLdScript('jsonld-breadcrumb', null);
+    };
   }, [nationalTeam]);
 
   useEffect(() => {

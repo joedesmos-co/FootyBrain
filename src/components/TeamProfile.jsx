@@ -24,20 +24,19 @@ import PageFallback from './PageFallback';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
 import TeamSquadView from './TeamSquadView';
-import { buildClubProfileDescription } from '../utils/clubProfileEditorial';
 import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
-import { setSeoMeta } from '../utils/seoMeta';
+import {
+  applyPageSeo,
+  buildTeamSeoDescription,
+  buildTeamSeoTitle,
+} from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { dedupeInternalLinks } from '../utils/internalLinking.js';
 import { buildKeepExploringLinks } from '../utils/topImportanceProfile';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
-import {
-  buildTopTeamMetaDescription,
-  isHighTrafficTeam,
-} from '../utils/topImportanceProfile';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
@@ -61,29 +60,23 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
     const homeUrl = canonical.replace(/\/team\/[^/]+$/, '/');
     const teamsUrl = `${homeUrl.replace(/\/$/, '')}/teams`;
 
-    const title = `${team.name} · FootyCompass`;
-    const description = isHighTrafficTeam(team, roster)
-      ? buildTopTeamMetaDescription(team, {
-          rosterSize: roster.length,
-          quizReady: getQuizEligiblePlayers(roster).length,
-          leagueName,
-        })
-      : buildClubProfileDescription(team, leagueName, roster.length);
-    setSeoMeta({
+    const quizReady = getQuizEligiblePlayers(roster).length;
+    const title = buildTeamSeoTitle(team, { leagueName });
+    const description = buildTeamSeoDescription(team, {
+      roster,
+      leagueName,
+      quizReady,
+    });
+
+    applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
-      og: { title, description, url: canonical, type: 'website' },
-      twitter: { title, description },
-    });
-
-    upsertJsonLdScript('jsonld-breadcrumb', {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
-        { '@type': 'ListItem', position: 2, name: 'Teams', item: teamsUrl },
-        { '@type': 'ListItem', position: 3, name: team.name, item: canonical },
+      breadcrumbs: [
+        { name: 'Home', item: homeUrl },
+        { name: 'Teams', item: teamsUrl },
+        { name: leagueName, item: `${homeUrl.replace(/\/$/, '')}/league/${team.leagueId}` },
+        { name: team.name, item: canonical },
       ],
     });
 

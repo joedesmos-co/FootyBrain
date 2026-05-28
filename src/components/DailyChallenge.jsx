@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { canonicalUrlForPath } from '../utils/brand';
+import {
+  applyPageSeo,
+  buildDailySeoDescription,
+  buildDailySeoTitle,
+} from '../utils/seoCtr.js';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
 import { useDailyCompletionStatus } from '../hooks/useDailyCompletionStatus';
@@ -174,6 +180,30 @@ export default function DailyChallenge() {
     quizRegistry,
     quizRegistryRetry,
   } = daily;
+
+  useEffect(() => {
+    const scopeLabel =
+      challengeScope?.name && challengeScope.type !== 'general'
+        ? challengeScope.type === 'league'
+          ? getLeagueDisplayName({
+              id: challengeScope.leagueId,
+              name: challengeScope.name,
+            })
+          : challengeScope.name
+        : null;
+    applyPageSeo({
+      title: buildDailySeoTitle({
+        dateLabel: formatDateKey(todayKey),
+        scopeLabel,
+      }),
+      description: buildDailySeoDescription({
+        scopeLabel,
+        questionCount: questions.length || 5,
+      }),
+      canonicalUrl: canonicalUrlForPath('/daily'),
+      robots: 'index,follow',
+    });
+  }, [todayKey, challengeScope, questions.length]);
 
   // ── Quiz state (only active while answering questions) ─────────────────────
   const [currentIndex, setCurrentIndex] = useState(0);
