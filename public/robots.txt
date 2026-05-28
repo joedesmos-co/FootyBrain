@@ -8,5 +8,5 @@ Disallow: /profile
 Disallow: /daily
 Disallow: /*?
 
-Sitemap: https://footybrain.pages.dev/sitemap.xml
+Sitemap: https://footycompass.pages.dev/sitemap.xml
 

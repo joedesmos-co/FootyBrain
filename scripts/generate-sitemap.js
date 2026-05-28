@@ -7,7 +7,7 @@
  * - Supports future scaling via sitemap index when URL count grows.
  *
  * Env:
- * - SITE_URL (recommended): https://footybrain.app
+ * - SITE_URL (recommended): https://footycompass.pages.dev
  */
 
 import fs from 'fs';
@@ -18,7 +18,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 
-const DEFAULT_SITE_URL = 'https://footybrain.pages.dev';
+const DEFAULT_SITE_URL = 'https://footycompass.pages.dev';
 const SITE_URL = String(process.env.SITE_URL ?? DEFAULT_SITE_URL).replace(/\/+$/, '');
 const DATA_AS_OF = (() => {
   try {
