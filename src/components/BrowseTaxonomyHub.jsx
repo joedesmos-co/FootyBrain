@@ -1,15 +1,13 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  OTHER_CLUBS_LEAGUE_ID,
-} from '../utils/browseTaxonomy';
+import { OTHER_CLUBS_LEAGUE_ID } from '../utils/browseTaxonomy';
 import { getOtherClubBrowseChipMode } from '../utils/externalClubBrowse';
 import { formatCountryLabel, getLeagueDisplayName } from '../utils/footballDisplay';
 import LeagueBadge from './LeagueBadge';
 import NationalTeamBadge from './NationalTeamBadge';
 
 const NATIONAL_TEAM_PREVIEW_COUNT = 8;
-const OTHER_CLUBS_PAGE_SIZE = 24;
+const OTHER_CLUBS_INITIAL_VISIBLE = 24;
 const NATIONAL_PREVIEW_IDS = [
   'england',
   'brazil',
@@ -153,7 +151,15 @@ function BrowseOtherRegionAccordionItem({
 }) {
   const regionKey = hubKeyOtherRegion(regionId);
   const [regionSearch, setRegionSearch] = useState('');
-  const [visibleCount, setVisibleCount] = useState(OTHER_CLUBS_PAGE_SIZE);
+  const [showAllClubs, setShowAllClubs] = useState(false);
+
+  const handleRegionToggle = () => {
+    if (expanded) {
+      setShowAllClubs(false);
+      setRegionSearch('');
+    }
+    onToggle(regionKey);
+  };
 
   const filteredTeams = useMemo(() => {
     const query = regionSearch.trim().toLowerCase();
@@ -165,8 +171,10 @@ function BrowseOtherRegionAccordionItem({
     });
   }, [teams, regionSearch]);
 
-  const visibleTeams = filteredTeams.slice(0, visibleCount);
-  const hasMore = filteredTeams.length > visibleCount;
+  const remainingCount = Math.max(0, filteredTeams.length - OTHER_CLUBS_INITIAL_VISIBLE);
+  const visibleTeams = showAllClubs
+    ? filteredTeams
+    : filteredTeams.slice(0, OTHER_CLUBS_INITIAL_VISIBLE);
 
   return (
     <li className="browse-accordion__item">
@@ -174,7 +182,7 @@ function BrowseOtherRegionAccordionItem({
         type="button"
         className={`browse-accordion__trigger league-link-card${expanded ? ' browse-accordion__trigger--expanded' : ''}`}
         aria-expanded={expanded}
-        onClick={() => onToggle(regionKey)}
+        onClick={handleRegionToggle}
       >
         <span className="browse-accordion__trigger-text">
           <strong>{regionLabel}</strong>
@@ -204,7 +212,7 @@ function BrowseOtherRegionAccordionItem({
                     value={regionSearch}
                     onChange={(event) => {
                       setRegionSearch(event.target.value);
-                      setVisibleCount(OTHER_CLUBS_PAGE_SIZE);
+                      setShowAllClubs(false);
                     }}
                     autoComplete="off"
                   />
@@ -220,50 +228,98 @@ function BrowseOtherRegionAccordionItem({
                   compact
                 />
               )}
-              {hasMore ? (
+              {!showAllClubs && remainingCount > 0 ? (
                 <button
                   type="button"
-                  className="btn btn--secondary btn--small browse-other-show-more"
-                  onClick={() => setVisibleCount((count) => count + OTHER_CLUBS_PAGE_SIZE)}
+                  className="btn btn--secondary btn--small browse-accordion__expand"
+                  onClick={() => setShowAllClubs(true)}
                 >
-                  Show more ({filteredTeams.length - visibleCount} remaining)
+                  Show all clubs ({remainingCount} remaining)
                 </button>
               ) : null}
-              {regionSearch && filteredTeams.length > 0 && filteredTeams.length <= visibleCount ? (
-                <p className="browse-taxonomy__hint">
-                  Showing {filteredTeams.length} club{filteredTeams.length !== 1 ? 's' : ''} matching
+              {showAllClubs && remainingCount > 0 ? (
+                <button
+                  type="button"
+                  className="btn btn--secondary btn--small browse-accordion__expand"
+                  onClick={() => setShowAllClubs(false)}
+                >
+                  Show fewer
+                </button>
+              ) : null}
+              {regionSearch && filteredTeams.length > 0 ? (
+                <p className="browse-taxonomy__hint browse-taxonomy__hint--tight">
+                  {filteredTeams.length} club{filteredTeams.length !== 1 ? 's' : ''} match
                   &ldquo;{regionSearch.trim()}&rdquo;
                 </p>
               ) : null}
             </>
           )}
-          <div className="browse-accordion__actions">
-            <Link
-              to={`/league/${OTHER_CLUBS_LEAGUE_ID}`}
-              className="btn btn--secondary btn--small"
-            >
-              View other clubs
-            </Link>
-            <button
-              type="button"
-              className="btn btn--secondary btn--small"
-              onClick={() => onBrowsePlayers(OTHER_CLUBS_LEAGUE_ID, regionId)}
-            >
-              Browse players
-            </button>
-          </div>
         </div>
       ) : null}
     </li>
   );
 }
 
-function NationalTeamCompactLink({ team }) {
+function NationalTeamChip({ team }) {
   return (
-    <Link to={`/national-team/${team.id}`} className="browse-nation-link">
+    <Link to={`/national-team/${team.id}`} className="browse-club-chip browse-club-chip--nation">
       <NationalTeamBadge nationalTeam={team} size="thumb" />
-      <span className="browse-nation-link__name">{team.displayName}</span>
+      <span className="browse-club-chip__name">{team.displayName}</span>
     </Link>
+  );
+}
+
+function BrowseNationalTeamsAccordion({
+  nationalTeams,
+  nationalPreview,
+  showAllNationalTeams,
+  onToggleShowAll,
+}) {
+  const [expanded, setExpanded] = useState(true);
+  const nationCount = nationalTeams.length;
+  const visibleNationalTeams = showAllNationalTeams ? nationalTeams : nationalPreview;
+  const hiddenCount = Math.max(0, nationCount - NATIONAL_TEAM_PREVIEW_COUNT);
+
+  return (
+    <li className="browse-accordion__item">
+      <button
+        type="button"
+        className={`browse-accordion__trigger league-link-card${expanded ? ' browse-accordion__trigger--expanded' : ''}`}
+        aria-expanded={expanded}
+        onClick={() => setExpanded((open) => !open)}
+      >
+        <span className="browse-accordion__trigger-text">
+          <strong>National teams</strong>
+          <small>
+            Country squads · {nationCount} nation{nationCount !== 1 ? 's' : ''}
+          </small>
+        </span>
+        <span className="browse-accordion__chevron" aria-hidden="true">
+          {expanded ? '−' : '+'}
+        </span>
+      </button>
+      {expanded ? (
+        <div className="browse-accordion__panel" id="browse-panel-national-teams">
+          <div className="browse-club-grid browse-club-grid--compact">
+            {visibleNationalTeams.map((team) => (
+              <NationalTeamChip key={team.id} team={team} />
+            ))}
+          </div>
+          {hiddenCount > 0 ? (
+            <button
+              type="button"
+              className="btn btn--secondary btn--small browse-accordion__expand"
+              onClick={onToggleShowAll}
+              aria-expanded={showAllNationalTeams}
+            >
+              {showAllNationalTeams
+                ? 'Show top 8'
+                : `Show all national teams (${nationCount})`}
+            </button>
+          ) : null}
+        </div>
+      ) : null}
+    </li>
   );
 }
 
@@ -308,8 +364,6 @@ export default function BrowseTaxonomyHub({
     return seed.slice(0, NATIONAL_TEAM_PREVIEW_COUNT);
   }, [nationalTeams]);
 
-  const visibleNationalTeams = showAllNationalTeams ? nationalTeams : nationalPreview;
-
   return (
     <div className="browse-taxonomy">
       <section className="browse-taxonomy__section" aria-labelledby="browse-european-leagues">
@@ -350,50 +404,18 @@ export default function BrowseTaxonomyHub({
         </ul>
       </section>
 
-      <section
-        className="browse-taxonomy__section browse-taxonomy__section--nations"
-        aria-labelledby="browse-national-teams"
-      >
-        <div className="browse-nations-panel">
-          <div className="browse-nations-panel__head">
-            <div>
-              <h3 id="browse-national-teams" className="section-label section-label--compact">
-                National teams
-              </h3>
-              <p className="browse-nations-panel__note">
-                Country squads — not clubs.
-              </p>
-            </div>
-            {nationalTeams.length > NATIONAL_TEAM_PREVIEW_COUNT ? (
-              <button
-                type="button"
-                className="btn btn--secondary btn--small"
-                onClick={() => setShowAllNationalTeams((open) => !open)}
-                aria-expanded={showAllNationalTeams}
-              >
-                {showAllNationalTeams
-                  ? 'Show top 8'
-                  : `Show all (${nationalTeams.length})`}
-              </button>
-            ) : null}
-          </div>
-          <div
-            className={
-              showAllNationalTeams
-                ? 'browse-nation-list browse-nation-list--expanded'
-                : 'browse-nation-list browse-nation-list--preview'
-            }
-          >
-            {visibleNationalTeams.map((team) => (
-              <NationalTeamCompactLink key={team.id} team={team} />
-            ))}
-          </div>
-          {!showAllNationalTeams && nationalTeams.length > NATIONAL_TEAM_PREVIEW_COUNT ? (
-            <p className="browse-taxonomy__hint browse-taxonomy__hint--tight">
-              Top {nationalPreview.length} nations shown.
-            </p>
-          ) : null}
-        </div>
+      <section className="browse-taxonomy__section" aria-labelledby="browse-national-teams">
+        <h3 id="browse-national-teams" className="section-label section-label--compact">
+          National teams
+        </h3>
+        <ul className="browse-accordion">
+          <BrowseNationalTeamsAccordion
+            nationalTeams={nationalTeams}
+            nationalPreview={nationalPreview}
+            showAllNationalTeams={showAllNationalTeams}
+            onToggleShowAll={() => setShowAllNationalTeams((open) => !open)}
+          />
+        </ul>
       </section>
 
       <section className="browse-taxonomy__section" aria-labelledby="browse-other-clubs">

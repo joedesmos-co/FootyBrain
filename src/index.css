@@ -2528,86 +2528,24 @@ input:focus-visible {
   cursor: default;
 }
 
-.browse-taxonomy__section--nations {
-  margin-top: 0.15rem;
-}
-
 .browse-taxonomy__hint--tight {
   margin-top: 0.35rem;
 }
 
-.browse-nations-panel {
-  padding: 0.55rem 0.65rem;
-  border: 1px solid rgba(167, 243, 208, 0.12);
-  border-radius: var(--radius);
-  background: rgba(7, 17, 13, 0.38);
-  min-width: 0;
-}
-
-.browse-nations-panel__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.4rem 0.65rem;
-  margin-bottom: 0.45rem;
-}
-
-.browse-nations-panel__note {
-  margin: 0.15rem 0 0;
-  color: var(--color-muted);
-  font-size: 0.72rem;
-  line-height: 1.25;
-}
-
-.browse-nation-list {
-  display: grid;
-  gap: 0.3rem;
-  min-width: 0;
-}
-
-.browse-nation-list--preview {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 5.75rem), 1fr));
-}
-
-.browse-nation-list--expanded {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr));
-}
-
-.browse-nation-link {
-  display: flex;
+.browse-club-chip--nation {
   align-items: center;
-  gap: 0.3rem;
-  min-width: 0;
-  padding: 0.28rem 0.38rem;
-  border: 1px solid rgba(167, 243, 208, 0.1);
-  border-radius: calc(var(--radius) - 3px);
-  background: rgba(7, 17, 13, 0.45);
-  color: inherit;
-  text-decoration: none;
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    background var(--duration-normal) var(--ease-out);
+  text-align: center;
+  gap: 0.2rem;
 }
 
-.browse-nation-link:hover,
-.browse-nation-link:focus-visible {
-  border-color: rgba(52, 211, 153, 0.4);
-  background: rgba(52, 211, 153, 0.08);
-  outline: none;
-}
-
-.browse-nation-link .national-team-badge {
+.browse-club-chip--nation .national-team-badge {
   flex-shrink: 0;
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.browse-nation-link__name {
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1.15;
-  overflow-wrap: anywhere;
+.browse-accordion__expand {
+  margin-top: 0.55rem;
 }
 
 .browse-other-search {
@@ -2630,10 +2568,6 @@ input:focus-visible {
 .browse-other-search__input:focus-visible {
   outline: 2px solid rgba(52, 211, 153, 0.45);
   outline-offset: 2px;
-}
-
-.browse-other-show-more {
-  margin-top: 0.55rem;
 }
 
 .filter-field {
