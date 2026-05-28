@@ -4,6 +4,8 @@ import { canonicalUrlForPath, pageTitle, SITE_DESCRIPTION, SITE_NAME, SITE_URL }
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 
+const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og.svg`;
+
 function buildCanonical(pathname) {
   return canonicalUrlForPath(pathname);
 }
@@ -125,11 +127,15 @@ export default function Seo() {
         title,
         description,
         url: canonicalUrl,
+        image: DEFAULT_SOCIAL_IMAGE,
+        imageWidth: 1200,
+        imageHeight: 630,
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         title,
         description,
+        image: DEFAULT_SOCIAL_IMAGE,
       },
     });
 

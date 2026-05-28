@@ -72,6 +72,11 @@ export function setSeoMeta({
     if (og.description)
       setIfPresent(ensureMetaProperty('og:description'), 'content', og.description);
     if (og.url) setIfPresent(ensureMetaProperty('og:url'), 'content', og.url);
+    if (og.image) setIfPresent(ensureMetaProperty('og:image'), 'content', og.image);
+    if (og.imageWidth)
+      setIfPresent(ensureMetaProperty('og:image:width'), 'content', og.imageWidth);
+    if (og.imageHeight)
+      setIfPresent(ensureMetaProperty('og:image:height'), 'content', og.imageHeight);
   }
 
   if (twitter) {
@@ -79,6 +84,7 @@ export function setSeoMeta({
     if (twitter.title) setIfPresent(ensureMeta('twitter:title'), 'content', twitter.title);
     if (twitter.description)
       setIfPresent(ensureMeta('twitter:description'), 'content', twitter.description);
+    if (twitter.image) setIfPresent(ensureMeta('twitter:image'), 'content', twitter.image);
   }
 }
 

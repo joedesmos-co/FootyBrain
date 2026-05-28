@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { leagues, players, teams } from '../data/sampleData';
-import { canonicalUrlForPath, pageTitle, SITE_NAME } from '../utils/brand';
+import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from '../utils/brand';
 import { formatCountryLabel, getLeagueDisplayName, isExternalLeagueId } from '../utils/footballDisplay';
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
@@ -34,14 +34,24 @@ function buildLandingJsonLd({ title, description, canonical, links }) {
 }
 
 function useLandingSeo({ title, description, canonical, links }) {
+  const image = `${SITE_URL}/og.svg`;
   useEffect(() => {
     setSeoMeta({
       title,
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
-      og: { title, description, url: canonical, type: 'website', site_name: SITE_NAME },
-      twitter: { title, description, card: 'summary' },
+      og: {
+        title,
+        description,
+        url: canonical,
+        type: 'website',
+        site_name: SITE_NAME,
+        image,
+        imageWidth: 1200,
+        imageHeight: 630,
+      },
+      twitter: { title, description, card: 'summary_large_image', image },
     });
 
     upsertJsonLdScript(
@@ -52,7 +62,7 @@ function useLandingSeo({ title, description, canonical, links }) {
     return () => {
       upsertJsonLdScript('jsonld-landing', null);
     };
-  }, [title, description, canonical, links]);
+  }, [title, description, canonical, links, image]);
 }
 
 function sortByImportanceDesc(a, b) {

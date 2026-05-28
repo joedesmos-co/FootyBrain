@@ -221,6 +221,9 @@ export default function App() {
               <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>
             </p>
             <p className="app__footer__links">
+              <Link to="/browse">Browse</Link> · <Link to="/teams">Clubs</Link> ·{' '}
+              <Link to="/national-teams">National teams</Link> · <Link to="/world-cup">World Cup</Link> ·{' '}
+              <Link to="/quiz">Quiz</Link> · <Link to="/hubs">Hubs</Link> ·{' '}
               <Link to="/onboarding">How it works</Link> · <Link to="/privacy">Privacy Policy</Link>
             </p>
             <p className="app__footer__privacy">
