@@ -8,9 +8,9 @@ export default function PrivacyPage() {
         <p className="page-header__eyebrow">Privacy Policy</p>
         <h1>Privacy Policy</h1>
         <p>
-          FootyCompass is a frontend-only learning app. This page explains how data is handled today,
-          including how we plan to approach analytics and future advertising (AdSense) in a
-          privacy-respecting way.
+          FootyCompass is a frontend-only football discovery app. This page explains what data is
+          stored on your device, what we collect (if anything) when you browse, and how advertising
+          and analytics work if enabled.
         </p>
       </header>
 
@@ -28,15 +28,15 @@ export default function PrivacyPage() {
       </section>
 
       <section className="privacy-page__section">
-        <h2>User data</h2>
+        <h2>User data (stored on your device)</h2>
         <p>
           There is <strong>no sign-in</strong> today, and FootyCompass does not ask you for personal
           information like your name, email, or password to use the app.
         </p>
         <p>
           Your quiz XP, daily challenge progress, favorites, preferences, and recently viewed pages
-          may be stored in your browser&apos;s <strong>local storage</strong> so they persist on the
-          same device and browser.
+          may be stored in your browser&apos;s <strong>local storage</strong> (and in some cases{' '}
+          <strong>session storage</strong>) so they persist on the same device and browser.
         </p>
         <p>
           This data stays on your device. It is <strong>not sold</strong> and not synced to
@@ -51,9 +51,8 @@ export default function PrivacyPage() {
           store site data (such as local storage) to remember your progress.
         </p>
         <p>
-          If we add analytics or advertising in the future, those services may use cookies or
-          similar technologies to measure performance, prevent fraud, and (where enabled) personalize
-          ads.
+          If we enable analytics or advertising, those services may use cookies or similar
+          technologies to measure performance, prevent fraud, and (where enabled) personalize ads.
         </p>
         <p>
           You can usually control cookies and site storage via your browser settings. Clearing site
@@ -64,12 +63,13 @@ export default function PrivacyPage() {
       <section className="privacy-page__section">
         <h2>Analytics and third parties</h2>
         <p>
-          Today, FootyCompass aims to keep the app shell lightweight and does not bundle third-party
-          advertising SDKs or heavy analytics trackers by default.
+          FootyCompass aims to keep the app shell lightweight. We do not require analytics for the
+          core experience.
         </p>
         <p>
-          If we enable privacy-conscious analytics in the future, it would be used to understand
-          basic usage (like which pages are popular) so we can improve the experience and reliability.
+          If enabled, analytics may collect information such as page views, basic device/browser
+          details, approximate location (e.g. country/region), and crash/performance metrics. We use
+          this to understand what’s working and improve reliability.
         </p>
         <p>
           If you open external links, those sites have their own privacy policies.
@@ -77,18 +77,20 @@ export default function PrivacyPage() {
       </section>
 
       <section className="privacy-page__section">
-        <h2>Advertising (AdSense readiness)</h2>
+        <h2>Advertising (Google AdSense)</h2>
         <p>
-          FootyCompass does not show ads today, and we do not include ad units in the app right now.
+          FootyCompass may show ads via <strong>Google AdSense</strong>.
         </p>
         <p>
-          If we integrate Google AdSense in the future, AdSense may collect information such as your
-          IP address, browser/device details, and interactions with ads to serve, measure, and
-          protect advertising. AdSense may also use cookies or similar identifiers.
+          Google may use cookies or similar identifiers to serve ads, including interest-based
+          (personalized) advertising where allowed. Google may also use information such as your IP
+          address, browser/device details, and interactions with ads to deliver, measure, and protect
+          advertising.
         </p>
         <p>
-          Where possible, we’ll prefer simpler, non-invasive setups and clear choices. You can learn
-          more about Google’s advertising policies and controls in Google’s documentation.
+          You can control ad personalization in Google’s settings and via your browser’s cookie
+          controls. Where available, we aim to provide clear choices and keep the experience
+          understandable.
         </p>
       </section>
 

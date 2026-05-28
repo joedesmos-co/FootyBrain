@@ -163,9 +163,12 @@ export default function App() {
               Have feedback, found a bug, or want to suggest a feature? Email us at{' '}
               <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>
             </p>
+            <p className="app__footer__links">
+              <Link to="/onboarding">How it works</Link> · <Link to="/privacy">Privacy Policy</Link>
+            </p>
             <p className="app__footer__privacy">
               No accounts. Progress, favorites, and preferences stay in your browser only — not
-              sold or synced to a server. <Link to="/privacy">Privacy Policy</Link>
+              sold or synced to a server.
             </p>
           </footer>
         </div>

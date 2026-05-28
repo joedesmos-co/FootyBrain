@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /dev/
-Disallow: /quiz
 Disallow: /compare
 Disallow: /compare-clubs
 Disallow: /saved

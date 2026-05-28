@@ -78,7 +78,7 @@ function descriptionForPath(pathname) {
   if (pathname === '/world-cup')
     return 'World Cup 2026 hub with featured nations, groups, collections, and international quizzes.';
   if (pathname === '/privacy')
-    return 'How FootyCompass handles data, cookies, analytics, and future advertising (AdSense) readiness.';
+    return 'Privacy Policy for FootyCompass: local storage, cookies, analytics, and Google AdSense advertising.';
   if (pathname === '/onboarding')
     return 'How FootyCompass works: explore players and clubs, compare sides, and test yourself with quizzes.';
   if (pathname === '/compare') return 'Compare players side-by-side: roles, clues, and key profile details.';
