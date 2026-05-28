@@ -241,11 +241,12 @@ export function SeoQuizzesHub() {
       <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Hubs', to: '/hubs' }, { label: 'Quizzes' }]} />
       <header className="page-header">
         <p className="page-header__eyebrow">Quizzes</p>
-        <h1>Football player quizzes</h1>
+        <h1>Football quizzes</h1>
         <p>
-          Pick a league or club landing page, or try a{' '}
-          <Link to="/hubs/quizzes/themes">themed quiz pool</Link>, then play on{' '}
-          <Link to="/quiz">Quizzes</Link>.
+          Player quizzes (guess from hints) and{' '}
+          <Link to="/hubs/quizzes/clubs">club quizzes</Link> (stadiums, leagues, rivalries). Pick a
+          hub below or jump straight to{' '}
+          <Link to="/quiz">player quiz</Link> / <Link to="/club-quiz">club quiz</Link>.
         </p>
         <p className="page-header__meta">
           Last updated: <strong>{DATASET_META.dataAsOf}</strong>

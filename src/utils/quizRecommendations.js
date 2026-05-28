@@ -74,5 +74,14 @@ export function getRecommendedNextQuizzes(ctx) {
     push('top-scorers', 'Attack-minded recognition practice');
   }
 
+  if (!picks.some((p) => p.id === 'club-quiz')) {
+    picks.push({
+      id: 'club-quiz',
+      label: 'Club stadium quiz',
+      href: '/club-quiz?category=stadium',
+      reason: 'Mix in club knowledge — stadiums and rivalries',
+    });
+  }
+
   return picks.slice(0, 3);
 }

@@ -20,10 +20,18 @@ const START_STEPS = [
   {
     id: 'quiz',
     icon: '⚽',
-    title: 'Test football knowledge',
-    description: 'Hints, career paths, and daily challenges.',
+    title: 'Player quizzes',
+    description: 'Guess from hints — leagues, clubs, themed pools, daily challenge.',
     to: '/quiz',
-    cta: 'Play quiz',
+    cta: 'Play player quiz',
+  },
+  {
+    id: 'club-quiz',
+    icon: '🏟',
+    title: 'Club quizzes',
+    description: 'Stadiums, rivalries, leagues, and kit cues — not player names.',
+    to: '/club-quiz',
+    cta: 'Play club quiz',
   },
   {
     id: 'hubs',

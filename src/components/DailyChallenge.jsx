@@ -10,6 +10,7 @@ import CountryFlag from './CountryFlag';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PositionLabel from './PositionLabel';
 import BreadcrumbNav from './BreadcrumbNav';
+import { getSessionEncouragement } from '../utils/quizUiPolish';
 
 function formatDateKey(dateKey) {
   const [y, m, d] = dateKey.split('-').map(Number);
@@ -61,88 +62,96 @@ function CompletionScreen({
   const correct = results.filter((r) => r.isCorrect).length;
   const total = questions.length;
   const perfect = correct === total;
+  const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+  const missed = questions.filter((player, i) => !results[i]?.isCorrect);
+  const encouragement = getSessionEncouragement(accuracy, dailyStreak);
+
+  const scopeLabel =
+    challengeScope?.name && challengeScope.type !== 'general'
+      ? challengeScope.type === 'league'
+        ? getLeagueDisplayName({
+            id: challengeScope.leagueId,
+            name: challengeScope.name,
+          })
+        : challengeScope.name
+      : null;
 
   return (
-    <div className="daily-complete">
-      <div className="daily-complete__hero">
-        <div className="daily-complete__icon" aria-hidden="true">
-          {perfect ? '🏆' : correct >= 3 ? '⭐' : '📚'}
-        </div>
-        <h1 className="daily-complete__title">
-          {perfect ? 'Perfect score!' : 'Challenge complete!'}
-        </h1>
-        <p className="daily-complete__date">{formatDateKey(todayKey)}</p>
-        {challengeLabel && (
-          <p className="daily-challenge-label daily-challenge-label--complete">
-            {challengeLabel}
-            {challengeScope?.name && challengeScope.type !== 'general' && (
-              <span className="daily-challenge-label__scope">
-                {' '}
-                ·{' '}
-                {challengeScope.type === 'league'
-                  ? getLeagueDisplayName({
-                      id: challengeScope.leagueId,
-                      name: challengeScope.name,
-                    })
-                  : challengeScope.name}
-              </span>
-            )}
-          </p>
-        )}
+    <article className="info-card quiz-summary daily-complete" aria-label="Daily challenge summary">
+      <p className="daily-complete__date">{formatDateKey(todayKey)}</p>
+      <h2 className="quiz-summary__title">
+        {perfect ? 'Perfect daily run!' : 'Daily challenge complete'}
+      </h2>
+      {challengeLabel ? (
+        <p className="daily-challenge-label daily-challenge-label--complete">
+          {challengeLabel}
+          {scopeLabel ? (
+            <span className="daily-challenge-label__scope"> · {scopeLabel}</span>
+          ) : null}
+        </p>
+      ) : null}
+      <p className="quiz-summary__encourage">{encouragement}</p>
+
+      <div className="quiz-summary__hero">
+        <p className="quiz-summary__score">
+          <span className="quiz-summary__score-value">{correct}</span>
+          <span className="quiz-summary__score-sep">/</span>
+          <span className="quiz-summary__score-total">{total}</span>
+        </p>
+        <p className="quiz-summary__accuracy">{accuracy}% today</p>
+        <p className="quiz-summary__meta">
+          +{totalXp} XP · {dailyStreak} day{dailyStreak === 1 ? '' : 's'} streak
+          {dailyStreak >= 2 ? ' 🔥' : ''}
+        </p>
       </div>
 
-      <div className="daily-complete__stats" aria-label="Today's results">
-        <div className="daily-complete__stat">
-          <span className="daily-complete__stat-value">{correct}/{total}</span>
-          <span className="daily-complete__stat-label">Correct</span>
-        </div>
-        <div className="daily-complete__stat">
-          <span className="daily-complete__stat-value daily-complete__xp">+{totalXp} XP</span>
-          <span className="daily-complete__stat-label">Earned</span>
-        </div>
-        <div className="daily-complete__stat">
-          <span className="daily-complete__stat-value">
-            {dailyStreak >= 2 ? '🔥 ' : ''}{dailyStreak}
-          </span>
-          <span className="daily-complete__stat-label">Day streak</span>
-        </div>
-      </div>
-
-      <section aria-label="Question results" className="daily-complete__results">
-        <h2 className="section-label">Results</h2>
-        <ol className="daily-complete__list">
-          {questions.map((player, i) => {
-            const result = results[i];
-            const club = player.teamName ?? 'Unknown';
-            const isCorrect = result?.isCorrect ?? false;
-            return (
-              <li
-                key={player.id}
-                className={`daily-result-item${isCorrect ? ' daily-result-item--correct' : ' daily-result-item--incorrect'}`}
-              >
-                <span className="daily-result-item__icon" aria-label={isCorrect ? 'Correct' : 'Incorrect'}>
-                  {isCorrect ? '✓' : '✗'}
-                </span>
-                <div className="daily-result-item__body">
-                  <strong className="daily-result-item__name">{player.name}</strong>
-                  <span className="daily-result-item__sub">{club} · {player.nationalTeam}</span>
-                </div>
-                {!isCorrect && (
-                  <Link to={`/player/${player.id}`} className="daily-result-item__learn">
-                    Learn →
-                  </Link>
-                )}
+      {missed.length > 0 ? (
+        <div className="quiz-summary__missed-block" id="daily-missed-players">
+          <h3 className="quiz-summary__subtitle">Review missed players</h3>
+          <ul className="quiz-summary__missed">
+            {missed.map((player) => (
+              <li key={player.id}>
+                <Link to={`/player/${player.id}`} className="quiz-summary__missed-link">
+                  <span>{player.name}</span>
+                  <span className="quiz-summary__missed-cta">Learn more →</span>
+                </Link>
               </li>
-            );
-          })}
-        </ol>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <p className="quiz-summary__perfect">Perfect score — see you tomorrow for a new lineup.</p>
+      )}
+
+      <section className="quiz-summary__next" aria-labelledby="daily-next-title">
+        <h3 id="daily-next-title" className="quiz-summary__subtitle">
+          Keep playing
+        </h3>
+        <ul className="quiz-summary__next-list">
+          <li>
+            <Link to="/quiz" className="quiz-summary__next-link">
+              <strong>Free play quiz</strong>
+              <span>Pick league, club, or theme — build a longer streak</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/club-quiz?category=stadium" className="quiz-summary__next-link">
+              <strong>Club stadium quiz</strong>
+              <span>Switch to club knowledge for variety</span>
+            </Link>
+          </li>
+        </ul>
       </section>
 
-      <div className="daily-complete__actions">
-        <Link to="/profile" className="btn btn--secondary">View profile</Link>
-        <Link to="/quiz" className="btn btn--primary">Play quiz</Link>
+      <div className="quiz-summary__actions">
+        <Link to="/quiz" className="btn btn--primary btn--large">
+          Play another quiz
+        </Link>
+        <Link to="/profile" className="btn btn--secondary">
+          View progress
+        </Link>
       </div>
-    </div>
+    </article>
   );
 }
 

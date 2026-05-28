@@ -344,11 +344,42 @@ input:focus-visible {
 
 .app__footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.25rem 1rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
   color: var(--color-muted);
   font-size: 0.82rem;
   border-top: 1px solid var(--color-border);
   background: rgba(7, 17, 13, 0.82);
+}
+
+.app__footer__brand {
+  margin: 0;
+  color: var(--color-soft);
+  font-weight: 650;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.app__footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 0.85rem;
+  margin: 0.75rem auto 0;
+  max-width: 36rem;
+}
+
+.app__footer__links a {
+  color: var(--color-soft);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
+}
+
+.app__footer__links a:hover,
+.app__footer__links a:focus-visible {
+  color: var(--color-accent);
+  outline: none;
 }
 
 .app__footer__meta,
@@ -1478,9 +1509,14 @@ input:focus-visible {
 .hero__actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.65rem;
   margin-top: 1.45rem;
+  max-width: 22rem;
+}
+
+.hero__cta-secondary {
+  width: 100%;
 }
 
 .hero--home .hero__tagline {
@@ -8880,6 +8916,18 @@ p.browse-results-empty {
 /* ============================================================
    Daily Challenge — Completion screen
    ============================================================ */
+.daily-complete.quiz-summary {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.daily-complete .daily-complete__date {
+  margin: 0 0 0.35rem;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
 .daily-complete {
   display: flex;
   flex-direction: column;
@@ -12193,4 +12241,140 @@ p.browse-results-empty {
   font-size: 0.82rem;
   color: var(--color-muted);
   margin: 0.5rem 0;
+}
+
+/* UX polish — quizzes, mobile, summaries */
+.quiz-summary__encourage {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  background: rgba(52, 211, 153, 0.08);
+  color: var(--color-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.page.quiz .page-header p,
+.page.club-quiz .page-header__lead {
+  max-width: 42rem;
+  line-height: 1.5;
+}
+
+.club-quiz__category-card {
+  min-height: 5.75rem;
+  touch-action: manipulation;
+}
+
+.club-quiz__choice-btn {
+  min-height: 3rem;
+  touch-action: manipulation;
+}
+
+/* Quiz filters — collapsed on mobile for faster start */
+.quiz-filters-details {
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(7, 17, 13, 0.35);
+}
+
+.quiz-filters-details__summary {
+  display: none;
+  list-style: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  min-height: 3rem;
+  font-weight: 750;
+  color: var(--color-soft);
+  touch-action: manipulation;
+}
+
+.quiz-filters-details__summary::-webkit-details-marker {
+  display: none;
+}
+
+.quiz-filters-details__summary::after {
+  content: 'Show';
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.quiz-filters-details[open] .quiz-filters-details__summary::after {
+  content: 'Hide';
+}
+
+.quiz-filters-details__hint {
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quiz-filters-details__body {
+  padding: 0 1rem 1rem;
+}
+
+@media (min-width: 721px) {
+  .quiz-filters-details {
+    border: none;
+    background: transparent;
+    margin-bottom: 0;
+  }
+
+  .quiz-filters-details__summary {
+    display: none;
+  }
+
+  .quiz-filters-details__body {
+    padding: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .quiz-filters-details__summary {
+    display: flex;
+  }
+
+  .quiz-filters-details:not([open]) .quiz-filters-details__body {
+    display: none;
+  }
+
+  .quiz-feedback__actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin-top: 0.65rem;
+    padding: 0.65rem 0 calc(0.35rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(
+      180deg,
+      rgba(16, 26, 23, 0) 0%,
+      rgba(16, 26, 23, 0.92) 35%,
+      rgba(16, 26, 23, 0.98) 100%
+    );
+  }
+
+  .quiz-summary__next-link {
+    min-height: 3.1rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .club-quiz__category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__cta-primary,
+  .hero__cta-secondary {
+    width: 100%;
+  }
 }

@@ -50,6 +50,12 @@ import { formatPosition, getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
 import ShareButton from './ShareButton';
+import {
+  getNextQuestionButtonLabel,
+  getSessionEncouragement,
+  scrollPageTop,
+  scrollQuizPanelIntoView,
+} from '../utils/quizUiPolish';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
 //       users/{uid}/quizSessions so progress carries across devices.
@@ -366,6 +372,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     } else {
       setSecondsLeft(null);
     }
+    scrollQuizPanelIntoView();
   }, [difficulty, initialHintsForQuestion, playerPool, timeLimitSeconds]);
 
   const recordAnswer = useCallback(
@@ -727,7 +734,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       players,
       teams,
     });
-    return { correctCount, total, accuracy, insights, missed, nextQuizzes };
+    const encouragement = getSessionEncouragement(accuracy, bestStreak);
+    return { correctCount, total, accuracy, insights, missed, nextQuizzes, encouragement };
   }, [
     sessionResults,
     getTeamName,
@@ -738,21 +746,28 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     nationalTeamFilter,
     players,
     teams,
+    bestStreak,
   ]);
 
   const handlePlayAgain = useCallback(() => {
     setSessionEnded(false);
     resetCurrentQuestion();
+    scrollPageTop();
     startQuestion();
   }, [resetCurrentQuestion, startQuestion]);
+
+  const nextQuestionLabel = getNextQuestionButtonLabel(
+    streak,
+    feedback === 'correct' ? 'correct' : 'incorrect',
+  );
 
   return (
     <div className="page quiz">
       <header className="page-header">
         <h1>Quizzes</h1>
-        <p>
-          Guess the player from hints—pick a league, club, or nation, set difficulty, and race the
-          clock if you like.
+        <p className="page-header__lead">
+          Guess the player from hints — pick a league, club, or nation, set difficulty, and build a
+          streak. End a session anytime to see misses and what to play next.
         </p>
         <p>
           Try{' '}
@@ -822,7 +837,15 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         </div>
       </section>
 
-      <section className="filters quiz-filters" aria-label="Quiz setup">
+      <details className="quiz-filters-details">
+        <summary className="quiz-filters-details__summary">
+          <span className="quiz-filters-details__label">Customize quiz</span>
+          <span className="quiz-filters-details__hint">
+            {currentDifficulty?.label ?? 'Medium'}
+            {playerPool.length > 0 ? ` · ${playerPool.length} in pool` : ''}
+          </span>
+        </summary>
+        <section className="filters quiz-filters quiz-filters-details__body" aria-label="Quiz setup">
         <div className="quiz-mode-picker" role="radiogroup" aria-label="Quiz type">
           <p className="quiz-mode-picker__label">Quiz type</p>
           <div className="quiz-mode-grid">
@@ -1034,7 +1057,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             won&apos;t count).
           </p>
         )}
-      </section>
+        </section>
+      </details>
 
       <section className="quiz-scoreboard" aria-label="Quiz session score">
         <div>
@@ -1103,6 +1127,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         {sessionEnded && sessionSummary && !currentPlayer && (
           <article className="info-card quiz-summary" aria-label="Session summary">
             <h2 className="quiz-summary__title">Session complete</h2>
+            {sessionSummary.encouragement ? (
+              <p className="quiz-summary__encourage">{sessionSummary.encouragement}</p>
+            ) : null}
             <div className="quiz-summary__hero">
               <p className="quiz-summary__score">
                 <span className="quiz-summary__score-value">{sessionSummary.correctCount}</span>
@@ -1521,7 +1548,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
             {feedback && (
               <div className="quiz-feedback__actions">
                 <button type="button" className="btn btn--primary btn--large" onClick={startQuestion}>
-                  Next question
+                  {nextQuestionLabel}
                 </button>
                 <button
                   type="button"

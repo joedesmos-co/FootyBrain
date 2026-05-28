@@ -258,21 +258,24 @@ export default function App() {
             </Routes>
           </main>
           <footer className="app__footer" aria-label="Footer">
-            <p>FootyCompass · Navigate the world of football.</p>
+            <p className="app__footer__brand">FootyCompass · Learn players, clubs, and leagues through quizzes.</p>
             <p className="app__footer__feedback">
-              Have feedback, found a bug, or want to suggest a feature? Email us at{' '}
+              Feedback or corrections?{' '}
               <a href="mailto:joedesmos.co@gmail.com">joedesmos.co@gmail.com</a>
             </p>
-            <p className="app__footer__links">
-              <Link to="/browse">Browse</Link> · <Link to="/teams">Clubs</Link> ·{' '}
-              <Link to="/national-teams">National teams</Link> · <Link to="/world-cup">World Cup</Link> ·{' '}
-              <Link to="/quiz">Quiz</Link> · <Link to="/hubs">Hubs</Link> ·{' '}
-              <Link to="/about">About</Link> · <Link to="/editorial">Editorial policy</Link> ·{' '}
-              <Link to="/onboarding">How it works</Link> · <Link to="/privacy">Privacy Policy</Link>
-            </p>
+            <nav className="app__footer__links" aria-label="Footer navigation">
+              <Link to="/quiz">Player quiz</Link>
+              <Link to="/club-quiz">Club quiz</Link>
+              <Link to="/daily">Daily</Link>
+              <Link to="/browse">Browse</Link>
+              <Link to="/teams">Clubs</Link>
+              <Link to="/hubs">Hubs</Link>
+              <Link to="/about">About</Link>
+              <Link to="/editorial">Editorial</Link>
+              <Link to="/privacy">Privacy</Link>
+            </nav>
             <p className="app__footer__privacy">
-              No accounts. Progress, favorites, and preferences stay in your browser only — not
-              sold or synced to a server.
+              No account required. Progress and favorites are stored locally in your browser.
             </p>
           </footer>
         </div>

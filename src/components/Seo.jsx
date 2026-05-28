@@ -37,7 +37,7 @@ function isNoIndexPath(pathname) {
 }
 
 function titleForPath(pathname) {
-  if (pathname === '/') return SITE_NAME;
+  if (pathname === '/') return pageTitle('Learn football with quizzes');
   if (pathname === '/browse') return pageTitle('Browse players');
   if (pathname === '/teams') return pageTitle('Clubs');
   if (pathname === '/collections') return pageTitle('Collections & paths');
@@ -53,7 +53,8 @@ function titleForPath(pathname) {
   if (pathname === '/saved') return pageTitle('Saved');
   if (pathname === '/profile') return pageTitle('Progress');
   if (pathname === '/daily') return pageTitle('Daily challenge');
-  if (pathname === '/quiz') return pageTitle('Quiz');
+  if (pathname === '/quiz') return pageTitle('Player quiz');
+  if (pathname === '/club-quiz') return pageTitle('Club quiz');
   if (pathname.startsWith('/collections/')) return pageTitle('Collection');
   if (pathname.startsWith('/learning-paths/')) return pageTitle('Learning path');
   if (pathname.startsWith('/national-team/')) return pageTitle('National team');
@@ -64,7 +65,8 @@ function titleForPath(pathname) {
 }
 
 function descriptionForPath(pathname) {
-  if (pathname === '/') return SITE_DESCRIPTION;
+  if (pathname === '/')
+    return 'Learn football on FootyCompass: player profiles, club guides, player quizzes, club quizzes (stadiums, rivalries), and daily challenges — free, no account.';
   if (pathname === '/browse')
     return 'Browse football players by club, league, and nationality. Open profiles, then quiz yourself to remember them.';
   if (pathname === '/teams')
@@ -95,7 +97,7 @@ function descriptionForPath(pathname) {
   if (pathname === '/daily')
     return 'Daily football challenge: a quick quiz session designed for streaks and repeat play.';
   if (pathname === '/quiz')
-    return 'Football quizzes by league, club, nation, and themed pools (wonderkids, legends, rivalries). Set difficulty and build streaks on FootyCompass.';
+    return 'Guess the player from hints — by league, club, nation, or themed pool. Build streaks, earn XP, and open profiles to learn more.';
   if (pathname === '/club-quiz')
     return 'Club football quizzes: stadiums, leagues, rivalries, history, kits, and legends — multiple choice or hardcore typing, with streaks and XP.';
   if (pathname === '/hubs/quizzes/clubs')

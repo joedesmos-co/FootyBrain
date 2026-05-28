@@ -4,7 +4,6 @@ import { leagues, teams } from '../data/sampleData';
 import {
   CLUB_QUIZ_CATEGORY_CATALOG,
   getClubQuizCategoryById,
-  getClubQuizPlayHref,
 } from '../data/clubQuizCategories';
 import { useProgression } from '../hooks/useProgression';
 import {
@@ -23,6 +22,12 @@ import {
 import { getLeagueDisplayName } from '../utils/footballDisplay';
 import { QUIZ_DIFFICULTY_OPTIONS } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
+import {
+  getNextQuestionButtonLabel,
+  getSessionEncouragement,
+  scrollPageTop,
+  scrollQuizPanelIntoView,
+} from '../utils/quizUiPolish';
 
 function getStreakTier(value) {
   if (value >= 10) return 10;
@@ -127,6 +132,7 @@ export default function ClubQuizMode() {
       if (!askedQuestionIdsRef.current.includes(q.id)) {
         askedQuestionIdsRef.current.push(q.id);
       }
+      scrollQuizPanelIntoView();
     },
     [categoryId, difficulty, leagueFilter],
   );
@@ -239,18 +245,23 @@ export default function ClubQuizMode() {
       leagueId: leagueFilter,
       limit: 4,
     });
+    const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
     return {
       total,
       correctCount,
-      accuracy: total ? Math.round((correctCount / total) * 100) : 0,
+      accuracy,
+      encouragement: getSessionEncouragement(accuracy, bestStreak),
       missed,
       nextQuizzes,
     };
-  }, [sessionEnded, sessionResults, categoryId, leagueFilter]);
+  }, [sessionEnded, sessionResults, categoryId, leagueFilter, bestStreak]);
 
   const streakTier = getStreakTier(streak);
   const streakMilestoneLabel = getStreakMilestoneLabel(streak);
   const activeCat = getClubQuizCategoryById(categoryId);
+  const nextQuestionLabel = feedback
+    ? getNextQuestionButtonLabel(streak, feedback.isCorrect ? 'correct' : 'incorrect')
+    : 'Next question';
 
   return (
     <div className="page quiz club-quiz">
@@ -279,7 +290,18 @@ export default function ClubQuizMode() {
         ) : null}
       </header>
 
-      <section className="quiz-filters club-quiz__filters" aria-label="Club quiz settings">
+      <details className="quiz-filters-details">
+        <summary className="quiz-filters-details__summary">
+          <span className="quiz-filters-details__label">Customize</span>
+          <span className="quiz-filters-details__hint">
+            {activeCat?.label ?? 'Pick a category'}
+            {poolSize > 0 ? ` · ${poolSize} clubs` : ''}
+          </span>
+        </summary>
+        <section
+          className="quiz-filters club-quiz__filters quiz-filters-details__body"
+          aria-label="Club quiz settings"
+        >
         <div className="club-quiz__category-grid" role="list">
           {CLUB_QUIZ_CATEGORY_CATALOG.map((cat) => {
             const count = countClubQuizPool(teams, cat.id, { leagueId: leagueFilter });
@@ -352,9 +374,10 @@ export default function ClubQuizMode() {
             {leagueFilter ? ` · ${getLeagueDisplayName({ id: leagueFilter })}` : ''}
           </p>
         ) : null}
-      </section>
+        </section>
+      </details>
 
-      <div className="quiz-scoreboard" aria-live="polite">
+      <section className="quiz-scoreboard" aria-label="Club quiz session score" aria-live="polite">
         <div>
           <span className="quiz-scoreboard__label">Score</span>
           <strong>
@@ -377,7 +400,7 @@ export default function ClubQuizMode() {
             <strong>{lastXpFeedback}</strong>
           </div>
         ) : null}
-      </div>
+      </section>
 
       {!currentQuestion && !sessionEnded && (
         <div className="quiz-panel__empty">
@@ -452,88 +475,119 @@ export default function ClubQuizMode() {
           ) : null}
 
           {feedback ? (
-            <div
-              className={`quiz-feedback${feedback.isCorrect ? ' quiz-feedback--correct' : ' quiz-feedback--incorrect'}`}
+            <article
+              className={`quiz-feedback quiz-feedback--pop${feedback.isCorrect ? ' quiz-feedback--correct' : ' quiz-feedback--incorrect'}`}
+              role="status"
             >
-              <p className="quiz-feedback__title">
-                {feedback.isCorrect ? 'Correct!' : 'Not quite'}
-              </p>
-              <p>
-                Answer: <strong>{feedback.correctLabel}</strong>
-              </p>
+              <div
+                className={`quiz-feedback__banner${feedback.isCorrect ? ' quiz-feedback__banner--success' : ' quiz-feedback__banner--miss'}`}
+              >
+                <span className="quiz-feedback__icon" aria-hidden="true">
+                  {feedback.isCorrect ? '✓' : '×'}
+                </span>
+                <div className="quiz-feedback__banner-copy">
+                  <h3>{feedback.isCorrect ? 'Correct!' : 'Not quite'}</h3>
+                  <p className="quiz-feedback__answer-name">{feedback.correctLabel}</p>
+                </div>
+                {feedback.isCorrect && streak > 1 ? (
+                  <span
+                    className={`quiz-feedback__streak quiz-feedback__streak--t${getStreakTier(streak)}`}
+                  >
+                    {streak} streak
+                  </span>
+                ) : null}
+              </div>
               {feedback.explanation ? (
                 <p className="club-quiz__explanation">{feedback.explanation}</p>
               ) : null}
+              <Link
+                to={`/team/${feedback.teamId}`}
+                className="btn btn--secondary btn--small quiz-feedback__cta"
+              >
+                Open club profile
+              </Link>
               <div className="quiz-feedback__actions">
-                <Link to={`/team/${feedback.teamId}`} className="btn btn--secondary btn--small">
-                  Open club profile
-                </Link>
-                <Link
-                  to={getClubQuizPlayHref(categoryId, { leagueId: leagueFilter })}
-                  className="btn btn--secondary btn--small"
-                >
-                  Same category
-                </Link>
-              </div>
-              <div className="quiz-feedback__next">
-                <button type="button" className="btn btn--primary" onClick={handleNext}>
-                  Next question
+                <button type="button" className="btn btn--primary btn--large" onClick={handleNext}>
+                  {nextQuestionLabel}
                 </button>
                 <button type="button" className="btn btn--secondary" onClick={handleEndSession}>
                   End session
                 </button>
               </div>
-            </div>
+            </article>
           ) : null}
         </section>
       ) : null}
 
       {sessionEnded && sessionSummary ? (
-        <section className="quiz-summary club-quiz__summary">
-          <h2>Session summary</h2>
-          <p>
-            {sessionSummary.correctCount}/{sessionSummary.total} correct (
-            {sessionSummary.accuracy}%)
-          </p>
+        <article className="info-card quiz-summary" aria-label="Club quiz session summary">
+          <h2 className="quiz-summary__title">Session complete</h2>
+          {sessionSummary.encouragement ? (
+            <p className="quiz-summary__encourage">{sessionSummary.encouragement}</p>
+          ) : null}
+          <div className="quiz-summary__hero">
+            <p className="quiz-summary__score">
+              <span className="quiz-summary__score-value">{sessionSummary.correctCount}</span>
+              <span className="quiz-summary__score-sep">/</span>
+              <span className="quiz-summary__score-total">{sessionSummary.total}</span>
+            </p>
+            <p className="quiz-summary__accuracy">{sessionSummary.accuracy}% accuracy</p>
+            <p className="quiz-summary__meta">
+              Best streak {bestStreak}
+              {score.incorrect > 0
+                ? ` · ${score.incorrect} miss${score.incorrect !== 1 ? 'es' : ''}`
+                : ''}
+            </p>
+          </div>
           {sessionSummary.missed.length > 0 ? (
-            <div className="quiz-summary__missed-block">
+            <div className="quiz-summary__missed-block" id="club-quiz-missed">
               <h3 className="quiz-summary__subtitle">Clubs to revisit</h3>
               <ul className="quiz-summary__missed">
                 {sessionSummary.missed.map((q) => (
                   <li key={q.id}>
                     <Link to={`/team/${q.correctTeamId}`} className="quiz-summary__missed-link">
-                      {q.correctLabel}
+                      <span>{q.correctLabel}</span>
+                      <span className="quiz-summary__missed-cta">Open club →</span>
                     </Link>
-                    <span className="quiz-summary__missed-hint"> — {q.prompt}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          ) : null}
+          ) : (
+            <p className="quiz-summary__perfect">Perfect run — clean sheet on club knowledge.</p>
+          )}
           {sessionSummary.nextQuizzes.length > 0 ? (
-            <div className="quiz-summary__next-quizzes">
-              <h3 className="quiz-summary__subtitle">Try next</h3>
-              <ul>
+            <section className="quiz-summary__next" aria-labelledby="club-quiz-next-title">
+              <h3 id="club-quiz-next-title" className="quiz-summary__subtitle">
+                Recommended next
+              </h3>
+              <ul className="quiz-summary__next-list">
                 {sessionSummary.nextQuizzes.map((rec) => (
                   <li key={rec.categoryId}>
-                    <Link to={rec.href}>{rec.label}</Link>
-                    <span className="quiz-summary__next-meta"> ({rec.poolSize} clubs)</span>
+                    <Link to={rec.href} className="quiz-summary__next-link">
+                      <strong>{rec.label}</strong>
+                      <span>{rec.poolSize} clubs in pool</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           ) : null}
           <div className="quiz-summary__actions">
             <button
               type="button"
-              className="btn btn--primary"
+              className="btn btn--primary btn--large"
               onClick={() => {
                 setSessionEnded(false);
+                scrollPageTop();
                 handleStart();
               }}
             >
               Play again
             </button>
+            <Link to="/quiz" className="btn btn--secondary">
+              Player quiz
+            </Link>
             <Link to="/daily" className="btn btn--secondary">
               Daily challenge
             </Link>
@@ -541,7 +595,7 @@ export default function ClubQuizMode() {
               All club quiz guides
             </Link>
           </div>
-        </section>
+        </article>
       ) : null}
 
     </div>

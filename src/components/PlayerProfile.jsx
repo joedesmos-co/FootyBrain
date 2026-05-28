@@ -32,6 +32,7 @@ import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
 import ShareButton from './ShareButton';
+import ProfileKeepExploring from './ProfileKeepExploring';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -722,6 +723,18 @@ export default function PlayerProfile() {
           </ul>
         </article>
       </section>
+
+      {profileEditorial.isThin || isBrowseOnlyPlayer(player) ? (
+        <ProfileKeepExploring
+          variant="player"
+          entityId={player.id}
+          teamId={player.teamId}
+          leagueId={player.leagueId}
+          teamName={teamName}
+          leagueName={leagueName}
+          quizReady={quizReady}
+        />
+      ) : null}
 
       {relatedLoading ? (
         <p className="page-loading" role="status" aria-live="polite">

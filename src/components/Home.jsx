@@ -13,18 +13,24 @@ export default function Home() {
     <div className="home">
       <section className="hero hero--home">
         <div className="hero__content">
-          <p className="hero__eyebrow">Football players · clubs · leagues · quizzes</p>
+          <p className="hero__eyebrow">Learn football · Test yourself · No account</p>
           <h1 className="hero__title">{SITE_NAME}</h1>
           <p className="hero__tagline">{SITE_TAGLINE}</p>
           <p className="hero__subcopy">
-            {SITE_DESCRIPTION_SHORT} Search by name, jump into a club or league, then test yourself with
-            player quizzes.
+            {SITE_DESCRIPTION_SHORT} Browse players and clubs, then quiz yourself on names, stadiums,
+            rivalries, and more.
           </p>
           <div className="hero__actions">
             <Link to="/quiz" className="btn btn--primary btn--large hero__cta-primary">
-              Play a player quiz
+              Play player quiz
+            </Link>
+            <Link to="/club-quiz" className="btn btn--secondary btn--large hero__cta-secondary">
+              Club knowledge quiz
             </Link>
             <div className="hero__actions-row">
+              <Link to="/daily" className="btn btn--secondary">
+                Daily challenge
+              </Link>
               <Link to="/browse" className="btn btn--secondary">
                 Browse players
               </Link>
@@ -47,14 +53,10 @@ export default function Home() {
               <dd>Leagues</dd>
             </div>
           </dl>
-          <div className="hero__proof" aria-label="Social proof">
-            <p className="hero__proof-line">
-              Built for fast discovery: profiles + quizzes + collections. No accounts.
-            </p>
-            <p className="hero__proof-note">
-              Social proof placeholder: “Loved by football nerds” · “Great for learning squads”
-            </p>
-          </div>
+          <p className="hero__proof-line">
+            Profiles, quizzes, and collections — progress stays on your device. Updated{' '}
+            {DATASET_META.dataAsOf}.
+          </p>
         </div>
 
         <div className="hero-visual" aria-hidden="true">

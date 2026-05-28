@@ -14,15 +14,17 @@ import LeagueBadge from './LeagueBadge';
 const PERSONALIZE_DISMISS_KEY = 'footybrain:personalize-cta-dismissed';
 
 const EXPLORE_SHORTCUTS = [
-  { to: '/hubs', label: 'Search hubs', hint: 'League & club quiz pages' },
+  { to: '/quiz', label: 'Player quiz', hint: 'Hints & streaks' },
+  { to: '/club-quiz', label: 'Club quiz', hint: 'Stadiums & rivalries' },
+  { to: '/daily', label: 'Daily challenge', hint: 'Quick return visit' },
+  { to: '/hubs', label: 'Search hubs', hint: 'SEO quiz & learn pages' },
   { to: '/learning-paths', label: 'Learning paths', hint: 'Curated study routes' },
   { to: '/collections', label: 'Collections', hint: 'Themed player lists' },
-  { to: '/world-cup', label: 'World Cup 2026', hint: 'Nations & prep quiz' },
-  { to: '/compare', label: 'Compare', hint: 'Players or clubs side by side' },
 ];
 
 const POPULAR_SEARCHES = [
-  { to: '/hubs/quizzes/league/premier-league', label: 'Guess the Premier League player' },
+  { to: '/hubs/quizzes/clubs/stadium', label: 'Guess the club by stadium' },
+  { to: '/hubs/quizzes/league/premier-league', label: 'Premier League player quiz' },
   { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona player quiz' },
   { to: '/hubs/players/by-nationality', label: 'Football players by nationality' },
   { to: '/hubs/players/best-young-footballers', label: 'Best young footballers' },

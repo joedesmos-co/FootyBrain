@@ -29,6 +29,8 @@ import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 import BreadcrumbNav from './BreadcrumbNav';
+import ProfileKeepExploring from './ProfileKeepExploring';
+import { getProfileExploreLead } from '../data/profileExploreEnhancements';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
 
@@ -114,6 +116,10 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
   const cultureLine =
     truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
   const profileSubline = buildTeamProfileSubline(team);
+  const showKeepExploring =
+    Boolean(getProfileExploreLead(team.id)) ||
+    !teamEditorial.hasStory ||
+    (!team.rivals?.length && !team.legends?.length);
 
   const fanPathSteps = [
     {
@@ -333,6 +339,18 @@ function TeamProfileContent({ team, leagueName, roster, squadLoading, leagueTeam
             />
           )}
         </article>
+
+        {showKeepExploring ? (
+          <ProfileKeepExploring
+            variant="team"
+            entityId={team.id}
+            teamId={team.id}
+            leagueId={team.leagueId}
+            teamName={team.name}
+            leagueName={leagueName}
+            quizReady={hasTeamQuiz}
+          />
+        ) : null}
 
         {!isExternalStub ? (
           <details className="fan-path-details info-card info-card--wide">
