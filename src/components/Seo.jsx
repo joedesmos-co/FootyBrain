@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { pageTitle, SITE_DESCRIPTION, SITE_NAME } from '../utils/brand';
+import { canonicalUrlForPath, pageTitle, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../utils/brand';
 import { upsertJsonLdScript } from '../utils/jsonLd';
 import { setSeoMeta } from '../utils/seoMeta';
 
 function buildCanonical(pathname) {
-  const origin = window.location.origin;
-  return `${origin}${pathname}`;
+  return canonicalUrlForPath(pathname);
 }
 
 function isBreadcrumbPath(pathname) {
@@ -17,12 +16,12 @@ function isBreadcrumbPath(pathname) {
   );
 }
 
-function websiteJsonLd(origin) {
+function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
-    url: origin,
+    url: SITE_URL,
     description: SITE_DESCRIPTION,
   };
 }
@@ -114,7 +113,6 @@ export default function Seo() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const origin = window.location.origin;
     const canonicalUrl = buildCanonical(pathname);
     const title = titleForPath(pathname);
     const indexable = !isNoIndexPath(pathname);
@@ -139,7 +137,7 @@ export default function Seo() {
       },
     });
 
-    upsertJsonLdScript('jsonld-website', websiteJsonLd(origin));
+    upsertJsonLdScript('jsonld-website', websiteJsonLd());
     if (!isBreadcrumbPath(pathname)) upsertJsonLdScript('jsonld-breadcrumb', null);
     if (!pathname.startsWith('/player/')) upsertJsonLdScript('jsonld-person', null);
     if (!pathname.startsWith('/team/')) upsertJsonLdScript('jsonld-sportsteam', null);
