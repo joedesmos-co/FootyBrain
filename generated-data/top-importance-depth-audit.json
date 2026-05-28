@@ -1,0 +1,6509 @@
+{
+  "generatedAt": "2026-05-28T20:05:04.729Z",
+  "topN": 300,
+  "summary": {
+    "playersAudited": 300,
+    "thinPlayersInTop": 0,
+    "teamsAudited": 300,
+    "thinTeamsInTop": 136,
+    "leaguesAudited": 8,
+    "nationalTeamsAudited": 55
+  },
+  "topPlayers": [
+    {
+      "id": "haaland",
+      "name": "Erling Haaland",
+      "importanceScore": 96,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "bellingham",
+      "name": "Jude Bellingham",
+      "importanceScore": 96,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-28003",
+      "name": "Lionel Messi",
+      "importanceScore": 96,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-miami",
+      "leagueId": "mls"
+    },
+    {
+      "id": "salah",
+      "name": "Mohamed Salah",
+      "importanceScore": 95,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "vinicius",
+      "name": "Vinícius Júnior",
+      "importanceScore": 95,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-68290",
+      "name": "Neymar",
+      "importanceScore": 95,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "santos",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "de-bruyne",
+      "name": "Kevin De Bruyne",
+      "importanceScore": 94,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "kane",
+      "name": "Harry Kane",
+      "importanceScore": 94,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "rodri",
+      "name": "Rodri",
+      "importanceScore": 93,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "van-dijk",
+      "name": "Virgil van Dijk",
+      "importanceScore": 93,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "musiala",
+      "name": "Jamal Musiala",
+      "importanceScore": 93,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "saka",
+      "name": "Bukayo Saka",
+      "importanceScore": 92,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "lautaro",
+      "name": "Lautaro Martínez",
+      "importanceScore": 92,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-91845",
+      "name": "Heung-min Son",
+      "importanceScore": 92,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lafc",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-59016",
+      "name": "David Alaba",
+      "importanceScore": 92,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-640428",
+      "name": "Eduardo Camavinga",
+      "importanceScore": 92,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "foden",
+      "name": "Phil Foden",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "odegaard",
+      "name": "Martin Ødegaard",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "valverde",
+      "name": "Federico Valverde",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "lewandowski",
+      "name": "Robert Lewandowski",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "kimmich",
+      "name": "Joshua Kimmich",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "leao",
+      "name": "Rafael Leão",
+      "importanceScore": 91,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-344381",
+      "name": "Christopher Nkunku",
+      "importanceScore": 91,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-412363",
+      "name": "Rodrygo",
+      "importanceScore": 91,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "saliba",
+      "name": "William Saliba",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "rice",
+      "name": "Declan Rice",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "alisson",
+      "name": "Alisson Becker",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "modric",
+      "name": "Luka Modrić",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "pedri",
+      "name": "Pedri",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "barella",
+      "name": "Nicolò Barella",
+      "importanceScore": 90,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-338424",
+      "name": "Mikel Merino",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-125781",
+      "name": "Antoine Griezmann",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-121483",
+      "name": "Jan Oblak",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-503482",
+      "name": "Min-jae Kim",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-248410",
+      "name": "Giorgian de Arrascaeta",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "flamengo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-44352",
+      "name": "Luis Suárez",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-miami",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-357498",
+      "name": "Dušan Vlahović",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-234803",
+      "name": "Andrew Robertson",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-88103",
+      "name": "James Rodríguez",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "minnesota-united",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-348795",
+      "name": "Giovani Lo Celso",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-betis",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-401530",
+      "name": "Éder Militão",
+      "importanceScore": 90,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "trent",
+      "name": "Trent Alexander-Arnold",
+      "importanceScore": 89,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "courtois",
+      "name": "Thibaut Courtois",
+      "importanceScore": 89,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "neuer",
+      "name": "Manuel Neuer",
+      "importanceScore": 89,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "bastoni",
+      "name": "Alessandro Bastoni",
+      "importanceScore": 89,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-479999",
+      "name": "Eberechi Eze",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-709726",
+      "name": "Hugo Ekitiké",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-240306",
+      "name": "Bruno Fernandes",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-united",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-502670",
+      "name": "Khvicha Kvaratskhelia",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-288230",
+      "name": "Ousmane Dembélé",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-138927",
+      "name": "Daniel Carvajal",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-378710",
+      "name": "Richarlison",
+      "importanceScore": 89,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "ederson",
+      "name": "Ederson",
+      "importanceScore": 88,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "gavi",
+      "name": "Gavi",
+      "importanceScore": 88,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "ter-stegen",
+      "name": "Marc-André ter Stegen",
+      "importanceScore": 88,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "maignan",
+      "name": "Mike Maignan",
+      "importanceScore": 88,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-552955",
+      "name": "Santiago Giménez",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-203853",
+      "name": "Oleksandr Zinchenko",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ajax",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-321247",
+      "name": "Emiliano Buendía",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-326330",
+      "name": "Frenkie de Jong",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-480267",
+      "name": "Ronald Araujo",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-193082",
+      "name": "Alejandro Grimaldo",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayer-leverkusen",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-424204",
+      "name": "Alphonso Davies",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-687626",
+      "name": "Moisés Caicedo",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-444523",
+      "name": "Lucas Paquetá",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "flamengo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-255901",
+      "name": "Rodrigo De Paul",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-miami",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-126414",
+      "name": "Hakan Çalhanoğlu",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-181136",
+      "name": "Piotr Zielinski",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-161011",
+      "name": "Filip Kostić",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-35207",
+      "name": "Marco Reus",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "la-galaxy",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-349066",
+      "name": "Alexander Isak",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-475959",
+      "name": "Josko Gvardiol",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-169880",
+      "name": "Giovanni Di Lorenzo",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-398073",
+      "name": "Achraf Hakimi",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-350219",
+      "name": "Fabián Ruiz",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-861410",
+      "name": "Arda Güler",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-244275",
+      "name": "Gabriel Barbosa",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "santos",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-40433",
+      "name": "Alexis Sánchez",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "sevilla",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-487969",
+      "name": "Randal Kolo Muani",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-69633",
+      "name": "Christian Eriksen",
+      "importanceScore": 88,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "wolfsburg",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "raphinha",
+      "name": "Raphinha",
+      "importanceScore": 87,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "sane",
+      "name": "Leroy Sané",
+      "importanceScore": 87,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-182913",
+      "name": "Adrien Rabiot",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-303254",
+      "name": "Fikayo Tomori",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-111873",
+      "name": "Emiliano Martínez",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-282411",
+      "name": "Marcos Llorente",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-351809",
+      "name": "Robin Le Normand",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-576028",
+      "name": "Thiago Almada",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-257814",
+      "name": "Gregor Kobel",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-106987",
+      "name": "Marcel Sabitzer",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-167850",
+      "name": "Memphis Depay",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "corinthians",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-353108",
+      "name": "Bruno Henrique",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "flamengo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-401922",
+      "name": "Samuel Chukwueze",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fulham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-451276",
+      "name": "Dominik Szoboszlai",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-354361",
+      "name": "Frank Anguissa",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-315969",
+      "name": "Scott McTominay",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-86202",
+      "name": "Antonio Rüdiger",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-316889",
+      "name": "Hirving Lozano",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "san-diego-fc",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-355915",
+      "name": "Cristian Romero",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-177467",
+      "name": "Gerard Moreno",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "villarreal",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-230784",
+      "name": "Thomas Partey",
+      "importanceScore": 87,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "villarreal",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "jesus",
+      "name": "Gabriel Jesus",
+      "importanceScore": 86,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "sommer",
+      "name": "Yann Sommer",
+      "importanceScore": 86,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-503743",
+      "name": "Morgan Rogers",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-324358",
+      "name": "Ollie Watkins",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-249565",
+      "name": "Youri Tielemans",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-255508",
+      "name": "Iñaki Williams",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-272999",
+      "name": "Miguel Almirón",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atlanta-united",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-406040",
+      "name": "Ademola Lookman",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-238407",
+      "name": "Alexander Sørloth",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atletico-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-44058",
+      "name": "Wojciech Szczesny",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-401578",
+      "name": "Exequiel Palacios",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayer-leverkusen",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-166601",
+      "name": "Niklas Süle",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-112515",
+      "name": "Marcos Alonso",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "celta-vigo",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-626724",
+      "name": "João Pedro",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-487465",
+      "name": "Pedro Neto",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-126665",
+      "name": "Idrissa Gueye",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-432895",
+      "name": "Pedro",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "flamengo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-206040",
+      "name": "Raúl Jiménez",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fulham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-46580",
+      "name": "Andrej Kramaric",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "hoffenheim",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-55735",
+      "name": "Henrikh Mkhitaryan",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-533738",
+      "name": "Jonathan David",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-236045",
+      "name": "Denis Bouanga",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lafc",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-184892",
+      "name": "Florian Thauvin",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lens",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-51471",
+      "name": "Mateo Kovacic",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-460939",
+      "name": "Tijjani Reijnders",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-177907",
+      "name": "Harry Maguire",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-united",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-346483",
+      "name": "Mason Mount",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-united",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-353366",
+      "name": "Benjamin Pavard",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-532826",
+      "name": "Mason Greenwood",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-466810",
+      "name": "Ansu Fati",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "monaco",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-122153",
+      "name": "Paul Pogba",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "monaco",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-96341",
+      "name": "Romelu Lukaku",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-557149",
+      "name": "Kang-in Lee",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-181767",
+      "name": "Marquinhos",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "paris-saint-germain",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-85288",
+      "name": "Isco",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-betis",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-15799",
+      "name": "Santi Cazorla",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-oviedo",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-237662",
+      "name": "Breel Embolo",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "rennes",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-337807",
+      "name": "Jordan Morris",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "seattle-sounders",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-316125",
+      "name": "Ben Chilwell",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "strasbourg",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-488362",
+      "name": "Conor Gallagher",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-294057",
+      "name": "James Maddison",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-543499",
+      "name": "Mohammed Kudus",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-283628",
+      "name": "Tomáš Souček",
+      "importanceScore": 86,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "west-ham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-202886",
+      "name": "Ruben Loftus-Cheek",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-574671",
+      "name": "Strahinja Pavlović",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-420243",
+      "name": "Jurriën Timber",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-503987",
+      "name": "Noni Madueke",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-485706",
+      "name": "Amadou Onana",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-61812",
+      "name": "Yuri Berchiche",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-636688",
+      "name": "Alejandro Balde",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-962110",
+      "name": "Pau Cubarsí",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "barcelona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-776890",
+      "name": "Nicolas Jackson",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-284732",
+      "name": "Ramy Bensebaini",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-192635",
+      "name": "Nico Elvedi",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-monchengladbach",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-369316",
+      "name": "Ferdi Kadıoğlu",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brighton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-614258",
+      "name": "Levi Colwill",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-537860",
+      "name": "Mykhaylo Mudryk",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-493003",
+      "name": "Daniel Muñoz",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "crystal-palace",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-429983",
+      "name": "Jørgen Strand Larsen",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "crystal-palace",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-568157",
+      "name": "Yéremy Pino",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "crystal-palace",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-585959",
+      "name": "Arnaud Kalimuendo",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "eintracht-frankfurt",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-173504",
+      "name": "James Tarkowski",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-118534",
+      "name": "Michael Keane",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-93707",
+      "name": "Christian Günter",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "freiburg",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-248999",
+      "name": "Lucas Höler",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "freiburg",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-242631",
+      "name": "Alex Iwobi",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fulham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-123275",
+      "name": "Tom Cairney",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fulham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-459658",
+      "name": "Andrea Cambiaso",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-509022",
+      "name": "Federico Gatti",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-331511",
+      "name": "Riqui Puig",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "la-galaxy",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-82442",
+      "name": "Olivier Giroud",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-418659",
+      "name": "Amine Gouiri",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-474800",
+      "name": "Facundo Medina",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-263918",
+      "name": "Aleksandr Golovin",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "monaco",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-490426",
+      "name": "Krépin Diatta",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "monaco",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-386446",
+      "name": "Alessandro Buongiorno",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-427568",
+      "name": "Aaron Ramsdale",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "newcastle",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-398065",
+      "name": "Harvey Barnes",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "newcastle",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-521964",
+      "name": "Malick Thiaw",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "newcastle",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-388165",
+      "name": "Yoane Wissa",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "newcastle",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-16136",
+      "name": "Dante",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "nice",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-215390",
+      "name": "Gustavo Gómez",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "palmeiras",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-318204",
+      "name": "David Raum",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "rb-leipzig",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-459463",
+      "name": "Cucho Hernández",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-betis",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-336869",
+      "name": "Marc Roca",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-betis",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-287579",
+      "name": "Sofyan Amrabat",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-betis",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-319745",
+      "name": "Dani Ceballos",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-madrid",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-309110",
+      "name": "Brais Méndez",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-sociedad",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-372246",
+      "name": "Carlos Soler",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-sociedad",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-378293",
+      "name": "Yangel Herrera",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "real-sociedad",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-320748",
+      "name": "Sebastian Szymanski",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "rennes",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-343537",
+      "name": "Artem Dovbyk",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "roma",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-648046",
+      "name": "Evan Ferguson",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "roma",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-371149",
+      "name": "Evan Ndicka",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "roma",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-284727",
+      "name": "Jonathan Calleri",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "sao-paulo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-43228",
+      "name": "Albert Rusnák",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "seattle-sounders",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-385105",
+      "name": "Gabriel Suazo",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "sevilla",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-660867",
+      "name": "Julio Enciso",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "strasbourg",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-410425",
+      "name": "Yves Bissouma",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "tottenham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-342385",
+      "name": "Guido Rodríguez",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "valencia",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-344598",
+      "name": "Dan-Axel Zagadou",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "vfb-stuttgart",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-339314",
+      "name": "Deniz Undav",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "vfb-stuttgart",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-480763",
+      "name": "Juan Foyth",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "villarreal",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-93844",
+      "name": "Leonardo Bittencourt",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "werder-bremen",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-314875",
+      "name": "Jarrod Bowen",
+      "importanceScore": 85,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "west-ham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "nunez",
+      "name": "Darwin Núñez",
+      "importanceScore": 84,
+      "depth": 8,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-381950",
+      "name": "Alexis Saelemaekers",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ac-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-559324",
+      "name": "Youri Regeer",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "ajax",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-148367",
+      "name": "Christian Nørgaard",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-659813",
+      "name": "Piero Hincapié",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "arsenal",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-485585",
+      "name": "Ian Maatsen",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "aston-villa",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-710671",
+      "name": "Adama Boiro",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-591916",
+      "name": "Aitor Paredes",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-338425",
+      "name": "Álex Berenguer",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-340205",
+      "name": "Gorka Guruzeta",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-571020",
+      "name": "Oihan Sancet",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "athletic-bilbao",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-255450",
+      "name": "Aleksey Miranchuk",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "atlanta-united",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-479643",
+      "name": "Alexandre Penetra",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "az-alkmaar",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-185817",
+      "name": "Jizz Hornkamp",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "az-alkmaar",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-646707",
+      "name": "Wouter Goes",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "az-alkmaar",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-467437",
+      "name": "Malik Tillman",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayer-leverkusen",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-696164",
+      "name": "Tim Oermann",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayer-leverkusen",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-792380",
+      "name": "Aleksandar Pavlović",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-483046",
+      "name": "Josip Stanisic",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "bayern-munich",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-659459",
+      "name": "Carney Chukwuemeka",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-627228",
+      "name": "Yan Couto",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-dortmund",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-278332",
+      "name": "Florian Neuhaus",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-monchengladbach",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-229006",
+      "name": "Franck Honorat",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-monchengladbach",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-335209",
+      "name": "Kevin Diks",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-monchengladbach",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-405670",
+      "name": "Yannik Engelhardt",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "borussia-monchengladbach",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-823231",
+      "name": "Dango Ouattara",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brentford",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-739443",
+      "name": "Igor Thiago",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brentford",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-823486",
+      "name": "Michael Kayode",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brentford",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-717411",
+      "name": "Yegor Yarmolyuk",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brentford",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-212847",
+      "name": "Adam Webster",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brighton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-380350",
+      "name": "Igor Julio",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brighton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-415381",
+      "name": "Mats Wieffer",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brighton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-667287",
+      "name": "Yasin Ayari",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "brighton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-278359",
+      "name": "Borja Iglesias",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "celta-vigo",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-303657",
+      "name": "Ionuț Radu",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "celta-vigo",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-545647",
+      "name": "Sergio Carreira",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "celta-vigo",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-743600",
+      "name": "Andrey Santos",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-472423",
+      "name": "Reece James",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "chelsea",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-489893",
+      "name": "Yuri Alberto",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "corinthians",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-293194",
+      "name": "Borna Sosa",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "crystal-palace",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-258919",
+      "name": "Dean Henderson",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "crystal-palace",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-939964",
+      "name": "Jean-Mattéo Bahoya",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "eintracht-frankfurt",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-179184",
+      "name": "Michy Batshuayi",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "eintracht-frankfurt",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-692368",
+      "name": "Younes Ebnoutalib",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "eintracht-frankfurt",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-595809",
+      "name": "Beto",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-505219",
+      "name": "James Garner",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-404842",
+      "name": "Vitaliy Mykolenko",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "everton",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-202788",
+      "name": "Robin Pröpper",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fc-twente",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-1014172",
+      "name": "Yannick Gerritsen",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fc-twente",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-377468",
+      "name": "Anel Ahmedhodzic",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "feyenoord",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-917911",
+      "name": "Anis Hadj Moussa",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "feyenoord",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-365394",
+      "name": "In-beom Hwang",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "feyenoord",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-369554",
+      "name": "Mats Deijl",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "feyenoord",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-598791",
+      "name": "Tsuyoshi Watanabe",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "feyenoord",
+      "leagueId": "eredivisie"
+    },
+    {
+      "id": "tm-215616",
+      "name": "Erick Pulgar",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "flamengo",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-58995",
+      "name": "Anthony Jung",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "freiburg",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-668606",
+      "name": "Yuito Suzuki",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "freiburg",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-279455",
+      "name": "Harry Wilson",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "fulham",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-205562",
+      "name": "Thomas Lemar",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "girona",
+      "leagueId": "la-liga"
+    },
+    {
+      "id": "tm-157635",
+      "name": "Yussuf Poulsen",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "hamburger-sv",
+      "leagueId": "bundesliga"
+    },
+    {
+      "id": "tm-122043",
+      "name": "Héctor Herrera",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "houston-dynamo",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-668207",
+      "name": "Petar Sučić",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "inter-milan",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-323831",
+      "name": "Rafael Borré",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "internacional",
+      "leagueId": "brasileirao"
+    },
+    {
+      "id": "tm-516716",
+      "name": "Bremer",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-480116",
+      "name": "Lloyd Kelly",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-332697",
+      "name": "Weston McKennie",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "juventus",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-81789",
+      "name": "Maya Yoshida",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "la-galaxy",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-271072",
+      "name": "Aaron Long",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lafc",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-462823",
+      "name": "Gustav Isaksen",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lazio",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-550106",
+      "name": "Matteo Cancellieri",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lazio",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-776798",
+      "name": "Abdallah Sima",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lens",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-272642",
+      "name": "Allan Saint-Maximin",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lens",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-182916",
+      "name": "Wesley Saïd",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lens",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-80293",
+      "name": "Aïssa Mandi",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-479648",
+      "name": "Félix Correia",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-548254",
+      "name": "Nathan Ngoy",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-816580",
+      "name": "Tiago Santos",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-433188",
+      "name": "Curtis Jones",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "liverpool",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-646402",
+      "name": "Abner",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lyon",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-289592",
+      "name": "Orel Mangala",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lyon",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-618494",
+      "name": "Tyler Morton",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "lyon",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-763079",
+      "name": "Abdukodir Khusanov",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-city",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-336077",
+      "name": "Altay Bayındır",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-united",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-536835",
+      "name": "Amad Diallo",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "manchester-united",
+      "leagueId": "premier-league"
+    },
+    {
+      "id": "tm-575998",
+      "name": "Leonardo Balerdi",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-361914",
+      "name": "Nayef Aguerd",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-58864",
+      "name": "Pierre-Emerick Aubameyang",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "marseille",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-918969",
+      "name": "Lamine Camara",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "monaco",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-257474",
+      "name": "Vanja Milinković-Savić",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "napoli",
+      "leagueId": "serie-a"
+    },
+    {
+      "id": "tm-111078",
+      "name": "Emil Forsberg",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "new-york-red-bulls",
+      "leagueId": "mls"
+    },
+    {
+      "id": "tm-211474",
+      "name": "Ali Abdi",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "nice",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-175639",
+      "name": "Jonathan Clauss",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "nice",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-174094",
+      "name": "Morgan Sanson",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "nice",
+      "leagueId": "ligue-1"
+    },
+    {
+      "id": "tm-674612",
+      "name": "Youssouf Ndayishimiye",
+      "importanceScore": 84,
+      "depth": 6,
+      "quizReady": true,
+      "teamId": "nice",
+      "leagueId": "ligue-1"
+    }
+  ],
+  "thinPlayersInTop": [],
+  "topTeams": [
+    {
+      "id": "sao-paulo",
+      "name": "São Paulo",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1935,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "feyenoord",
+      "name": "Feyenoord",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1929,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "liverpool",
+      "name": "Liverpool",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1864,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "corinthians",
+      "name": "Corinthians",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1838,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "real-madrid",
+      "name": "Real Madrid",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1825,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "chelsea",
+      "name": "Chelsea",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1820,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "manchester-city",
+      "name": "Manchester City",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1785,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "chapecoense",
+      "name": "Chapecoense",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1785,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "remo",
+      "name": "Clube do Remo",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1785,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "vitoria",
+      "name": "Vitória",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1785,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "bragantino",
+      "name": "Red Bull Bragantino",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1785,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "wolfsburg",
+      "name": "VfL Wolfsburg",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1749,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "tottenham",
+      "name": "Tottenham Hotspur",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1710,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "sevilla",
+      "name": "Sevilla",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1707,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "real-betis",
+      "name": "Real Betis",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1705,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 1
+    },
+    {
+      "id": "santos",
+      "name": "Santos",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1695,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "fluminense",
+      "name": "Fluminense",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1688,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "crystal-palace",
+      "name": "Crystal Palace",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1687,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "athletic-bilbao",
+      "name": "Athletic Club",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1661,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "eintracht-frankfurt",
+      "name": "Eintracht Frankfurt",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1656,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "vfb-stuttgart",
+      "name": "VfB Stuttgart",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1642,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "lafc",
+      "name": "Los Angeles FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1640,
+      "depth": 10,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "az-alkmaar",
+      "name": "AZ Alkmaar",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1639,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "fc-dallas",
+      "name": "FC Dallas",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1638,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "mirassol",
+      "name": "Mirassol",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1638,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "botafogo",
+      "name": "Botafogo",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1638,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "palmeiras",
+      "name": "Palmeiras",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1632,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "monaco",
+      "name": "Monaco",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1629,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "arsenal",
+      "name": "Arsenal",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1627,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "bayern-munich",
+      "name": "Bayern Munich",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1625,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "lyon",
+      "name": "Lyon",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1622,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "hoffenheim",
+      "name": "TSG Hoffenheim",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1620,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "villarreal",
+      "name": "Villarreal",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1617,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "atletico-mineiro",
+      "name": "Atlético Mineiro",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1613,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "napoli",
+      "name": "Napoli",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1611,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "borussia-monchengladbach",
+      "name": "Borussia Mönchengladbach",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1611,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "mainz",
+      "name": "Mainz 05",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1605,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "nice",
+      "name": "OGC Nice",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1598,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "celta-vigo",
+      "name": "Celta Vigo",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1596,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "werder-bremen",
+      "name": "Werder Bremen",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1592,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "cruzeiro",
+      "name": "Cruzeiro",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1587,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "barcelona",
+      "name": "Barcelona",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1584,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "lazio",
+      "name": "Lazio",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1581,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "seattle-sounders",
+      "name": "Seattle Sounders FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1580,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "valencia",
+      "name": "Valencia",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1577,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "roma",
+      "name": "AS Roma",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1571,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "internacional",
+      "name": "Internacional",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1565,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "st-pauli",
+      "name": "FC St. Pauli",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1562,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "hamburger-sv",
+      "name": "Hamburger SV",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1560,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "flamengo",
+      "name": "Flamengo",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1560,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "aston-villa",
+      "name": "Aston Villa",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1559,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "fc-koln",
+      "name": "1. FC Köln",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1559,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "san-diego-fc",
+      "name": "San Diego FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1555,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "juventus",
+      "name": "Juventus",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1554,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "minnesota-united",
+      "name": "Minnesota United FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1551,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "marseille",
+      "name": "Marseille",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1549,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "heidenheim",
+      "name": "1. FC Heidenheim",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1548,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "lens",
+      "name": "RC Lens",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1543,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 1
+    },
+    {
+      "id": "torino",
+      "name": "Torino",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "paris-fc",
+      "name": "Paris FC",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "heracles-almelo",
+      "name": "Heracles Almelo",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-volendam",
+      "name": "FC Volendam",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "coritiba",
+      "name": "Coritiba",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "bahia",
+      "name": "Bahia",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1535,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "la-galaxy",
+      "name": "LA Galaxy",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1534,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "ac-milan",
+      "name": "AC Milan",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1531,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "lille",
+      "name": "Lille",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1520,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "newcastle",
+      "name": "Newcastle United",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1519,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "real-sociedad",
+      "name": "Real Sociedad",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1519,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 1
+    },
+    {
+      "id": "fc-augsburg",
+      "name": "FC Augsburg",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1517,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "inter-milan",
+      "name": "Inter Milan",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1513,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "colorado-rapids",
+      "name": "Colorado Rapids",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1506,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "brighton",
+      "name": "Brighton & Hove Albion",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1499,
+      "depth": 9,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 1
+    },
+    {
+      "id": "brentford",
+      "name": "Brentford",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1491,
+      "depth": 9,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "nottingham-forest",
+      "name": "Nottingham Forest",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "burnley",
+      "name": "Burnley",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "cagliari",
+      "name": "Cagliari",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "verona",
+      "name": "Hellas Verona",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "pisa",
+      "name": "Pisa",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "columbus-crew",
+      "name": "Columbus Crew",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1482,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "everton",
+      "name": "Everton",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1481,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 1
+    },
+    {
+      "id": "borussia-dortmund",
+      "name": "Borussia Dortmund",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1468,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "strasbourg",
+      "name": "RC Strasbourg",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1467,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "inter-miami",
+      "name": "Inter Miami CF",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1458,
+      "depth": 10,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "vancouver-whitecaps",
+      "name": "Vancouver Whitecaps FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1457,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sassuolo",
+      "name": "Sassuolo",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1454,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "freiburg",
+      "name": "SC Freiburg",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1444,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "rayo-vallecano",
+      "name": "Rayo Vallecano",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1441,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-twente",
+      "name": "FC Twente",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1436,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "rb-leipzig",
+      "name": "RB Leipzig",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1433,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "fiorentina",
+      "name": "Fiorentina",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-nantes",
+      "name": "Nantes",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fortuna-sittard",
+      "name": "Fortuna Sittard",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "go-ahead-eagles",
+      "name": "Go Ahead Eagles",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "charlotte-fc",
+      "name": "Charlotte FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "new-york-city-fc",
+      "name": "New York City FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "san-jose-earthquakes",
+      "name": "San Jose Earthquakes",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "vasco-da-gama",
+      "name": "Vasco da Gama",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "athletico-paranaense",
+      "name": "Athletico Paranaense",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "gremio",
+      "name": "Grêmio",
+      "leagueId": "brasileirao",
+      "rosterImportanceSum": 1428,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "atletico-madrid",
+      "name": "Atlético Madrid",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1425,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "levante",
+      "name": "Levante",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1421,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "ajax",
+      "name": "Ajax",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1418,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "union-berlin",
+      "name": "Union Berlin",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1414,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "girona",
+      "name": "Girona",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1412,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "atlanta-united",
+      "name": "Atlanta United FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1409,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "psv",
+      "name": "PSV Eindhoven",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1408,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "real-oviedo",
+      "name": "Real Oviedo",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1404,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "st-louis-city",
+      "name": "St. Louis City SC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1404,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "aj-auxerre",
+      "name": "Auxerre",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1403,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "mallorca",
+      "name": "Mallorca",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1403,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "bayer-leverkusen",
+      "name": "Bayer Leverkusen",
+      "leagueId": "bundesliga",
+      "rosterImportanceSum": 1389,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "west-ham",
+      "name": "West Ham United",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1388,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "sunderland",
+      "name": "Sunderland",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "cremonese",
+      "name": "Cremonese",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "ac-le-havre",
+      "name": "Le Havre",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "chicago-fire",
+      "name": "Chicago Fire FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "cf-montreal",
+      "name": "CF Montréal",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "nashville-sc",
+      "name": "Nashville SC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "philadelphia-union",
+      "name": "Philadelphia Union",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "real-salt-lake",
+      "name": "Real Salt Lake",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1380,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fulham",
+      "name": "Fulham",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1373,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "manchester-united",
+      "name": "Manchester United",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1370,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "houston-dynamo",
+      "name": "Houston Dynamo FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1366,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "new-york-red-bulls",
+      "name": "New York Red Bulls",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1361,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "toronto-fc",
+      "name": "Toronto FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1361,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "portland-timbers",
+      "name": "Portland Timbers",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1359,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "elche",
+      "name": "Elche",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1346,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "wolves",
+      "name": "Wolverhampton Wanderers",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1331,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 3
+    },
+    {
+      "id": "leeds",
+      "name": "Leeds United",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "bologna",
+      "name": "Bologna",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "genoa",
+      "name": "Genoa",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "lecce",
+      "name": "Lecce",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "como",
+      "name": "Como",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-utrecht",
+      "name": "FC Utrecht",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sc-heerenveen",
+      "name": "sc Heerenveen",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "nec-nijmegen",
+      "name": "NEC Nijmegen",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sc-telstar",
+      "name": "Telstar",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "dc-united",
+      "name": "D.C. United",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1331,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "paris-saint-germain",
+      "name": "Paris Saint-Germain",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1313,
+      "depth": 12,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "fc-lorient",
+      "name": "Lorient",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1307,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "getafe",
+      "name": "Getafe",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1295,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "alaves",
+      "name": "Alavés",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1293,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "rennes",
+      "name": "Stade Rennais",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1287,
+      "depth": 11,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 2
+    },
+    {
+      "id": "bournemouth",
+      "name": "Bournemouth",
+      "leagueId": "premier-league",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "udinese",
+      "name": "Udinese",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "parma",
+      "name": "Parma",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-metz",
+      "name": "Metz",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-groningen",
+      "name": "FC Groningen",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "pec-zwolle",
+      "name": "PEC Zwolle",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "austin-fc",
+      "name": "Austin FC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-cincinnati",
+      "name": "FC Cincinnati",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "orlando-city",
+      "name": "Orlando City SC",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1281,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "espanyol",
+      "name": "Espanyol",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1243,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "osasuna",
+      "name": "Osasuna",
+      "leagueId": "la-liga",
+      "rosterImportanceSum": 1234,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sparta-rotterdam",
+      "name": "Sparta Rotterdam",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1230,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "nac-breda",
+      "name": "NAC Breda",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1230,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "excelsior-rotterdam",
+      "name": "Excelsior",
+      "leagueId": "eredivisie",
+      "rosterImportanceSum": 1230,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "new-england-revolution",
+      "name": "New England Revolution",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1230,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "atalanta",
+      "name": "Atalanta",
+      "leagueId": "serie-a",
+      "rosterImportanceSum": 1206,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sco-angers",
+      "name": "Angers",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1178,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "stade-brest",
+      "name": "Brest",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1178,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "fc-toulouse",
+      "name": "Toulouse",
+      "leagueId": "ligue-1",
+      "rosterImportanceSum": 1125,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "sporting-kansas-city",
+      "name": "Sporting Kansas City",
+      "leagueId": "mls",
+      "rosterImportanceSum": 1125,
+      "depth": 7,
+      "hasStory": true,
+      "hasFanGuide": true,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2557",
+      "name": "Orlando Pirates",
+      "leagueId": "external",
+      "rosterImportanceSum": 768,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6356",
+      "name": "Mamelodi Sundowns Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 714,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7",
+      "name": "Al Ahly Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15795",
+      "name": "Al Hussein Sc Irbid",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3718",
+      "name": "Pakhtakor Tashkent",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26091",
+      "name": "Al Duhail Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 464,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-656",
+      "name": "Al Sadd Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13509",
+      "name": "Al Wakrah Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-23806",
+      "name": "Al Zawraa Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1114",
+      "name": "Al Hilal Sfc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18544",
+      "name": "Al Nassr Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3229",
+      "name": "Al Rayyan Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-8023",
+      "name": "Al Ittihad Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-103329",
+      "name": "Al Karma",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-20591",
+      "name": "Nasaf Qarshi",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13306",
+      "name": "Neftchi Fergana",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-664",
+      "name": "Zamalek Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1230",
+      "name": "Al Arabi Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26069",
+      "name": "Al Qadsiah Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13593",
+      "name": "Al Shorta Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15310",
+      "name": "Navbahor Namangan",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-965",
+      "name": "Qatar Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-12935",
+      "name": "Tractor Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13592",
+      "name": "Al Faisaly Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6297",
+      "name": "Al Gharafa Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9840",
+      "name": "Al Shabab Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15796",
+      "name": "Al Wehdat Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-20960",
+      "name": "Cd Plaza Amador",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-57439",
+      "name": "Cleopatra Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1076",
+      "name": "Esteghlal Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-34911",
+      "name": "Neom Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-44664",
+      "name": "Pyramids Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-132785",
+      "name": "Siwelele Football Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-39637",
+      "name": "Zakho Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-47010",
+      "name": "Zed Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18487",
+      "name": "Al Ahli Sfc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7732",
+      "name": "Al Ettifaq Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-31180",
+      "name": "Al Ramtha Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-10775",
+      "name": "Al Shamal Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-28844",
+      "name": "Al Taawoun Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-21726",
+      "name": "Al Talaba Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-31283",
+      "name": "Chippa United",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13598",
+      "name": "Duhok Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9094",
+      "name": "El Masry Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-133914",
+      "name": "Leicesterford City Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6079",
+      "name": "Persepolis Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-21202",
+      "name": "Polokwane City Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-85501",
+      "name": "Sekhukhune United Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1708",
+      "name": "Sporting San Miguelito",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-23287",
+      "name": "Stellenbosch Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3612",
+      "name": "Al Ahli Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9131",
+      "name": "Al Hazem Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13594",
+      "name": "Al Najaf Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-23805",
+      "name": "Al Quwa Al Jawiya",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-4630",
+      "name": "Al Sailiya Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-118373",
+      "name": "Auckland Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-17584",
+      "name": "Cd Universidad Catolica",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-4720",
+      "name": "Deportivo Saprissa",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-44289",
+      "name": "Dibba Scc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15300",
+      "name": "Dinamo Samarqand",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-20099",
+      "name": "Fc Andijon",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-568",
+      "name": "Kaizer Chiefs",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3592",
+      "name": "Kryvbas Kryvyi Rig",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15831",
+      "name": "Selangor Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 107,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-45193",
+      "name": "Academia Puerto Cabello",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2156",
+      "name": "Aek Larnaca",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2150",
+      "name": "Al Ain Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-78312",
+      "name": "Al Bataeh Csc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-14456",
+      "name": "Al Dhafra Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-46718",
+      "name": "Al Ettihad Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-27221",
+      "name": "Al Fateh Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-50531",
+      "name": "Al Fayha Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2524",
+      "name": "Al Jazira Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-91427",
+      "name": "Al Kholood Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-32328",
+      "name": "Al Najma Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-5432",
+      "name": "Al Nasr Sc Uae",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-31008",
+      "name": "Al Riyadh Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-69471",
+      "name": "Al Salt Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26261",
+      "name": "Al Shabab Club Bahrain",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-34694",
+      "name": "Al Shahania Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1532",
+      "name": "Albacete Balompie",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18820",
+      "name": "Alianza Fc Panama",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9370",
+      "name": "Amazulu Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-618",
+      "name": "As Saint Etienne",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-11516",
+      "name": "Atletico Levante Ud",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-62448",
+      "name": "Bank El Ahly",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6340",
+      "name": "Braintree Town",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7831",
+      "name": "Brisbane Roar",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2303",
+      "name": "Cape Town City Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-531",
+      "name": "Caracas Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-126",
+      "name": "Caykur Rizespor",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-17482",
+      "name": "Cd Cobresal",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18952",
+      "name": "Cd Universitario",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6954",
+      "name": "Central Coast Mariners",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2282",
+      "name": "Club Brugge Kv",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9709",
+      "name": "Comunicaciones Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-136989",
+      "name": "Connecticut United Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-4561",
+      "name": "Cs Emelec",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-4542",
+      "name": "Cultural Leonesa",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26468",
+      "name": "Deportivo La Guaira",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-14187",
+      "name": "Durban City Football Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-338",
+      "name": "Dynamo Kyiv",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2984",
+      "name": "Egaleo 1931",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7136",
+      "name": "Envigado Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13595",
+      "name": "Erbil Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2521",
+      "name": "Fc Alverca",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-4785",
+      "name": "Fc Baniyas",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-31216",
+      "name": "Fc Okmk Olmaliq",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-49702",
+      "name": "Fc Pari Nizhniy Novgorod",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-242",
+      "name": "Fc Winterthur",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-301",
+      "name": "Fcsb",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6076",
+      "name": "Foolad Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7009",
+      "name": "Gais",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13446",
+      "name": "Ghazl El Mahalla",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-39429",
+      "name": "Gimpo Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-34744",
+      "name": "Gol Gohar Sirjan Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-132261",
+      "name": "Gomora United Football Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1059",
+      "name": "Hammarby If",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-12020",
+      "name": "Harrogate Town",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-23297",
+      "name": "Hb Koge",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1110",
+      "name": "Huddersfield Town",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-131588",
+      "name": "Inter Fa",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6028",
+      "name": "Ironi Kiryat Shmona",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3963",
+      "name": "Ittihad Alexandria Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-39252",
+      "name": "Jaguares De Cordoba",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1245",
+      "name": "Kas Eupen",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3205",
+      "name": "Kayserispor",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-2553",
+      "name": "Kilmarnock Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-120423",
+      "name": "Kruger United Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-968",
+      "name": "Kvc Westerlo",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-238",
+      "name": "Lech Poznan",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1241",
+      "name": "Livingston Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-102400",
+      "name": "Los Angeles Fc 2",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1031",
+      "name": "Luton Town",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-61852",
+      "name": "Marumo Gallants Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1028",
+      "name": "Millwall Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 54,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    }
+  ],
+  "thinTeamsInTop": [
+    {
+      "id": "ext-tm-club-2557",
+      "name": "Orlando Pirates",
+      "leagueId": "external",
+      "rosterImportanceSum": 768,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6356",
+      "name": "Mamelodi Sundowns Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 714,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7",
+      "name": "Al Ahly Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15795",
+      "name": "Al Hussein Sc Irbid",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3718",
+      "name": "Pakhtakor Tashkent",
+      "leagueId": "external",
+      "rosterImportanceSum": 617,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26091",
+      "name": "Al Duhail Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 464,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-656",
+      "name": "Al Sadd Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13509",
+      "name": "Al Wakrah Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-23806",
+      "name": "Al Zawraa Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 411,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1114",
+      "name": "Al Hilal Sfc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18544",
+      "name": "Al Nassr Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-3229",
+      "name": "Al Rayyan Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 357,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-8023",
+      "name": "Al Ittihad Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-103329",
+      "name": "Al Karma",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-20591",
+      "name": "Nasaf Qarshi",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13306",
+      "name": "Neftchi Fergana",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-664",
+      "name": "Zamalek Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 309,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1230",
+      "name": "Al Arabi Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-26069",
+      "name": "Al Qadsiah Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13593",
+      "name": "Al Shorta Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15310",
+      "name": "Navbahor Namangan",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-965",
+      "name": "Qatar Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-12935",
+      "name": "Tractor Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 260,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-13592",
+      "name": "Al Faisaly Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-6297",
+      "name": "Al Gharafa Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-9840",
+      "name": "Al Shabab Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-15796",
+      "name": "Al Wehdat Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-20960",
+      "name": "Cd Plaza Amador",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-57439",
+      "name": "Cleopatra Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-1076",
+      "name": "Esteghlal Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-34911",
+      "name": "Neom Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-44664",
+      "name": "Pyramids Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-132785",
+      "name": "Siwelele Football Club",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-39637",
+      "name": "Zakho Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-47010",
+      "name": "Zed Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 210,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-18487",
+      "name": "Al Ahli Sfc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-7732",
+      "name": "Al Ettifaq Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-31180",
+      "name": "Al Ramtha Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-10775",
+      "name": "Al Shamal Sc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    },
+    {
+      "id": "ext-tm-club-28844",
+      "name": "Al Taawoun Fc",
+      "leagueId": "external",
+      "rosterImportanceSum": 159,
+      "depth": 0,
+      "hasStory": false,
+      "hasFanGuide": false,
+      "rivalCount": 0
+    }
+  ],
+  "topLeagues": [
+    {
+      "id": "mls",
+      "name": "Major League Soccer",
+      "depth": 8,
+      "playerCount": 802,
+      "quizReady": 43
+    },
+    {
+      "id": "brasileirao",
+      "name": "Série A",
+      "depth": 8,
+      "playerCount": 627,
+      "quizReady": 27
+    },
+    {
+      "id": "premier-league",
+      "name": "Premier League",
+      "depth": 8,
+      "playerCount": 522,
+      "quizReady": 112
+    },
+    {
+      "id": "la-liga",
+      "name": "La Liga",
+      "depth": 8,
+      "playerCount": 512,
+      "quizReady": 115
+    },
+    {
+      "id": "serie-a",
+      "name": "Serie A",
+      "depth": 8,
+      "playerCount": 530,
+      "quizReady": 47
+    },
+    {
+      "id": "bundesliga",
+      "name": "Bundesliga",
+      "depth": 8,
+      "playerCount": 494,
+      "quizReady": 88
+    },
+    {
+      "id": "ligue-1",
+      "name": "Ligue 1",
+      "depth": 8,
+      "playerCount": 459,
+      "quizReady": 56
+    },
+    {
+      "id": "eredivisie",
+      "name": "Eredivisie",
+      "depth": 8,
+      "playerCount": 474,
+      "quizReady": 30
+    }
+  ],
+  "topNational": [
+    {
+      "id": "south-africa",
+      "displayName": "South Africa",
+      "depth": 5,
+      "membershipCount": 73
+    },
+    {
+      "id": "qatar",
+      "displayName": "Qatar",
+      "depth": 5,
+      "membershipCount": 51
+    },
+    {
+      "id": "egypt",
+      "displayName": "Egypt",
+      "depth": 5,
+      "membershipCount": 46
+    },
+    {
+      "id": "saudi-arabia",
+      "displayName": "Saudi Arabia",
+      "depth": 5,
+      "membershipCount": 46
+    },
+    {
+      "id": "iraq",
+      "displayName": "Iraq",
+      "depth": 5,
+      "membershipCount": 44
+    },
+    {
+      "id": "uzbekistan",
+      "displayName": "Uzbekistan",
+      "depth": 5,
+      "membershipCount": 42
+    },
+    {
+      "id": "panama",
+      "displayName": "Panama",
+      "depth": 5,
+      "membershipCount": 41
+    },
+    {
+      "id": "england",
+      "displayName": "England",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "france",
+      "displayName": "France",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "spain",
+      "displayName": "Spain",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "brazil",
+      "displayName": "Brazil",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "argentina",
+      "displayName": "Argentina",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "germany",
+      "displayName": "Germany",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "portugal",
+      "displayName": "Portugal",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "italy",
+      "displayName": "Italy",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "netherlands",
+      "displayName": "Netherlands",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "belgium",
+      "displayName": "Belgium",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "switzerland",
+      "displayName": "Switzerland",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "denmark",
+      "displayName": "Denmark",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "united-states",
+      "displayName": "United States",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "uruguay",
+      "displayName": "Uruguay",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "colombia",
+      "displayName": "Colombia",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "morocco",
+      "displayName": "Morocco",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "senegal",
+      "displayName": "Senegal",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "japan",
+      "displayName": "Japan",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "norway",
+      "displayName": "Norway",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "ghana",
+      "displayName": "Ghana",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "sweden",
+      "displayName": "Sweden",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "cote-divoire",
+      "displayName": "Côte d'Ivoire",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "canada",
+      "displayName": "Canada",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "jordan",
+      "displayName": "Jordan",
+      "depth": 5,
+      "membershipCount": 40
+    },
+    {
+      "id": "croatia",
+      "displayName": "Croatia",
+      "depth": 5,
+      "membershipCount": 38
+    },
+    {
+      "id": "poland",
+      "displayName": "Poland",
+      "depth": 5,
+      "membershipCount": 38
+    },
+    {
+      "id": "austria",
+      "displayName": "Austria",
+      "depth": 5,
+      "membershipCount": 38
+    },
+    {
+      "id": "nigeria",
+      "displayName": "Nigeria",
+      "depth": 5,
+      "membershipCount": 36
+    },
+    {
+      "id": "serbia",
+      "displayName": "Serbia",
+      "depth": 5,
+      "membershipCount": 33
+    },
+    {
+      "id": "turkey",
+      "displayName": "Turkey",
+      "depth": 5,
+      "membershipCount": 24
+    },
+    {
+      "id": "algeria",
+      "displayName": "Algeria",
+      "depth": 5,
+      "membershipCount": 23
+    },
+    {
+      "id": "ecuador",
+      "displayName": "Ecuador",
+      "depth": 5,
+      "membershipCount": 23
+    },
+    {
+      "id": "new-zealand",
+      "displayName": "New Zealand",
+      "depth": 5,
+      "membershipCount": 23
+    },
+    {
+      "id": "paraguay",
+      "displayName": "Paraguay",
+      "depth": 5,
+      "membershipCount": 21
+    },
+    {
+      "id": "czechia",
+      "displayName": "Czechia",
+      "depth": 5,
+      "membershipCount": 21
+    },
+    {
+      "id": "scotland",
+      "displayName": "Scotland",
+      "depth": 5,
+      "membershipCount": 20
+    },
+    {
+      "id": "ukraine",
+      "displayName": "Ukraine",
+      "depth": 5,
+      "membershipCount": 18
+    },
+    {
+      "id": "australia",
+      "displayName": "Australia",
+      "depth": 5,
+      "membershipCount": 16
+    },
+    {
+      "id": "iran",
+      "displayName": "Iran",
+      "depth": 5,
+      "membershipCount": 16
+    },
+    {
+      "id": "mexico",
+      "displayName": "Mexico",
+      "depth": 5,
+      "membershipCount": 15
+    },
+    {
+      "id": "congo-dr",
+      "displayName": "Congo DR",
+      "depth": 5,
+      "membershipCount": 15
+    },
+    {
+      "id": "chile",
+      "displayName": "Chile",
+      "depth": 5,
+      "membershipCount": 14
+    },
+    {
+      "id": "bosnia-herzegovina",
+      "displayName": "Bosnia and Herzegovina",
+      "depth": 5,
+      "membershipCount": 14
+    },
+    {
+      "id": "curacao",
+      "displayName": "Curaçao",
+      "depth": 5,
+      "membershipCount": 14
+    },
+    {
+      "id": "korea-republic",
+      "displayName": "South Korea",
+      "depth": 5,
+      "membershipCount": 10
+    },
+    {
+      "id": "haiti",
+      "displayName": "Haiti",
+      "depth": 5,
+      "membershipCount": 10
+    },
+    {
+      "id": "cape-verde",
+      "displayName": "Cabo Verde",
+      "depth": 5,
+      "membershipCount": 8
+    },
+    {
+      "id": "tunisia",
+      "displayName": "Tunisia",
+      "depth": 5,
+      "membershipCount": 6
+    }
+  ]
+}
