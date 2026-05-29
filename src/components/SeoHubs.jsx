@@ -35,6 +35,11 @@ import {
   exploreBreadcrumbs,
   leagueQuizGuideLabel,
 } from '../utils/exploreCopy.js';
+import {
+  CRUMB_BROWSE,
+  FIELD_NATIONALITY,
+  LINK_ALL_NATIONALITIES,
+} from '../utils/entityCopy.js';
 
 function useLandingSeo({ title, description, canonical, links, faqs }) {
   useEffect(() => {
@@ -556,9 +561,8 @@ export function SeoPlayersByNationalityHub() {
     <div className="page collections-page">
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
-          { label: 'Players by nationality' },
+          ...exploreBreadcrumbs(),
+          { label: LINK_PLAYERS_BY_NATIONALITY },
         ]}
       />
       <header className="page-header">
@@ -586,7 +590,7 @@ export function SeoPlayersByNationalityHub() {
                   Open nationality page
                 </Link>
                 <Link to="/browse" className="btn btn--secondary btn--small" style={{ marginLeft: '0.5rem' }}>
-                  Browse
+                  {CRUMB_BROWSE}
                 </Link>
               </div>
             </li>
@@ -668,14 +672,13 @@ export function SeoNationalityPlayersHub() {
     <div className="page collections-page">
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: EXPLORE_NAV_LABEL, to: EXPLORE_PATH },
-          { label: 'Players by nationality', to: '/hubs/players/by-nationality' },
+          ...exploreBreadcrumbs(),
+          { label: LINK_PLAYERS_BY_NATIONALITY, to: '/hubs/players/by-nationality' },
           { label: formatCountryLabel(nationLabel) },
         ]}
       />
       <header className="page-header">
-        <p className="page-header__eyebrow">Nationality</p>
+        <p className="page-header__eyebrow">{FIELD_NATIONALITY}</p>
         <h1>{formatCountryLabel(nationLabel)} football players</h1>
         <p>
           Open a few profiles, then jump to <Link to="/quiz">Quizzes</Link> to test yourself.
@@ -698,7 +701,7 @@ export function SeoNationalityPlayersHub() {
             Play quizzes
           </Link>
           <Link to="/hubs/players/by-nationality" className="btn btn--secondary">
-            All nationalities
+            {LINK_ALL_NATIONALITIES}
           </Link>
         </div>
       </ExploreSection>

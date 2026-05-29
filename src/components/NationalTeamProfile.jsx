@@ -43,6 +43,13 @@ import {
   getNationalityHubPath,
 } from '../utils/internalLinking.js';
 import { isThinNationalTeam } from '../utils/entityDepthAudit';
+import {
+  BADGE_QUIZ_READY,
+  CRUMB_HOME,
+  CRUMB_NATIONAL_TEAMS,
+  CRUMB_WORLD_CUP,
+  CTA_BACK_TO_NATIONAL_TEAMS,
+} from '../utils/entityCopy.js';
 
 /** Display label for rival slugs when no live national-team page exists yet. */
 const RIVAL_DISPLAY_NAMES = {
@@ -115,12 +122,12 @@ export default function NationalTeamProfile() {
     });
 
     const breadcrumbItems = [
-      { name: 'Home', item: homeUrl },
-      { name: 'National teams', item: nationalTeamsUrl },
+      { name: CRUMB_HOME, item: homeUrl },
+      { name: CRUMB_NATIONAL_TEAMS, item: nationalTeamsUrl },
     ];
     if (FEATURED_NATIONAL_TEAM_IDS.includes(nationalTeam.id)) {
       breadcrumbItems.push({
-        name: 'World Cup 2026',
+        name: CRUMB_WORLD_CUP,
         item: `${homeUrl.replace(/\/$/, '')}/world-cup`,
       });
     }
@@ -215,8 +222,8 @@ export default function NationalTeamProfile() {
       <div className="page national-team-profile">
         <BreadcrumbNav
           items={[
-            { label: 'Home', to: '/' },
-            { label: 'National teams', to: '/national-teams' },
+            { label: CRUMB_HOME, to: '/' },
+            { label: CRUMB_NATIONAL_TEAMS, to: '/national-teams' },
             { label: poolNotAddedYet ? 'Pool coming' : 'Not found' },
           ]}
         />
@@ -237,7 +244,7 @@ export default function NationalTeamProfile() {
           </p>
         ) : null}
         <Link to="/national-teams" className="btn btn--secondary">
-          Back to national teams
+          {CTA_BACK_TO_NATIONAL_TEAMS}
         </Link>
       </div>
     );
@@ -266,11 +273,11 @@ export default function NationalTeamProfile() {
   })();
 
   const breadcrumbItems = [
-    { label: 'Home', to: '/' },
-    { label: 'National teams', to: '/national-teams' },
+    { label: CRUMB_HOME, to: '/' },
+    { label: CRUMB_NATIONAL_TEAMS, to: '/national-teams' },
   ];
   if (isFeatured) {
-    breadcrumbItems.push({ label: 'World Cup 2026', to: '/world-cup' });
+    breadcrumbItems.push({ label: CRUMB_WORLD_CUP, to: '/world-cup' });
   }
   breadcrumbItems.push({ label: nationalTeam.displayName });
 
@@ -415,7 +422,7 @@ export default function NationalTeamProfile() {
                     <strong>{card.player.name}</strong>
                     <span>
                       {card.note || formatPosition(card.player.position)}
-                      {card.quizReady ? ' · Quiz ready' : ''}
+                      {card.quizReady ? ` · ${BADGE_QUIZ_READY}` : ''}
                     </span>
                   </span>
                 </Link>

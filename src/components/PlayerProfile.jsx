@@ -44,6 +44,20 @@ import {
 } from '../utils/seoCtr.js';
 import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
+import {
+  CRUMB_BROWSE,
+  CRUMB_HOME,
+  CTA_BACK_TO_BROWSE,
+  FIELD_CLUB,
+  FIELD_LEAGUE,
+  FIELD_NATIONALITY,
+  FIELD_NATIONAL_TEAM,
+  FIELD_POSITION,
+  LINK_CLUB_QUIZ_GUIDE,
+  LINK_NATIONAL_TEAM,
+  NAME_CLUB_QUIZ,
+  linkNationalityPlayers,
+} from '../utils/entityCopy.js';
 
 function parseDateOfBirth(value) {
   if (!value) return null;
@@ -148,11 +162,11 @@ function shouldShowNationalityRow(player, liveNationalTeam) {
 }
 
 const STAT_EMPHASIS_CLASS = {
-  Club: 'player-stat--club',
-  League: 'player-stat--league',
-  'National team': 'player-stat--national',
-  Nationality: 'player-stat--nationality',
-  Position: 'player-stat--position',
+  [FIELD_CLUB]: 'player-stat--club',
+  [FIELD_LEAGUE]: 'player-stat--league',
+  [FIELD_NATIONAL_TEAM]: 'player-stat--national',
+  [FIELD_NATIONALITY]: 'player-stat--nationality',
+  [FIELD_POSITION]: 'player-stat--position',
 };
 
 function PlayerSectionHead({ icon, title, id }) {
@@ -389,7 +403,7 @@ export default function PlayerProfile() {
           </p>
         </header>
         <Link to="/browse" className="btn btn--secondary">
-          Back to browse
+          {CTA_BACK_TO_BROWSE}
         </Link>
       </div>
     );
@@ -452,7 +466,7 @@ export default function PlayerProfile() {
 
   const playerInfoItems = [
     {
-      label: 'Club',
+      label: FIELD_CLUB,
       value: (
         <Link to={`/team/${player.teamId}`} className="player-profile__info-link">
           {teamName}
@@ -460,7 +474,7 @@ export default function PlayerProfile() {
       ),
     },
     {
-      label: 'League',
+      label: FIELD_LEAGUE,
       value: (
         <Link to={`/league/${player.leagueId}`} className="player-profile__info-link">
           {leagueName}
@@ -468,7 +482,7 @@ export default function PlayerProfile() {
       ),
     },
     (liveNationalTeam || nationalTeamPlainLabel) && {
-      label: 'National team',
+      label: FIELD_NATIONAL_TEAM,
       value: liveNationalTeam ? (
         <Link to={`/national-team/${liveNationalTeam.id}`} className="player-profile__info-link football-meta-line">
           <CountryFlag label={liveNationalTeam.displayName} />
@@ -482,7 +496,7 @@ export default function PlayerProfile() {
       ),
     },
     shouldShowNationalityRow(player, liveNationalTeam) && {
-      label: 'Nationality',
+      label: FIELD_NATIONALITY,
       value: (
         <span className="football-meta-line">
           <CountryFlag label={player.nationality} />
@@ -490,7 +504,7 @@ export default function PlayerProfile() {
         </span>
       ),
     },
-    { label: 'Position', value: formatPosition(player.position) },
+    { label: FIELD_POSITION, value: formatPosition(player.position) },
     ageDisplay && { label: 'Age', value: ageDisplay },
     dateOfBirth && { label: 'Date of birth', value: dateOfBirth },
     preferredFoot && { label: 'Preferred foot', value: preferredFoot },
@@ -503,8 +517,8 @@ export default function PlayerProfile() {
     >
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Browse', to: '/browse' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_BROWSE, to: '/browse' },
           teamName && teamName !== 'Unknown'
             ? { label: teamName, to: `/team/${player.teamId}` }
             : null,
@@ -594,21 +608,23 @@ export default function PlayerProfile() {
         className={`player-profile__quick-links${profileEditorial.topTier ? ' player-profile__quick-links--curated' : ''}`}
         aria-label="Quick actions"
       >
-        <Link to={`/team/${player.teamId}`}>Club</Link>
-        <Link to={`/league/${player.leagueId}`}>League</Link>
+        <Link to={`/team/${player.teamId}`}>{FIELD_CLUB}</Link>
+        <Link to={`/league/${player.leagueId}`}>{FIELD_LEAGUE}</Link>
         {liveNationalTeam && (
-          <Link to={`/national-team/${liveNationalTeam.id}`}>National team</Link>
+          <Link to={`/national-team/${liveNationalTeam.id}`}>{LINK_NATIONAL_TEAM}</Link>
         )}
         {!liveNationalTeam && nationalTeamPlainLabel ? (
-          <span className="player-profile__quick-link--disabled">National team page coming</span>
+          <span className="player-profile__quick-link--disabled">
+            {LINK_NATIONAL_TEAM} page coming
+          </span>
         ) : null}
-        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Club quiz</Link>}
-        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Quiz guide</Link>
+        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>{NAME_CLUB_QUIZ}</Link>}
+        <Link to={`/hubs/quizzes/team/${player.teamId}`}>{LINK_CLUB_QUIZ_GUIDE}</Link>
         {!profileEditorial.topTier && player.nationality ? (
           <Link
             to={`/hubs/players/nationality/${encodeURIComponent(String(player.nationality).trim())}`}
           >
-            {player.nationality} players
+            {linkNationalityPlayers(player.nationality)}
           </Link>
         ) : null}
         {!profileEditorial.topTier ? (

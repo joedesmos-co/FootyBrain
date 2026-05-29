@@ -11,6 +11,12 @@ import NationalTeamBadge from './NationalTeamBadge';
 import BreadcrumbNav from './BreadcrumbNav';
 import { pageTitle } from '../utils/brand.js';
 import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
+import {
+  CRUMB_HOME,
+  CRUMB_NATIONAL_TEAMS,
+  LINK_INTERNATIONAL_PLAYER_QUIZ,
+  LINK_PLAYERS_BY_NATIONALITY,
+} from '../utils/entityCopy.js';
 
 export default function NationalTeamsPage() {
   const confederationGroups = getLiveNationalTeamsByConfederation();
@@ -27,8 +33,8 @@ export default function NationalTeamsPage() {
         `${nationCount} men's national sides with ${totalLinked.toLocaleString()} linked club players. Browse squad identity, rivalries, and World Cup 2026 prep—or play nation quizzes on FootyCompass.`,
       ),
       breadcrumbs: [
-        { name: 'Home', item: '/' },
-        { name: 'National teams', item: '/national-teams' },
+        { name: CRUMB_HOME, item: '/' },
+        { name: CRUMB_NATIONAL_TEAMS, item: '/national-teams' },
       ],
     });
   }, [nationCount, totalLinked]);
@@ -37,8 +43,8 @@ export default function NationalTeamsPage() {
     <div className="page national-teams-page">
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'National teams' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_NATIONAL_TEAMS },
         ]}
       />
       <header className="page-header">
@@ -66,10 +72,10 @@ export default function NationalTeamsPage() {
             World Cup 2026 prep
           </Link>
           <Link to="/hubs/players/by-nationality" className="btn btn--secondary btn--small">
-            Players by nationality
+            {LINK_PLAYERS_BY_NATIONALITY}
           </Link>
           <Link to="/quiz?poolFocus=international&worldCup=prep" className="btn btn--secondary btn--small">
-            International quiz
+            {LINK_INTERNATIONAL_PLAYER_QUIZ}
           </Link>
         </div>
       </aside>

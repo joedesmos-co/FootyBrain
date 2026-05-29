@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FIELD_CLUB, FIELD_NATIONAL_TEAM } from '../utils/entityCopy.js';
 import CountryFlag from './CountryFlag';
 
 /**
@@ -59,11 +60,11 @@ export default function QuizPlayerFeedback({
       {momentumLine ? <p className="quiz-feedback__momentum">{momentumLine}</p> : null}
       <dl className="quiz-feedback__details">
         <div>
-          <dt>Club</dt>
+          <dt>{FIELD_CLUB}</dt>
           <dd>{clubLabel}</dd>
         </div>
         <div>
-          <dt>National team</dt>
+          <dt>{FIELD_NATIONAL_TEAM}</dt>
           <dd className="football-meta-line">
             <CountryFlag label={player.nationalTeam} />
             {player.nationalTeam || '—'}

@@ -7,6 +7,12 @@ import { getWorldCup2026RosterIds, getWorldCup2026RosterStatus } from '../data/w
 import { getNationalTeamById } from '../data/nationalTeamData.js';
 import { formatCountryLabel, formatPosition } from './footballDisplay.js';
 import { getNationalityHubPath } from './internalLinking.js';
+import {
+  LINK_ALL_NATIONAL_TEAMS,
+  LINK_INTERNATIONAL_PLAYER_QUIZ,
+  LINK_PLAYERS_BY_NATIONALITY,
+  linkNationalityPlayers,
+} from './entityCopy.js';
 import { isQuizEligiblePlayer } from './quizPlayerRules.js';
 
 function truncate(text, max = 220) {
@@ -190,19 +196,23 @@ export function buildNationalQuizDiscoveryLinks(nationalTeam, opts = {}) {
 
   add('World Cup 2026 prep', '/world-cup', 'Featured nations and draw');
   add('World Cup player quiz', '/quiz?theme=world-cup', 'International themed pool');
-  add('International quiz', '/quiz?poolFocus=international&worldCup=prep', 'Multi-nation pool');
+  add(
+    LINK_INTERNATIONAL_PLAYER_QUIZ,
+    '/quiz?poolFocus=international&worldCup=prep',
+    'Multi-nation pool',
+  );
 
   const natPath = getNationalityHubPath(nationalTeam.country ?? nationalTeam.displayName);
   if (natPath) {
     add(
-      `${formatCountryLabel(nationalTeam.country)} players`,
+      linkNationalityPlayers(nationalTeam.country ?? nationalTeam.displayName),
       natPath,
       'Browse by nationality',
     );
   }
 
-  add('All national teams', '/national-teams');
-  add('Players by nationality', '/hubs/players/by-nationality');
+  add(LINK_ALL_NATIONAL_TEAMS, '/national-teams');
+  add(LINK_PLAYERS_BY_NATIONALITY, '/hubs/players/by-nationality');
 
   if (nationalTeam.rivalIds?.length) {
     for (const rivalId of nationalTeam.rivalIds.slice(0, 2)) {

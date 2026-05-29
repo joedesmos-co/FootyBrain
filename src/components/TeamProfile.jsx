@@ -48,6 +48,12 @@ import { getProfileExploreLead } from '../data/profileExploreEnhancements';
 import { getQuizEligiblePlayers } from '../utils/quizEligibility';
 import { getClubQuizPlayHref } from '../data/clubQuizCategories';
 import { getQuizThemeIdForLeague, getQuizThemePlayHref } from '../data/quizThemes';
+import {
+  BADGE_QUIZ_READY,
+  CRUMB_CLUBS,
+  CRUMB_HOME,
+  CTA_BACK_TO_CLUBS,
+} from '../utils/entityCopy.js';
 
 function buildTeamProfileSubline(team) {
   const parts = [];
@@ -82,8 +88,8 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
       description,
       canonicalUrl: canonical,
       breadcrumbs: [
-        { name: 'Home', item: homeUrl },
-        { name: 'Teams', item: teamsUrl },
+        { name: CRUMB_HOME, item: homeUrl },
+        { name: CRUMB_CLUBS, item: teamsUrl },
         { name: leagueName, item: `${homeUrl.replace(/\/$/, '')}/league/${team.leagueId}` },
         { name: team.name, item: canonical },
       ],
@@ -209,8 +215,8 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
     <div className={`page team-profile${topTier ? ' profile--premium' : ''}`}>
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Teams', to: '/teams' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_CLUBS, to: '/teams' },
           { label: leagueName, to: `/league/${team.leagueId}` },
           { label: team.name },
         ]}
@@ -346,7 +352,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
                           <strong>{card.player.name}</strong>
                           <span>
                             {card.note || formatPosition(card.player.position) || 'Squad'}
-                            {card.quizReady ? ' · Quiz ready' : ''}
+                            {card.quizReady ? ` · ${BADGE_QUIZ_READY}` : ''}
                           </span>
                         </span>
                       </Link>
@@ -469,8 +475,8 @@ function TeamNotFound({ teamId, message }) {
     <div className="page team-profile">
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Teams', to: '/teams' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_CLUBS, to: '/teams' },
           { label: 'Club not found' },
         ]}
       />
@@ -479,7 +485,7 @@ function TeamNotFound({ teamId, message }) {
         <p className="empty-state">{message}</p>
       </header>
       <Link to="/teams" className="btn btn--secondary">
-        Back to clubs
+        {CTA_BACK_TO_CLUBS}
       </Link>
     </div>
   );

@@ -16,6 +16,19 @@ import {
   parseStrengths,
 } from './entityDepthAudit';
 import { buildSquadIdentityContext } from './nationalProfileEditorial.js';
+import {
+  LINK_CLUB_PLAYER_QUIZ,
+  LINK_CLUB_QUIZ_GUIDE,
+  LINK_DAILY_CHALLENGE,
+  LINK_EXPLORE_FOOTBALL,
+  LINK_LEAGUE_PLAYER_QUIZ,
+  LINK_LEAGUE_QUIZ_GUIDE,
+  LINK_NATIONAL_TEAM,
+  LINK_RIVALRY_QUIZ,
+  LINK_STADIUM_QUIZ,
+  linkClubSquad,
+  linkLeaguePage,
+} from './entityCopy.js';
 
 function normalizeList(raw, max = 8) {
   if (!raw) return [];
@@ -159,11 +172,11 @@ export function buildKeepExploringLinks(ctx = {}) {
   const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady, nationality } = ctx;
   const lid = leagueId ?? team?.leagueId ?? league?.id ?? '';
 
-  if (team?.id) add(`${team.name} squad`, `/team/${team.id}`, 'Full roster and fan context');
-  if (team?.id) add('Club quiz guide', `/hubs/quizzes/team/${team.id}`, 'How to quiz this club');
+  if (team?.id) add(linkClubSquad(team.name), `/team/${team.id}`, 'Full roster and fan context');
+  if (team?.id) add(LINK_CLUB_QUIZ_GUIDE, `/hubs/quizzes/team/${team.id}`, 'How to quiz this club');
   if (lid) {
-    add(ctx.leagueName ? `${ctx.leagueName} league` : 'League page', `/league/${lid}`, 'Clubs, rivalries, and league quizzes');
-    add('League quiz guide', `/hubs/quizzes/league/${lid}`, 'Study paths for this competition');
+    add(linkLeaguePage(ctx.leagueName), `/league/${lid}`, 'Clubs, rivalries, and league quizzes');
+    add(LINK_LEAGUE_QUIZ_GUIDE, `/hubs/quizzes/league/${lid}`, 'Study paths for this competition');
   }
 
   if (team?.rivals?.length && leagueTeams?.length) {
@@ -173,7 +186,7 @@ export function buildKeepExploringLinks(ctx = {}) {
   }
 
   if (nationalTeamId) {
-    add('National team', `/national-team/${nationalTeamId}`, 'Squad pool and international quizzes');
+    add(LINK_NATIONAL_TEAM, `/national-team/${nationalTeamId}`, 'Squad pool and international quizzes');
     add('World Cup 2026', '/world-cup', 'Tournament prep hub');
   }
 
@@ -188,15 +201,15 @@ export function buildKeepExploringLinks(ctx = {}) {
 
   const themeId = lid ? getQuizThemeIdForLeague(lid) : '';
   if (themeId) add('Themed league quiz', getQuizThemePlayHref(themeId), 'Curated question mix');
-  if (quizReady && team?.id) add('Team player quiz', `/quiz?team=${team.id}`, 'Name recall from this squad');
-  if (lid) add('League player quiz', `/quiz?league=${lid}`, 'All clubs in the competition');
-  if (lid) add('Stadium quiz', `/club-quiz?category=stadium&league=${lid}`, 'Grounds and home clubs');
+  if (quizReady && team?.id) add(LINK_CLUB_PLAYER_QUIZ, `/quiz?team=${team.id}`, 'Name recall from this squad');
+  if (lid) add(LINK_LEAGUE_PLAYER_QUIZ, `/quiz?league=${lid}`, 'All clubs in the competition');
+  if (lid) add(LINK_STADIUM_QUIZ, `/club-quiz?category=stadium&league=${lid}`, 'Grounds and home clubs');
   if (team?.rivals?.length && lid) {
-    add('Rivalry quiz', `/club-quiz?category=rivalry&league=${lid}`, 'Derbies and feuds');
+    add(LINK_RIVALRY_QUIZ, `/club-quiz?category=rivalry&league=${lid}`, 'Derbies and feuds');
   }
 
-  add('Daily challenge', '/daily', 'One quick round');
-  add('Explore football', '/hubs', 'Leagues, quizzes, and guides');
+  add(LINK_DAILY_CHALLENGE, '/daily', 'One quick round');
+  add(LINK_EXPLORE_FOOTBALL, '/hubs', 'Leagues, quizzes, and guides');
 
   return links.slice(0, 10);
 }

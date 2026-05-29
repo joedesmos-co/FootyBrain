@@ -6,7 +6,28 @@
 import { getClubQuizPlayHref } from '../data/clubQuizCategories.js';
 import { getLiveNationalTeams, getNationalTeamById } from '../data/nationalTeamData.js';
 import { getQuizThemePlayHref, getQuizThemeIdForLeague } from '../data/quizThemes.js';
-import { formatCountryLabel } from './footballDisplay.js';
+import {
+  LINK_ALL_NATIONAL_TEAMS,
+  LINK_CLUB_PLAYER_QUIZ,
+  LINK_CLUB_QUIZ_GUIDE,
+  LINK_CLUB_QUIZ_GUIDES,
+  LINK_DAILY_CHALLENGE,
+  LINK_EXPLORE_FOOTBALL,
+  LINK_LEAGUE_PLAYER_QUIZ,
+  LINK_LEAGUE_QUIZ_GUIDE,
+  LINK_NATIONAL_TEAM,
+  LINK_NATIONAL_TEAM_QUIZ,
+  LINK_PLAYERS_BY_NATIONALITY,
+  LINK_RIVALRY_QUIZ,
+  LINK_STADIUM_QUIZ,
+  LINK_THEMED_LEAGUE_QUIZ,
+  LINK_INTERNATIONAL_PLAYER_QUIZ,
+  LINK_WORLD_CUP_PREP,
+  linkClubSquad,
+  linkCountryNationalTeam,
+  linkLeaguePage,
+  linkNationalityPlayers,
+} from './entityCopy.js';
 import { normalizeClubName, parseKeyPlayerLine, resolveRivalEntries } from './teamPageUtils.js';
 /** Align with scripts/generate-sitemap.js nationality hub cap. */
 export const NATIONALITY_HUB_INDEX_LIMIT = 80;
@@ -153,22 +174,20 @@ export function buildPlayerInternalLinks(ctx = {}) {
     if (to) links.push({ label, to });
   };
 
-  if (teamId) add(teamName || 'Club squad', `/team/${teamId}`);
-  if (leagueId) add(leagueName || 'League guide', `/league/${leagueId}`);
-  if (nationalTeamId) add('National team', `/national-team/${nationalTeamId}`);
+  if (teamId) add(linkClubSquad(teamName), `/team/${teamId}`);
+  if (leagueId) add(linkLeaguePage(leagueName), `/league/${leagueId}`);
+  if (nationalTeamId) add(LINK_NATIONAL_TEAM, `/national-team/${nationalTeamId}`);
 
   const natPath = getNationalityHubPath(nationality);
-  if (natPath) {
-    add(`${formatCountryLabel(nationality)} players`, natPath);
-  }
+  if (natPath) add(linkNationalityPlayers(nationality), natPath);
 
-  if (teamId) add('Club quiz guide', `/hubs/quizzes/team/${teamId}`);
-  if (quizReady && teamId) add('Club player quiz', `/quiz?team=${teamId}`);
-  if (leagueId) add('League quiz guide', `/hubs/quizzes/league/${leagueId}`);
-  if (leagueId && quizReady) add('League player quiz', `/quiz?league=${leagueId}`);
+  if (teamId) add(LINK_CLUB_QUIZ_GUIDE, `/hubs/quizzes/team/${teamId}`);
+  if (quizReady && teamId) add(LINK_CLUB_PLAYER_QUIZ, `/quiz?team=${teamId}`);
+  if (leagueId) add(LINK_LEAGUE_QUIZ_GUIDE, `/hubs/quizzes/league/${leagueId}`);
+  if (leagueId && quizReady) add(LINK_LEAGUE_PLAYER_QUIZ, `/quiz?league=${leagueId}`);
 
-  add('Discovery hubs', '/hubs');
-  add('Daily challenge', '/daily');
+  add(LINK_EXPLORE_FOOTBALL, '/hubs');
+  add(LINK_DAILY_CHALLENGE, '/daily');
 
   return dedupeInternalLinks(links, 8);
 }
@@ -184,27 +203,27 @@ export function buildLeagueInternalLinks(ctx = {}) {
     if (to) links.push({ label, to });
   };
 
-  if (lid) add('League quiz guide', `/hubs/quizzes/league/${lid}`);
-  if (quizReady && lid) add('League player quiz', `/quiz?league=${lid}`);
-  if (lid) add('Stadium quiz', getClubQuizPlayHref('stadium', { leagueId: lid }));
-  if (lid) add('Rivalry quiz', getClubQuizPlayHref('rivalry', { leagueId: lid }));
-  add('Club quiz guides', '/hubs/quizzes/clubs');
+  if (lid) add(LINK_LEAGUE_QUIZ_GUIDE, `/hubs/quizzes/league/${lid}`);
+  if (quizReady && lid) add(LINK_LEAGUE_PLAYER_QUIZ, `/quiz?league=${lid}`);
+  if (lid) add(LINK_STADIUM_QUIZ, getClubQuizPlayHref('stadium', { leagueId: lid }));
+  if (lid) add(LINK_RIVALRY_QUIZ, getClubQuizPlayHref('rivalry', { leagueId: lid }));
+  add(LINK_CLUB_QUIZ_GUIDES, '/hubs/quizzes/clubs');
 
   if (league?.country) {
     const natPath = getNationalityHubPath(league.country);
-    if (natPath) add(`${formatCountryLabel(league.country)} players`, natPath);
+    if (natPath) add(linkNationalityPlayers(league.country), natPath);
     const ntId = findNationalTeamIdForCountry(league.country);
-    if (ntId) add(`${formatCountryLabel(league.country)} national team`, `/national-team/${ntId}`);
+    if (ntId) add(linkCountryNationalTeam(league.country), `/national-team/${ntId}`);
   }
 
   const themeId = lid ? getQuizThemeIdForLeague(lid) : '';
-  if (themeId) add('Themed league quiz', getQuizThemePlayHref(themeId));
+  if (themeId) add(LINK_THEMED_LEAGUE_QUIZ, getQuizThemePlayHref(themeId));
 
   links.push(...resolveLeagueRivalryLinks(league?.rivalries, leagueTeams, 3));
   links.push(...resolveFamousPlayerLinks(league?.famousPlayers, leaguePlayers, 3));
 
-  add('All nationalities', '/hubs/players/by-nationality');
-  add('Discovery hubs', '/hubs');
+  add(LINK_PLAYERS_BY_NATIONALITY, '/hubs/players/by-nationality');
+  add(LINK_EXPLORE_FOOTBALL, '/hubs');
 
   return dedupeInternalLinks(links, 10);
 }
@@ -221,15 +240,18 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
 
   if (nationalTeam?.id) {
     if (quizReady) {
-      add('National team quiz', `/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`);
+      add(
+        LINK_NATIONAL_TEAM_QUIZ,
+        `/quiz?nationalTeam=${nationalTeam.id}&poolFocus=national&worldCup=prep`,
+      );
     }
-    add('World Cup 2026 prep', '/world-cup');
+    add(LINK_WORLD_CUP_PREP, '/world-cup');
     add('World Cup quiz pool', '/quiz?theme=world-cup');
   }
 
   const country = nationalTeam?.country ?? nationalTeam?.displayName;
   const natPath = getNationalityHubPath(country);
-  if (natPath) add(`${formatCountryLabel(country)} players`, natPath);
+  if (natPath) add(linkNationalityPlayers(country), natPath);
 
   if (nationalTeam?.rivalIds?.length) {
     for (const rivalId of nationalTeam.rivalIds.slice(0, 2)) {
@@ -249,13 +271,13 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
   const topLeague = [...leagueCounts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
   if (topLeague) {
     add('Top league', `/league/${topLeague}`);
-    add('League quiz guide', `/hubs/quizzes/league/${topLeague}`);
+    add(LINK_LEAGUE_QUIZ_GUIDE, `/hubs/quizzes/league/${topLeague}`);
   }
 
-  add('All national teams', '/national-teams');
-  add('Players by nationality', '/hubs/players/by-nationality');
-  add('International quiz', '/quiz?poolFocus=international&worldCup=prep');
-  add('Discovery hubs', '/hubs');
+  add(LINK_ALL_NATIONAL_TEAMS, '/national-teams');
+  add(LINK_PLAYERS_BY_NATIONALITY, '/hubs/players/by-nationality');
+  add(LINK_INTERNATIONAL_PLAYER_QUIZ, '/quiz?poolFocus=international&worldCup=prep');
+  add(LINK_EXPLORE_FOOTBALL, '/hubs');
   add('Browse players', '/browse');
 
   return dedupeInternalLinks(links, 10);

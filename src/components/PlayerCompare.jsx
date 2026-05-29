@@ -20,6 +20,13 @@ import {
 } from '../utils/seoCtr.js';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PlayerVisual from './PlayerVisual';
+import {
+  FIELD_CLUB,
+  FIELD_LEAGUE,
+  FIELD_NATIONALITY,
+  FIELD_NATIONAL_TEAM,
+  FIELD_POSITION,
+} from '../utils/entityCopy.js';
 
 function ComparePlayerColumn({ player, side, getTeamName }) {
   const teamName = getTeamName ? getTeamName(player.teamId) : (player?._teamName ?? 'Unknown');
@@ -46,25 +53,25 @@ function ComparePlayerColumn({ player, side, getTeamName }) {
             <dd>{player.age}</dd>
           </div>
           <div>
-            <dt>Nationality</dt>
+            <dt>{FIELD_NATIONALITY}</dt>
             <dd>{player.nationality}</dd>
           </div>
           <div>
-            <dt>Position</dt>
+            <dt>{FIELD_POSITION}</dt>
             <dd>{player.position}</dd>
           </div>
           <div>
-            <dt>National team</dt>
+            <dt>{FIELD_NATIONAL_TEAM}</dt>
             <dd>{player.nationalTeam}</dd>
           </div>
           <div>
-            <dt>Club</dt>
+            <dt>{FIELD_CLUB}</dt>
             <dd>
               <Link to={`/team/${player.teamId}`}>{teamName}</Link>
             </dd>
           </div>
           <div>
-            <dt>League</dt>
+            <dt>{FIELD_LEAGUE}</dt>
             <dd>
               <Link to={`/league/${player.leagueId}`}>{leagueName}</Link>
             </dd>

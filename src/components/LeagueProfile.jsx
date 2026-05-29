@@ -44,6 +44,7 @@ import { canonicalUrlForPath } from '../utils/brand.js';
 import { buildLeagueIdentitySection } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
+import { CRUMB_BROWSE, CRUMB_HOME, CTA_BACK_TO_BROWSE } from '../utils/entityCopy.js';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { isTopTierLeague } from '../utils/topTierPages';
@@ -100,8 +101,8 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       description,
       canonicalUrl: canonical,
       breadcrumbs: [
-        { name: 'Home', item: homeUrl },
-        { name: 'Browse', item: browseUrl },
+        { name: CRUMB_HOME, item: homeUrl },
+        { name: CRUMB_BROWSE, item: browseUrl },
         { name: getLeagueDisplayName(league), item: canonical },
       ],
     });
@@ -148,8 +149,8 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
     <div className={`page league-profile${topTier ? ' profile--premium' : ''}`}>
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Browse', to: '/browse' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_BROWSE, to: '/browse' },
           { label: getLeagueDisplayName(league) },
         ]}
       />
@@ -520,8 +521,8 @@ function LeagueNotFound({ leagueId, message }) {
     <div className="page league-profile">
       <BreadcrumbNav
         items={[
-          { label: 'Home', to: '/' },
-          { label: 'Browse', to: '/browse' },
+          { label: CRUMB_HOME, to: '/' },
+          { label: CRUMB_BROWSE, to: '/browse' },
           { label: 'League not found' },
         ]}
       />
@@ -530,7 +531,7 @@ function LeagueNotFound({ leagueId, message }) {
         <p className="empty-state">{message}</p>
       </header>
       <Link to="/browse" className="btn btn--secondary">
-        Back to browse
+        {CTA_BACK_TO_BROWSE}
       </Link>
     </div>
   );
