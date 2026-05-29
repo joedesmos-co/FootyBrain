@@ -1,0 +1,2593 @@
+{
+  "generatedAt": "2026-05-29T10:48:51.597Z",
+  "topN": 200,
+  "overlayCount": 200,
+  "overlays": {
+    "haaland": {
+      "quickFact": "His meditation-style goal celebration became one of the Premier League’s most recognizable rituals.",
+      "playStyleSummary": "Relentless finisher with explosive runs and ruthless positioning in the box.",
+      "strengths": [
+        "Finishing",
+        "Penalty-box movement",
+        "Pace",
+        "Positioning"
+      ],
+      "quizHints": [
+        "Rose through Molde and Salzburg before a prolific spell in Dortmund yellow.",
+        "His father Alf-Inge played in England for Nottingham Forest and Leeds.",
+        "Norwegian striker who wears sky blue and often scores with his head."
+      ]
+    },
+    "bellingham": {
+      "quickFact": "Became Birmingham City’s youngest-ever first-team player at 16 years and 38 days.",
+      "playStyleSummary": "Complete midfielder who arrives in the box, presses aggressively, and leads with charisma.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing"
+      ],
+      "quizHints": [
+        "Midlands-born England star who left for Germany before crossing to Spain.",
+        "Knee-slide celebration copied by teammates after big goals in white.",
+        "Wore Dortmund’s number 22 before starring in Madrid’s number 5 shirt."
+      ]
+    },
+    "tm-28003": {
+      "quickFact": "Argentina’s 2022 World Cup-winning number 10 who moved to Inter Miami in 2023 and reshaped MLS attention overnight.",
+      "playStyleSummary": "Left-footed creator who drifts inside, threads through-balls, and finishes with placement rather than power.",
+      "strengths": [
+        "Left-footed creator who drifts inside",
+        "Threads through-balls",
+        "And finishes with placement rather than power."
+      ],
+      "quizHints": [
+        "Won the World Cup with Argentina in Qatar while wearing number 10.",
+        "Left European giants for pink-and-black Inter Miami after Paris Saint-Germain.",
+        "Left-footed Argentina creator famous for dribbling, free kicks, and playmaking."
+      ]
+    },
+    "salah": {
+      "quickFact": "Worked in a café during a rough patch after Chelsea — before becoming Liverpool’s defining goal scorer of a generation.",
+      "playStyleSummary": "Left-footed inverted winger who cuts inside for curlers and thrives on counterattacks.",
+      "strengths": [
+        "Transition threat"
+      ],
+      "quizHints": [
+        "African nation whose flag inspires his “Egyptian King” nickname at Anfield.",
+        "Left foot on the right wing — the near-post curl is his signature.",
+        "Roma’s “Pharaoh” before Merseyside records and Premier League Golden Boots."
+      ]
+    },
+    "vinicius": {
+      "quickFact": "Flamengo sold him to Madrid as a teenager — he later scored the decisive goal in a Paris Champions League final.",
+      "playStyleSummary": "Explosive dribbler who terrorizes full-backs, draws fouls, and finishes in clutch moments.",
+      "strengths": [
+        "Pace",
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Brazilian left winger who wears the famous number 7 in white at the Bernabéu.",
+        "Became a leading voice against repeated racist abuse in Spanish stadiums.",
+        "2022 final winner against the club in all-red from Merseyside."
+      ]
+    },
+    "tm-68290": {
+      "quickFact": "Brazil icon who developed at Santos before global stardom and a homecoming to the club in this dataset.",
+      "playStyleSummary": "Skillful forward who dribbles from deep, draws fouls, and creates with flair and vision.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Brazil’s generational no. 10 who won Olympic gold in 2016.",
+        "Santos academy graduate famous for skill, flair, and samba style.",
+        "Neymar at Santos in FootyCompass — not Neymar’s PSG era club in hints."
+      ]
+    },
+    "de-bruyne": {
+      "quickFact": "Set the Premier League single-season assists record in 2019–20 — a benchmark for modern playmakers.",
+      "playStyleSummary": "World-class passer who dictates tempo with vision, whipped crosses, and long-range shooting.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Belgian international who rebuilt his reputation in the Bundesliga after a brief London spell.",
+        "Genk academy product who also wore Wolfsburg green before the Etihad.",
+        "Whips crosses from the right half-space — ginger beard, supreme vision, and a cannon of a right foot."
+      ]
+    },
+    "kane": {
+      "quickFact": "England’s men’s all-time leading goalscorer — he passed Wayne Rooney’s record during Euro 2024 qualifying.",
+      "playStyleSummary": "Classic number 9 who drops deep to create, finishes with both feet, and dominates aerial duels.",
+      "strengths": [
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "Striker who wore white for a north London club for over a decade before Bavaria.",
+        "Drops deep to create — often described as a nine-and-a-half.",
+        "2018 World Cup Golden Boot winner in Russia — England captain."
+      ]
+    },
+    "rodri": {
+      "quickFact": "Spain fans nicknamed him “El tractor” for how he shields the back line and never stops running.",
+      "playStyleSummary": "Calm pivot who shields the defense, recycles possession, and occasionally arrives late in the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Composure"
+      ],
+      "quizHints": [
+        "Spanish pivot who left Villarreal’s yellow submarine for Atlético briefly.",
+        "Scored in Istanbul to help his club complete a treble in 2023.",
+        "Often wears number 16 in sky blue — Euro 2024 winner with La Roja."
+      ]
+    },
+    "van-dijk": {
+      "quickFact": "PFA Player of the Year in 2019 — one of the few defenders to win England’s top individual prize.",
+      "playStyleSummary": "Dominant aerial defender with calm distribution and game-reading that organizes the back line.",
+      "strengths": [
+        "Aerial threat",
+        "Composure",
+        "Distribution"
+      ],
+      "quizHints": [
+        "Dutch defender who wore Celtic hoops and Southampton red-and-white before Anfield.",
+        "Southampton sold him for a then-record fee for a defender in 2018.",
+        "Wears number 4, leads Liverpool’s high line — recovered from a serious knee injury."
+      ]
+    },
+    "musiala": {
+      "quickFact": "Chose Germany over England at senior level despite captaining England youth sides and growing up in London.",
+      "playStyleSummary": "Slippery dribbler with close control, nutmegs, and intelligent cuts from the left half-space.",
+      "strengths": [
+        "Pace",
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Bayern’s slippery dribbler born in Fulham with Nigerian and German heritage.",
+        "Left Chelsea’s academy before starring in red in Munich.",
+        "Opponents dub him “Bambi” for how he glides past challenges."
+      ]
+    },
+    "saka": {
+      "quickFact": "His parents reportedly named him after finding “Bukayo” on a second-hand shopping site.",
+      "playStyleSummary": "Direct winger with elite ball-striking, cut-inside threat, and tireless defensive work rate.",
+      "strengths": [
+        "Direct winger with elite ball-striking",
+        "Cut-inside threat",
+        "And tireless defensive work rate."
+      ],
+      "quizHints": [
+        "England international who took the decisive spot-kick at Euro 2020’s final.",
+        "Hale End graduate who broke through as a left-back before owning the right wing.",
+        "Left-footed curls from the right — Arsenal’s number 7 in red and white."
+      ]
+    },
+    "lautaro": {
+      "quickFact": "His bull celebration — hands on hips, charging — became one of Argentina’s most copied goal rituals after 2022.",
+      "playStyleSummary": "Pressing forward who links play, drops deep, and finishes with power and movement off the shoulder.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Argentine striker who left Racing’s light blue and white for Nerazzurri black and blue.",
+        "World Cup co-top scorer in Qatar alongside his country’s greatest number 10.",
+        "Inter captain who leads the line in Serie A — bull celebration after goals."
+      ]
+    },
+    "tm-91845": {
+      "quickFact": "South Korea captain whose goals at Tottenham made him Asia’s most recognisable Premier League star before a move to MLS with Los Angeles FC.",
+      "playStyleSummary": "Inside forward who attacks space behind the defence, combines quickly, and finishes with both feet.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "South Korea captain in red who plays for Los Angeles FC in MLS.",
+        "Left-footed forward — not Kang-in Lee the creative midfielder.",
+        "Heung-min Son known for cut-ins from the left to shoot."
+      ]
+    },
+    "tm-59016": {
+      "quickFact": "Austria’s most capped star: a Bayern Munich and Real Madrid treble-winner who has played left-back and centre-back for Das Team.",
+      "playStyleSummary": "Calm defender who steps into midfield, plays line-breaking passes, and organises the back line.",
+      "strengths": [
+        "Progressive passing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Austria captain in white kit who won the Champions League with Real Madrid.",
+        "Bayern Munich academy graduate — versatile defender, not a striker.",
+        "David who can play left-back or centre-back for Austria."
+      ]
+    },
+    "tm-640428": {
+      "quickFact": "France midfielder who broke through at Rennes as a teenager and became a Real Madrid Champions League regular after Qatar 2022.",
+      "playStyleSummary": "Press-resistant midfielder who tackles aggressively, carries past presses, and recycles possession.",
+      "strengths": [
+        "Pressing",
+        "Ball winning"
+      ],
+      "quizHints": [
+        "France midfielder who reached the 2022 World Cup final in Qatar.",
+        "Rennes academy graduate in white at Real Madrid.",
+        "Left-footed ball-winner who can play full-back or central midfield."
+      ]
+    },
+    "foden": {
+      "quickFact": "Wears number 47 at City — a tribute to his grandparents’ house in Moss Side.",
+      "playStyleSummary": "Silky dribbler who links play between the lines with both feet and clever movement.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "One-club Premier League attacker raised in Stockport, not Spain.",
+        "Pep once compared him to a Barcelona academy legend from the 2000s.",
+        "England international in sky blue who plays wide or as a number 10."
+      ]
+    },
+    "odegaard": {
+      "quickFact": "Made his Norway senior debut at 15 — still the youngest debutant in the men’s national team history.",
+      "playStyleSummary": "Elegant number 10 who orchestrates attacks with disguised passes and clever pressing triggers.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Scandinavian playmaker Real Madrid bought as a 16-year-old prodigy.",
+        "Loan spells included Heerenveen, Vitesse, and Real Sociedad before north London.",
+        "Arsenal captain who wears the armband for Norway — son of a former footballer."
+      ]
+    },
+    "valverde": {
+      "quickFact": "Once played right-back in a Clásico to mark Barcelona’s star winger — coaches trusted his engine over his natural role.",
+      "playStyleSummary": "Engine midfielder with lung-busting runs, long shots, and tactical discipline on the wing or center.",
+      "strengths": [
+        "Engine midfielder with lung-busting runs",
+        "Long shots",
+        "And tactical discipline on the wing or center."
+      ],
+      "quizHints": [
+        "Uruguayan runner with a bleached-blond look in Madrid white.",
+        "Peñarol talent signed young by the club with the most European Cups.",
+        "Long-range shot in a 2022 Champions League tie injured Liverpool’s keeper."
+      ]
+    },
+    "lewandowski": {
+      "quickFact": "Five goals in nine minutes vs Wolfsburg in 2015 remains one of the Bundesliga’s most famous individual explosions.",
+      "playStyleSummary": "Complete number 9 with elite movement, link play, and both-footed finishing.",
+      "strengths": [
+        "Finishing"
+      ],
+      "quizHints": [
+        "Poland’s all-time leading men’s international goalscorer.",
+        "Dortmund’s yellow-and-black number 9 before Bayern records and Barça stripes.",
+        "Also played volleyball competitively as a teenager before committing to football."
+      ]
+    },
+    "kimmich": {
+      "quickFact": "Pep Guardiola shifted him from Bundesliga right-back to one of Germany’s defining midfield controllers.",
+      "playStyleSummary": "Tactical leader who tackles, crosses from wide, and dictates pressing traps.",
+      "strengths": [
+        "Pressing",
+        "Crossing",
+        "Ball winning"
+      ],
+      "quizHints": [
+        "RB Leipzig and Stuttgart pipeline before Bayern’s red shirt.",
+        "Vocal organizer who has worn both 6 and 32 at club level.",
+        "Crosses from wide were his weapon before anchoring the middle for Die Mannschaft."
+      ]
+    },
+    "leao": {
+      "quickFact": "His motorcycle-throttle celebration nods to riding culture — he is known for languid dribbles that suddenly explode into top speed.",
+      "playStyleSummary": "Gangly speedster who glides past defenders with long strides and cool finishing.",
+      "strengths": [
+        "Finishing"
+      ],
+      "quizHints": [
+        "Portuguese left winger who wears Rossoneri red and black at San Siro.",
+        "Ligue 1 cameo at Lille before Milan made him a Serie A star.",
+        "2021–22 Scudetto-winning side’s standout attacker on the left flank."
+      ]
+    },
+    "tm-344381": {
+      "quickFact": "France forward who exploded at RB Leipzig before Chelsea and AC Milan, and was part of the 2018 World Cup-winning squad.",
+      "playStyleSummary": "Fluid forward who drops between lines, combines quickly, and finishes with both feet in the box.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "France attacker who won the World Cup in Russia in 2018.",
+        "RB Leipzig goal machine before Premier League and Serie A moves.",
+        "Christopher with full name — versatile forward, not a left-back."
+      ]
+    },
+    "tm-412363": {
+      "quickFact": "Brazil winger who scored in a Champions League final for Real Madrid and starred for the Seleção at the 2022 World Cup.",
+      "playStyleSummary": "Direct winger who attacks full-backs, cuts inside to shoot, and combines quickly in the final third.",
+      "strengths": [
+        "Direct winger who attacks full-backs",
+        "Cuts inside to shoot",
+        "And combines quickly in the final third."
+      ],
+      "quizHints": [
+        "Brazil right winger in yellow who played at Qatar 2022.",
+        "Real Madrid in white — Santos academy graduate.",
+        "Rodrygo the Brazilian — not Spanish Rodrigo Mendoza."
+      ]
+    },
+    "saliba": {
+      "quickFact": "Won Ligue 1 Young Player of the Year on loan at Marseille before Arsenal fans finally saw him in red and white.",
+      "playStyleSummary": "Composed defender who wins duels, carries the ball, and reads through-balls early.",
+      "strengths": [
+        "Ball carrying",
+        "Duels"
+      ],
+      "quizHints": [
+        "French defender Arsenal signed young but waited years to field in the Premier League.",
+        "Loan stops included Nice and Marseille before the Emirates partnership chant.",
+        "Forms half of a famous centre-back duo with Gabriel — low fade, number 2."
+      ]
+    },
+    "rice": {
+      "quickFact": "Was West Ham’s youngest-ever captain before a nine-figure move across London in 2023.",
+      "playStyleSummary": "Box-to-box midfielder with tackling intensity, progressive carrying, and leadership.",
+      "strengths": [
+        "Penalty-box movement",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "England midfielder who wore claret and blue before Arsenal’s number 41.",
+        "Could have represented Ireland through grandparents but chose England.",
+        "Euro 2024 winner who anchors the Gunners’ midfield shield."
+      ]
+    },
+    "alisson": {
+      "quickFact": "Scored a 95th-minute header from a corner in May 2021 — one of only a handful of Premier League goals by a keeper.",
+      "playStyleSummary": "Shot-stopper with quick reflexes and calm one-on-one defending in big moments.",
+      "strengths": [
+        "Composure",
+        "Shot-stopping"
+      ],
+      "quizHints": [
+        "Brazilian shot-stopper whose brother also keeps professionally in Portugal.",
+        "Roma’s number one before Liverpool made him the world’s most expensive keeper at the time.",
+        "Famous late winning header against a Midlands club in green and white stripes."
+      ]
+    },
+    "modric": {
+      "quickFact": "Ballon d’Or winner in 2018 — the first player outside Messi or Ronaldo to win it in over a decade.",
+      "playStyleSummary": "Metronome midfielder with outside-foot passes, press resistance, and legendary stamina.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Croatian midfielder who fled war as a child and grew up in a hotel as a refugee.",
+        "White Hart Lane years before a decade-plus in Madrid white.",
+        "Outside-of-the-foot passes and metronome tempo — number 10 for La Roja’s neighbors."
+      ]
+    },
+    "pedri": {
+      "quickFact": "Stacked club, national team, and Olympics minutes as a teenager in 2021 — sparking talk about burnout before he turned 19.",
+      "playStyleSummary": "La Masia technician who glides past presses with body feints and progressive passing.",
+      "strengths": [
+        "Pressing",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Canary Islands-born La Masia midfielder with a low center of gravity.",
+        "Las Palmas loanee who became Euro 2020 Young Player of the Tournament.",
+        "Often paired in midfield with a younger teammate known for fiery tackles."
+      ]
+    },
+    "barella": {
+      "quickFact": "Cagliari sold their homegrown midfielder to Inter — he later ran the engine room of Italy’s Euro 2020 winners.",
+      "playStyleSummary": "Box-to-box dynamo with relentless energy, line-breaking passes, and emotional leadership.",
+      "strengths": [
+        "Penalty-box movement",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Sardinian-born Italian with trademark blonde-streaked hair.",
+        "Small stature, huge lungs — covers every blade at San Siro.",
+        "Euro 2020 champion who wears Inter’s number 23 in blue and black."
+      ]
+    },
+    "tm-338424": {
+      "quickFact": "Spain midfielder who drove La Roja’s Euro 2024 triumph and joined Arsenal after years as a Real Sociedad mainstay.",
+      "playStyleSummary": "Box-to-box midfielder who presses intensely, wins aerial duels, and arrives late in the penalty area.",
+      "strengths": [
+        "Penalty-box movement",
+        "Aerial threat",
+        "Pressing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Spain midfielder who won Euro 2024 in Germany.",
+        "Former Real Sociedad captain before Arsenal in red and white.",
+        "Mikel Merino — not Mikel from other nations; box-to-box energy."
+      ]
+    },
+    "tm-125781": {
+      "quickFact": "France forward and 2018 World Cup winner who became Atlético Madrid’s all-time leading scorer.",
+      "playStyleSummary": "Intelligent second striker who drops between lines, presses hard, and creates chances with subtle passes.",
+      "strengths": [
+        "Pressing",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Made his name in Spain after developing at Real Sociedad.",
+        "World Cup winner who links midfield and attack for France.",
+        "Left-footed Atlético Madrid forward known for clever movement."
+      ]
+    },
+    "tm-121483": {
+      "quickFact": "Slovenia goalkeeper whose reflex saves and consistency made him Atlético Madrid’s long-term number one.",
+      "playStyleSummary": "Elite shot-stopper who stays composed, commands the box, and rarely needs dramatic dives to make saves.",
+      "strengths": [
+        "Penalty-box movement",
+        "Shot-stopping"
+      ],
+      "quizHints": [
+        "Slovenia international keeper who won multiple La Liga titles with Atlético.",
+        "Famous for calm positioning and athletic one-on-one saves.",
+        "Atlético Madrid goalkeeper whose first name is Jan and surname is Oblak."
+      ]
+    },
+    "tm-503482": {
+      "quickFact": "South Korea centre-back who won the Bundesliga with Bayern Munich after Napoli and anchors the Taegeuk Warriors defensively.",
+      "playStyleSummary": "Dominant centre-back who wins duels, carries forward, and reads danger early.",
+      "strengths": [
+        "Duels"
+      ],
+      "quizHints": [
+        "South Korea centre-back in red who plays for Bayern Munich.",
+        "Napoli and Bayern defender — not Kee-hee Kim in MLS.",
+        "Min-jae who steps out and plays line-breaking passes."
+      ]
+    },
+    "tm-248410": {
+      "quickFact": "Uruguay playmaker and Flamengo fan favourite — creativity, set pieces, and Libertadores nights at the Maracanã.",
+      "playStyleSummary": "Technical number 10 who drifts between lines, delivers through-balls, and shoots with curl from distance.",
+      "strengths": [
+        "Technical number 10 who drifts between lines",
+        "Delivers through-balls",
+        "And shoots with curl from distance."
+      ],
+      "quizHints": [
+        "Uruguay international in red and black for Flamengo.",
+        "Creative number 10 with left-footed passes and Copa Libertadores pedigree.",
+        "Giorgian de Arrascaeta — not the Colombian striker with a similar first name."
+      ]
+    },
+    "tm-44352": {
+      "quickFact": "Uruguay’s all-time leading scorer and longtime Barcelona partner of Messi who reunited with him at Inter Miami.",
+      "playStyleSummary": "Streetwise centre-forward who finds half-yards, links play, and finishes first-time in the box.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Uruguay number 9 known for elite movement and finishing in the box.",
+        "Shared a famous attacking partnership with Messi at Barcelona.",
+        "Veteran centre-forward in Inter Miami pink and black."
+      ]
+    },
+    "tm-357498": {
+      "quickFact": "Serbia centre-forward who broke through at Fiorentina before Juventus and leads the line for the Orlovi with powerful finishing.",
+      "playStyleSummary": "Target striker who holds up play, attacks crosses, and finishes with strength and placement.",
+      "strengths": [
+        "Crossing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Serbia striker in red kit who plays for Juventus.",
+        "Tall centre-forward — not Filip Kostić on the left wing.",
+        "Dušan who finishes with power inside the penalty area."
+      ]
+    },
+    "tm-234803": {
+      "quickFact": "Scotland left-back and Liverpool captain who sets the tempo with overlapping runs and crosses for the Tartan Army.",
+      "playStyleSummary": "Relentless left-back who overlaps, whips in early crosses, and defends with aggressive duels.",
+      "strengths": [
+        "Crossing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Scotland left-back in dark blue who captains Liverpool.",
+        "Overlapping full-back — not Ryan Porteous the centre-back.",
+        "Andrew from Glasgow who delivers driven crosses from the left."
+      ]
+    },
+    "tm-88103": {
+      "quickFact": "Colombia playmaker who won the Golden Boot at the 2014 World Cup and later starred in Europe before an MLS chapter with Minnesota United.",
+      "playStyleSummary": "Classic attacking midfielder who finds space between lines, shoots from distance, and delivers set-piece quality.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Colombia no. 10 in yellow who scored six goals at Brazil 2014.",
+        "Left-footed playmaker — not Cucho Hernández the striker.",
+        "James Rodríguez known for long-range shots and whipped crosses."
+      ]
+    },
+    "tm-348795": {
+      "quickFact": "Argentina’s creative midfielder and 2022 World Cup winner who returned to Real Betis after European spells with Spurs and Villarreal.",
+      "playStyleSummary": "Left-footed attacking midfielder who drops into space, plays disguised passes, and shoots from the edge of the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pace"
+      ],
+      "quizHints": [
+        "Argentina playmaker in sky-blue who won Qatar 2022 with Messi.",
+        "Left-footed no. 20 type at Real Betis — not Lautaro the striker.",
+        "Former Tottenham and PSG loanee known for through-balls from midfield."
+      ]
+    },
+    "tm-401530": {
+      "quickFact": "Brazil centre-back who won the 2019 Copa América and became Real Madrid’s defensive leader after Porto.",
+      "playStyleSummary": "Quick centre-back who defends space behind, steps up to intercept, and plays vertical passes.",
+      "strengths": [
+        "Pace",
+        "Ball winning"
+      ],
+      "quizHints": [
+        "Brazil centre-back in yellow who won Copa América 2019.",
+        "Real Madrid no. 3 in white after Porto in Portugal.",
+        "Éder Militão — pacey defender, not Thiago Silva the veteran."
+      ]
+    },
+    "trent": {
+      "quickFact": "Wears number 66 — a nod to the year his postal district was founded, not a random squad number.",
+      "playStyleSummary": "Quarterback full-back who delivers whipped crosses and set-piece mastery over defensive orthodoxy.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Scouse academy graduate from West Derby who never left his boyhood club.",
+        "Among the Premier League’s most prolific assist-makers for a defender.",
+        "Set-piece delivery from the right touchline — free-kicks and corners for Liverpool."
+      ]
+    },
+    "courtois": {
+      "quickFact": "At roughly 6’7”, he is among the tallest regular starters in elite European football.",
+      "playStyleSummary": "Giant frame keeper who excels one-on-one and commands the penalty area on crosses.",
+      "strengths": [
+        "Penalty-box movement",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Belgian keeper who represented Atlético, Chelsea, and Real Madrid.",
+        "Genk youth product before La Liga and Premier League spells.",
+        "Man of the Match in a Paris Champions League final with late saves."
+      ]
+    },
+    "neuer": {
+      "quickFact": "Helped redefine the sweeper-keeper role and captained Germany to the 2014 World Cup in Brazil.",
+      "playStyleSummary": "Revolutionary keeper who acts as a libero, commands the box, and organizes the defense.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Schalke blue before over a decade in Bayern red.",
+        "Famous for racing out to slide-tackle like an outfielder.",
+        "World Cup winner in Rio who often wears a cap after skin treatment."
+      ]
+    },
+    "bastoni": {
+      "quickFact": "Left-footed centre-back in a back three — Atalanta groomed him before Inter made him a Serie A title pillar.",
+      "playStyleSummary": "Modern defender who steps into midfield, slides tackles, and sprays diagonal passes.",
+      "strengths": [
+        "Passing range",
+        "Ball winning"
+      ],
+      "quizHints": [
+        "Italian defender who plays on the left side of a defensive trio in blue and black.",
+        "Bergamo youth product before a big move across Lombardy to San Siro.",
+        "Progressive passes and stepping into midfield are his calling cards."
+      ]
+    },
+    "tm-479999": {
+      "quickFact": "England playmaker whose Crystal Palace brilliance earned a big Arsenal move and a place in the Euro 2024 squad.",
+      "playStyleSummary": "Silky attacking midfielder who dribbles inside, shoots from distance, and unlocks defences with through-balls.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "England attacking midfielder who went to Euro 2024.",
+        "Arsenal in red after starring for Crystal Palace in south London.",
+        "Eberechi Eze — left-footed creator, not Bukayo Saka the winger."
+      ]
+    },
+    "tm-709726": {
+      "quickFact": "France centre-forward who starred for Eintracht Frankfurt and PSG before Liverpool, with Les Bleus senior recognition.",
+      "playStyleSummary": "Powerful centre-forward who runs channels, holds off defenders, and finishes with strength inside the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Duels"
+      ],
+      "quizHints": [
+        "France striker in blue kit who moved to Liverpool from Paris.",
+        "Tall no. 9 who developed in Germany with Eintracht Frankfurt.",
+        "Hugo Ekitiké with accent — not Kylian Mbappé but a fellow French forward."
+      ]
+    },
+    "tm-240306": {
+      "quickFact": "Portuguese playmaker who became Manchester United captain after arriving from Sporting CP.",
+      "playStyleSummary": "Creative attacking midfielder who looks for early through-balls, set-piece delivery, and shots from distance.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Sporting CP star before moving to Old Trafford in 2020.",
+        "Known for risk-taking passes, penalties, and long-range shots.",
+        "Portugal midfielder often wearing number 8 for Manchester United."
+      ]
+    },
+    "tm-502670": {
+      "quickFact": "Georgia winger whose dribbling and left-footed shooting made him a star in Italy before becoming a Paris Saint-Germain wide creator.",
+      "playStyleSummary": "Unpredictable winger who beats defenders one-on-one, attacks the half-space, and finishes with whipped left-foot strikes.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Georgia international known as Kvaratskhelia with elite dribbling.",
+        "Left-footed winger who cuts inside and shoots with curve.",
+        "Wide attacker whose surname is Kvaratskhelia and nickname often shortened to Kvara."
+      ]
+    },
+    "tm-288230": {
+      "quickFact": "Two-footed France forward known for unpredictable dribbling after major spells with Dortmund, Barcelona, and PSG.",
+      "playStyleSummary": "Ambidextrous attacker who beats defenders with acceleration, feints, and early crosses or cutbacks.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Broke out at Rennes before a high-profile move to Borussia Dortmund.",
+        "Can attack defenders with either foot from wide or central areas.",
+        "France winger listed with Paris Saint-Germain in FootyCompass."
+      ]
+    },
+    "tm-138927": {
+      "quickFact": "Spain right-back whose tackling, experience, and Champions League pedigree made him a Real Madrid institution.",
+      "playStyleSummary": "Tenacious right-back who defends the line aggressively, supports attacks with underlaps, and thrives in big matches.",
+      "strengths": [
+        "Tenacious right-back who defends the line aggressively",
+        "Supports attacks with underlaps",
+        "And thrives in big matches."
+      ],
+      "quizHints": [
+        "Spain international full-back who won multiple Champions League titles with Real Madrid.",
+        "Long-serving Madrid right-back known for competitive duels and recovery speed.",
+        "Real Madrid defender whose first name is Daniel and surname is Carvajal."
+      ]
+    },
+    "tm-378710": {
+      "quickFact": "Brazil striker famous for his 2022 World Cup goals and acrobatic celebration while starring for Everton and Tottenham.",
+      "playStyleSummary": "Mobile centre-forward who presses, runs channels, and finishes with headers and sharp shots.",
+      "strengths": [
+        "Aerial threat",
+        "Pressing"
+      ],
+      "quizHints": [
+        "Brazil no. 9 who scored at the 2022 World Cup in Qatar.",
+        "Tottenham striker in navy — former Everton fan favourite.",
+        "Known for header celebrations and physical centre-forward play."
+      ]
+    },
+    "ederson": {
+      "quickFact": "Set up a goal with a kick from his own penalty area in a 2018 Manchester derby — a snapshot of the sweeper-keeper era.",
+      "playStyleSummary": "Sweeper-keeper with elite distribution and composure under high pressing.",
+      "strengths": [
+        "Pressing",
+        "Composure",
+        "Distribution"
+      ],
+      "quizHints": [
+        "Brazilian who won the Premier League Golden Glove in his first season at City.",
+        "Left Benfica’s Eagles before joining Guardiola’s possession side.",
+        "Often plays long-sleeved with striking tattoos — distribution rivals outfielders."
+      ]
+    },
+    "gavi": {
+      "quickFact": "Made his Spain senior debut at 17 — among the youngest in the men’s team in the modern era.",
+      "playStyleSummary": "Fiery ball-winner with flair dribbles and aggressive personality on the pitch.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "La Masia graduate whose first name is Pablo but everyone uses a four-letter nickname.",
+        "Long hair and aggressive challenges mark his style beside Pedri.",
+        "Serious knee surgery interrupted his rapid rise in blaugrana stripes."
+      ]
+    },
+    "ter-stegen": {
+      "quickFact": "Germany’s number-one debate often pits him against Bayern’s long-serving keeper — both rose through Bundesliga rivals.",
+      "playStyleSummary": "Sweeper-keeper with reflex saves and excellent distribution to start buildup.",
+      "strengths": [
+        "Shot-stopping",
+        "Distribution"
+      ],
+      "quizHints": [
+        "Mönchengladbach “Foals” graduate who joined Barça in 2014.",
+        "Sweeper-keeper who starts attacks with short passes under pressure.",
+        "Catalan club’s long-term number one while Neuer ruled for Die Mannschaft."
+      ]
+    },
+    "maignan": {
+      "quickFact": "PSG never gave him a Ligue 1 appearance — Lille and Milan turned him into one of Europe’s top shot-stoppers.",
+      "playStyleSummary": "Athletic shot-stopper with quick feet and confident distribution under pressure.",
+      "strengths": [
+        "Pressing",
+        "Composure",
+        "Shot-stopping",
+        "Distribution"
+      ],
+      "quizHints": [
+        "French keeper born in Cayenne, French Guiana.",
+        "Won Ligue 1 at Lille before replacing a Cameroonian international at Milan.",
+        "Known for quick feet and playing out from the back in Serie A — number 16."
+      ]
+    },
+    "tm-552955": {
+      "quickFact": "Mexico centre-forward who scored heavily for Feyenoord before AC Milan and leads El Tri’s line with movement in the box.",
+      "playStyleSummary": "Mobile striker who attacks the penalty spot, presses defenders, and finishes with either foot.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Mexico striker in green who moved to AC Milan from the Netherlands.",
+        "Feyenoord goal scorer — not Raúl Jiménez the veteran forward.",
+        "Santiago who finishes with headers and sharp near-post runs."
+      ]
+    },
+    "tm-203853": {
+      "quickFact": "Ukraine left-back who won the Premier League with Manchester City before Ajax and remains a technical outlet for the national team.",
+      "playStyleSummary": "Inverted left-back who combines in midfield, crosses early, and defends aggressively in duels.",
+      "strengths": [
+        "Crossing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Ukraine left-back in yellow and blue who played for Manchester City.",
+        "Ajax full-back — not Artem Dovbyk the striker.",
+        "Oleksandr who tucks inside from left-back to help build play."
+      ]
+    },
+    "tm-321247": {
+      "quickFact": "Argentina attacking midfielder whose Norwich brilliance earned a Premier League move to Aston Villa and senior Albiceleste caps.",
+      "playStyleSummary": "Technical attacking midfielder who drifts inside from the left, combines in tight spaces, and slips through-balls.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Argentina no. 10-style creator at Aston Villa in claret and blue.",
+        "Breakout with Norwich in the Championship before the Premier League.",
+        "Emiliano with the accent — not Emi Martínez the goalkeeper."
+      ]
+    },
+    "tm-326330": {
+      "quickFact": "Netherlands midfielder who starred at Ajax and Barcelona as a press-resistant pivot with dribbling and passing range.",
+      "playStyleSummary": "Elegant midfielder who carries the ball past presses, circulates play, and sets tempo with vision.",
+      "strengths": [
+        "Pressing",
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Netherlands international midfielder long associated with Barcelona.",
+        "Press-resistant pivot known for dribbling out of tight spaces.",
+        "Midfielder whose first name is Frenkie and surname is de Jong."
+      ]
+    },
+    "tm-480267": {
+      "quickFact": "Uruguay centre-back who became a Barcelona regular and La Celeste mainstay with pace, power, and recovery defending.",
+      "playStyleSummary": "Athletic centre-back who steps out to defend space, wins duels, and plays simple passes from the back.",
+      "strengths": [
+        "Pace",
+        "Duels"
+      ],
+      "quizHints": [
+        "Uruguay centre-back in sky blue who plays for FC Barcelona.",
+        "Powerful defender — not José María Giménez at Atlético Madrid.",
+        "Ronald Araujo known for recovery speed and duels in the channel."
+      ]
+    },
+    "tm-193082": {
+      "quickFact": "Spain left-back whose set pieces and crossing powered Bayer Leverkusen’s unbeaten Bundesliga title season.",
+      "playStyleSummary": "Attacking left-back who delivers set-piece quality, overlaps intelligently, and combines crossing with cut-back assists.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Spain international who developed at Benfica before Leverkusen.",
+        "Left-back famous for free kicks, corners, and attacking the left channel.",
+        "Bayer Leverkusen full-back whose first name is Alejandro and surname is Grimaldo."
+      ]
+    },
+    "tm-424204": {
+      "quickFact": "Canada left-back whose speed made him a Bayern Munich star and a World Cup icon for his country on the wing.",
+      "playStyleSummary": "Explosive left-back who attacks space in transition, overlaps constantly, and recovers with world-class pace.",
+      "strengths": [
+        "Transition threat",
+        "Pace"
+      ],
+      "quizHints": [
+        "Canada international left-back who stars for Bayern Munich.",
+        "One of the fastest full-backs in world football.",
+        "Defender whose first name is Alphonso and surname is Davies."
+      ]
+    },
+    "tm-687626": {
+      "quickFact": "Ecuador defensive midfielder who broke through at Brighton before Chelsea and anchors La Tri’s midfield in the linked pool.",
+      "playStyleSummary": "Deep-lying midfielder who breaks up play, carries under pressure, and distributes with range.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Ecuadorian defensive midfielder linked to La Tri.",
+        "Chelsea no. 6 — not Piero Hincapié the centre-back.",
+        "Moisés who shields the back line and recycles possession for Ecuador."
+      ]
+    },
+    "tm-444523": {
+      "quickFact": "Brazil midfielder and 2022 World Cup squad member who returned to Flamengo after Lyon and West Ham.",
+      "playStyleSummary": "Box-to-box midfielder who carries the ball, links play, and mixes skill with aggressive pressing.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing",
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Brazil international midfielder in Flamengo red and black.",
+        "Box-to-box flair player known for skill, physical duels, and cards.",
+        "Lucas Paquetá at Flamengo — surname Paquetá in hints."
+      ]
+    },
+    "tm-255901": {
+      "quickFact": "Argentina’s tireless World Cup-winning midfielder who drives Inter Miami’s press and progression from central midfield.",
+      "playStyleSummary": "Box-to-box midfielder who carries the ball forward, presses aggressively, and plays line-breaking passes.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing",
+        "Ball carrying",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Argentina midfielder who starred in Qatar 2022 beside Messi.",
+        "Known for relentless running and vertical passing from midfield.",
+        "Inter Miami engine in pink and black, not a winger."
+      ]
+    },
+    "tm-126414": {
+      "quickFact": "Turkey midfielder whose free kicks and passing became Inter Milan’s creative engine after Bundesliga and Milan spells.",
+      "playStyleSummary": "Deep playmaker who dictates tempo, strikes dead balls, and switches play with weighted passes from midfield.",
+      "strengths": [
+        "Chance creation",
+        "Passing range"
+      ],
+      "quizHints": [
+        "Turkey international famous for set-piece delivery and long-range shooting.",
+        "Played for AC Milan before becoming Inter’s deep-lying playmaker.",
+        "Inter Milan midfielder whose first name is Hakan."
+      ]
+    },
+    "tm-181136": {
+      "quickFact": "Poland midfielder who won Serie A with Napoli before Inter Milan and remains a creative hub for the Biało-czerwoni.",
+      "playStyleSummary": "Box-to-box midfielder who arrives late, shoots from distance, and threads passes between lines.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Poland playmaker in white and red who starred for Napoli in Serie A.",
+        "Inter Milan midfielder — not Robert Lewandowski the striker.",
+        "Left-footed no. 10 type known for late runs into the box."
+      ]
+    },
+    "tm-161011": {
+      "quickFact": "Serbia left winger whose crossing and work rate at Eintracht Frankfurt and Juventus made him a staple wide outlet for the Orlovi.",
+      "playStyleSummary": "Direct winger who hugs the touchline, crosses early, and presses with high intensity.",
+      "strengths": [
+        "Pressing",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Serbia left-sided player in red who crossed for Frankfurt in the Europa League.",
+        "Juventus wide midfielder — not Dušan Vlahović the striker.",
+        "Filip who delivers whipped crosses from the left."
+      ]
+    },
+    "tm-35207": {
+      "quickFact": "Germany forward and one-club Borussia Dortmund legend who brought late-career creativity to LA Galaxy in white and gold.",
+      "playStyleSummary": "Intelligent forward who arrives late in the box, combines quickly, and shoots with his left foot.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Long-time Dortmund captain and Germany international before MLS.",
+        "Left-footed attacker for LA Galaxy in white and gold.",
+        "German playmaker — not Spain’s Riqui Puig on the same team."
+      ]
+    },
+    "tm-349066": {
+      "quickFact": "Sweden striker whose goals for Real Sociedad and Newcastle made him a Liverpool signing as a elite Premier League finisher.",
+      "playStyleSummary": "Elegant striker who glides past defenders, finishes with composure, and links play with subtle touches.",
+      "strengths": [
+        "Composure"
+      ],
+      "quizHints": [
+        "Sweden international centre-forward who played for Real Sociedad and Newcastle.",
+        "Tall striker known for calm finishing and movement in the penalty area.",
+        "Forward whose first name is Alexander and surname is Isak."
+      ]
+    },
+    "tm-475959": {
+      "quickFact": "Croatia defender whose left-footed passing and composure helped Manchester City after a big move from RB Leipzig.",
+      "playStyleSummary": "Modern defender who steps into midfield, defends aggressively in space, and progresses play with line-breaking passes.",
+      "strengths": [
+        "Pace",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Croatia international who starred at the 2022 World Cup in defence.",
+        "Left-footed centre-back or full-back who joined Manchester City from Leipzig.",
+        "City defender whose first name is Josko and surname is Gvardiol."
+      ]
+    },
+    "tm-169880": {
+      "quickFact": "Italy right-back who captained Napoli during their Serie A title era and became a reliable Italy international.",
+      "playStyleSummary": "Experienced right-back who defends steadily, supports attacks with overlaps, and organizes teammates with vocal leadership.",
+      "strengths": [
+        "Experienced right-back who defends steadily",
+        "Supports attacks with overlaps",
+        "And organizes teammates with vocal leadership."
+      ],
+      "quizHints": [
+        "Italy international right-back who captained a Serie A title-winning Napoli side.",
+        "Veteran full-back known for consistency, crossing, and leadership.",
+        "Defender whose first name is Giovanni and surname is Di Lorenzo."
+      ]
+    },
+    "tm-398073": {
+      "quickFact": "Morocco full-back known for speed, attacking runs, and a calm Panenka penalty at the 2022 World Cup.",
+      "playStyleSummary": "Explosive right-back who overlaps aggressively, carries the ball at speed, and creates width in attack.",
+      "strengths": [
+        "Pace",
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Played for Real Madrid, Dortmund, Inter, and PSG before his mid-20s.",
+        "Attack-minded full-back who became one of Morocco's best-known modern players.",
+        "Right-back in Paris colours whose surname starts with H."
+      ]
+    },
+    "tm-350219": {
+      "quickFact": "Spain central midfielder who won the 2024 European Championship with La Roja and stars for Paris Saint-Germain.",
+      "playStyleSummary": "Elegant central midfielder who dictates tempo, switches play, and finds half-space passes.",
+      "strengths": [
+        "Pace",
+        "Passing range"
+      ],
+      "quizHints": [
+        "Spain midfielder in red who won Euro 2024.",
+        "PSG passer in Ligue 1 — former Napoli playmaker.",
+        "Left-footed metronome — not Fabían the Brazil-born forward at Betis."
+      ]
+    },
+    "tm-861410": {
+      "quickFact": "Turkey attacking midfielder whose talent at Fenerbahçe earned a Real Madrid move and senior Ay-Yıldızlı playmaking duties.",
+      "playStyleSummary": "Technical no. 10 who drifts between lines, shoots from distance, and plays disguised passes.",
+      "strengths": [
+        "Technical no. 10 who drifts between lines",
+        "Shoots from distance",
+        "And plays disguised passes."
+      ],
+      "quizHints": [
+        "Turkey playmaker in red and white who plays for Real Madrid.",
+        "Young left-footed creator — not Hakan Çalhanoğlu the veteran.",
+        "Arda who curls shots and slips through-balls."
+      ]
+    },
+    "tm-244275": {
+      "quickFact": "Brazil forward nicknamed Gabigol who won Libertadores titles with Flamengo after rising through Santos.",
+      "playStyleSummary": "Poacher who finds space in the box, finishes first-time, and thrives on through-balls.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pace"
+      ],
+      "quizHints": [
+        "Brazil striker nicknamed Gabigol with Santos and Flamengo success.",
+        "Santos product known for poaching and big-game goals.",
+        "Gabriel Barbosa at Santos — nickname Gabigol in hints, not Gabriel from Arsenal."
+      ]
+    },
+    "tm-40433": {
+      "quickFact": "Chile forward who starred for Barcelona, Arsenal, and Inter before Sevilla, famous for flair, goals, and the “Arsenal Sanchez” era.",
+      "playStyleSummary": "Skillful forward who drops deep to create, beats defenders with flair, and finishes with both feet in the box.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Chile all-time great who played for Barcelona, Arsenal, and Inter Milan.",
+        "Forward known for dribbling, creativity, and big goals in England and Italy.",
+        "Attacker whose first name is Alexis and surname is Sánchez."
+      ]
+    },
+    "tm-487969": {
+      "quickFact": "France centre-forward whose late 2022 World Cup final appearance and Frankfurt form made him a household Les Bleus name.",
+      "playStyleSummary": "Direct centre-forward who runs in behind, presses from the front, and finishes with pace.",
+      "strengths": [
+        "Pressing",
+        "Pace"
+      ],
+      "quizHints": [
+        "France striker who came off the bench in the 2022 World Cup final.",
+        "Eintracht Frankfurt star before Tottenham in the Premier League.",
+        "Use full hyphenated name — tall forward, not Olivier Giroud."
+      ]
+    },
+    "tm-69633": {
+      "quickFact": "Denmark playmaker whose vision at Tottenham and Inter was followed by a remarkable return after collapsing at Euro 2020.",
+      "playStyleSummary": "Creative midfielder who slows the game to pick passes, delivers set pieces, and finds angles others miss.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Suffered a cardiac arrest on the pitch at Euro 2020 before returning to top football.",
+        "Famous for outside-of-the-boot passes and set-piece delivery.",
+        "Denmark midfielder whose first name is Christian and plays in the Bundesliga with Wolfsburg."
+      ]
+    },
+    "raphinha": {
+      "quickFact": "Left Leeds for Barcelona in 2022 — one of several Brazilians who sharpened their game in England before La Liga.",
+      "playStyleSummary": "Direct Brazilian winger with tricks, cutbacks, and relentless work off the ball.",
+      "strengths": [
+        "Direct Brazilian winger with tricks",
+        "Cutbacks",
+        "And relentless work off the ball."
+      ],
+      "quizHints": [
+        "Brazilian winger who wore white at Elland Road before Camp Nou.",
+        "Breakout in Portugal at Sporting before France at Rennes.",
+        "Direct dribbler often stationed on Barça’s right in a trident attack."
+      ]
+    },
+    "sane": {
+      "quickFact": "His mother won Olympic gold in gymnastics — pundits often cite that background for his balance and body control.",
+      "playStyleSummary": "Pace merchant who cuts inside with flair, direct dribbling, and inconsistent end product.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "German winger who wore sky blue in Manchester before Munich.",
+        "Schalke breakout with a famous surname tied to Senegalese football.",
+        "Often cuts inside from the left with rapid stepovers — father played for Senegal."
+      ]
+    },
+    "tm-182913": {
+      "quickFact": "France midfielder whose box-to-box power featured for Paris Saint-Germain and Juventus before an AC Milan move in Serie A.",
+      "playStyleSummary": "Powerful central midfielder who drives through pressure, combines in transition, and covers ground defensively.",
+      "strengths": [
+        "Pressing",
+        "Transition threat"
+      ],
+      "quizHints": [
+        "France international midfielder known for long strides and carrying the ball.",
+        "Played for Paris Saint-Germain and Juventus before Milan.",
+        "AC Milan midfielder whose first name is Adrien and surname is Rabiot."
+      ]
+    },
+    "tm-303254": {
+      "quickFact": "England centre-back who won the Champions League with Chelsea before becoming an AC Milan defensive leader in Serie A.",
+      "playStyleSummary": "Pacey centre-back who defends aggressively in recovery runs, steps into midfield, and reads through-balls quickly.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "England defender who came through Chelsea’s academy.",
+        "Won the Champions League at Chelsea before starring in Italy with Milan.",
+        "AC Milan centre-back whose first name is Fikayo and surname is Tomori."
+      ]
+    },
+    "tm-111873": {
+      "quickFact": "Argentina goalkeeper whose penalty saves and personality became part of the 2022 World Cup story.",
+      "playStyleSummary": "Commanding goalkeeper who thrives in one-on-ones, penalties, and emotional high-pressure moments.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Spent years at Arsenal before becoming a Premier League number one elsewhere.",
+        "World Cup winner famous for penalty shootout confidence.",
+        "Argentina keeper who plays for Aston Villa."
+      ]
+    },
+    "tm-282411": {
+      "quickFact": "Spain midfielder whose engine and versatility let him play right-back or central midfield for Atlético Madrid after Real Madrid youth years.",
+      "playStyleSummary": "High-energy runner who defends wide areas, carries the ball forward, and supports attacks with late surges.",
+      "strengths": [
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Spain international who came through Real Madrid’s academy.",
+        "Known for covering huge distances and playing multiple midfield or wide roles.",
+        "Atlético Madrid player whose first name is Marcos and surname is Llorente."
+      ]
+    },
+    "tm-351809": {
+      "quickFact": "Spain centre-back born in France who became a La Roja Euro 2024 starter after establishing himself at Real Sociedad and Atlético Madrid.",
+      "playStyleSummary": "Physical centre-back who defends the box, wins duels, and plays simple passes to midfield.",
+      "strengths": [
+        "Penalty-box movement",
+        "Duels"
+      ],
+      "quizHints": [
+        "Spain centre-back in red who won Euro 2024.",
+        "Former Real Sociedad pillar now at Atlético Madrid.",
+        "Robin Le Normand — France-born but plays for La Roja."
+      ]
+    },
+    "tm-576028": {
+      "quickFact": "Argentina playmaker who won the World Cup in 2022 and became known for dribbling, set pieces, and creativity from midfield.",
+      "playStyleSummary": "Creative midfielder who drifts wide, beats defenders with quick feet, and supplies incisive passes and set-piece delivery.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Argentina international who won the 2022 World Cup.",
+        "Left-footed playmaker who excels at free kicks and close control.",
+        "Midfielder whose first name is Thiago and surname is Almada."
+      ]
+    },
+    "tm-257814": {
+      "quickFact": "Switzerland goalkeeper whose shot-stopping helped Borussia Dortmund compete at the top of the Bundesliga.",
+      "playStyleSummary": "Modern goalkeeper who sweeps behind the line, reacts sharply in one-on-ones, and starts build-up with confident passing.",
+      "strengths": [
+        "Modern goalkeeper who sweeps behind the line",
+        "Reacts sharply in one-on-ones",
+        "And starts build-up with confident passing."
+      ],
+      "quizHints": [
+        "Switzerland international keeper who became Dortmund’s first choice.",
+        "Known for quick feet and strong reflex saves from close range.",
+        "Borussia Dortmund goalkeeper whose first name is Gregor."
+      ]
+    },
+    "tm-106987": {
+      "quickFact": "Austria midfielder who captained RB Leipzig pressing sides and moved through Bayern Munich and Borussia Dortmund in the Bundesliga.",
+      "playStyleSummary": "Energetic central midfielder who presses high, arrives in the box, and strikes from distance.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing"
+      ],
+      "quizHints": [
+        "Austria midfielder in white and red with RB Leipzig pedigree.",
+        "Borussia Dortmund central player — not David Alaba the defender.",
+        "Marcel who shoots from the edge of the box for Austria."
+      ]
+    },
+    "tm-167850": {
+      "quickFact": "Netherlands forward whose skill and star power made him a marquee Corinthians signing in Série A.",
+      "playStyleSummary": "Direct forward who dribbles from wide areas, shoots with power, and links with physical presence.",
+      "strengths": [
+        "1v1 dribbling",
+        "Duels"
+      ],
+      "quizHints": [
+        "Netherlands international forward who played for Lyon and Barcelona.",
+        "Corinthians star in black and white with flair and a strong left foot.",
+        "Memphis Depay — first name Memphis, not Dutch keeper names."
+      ]
+    },
+    "tm-353108": {
+      "quickFact": "Brazil winger who starred in Flamengo’s 2019 Libertadores run with pace, goals, and big-match mentality.",
+      "playStyleSummary": "Direct winger who attacks full-backs, cuts inside to shoot, and thrives in transition.",
+      "strengths": [
+        "Transition threat"
+      ],
+      "quizHints": [
+        "Brazil international winger famous for Flamengo’s 2019 Copa Libertadores triumph.",
+        "Right-sided attacker in red and black known for speed and finishing.",
+        "Bruno Henrique at Flamengo — full name disambiguates from other Brunos in Brazil."
+      ]
+    },
+    "tm-401922": {
+      "quickFact": "Nigeria winger whose dribbling at Villarreal earned a move to AC Milan and Fulham, starring for the Super Eagles on the right.",
+      "playStyleSummary": "Direct winger who beats defenders one-on-one, attacks the byline, and combines speed with close control.",
+      "strengths": [
+        "Direct winger who beats defenders one-on-one",
+        "Attacks the byline",
+        "And combines speed with close control."
+      ],
+      "quizHints": [
+        "Nigeria right winger in green who played for Villarreal in La Liga.",
+        "Fast dribbler — not Ademola Lookman on the left.",
+        "Samuel Chukwueze known for pace and cutting inside from the wing."
+      ]
+    },
+    "tm-451276": {
+      "quickFact": "Hungary midfielder whose free kicks and driving runs at RB Leipzig and Liverpool made him a top Premier League creator.",
+      "playStyleSummary": "Dynamic playmaker who shoots from distance, carries the ball forward, and unlocks defences with incisive passes.",
+      "strengths": [
+        "Chance creation",
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Hungary international attacking midfielder at Liverpool.",
+        "Left-footed player known for long-range shooting and set-piece delivery.",
+        "Midfielder whose first name is Dominik and surname is Szoboszlai."
+      ]
+    },
+    "tm-354361": {
+      "quickFact": "Cameroon midfielder whose ball carrying and press resistance helped Napoli after he became a Premier League standout at Fulham.",
+      "playStyleSummary": "Dynamic central midfielder who carries past lines, wins duels, and links defence to attack with powerful dribbles.",
+      "strengths": [
+        "1v1 dribbling",
+        "Duels"
+      ],
+      "quizHints": [
+        "Cameroon international midfielder who starred at Fulham before Napoli.",
+        "Known for carrying the ball through midfield under pressure.",
+        "Napoli midfielder whose first name is Frank and surname is Anguissa."
+      ]
+    },
+    "tm-315969": {
+      "quickFact": "Scotland midfielder who became a goal threat at Napoli after Manchester United, adding aerial power to the national midfield.",
+      "playStyleSummary": "Physical midfielder who carries forward, wins aerial duels, and finishes from late runs.",
+      "strengths": [
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "Scotland midfielder in dark blue who left Manchester United for Napoli.",
+        "Tall box-to-box player — not Billy Gilmour the deeper no. 6.",
+        "Scott with a Scottish surname who arrives late in the box."
+      ]
+    },
+    "tm-86202": {
+      "quickFact": "Germany centre-back who won the Champions League with Chelsea and Real Madrid with aggressive defending and leadership.",
+      "playStyleSummary": "Intense centre-back who defends front-foot, wins physical battles, and covers ground quickly behind the line.",
+      "strengths": [
+        "Duels"
+      ],
+      "quizHints": [
+        "Germany international centre-back who won the Champions League with Chelsea and Real Madrid.",
+        "Aggressive defender known for pace, physical duels, and vocal leadership.",
+        "Centre-back whose first name is Antonio and surname is Rüdiger."
+      ]
+    },
+    "tm-316889": {
+      "quickFact": "Mexico winger whose pace at Pachuca and PSV earned a Napoli move; “Chucky” remains a direct outlet for El Tri on the left.",
+      "playStyleSummary": "Explosive winger who drives at full-backs, cuts inside, and combines quick feet with direct running.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Mexico winger in green known as Chucky with Napoli pedigree.",
+        "Fast left-sided attacker — not Hirving at PSV only; now San Diego FC in FootyCompass.",
+        "Hirving who cuts inside from the wing to shoot."
+      ]
+    },
+    "tm-355915": {
+      "quickFact": "Argentina centre-back and World Cup winner whose aggressive defending anchors Tottenham’s back line.",
+      "playStyleSummary": "Front-foot centre-back who steps into duels early, wins aerial battles, and drives the defensive line high.",
+      "strengths": [
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "Won the 2022 World Cup with Argentina after a strong tournament.",
+        "Spent time in Italy with Genoa and Atalanta before the Premier League.",
+        "Tottenham defender whose first name is Cristian and wears Argentina blue internationally."
+      ]
+    },
+    "tm-177467": {
+      "quickFact": "Spain striker and Villarreal captain type known for technical finishing, link play, and long association with the yellow submarine.",
+      "playStyleSummary": "Intelligent striker who links play, shoots with finesse, and creates chances with subtle movement in the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Spain international forward long linked with Villarreal.",
+        "Technical number nine who drops between lines and finishes with placement.",
+        "Villarreal striker whose first name is Gerard and surname is Moreno."
+      ]
+    },
+    "tm-230784": {
+      "quickFact": "Ghana midfielder whose Arsenal years showcased his tackling and passing before a Villarreal move in La Liga.",
+      "playStyleSummary": "Powerful defensive midfielder who shields the back line, breaks transitions, and can strike from outside the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Transition threat"
+      ],
+      "quizHints": [
+        "Ghana international who won the FA Cup with Arsenal.",
+        "Defensive midfielder known for long strides, interceptions, and shooting from distance.",
+        "Villarreal midfielder whose first name is Thomas and surname is Partey."
+      ]
+    },
+    "jesus": {
+      "quickFact": "His “call to heaven” celebration is a tribute to his mother, who helped raise him in São Paulo.",
+      "playStyleSummary": "Mobile forward who presses relentlessly, links play, and thrives in wide-to-central rotations.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Brazilian forward who won Premier League titles in Manchester before north London.",
+        "Palmeiras graduate whose given name matches a biblical figure.",
+        "Mimics a phone call after scoring — number 9 in Arsenal red."
+      ]
+    },
+    "sommer": {
+      "quickFact": "At 1.83 m he is short for a modern elite keeper — yet ranked among Europe’s best reflex shot-stoppers for years at Gladbach.",
+      "playStyleSummary": "Reflex keeper with excellent penalty saving and calm handling in one-on-ones.",
+      "strengths": [
+        "Composure",
+        "Shot-stopping"
+      ],
+      "quizHints": [
+        "Swiss international who spent nearly a decade in green and white at Mönchengladbach.",
+        "Basel boy before Bundesliga fame and a 2023 move to San Siro.",
+        "Replaced a Cameroonian number one when joining Inter’s Serie A title-winning side."
+      ]
+    },
+    "tm-503743": {
+      "quickFact": "England attacking midfielder whose dribbling and goal contributions helped Aston Villa push for Champions League places.",
+      "playStyleSummary": "Direct ball-carrier who drives at defences, combines in transition, and arrives late with powerful shooting.",
+      "strengths": [
+        "Transition threat"
+      ],
+      "quizHints": [
+        "England youth international who developed at Manchester City before Villa.",
+        "Tall ball-carrier who can play wide or through the middle.",
+        "Aston Villa attacker whose first name is Morgan and surname is Rogers."
+      ]
+    },
+    "tm-324358": {
+      "quickFact": "England striker who scored prolifically for Brentford and Aston Villa with relentless pressing and penalty-box movement.",
+      "playStyleSummary": "Energetic number nine who presses defenders, attacks channels, and finishes with sharp movement in the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing"
+      ],
+      "quizHints": [
+        "England international centre-forward who came through Exeter and Brentford.",
+        "Forward known for high work rate and timing of runs in behind.",
+        "Striker whose first name is Ollie and surname is Watkins."
+      ]
+    },
+    "tm-249565": {
+      "quickFact": "Belgium midfielder whose passing range and composure featured for Leicester before Aston Villa made him a Premier League playmaker.",
+      "playStyleSummary": "Composed midfielder who dictates tempo, switches play, and threatens from outside the box with clean striking technique.",
+      "strengths": [
+        "Penalty-box movement",
+        "Passing range"
+      ],
+      "quizHints": [
+        "Belgium international midfielder known for long passing and vision.",
+        "Scored a famous FA Cup final goal for Leicester from distance.",
+        "Aston Villa midfielder whose first name is Youri and surname is Tielemans."
+      ]
+    },
+    "tm-255508": {
+      "quickFact": "Athletic Club forward born in Bilbao who became a Spain and Ghana dual-national story on the wing.",
+      "playStyleSummary": "Direct wide forward who uses pace to stretch defenses, attack channels, and press relentlessly off the ball.",
+      "strengths": [
+        "Pressing",
+        "Pace"
+      ],
+      "quizHints": [
+        "Came through Athletic’s academy and stayed loyal to the Basque club.",
+        "Known for explosive sprints and power on the right side of attack.",
+        "Brother Nico also plays professionally; this Iñaki wears red and white stripes."
+      ]
+    },
+    "tm-272999": {
+      "quickFact": "Paraguay winger whose pace and direct running made him an Atlanta United star before Premier League spells with Newcastle.",
+      "playStyleSummary": "Direct winger who drives inside, shoots from the right channel, and presses aggressively.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Paraguay winger in red, white, and blue with MLS and Premier League experience.",
+        "Atlanta United legend — not Gustavo Gómez the centre-back captain.",
+        "Miguel who attacks from the right with quick feet."
+      ]
+    },
+    "tm-406040": {
+      "quickFact": "Nigeria forward whose dribbling and final-third creativity shone at Atalanta before Atlético Madrid added him in La Liga.",
+      "playStyleSummary": "Skillful forward who isolates defenders, combines in tight spaces, and creates chances with quick feet in the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pace",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Nigeria international forward who starred in Italy with Atalanta.",
+        "Direct wide player known for dribbling and penalty-area combinations.",
+        "Atlético Madrid attacker whose first name is Ademola and surname is Lookman."
+      ]
+    },
+    "tm-238407": {
+      "quickFact": "Norway striker who scored regularly for Real Sociedad and RB Leipzig before becoming a La Liga forward at Atlético Madrid.",
+      "playStyleSummary": "Mobile striker who attacks channels, holds up play, and finishes with power from inside the box.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Norway centre-forward in red who plays for Atlético Madrid in La Liga.",
+        "Tall striker — not Erling Haaland at Manchester City.",
+        "Alexander Sørloth known for runs in behind and left-footed finishes."
+      ]
+    },
+    "tm-44058": {
+      "quickFact": "Poland goalkeeper with long spells at Arsenal and Juventus who returned to Barcelona as senior national-team cover.",
+      "playStyleSummary": "Traditional goalkeeper who commands the box, spreads on one-v-ones, and distributes with either foot.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Poland goalkeeper in white and red — not Kamil Grabara at Bournemouth.",
+        "Former Juventus and Arsenal no. 1 before Barcelona.",
+        "Tall shot-stopper named Wojciech with the diacritic on the c."
+      ]
+    },
+    "tm-401578": {
+      "quickFact": "Argentina midfielder whose press resistance and passing helped Bayer Leverkusen after he became a World Cup winner with Argentina.",
+      "playStyleSummary": "Compact midfielder who receives under pressure, plays quick combinations, and keeps rhythm with intelligent short passing.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Argentina international midfielder from the 2022 World Cup-winning squad.",
+        "Played in Argentina before Bundesliga football with Leverkusen.",
+        "Bayer Leverkusen midfielder whose first name is Exequiel and surname is Palacios."
+      ]
+    },
+    "tm-166601": {
+      "quickFact": "Germany centre-back whose size and calm defending featured for Bayern Munich before a Borussia Dortmund move in the Bundesliga.",
+      "playStyleSummary": "Composed centre-back who reads play early, wins aerial duels, and builds attacks with simple progressive passes.",
+      "strengths": [
+        "Aerial threat",
+        "Progressive passing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Germany international centre-back who won trophies with Bayern Munich.",
+        "Tall defender known for calm interceptions and passing out from the back.",
+        "Borussia Dortmund centre-back whose first name is Niklas and surname is Süle."
+      ]
+    },
+    "tm-112515": {
+      "quickFact": "Spain left-back who won the Champions League with Chelsea and later brought experience to Celta Vigo with goals and crossing.",
+      "playStyleSummary": "Attacking left-back who overlaps, shoots from distance, and delivers dangerous balls into the box from wide areas.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Spain international left-back who won the Champions League with Chelsea.",
+        "Attacking full-back known for left-footed shooting and aerial threat from set pieces.",
+        "Defender whose first name is Marcos and surname is Alonso."
+      ]
+    },
+    "tm-626724": {
+      "quickFact": "Brazil forward who developed at Fluminense and Watford before Chelsea used him as a mobile centre-forward in the Premier League.",
+      "playStyleSummary": "Fluid centre-forward who drops to combine, spins defenders, and finishes with placement rather than pure power.",
+      "strengths": [
+        "Fluid centre-forward who drops to combine",
+        "Spins defenders",
+        "And finishes with placement rather than pure power."
+      ],
+      "quizHints": [
+        "Brazil international forward with Watford and Brighton experience before Chelsea.",
+        "Tall attacker who links play and finishes with soft touches in the box.",
+        "Chelsea forward whose first name is João and surname is Pedro."
+      ]
+    },
+    "tm-487465": {
+      "quickFact": "Portugal winger whose pace and creativity at Wolves earned a big Chelsea move as a Premier League wide threat.",
+      "playStyleSummary": "Explosive winger who attacks one-on-ones, cuts inside for shots, and creates chances with fast combination play.",
+      "strengths": [
+        "Pace",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Portugal international who broke through at Wolverhampton Wanderers.",
+        "Quick left-footed winger who cuts inside and shoots from wide positions.",
+        "Chelsea wide player whose first name is Pedro and surname is Neto."
+      ]
+    },
+    "tm-126665": {
+      "quickFact": "Senegal midfielder whose tackling and ball-winning at Everton and PSG made him a Lions of Teranga mainstay for a decade.",
+      "playStyleSummary": "Compact defensive midfielder who presses, tackles, and plays short forward passes under pressure.",
+      "strengths": [
+        "Pressing",
+        "Ball winning",
+        "Composure"
+      ],
+      "quizHints": [
+        "Senegal holding midfielder in green who plays for Everton in the Premier League.",
+        "Ball-winner — not Nicolas Jackson the striker.",
+        "Idrissa Gueye known for interceptions and quick recycling passes."
+      ]
+    },
+    "tm-432895": {
+      "quickFact": "Brazil striker with Chelsea and Roma medals who leads the line for Flamengo with movement and composure.",
+      "playStyleSummary": "Intelligent centre-forward who drops to combine, attacks space behind defenders, and finishes calmly.",
+      "strengths": [
+        "Pace",
+        "Composure"
+      ],
+      "quizHints": [
+        "Former Chelsea and Roma centre-forward at Flamengo.",
+        "Brazil no. 9 type who links play and finishes in the box.",
+        "Flamengo striker Pedro — not Pedri of Barcelona or Pedro Neto."
+      ]
+    },
+    "tm-206040": {
+      "quickFact": "Mexico striker famous for his Wolves goals and a distinctive goal celebration before Fulham and a long national-team career.",
+      "playStyleSummary": "Experienced striker who drops to combine, attacks the box with timing, and finishes with calm one-touch strikes.",
+      "strengths": [
+        "Penalty-box movement",
+        "Composure"
+      ],
+      "quizHints": [
+        "Mexico international striker who starred for Wolverhampton Wanderers.",
+        "Centre-forward known for link play and a mask celebration after scoring.",
+        "Forward whose first name is Raúl and surname is Jiménez."
+      ]
+    },
+    "tm-46580": {
+      "quickFact": "Croatia international playmaker and Hoffenheim’s main creative star in the Bundesliga.",
+      "playStyleSummary": "Two-footed attacking midfielder who drifts into space, shoots from range, and creates chances.",
+      "strengths": [
+        "Pace",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Croatian attacking midfielder at Hoffenheim.",
+        "Plays in the Bundesliga.",
+        "Attacking midfielder — not goalkeeper Baumann."
+      ]
+    },
+    "tm-55735": {
+      "quickFact": "Armenia midfielder whose creativity at Dortmund, Manchester United, and Roma continued at Inter Milan in Serie A.",
+      "playStyleSummary": "Crafty midfielder who finds space between lines, supplies through balls, and finishes with subtle technique.",
+      "strengths": [
+        "Pace",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Armenia’s all-time great midfielder who played in Germany, England, and Italy.",
+        "Left-footed playmaker known for assists, vision, and intelligent movement.",
+        "Midfielder whose first name is Henrikh and surname is Mkhitaryan."
+      ]
+    },
+    "tm-533738": {
+      "quickFact": "Canada striker who scored prolifically for Lille and Gent before Juventus and leads the Les Rouges line alongside Alphonso Davies.",
+      "playStyleSummary": "Mobile centre-forward who finds space in the box, links play, and finishes with both feet.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pace"
+      ],
+      "quizHints": [
+        "Canadian centre-forward linked to Canada’s national team.",
+        "Juventus striker — not Alphonso Davies the left-back.",
+        "Jonathan who wears no. 10 for Canada in the FootyCompass pool."
+      ]
+    },
+    "tm-236045": {
+      "quickFact": "Gabon international whose pace and direct runs made him one of MLS’s most dangerous wide forwards with LAFC.",
+      "playStyleSummary": "Direct wide forward who drives at defenders, cuts inside, and finishes with power or placement.",
+      "strengths": [
+        "Direct wide forward who drives at defenders",
+        "Cuts inside",
+        "And finishes with power or placement."
+      ],
+      "quizHints": [
+        "Gabon winger who attacks from the left for black-and-gold LAFC.",
+        "MLS forward known for speed, dribbling, and cutting inside to shoot.",
+        "Not a centre-back — plays wide for Los Angeles FC."
+      ]
+    },
+    "tm-184892": {
+      "quickFact": "France winger who won the World Cup in 2018 and returned to Lens as an experienced creator with flair and shooting.",
+      "playStyleSummary": "Creative wide player who beats defenders, cuts inside to shoot, and supplies dangerous passes into the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "France international winger who won the 2018 World Cup.",
+        "Left-footed attacker known for dribbling and shooting from wide areas.",
+        "Winger whose first name is Florian and surname is Thauvin."
+      ]
+    },
+    "tm-51471": {
+      "quickFact": "Croatia international midfielder in the linked Vatreni national pool.",
+      "playStyleSummary": "Composed central midfielder who carries the ball and switches play.",
+      "strengths": [
+        "Ball carrying",
+        "Passing range"
+      ],
+      "quizHints": [
+        "Croatian midfielder linked to Croatia.",
+        "Central midfielder — not a centre-back.",
+        "Plays for a Premier League club."
+      ]
+    },
+    "tm-460939": {
+      "quickFact": "Netherlands midfielder whose goals and driving runs at AZ and AC Milan earned him a Manchester City move as a Premier League playmaker.",
+      "playStyleSummary": "Dynamic midfielder who carries the ball forward, combines in the final third, and finishes with calm one-touch strikes.",
+      "strengths": [
+        "Ball carrying",
+        "Composure"
+      ],
+      "quizHints": [
+        "Netherlands international midfielder who played for AC Milan before Manchester City.",
+        "Box-to-box player known for arriving late in the box and scoring.",
+        "Midfielder whose first name is Tijjani and surname is Reijnders."
+      ]
+    },
+    "tm-177907": {
+      "quickFact": "England centre-back whose aerial presence and long passing featured for Leicester, Manchester United, and the national team.",
+      "playStyleSummary": "Physical centre-back who dominates aerial duels, steps forward with long passes, and leads the defensive line vocally.",
+      "strengths": [
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "England defender who captained Manchester United and played in a home European Championship final.",
+        "Tall centre-back known for heading and build-up passing.",
+        "Manchester United centre-back whose surname is Maguire."
+      ]
+    },
+    "tm-346483": {
+      "quickFact": "England midfielder who came through Chelsea’s academy and became a Champions League winner known for work rate and intelligent runs.",
+      "playStyleSummary": "Mobile attacking midfielder who finds pockets, links play with one-touch passes, and contributes goals from midfield runs.",
+      "strengths": [
+        "Mobile attacking midfielder who finds pockets",
+        "Links play with one-touch passes",
+        "And contributes goals from midfield runs."
+      ],
+      "quizHints": [
+        "England international who won the Champions League with Chelsea.",
+        "Attacking midfielder who arrives late in the box and presses energetically.",
+        "Midfielder whose first name is Mason and surname is Mount."
+      ]
+    },
+    "tm-353366": {
+      "quickFact": "France defender who scored a memorable World Cup volley and won 2018 in Russia while playing centre-back or right-back at club level.",
+      "playStyleSummary": "Versatile defender who defends solidly in a back four, steps into midfield when needed, and reads the game calmly.",
+      "strengths": [
+        "Positioning",
+        "Composure"
+      ],
+      "quizHints": [
+        "France international who won the 2018 World Cup.",
+        "Scored a famous volley in a World Cup quarter-final.",
+        "Defender whose first name is Benjamin and surname is Pavard."
+      ]
+    },
+    "tm-532826": {
+      "quickFact": "England forward whose finishing at Manchester United translated into a marquee Marseille move in Ligue 1.",
+      "playStyleSummary": "Clinical finisher who shoots early with his left foot, drifts inside from the right, and creates chances with quick touches.",
+      "strengths": [
+        "Finishing",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Manchester United academy forward known for left-footed finishing.",
+        "England youth international with a powerful shot from inside the box.",
+        "Marseille attacker whose first name is Mason and surname is Greenwood."
+      ]
+    },
+    "tm-466810": {
+      "quickFact": "Spain winger who broke through as a teenage goalscorer at Barcelona before Monaco gave him a Ligue 1 platform.",
+      "playStyleSummary": "Direct winger who attacks defenders, shoots early, and combines quick feet with sharp finishing in the box.",
+      "strengths": [
+        "Finishing",
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Spain international winger who broke through at Barcelona as a teenager.",
+        "Left-footed attacker known for finishing and cutting inside from the left.",
+        "Forward whose first name is Ansu and surname is Fati."
+      ]
+    },
+    "tm-122153": {
+      "quickFact": "France midfielder and 2018 World Cup winner known for flair, passing range, and powerful ball carrying.",
+      "playStyleSummary": "Expressive central midfielder who can carry through pressure, switch play, and create with ambitious passes.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Won the 2018 World Cup with France.",
+        "Known for major spells with Juventus and Manchester United.",
+        "Tall French midfielder listed with Monaco in this FootyCompass dataset."
+      ]
+    },
+    "tm-96341": {
+      "quickFact": "Belgium’s record goal scorer and a powerful striker with major spells in England and Italy.",
+      "playStyleSummary": "Power striker who pins defenders, attacks space, and finishes quickly with his left foot.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Broke through young at Anderlecht before Premier League moves.",
+        "Belgian forward known for strength, left-footed finishing, and direct runs.",
+        "Centre-forward listed with Napoli in this FootyCompass dataset."
+      ]
+    },
+    "tm-557149": {
+      "quickFact": "South Korea midfielder whose dribbling and creativity developed at Valencia before Paris Saint-Germain added him to their squad.",
+      "playStyleSummary": "Agile playmaker who dribbles through pressure, plays line-breaking passes, and creates from wide or central areas.",
+      "strengths": [
+        "Pressing",
+        "1v1 dribbling",
+        "Chance creation",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "South Korea international midfielder who came through Valencia’s academy.",
+        "Small, left-footed playmaker who carries the ball and combines tightly.",
+        "Paris Saint-Germain midfielder known as Kang-in Lee."
+      ]
+    },
+    "tm-181767": {
+      "quickFact": "Long-serving PSG and Brazil defender trusted for leadership, recovery pace, and calm passing from the back.",
+      "playStyleSummary": "Composed centre-back who reads danger early, covers space behind the line, and starts attacks simply.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Brazilian centre-back who became a Paris Saint-Germain defensive leader.",
+        "Played in Italy with Roma before moving to France as a young defender.",
+        "Often associated with PSG's captaincy and central defence."
+      ]
+    },
+    "tm-85288": {
+      "quickFact": "Spain’s silky playmaker and 2010 World Cup winner who lit up Real Madrid before a Betis renaissance in La Liga.",
+      "playStyleSummary": "Creative attacking midfielder who dribbles in tight spaces, plays one-twos, and shoots from range.",
+      "strengths": [
+        "Pace",
+        "1v1 dribbling",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Spain magician who won the 2010 World Cup in South Africa.",
+        "Real Madrid academy star known for close control and left foot.",
+        "Mononym Isco at Real Betis — not Iniesta but same golden generation era."
+      ]
+    },
+    "tm-15799": {
+      "quickFact": "Spanish midfielder in Real Oviedo’s La Liga squad.",
+      "playStyleSummary": "Two-footed playmaker who controls tempo, delivers set pieces, and finds tight passes.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Plays for Real Oviedo in La Liga.",
+        "Central midfielder.",
+        "Spanish."
+      ]
+    },
+    "tm-237662": {
+      "quickFact": "Switzerland striker who scored at a World Cup as a teenager and later led the line for Monaco, Gladbach, and Rennes.",
+      "playStyleSummary": "Strong centre-forward who links play with his back to goal, attacks channels, and finishes with composure in the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Composure"
+      ],
+      "quizHints": [
+        "Switzerland international centre-forward who scored at the 2018 World Cup.",
+        "Powerful striker known for hold-up play and finishing with both feet.",
+        "Forward whose first name is Breel and surname is Embolo."
+      ]
+    },
+    "tm-337807": {
+      "quickFact": "United States forward and Seattle Sounders homegrown star known for pace, MLS Cup goals, and USMNT impact.",
+      "playStyleSummary": "Pacey forward who attacks space in transition, presses aggressively, and finishes with composure.",
+      "strengths": [
+        "Pressing",
+        "Transition threat",
+        "Pace",
+        "Composure"
+      ],
+      "quizHints": [
+        "Seattle homegrown USMNT forward in Rave Green.",
+        "Fast American attacker who excels in transition and pressing.",
+        "Sounders forward — not the Salvadoran full-back Roldán on the same team."
+      ]
+    },
+    "tm-316125": {
+      "quickFact": "England left-back who won the Champions League with Chelsea and later continued his career in Ligue 1 with Strasbourg.",
+      "playStyleSummary": "Attacking full-back who combines down the flank, delivers dangerous crosses, and recovers with disciplined defensive positioning.",
+      "strengths": [
+        "Crossing",
+        "Positioning"
+      ],
+      "quizHints": [
+        "England international left-back who won the Champions League with Chelsea.",
+        "Leicester academy graduate known for overlapping runs and left-footed delivery.",
+        "Defender whose first name is Ben and surname is Chilwell."
+      ]
+    },
+    "tm-488362": {
+      "quickFact": "England box-to-box midfielder who captained Chelsea on loan spells before Tottenham and the 2022 World Cup squad.",
+      "playStyleSummary": "Relentless central midfielder who presses, carries into the final third, and shoots from edge of the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pressing"
+      ],
+      "quizHints": [
+        "England midfielder in white who was in Qatar 2022.",
+        "Chelsea academy graduate now at Tottenham in navy.",
+        "High-energy no. 8 — not Declan Rice the deeper holder."
+      ]
+    },
+    "tm-294057": {
+      "quickFact": "Leicester playmaker who became Tottenham’s creative hub with set pieces, through-balls, and goals from midfield.",
+      "playStyleSummary": "Technical attacking midfielder who manipulates space, delivers set pieces, and shoots from the edge of the box.",
+      "strengths": [
+        "Penalty-box movement",
+        "Pace"
+      ],
+      "quizHints": [
+        "England midfielder who wore blue at Leicester before north London.",
+        "Left-footed creator known for corners, free kicks, and disguised passes.",
+        "Tottenham number 10 type who links play between midfield and attack."
+      ]
+    },
+    "tm-543499": {
+      "quickFact": "Ghana forward whose dribbling and goals at Ajax earned a Premier League move where he became a creative wide threat.",
+      "playStyleSummary": "Explosive wide forward who isolates defenders, combines in tight spaces, and shoots with strength from both feet.",
+      "strengths": [
+        "Pace",
+        "Duels"
+      ],
+      "quizHints": [
+        "Ghana international who starred in the Eredivisie before English football.",
+        "Direct winger who dribbles inside and finishes with power.",
+        "Attacker whose first name is Mohammed and surname is Kudus."
+      ]
+    },
+    "tm-283628": {
+      "quickFact": "Czech Republic midfielder whose aerial threat and late runs made him a West Ham staple after arriving from Slavia Prague.",
+      "playStyleSummary": "Box-to-box midfielder who wins aerial duels, screens the defence, and adds goal threat from set pieces and late runs.",
+      "strengths": [
+        "Penalty-box movement",
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "Czech Republic international who scored with powerful headers in the Premier League.",
+        "Tall defensive midfielder who arrives late in the box.",
+        "West Ham midfielder whose first name is Tomáš and surname is Souček."
+      ]
+    },
+    "tm-202886": {
+      "quickFact": "England midfielder who won the Champions League with Chelsea and rebuilt his career at AC Milan as a powerful Serie A runner.",
+      "playStyleSummary": "Powerful midfielder who carries the ball through lines, wins duels, and supports attacks with late box arrivals.",
+      "strengths": [
+        "Penalty-box movement",
+        "Ball carrying",
+        "Duels"
+      ],
+      "quizHints": [
+        "England international midfielder who came through Chelsea’s academy.",
+        "Tall ball-carrier known for driving runs and physical presence in midfield.",
+        "Midfielder whose first name is Ruben and surname is Loftus-Cheek."
+      ]
+    },
+    "tm-574671": {
+      "quickFact": "Serbia centre-back who moved from Red Bull Salzburg to AC Milan and brings aerial dominance to the Orlovi back line.",
+      "playStyleSummary": "Physical centre-back who defends the box, wins aerial duels, and carries the ball out calmly.",
+      "strengths": [
+        "Penalty-box movement",
+        "Aerial threat",
+        "Ball carrying",
+        "Duels",
+        "Composure"
+      ],
+      "quizHints": [
+        "Serbia centre-back in red who plays for AC Milan.",
+        "Tall defender from Salzburg — not Strahinja Tanasijević in MLS.",
+        "Strahinja at Milan who wins headers and steps into midfield."
+      ]
+    },
+    "tm-420243": {
+      "quickFact": "Netherlands defender who won the Eredivisie with Ajax before Arsenal made him a versatile right-back in the Premier League.",
+      "playStyleSummary": "Composed defender who defends tightly, steps into midfield, and distributes accurately under pressure.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Netherlands international defender who came through Ajax’s academy.",
+        "Can play right-back or centre-back with strong one-on-one defending.",
+        "Defender whose first name is Jurriën and surname is Timber."
+      ]
+    },
+    "tm-503987": {
+      "quickFact": "England winger whose dribbling at PSV and Chelsea earned him an Arsenal move as a direct Premier League wide threat.",
+      "playStyleSummary": "Skillful winger who beats defenders one-on-one, attacks the byline, and finishes with power from wide areas.",
+      "strengths": [
+        "Skillful winger who beats defenders one-on-one",
+        "Attacks the byline",
+        "And finishes with power from wide areas."
+      ],
+      "quizHints": [
+        "England international winger who developed at PSV Eindhoven.",
+        "Direct wide player known for dribbling and cutting inside to shoot.",
+        "Attacker whose first name is Noni and surname is Madueke."
+      ]
+    },
+    "tm-485706": {
+      "quickFact": "Belgium defensive midfielder whose size and ball-winning grew at Everton before Aston Villa made him a Premier League anchor.",
+      "playStyleSummary": "Athletic holding midfielder who shields the back line, wins duels, and progresses play with powerful strides.",
+      "strengths": [
+        "Progressive passing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Belgium international defensive midfielder with Premier League experience.",
+        "Tall pivot known for interceptions, aerial duels, and carrying the ball forward.",
+        "Midfielder whose first name is Amadou and surname is Onana."
+      ]
+    },
+    "tm-61812": {
+      "quickFact": "Spain left-back whose long Athletic Club career made him a Basque-side institution with attacking overlap and experience.",
+      "playStyleSummary": "Experienced left-back who pushes high, crosses with power, and defends the flank with tough one-on-one work.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Spain international left-back associated with Athletic Club in the Basque Country.",
+        "Veteran full-back known for stamina and driven left-footed delivery.",
+        "Defender whose first name is Yuri and surname is Berchiche."
+      ]
+    },
+    "tm-636688": {
+      "quickFact": "Spain left-back whose explosive pace at Barcelona made him a La Liga attacking full-back with end-to-end runs.",
+      "playStyleSummary": "Lightning-quick left-back who flies forward, delivers crosses, and recovers with elite speed.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Spain international left-back from Barcelona’s academy system.",
+        "Very fast full-back known for overlapping runs and recovery pace.",
+        "Defender whose first name is Alejandro and surname is Balde."
+      ]
+    },
+    "tm-962110": {
+      "quickFact": "Spain centre-back who broke through as a teenager at Barcelona with composure beyond his years in La Liga.",
+      "playStyleSummary": "Composed young centre-back who reads play early, steps out with the ball, and defends with timing.",
+      "strengths": [
+        "Composed young centre-back who reads play early",
+        "Steps out with the ball",
+        "And defends with timing."
+      ],
+      "quizHints": [
+        "Spain international centre-back who broke through young at Barcelona.",
+        "Teenage defender known for calm defending and passing from the back.",
+        "Centre-back whose first name is Pau and surname is Cubarsí."
+      ]
+    },
+    "tm-776890": {
+      "quickFact": "Senegal striker whose goals for Villarreal and Chelsea led to Bayern Munich signing him as a Bundesliga centre-forward.",
+      "playStyleSummary": "Mobile striker who attacks channels, presses defenders, and finishes with power and composure.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Senegal international centre-forward who played for Chelsea before Bayern.",
+        "Tall striker known for pace, hold-up play, and finishing.",
+        "Forward whose first name is Nicolas and surname is Jackson."
+      ]
+    },
+    "tm-284732": {
+      "quickFact": "Algeria left-back who starred at Bordeaux and Borussia Mönchengladbach before Dortmund and remains a Fennecs defensive leader.",
+      "playStyleSummary": "Physical defender who defends aggressively, steps into midfield, and carries the ball forward when space opens.",
+      "strengths": [
+        "Pace",
+        "Ball carrying",
+        "Duels"
+      ],
+      "quizHints": [
+        "Algeria defender in green and white who plays for Borussia Dortmund.",
+        "Left-sided centre-back or full-back — not Aïssa Mandi at other clubs.",
+        "Ramy Bensebaini known for strong tackling and aerial duels."
+      ]
+    },
+    "tm-192635": {
+      "quickFact": "Switzerland centre-back who became a Borussia Mönchengladbach defensive mainstay after arriving young from Zurich.",
+      "playStyleSummary": "Steady centre-back who reads play early, intercepts passes, and builds attacks with simple, accurate distribution.",
+      "strengths": [
+        "Ball winning",
+        "Distribution"
+      ],
+      "quizHints": [
+        "Switzerland international centre-back long associated with Borussia Mönchengladbach.",
+        "Composed defender known for positioning and calm passing from the back.",
+        "Centre-back whose first name is Nico and surname is Elvedi."
+      ]
+    },
+    "tm-369316": {
+      "quickFact": "Turkey left-back who broke through at Fenerbahçe before Brighton and offers overlapping width for the national team.",
+      "playStyleSummary": "Modern full-back who overlaps, inverts when needed, and defends with quick recovery runs.",
+      "strengths": [
+        "Modern full-back who overlaps",
+        "Inverts when needed",
+        "And defends with quick recovery runs."
+      ],
+      "quizHints": [
+        "Turkey left-back in red and white who plays for Brighton.",
+        "Fenerbahçe graduate — not Zeki Çelik on the right.",
+        "Ferdi who attacks the left channel with pace."
+      ]
+    },
+    "tm-614258": {
+      "quickFact": "England centre-back who won European trophies with Chelsea after a breakthrough loan at Brighton in the Premier League.",
+      "playStyleSummary": "Calm centre-back who steps into midfield, defends with anticipation, and distributes accurately under pressure.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "England international centre-back who came through Chelsea’s academy.",
+        "Left-footed defender known for composure on the ball and defending space.",
+        "Centre-back whose first name is Levi and surname is Colwill."
+      ]
+    },
+    "tm-537860": {
+      "quickFact": "Ukraine winger whose explosive dribbling at Shakhtar earned a Chelsea move and senior national-team starts on the left flank.",
+      "playStyleSummary": "Direct winger who attacks space, cuts inside to shoot, and presses triggers from the front.",
+      "strengths": [
+        "Pressing",
+        "Pace"
+      ],
+      "quizHints": [
+        "Ukraine winger in yellow and blue who plays for Chelsea.",
+        "Fast left-sided attacker — not Vitaliy Mykolenko the left-back.",
+        "Mykhaylo known for direct runs and pace on the wing."
+      ]
+    },
+    "tm-493003": {
+      "quickFact": "Colombia right-back whose energy and crossing helped Crystal Palace push into the upper half of the Premier League.",
+      "playStyleSummary": "High-energy right-back who overlaps constantly, wins duels, and supplies driven crosses from wide areas.",
+      "strengths": [
+        "Crossing",
+        "Duels"
+      ],
+      "quizHints": [
+        "Colombia international defender who arrived from Belgian football.",
+        "Known for relentless running and aggressive defending on the right flank.",
+        "Crystal Palace full-back whose surname is Muñoz."
+      ]
+    },
+    "tm-429983": {
+      "quickFact": "Norway striker whose physical presence and goals in Spain and England made him a Crystal Palace forward after a Wolves spell.",
+      "playStyleSummary": "Target striker who links play with his back to goal, attacks crosses, and finishes with power and timing.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Norway international centre-forward with Premier League experience.",
+        "Tall striker known for hold-up play and finishing inside the penalty area.",
+        "Forward whose first name is Jørgen and surname is Strand Larsen."
+      ]
+    },
+    "tm-568157": {
+      "quickFact": "Spain winger who came through Villarreal’s academy before becoming a Crystal Palace wide outlet in the Premier League.",
+      "playStyleSummary": "Technical winger who dribbles inside from the flank, links play in the half-space, and creates with quick combinations.",
+      "strengths": [
+        "Pace",
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Spain international winger from the Villarreal academy pathway.",
+        "Left-footed wide player who cuts inside and combines in tight spaces.",
+        "Crystal Palace attacker whose first name is Yéremy and surname is Pino."
+      ]
+    },
+    "tm-585959": {
+      "quickFact": "France striker who scored regularly at Rennes before Eintracht Frankfurt made him a Bundesliga finisher with sharp movement.",
+      "playStyleSummary": "Mobile striker who links play, attacks channels, and finishes with quick one-touch strikes in the penalty area.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "France international centre-forward who developed at Rennes.",
+        "Striker known for quick combinations and finishing inside the box.",
+        "Forward whose first name is Arnaud and surname is Kalimuendo."
+      ]
+    },
+    "tm-173504": {
+      "quickFact": "England centre-back whose leadership and defending in the air made him a long-term Premier League anchor for Burnley and Everton.",
+      "playStyleSummary": "No-nonsense centre-back who wins headers, blocks shots, and organizes the defensive line with clear communication.",
+      "strengths": [
+        "Aerial threat"
+      ],
+      "quizHints": [
+        "England centre-back who captained Burnley before Everton.",
+        "Strong in aerial duels and organized defending in a low block.",
+        "Centre-back whose first name is James and surname is Tarkowski."
+      ]
+    },
+    "tm-118534": {
+      "quickFact": "England centre-back who won the Premier League with Leicester and became an Everton defensive leader after Burnley.",
+      "playStyleSummary": "Dominant centre-back who wins headers, blocks shots, and organizes the defensive line with authority.",
+      "strengths": [
+        "Aerial threat"
+      ],
+      "quizHints": [
+        "England international centre-back who won the Premier League with Leicester City.",
+        "Experienced defender known for aerial strength and leadership at the back.",
+        "Centre-back whose first name is Michael and surname is Keane."
+      ]
+    },
+    "tm-93707": {
+      "quickFact": "Germany left-back who spent most of his career at Freiburg as an overlapping outlet with elite stamina and crossing.",
+      "playStyleSummary": "Ironman full-back who attacks the line constantly, delivers balls into the box, and recovers with outstanding endurance.",
+      "strengths": [
+        "Penalty-box movement"
+      ],
+      "quizHints": [
+        "Germany international left-back associated with SC Freiburg for many years.",
+        "Known for endless running and left-footed crosses from the flank.",
+        "Defender whose first name is Christian and surname is Günter."
+      ]
+    },
+    "tm-248999": {
+      "quickFact": "Germany striker who became a SC Freiburg fan favourite with relentless pressing, hold-up play, and goals in the Bundesliga.",
+      "playStyleSummary": "High-energy striker who presses defenders, links play with his back to goal, and finishes with sharp movement.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Germany international centre-forward long associated with SC Freiburg.",
+        "Striker known for work rate, pressing, and finishing inside the box.",
+        "Forward whose first name is Lucas and surname is Höler."
+      ]
+    },
+    "tm-242631": {
+      "quickFact": "Nigeria winger who developed at Arsenal and later rebuilt his Premier League profile at Fulham with dribbling and link play.",
+      "playStyleSummary": "Creative wide player who carries the ball inside, combines in the final third, and works back to help the press.",
+      "strengths": [
+        "Pressing",
+        "Chance creation",
+        "Ball carrying"
+      ],
+      "quizHints": [
+        "Nigeria international who came through Arsenal’s Hale End academy.",
+        "Left-footed wide player who can play wing or attacking midfield.",
+        "Fulham attacker whose first name is Alex and surname is Iwobi."
+      ]
+    },
+    "tm-123275": {
+      "quickFact": "Scotland midfielder who became a Fulham icon with silky passing, set pieces, and long service as a Premier League playmaker.",
+      "playStyleSummary": "Elegant midfielder who dictates tempo, slides passes through lines, and creates chances with calm technique.",
+      "strengths": [
+        "Chance creation",
+        "Composure"
+      ],
+      "quizHints": [
+        "Scotland international midfielder long associated with Fulham.",
+        "Left-footed playmaker known for passing, control, and set-piece delivery.",
+        "Midfielder whose first name is Tom and surname is Cairney."
+      ]
+    },
+    "tm-459658": {
+      "quickFact": "Italy full-back whose energy and dribbling made him a Juventus wide option after breaking through at Bologna and Genoa.",
+      "playStyleSummary": "Dynamic full-back who overlaps constantly, drives inside with the ball, and presses aggressively to win it back.",
+      "strengths": [
+        "Pressing"
+      ],
+      "quizHints": [
+        "Italy international full-back who can play left or right sides.",
+        "Quick defender who carries the ball forward from wide areas.",
+        "Juventus full-back whose first name is Andrea and surname is Cambiaso."
+      ]
+    },
+    "tm-509022": {
+      "quickFact": "Italy centre-back who rose from lower-league football to become a Juventus starter known for aerial duels and direct defending.",
+      "playStyleSummary": "Aggressive centre-back who attacks aerial balls, steps out boldly, and keeps defending simple and physical.",
+      "strengths": [
+        "Aerial threat",
+        "Duels"
+      ],
+      "quizHints": [
+        "Italy international centre-back who progressed from Serie B to Juventus.",
+        "Physical defender known for heading and aggressive duels.",
+        "Centre-back whose first name is Federico and surname is Gatti."
+      ]
+    },
+    "tm-331511": {
+      "quickFact": "Spain midfielder from Barcelona’s La Masia who became LA Galaxy’s tempo-setter after leaving Camp Nou.",
+      "playStyleSummary": "Technical midfielder who keeps the ball, plays between lines, and dictates tempo in possession.",
+      "strengths": [
+        "Technical midfielder who keeps the ball",
+        "Plays between lines",
+        "And dictates tempo in possession."
+      ],
+      "quizHints": [
+        "La Masia graduate who left Barcelona for MLS with LA Galaxy.",
+        "Small Spain midfielder known for tight control and passing rhythm.",
+        "Central playmaker in white and gold — not Germany’s Marco Reus."
+      ]
+    },
+    "tm-82442": {
+      "quickFact": "France's all-time leading men's scorer and a target striker known for link play and acrobatic finishes.",
+      "playStyleSummary": "Physical centre-forward who links play with one-touch passes, wins aerial duels, and finishes creatively.",
+      "strengths": [
+        "Aerial threat",
+        "Chance creation",
+        "Duels"
+      ],
+      "quizHints": [
+        "Won the 2018 World Cup with France.",
+        "Played major spells with Arsenal, Chelsea, and AC Milan.",
+        "Veteran French striker listed with Lille in FootyCompass."
+      ]
+    },
+    "tm-418659": {
+      "quickFact": "Algeria forward who developed in France and became a Ligue 1 goal threat with clever movement and finishing.",
+      "playStyleSummary": "Mobile striker who drifts across the front line, combines in tight spaces, and finishes with placement and timing.",
+      "strengths": [
+        "Pace",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Algeria international striker who came through Lyon’s academy system.",
+        "Centre-forward known for intelligent runs and composed finishing.",
+        "Forward whose first name is Amine and surname is Gouiri."
+      ]
+    },
+    "tm-474800": {
+      "quickFact": "Argentina centre-back who built his reputation at Lens before Marseille and the 2022 World Cup-winning squad.",
+      "playStyleSummary": "Modern centre-back who defends aggressively, carries forward, and plays line-breaking passes.",
+      "strengths": [
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Argentina defender in blue and white who played at Qatar 2022.",
+        "Marseille centre-back — not Leonardo Balerdi his club partner.",
+        "Left-sided centre-back who steps into midfield with the ball."
+      ]
+    },
+    "tm-263918": {
+      "quickFact": "Russia playmaker whose touch and vision made him a Monaco mainstay in Ligue 1 after moving from CSKA Moscow.",
+      "playStyleSummary": "Technical playmaker who drifts into pockets, plays disguised passes, and links midfield to attack with subtle creativity.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Russia international midfielder who starred at the 2018 World Cup on home soil.",
+        "Creative Monaco player known for left-footed passing and flair.",
+        "Monaco midfielder whose first name is Aleksandr and surname is Golovin."
+      ]
+    },
+    "tm-490426": {
+      "quickFact": "Senegal winger who won the Africa Cup of Nations and became a Monaco wide outlet with pace and crossing in Ligue 1.",
+      "playStyleSummary": "Explosive winger who runs at defenders, stretches play wide, and supplies dangerous crosses and cut-backs.",
+      "strengths": [
+        "Pace",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Senegal international winger who won the Africa Cup of Nations.",
+        "Direct wide player known for speed and delivery from the right.",
+        "Attacker whose first name is Krépin and surname is Diatta."
+      ]
+    },
+    "tm-386446": {
+      "quickFact": "Italy centre-back who developed at Torino and became a Napoli defensive signing known for pace and proactive defending.",
+      "playStyleSummary": "Modern centre-back who defends space aggressively, carries into midfield, and reads through-balls with recovery speed.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Italy international centre-back who came through Torino.",
+        "Quick defender who steps out of the line to intercept and carry forward.",
+        "Napoli centre-back whose first name is Alessandro and surname is Buongiorno."
+      ]
+    },
+    "tm-427568": {
+      "quickFact": "England goalkeeper who became a Premier League starter with Sheffield United and Arsenal before Newcastle.",
+      "playStyleSummary": "Reactive keeper who commands the area, plays out under pressure, and uses quick distribution to start counters.",
+      "strengths": [
+        "Pressing",
+        "Transition threat",
+        "Composure",
+        "Distribution"
+      ],
+      "quizHints": [
+        "England international goalkeeper with a vocal, commanding style.",
+        "Known for reflex saves and aggressive sweeping outside the box.",
+        "Goalkeeper whose first name is Aaron and surname is Ramsdale."
+      ]
+    },
+    "tm-398065": {
+      "quickFact": "England winger whose direct running and goals for Leicester carried into a Newcastle wide role in the Premier League.",
+      "playStyleSummary": "Direct wide forward who drives at defenders, cuts inside to shoot, and offers constant threat in transition.",
+      "strengths": [
+        "Transition threat"
+      ],
+      "quizHints": [
+        "England winger who broke through at Leicester with pace and end product.",
+        "Left-footed wide player who attacks the byline and shoots across goal.",
+        "Newcastle winger whose first name is Harvey and surname is Barnes."
+      ]
+    },
+    "tm-521964": {
+      "quickFact": "Germany centre-back who rebuilt his reputation at AC Milan before becoming a Newcastle defensive anchor in the Premier League.",
+      "playStyleSummary": "Dominant centre-back who wins headers, blocks shots, and keeps defending simple with strong positional discipline.",
+      "strengths": [
+        "Aerial threat",
+        "Positioning"
+      ],
+      "quizHints": [
+        "Germany international centre-back who played in Serie A before England.",
+        "Tall defender known for aerial strength and calm defending in the box.",
+        "Centre-back whose first name is Malick and surname is Thiaw."
+      ]
+    },
+    "tm-388165": {
+      "quickFact": "DR Congo forward whose Brentford goals translated into a Newcastle move as a versatile Premier League finisher.",
+      "playStyleSummary": "Intelligent forward who times runs behind the line, presses energetically, and finishes with calm one-touch strikes.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "DR Congo international who scored regularly in the Championship and Premier League.",
+        "Can play striker or wide and is known for sharp movement in the box.",
+        "Newcastle attacker whose first name is Yoane and surname is Wissa."
+      ]
+    },
+    "tm-16136": {
+      "quickFact": "Brazilian centre-back who captained Nice and became a Champions League-winning veteran with Bayern Munich earlier in his career.",
+      "playStyleSummary": "Experienced centre-back who reads the game, steps out to intercept, and organizes the defensive line with authority.",
+      "strengths": [
+        "Ball winning",
+        "Positioning"
+      ],
+      "quizHints": [
+        "Won the Champions League with Bayern Munich as a composed left-footed centre-back.",
+        "Long-time Ligue 1 leader at Nice wearing the armband.",
+        "Brazil defender known by a single first name: Dante."
+      ]
+    },
+    "tm-215390": {
+      "quickFact": "Paraguay centre-back and Palmeiras captain who anchors title and Libertadores defences in green and white.",
+      "playStyleSummary": "Commanding centre-back who wins aerial duels, steps out to intercept, and organises the line.",
+      "strengths": [
+        "Aerial threat",
+        "Duels",
+        "Ball winning"
+      ],
+      "quizHints": [
+        "Paraguay international who captains Palmeiras.",
+        "Tall centre-back known for headers, leadership, and aerial duels.",
+        "Gustavo Gómez at Palmeiras — not Facundo Medina of Marseille."
+      ]
+    },
+    "tm-318204": {
+      "quickFact": "Germany left-back whose crossing and stamina made him a Hoffenheim standout before RB Leipzig used him as a wide outlet.",
+      "playStyleSummary": "Attacking left-back who pushes high, delivers early crosses, and recovers quickly with strong endurance.",
+      "strengths": [
+        "Crossing"
+      ],
+      "quizHints": [
+        "Germany international left-back known for overlapping runs.",
+        "Played for Hoffenheim before joining RB Leipzig.",
+        "Leipzig full-back whose first name is David and surname is Raum."
+      ]
+    },
+    "tm-459463": {
+      "quickFact": "Colombia forward whose flair and finishing made him a Real Betis fan favourite after spells in England and Spain.",
+      "playStyleSummary": "Skillful forward who dribbles from deep, links play, and finishes with curl or placement rather than power.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Colombia international who played for Watford before deeper success in La Liga.",
+        "Creative attacker known by the nickname Cucho.",
+        "Real Betis forward whose surname is Hernández."
+      ]
+    },
+    "tm-336869": {
+      "quickFact": "Spain midfielder who developed at Espanyol and later played for Bayern Munich, Leeds, and Real Betis in La Liga.",
+      "playStyleSummary": "Calm holding midfielder who circulates possession, presses selectively, and breaks lines with measured passing.",
+      "strengths": [
+        "Pressing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Spain international deep midfielder from Catalan football.",
+        "Played for Bayern Munich and Leeds before returning to La Liga.",
+        "Real Betis midfielder whose first name is Marc and surname is Roca."
+      ]
+    },
+    "tm-287579": {
+      "quickFact": "Morocco midfielder whose ball-winning and press resistance stood out at the 2022 World Cup and in La Liga midfield battles.",
+      "playStyleSummary": "Tenacious midfielder who breaks up play, shields defenders, and progresses possession with compact dribbles.",
+      "strengths": [
+        "1v1 dribbling",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Morocco international who helped his nation reach the 2022 World Cup semi-finals.",
+        "Defensive midfielder known for tackling and carrying through pressure.",
+        "Midfielder whose first name is Sofyan and surname is Amrabat."
+      ]
+    },
+    "tm-319745": {
+      "quickFact": "Spain midfielder who won the Europa League with Arsenal and became a Real Madrid squad playmaker with close control and passing.",
+      "playStyleSummary": "Skilful midfielder who escapes pressure, circulates possession, and unlocks defences with clever through balls.",
+      "strengths": [
+        "Pressing",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Spain international midfielder who played for Real Madrid and Arsenal.",
+        "Technical central player known for tight dribbling and short passing.",
+        "Midfielder whose first name is Dani and surname is Ceballos."
+      ]
+    },
+    "tm-309110": {
+      "quickFact": "Spain midfielder whose touch and vision made him a Real Sociedad playmaker after developing at Celta Vigo.",
+      "playStyleSummary": "Technical midfielder who manipulates tempo, finds half-space passes, and combines tightly in the final third.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Spain international who excels at linking midfield and attack with left-footed passes.",
+        "Came through Celta before becoming a La Real creative hub.",
+        "Real Sociedad midfielder whose first name is Brais."
+      ]
+    },
+    "tm-372246": {
+      "quickFact": "Spain midfielder who won the Copa del Rey with Valencia and later brought set-piece quality to Real Sociedad in La Liga.",
+      "playStyleSummary": "Technical midfielder who finds pockets of space, delivers set pieces, and combines with short passes in the final third.",
+      "strengths": [
+        "Pace"
+      ],
+      "quizHints": [
+        "Spain international midfielder with Valencia and PSG experience.",
+        "Known for set-piece delivery and timing of runs into the box.",
+        "Real Sociedad midfielder whose first name is Carlos and surname is Soler."
+      ]
+    },
+    "tm-378293": {
+      "quickFact": "Venezuela midfielder who starred for Manchester City’s youth setup and later became a Real Sociedad engine in La Liga.",
+      "playStyleSummary": "Dynamic midfielder who covers ground, wins the ball back, and carries attacks with powerful dribbles and passes.",
+      "strengths": [
+        "1v1 dribbling"
+      ],
+      "quizHints": [
+        "Venezuela international central midfielder with Premier League academy roots.",
+        "Box-to-box player known for energy, tackling, and driving runs forward.",
+        "Midfielder whose first name is Yangel and surname is Herrera."
+      ]
+    },
+    "tm-320748": {
+      "quickFact": "Poland playmaker whose goals and creativity at Feyenoord earned a big move to Rennes as a technical attacking midfielder.",
+      "playStyleSummary": "Elegant number ten who finds space between lines, strikes from range, and supplies teammates with weighted through balls.",
+      "strengths": [
+        "Pace",
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Poland international attacking midfielder who starred in the Eredivisie.",
+        "Left-footed creator known for shooting from distance and set-piece delivery.",
+        "Midfielder whose first name is Sebastian and surname is Szymanski."
+      ]
+    },
+    "tm-343537": {
+      "quickFact": "Ukraine striker whose Girona goal glut earned a big move to Roma as a classic penalty-box finisher.",
+      "playStyleSummary": "Penalty-box striker who attacks crosses, finishes first-time, and stays central to maximize shooting chances.",
+      "strengths": [
+        "Penalty-box movement",
+        "Chance creation",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Top scorer in La Liga with Girona before joining Roma.",
+        "Ukraine international centre-forward known for poaching in the box.",
+        "AS Roma striker whose first name is Artem."
+      ]
+    },
+    "tm-648046": {
+      "quickFact": "Ireland striker who broke through at Brighton as a teenage goalscorer before a Roma move in Serie A.",
+      "playStyleSummary": "Powerful young striker who links play with his back to goal, attacks crosses, and finishes with calm one-touch strikes.",
+      "strengths": [
+        "Crossing",
+        "Composure"
+      ],
+      "quizHints": [
+        "Ireland international centre-forward who debuted young in the Premier League.",
+        "Tall striker known for hold-up play and finishing inside the box.",
+        "Forward whose first name is Evan and surname is Ferguson."
+      ]
+    },
+    "tm-371149": {
+      "quickFact": "France centre-back whose pace and left-footed defending made him a Frankfurt standout before Roma in Serie A.",
+      "playStyleSummary": "Athletic centre-back who covers ground, steps out to intercept, and builds play with composed left-foot passes.",
+      "strengths": [
+        "Ball winning"
+      ],
+      "quizHints": [
+        "France international centre-back who played in Germany with Eintracht Frankfurt.",
+        "Quick left-footed defender comfortable carrying out from the back.",
+        "Centre-back whose first name is Evan and surname is Ndicka."
+      ]
+    },
+    "tm-284727": {
+      "quickFact": "Argentina striker famous for a Boca Libertadores explosion who became São Paulo’s penalty-box finisher.",
+      "playStyleSummary": "Classic number 9 who attacks crosses, finishes inside the six-yard box, and holds up play.",
+      "strengths": [
+        "Penalty-box movement",
+        "Crossing"
+      ],
+      "quizHints": [
+        "Argentina centre-forward who scored heavily for Boca Juniors.",
+        "São Paulo striker in white, red, and black known for poaching.",
+        "Jonathan Calleri — full hyphenated surname at São Paulo."
+      ]
+    },
+    "tm-43228": {
+      "quickFact": "Slovakia attacking midfielder with Premier League experience who crafts chances as a number 10 for Seattle.",
+      "playStyleSummary": "Skillful attacking midfielder who receives between lines, combines in the final third, and shoots from range.",
+      "strengths": [
+        "Skillful attacking midfielder who receives between lines",
+        "Combines in the final third",
+        "And shoots from range."
+      ],
+      "quizHints": [
+        "Slovakia international playmaker for Seattle Sounders in Rave Green.",
+        "Former Leeds and Real Salt Lake attacker before Seattle.",
+        "Creative number 10 — not USMNT winger Paul Arriola."
+      ]
+    },
+    "tm-385105": {
+      "quickFact": "Chile left-back who developed at Colo-Colo before Toulouse and Sevilla, supplying width for La Roja.",
+      "playStyleSummary": "Attacking full-back who overlaps, delivers cut-backs, and recovers with energetic sprints.",
+      "strengths": [
+        "Attacking full-back who overlaps",
+        "Delivers cut-backs",
+        "And recovers with energetic sprints."
+      ],
+      "quizHints": [
+        "Chile left-back in red kit who plays for Sevilla.",
+        "Overlapping defender — not Alexis Sánchez the forward.",
+        "Gabriel who motors up and down the left flank."
+      ]
+    },
+    "tm-660867": {
+      "quickFact": "Paraguay attacking midfielder whose explosive dribbling at Brighton made him a sought-after creator before Strasbourg.",
+      "playStyleSummary": "Creative number ten who drives at defenders, changes direction quickly, and unlocks defences with incisive passes and shots.",
+      "strengths": [
+        "Chance creation"
+      ],
+      "quizHints": [
+        "Paraguay international playmaker who broke through in the Premier League.",
+        "Left-footed attacker known for direct dribbling and flair in tight spaces.",
+        "Midfielder whose first name is Julio and surname is Enciso."
+      ]
+    },
+    "tm-410425": {
+      "quickFact": "Mali midfielder whose ball-winning and carrying at Brighton earned him a Tottenham move as a powerful Premier League pivot.",
+      "playStyleSummary": "Explosive midfielder who shields the defence, drives through pressure, and sets tempo with bold ball progression.",
+      "strengths": [
+        "Pressing",
+        "Pace",
+        "Progressive passing"
+      ],
+      "quizHints": [
+        "Mali international defensive midfielder with Brighton and Tottenham ties.",
+        "Athletic pivot known for tackling, dribbling, and breaking up transitions.",
+        "Midfielder whose first name is Yves and surname is Bissouma."
+      ]
+    }
+  }
+}

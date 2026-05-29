@@ -99640,9 +99640,12 @@ const basePlayers = [
   },
 ];
 
+import playerEditorialOverlayData from './playerEditorialOverlays.json' with { type: 'json' };
+
 // Player images: see PLAYER_IMAGE_POLICY.md — set imageUrl + attribution on basePlayers when licensed.
 export const players = basePlayers.map((player, index) => ({
   ...player,
+  ...(playerEditorialOverlayData?.overlays?.[player.id] ?? {}),
   imageUrl: player.imageUrl ?? null,
   imageAlt: player.imageAlt ?? null,
   imageCredit: player.imageCredit ?? null,
