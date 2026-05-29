@@ -211,6 +211,9 @@ export function buildTeamSeoTitle(team, { leagueName = '' } = {}) {
 }
 
 export function buildTeamSeoDescription(team, ctx = {}) {
+  const custom = String(team.metaDescription ?? '').trim();
+  if (custom) return truncateMetaDescription(custom);
+
   const { roster = [], leagueName = '', league = null, quizReady = 0 } = ctx;
   const base = isHighTrafficTeam(team, roster)
     ? buildTopTeamMetaDescription(team, {

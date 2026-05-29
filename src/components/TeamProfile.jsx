@@ -141,13 +141,21 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   const identityTags = formatClubIdentityTags(team.identityTags);
   const keyPlayerCards = buildTeamKeyPlayerCards(team, roster);
   const teamEditorial = getTeamProfileEditorial(team);
+  const topTier = isTopTierClub(team);
+  const premiumClub = topTier || teamEditorial.hasPremiumOverlay;
   const keyPlayersTitle = teamEditorial.hasStory ? 'Current star players' : 'Players to know';
+  const cultureMax = premiumClub ? 220 : 160;
   const cultureLine =
-    truncateClubText(team.fanGuide, 160) || truncateClubText(team.shortHistory, 160);
+    truncateClubText(team.fanGuide, cultureMax) ||
+    truncateClubText(team.shortHistory, cultureMax);
+  const keyPlayersNote =
+    teamEditorial.playersToKnowIntro ||
+    (teamEditorial.hasStory
+      ? 'Faces to know before you dive into the full squad — quiz-ready names marked.'
+      : 'Top importance in the squad list — open profiles for hints, then try the club quiz.');
   const profileSubline = buildTeamProfileSubline(team);
   const thinClub = isThinTeam(team, 4);
   const highTraffic = isHighTrafficTeam(team, roster);
-  const topTier = isTopTierClub(team);
   const showKeepExploring =
     topTier ||
     Boolean(getProfileExploreLead(team.id)) ||
@@ -212,7 +220,9 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   ];
 
   return (
-    <div className={`page team-profile${topTier ? ' profile--premium' : ''}`}>
+    <div
+      className={`page team-profile${premiumClub ? ' profile--premium team-profile--premium' : ''}`}
+    >
       <BreadcrumbNav
         items={[
           { label: CRUMB_HOME, to: '/' },
@@ -332,11 +342,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
           <section className="team-key-players info-card" aria-labelledby="team-key-players-title">
             <div className="team-key-players__header">
               <h2 id="team-key-players-title">{keyPlayersTitle}</h2>
-              <p className="team-key-players__note">
-                {teamEditorial.hasStory
-                  ? 'Faces to know before you dive into the full squad — quiz-ready names marked.'
-                  : 'Top importance in the squad list — open profiles for hints, then try the club quiz.'}
-              </p>
+              <p className="team-key-players__note">{keyPlayersNote}</p>
             </div>
             <ul className="team-key-players__grid">
               {keyPlayerCards.map((card) => {

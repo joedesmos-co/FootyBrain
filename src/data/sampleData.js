@@ -5334,11 +5334,14 @@ const baseTeams = [
   },
 ];
 
+import teamEditorialOverlayData from './teamEditorialOverlays.json' with { type: 'json' };
+
 // TODO: Replace null crestUrl values only with licensed club crest assets.
 export const teams = baseTeams.map((team, index) => ({
   crestUrl: null,
   badgeTheme: teamBadgeThemes[index % teamBadgeThemes.length],
   ...team,
+  ...(teamEditorialOverlayData?.overlays?.[team.id] ?? {}),
 }));
 
 const playerVisualThemes = [

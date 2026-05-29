@@ -13464,6 +13464,60 @@ p.browse-results-empty {
   gap: 0.85rem;
 }
 
+/* Premium club profiles — spacing, hub, quiz strip */
+.profile--premium.team-profile .club-hero__lede {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  max-width: 44rem;
+  color: var(--color-text);
+}
+
+.profile--premium.team-profile .club-hero__sub {
+  font-size: 0.9rem;
+}
+
+.profile--premium.team-profile .team-club-hub--premium {
+  gap: 1.05rem;
+}
+
+.profile--premium.team-profile .team-club-hub--premium .team-club-hub__panel {
+  padding: 1.05rem 1.15rem;
+}
+
+.profile--premium.team-profile .team-club-hub--premium .team-club-hub__card-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.profile--premium.team-profile .team-club-hub--premium .team-club-hub__prose {
+  font-size: 0.94rem;
+  line-height: 1.58;
+  max-width: 42rem;
+}
+
+.profile--premium.team-profile .team-key-players__note {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  max-width: 40rem;
+}
+
+.profile--premium.team-profile .club-quiz-discovery--premium {
+  border-color: rgba(52, 211, 153, 0.28);
+  background: linear-gradient(155deg, rgba(52, 211, 153, 0.06), rgba(16, 26, 23, 0.94));
+  padding: 1.1rem 1.15rem;
+}
+
+.profile--premium.team-profile .club-quiz-discovery--premium .club-quiz-discovery__title {
+  font-size: 1.06rem;
+}
+
+.profile--premium.team-profile .club-quiz-discovery--premium .club-quiz-discovery__lead {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  max-width: 42rem;
+  color: var(--color-text);
+}
+
 .profile-keep-exploring {
   padding: 1rem 1.05rem;
   border: 1px solid var(--color-border);

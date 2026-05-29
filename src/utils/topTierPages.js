@@ -4,7 +4,8 @@
  */
 
 import { players, teams, leagues } from '../data/sampleData.js';
-import liveNt from '../data/nationalTeamLive.json';
+import { PREMIUM_EDITORIAL_CLUB_IDS } from '../data/premiumClubIds.js';
+import liveNt from '../data/nationalTeamLive.json' with { type: 'json' };
 import { isMajorClub } from './entityDepthAudit.js';
 
 export const TOP_TIER_COUNTS = {
@@ -27,8 +28,8 @@ const TOP_PLAYER_IDS = new Set(
     .map((p) => p.id),
 );
 
-const TOP_CLUB_IDS = new Set(
-  teams
+const TOP_CLUB_IDS = new Set([
+  ...teams
     .filter(isMajorClub)
     .map((team) => ({
       id: team.id,
@@ -37,7 +38,8 @@ const TOP_CLUB_IDS = new Set(
     .sort((a, b) => b.sum - a.sum)
     .slice(0, TOP_TIER_COUNTS.clubs)
     .map((t) => t.id),
-);
+  ...PREMIUM_EDITORIAL_CLUB_IDS,
+]);
 
 const TOP_LEAGUE_IDS = new Set(
   leagues

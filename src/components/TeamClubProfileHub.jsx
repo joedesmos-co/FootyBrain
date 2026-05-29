@@ -11,6 +11,7 @@ import {
   parseTeamLegendLines,
 } from '../utils/teamProfileDisplay';
 import { resolveRivalEntries } from '../utils/teamPageUtils';
+import { isTopTierClub } from '../utils/topTierPages';
 import TeamBadge from './TeamBadge';
 
 function QuickFact({ fact }) {
@@ -85,6 +86,8 @@ export default function TeamClubProfileHub({
   const showFanIdentity = Boolean(profile.fanIdentity) && !showFanGuide;
   const showRivalsBlurb = Boolean(profile.rivals) && !showRivals;
   const showLegendsBlurb = Boolean(profile.legends) && !showLegends;
+  const showTactical = Boolean(profile.tacticalIdentity);
+  const topTier = isTopTierClub(team);
 
   if (
     isExternalStub &&
@@ -99,7 +102,10 @@ export default function TeamClubProfileHub({
   }
 
   return (
-    <div className="team-club-hub" style={getFootballAccentStyle(team)}>
+    <div
+      className={`team-club-hub${topTier ? ' team-club-hub--premium' : ''}`}
+      style={getFootballAccentStyle(team)}
+    >
       {quickFacts.length > 0 ? (
         <section className="team-club-hub__panel" aria-label="Club quick facts">
           <div className="team-quick-facts">
@@ -141,6 +147,18 @@ export default function TeamClubProfileHub({
             Club identity &amp; history
           </h2>
           <p className="team-club-hub__prose">{editorial.shortHistory}</p>
+        </section>
+      ) : null}
+
+      {showTactical ? (
+        <section
+          className="team-club-hub__panel info-card"
+          aria-labelledby="team-tactical-identity-title"
+        >
+          <h2 id="team-tactical-identity-title" className="team-club-hub__card-title">
+            Tactical identity
+          </h2>
+          <p className="team-club-hub__prose">{profile.tacticalIdentity}</p>
         </section>
       ) : null}
 

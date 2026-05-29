@@ -94,14 +94,36 @@ export function getTeamProfileEditorial(team) {
   const shortHistory = String(team.shortHistory ?? '').trim();
   const nicknames = inferTeamNicknames(team);
   const honors = getTeamHonorsList(team);
+  const metaDescription = String(team.metaDescription ?? '').trim();
+  const tacticalIdentity = String(team.tacticalIdentity ?? '').trim();
+  const stadiumContext = String(team.stadiumContext ?? '').trim();
+  const rivalsSummary = String(team.rivalsSummary ?? '').trim();
+  const legendsSummary = String(team.legendsSummary ?? '').trim();
+  const playersToKnowIntro = String(team.playersToKnowIntro ?? '').trim();
+  const quizDiscoveryLead = String(team.quizDiscoveryLead ?? '').trim();
 
   return {
     fanGuide,
     shortHistory,
     nicknames,
     honors,
+    metaDescription,
+    tacticalIdentity,
+    stadiumContext,
+    rivalsSummary,
+    legendsSummary,
+    playersToKnowIntro,
+    quizDiscoveryLead,
     hasFanGuide: Boolean(fanGuide),
     hasStory: Boolean(shortHistory),
-    hasContext: Boolean(fanGuide || shortHistory || nicknames.length > 0 || honors.length > 0),
+    hasPremiumOverlay: Boolean(metaDescription || tacticalIdentity),
+    hasContext: Boolean(
+      fanGuide ||
+        shortHistory ||
+        nicknames.length > 0 ||
+        honors.length > 0 ||
+        tacticalIdentity ||
+        stadiumContext,
+    ),
   };
 }

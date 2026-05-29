@@ -11,6 +11,9 @@ import { getTeamProfileEditorial, inferTeamNicknames, parseTeamLegendLines } fro
  * @param {object} team
  */
 export function buildStadiumContext(team) {
+  const overlay = String(team?.stadiumContext ?? '').trim();
+  if (overlay) return overlay;
+
   const parts = [];
   if (team?.stadium) parts.push(`${team.name} play home matches at ${team.stadium}.`);
   if (team?.founded) parts.push(`The club was founded in ${team.founded}.`);
@@ -39,6 +42,9 @@ export function buildRivalsContext(team, rivalEntries = []) {
  * @param {object} team
  */
 export function buildLegendsContext(team) {
+  const overlay = String(team?.legendsSummary ?? '').trim();
+  if (overlay) return overlay;
+
   const lines = Array.isArray(team?.legends) ? team.legends : [];
   if (!lines.length) return '';
 
@@ -151,6 +157,7 @@ export function buildStructuredClubProfile(ctx) {
     story,
     hasAuthoritativeStory: editorial.hasStory,
     stadium: buildStadiumContext(team),
+    tacticalIdentity: editorial.tacticalIdentity || '',
     league: buildClubLeagueContext(team, leagueName, league),
     fanIdentity: buildFanIdentityContext(team),
     rivals: buildRivalsContext(team, rivalEntries),
@@ -161,6 +168,8 @@ export function buildStructuredClubProfile(ctx) {
     nicknames: editorial.nicknames,
     quizReadyCount,
     rosterSize: rosterSize || roster.length,
+    playersToKnowIntro: editorial.playersToKnowIntro,
+    quizDiscoveryLead: editorial.quizDiscoveryLead,
   };
 }
 
@@ -272,6 +281,9 @@ export function buildClubProfileDescription(team, leagueName, rosterSize = 0) {
  * @param {{ leagueName?: string, rosterSize?: number, quizReady?: number, league?: object }} stats
  */
 export function buildRichTeamMetaDescription(team, stats = {}) {
+  const custom = String(team.metaDescription ?? '').trim();
+  if (custom) return custom;
+
   const profile = buildStructuredClubProfile({
     team,
     leagueName: stats.leagueName ?? '',

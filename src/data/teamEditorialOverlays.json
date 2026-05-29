@@ -1,0 +1,159 @@
+{
+  "generatedAt": "2026-05-29T12:13:03.077Z",
+  "overlayCount": 17,
+  "overlays": {
+    "arsenal": {
+      "metaDescription": "Arsenal fan culture & squad: The Gunners wear red and white; the north London derby vs Tottenham is the fixture fans… Premier League quizzes and player…",
+      "tacticalIdentity": "Dataset tags describe Arsenal as coordinated high press, youth in the first team, and possession-oriented build-up. Head coach listed: Mikel Arteta.",
+      "stadiumContext": "Arsenal list Emirates Stadium as their home ground. Founded in 1886. Current head coach in the dataset: Mikel Arteta.",
+      "rivalsSummary": "The Gunners wear red and white; the north London derby vs Tottenham is the fixture fans circle first.",
+      "legendsSummary": "Club legends in the dataset include Thierry Henry, Dennis Bergkamp, Tony Adams, and Patrick Vieira — for example, Thierry Henry (club record goalscorer; pace and composure defined the Wenger era).",
+      "playersToKnowIntro": "Before the full squad list, learn Bukayo Saka, Martin Ødegaard, and William Saliba, and Declan Rice.",
+      "quizDiscoveryLead": "Lock in Arsenal names with the club player quiz — after studying Emirates Stadium — then try rivalry pools vs Tottenham Hotspur — or the Premier League league guide."
+    },
+    "liverpool": {
+      "metaDescription": "Liverpool fan culture & squad: Red shirts, the Kop end, and “You’ll Never Walk Alone” before kickoff — that song is… Premier League quizzes and player…",
+      "tacticalIdentity": "Dataset tags describe Liverpool as coordinated high press, quick transitions, and long trophy pedigree. Head coach listed: Arne Slot.",
+      "stadiumContext": "Liverpool list Anfield as their home ground. Founded in 1892. Current head coach in the dataset: Arne Slot.",
+      "rivalsSummary": "The Merseyside derby vs Everton is about city pride; matches vs Manchester United carry extra history.",
+      "legendsSummary": "Club legends in the dataset include Steven Gerrard, Kenny Dalglish, Ian Rush, and Jamie Carragher — for example, Steven Gerrard (one-club captain; Istanbul 2005 and famous long-range goals).",
+      "playersToKnowIntro": "Start with Mohamed Salah, Virgil van Dijk, Alisson Becker, and Trent Alexander-Arnold — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Liverpool names with the club player quiz — after studying Anfield — then try rivalry pools vs Everton — or the Premier League league guide."
+    },
+    "chelsea": {
+      "metaDescription": "Chelsea — Chelsea grew from a west London club into a global name through Abramovich-era… Legends: Frank Lampard and Didier Drogba. Premier League squad…",
+      "tacticalIdentity": "Dataset tags describe Chelsea as possession-oriented build-up, youth in the first team, and title-chasing expectations. Head coach listed: Enzo Maresca.",
+      "stadiumContext": "Chelsea list Stamford Bridge as their home ground. Founded in 1905. Current head coach in the dataset: Enzo Maresca.",
+      "rivalsSummary": "The rivalry with Arsenal and Spurs frames the London football map.",
+      "legendsSummary": "Club legends in the dataset include Frank Lampard, Didier Drogba, and John Terry — for example, Frank Lampard (midfielder and club-record goals).",
+      "playersToKnowIntro": "Before the full squad list, learn Cole Palmer and Enzo Fernández.",
+      "quizDiscoveryLead": "Lock in Chelsea names with the club player quiz — after studying Stamford Bridge — then try rivalry pools vs Arsenal — or the Premier League league guide."
+    },
+    "manchester-united": {
+      "metaDescription": "Manchester United (Premier League): United built the Busby Babes story, Ferguson’s 26-year dynasty, and a global fanbase. Old Trafford and the 1999 treble…",
+      "tacticalIdentity": "Dataset tags describe Manchester United as long trophy pedigree, quick transitions, and vocal supporter culture. Head coach listed: Ruben Amorim.",
+      "stadiumContext": "Manchester United list Old Trafford as their home ground. Founded in 1878. Current head coach in the dataset: Ruben Amorim.",
+      "rivalsSummary": "Red shirts, Stretford End songs, and the Liverpool rivalry define the emotional calendar.",
+      "legendsSummary": "Club legends in the dataset include Sir Bobby Charlton, George Best, and Cristiano Ronaldo — for example, Sir Bobby Charlton (Munich survivor and club icon).",
+      "playersToKnowIntro": "Before the full squad list, learn Bruno Fernandes and Marcus Rashford.",
+      "quizDiscoveryLead": "Lock in Manchester United names with the club player quiz — after studying Old Trafford — then try rivalry pools vs Manchester City — or the Premier League league guide."
+    },
+    "manchester-city": {
+      "metaDescription": "Manchester City (Premier League): For decades City were the “noisy neighbours” to United. Investment and smart coaching turned them into a Premier League…",
+      "tacticalIdentity": "Dataset tags describe Manchester City as possession-oriented build-up, title-chasing expectations, and long trophy pedigree. Head coach listed: Pep Guardiola.",
+      "stadiumContext": "Manchester City list Etihad Stadium as their home ground. Founded in 1880. Current head coach in the dataset: Pep Guardiola.",
+      "rivalsSummary": "Rivalries noted for Manchester City: Manchester United and Liverpool. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Sergio Agüero, David Silva, Vincent Kompany, and Yaya Touré — for example, Sergio Agüero (93rd-minute title winner in 2012; City’s greatest goalscorer).",
+      "playersToKnowIntro": "Before the full squad list, learn Erling Haaland, Rodri, and Phil Foden, and Kevin De Bruyne.",
+      "quizDiscoveryLead": "Lock in Manchester City names with the club player quiz — after studying Etihad Stadium — then try rivalry pools vs Manchester United — or the Premier League league guide."
+    },
+    "tottenham": {
+      "metaDescription": "Tottenham Hotspur (Premier League): Spurs were the first English club to win a major European trophy in the modern era (1963). The north London rivalry with…",
+      "tacticalIdentity": "Dataset tags describe Tottenham Hotspur as coordinated high press, quick transitions, and vocal supporter culture. Head coach listed: Thomas Frank.",
+      "stadiumContext": "Tottenham Hotspur list Tottenham Hotspur Stadium as their home ground. Founded in 1882. Current head coach in the dataset: Thomas Frank.",
+      "rivalsSummary": "Rivalries noted for Tottenham Hotspur: Arsenal and Chelsea. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Jimmy Greaves, Glenn Hoddle, and Harry Kane — for example, Jimmy Greaves (prolific goalscorer).",
+      "playersToKnowIntro": "Start with Son Heung-min and James Maddison — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Tottenham Hotspur names with the club player quiz — after studying Tottenham Hotspur Stadium — then try rivalry pools vs Arsenal — or the Premier League league guide."
+    },
+    "real-madrid": {
+      "metaDescription": "Real Madrid (La Liga): Real Madrid measure success in European Cups — they have won the competition more than any other club. From Di Stéfano to the…",
+      "tacticalIdentity": "Dataset tags describe Real Madrid as quick transitions, European pedigree, and long trophy pedigree. Head coach listed: Xabi Alonso.",
+      "stadiumContext": "Real Madrid list Santiago Bernabéu as their home ground. Founded in 1902. Current head coach in the dataset: Xabi Alonso.",
+      "rivalsSummary": "El Clásico vs Barcelona is the world’s most watched club fixture.",
+      "legendsSummary": "Club legends in the dataset include Alfredo Di Stéfano, Raúl, Cristiano Ronaldo, and Zinedine Zidane — for example, Alfredo Di Stéfano (forward who shaped the club’s first European dominance).",
+      "playersToKnowIntro": "Start with Vinícius Júnior, Jude Bellingham, Federico Valverde, and Luka Modrić — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Real Madrid names with the club player quiz — after studying Santiago Bernabéu — then try rivalry pools vs Barcelona — or the La Liga league guide."
+    },
+    "barcelona": {
+      "metaDescription": "Barcelona — Barcelona’s identity is La Masia — the academy that taught possession football to… Legends: Lionel Messi and Xavi. La Liga squad study & quizzes…",
+      "tacticalIdentity": "Dataset tags describe Barcelona as possession-oriented build-up, academy-led identity, and technical ball retention. Head coach listed: Hansi Flick.",
+      "stadiumContext": "Barcelona list Spotify Camp Nou as their home ground. Founded in 1899. Current head coach in the dataset: Hansi Flick.",
+      "rivalsSummary": "El Clásico vs Real Madrid is the must-learn fixture; the city derby vs Espanyol is smaller but fierce.",
+      "legendsSummary": "Club legends in the dataset include Lionel Messi, Xavi, Andrés Iniesta, and Carles Puyol — for example, Lionel Messi (greatest player in club history; hundreds of goals in blaugrana).",
+      "playersToKnowIntro": "Before the full squad list, learn Robert Lewandowski, Pedri, and Gavi, and Raphinha.",
+      "quizDiscoveryLead": "Lock in Barcelona names with the club player quiz — after studying Spotify Camp Nou — then try rivalry pools vs Real Madrid — or the La Liga league guide."
+    },
+    "atletico-madrid": {
+      "metaDescription": "Atlético Madrid (La Liga) · Cívitas Metropolitano · rivals include Real Madrid and Barcelona. Atlético built a reputation as the capital’s gritty…",
+      "tacticalIdentity": "Dataset tags describe Atlético Madrid as compact defensive block, quick transitions, and physical duels. Head coach listed: Diego Simeone.",
+      "stadiumContext": "Atlético Madrid list Cívitas Metropolitano as their home ground. Founded in 1903. Current head coach in the dataset: Diego Simeone.",
+      "rivalsSummary": "Rivalries noted for Atlético Madrid: Real Madrid and Barcelona. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Luis Aragonés, Fernando Torres, and Diego Godín — for example, Luis Aragonés (player and title-winning coach).",
+      "playersToKnowIntro": "Start with Antoine Griezmann and Jan Oblak — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Atlético Madrid names with the club player quiz — after studying Cívitas Metropolitano — then try rivalry pools vs Real Madrid — or the La Liga league guide."
+    },
+    "bayern-munich": {
+      "metaDescription": "Bayern Munich fan culture & squad: Red home kit; the Südkurve (south stand) leads songs and tifos. Der Klassiker vs… Bundesliga quizzes and player profiles…",
+      "tacticalIdentity": "Dataset tags describe Bayern Munich as possession-oriented build-up, title-chasing expectations, and long trophy pedigree. Head coach listed: Vincent Kompany.",
+      "stadiumContext": "Bayern Munich list Allianz Arena as their home ground. Founded in 1900. Current head coach in the dataset: Vincent Kompany.",
+      "rivalsSummary": "Rivalries noted for Bayern Munich: Borussia Dortmund and 1860 Munich. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Franz Beckenbauer, Gerd Müller, Philipp Lahm, and Thomas Müller — for example, Franz Beckenbauer (libero who redefined defending; World Cup winner as player and coach).",
+      "playersToKnowIntro": "Before the full squad list, learn Harry Kane, Jamal Musiala, and Joshua Kimmich, and Manuel Neuer.",
+      "quizDiscoveryLead": "Lock in Bayern Munich names with the club player quiz — after studying Allianz Arena — then try rivalry pools vs Borussia Dortmund — or the Bundesliga league guide."
+    },
+    "borussia-dortmund": {
+      "metaDescription": "Borussia Dortmund (Bundesliga): Dortmund’s Yellow Wall and youth development made them Germany’s romantic alternative to Bayern — Klopp’s pressing team and…",
+      "tacticalIdentity": "Dataset tags describe Borussia Dortmund as coordinated high press, youth in the first team, and quick transitions. Head coach listed: Nuri Şahin.",
+      "stadiumContext": "Borussia Dortmund list Signal Iduna Park as their home ground. Founded in 1909. Current head coach in the dataset: Nuri Şahin.",
+      "rivalsSummary": "Rivalries noted for Borussia Dortmund: Bayern Munich and Schalke 04. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Marco Reus, Mats Hummels, and Robert Lewandowski — for example, Marco Reus (one-club winger and captain).",
+      "playersToKnowIntro": "Players to know now: Jadon Sancho and Mats Hummels. Open each profile for position, nationality, and quiz clues.",
+      "quizDiscoveryLead": "Lock in Borussia Dortmund names with the club player quiz — after studying Signal Iduna Park — then try rivalry pools vs Bayern Munich — or the Bundesliga league guide."
+    },
+    "ac-milan": {
+      "metaDescription": "AC Milan fan culture & squad: Rossoneri means “red and blacks.” They share San Siro with Inter — same stadium,… Serie A quizzes and player profiles on…",
+      "tacticalIdentity": "Dataset tags describe AC Milan as coordinated high press, quick transitions, and long trophy pedigree. Head coach listed: Sérgio Conceição.",
+      "stadiumContext": "AC Milan list San Siro as their home ground. Founded in 1899. Current head coach in the dataset: Sérgio Conceição.",
+      "rivalsSummary": "Rossoneri means “red and blacks.” They share San Siro with Inter — same stadium, different curvas.",
+      "legendsSummary": "Club legends in the dataset include Paolo Maldini, Franco Baresi, Marco van Basten, and Kaká — for example, Paolo Maldini (one-club defender; elegance and 25 years in rossonero).",
+      "playersToKnowIntro": "Before the full squad list, learn Rafael Leão and Mike Maignan.",
+      "quizDiscoveryLead": "Lock in AC Milan names with the club player quiz — after studying San Siro — then try rivalry pools vs Inter Milan — or the Serie A league guide."
+    },
+    "inter-milan": {
+      "metaDescription": "Inter Milan (Serie A): Inter’s blue and black stripes (“Nerazzurri”) come from merging clubs in 1908. They are known for structured defending, Italian grit,…",
+      "tacticalIdentity": "Dataset tags describe Inter Milan as compact defensive block, quick transitions, and title-chasing expectations. Head coach listed: Cristian Chivu.",
+      "stadiumContext": "Inter Milan list San Siro as their home ground. Founded in 1908. Current head coach in the dataset: Cristian Chivu.",
+      "rivalsSummary": "The Derby della Madonnina vs AC Milan splits Milan — same stadium, different ends.",
+      "legendsSummary": "Club legends in the dataset include Giuseppe Meazza, Javier Zanetti, Ronaldo Nazário, and Marco Materazzi — for example, Giuseppe Meazza (stadium namesake; striker who defined pre-war Italian football).",
+      "playersToKnowIntro": "Before the full squad list, learn Lautaro Martínez, Nicolò Barella, and Alessandro Bastoni, and Yann Sommer.",
+      "quizDiscoveryLead": "Lock in Inter Milan names with the club player quiz — after studying San Siro — then try rivalry pools vs AC Milan — or the Serie A league guide."
+    },
+    "juventus": {
+      "metaDescription": "Juventus fan culture & squad: Black and white stripes; the Derby d’Italia vs Inter is a national grudge. Turin’s Derby… Serie A quizzes and player profiles…",
+      "tacticalIdentity": "Dataset tags describe Juventus as compact defensive block, long trophy pedigree, and title-chasing expectations. Head coach listed: Thiago Motta.",
+      "stadiumContext": "Juventus list Allianz Stadium as their home ground. Founded in 1897. Current head coach in the dataset: Thiago Motta.",
+      "rivalsSummary": "Black and white stripes; the Derby d’Italia vs Inter is a national grudge.",
+      "legendsSummary": "Club legends in the dataset include Alessandro Del Piero, Gianluigi Buffon, and Michel Platini — for example, Alessandro Del Piero (one-club symbol and free-kick artist).",
+      "playersToKnowIntro": "Before the full squad list, learn Dusan Vlahović and Federico Chiesa.",
+      "quizDiscoveryLead": "Lock in Juventus names with the club player quiz — after studying Allianz Stadium — then try rivalry pools vs Inter Milan — or the Serie A league guide."
+    },
+    "napoli": {
+      "metaDescription": "Napoli (Serie A) · Diego Armando Maradona Stadium · rivals include Roma and Juventus. Napoli’s story is southern pride and Maradona’s 1987 scudetto —…",
+      "tacticalIdentity": "Dataset tags describe Napoli as compact defensive block, quick transitions, and vocal supporter culture. Head coach listed: Antonio Conte.",
+      "stadiumContext": "Napoli list Diego Armando Maradona Stadium as their home ground. Founded in 1926. Current head coach in the dataset: Antonio Conte.",
+      "rivalsSummary": "Rivalries noted for Napoli: Roma and Juventus. Compare squads on linked club profiles before a derby quiz.",
+      "legendsSummary": "Club legends in the dataset include Diego Maradona, Ciro Ferrara, and Gonzalo Higuaín — for example, Diego Maradona (icon of the 1987 title).",
+      "playersToKnowIntro": "Start with Victor Osimhen and Khvicha Kvaratskhelia — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Napoli names with the club player quiz — after studying Diego Armando Maradona Stadium — then try rivalry pools vs Roma — or the Serie A league guide."
+    },
+    "paris-saint-germain": {
+      "metaDescription": "Paris Saint-Germain — PSG grew from a young Paris club into France's dominant modern force, with the… Legends: Zlatan Ibrahimovic and Kylian Mbappe. Ligue 1…",
+      "tacticalIdentity": "Dataset tags describe Paris Saint-Germain as possession-oriented build-up, title-chasing expectations, and long trophy pedigree. Head coach listed: Luis Enrique.",
+      "stadiumContext": "Paris Saint-Germain list Parc des Princes as their home ground. Founded in 1970. Current head coach in the dataset: Luis Enrique.",
+      "rivalsSummary": "Le Classique against Marseille is the fixture to learn first; European expectations shape every season.",
+      "legendsSummary": "Club legends in the dataset include Zlatan Ibrahimovic, Kylian Mbappe, and Thiago Silva — for example, Zlatan Ibrahimovic (striker who defined early QSI dominance).",
+      "playersToKnowIntro": "Start with Ousmane Dembele, Achraf Hakimi, and Vitinha — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Paris Saint-Germain names with the club player quiz — after studying Parc des Princes — then try rivalry pools vs Marseille — or the Ligue 1 league guide."
+    },
+    "ajax": {
+      "metaDescription": "Ajax (Eredivisie): Ajax are the academy and ideas club: Total Football, European Cups, and a conveyor belt of players who shape bigger leagues. Squad,…",
+      "tacticalIdentity": "Dataset tags describe Ajax as possession-oriented build-up, academy-led identity, and youth in the first team. Head coach listed: John van 't Schip.",
+      "stadiumContext": "Ajax list Johan Cruijff ArenA as their home ground. Founded in 1900. Current head coach in the dataset: John van 't Schip.",
+      "rivalsSummary": "De Klassieker against Feyenoord is essential.",
+      "legendsSummary": "Club legends in the dataset include Johan Cruyff, Marco van Basten, and Frank Rijkaard — for example, Johan Cruyff (club and football philosophy icon).",
+      "playersToKnowIntro": "Start with Steven Berghuis, Davy Klaassen, and Wout Weghorst — names fans and quizzes reference most in the current squad.",
+      "quizDiscoveryLead": "Lock in Ajax names with the club player quiz — after studying Johan Cruijff ArenA — then try rivalry pools vs Feyenoord — or the Eredivisie league guide."
+    }
+  }
+}

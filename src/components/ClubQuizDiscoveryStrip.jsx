@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { buildClubQuizDiscoveryLinks } from '../utils/clubProfileEditorial';
+import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
+import { isTopTierClub } from '../utils/topTierPages';
 
 /**
  * @param {{
@@ -20,18 +22,23 @@ export default function ClubQuizDiscoveryStrip({
     hasTeamQuiz,
     hasLeagueQuiz,
   });
+  const editorial = getTeamProfileEditorial(team);
+  const topTier = isTopTierClub(team);
+  const lead =
+    editorial.quizDiscoveryLead ||
+    'Turn squad browsing into recall — player quizzes, league pools, and club trivia use only dataset facts.';
 
   if (!links.length) return null;
 
   return (
-    <section className="club-quiz-discovery" aria-labelledby="club-quiz-discovery-title">
+    <section
+      className={`club-quiz-discovery${topTier ? ' club-quiz-discovery--premium' : ''}`}
+      aria-labelledby="club-quiz-discovery-title"
+    >
       <h2 id="club-quiz-discovery-title" className="club-quiz-discovery__title">
         Quiz &amp; study links
       </h2>
-      <p className="club-quiz-discovery__lead">
-        Turn squad browsing into recall — player quizzes, league pools, and club trivia use only
-        dataset facts.
-      </p>
+      <p className="club-quiz-discovery__lead">{lead}</p>
       <ul className="club-quiz-discovery__list">
         {links.slice(0, 8).map((link) => (
           <li key={link.to}>
