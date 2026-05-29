@@ -151,6 +151,9 @@ export function buildStructuredClubProfile(ctx) {
     ? editorial.shortHistory
     : buildClubIdentitySection(team, leagueName, rosterSize);
 
+  const leagueBlurb =
+    editorial.leagueContext || buildClubLeagueContext(team, leagueName, league);
+
   const quizReadyCount = roster.filter((p) => p?.quizHints?.length >= 2).length;
 
   return {
@@ -158,7 +161,7 @@ export function buildStructuredClubProfile(ctx) {
     hasAuthoritativeStory: editorial.hasStory,
     stadium: buildStadiumContext(team),
     tacticalIdentity: editorial.tacticalIdentity || '',
-    league: buildClubLeagueContext(team, leagueName, league),
+    league: leagueBlurb,
     fanIdentity: buildFanIdentityContext(team),
     rivals: buildRivalsContext(team, rivalEntries),
     legends: buildLegendsContext(team),

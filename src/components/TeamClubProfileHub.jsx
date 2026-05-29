@@ -88,6 +88,7 @@ export default function TeamClubProfileHub({
   const showLegendsBlurb = Boolean(profile.legends) && !showLegends;
   const showTactical = Boolean(profile.tacticalIdentity);
   const topTier = isTopTierClub(team);
+  const enriched = topTier || editorial.hasPremiumOverlay || Boolean(editorial.leagueContext);
 
   if (
     isExternalStub &&
@@ -103,7 +104,7 @@ export default function TeamClubProfileHub({
 
   return (
     <div
-      className={`team-club-hub${topTier ? ' team-club-hub--premium' : ''}`}
+      className={`team-club-hub${enriched ? ' team-club-hub--premium team-club-hub--enriched' : ''}`}
       style={getFootballAccentStyle(team)}
     >
       {quickFacts.length > 0 ? (

@@ -119,6 +119,9 @@ export function buildPlayerKnownFor(player, ctx = {}) {
     items.push(t);
   };
 
+  const overlayKnown = Array.isArray(player?.knownFor) ? player.knownFor : [];
+  for (const s of overlayKnown) add(s);
+
   for (const s of parseStrengths(player)) add(s);
   for (const tag of parsePlayStyleTags(player)) add(tag);
 

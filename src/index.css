@@ -13793,6 +13793,33 @@ p.browse-results-empty {
   color: var(--color-text);
 }
 
+/* Thin-entity enrichment — scanability */
+.team-club-hub--enriched .team-club-hub__prose {
+  line-height: 1.58;
+}
+
+.team-club-hub--enriched .team-club-hub__panel + .team-club-hub__panel {
+  margin-top: 0.15rem;
+}
+
+.player-profile--enriched .player-profile__known-for {
+  gap: 0.4rem;
+}
+
+.player-profile--enriched .player-profile__known-for li {
+  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(7, 17, 13, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.player-profile--enriched .player-profile__play-style {
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
 .profile-keep-exploring {
   padding: 1rem 1.05rem;
   border: 1px solid var(--color-border);

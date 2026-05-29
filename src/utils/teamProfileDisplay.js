@@ -1,4 +1,5 @@
 import { formatCountryLabel } from './footballDisplay';
+import { isPlaceholderClubCopy } from './entityDepthAudit';
 import { getTeamHonorsList, parseKeyPlayerLine } from './teamPageUtils';
 
 /** @typedef {{ icon: string, label: string, value: string, href?: string }} TeamQuickFact */
@@ -90,13 +91,23 @@ export function parseTeamLegendLines(legendLines) {
 }
 
 export function getTeamProfileEditorial(team) {
-  const fanGuide = String(team.fanGuide ?? '').trim();
-  const shortHistory = String(team.shortHistory ?? '').trim();
+  const rawFanGuide = String(team.fanGuide ?? '').trim();
+  const rawShortHistory = String(team.shortHistory ?? '').trim();
+  const fanGuide = isPlaceholderClubCopy({ shortHistory: '', fanGuide: rawFanGuide })
+    ? ''
+    : rawFanGuide;
+  const shortHistory = isPlaceholderClubCopy({
+    shortHistory: rawShortHistory,
+    fanGuide: '',
+  })
+    ? ''
+    : rawShortHistory;
   const nicknames = inferTeamNicknames(team);
   const honors = getTeamHonorsList(team);
   const metaDescription = String(team.metaDescription ?? '').trim();
   const tacticalIdentity = String(team.tacticalIdentity ?? '').trim();
   const stadiumContext = String(team.stadiumContext ?? '').trim();
+  const leagueContext = String(team.leagueContext ?? '').trim();
   const rivalsSummary = String(team.rivalsSummary ?? '').trim();
   const legendsSummary = String(team.legendsSummary ?? '').trim();
   const playersToKnowIntro = String(team.playersToKnowIntro ?? '').trim();
@@ -110,6 +121,7 @@ export function getTeamProfileEditorial(team) {
     metaDescription,
     tacticalIdentity,
     stadiumContext,
+    leagueContext,
     rivalsSummary,
     legendsSummary,
     playersToKnowIntro,
@@ -123,7 +135,8 @@ export function getTeamProfileEditorial(team) {
         nicknames.length > 0 ||
         honors.length > 0 ||
         tacticalIdentity ||
-        stadiumContext,
+        stadiumContext ||
+        leagueContext,
     ),
   };
 }

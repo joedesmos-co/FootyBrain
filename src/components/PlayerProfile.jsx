@@ -517,7 +517,7 @@ export default function PlayerProfile() {
 
   return (
     <div
-      className={`page profile player-profile${profileEditorial.topTier ? ' profile--premium' : ''}`}
+      className={`page profile player-profile${profileEditorial.topTier ? ' profile--premium' : ''}${profileEditorial.enrichThin || (Array.isArray(player.knownFor) && player.knownFor.length) ? ' player-profile--enriched' : ''}`}
     >
       <BreadcrumbNav
         items={[

@@ -140,6 +140,17 @@ export function isMajorClub(team) {
   return Boolean(team?.id) && team.leagueId !== EXTERNAL_LEAGUE_ID;
 }
 
+/** Placeholder expansion copy — not authoritative editorial. */
+export function isPlaceholderClubCopy(team) {
+  const h = String(team?.shortHistory ?? '');
+  const f = String(team?.fanGuide ?? '');
+  return (
+    /FootyCompass controlled expansion/i.test(h) ||
+    /editorial coverage expands/i.test(f) ||
+    /Learn .+ colours and main rivalries as editorial/i.test(f)
+  );
+}
+
 export function gapCount(gaps) {
   return Object.values(gaps).filter((v) => v === true).length;
 }

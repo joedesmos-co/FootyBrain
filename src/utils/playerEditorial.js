@@ -33,7 +33,11 @@ export function getDisplayQuickFact(player) {
     const ageBit = typeof player.age === 'number' ? `, age ${player.age}` : '';
     const citizenship = String(player.nationalTeam || player.nationality || '').trim();
     const countryBit = citizenship ? ` · ${citizenship}` : '';
-    return `${player.name} (${player.position}${ageBit}) — ${club}, ${league}${countryBit}. Editorial quiz profile pending.`;
+    const style = String(player.playStyleSummary ?? '').trim();
+    if (style) {
+      return `${player.name} (${player.position}${ageBit}) — ${club}, ${league}${countryBit}. ${style}`;
+    }
+    return `${player.name} (${player.position}${ageBit}) — ${club}, ${league}${countryBit}. Squad profile for learning and recognition.`;
   }
   return fact;
 }
