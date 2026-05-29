@@ -170,7 +170,7 @@ export default function TeamClubProfileHub({
           </h2>
           <p className="team-club-hub__prose">{profile.story}</p>
           <p className="team-fan-guide__meta team-club-hub__synthesis-note">
-            Summary built from dataset fields — not live news.
+            Profile summary — updated on our editorial schedule, not live match news.
           </p>
         </section>
       ) : null}

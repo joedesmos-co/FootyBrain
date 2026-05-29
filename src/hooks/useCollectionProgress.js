@@ -20,12 +20,9 @@ function sanitize(raw) {
   const viewed = Array.isArray(raw?.viewed)
     ? raw.viewed.filter((k) => typeof k === 'string')
     : [];
-  let learned = Array.isArray(raw?.learned)
+  const learned = Array.isArray(raw?.learned)
     ? raw.learned.filter((k) => typeof k === 'string')
     : [];
-  if (learned.length === 0 && viewed.length > 0) {
-    learned = [...viewed];
-  }
   return {
     viewed,
     learned,
@@ -110,6 +107,7 @@ export function useCollectionProgress() {
     (collectionId, index, itemCount) => {
       const key = itemProgressKey(collectionId, index);
       if (state.learned.includes(key)) return 0;
+      if (!state.viewed.includes(key)) return 0;
 
       let xpTotal = awardCollectionItemXp(collectionId, index);
 
@@ -125,16 +123,13 @@ export function useCollectionProgress() {
       }
 
       applyUpdate((prev) => {
-        if (prev.learned.includes(key)) return prev;
-        const viewed = prev.viewed.includes(key)
-          ? prev.viewed
-          : [...prev.viewed, key];
+        if (prev.learned.includes(key) || !prev.viewed.includes(key)) return prev;
         const learned = [...prev.learned, key];
         const completedCollections =
           willAutoComplete && !prev.completedCollections.includes(collectionId)
             ? [...prev.completedCollections, collectionId]
             : prev.completedCollections;
-        return { ...prev, viewed, learned, completedCollections };
+        return { ...prev, learned, completedCollections };
       });
 
       return xpTotal;
@@ -144,6 +139,7 @@ export function useCollectionProgress() {
       awardCollectionItemXp,
       awardCollectionCompleteXp,
       state.learned,
+      state.viewed,
       state.completedCollections,
     ],
   );

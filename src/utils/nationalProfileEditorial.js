@@ -36,7 +36,7 @@ export function buildSquadIdentityContext(nationalTeam, stats = {}) {
   );
 
   if (nationalTeam.fifaRanking != null) {
-    parts.push(`FIFA ranking in the dataset: ${nationalTeam.fifaRanking}.`);
+    parts.push(`FIFA ranking: ${nationalTeam.fifaRanking}.`);
   }
 
   parts.push(
@@ -92,7 +92,7 @@ export function buildRivalryContext(nationalTeam) {
     return rival?.displayName ?? id.replace(/-/g, ' ');
   });
 
-  return `${nationalTeam.displayName} share listed rivalries with ${named.slice(0, 4).join(', ')} in the dataset—useful context for derby-style international quizzes and study paths.`;
+  return `${nationalTeam.displayName} share listed rivalries with ${named.slice(0, 4).join(', ')} — useful context for international quizzes and study paths.`;
 }
 
 /**
@@ -112,15 +112,15 @@ export function buildTournamentRelevanceContext(nationalTeam) {
   if (wcStatus.kind === 'roster') {
     const { rosterPlayerIds } = getWorldCup2026RosterIds(nationalTeam.id);
     parts.push(
-      `World Cup 2026 overlay: ${rosterPlayerIds.length} player${rosterPlayerIds.length === 1 ? '' : 's'} tagged in the tournament roster list (dataset snapshot).`,
+      `World Cup 2026: ${rosterPlayerIds.length} player${rosterPlayerIds.length === 1 ? '' : 's'} on our tournament roster list.`,
     );
   } else if (wcStatus.kind === 'projected') {
     const { projectedRosterPlayerIds } = getWorldCup2026RosterIds(nationalTeam.id);
     parts.push(
-      `World Cup 2026 overlay: ${projectedRosterPlayerIds.length} projected roster name${projectedRosterPlayerIds.length === 1 ? '' : 's'} in the dataset.`,
+      `World Cup 2026: ${projectedRosterPlayerIds.length} projected roster name${projectedRosterPlayerIds.length === 1 ? '' : 's'} tracked.`,
     );
   } else if (isFeatured) {
-    parts.push('World Cup 2026 squad list: still TBD in the dataset—browse the linked national pool meanwhile.');
+    parts.push('World Cup 2026 squad list still TBD — browse the linked national pool meanwhile.');
   }
 
   return parts.join(' ');

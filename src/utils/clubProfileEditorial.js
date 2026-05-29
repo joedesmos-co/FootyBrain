@@ -18,7 +18,7 @@ export function buildStadiumContext(team) {
   if (team?.stadium) parts.push(`${team.name} play home matches at ${team.stadium}.`);
   if (team?.founded) parts.push(`The club was founded in ${team.founded}.`);
   const manager = String(team?.manager ?? '').trim();
-  if (manager) parts.push(`Head coach listed in the dataset: ${manager}.`);
+  if (manager) parts.push(`Head coach: ${manager}.`);
   return parts.join(' ');
 }
 
@@ -57,9 +57,9 @@ export function buildLegendsContext(team) {
     .slice(0, 2)
     .map((p) => `${p.name} (${p.note})`);
   if (notes.length) {
-    return `Club legends noted in the dataset include ${names.join(', ')} — e.g. ${notes.join('; ')}.`;
+    return `Club legends include ${names.join(', ')} — e.g. ${notes.join('; ')}.`;
   }
-  return `Club legends noted in the dataset: ${names.join(', ')}.`;
+  return `Club legends include ${names.join(', ')}.`;
 }
 
 /**
@@ -77,7 +77,7 @@ export function buildFanIdentityContext(team) {
   const tags = formatClubIdentityTags(team?.identityTags ?? []);
   if (tags.length) {
     parts.push(
-      `Playing identity tags in the dataset: ${tags
+      `Known for ${tags
         .slice(0, 4)
         .map((t) => t.label.toLowerCase())
         .join(', ')}.`,
@@ -298,7 +298,7 @@ export function buildRichTeamMetaDescription(team, stats = {}) {
   if (stats.rosterSize) bits.push(`${stats.rosterSize} players`);
   if (team.stadium) bits.push(team.stadium);
   if (team.rivals?.length) bits.push(`vs ${team.rivals.slice(0, 2).join(', ')}`);
-  if (stats.quizReady > 0) bits.push(`${stats.quizReady} quiz-ready`);
+  if (stats.quizReady > 0) bits.push(`${stats.quizReady} in quizzes`);
 
   const hook = truncateClubText(
     profile.hasAuthoritativeStory ? profile.story : profile.stadium || profile.league,

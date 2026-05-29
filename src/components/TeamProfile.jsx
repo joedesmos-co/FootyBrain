@@ -151,7 +151,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   const keyPlayersNote =
     teamEditorial.playersToKnowIntro ||
     (teamEditorial.hasStory
-      ? 'Faces to know before you dive into the full squad — quiz-ready names marked.'
+      ? 'Faces to know before you explore the full squad — names in quizzes are marked.'
       : 'Top importance in the squad list — open profiles for hints, then try the club quiz.');
   const profileSubline = buildTeamProfileSubline(team);
   const thinClub = isThinTeam(team, 4);

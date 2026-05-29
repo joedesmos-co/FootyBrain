@@ -9,6 +9,7 @@ import {
   findNationalTeamIdForCountry,
   getNationalityHubPath,
 } from './internalLinking.js';
+import { buildCollectionDiscoveryLinks } from './collectionDiscovery.js';
 import { resolveRivalEntries } from './teamPageUtils';
 import {
   hasSubstantiveQuickFact,
@@ -155,6 +156,7 @@ export function buildNationalIdentitySection(nationalTeam, stats = {}) {
  *   nationalTeamId?: string,
  *   quizReady?: boolean,
  *   playerId?: string,
+ *   teamId?: string,
  * }} ctx
  * @returns {{ label: string, to: string, hint?: string }[]}
  */
@@ -169,8 +171,34 @@ export function buildKeepExploringLinks(ctx = {}) {
     links.push({ label, to, ...(hint ? { hint } : {}) });
   };
 
-  const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady, nationality } = ctx;
+  const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady, nationality, playerId, teamId } =
+    ctx;
   const lid = leagueId ?? team?.leagueId ?? league?.id ?? '';
+
+  if (playerId) {
+    for (const link of buildCollectionDiscoveryLinks('player', playerId, 2)) {
+      add(`Collection: ${link.label}`, link.to, link.hint);
+    }
+  }
+
+  const featuredTeamId = team?.id ?? teamId;
+  if (featuredTeamId) {
+    for (const link of buildCollectionDiscoveryLinks('team', featuredTeamId, 2)) {
+      add(`Collection: ${link.label}`, link.to, link.hint);
+    }
+  }
+
+  if (lid) {
+    for (const link of buildCollectionDiscoveryLinks('league', lid, 1)) {
+      add(`Collection: ${link.label}`, link.to, link.hint);
+    }
+  }
+
+  if (nationalTeamId) {
+    for (const link of buildCollectionDiscoveryLinks('national-team', nationalTeamId, 2)) {
+      add(`Collection: ${link.label}`, link.to, link.hint);
+    }
+  }
 
   if (team?.id) add(linkClubSquad(team.name), `/team/${team.id}`, 'Full roster and fan context');
   if (team?.id) add(LINK_CLUB_QUIZ_GUIDE, `/hubs/quizzes/team/${team.id}`, 'How to quiz this club');

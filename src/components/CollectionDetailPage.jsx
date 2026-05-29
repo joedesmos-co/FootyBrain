@@ -103,13 +103,24 @@ function CollectionItemRow({
             Open profile
           </Link>
           {!learned && (
-            <button
-              type="button"
-              className="btn btn--secondary btn--small"
-              onClick={() => onMarkLearned(collectionId, index, itemCount)}
-            >
-              Mark item learned
-            </button>
+            viewed ? (
+              <button
+                type="button"
+                className="btn btn--secondary btn--small"
+                onClick={() => onMarkLearned(collectionId, index, itemCount)}
+              >
+                Mark learned
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn--secondary btn--small"
+                disabled
+                title="Open the profile first to unlock marking as learned"
+              >
+                Mark learned
+              </button>
+            )
           )}
         </div>
       </div>
@@ -258,7 +269,7 @@ export default function CollectionDetailPage() {
           <p className="collection-detail-header__complete">Collection complete</p>
         )}
         <p className="collection-detail-header__xp-hint">
-          +{COLLECTION_ITEM_XP} XP per item · +{COLLECTION_COMPLETE_XP} XP when complete (each once)
+          Open each profile before marking learned. +{COLLECTION_ITEM_XP} XP per item and +{COLLECTION_COMPLETE_XP} XP when you finish the collection (each once).
         </p>
         {(isAdvancedFootballCollection(collection.id) ||
           isNationalTeamLearningCollection(collection.id)) && (
@@ -276,7 +287,7 @@ export default function CollectionDetailPage() {
               Compare first two
             </Link>
           )}
-          {!progress.collectionComplete && (
+          {!progress.collectionComplete && progress.learnedCount >= progress.total && progress.total > 0 && (
             <button
               type="button"
               className="btn btn--secondary"

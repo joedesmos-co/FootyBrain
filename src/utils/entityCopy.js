@@ -82,7 +82,7 @@ export const CTA_VIEW_PLAYER_PROFILE = 'View player profile';
 export const CTA_LEARN_PLAYER = 'Learn this player';
 
 // ——— Badges & inline status ———
-export const BADGE_QUIZ_READY = 'Quiz-ready';
+export const BADGE_QUIZ_READY = 'In quizzes';
 export const COPY_IN_QUIZZES = 'in quizzes';
 
 /**

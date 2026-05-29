@@ -16,6 +16,7 @@ import CountryFlag from './CountryFlag';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import PositionLabel from './PositionLabel';
 import BreadcrumbNav from './BreadcrumbNav';
+import QuizSubNav from './QuizSubNav';
 import {
   buildMissedPlayerStudyCards,
   getMissedLearningIntro,
@@ -395,6 +396,7 @@ export default function DailyChallenge() {
   return (
     <div className="page daily-page">
       <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Daily challenge' }]} />
+      <QuizSubNav />
       <header className="daily-header">
         <div>
           <h1 className="daily-header__title">Daily Challenge</h1>

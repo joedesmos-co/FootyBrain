@@ -1,11 +1,22 @@
 import { lazy, Suspense, useCallback, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const UniversalSearch = lazy(() => import('./UniversalSearch'));
+
+function isQuizSectionActive(pathname) {
+  return (
+    pathname === '/quiz' ||
+    pathname.startsWith('/club-quiz') ||
+    pathname === '/daily' ||
+    pathname.startsWith('/hubs/quizzes')
+  );
+}
 
 export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const searchButtonRef = useRef(null);
+  const { pathname } = useLocation();
+  const quizNavActive = isQuizSectionActive(pathname);
 
   const handleSearchClose = useCallback(() => {
     setSearchOpen(false);
@@ -54,14 +65,11 @@ export default function Navbar() {
         <NavLink to="/browse" className={({ isActive }) => (isActive ? 'active' : '')}>
           Browse
         </NavLink>
-        <NavLink to="/quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <NavLink
+          to="/quiz"
+          className={() => (quizNavActive ? 'active' : '')}
+        >
           Quiz
-        </NavLink>
-        <NavLink to="/club-quiz" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Club
-        </NavLink>
-        <NavLink to="/daily" className={({ isActive }) => (isActive ? 'active' : '')}>
-          Daily
         </NavLink>
         <NavLink
           to="/collections"

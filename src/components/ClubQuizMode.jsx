@@ -24,6 +24,7 @@ import {
 import { getLeagueDisplayName } from '../utils/footballDisplay';
 import { QUIZ_DIFFICULTY_OPTIONS } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
+import QuizSubNav from './QuizSubNav';
 import {
   getIncorrectMomentumCopy,
   getNextQuestionButtonLabel,
@@ -296,11 +297,13 @@ export default function ClubQuizMode() {
         ]}
       />
 
+      <QuizSubNav />
+
       <header className="page-header">
         <h1>Club quiz</h1>
         <p className="page-header__lead">
-          Club knowledge — stadiums, leagues, rivalries, history, and kits. Distinct from{' '}
-          <Link to="/quiz">player quizzes</Link>.
+          Test club knowledge — stadiums, leagues, rivalries, history, and kits. Pick a category and
+          league filter, then answer from real club profiles.
         </p>
         {activeCat ? (
           <aside className="quiz-active-theme" aria-label="Active club quiz mode">
@@ -347,7 +350,7 @@ export default function ClubQuizMode() {
                 </span>
                 <span className="club-quiz__category-label">{cat.label}</span>
                 <span className="club-quiz__category-meta">
-                  {viable ? `${count} clubs` : 'Needs more data'}
+                  {viable ? `${count} clubs` : 'More clubs coming soon'}
                 </span>
               </button>
             );

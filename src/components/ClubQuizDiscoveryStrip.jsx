@@ -26,7 +26,7 @@ export default function ClubQuizDiscoveryStrip({
   const topTier = isTopTierClub(team);
   const lead =
     editorial.quizDiscoveryLead ||
-    'Turn squad browsing into recall — player quizzes, league pools, and club trivia use only dataset facts.';
+    'Turn squad browsing into recall — player quizzes, league pools, and club trivia from real profiles.';
 
   if (!links.length) return null;
 

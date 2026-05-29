@@ -11672,6 +11672,11 @@ p.browse-results-empty {
   gap: 0.5rem;
 }
 
+.collection-item__actions .btn {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
 .collection-item__done-badge {
   font-size: 0.8rem;
   font-weight: 600;
@@ -12025,8 +12030,15 @@ p.browse-results-empty {
     text-align: center;
   }
 
+  .collection-item__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .collection-item__actions .btn {
+    width: 100%;
     min-height: 2.75rem;
+    justify-content: center;
   }
 
   .collection-items-list > li {
@@ -12570,6 +12582,54 @@ p.browse-results-empty {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* Unified quiz mode sub-navigation */
+.quiz-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 1.15rem;
+  padding: 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+
+.quiz-subnav__link {
+  flex: 1 1 auto;
+  min-width: min(100%, 7.5rem);
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background 0.15s var(--ease-out),
+    color 0.15s var(--ease-out);
+}
+
+.quiz-subnav__link:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.quiz-subnav__link--active {
+  color: var(--color-text);
+  background: rgba(52, 211, 153, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.35);
+}
+
+@media (max-width: 640px) {
+  .quiz-subnav__link {
+    flex: 1 1 calc(50% - 0.35rem);
+    min-height: var(--touch-target-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -13791,6 +13851,24 @@ p.browse-results-empty {
   line-height: 1.55;
   max-width: 42rem;
   color: var(--color-text);
+}
+
+.profile--premium.national-team-profile .profile__hero--national {
+  margin-bottom: 1rem;
+}
+
+.profile--premium.national-team-profile .team-profile__actions {
+  gap: 0.65rem;
+}
+
+.profile--premium.national-team-profile .national-team-profile__lede {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  max-width: 44rem;
+}
+
+.profile--premium.national-team-profile .club-quiz-discovery {
+  margin-top: 0.25rem;
 }
 
 /* Thin-entity enrichment — scanability */

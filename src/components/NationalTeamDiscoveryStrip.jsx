@@ -16,11 +16,11 @@ export default function NationalTeamDiscoveryStrip({ nationalTeam, quizReady, sq
   return (
     <section className="club-quiz-discovery national-discovery" aria-labelledby="nt-discovery-title">
       <h2 id="nt-discovery-title" className="club-quiz-discovery__title">
-        International study &amp; quiz links
+        Study &amp; quiz links
       </h2>
       <p className="club-quiz-discovery__lead">
-        Connect national squads to World Cup prep, nationality hubs, rival nations, and club
-        leagues—without leaving the dataset.
+        Connect national squads to World Cup prep, nationality hubs, rival nations, and club leagues
+        on FootyCompass.
       </p>
       <ul className="club-quiz-discovery__list">
         {links.slice(0, 8).map((link) => (

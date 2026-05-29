@@ -296,7 +296,7 @@ export default function NationalTeamProfile() {
       : '';
 
   return (
-    <div className="page national-team-profile">
+    <div className={`page national-team-profile${topTier ? ' profile--premium national-team-profile--premium' : ''}`}>
       <BreadcrumbNav items={breadcrumbItems} />
 
       <header className="profile__hero profile__hero--national">
@@ -343,8 +343,7 @@ export default function NationalTeamProfile() {
             </>
           ) : (
             <button type="button" className="btn btn--secondary" disabled>
-              Quiz unlocks at {QUIZ_NATIONAL_TEAM_MIN_POOL}+ players with clues (
-              {quizReady.length} so far, {squad.length} linked)
+              Quiz unlocks with a larger linked squad ({quizReady.length} with quiz clues so far)
             </button>
           )}
         </div>
@@ -409,8 +408,8 @@ export default function NationalTeamProfile() {
           <div className="team-key-players__header">
             <h2 id="nt-key-players">Players to know</h2>
             <p className="team-key-players__note">
-              Highest importance in the linked pool—open profiles for quiz hints, then return to
-              the nation quiz.
+              Highest importance in the linked pool — open profiles for hints, then return to the
+              nation quiz.
             </p>
           </div>
           <ul className="team-key-players__grid">

@@ -140,7 +140,7 @@ export function buildNationalExploreLead(nationalTeam, ctx = {}) {
   }
   if (ctx.quizReadyCount >= 8) {
     parts.push(
-      `${ctx.quizReadyCount} squad members are quiz-ready — national quizzes and World Cup prep routes are linked below.`,
+      `${ctx.quizReadyCount} squad members are in quizzes — national quizzes and World Cup prep routes are linked below.`,
     );
   } else if (ctx.linkedCount > 0) {
     parts.push(

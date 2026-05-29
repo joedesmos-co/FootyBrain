@@ -28,6 +28,7 @@ import {
   linkLeaguePage,
   linkNationalityPlayers,
 } from './entityCopy.js';
+import { buildCollectionDiscoveryLinks } from './collectionDiscovery.js';
 import { normalizeClubName, parseKeyPlayerLine, resolveRivalEntries } from './teamPageUtils.js';
 /** Align with scripts/generate-sitemap.js nationality hub cap. */
 export const NATIONALITY_HUB_INDEX_LIMIT = 80;
@@ -186,6 +187,22 @@ export function buildPlayerInternalLinks(ctx = {}) {
   if (leagueId) add(LINK_LEAGUE_QUIZ_GUIDE, `/hubs/quizzes/league/${leagueId}`);
   if (leagueId && quizReady) add(LINK_LEAGUE_PLAYER_QUIZ, `/quiz?league=${leagueId}`);
 
+  if (player?.id) {
+    for (const link of buildCollectionDiscoveryLinks('player', player.id, 2)) {
+      add(`Collection: ${link.label}`, link.to);
+    }
+  }
+  if (teamId) {
+    for (const link of buildCollectionDiscoveryLinks('team', teamId, 1)) {
+      add(`Collection: ${link.label}`, link.to);
+    }
+  }
+  if (nationalTeamId) {
+    for (const link of buildCollectionDiscoveryLinks('national-team', nationalTeamId, 1)) {
+      add(`Collection: ${link.label}`, link.to);
+    }
+  }
+
   add(LINK_EXPLORE_FOOTBALL, '/hubs');
   add(LINK_DAILY_CHALLENGE, '/daily');
 
@@ -277,6 +294,13 @@ export function buildNationalTeamInternalLinks(ctx = {}) {
   add(LINK_ALL_NATIONAL_TEAMS, '/national-teams');
   add(LINK_PLAYERS_BY_NATIONALITY, '/hubs/players/by-nationality');
   add(LINK_INTERNATIONAL_PLAYER_QUIZ, '/quiz?poolFocus=international&worldCup=prep');
+
+  if (nationalTeam?.id) {
+    for (const link of buildCollectionDiscoveryLinks('national-team', nationalTeam.id, 2)) {
+      add(`Collection: ${link.label}`, link.to);
+    }
+  }
+
   add(LINK_EXPLORE_FOOTBALL, '/hubs');
   add('Browse players', '/browse');
 

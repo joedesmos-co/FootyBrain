@@ -52,6 +52,8 @@ import { formatPosition, getLeagueDisplayName } from '../utils/footballDisplay';
 import PlayerAutocomplete from './PlayerAutocomplete';
 import QuizRegistryLoadState from './QuizRegistryLoadState';
 import ShareButton from './ShareButton';
+import QuizSubNav from './QuizSubNav';
+import { getCollectionsFeaturingEntity } from '../utils/collectionDiscovery';
 import {
   buildMissedPlayerStudyCards,
   getMissedLearningIntro,
@@ -757,6 +759,13 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     const missedCards = buildMissedPlayerStudyCards(missed, { getTeamName, limit: 8 });
     const encouragement = getSessionEncouragement(accuracy, bestStreak, missed.length);
     const missedIntro = getMissedLearningIntro(missed.length);
+    const collectionLinks = teamFilter
+      ? getCollectionsFeaturingEntity('team', teamFilter, 2)
+      : leagueFilter
+        ? getCollectionsFeaturingEntity('league', leagueFilter, 2)
+        : nationalTeamFilter
+          ? getCollectionsFeaturingEntity('national-team', nationalTeamFilter, 2)
+          : [];
     return {
       correctCount,
       total,
@@ -767,6 +776,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       missedIntro,
       nextQuizzes,
       encouragement,
+      collectionLinks,
     };
   }, [
     sessionResults,
@@ -801,18 +811,13 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
   return (
     <div className="page quiz">
+      <QuizSubNav />
+
       <header className="page-header">
-        <h1>Quizzes</h1>
+        <h1>Player quiz</h1>
         <p className="page-header__lead">
           Guess the player from hints — pick a league, club, or nation, set difficulty, and build a
-          streak. End a session anytime to see misses and what to play next.
-        </p>
-        <p>
-          Try{' '}
-          <Link to="/hubs/quizzes/themes">themed quiz pools</Link>,{' '}
-          <Link to="/club-quiz">club quizzes</Link>, or explore{' '}
-          <Link to="/hubs/quizzes">football quizzes by league</Link>, or{' '}
-          <Link to="/hubs/quizzes/league/premier-league">Guess the Premier League player</Link>.
+          streak. End a session anytime to review misses and what to study next.
         </p>
       </header>
 
@@ -1277,6 +1282,24 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               </section>
             ) : null}
 
+            {sessionSummary.collectionLinks?.length > 0 ? (
+              <section className="quiz-summary__next" aria-labelledby="quiz-collections-title">
+                <h3 id="quiz-collections-title" className="quiz-summary__subtitle">
+                  Continue in collections
+                </h3>
+                <ul className="quiz-summary__next-list">
+                  {sessionSummary.collectionLinks.map((collection) => (
+                    <li key={collection.id}>
+                      <Link to={collection.to} className="quiz-summary__next-link">
+                        <strong>{collection.title}</strong>
+                        <span>{collection.difficulty} · curated study path</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
             <div className="quiz-summary__actions">
               <button type="button" className="btn btn--primary btn--large" onClick={handlePlayAgain}>
                 Play again
@@ -1307,8 +1330,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               >
                 Share results
               </ShareButton>
-              <Link to="/hubs/learn/football-players" className="btn btn--secondary">
-                Continue learning
+              <Link to="/collections" className="btn btn--secondary">
+                Browse collections
               </Link>
               <button type="button" className="btn btn--secondary" onClick={handleClearFilters}>
                 New quiz setup

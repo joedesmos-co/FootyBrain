@@ -119,6 +119,8 @@ export default function ProfileKeepExploring({
           nationalTeamId,
           quizReady,
           nationality: player?.nationality ?? player?.nationalTeam,
+          playerId: player?.id ?? (variant === 'player' ? entityId : ''),
+          teamId: team?.id ?? teamId,
         });
 
   const defaultLinks = [];
