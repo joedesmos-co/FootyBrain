@@ -323,12 +323,16 @@ export default function PlayerProfile() {
     };
     const title = buildPlayerSeoTitle(player, { teamName: resolvedTeamName });
     const description = buildPlayerSeoDescription(player, seoCtx);
+    const browseOnly = isBrowseOnlyPlayer(player);
 
     applyPageSeo({
       title,
       description,
       canonicalUrl: canonical,
       ogType: 'profile',
+      // Prevent indexing large volumes of generated placeholder pages while we enrich quiz/editorial.
+      // Keep follow so Google can still discover deeper pages via links.
+      robots: browseOnly ? 'noindex,follow' : 'index,follow',
       breadcrumbs: [
         { name: 'Home', item: homeUrl },
         { name: 'Browse', item: browseUrl },

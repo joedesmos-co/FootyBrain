@@ -181,6 +181,11 @@ function buildIndexableRoutes(data) {
   // Players (exclude external league players to avoid indexing low-signal stubs)
   for (const player of data.players ?? []) {
     if (player.leagueId === 'external') continue;
+    const browseOnly =
+      player.quizEligible === false ||
+      player.dataStatus === 'generated-needs-editorial' ||
+      !(Array.isArray(player.quizHints) && player.quizHints.length > 0);
+    if (browseOnly) continue;
     urls.push({ loc: absUrl(`/player/${player.id}`), lastmod: DATA_AS_OF });
   }
 
