@@ -1,6 +1,6 @@
 # Top-importance depth audit
 
-Generated: 2026-05-28T20:19:08.514Z
+Generated: 2026-05-29T12:33:58.702Z
 
 ## Scope
 
@@ -13,7 +13,7 @@ Generated: 2026-05-28T20:19:08.514Z
 
 ## Summary
 
-- **Thin top players** (depth ≤3): 300
+- **Thin top players** (depth ≤3): 265
 - **Thin major clubs** (depth ≤4): 124
 - **Thin leagues**: 0
 - **Thin national teams**: 0
@@ -40,31 +40,31 @@ Generated: 2026-05-28T20:19:08.514Z
 
 ## Thin top players (sample)
 
-- **Erling Haaland** (96) — 3 gaps
-- **Jude Bellingham** (96) — 3 gaps
-- **Lionel Messi** (96) — 4 gaps
-- **Mohamed Salah** (95) — 3 gaps
-- **Vinícius Júnior** (95) — 3 gaps
-- **Neymar** (95) — 4 gaps
-- **Kevin De Bruyne** (94) — 3 gaps
-- **Harry Kane** (94) — 3 gaps
-- **Rodri** (93) — 3 gaps
-- **Virgil van Dijk** (93) — 3 gaps
-- **Jamal Musiala** (93) — 3 gaps
-- **Bukayo Saka** (92) — 3 gaps
-- **Lautaro Martínez** (92) — 3 gaps
-- **Heung-min Son** (92) — 4 gaps
-- **David Alaba** (92) — 4 gaps
-- **Eduardo Camavinga** (92) — 4 gaps
-- **Phil Foden** (91) — 3 gaps
-- **Martin Ødegaard** (91) — 3 gaps
-- **Federico Valverde** (91) — 3 gaps
-- **Robert Lewandowski** (91) — 3 gaps
-- **Joshua Kimmich** (91) — 3 gaps
-- **Rafael Leão** (91) — 3 gaps
-- **Christopher Nkunku** (91) — 4 gaps
-- **Rodrygo** (91) — 4 gaps
-- **William Saliba** (90) — 3 gaps
+- **Lionel Messi** (96) — 3 gaps
+- **Neymar** (95) — 3 gaps
+- **Heung-min Son** (92) — 3 gaps
+- **David Alaba** (92) — 3 gaps
+- **Eduardo Camavinga** (92) — 3 gaps
+- **Christopher Nkunku** (91) — 3 gaps
+- **Rodrygo** (91) — 3 gaps
+- **Mikel Merino** (90) — 3 gaps
+- **Antoine Griezmann** (90) — 3 gaps
+- **Jan Oblak** (90) — 3 gaps
+- **Min-jae Kim** (90) — 3 gaps
+- **Giorgian de Arrascaeta** (90) — 3 gaps
+- **Luis Suárez** (90) — 3 gaps
+- **Dušan Vlahović** (90) — 3 gaps
+- **Andrew Robertson** (90) — 3 gaps
+- **James Rodríguez** (90) — 3 gaps
+- **Giovani Lo Celso** (90) — 3 gaps
+- **Éder Militão** (90) — 3 gaps
+- **Eberechi Eze** (89) — 3 gaps
+- **Hugo Ekitiké** (89) — 3 gaps
+- **Bruno Fernandes** (89) — 3 gaps
+- **Khvicha Kvaratskhelia** (89) — 3 gaps
+- **Ousmane Dembélé** (89) — 3 gaps
+- **Daniel Carvajal** (89) — 3 gaps
+- **Richarlison** (89) — 3 gaps
 
 ## Thin major clubs (sample)
 
