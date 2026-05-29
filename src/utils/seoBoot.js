@@ -6,7 +6,7 @@
 import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from './brand.js';
 import { getStaticRouteSeo } from './seoRouteCopy.js';
 import { setSeoMeta } from './seoMeta.js';
-const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og.svg`;
+const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og.png`;
 
 const NOINDEX_EXACT = new Set(['/saved', '/profile', '/compare-clubs']);
 

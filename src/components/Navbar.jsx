@@ -19,7 +19,17 @@ export default function Navbar() {
       </a>
       <div className="navbar__start">
         <NavLink to="/" className="navbar__brand">
-          <span className="navbar__logo">⚽</span>
+          <span className="navbar__logo" aria-hidden="true">
+            <img
+              className="navbar__logo-img"
+              src="/brand/footycompass-icon.svg"
+              width="32"
+              height="32"
+              alt=""
+              decoding="async"
+              loading="eager"
+            />
+          </span>
           <span className="navbar__title">FootyCompass</span>
         </NavLink>
         <button

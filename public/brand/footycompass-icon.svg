@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="FootyCompass icon">
+  <defs>
+    <linearGradient id="fc-ring" x1="64" y1="80" x2="448" y2="432" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8" />
+      <stop offset="1" stop-color="#22c55e" />
+    </linearGradient>
+    <linearGradient id="fc-needle-red" x1="260" y1="122" x2="332" y2="286" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fb7185" />
+      <stop offset="1" stop-color="#ef4444" />
+    </linearGradient>
+    <linearGradient id="fc-needle-green" x1="228" y1="146" x2="168" y2="308" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#34d399" />
+      <stop offset="1" stop-color="#16a34a" />
+    </linearGradient>
+    <filter id="fc-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <!-- Compass ring -->
+  <g filter="url(#fc-soft)">
+    <circle cx="256" cy="256" r="204" fill="none" stroke="url(#fc-ring)" stroke-width="26" />
+    <circle cx="256" cy="256" r="204" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2" />
+  </g>
+
+  <!-- Cardinal ticks -->
+  <g fill="#0b1b14" opacity="0.85">
+    <path d="M256 30l18 46h-36z" />
+    <path d="M256 482l-18-46h36z" />
+    <path d="M30 256l46-18v36z" />
+    <path d="M482 256l-46 18v-36z" />
+  </g>
+
+  <!-- Football (geometrically symmetric) -->
+  <g>
+    <circle cx="256" cy="256" r="144" fill="#f8fafc" opacity="0.98" />
+    <circle cx="256" cy="256" r="144" fill="none" stroke="rgba(15,23,42,0.18)" stroke-width="6" />
+
+    <!-- Center pentagon -->
+    <path
+      d="M256 178.5 307.4 216.0 287.8 276.4 224.2 276.4 204.6 216.0Z"
+      fill="#0f172a"
+      opacity="0.95"
+    />
+
+    <!-- Surrounding panels -->
+    <path d="M256 130 297 150 256 178.5 215 150Z" fill="#0f172a" opacity="0.10" />
+    <path d="M332 206 344 250 307.4 216Z" fill="#0f172a" opacity="0.10" />
+    <path d="M308 306 344 302 320 346 287.8 276.4Z" fill="#0f172a" opacity="0.10" />
+    <path d="M204 276.4 192 320 224 346 248 306Z" fill="#0f172a" opacity="0.10" />
+    <path d="M204.6 216 168 250 180 206 215 150Z" fill="#0f172a" opacity="0.10" />
+
+    <!-- Seams -->
+    <g stroke="rgba(15,23,42,0.28)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M256 178.5 307.4 216.0 287.8 276.4 224.2 276.4 204.6 216.0Z" />
+      <path d="M256 178.5 215 150" />
+      <path d="M256 178.5 297 150" />
+      <path d="M307.4 216.0 344 250" />
+      <path d="M287.8 276.4 320 346" />
+      <path d="M224.2 276.4 192 320" />
+      <path d="M204.6 216.0 168 250" />
+    </g>
+  </g>
+
+  <!-- Compass needle (sharp, centered) -->
+  <g transform="translate(256 256)" filter="url(#fc-soft)">
+    <path
+      d="M0 -176 L44 -18 L0 24 L-44 -18 Z"
+      fill="#ffffff"
+      opacity="0.96"
+    />
+    <path d="M0 -168 L34 -26 L0 -2 Z" fill="url(#fc-needle-red)" />
+    <path d="M0 -168 L0 -2 L-34 -26 Z" fill="url(#fc-needle-green)" />
+    <path d="M0 24 L26 62 L0 190 L-26 62 Z" fill="#ffffff" opacity="0.96" />
+    <path d="M0 38 L18 68 L0 168 L-18 68 Z" fill="rgba(15,23,42,0.10)" />
+    <circle cx="0" cy="0" r="22" fill="#ffffff" opacity="0.96" />
+    <circle cx="0" cy="0" r="10" fill="rgba(15,23,42,0.22)" />
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="FootyCompass icon (monochrome)">
+  <g fill="none" stroke="#0f172a" stroke-width="26">
+    <circle cx="256" cy="256" r="204" />
+  </g>
+  <g fill="#0f172a">
+    <path d="M256 30l18 46h-36z" />
+    <path d="M256 482l-18-46h36z" />
+    <path d="M30 256l46-18v36z" />
+    <path d="M482 256l-46 18v-36z" />
+  </g>
+  <g>
+    <circle cx="256" cy="256" r="144" fill="#ffffff" />
+    <circle cx="256" cy="256" r="144" fill="none" stroke="rgba(15,23,42,0.22)" stroke-width="6" />
+    <path d="M256 178.5 307.4 216.0 287.8 276.4 224.2 276.4 204.6 216.0Z" fill="#0f172a" />
+    <g stroke="rgba(15,23,42,0.32)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M256 178.5 307.4 216.0 287.8 276.4 224.2 276.4 204.6 216.0Z" />
+      <path d="M256 178.5 215 150" />
+      <path d="M256 178.5 297 150" />
+      <path d="M307.4 216.0 344 250" />
+      <path d="M287.8 276.4 320 346" />
+      <path d="M224.2 276.4 192 320" />
+      <path d="M204.6 216.0 168 250" />
+    </g>
+  </g>
+  <g transform="translate(256 256)">
+    <path d="M0 -176 L44 -18 L0 24 L-44 -18 Z" fill="#ffffff" />
+    <path d="M0 -168 L34 -26 L0 -2 Z" fill="#0f172a" opacity="0.9" />
+    <path d="M0 -168 L0 -2 L-34 -26 Z" fill="#0f172a" opacity="0.65" />
+    <path d="M0 24 L26 62 L0 190 L-26 62 Z" fill="#ffffff" />
+    <circle cx="0" cy="0" r="22" fill="#ffffff" />
+    <circle cx="0" cy="0" r="10" fill="#0f172a" opacity="0.25" />
+  </g>
+</svg>

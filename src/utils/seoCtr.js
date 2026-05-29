@@ -23,7 +23,7 @@ import {
 } from './topImportanceProfile.js';
 
 export const META_DESCRIPTION_MAX = 158;
-export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og.svg`;
+export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og.png`;
 
 export function truncateMetaDescription(text, max = META_DESCRIPTION_MAX) {
   const cleaned = String(text ?? '')
