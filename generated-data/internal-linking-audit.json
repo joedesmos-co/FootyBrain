@@ -1,10 +1,9 @@
 {
-  "generatedAt": "2026-05-28T20:40:51.533Z",
-  "sitemapUrlCount": 4991,
-  "zeroInboundCount": 4966,
-  "weakInboundCount": 7,
+  "generatedAt": "2026-05-29T10:25:15.619Z",
+  "sitemapUrlCount": 4992,
+  "zeroInboundCount": 4965,
+  "weakInboundCount": 6,
   "zeroInboundSample": [
-    "/compare-clubs",
     "/hubs/quizzes/theme/wonderkids",
     "/hubs/quizzes/theme/legends",
     "/hubs/quizzes/theme/cult-heroes",
@@ -43,7 +42,8 @@
     "/team/manchester-city",
     "/hubs/quizzes/team/manchester-city",
     "/team/arsenal",
-    "/hubs/quizzes/team/arsenal"
+    "/hubs/quizzes/team/arsenal",
+    "/team/liverpool"
   ],
   "weakInboundSample": [
     {
@@ -52,10 +52,6 @@
     },
     {
       "path": "/hubs/world-cup/player-quiz",
-      "inbound": 1
-    },
-    {
-      "path": "/hubs/learn/football-players",
       "inbound": 1
     },
     {
