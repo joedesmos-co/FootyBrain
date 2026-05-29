@@ -1,11 +1,17 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import BreadcrumbNav from './BreadcrumbNav';
 import { getCollectionById } from '../data/collectionsData';
 import { getLearningPathById } from '../data/learningPathsData';
 import { getCollectionQuizHref } from '../utils/collections';
 import { resolveLearningPathSteps } from '../utils/learningPaths';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import { getCanonicalUrl } from '../utils/jsonLd';
-import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
+import {
+  applyEntityNotFoundSeo,
+  applyPageSeo,
+  truncateMetaDescription,
+} from '../utils/seoCtr.js';
 
 export default function LearningPathDetailPage() {
   const { pathId } = useParams();
@@ -18,10 +24,18 @@ export default function LearningPathDetailPage() {
     ? getCollectionQuizHref(primaryCollection.quizLaunch)
     : null;
 
-  useEffect(() => {
-    if (!path || steps.length === 0) return;
+  useLayoutEffect(() => {
+    if (!path || steps.length === 0) {
+      applyEntityNotFoundSeo({
+        label: 'Learning path',
+        canonicalUrl: canonicalUrlForPath(`/learning-paths/${pathId}`),
+      });
+      return undefined;
+    }
     const canonical = getCanonicalUrl();
-    if (!canonical) return;
+    if (!canonical) return undefined;
+    const homeUrl = canonical.replace(/\/learning-paths\/[^/]+$/, '/');
+    const pathsUrl = `${homeUrl.replace(/\/$/, '')}/learning-paths`;
     const title = `${path.title} — guided football learning path · FootyCompass`;
     const description = truncateMetaDescription(
       path.description
@@ -33,12 +47,25 @@ export default function LearningPathDetailPage() {
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
+      breadcrumbs: [
+        { name: 'Home', item: homeUrl },
+        { name: 'Learning paths', item: pathsUrl },
+        { name: path.title, item: canonical },
+      ],
     });
-  }, [path, steps.length]);
+    return undefined;
+  }, [path, pathId, steps.length]);
 
   if (!path || steps.length === 0) {
     return (
       <div className="learning-paths-page">
+        <BreadcrumbNav
+          items={[
+            { label: 'Home', to: '/' },
+            { label: 'Learning paths', to: '/learning-paths' },
+            { label: 'Path not found' },
+          ]}
+        />
         <header className="page-header">
           <h1>Path not found</h1>
           <p>
@@ -51,11 +78,13 @@ export default function LearningPathDetailPage() {
 
   return (
     <div className="learning-paths-page learning-paths-page--detail">
-      <nav className="collections-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/learning-paths">Learning paths</Link>
-        <span aria-hidden="true"> / </span>
-        <span>{path.title}</span>
-      </nav>
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Learning paths', to: '/learning-paths' },
+          { label: path.title },
+        ]}
+      />
 
       <header className="learning-path-detail__header">
         <div className="learning-path-detail__meta">

@@ -6,13 +6,24 @@ export default function BreadcrumbNav({ items, ariaLabel = 'Breadcrumb' }) {
 
   return (
     <nav className="collections-breadcrumb" aria-label={ariaLabel}>
-      {crumbs.map((item, idx) => (
-        <span key={`${item.label}-${idx}`}>
-          {idx > 0 ? <span aria-hidden="true"> / </span> : null}
-          {item.to ? <Link to={item.to}>{item.label}</Link> : <span>{item.label}</span>}
-        </span>
-      ))}
+      <ol className="collections-breadcrumb__list">
+        {crumbs.map((item, idx) => {
+          const isLast = idx === crumbs.length - 1;
+          return (
+            <li
+              key={`${item.label}-${idx}`}
+              className="collections-breadcrumb__item"
+              {...(isLast && !item.to ? { 'aria-current': 'page' } : {})}
+            >
+              {item.to ? (
+                <Link to={item.to}>{item.label}</Link>
+              ) : (
+                <span>{item.label}</span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }
-

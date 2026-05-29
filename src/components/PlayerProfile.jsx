@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getManifestLeague } from '../data/contentManifest';
 import { loadPlayerById } from '../data/playerStore';
@@ -37,10 +37,12 @@ import ProfileKeepExploring from './ProfileKeepExploring';
 import { buildPlayerInternalLinks } from '../utils/internalLinking.js';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import {
+  applyEntityNotFoundSeo,
   applyPageSeo,
   buildPlayerSeoDescription,
   buildPlayerSeoTitle,
 } from '../utils/seoCtr.js';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
 
 function parseDateOfBirth(value) {
@@ -285,7 +287,7 @@ export default function PlayerProfile() {
     [player, relatedPool],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!player) return undefined;
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -348,18 +350,44 @@ export default function PlayerProfile() {
     };
   }, [player, teamContext]);
 
+  useLayoutEffect(() => {
+    if (playerStatus !== 'not-found' && playerStatus !== 'error') return undefined;
+    applyEntityNotFoundSeo({
+      label: 'Player',
+      canonicalUrl: canonicalUrlForPath(`/player/${playerId}`),
+    });
+    return undefined;
+  }, [playerStatus, playerId]);
+
   if (playerStatus === 'loading') {
     return (
-      <div className="page">
-        <p className="empty-state">Loading player…</p>
+      <div className="page player-profile">
+        <header className="page-header">
+          <h1>Loading player profile</h1>
+          <p className="empty-state" role="status">
+            Loading player…
+          </p>
+        </header>
       </div>
     );
   }
 
-  if (!player || playerStatus === 'not-found') {
+  if (!player || playerStatus === 'not-found' || playerStatus === 'error') {
     return (
-      <div className="page">
-        <p className="empty-state">Player not found.</p>
+      <div className="page player-profile">
+        <BreadcrumbNav
+          items={[
+            { label: 'Home', to: '/' },
+            { label: 'Browse', to: '/browse' },
+            { label: 'Player not found' },
+          ]}
+        />
+        <header className="page-header">
+          <h1>Player not found</h1>
+          <p className="empty-state">
+            We could not find that player in FootyCompass. Try browse or search for another name.
+          </p>
+        </header>
         <Link to="/browse" className="btn btn--secondary">
           Back to browse
         </Link>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { hasExternalLeagueShard, useLeagueShard } from '../hooks/useLeagueShard';
 import { useFavorites } from '../hooks/useFavorites';
@@ -28,10 +28,12 @@ import TeamSquadView from './TeamSquadView';
 import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import {
+  applyEntityNotFoundSeo,
   applyPageSeo,
   buildTeamSeoDescription,
   buildTeamSeoTitle,
 } from '../utils/seoCtr.js';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
@@ -59,7 +61,7 @@ function buildTeamProfileSubline(team) {
 function TeamProfileContent({ team, leagueName, league, roster, squadLoading, leagueTeams }) {
   const isExternalStub = isExternalClubStubTeam(team);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
 
@@ -455,6 +457,34 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   );
 }
 
+function TeamNotFound({ teamId, message }) {
+  useLayoutEffect(() => {
+    applyEntityNotFoundSeo({
+      label: 'Club',
+      canonicalUrl: canonicalUrlForPath(`/team/${teamId}`),
+    });
+  }, [teamId]);
+
+  return (
+    <div className="page team-profile">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Teams', to: '/teams' },
+          { label: 'Club not found' },
+        ]}
+      />
+      <header className="page-header">
+        <h1>Club not found</h1>
+        <p className="empty-state">{message}</p>
+      </header>
+      <Link to="/teams" className="btn btn--secondary">
+        Back to clubs
+      </Link>
+    </div>
+  );
+}
+
 export default function TeamProfile() {
   const { teamId } = useParams();
   const [shell, setShell] = useState(null);
@@ -532,24 +562,15 @@ export default function TeamProfile() {
   }
 
   if (!team) {
-    return (
-      <div className="page">
-        <p className="empty-state">Team not found.</p>
-        <Link to="/teams" className="btn btn--secondary">
-          Back to clubs
-        </Link>
-      </div>
-    );
+    return <TeamNotFound teamId={teamId} message="Team not found." />;
   }
 
   if (usesShard && shardState.status === 'error') {
     return (
-      <div className="page">
-        <p className="empty-state">Could not load this squad. Check your connection and try again.</p>
-        <Link to="/teams" className="btn btn--secondary">
-          Back to clubs
-        </Link>
-      </div>
+      <TeamNotFound
+        teamId={teamId}
+        message="Could not load this squad. Check your connection and try again."
+      />
     );
   }
 

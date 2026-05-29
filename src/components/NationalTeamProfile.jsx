@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { loadPlayerById } from '../data/playerStore';
@@ -22,10 +22,12 @@ import PlayerVisual from './PlayerVisual';
 import { formatPosition } from '../utils/footballDisplay';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import {
+  applyEntityNotFoundSeo,
   applyPageSeo,
   buildNationalTeamSeoDescription,
   buildNationalTeamSeoTitle,
 } from '../utils/seoCtr.js';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
@@ -98,7 +100,7 @@ export default function NationalTeamProfile() {
     });
   }, [nationalTeam, squad, linkedCount, quizReadyCount]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!nationalTeam) return undefined;
     const canonical = getCanonicalUrl();
     if (!canonical) return undefined;
@@ -197,16 +199,35 @@ export default function NationalTeamProfile() {
     };
   }, [nationalTeam?.id]);
 
+  useLayoutEffect(() => {
+    if (nationalTeam || !teamId) return undefined;
+    applyEntityNotFoundSeo({
+      label: 'National team',
+      canonicalUrl: canonicalUrlForPath(`/national-team/${teamId}`),
+    });
+    return undefined;
+  }, [nationalTeam, teamId]);
+
   if (!nationalTeam) {
     const poolNotAddedYet =
       teamId && isWorldCup2026QualifiedTeam(teamId) && !isLiveNationalTeamId(teamId);
     return (
-      <div className="page">
-        <p className="empty-state">
-          {poolNotAddedYet
-            ? 'Pool not added yet.'
-            : 'National team not found.'}
-        </p>
+      <div className="page national-team-profile">
+        <BreadcrumbNav
+          items={[
+            { label: 'Home', to: '/' },
+            { label: 'National teams', to: '/national-teams' },
+            { label: poolNotAddedYet ? 'Pool coming' : 'Not found' },
+          ]}
+        />
+        <header className="page-header">
+          <h1>{poolNotAddedYet ? 'National team pool coming' : 'National team not found'}</h1>
+          <p className="empty-state">
+            {poolNotAddedYet
+              ? 'Pool not added yet.'
+              : 'National team not found.'}
+          </p>
+        </header>
         {poolNotAddedYet ? (
           <p className="collections-page__section-desc">
             This World Cup team is in the 2026 draw for orientation only — FootyCompass does not

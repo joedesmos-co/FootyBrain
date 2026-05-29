@@ -11387,6 +11387,23 @@ p.browse-results-empty {
   margin-bottom: 0.75rem;
 }
 
+.collections-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.collections-breadcrumb__item:not(:last-child)::after {
+  content: '/';
+  margin-left: 0.35rem;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
 .collections-breadcrumb a {
   color: var(--color-accent);
   text-decoration: none;
@@ -11395,6 +11412,87 @@ p.browse-results-empty {
 .collections-breadcrumb a:hover,
 .collections-breadcrumb a:focus-visible {
   text-decoration: underline;
+}
+
+.crawl-shell {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(7, 17, 13, 0.96);
+}
+
+.crawl-shell[hidden] {
+  display: none !important;
+}
+
+.crawl-shell__brand {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.crawl-shell__header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.crawl-shell__lede {
+  margin: 0 0 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+.crawl-shell__path {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.crawl-shell__nav ul {
+  margin: 0.65rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+}
+
+.crawl-shell__nav a {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--color-soft);
+  text-decoration: none;
+}
+
+.crawl-shell__nav a:hover,
+.crawl-shell__nav a:focus-visible {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.noscript-fallback {
+  max-width: 42rem;
+  margin: 1rem auto;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(16, 26, 23, 0.92);
+}
+
+.noscript-fallback h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.noscript-fallback ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
 }
 
 .collection-detail-header__meta {

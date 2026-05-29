@@ -45,7 +45,55 @@
     <meta name="twitter:image" content="https://footycompass.com/og.svg" />
   </head>
   <body>
+    <div id="crawl-shell" class="crawl-shell">
+      <header class="crawl-shell__header">
+        <p class="crawl-shell__brand">FootyCompass</p>
+        <h1 data-crawl-h1>FootyCompass</h1>
+        <p class="crawl-shell__lede">
+          Football discovery and learning — browse players, clubs, leagues, national teams, and
+          quizzes.
+        </p>
+        <p class="crawl-shell__path" data-crawl-path>/</p>
+      </header>
+      <nav class="crawl-shell__nav" aria-label="Site sections">
+        <ul>
+          <li><a href="/browse">Browse players</a></li>
+          <li><a href="/teams">Football clubs</a></li>
+          <li><a href="/national-teams">National teams</a></li>
+          <li><a href="/quiz">Player quizzes</a></li>
+          <li><a href="/club-quiz">Club quizzes</a></li>
+          <li><a href="/daily">Daily challenge</a></li>
+          <li><a href="/world-cup">World Cup 2026</a></li>
+          <li><a href="/hubs">Explore football</a></li>
+          <li><a href="/collections">Study collections</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <noscript>
+      <main class="noscript-fallback">
+        <h1>FootyCompass — football quizzes and player profiles</h1>
+        <p>
+          JavaScript is required for quizzes and interactive browse. You can still open major
+          sections:
+        </p>
+        <ul>
+          <li><a href="/browse">Browse players</a></li>
+          <li><a href="/teams">Clubs</a></li>
+          <li><a href="/national-teams">National teams</a></li>
+          <li><a href="/hubs">Explore</a></li>
+          <li><a href="/about">About FootyCompass</a></li>
+        </ul>
+        <p><a href="/sitemap.xml">Sitemap</a> · <a href="/">Home</a></p>
+      </main>
+    </noscript>
+
     <div id="root"></div>
+    <script type="module">
+      import { applyBootSeoFromLocation } from '/src/utils/seoBoot.js';
+      applyBootSeoFromLocation();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

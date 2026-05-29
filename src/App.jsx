@@ -7,6 +7,7 @@ import NotFoundPage from './components/NotFoundPage';
 import PageFallback from './components/PageFallback';
 import PrivacyPage from './components/PrivacyPage';
 import Seo from './components/Seo';
+import { dismissCrawlShell } from './utils/seoBoot.js';
 const BrowseDatabase = lazy(() => import('./components/BrowseDatabase'));
 const PlayerProfile = lazy(() => import('./components/PlayerProfile'));
 const TeamProfile = lazy(() => import('./components/TeamProfile'));
@@ -106,11 +107,19 @@ function withPageSuspense(Component, label) {
   );
 }
 
+function CrawlShellDismiss() {
+  useEffect(() => {
+    dismissCrawlShell();
+  }, []);
+  return null;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <ErrorBoundary>
         <ScrollToTop />
+        <CrawlShellDismiss />
         <Seo />
         <div className="app">
           <Navbar />

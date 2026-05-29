@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLeagueShard } from '../hooks/useLeagueShard';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
@@ -35,10 +35,12 @@ import PlayerVisual from './PlayerVisual';
 import { peekTeamName } from '../data/teamStore';
 import { getCanonicalUrl, upsertJsonLdScript } from '../utils/jsonLd';
 import {
+  applyEntityNotFoundSeo,
   applyPageSeo,
   buildLeagueSeoDescription,
   buildLeagueSeoTitle,
 } from '../utils/seoCtr.js';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import { buildLeagueIdentitySection } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
@@ -104,8 +106,17 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
       ],
     });
 
+    upsertJsonLdScript('jsonld-sportsleague', {
+      '@context': 'https://schema.org',
+      '@type': 'SportsOrganization',
+      name: getLeagueDisplayName(league),
+      sport: 'Soccer',
+      url: canonical,
+    });
+
     return () => {
       upsertJsonLdScript('jsonld-breadcrumb', null);
+      upsertJsonLdScript('jsonld-sportsleague', null);
     };
   }, [league, leagueTeams, leaguePlayers, quizReadyPlayers.length]);
 
@@ -497,6 +508,34 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   );
 }
 
+function LeagueNotFound({ leagueId, message }) {
+  useLayoutEffect(() => {
+    applyEntityNotFoundSeo({
+      label: 'League',
+      canonicalUrl: canonicalUrlForPath(`/league/${leagueId}`),
+    });
+  }, [leagueId]);
+
+  return (
+    <div className="page league-profile">
+      <BreadcrumbNav
+        items={[
+          { label: 'Home', to: '/' },
+          { label: 'Browse', to: '/browse' },
+          { label: 'League not found' },
+        ]}
+      />
+      <header className="page-header">
+        <h1>League not found</h1>
+        <p className="empty-state">{message}</p>
+      </header>
+      <Link to="/browse" className="btn btn--secondary">
+        Back to browse
+      </Link>
+    </div>
+  );
+}
+
 export default function LeagueProfile() {
   const { leagueId } = useParams();
   const loadState = useLeagueShard(leagueId, { requireManifest: true });
@@ -505,12 +544,7 @@ export default function LeagueProfile() {
 
   if (loadState.status === 'missing') {
     return (
-      <div className="page">
-        <p className="empty-state">We could not find that league.</p>
-        <Link to="/browse" className="btn btn--secondary">
-          Back to browse
-        </Link>
-      </div>
+      <LeagueNotFound leagueId={leagueId} message="We could not find that league." />
     );
   }
 
@@ -520,12 +554,10 @@ export default function LeagueProfile() {
 
   if (loadState.status === 'error' || !loadState.shard?.league) {
     return (
-      <div className="page">
-        <p className="empty-state">This league did not load. Check your connection and try again.</p>
-        <Link to="/browse" className="btn btn--secondary">
-          Back to browse
-        </Link>
-      </div>
+      <LeagueNotFound
+        leagueId={leagueId}
+        message="This league did not load. Check your connection and try again."
+      />
     );
   }
 

@@ -49,6 +49,7 @@
     "audit:top-importance-depth": "node scripts/audit-top-importance-depth.js",
     "audit:internal-linking": "node scripts/audit-internal-linking.js",
     "audit:seo-meta": "node scripts/audit-seo-meta.js",
+    "audit:spa-seo": "node scripts/audit-spa-seo.js",
     "audit:adsense-readiness": "node scripts/audit-adsense-readiness.js",
     "audit:quiz-ecosystem": "node scripts/audit-quiz-ecosystem.js",
     "audit:club-profiles": "node scripts/audit-club-profiles.js",

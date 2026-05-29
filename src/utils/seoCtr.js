@@ -2,7 +2,7 @@
  * CTR-focused titles, meta descriptions, and consistent social / JSON-LD helpers.
  */
 
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { getClubQuizCategoryById } from '../data/clubQuizCategories.js';
 import { getQuizThemeById } from '../data/quizThemes.js';
 import { getNationalTeamName } from '../data/nationalTeamData.js';
@@ -153,6 +153,23 @@ export function clearPageSeoExtras() {
   upsertJsonLdScript('jsonld-landing', null);
   upsertJsonLdScript('jsonld-person', null);
   upsertJsonLdScript('jsonld-sportsteam', null);
+  upsertJsonLdScript('jsonld-sportsleague', null);
+}
+
+/**
+ * Thin / missing entity pages — avoid indexing empty shells.
+ */
+export function applyEntityNotFoundSeo({ label, canonicalUrl }) {
+  applyPageSeo({
+    title: pageTitle(`${label} not found`),
+    description: `This ${label.toLowerCase()} is not listed on FootyCompass. Browse players, clubs, and leagues or use search.`,
+    canonicalUrl,
+    robots: 'noindex,nofollow',
+  });
+  upsertJsonLdScript('jsonld-person', null);
+  upsertJsonLdScript('jsonld-sportsteam', null);
+  upsertJsonLdScript('jsonld-sportsleague', null);
+  upsertJsonLdScript('jsonld-breadcrumb', null);
 }
 
 /**
@@ -160,7 +177,7 @@ export function clearPageSeoExtras() {
  * @param {unknown[]} deps
  */
 export function usePageSeo(config, deps = []) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!config) return undefined;
     applyPageSeo(config);
     return () => clearPageSeoExtras();

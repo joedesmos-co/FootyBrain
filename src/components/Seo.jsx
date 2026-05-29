@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { canonicalUrlForPath, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../utils/brand';
 import { upsertJsonLdScript } from '../utils/jsonLd';
@@ -38,7 +38,7 @@ function isNoIndexPath(pathname) {
 export default function Seo() {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const canonicalUrl = canonicalUrlForPath(pathname);
     const indexable = !isNoIndexPath(pathname);
     const staticSeo = getStaticRouteSeo(pathname);
@@ -57,7 +57,10 @@ export default function Seo() {
       upsertJsonLdScript('jsonld-breadcrumb', null);
     }
     if (!pathname.startsWith('/player/')) upsertJsonLdScript('jsonld-person', null);
-    if (!pathname.startsWith('/team/')) upsertJsonLdScript('jsonld-sportsteam', null);
+    if (!pathname.startsWith('/team/') && !pathname.startsWith('/national-team/')) {
+      upsertJsonLdScript('jsonld-sportsteam', null);
+    }
+    if (!pathname.startsWith('/league/')) upsertJsonLdScript('jsonld-sportsleague', null);
     if (!pathname.startsWith('/hubs')) upsertJsonLdScript('jsonld-landing', null);
 
     return () => {
