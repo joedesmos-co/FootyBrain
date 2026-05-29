@@ -57,8 +57,14 @@ import {
   getMissedLearningIntro,
 } from '../utils/quizMissedLearning';
 import {
+  getIncorrectMomentumCopy,
   getNextQuestionButtonLabel,
+  getOneMoreQuizNudge,
   getSessionEncouragement,
+  getSessionEndHeadline,
+  getStreakMilestoneCopy,
+  getStreakMilestoneLabel,
+  getStreakTier,
   scrollPageTop,
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
@@ -68,20 +74,6 @@ import QuizFeedbackActions from './QuizFeedbackActions';
 //       users/{uid}/quizSessions so progress carries across devices.
 
 const SESSION_MILESTONE = 5;
-
-function getStreakTier(value) {
-  if (value >= 10) return 10;
-  if (value >= 5) return 5;
-  if (value >= 3) return 3;
-  return 0;
-}
-
-function getStreakMilestoneLabel(value) {
-  if (value === 10) return '10-streak — unstoppable';
-  if (value === 5) return '5-streak — on fire';
-  if (value === 3) return '3-streak — heating up';
-  return null;
-}
 
 function computeSessionCategoryInsights(sessionResults, getTeamName, leagueById) {
   const buckets = new Map();
@@ -800,7 +792,12 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
   const nextQuestionLabel = getNextQuestionButtonLabel(
     streak,
     feedback === 'correct' ? 'correct' : 'incorrect',
+    { bestStreak },
   );
+
+  useEffect(() => {
+    if (feedback) scrollQuizPanelIntoView();
+  }, [feedback]);
 
   return (
     <div className="page quiz">
@@ -1167,7 +1164,15 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
       <section className="quiz-panel">
         {sessionEnded && sessionSummary && !currentPlayer && (
           <article className="info-card quiz-summary" aria-label="Session summary">
-            <h2 className="quiz-summary__title">Session complete</h2>
+            <h2 className="quiz-summary__title">
+              {getSessionEndHeadline(
+                sessionSummary.accuracy,
+                sessionSummary.correctCount === sessionSummary.total,
+              )}
+            </h2>
+            <p className="quiz-summary__nudge">
+              {getOneMoreQuizNudge(sessionSummary.accuracy, bestStreak)}
+            </p>
             {sessionSummary.encouragement ? (
               <p className="quiz-summary__encourage">{sessionSummary.encouragement}</p>
             ) : null}
@@ -1276,6 +1281,22 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               <button type="button" className="btn btn--primary btn--large" onClick={handlePlayAgain}>
                 Play again
               </button>
+              {sessionSummary.nextQuizzes[0] ? (
+                <Link
+                  to={sessionSummary.nextQuizzes[0].href}
+                  className="btn btn--secondary btn--large quiz-summary__follow-up"
+                >
+                  One more: {sessionSummary.nextQuizzes[0].label}
+                </Link>
+              ) : null}
+              <Link to="/daily" className="btn btn--secondary">
+                Daily challenge
+              </Link>
+              {sessionSummary.missed.length > 0 ? (
+                <a href="#quiz-missed-players" className="btn btn--secondary">
+                  Review misses
+                </a>
+              ) : null}
               <ShareButton
                 className="btn btn--secondary"
                 title="FootyCompass quiz results"
@@ -1286,17 +1307,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               >
                 Share results
               </ShareButton>
-              <Link to="/daily" className="btn btn--secondary">
-                Try daily challenge
-              </Link>
               <Link to="/hubs/learn/football-players" className="btn btn--secondary">
                 Continue learning
               </Link>
-              {sessionSummary.missed.length > 0 ? (
-                <a href="#quiz-missed-players" className="btn btn--secondary">
-                  Explore missed players
-                </a>
-              ) : null}
               <button type="button" className="btn btn--secondary" onClick={handleClearFilters}>
                 New quiz setup
               </button>
@@ -1509,7 +1522,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     ✓
                   </span>
                   <div className="quiz-feedback__banner-copy">
-                    <h3>Correct!</h3>
+                    <h3>Correct</h3>
                     <p className="quiz-feedback__answer-name">{currentPlayer.name}</p>
                   </div>
                   {streak > 1 ? (
@@ -1520,8 +1533,8 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     </span>
                   ) : null}
                 </div>
-                {streakMilestoneLabel ? (
-                  <p className="quiz-feedback__milestone">{streakMilestoneLabel}</p>
+                {getStreakMilestoneCopy(streak) ? (
+                  <p className="quiz-feedback__milestone">{getStreakMilestoneCopy(streak)}</p>
                 ) : null}
                 {lastXpFeedback ? (
                   <p className="quiz-feedback__xp" aria-label={lastXpFeedback}>
@@ -1560,10 +1573,13 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                     ×
                   </span>
                   <div className="quiz-feedback__banner-copy">
-                    <h3>{timedOut ? "Time's up!" : 'Not quite'}</h3>
+                    <h3>{timedOut ? "Time's up" : 'Not quite'}</h3>
                     <p className="quiz-feedback__reveal-label">Answer</p>
                   </div>
                 </div>
+                <p className="quiz-feedback__momentum">
+                  {getIncorrectMomentumCopy(bestStreak)}
+                </p>
                 <p className="quiz-feedback__reveal-name">{currentPlayer.name}</p>
                 {(() => {
                   const tip = getWrongAnswerTip({
@@ -1593,9 +1609,9 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 ) : null}
                 <Link
                   to={`/player/${currentPlayer.id}`}
-                  className="btn btn--primary quiz-feedback__cta quiz-feedback__cta--learn"
+                  className="btn btn--secondary btn--small quiz-feedback__cta"
                 >
-                  Learn more about {currentPlayer.name}
+                  View {currentPlayer.name}
                 </Link>
               </article>
             )}

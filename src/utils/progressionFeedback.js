@@ -12,7 +12,11 @@ export function formatQuizXpFeedback(result) {
 
   const detail = parts.length > 0 ? ` (${parts.join(', ')})` : '';
   const streakNote =
-    result.newSessionStreak >= 5 ? ' · 5+ streak!' : result.newSessionStreak >= 3 ? ' · streak building' : '';
+    result.newSessionStreak >= 5
+      ? ' · streak bonus rolling'
+      : result.newSessionStreak >= 3
+        ? ' · streak building'
+        : '';
   return `+${result.totalXp} XP${detail}${streakNote}`;
 }
 

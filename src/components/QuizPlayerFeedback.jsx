@@ -9,6 +9,11 @@ import CountryFlag from './CountryFlag';
  *   player: object,
  *   clubLabel: string,
  *   profileLabel?: string,
+ *   streak?: number,
+ *   streakTier?: number,
+ *   milestone?: string,
+ *   momentumLine?: string,
+ *   xpLine?: string,
  * }} props
  */
 export default function QuizPlayerFeedback({
@@ -16,12 +21,17 @@ export default function QuizPlayerFeedback({
   player,
   clubLabel,
   profileLabel = 'View player profile',
+  streak = 0,
+  streakTier = 0,
+  milestone = '',
+  momentumLine = '',
+  xpLine = '',
 }) {
   const isCorrect = variant === 'correct';
 
   return (
     <article
-      className={`quiz-feedback quiz-feedback--pop quiz-feedback--${isCorrect ? 'correct' : 'incorrect'}`}
+      className={`quiz-feedback quiz-feedback--pop quiz-feedback--${isCorrect ? 'correct' : 'incorrect'}${isCorrect && streakTier ? ` quiz-feedback--streak-t${streakTier}` : ''}`}
       role="status"
     >
       <div
@@ -31,10 +41,22 @@ export default function QuizPlayerFeedback({
           {isCorrect ? '✓' : '×'}
         </span>
         <div className="quiz-feedback__banner-copy">
-          <h3>{isCorrect ? 'Correct!' : 'Not quite'}</h3>
+          <h3>{isCorrect ? 'Correct' : 'Not quite'}</h3>
           <p className="quiz-feedback__answer-name">{player.name}</p>
         </div>
+        {isCorrect && streak > 1 ? (
+          <span className={`quiz-feedback__streak quiz-feedback__streak--t${streakTier}`}>
+            {streak} streak
+          </span>
+        ) : null}
       </div>
+      {milestone ? <p className="quiz-feedback__milestone">{milestone}</p> : null}
+      {xpLine ? (
+        <p className="quiz-feedback__xp" aria-label={xpLine}>
+          {xpLine}
+        </p>
+      ) : null}
+      {momentumLine ? <p className="quiz-feedback__momentum">{momentumLine}</p> : null}
       <dl className="quiz-feedback__details">
         <div>
           <dt>Club</dt>

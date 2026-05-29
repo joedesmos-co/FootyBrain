@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { canonicalUrlForPath } from '../utils/brand';
 import {
@@ -21,8 +21,13 @@ import {
   getMissedLearningIntro,
 } from '../utils/quizMissedLearning';
 import {
+  getIncorrectMomentumCopy,
   getNextQuestionButtonLabel,
+  getOneMoreQuizNudge,
   getSessionEncouragement,
+  getSessionEndHeadline,
+  getStreakMilestoneCopy,
+  getStreakTier,
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
 import QuizPlayerFeedback from './QuizPlayerFeedback';
@@ -41,9 +46,25 @@ function formatDateKey(dateKey) {
 // ---------------------------------------------------------------------------
 // Progress pip strip (● ● ○ ○ ○)
 // ---------------------------------------------------------------------------
+function consecutiveCorrectAtEnd(results) {
+  let count = 0;
+  for (let i = results.length - 1; i >= 0; i -= 1) {
+    if (results[i].isCorrect) count += 1;
+    else break;
+  }
+  return count;
+}
+
 function ProgressPips({ total, current, results }) {
   return (
-    <div className="daily-progress" aria-hidden="true">
+    <div
+      className="daily-progress"
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={total}
+      aria-valuenow={results.length}
+      aria-label={`Daily progress: ${results.length} of ${total} answered`}
+    >
       {Array.from({ length: total }, (_, i) => {
         let state = 'pending';
         if (i < results.length) {
@@ -98,8 +119,9 @@ function CompletionScreen({
     <article className="info-card quiz-summary daily-complete" aria-label="Daily challenge summary">
       <p className="daily-complete__date">{formatDateKey(todayKey)}</p>
       <h2 className="quiz-summary__title">
-        {perfect ? 'Perfect daily run!' : 'Daily challenge complete'}
+        {perfect ? 'Perfect daily run' : getSessionEndHeadline(accuracy, perfect)}
       </h2>
+      <p className="quiz-summary__nudge">{getOneMoreQuizNudge(accuracy, dailyStreak)}</p>
       {challengeLabel ? (
         <p className="daily-challenge-label daily-challenge-label--complete">
           {challengeLabel}
@@ -118,8 +140,12 @@ function CompletionScreen({
         </p>
         <p className="quiz-summary__accuracy">{accuracy}% today</p>
         <p className="quiz-summary__meta">
-          +{totalXp} XP · {dailyStreak} day{dailyStreak === 1 ? '' : 's'} streak
-          {dailyStreak >= 2 ? ' 🔥' : ''}
+          +{totalXp} XP
+          {dailyStreak >= 2
+            ? ` · ${dailyStreak}-day return streak`
+            : dailyStreak === 1
+              ? ' · day 1 of your streak'
+              : ''}
         </p>
       </div>
 
@@ -166,6 +192,12 @@ function CompletionScreen({
       <div className="quiz-summary__actions">
         <Link to="/quiz" className="btn btn--primary btn--large">
           Play another quiz
+        </Link>
+        <Link
+          to="/club-quiz?category=stadium"
+          className="btn btn--secondary btn--large quiz-summary__follow-up"
+        >
+          One more: club stadium quiz
         </Link>
         <Link to="/profile" className="btn btn--secondary">
           View progress
@@ -247,10 +279,33 @@ export default function DailyChallenge() {
     return streak;
   })();
 
-  const nextQuestionLabel =
-    currentIndex >= questions.length - 1
-      ? 'See results'
-      : getNextQuestionButtonLabel(answerStreak, feedback ?? 'incorrect');
+  const runBestStreak = useMemo(() => {
+    let best = 0;
+    let current = 0;
+    for (const r of results) {
+      if (r.isCorrect) {
+        current += 1;
+        best = Math.max(best, current);
+      } else {
+        current = 0;
+      }
+    }
+    if (feedback === 'correct') best = Math.max(best, answerStreak);
+    return best;
+  }, [results, feedback, answerStreak]);
+
+  const nextQuestionLabel = getNextQuestionButtonLabel(
+    answerStreak,
+    feedback === 'correct' ? 'correct' : 'incorrect',
+    {
+      bestStreak: runBestStreak,
+      isLast: currentIndex >= questions.length - 1,
+    },
+  );
+
+  useEffect(() => {
+    if (feedback) scrollQuizPanelIntoView();
+  }, [feedback]);
 
   // Fixed set for today's 5 questions — blocks last-name shortcuts when two players share a surname
   const ambiguousLastNames = buildAmbiguousLastNames(questions);
@@ -467,6 +522,9 @@ export default function DailyChallenge() {
             player={currentPlayer}
             clubLabel={currentClub}
             profileLabel="Learn this player"
+            streak={answerStreak}
+            streakTier={getStreakTier(answerStreak)}
+            milestone={getStreakMilestoneCopy(answerStreak)}
           />
         ) : null}
 
@@ -476,6 +534,9 @@ export default function DailyChallenge() {
             player={currentPlayer}
             clubLabel={currentClub}
             profileLabel="Learn this player"
+            momentumLine={getIncorrectMomentumCopy(
+              Math.max(runBestStreak, consecutiveCorrectAtEnd(results)),
+            )}
           />
         ) : null}
 

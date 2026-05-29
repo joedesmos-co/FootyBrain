@@ -25,26 +25,17 @@ import { getLeagueDisplayName } from '../utils/footballDisplay';
 import { QUIZ_DIFFICULTY_OPTIONS } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
 import {
+  getIncorrectMomentumCopy,
   getNextQuestionButtonLabel,
+  getOneMoreQuizNudge,
   getSessionEncouragement,
+  getSessionEndHeadline,
+  getStreakMilestoneLabel,
+  getStreakTier,
   scrollPageTop,
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
 import QuizFeedbackActions from './QuizFeedbackActions';
-
-function getStreakTier(value) {
-  if (value >= 10) return 10;
-  if (value >= 5) return 5;
-  if (value >= 3) return 3;
-  return 0;
-}
-
-function getStreakMilestoneLabel(value) {
-  if (value === 10) return '10-streak — unstoppable';
-  if (value === 5) return '5-streak — on fire';
-  if (value === 3) return '3-streak — heating up';
-  return null;
-}
 
 export default function ClubQuizMode() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -286,8 +277,14 @@ export default function ClubQuizMode() {
   const streakMilestoneLabel = getStreakMilestoneLabel(streak);
   const activeCat = getClubQuizCategoryById(categoryId);
   const nextQuestionLabel = feedback
-    ? getNextQuestionButtonLabel(streak, feedback.isCorrect ? 'correct' : 'incorrect')
+    ? getNextQuestionButtonLabel(streak, feedback.isCorrect ? 'correct' : 'incorrect', {
+        bestStreak,
+      })
     : 'Next question';
+
+  useEffect(() => {
+    if (feedback) scrollQuizPanelIntoView();
+  }, [feedback]);
 
   return (
     <div className="page quiz club-quiz">
@@ -517,7 +514,7 @@ export default function ClubQuizMode() {
                   {feedback.isCorrect ? '✓' : '×'}
                 </span>
                 <div className="quiz-feedback__banner-copy">
-                  <h3>{feedback.isCorrect ? 'Correct!' : 'Not quite'}</h3>
+                  <h3>{feedback.isCorrect ? 'Correct' : 'Not quite'}</h3>
                   <p className="quiz-feedback__answer-name">{feedback.correctLabel}</p>
                 </div>
                 {feedback.isCorrect && streak > 1 ? (
@@ -528,15 +525,12 @@ export default function ClubQuizMode() {
                   </span>
                 ) : null}
               </div>
+              {!feedback.isCorrect ? (
+                <p className="quiz-feedback__momentum">{getIncorrectMomentumCopy(bestStreak)}</p>
+              ) : null}
               {feedback.explanation ? (
                 <p className="club-quiz__explanation">{feedback.explanation}</p>
               ) : null}
-              <Link
-                to={`/team/${feedback.teamId}`}
-                className="btn btn--secondary btn--small quiz-feedback__cta"
-              >
-                Open club profile
-              </Link>
               <QuizFeedbackActions>
                 <button type="button" className="btn btn--primary btn--large" onClick={handleNext}>
                   {nextQuestionLabel}
@@ -545,6 +539,12 @@ export default function ClubQuizMode() {
                   End session
                 </button>
               </QuizFeedbackActions>
+              <Link
+                to={`/team/${feedback.teamId}`}
+                className="btn btn--secondary btn--small quiz-feedback__cta"
+              >
+                Open club profile
+              </Link>
             </article>
           ) : null}
         </section>
@@ -552,7 +552,15 @@ export default function ClubQuizMode() {
 
       {sessionEnded && sessionSummary ? (
         <article className="info-card quiz-summary" aria-label="Club quiz session summary">
-          <h2 className="quiz-summary__title">Session complete</h2>
+          <h2 className="quiz-summary__title">
+            {getSessionEndHeadline(
+              sessionSummary.accuracy,
+              sessionSummary.correctCount === sessionSummary.total,
+            )}
+          </h2>
+          <p className="quiz-summary__nudge">
+            {getOneMoreQuizNudge(sessionSummary.accuracy, bestStreak)}
+          </p>
           {sessionSummary.encouragement ? (
             <p className="quiz-summary__encourage">{sessionSummary.encouragement}</p>
           ) : null}
@@ -616,6 +624,14 @@ export default function ClubQuizMode() {
             >
               Play again
             </button>
+            {sessionSummary.nextQuizzes[0] ? (
+              <Link
+                to={sessionSummary.nextQuizzes[0].href}
+                className="btn btn--secondary btn--large quiz-summary__follow-up"
+              >
+                One more: {sessionSummary.nextQuizzes[0].label}
+              </Link>
+            ) : null}
             <Link to="/quiz" className="btn btn--secondary">
               Player quiz
             </Link>
