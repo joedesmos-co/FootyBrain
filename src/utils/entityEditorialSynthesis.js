@@ -36,13 +36,13 @@ export function buildHowTheyPlaySection(player) {
 
   const tags = parsePlayStyleTags(player);
   if (tags.length >= 2) {
-    return `Dataset playing-style tags: ${tags.join(', ')}.`;
+    return `Playing style: ${tags.join(', ')}.`;
   }
-  if (tags.length === 1) return `Listed as a ${tags[0]} profile.`;
+  if (tags.length === 1) return `Profiled as a ${tags[0].toLowerCase()} player.`;
 
   const strengths = parseStrengths(player);
   if (strengths.length >= 2) {
-    return `Strengths noted in the dataset: ${strengths.slice(0, 4).join(', ')}.`;
+    return `Standout qualities: ${strengths.slice(0, 4).join(', ')}.`;
   }
 
   const position = formatPosition(player?.position);
@@ -74,7 +74,7 @@ export function buildClubIdentitySection(team, leagueName, rosterSize = 0) {
   const identity = formatClubIdentityTags(team?.identityTags ?? []);
   if (identity.length) {
     parts.push(
-      `Identity tags: ${identity
+      `Club character: ${identity
         .slice(0, 3)
         .map((t) => t.label.toLowerCase())
         .join(', ')}.`,
@@ -82,11 +82,11 @@ export function buildClubIdentitySection(team, leagueName, rosterSize = 0) {
   }
 
   if (team?.rivals?.length) {
-    parts.push(`Listed rivals: ${team.rivals.slice(0, 3).join(', ')}.`);
+    parts.push(`Rivalries: ${team.rivals.slice(0, 3).join(', ')}.`);
   }
 
   if (rosterSize > 0) {
-    parts.push(`${rosterSize} squad players are listed for browse and quiz practice.`);
+    parts.push(`${rosterSize} squad players profiled here for browse and quiz practice.`);
   }
 
   return parts.join(' ');
@@ -143,26 +143,28 @@ export function buildNationalIdentitySection(nationalTeam, stats = {}) {
  *   quizReady?: boolean,
  *   playerId?: string,
  * }} ctx
- * @returns {{ label: string, to: string }[]}
+ * @returns {{ label: string, to: string, hint?: string }[]}
  */
 export function buildKeepExploringLinks(ctx = {}) {
   const links = [];
   const seen = new Set();
 
-  const add = (label, to) => {
+  const add = (label, to, hint = '') => {
     const key = to;
     if (!to || seen.has(key)) return;
     seen.add(key);
-    links.push({ label, to });
+    links.push({ label, to, ...(hint ? { hint } : {}) });
   };
 
   const { team, league, leagueId, leagueTeams, nationalTeamId, quizReady, nationality } = ctx;
   const lid = leagueId ?? team?.leagueId ?? league?.id ?? '';
 
-  if (team?.id) add(`${team.name} squad`, `/team/${team.id}`);
-  if (team?.id) add('Club quiz guide', `/hubs/quizzes/team/${team.id}`);
-  if (lid) add(ctx.leagueName ? `${ctx.leagueName} league` : 'League page', `/league/${lid}`);
-  if (lid) add('League quiz guide', `/hubs/quizzes/league/${lid}`);
+  if (team?.id) add(`${team.name} squad`, `/team/${team.id}`, 'Full roster and fan context');
+  if (team?.id) add('Club quiz guide', `/hubs/quizzes/team/${team.id}`, 'How to quiz this club');
+  if (lid) {
+    add(ctx.leagueName ? `${ctx.leagueName} league` : 'League page', `/league/${lid}`, 'Clubs, rivalries, and league quizzes');
+    add('League quiz guide', `/hubs/quizzes/league/${lid}`, 'Study paths for this competition');
+  }
 
   if (team?.rivals?.length && leagueTeams?.length) {
     for (const { label, team: rival } of resolveRivalEntries(team.rivals, leagueTeams).slice(0, 2)) {
@@ -171,8 +173,8 @@ export function buildKeepExploringLinks(ctx = {}) {
   }
 
   if (nationalTeamId) {
-    add('National team', `/national-team/${nationalTeamId}`);
-    add('World Cup 2026', '/world-cup');
+    add('National team', `/national-team/${nationalTeamId}`, 'Squad pool and international quizzes');
+    add('World Cup 2026', '/world-cup', 'Tournament prep hub');
   }
 
   const natLabel = nationality ?? team?.country ?? league?.country;
@@ -185,16 +187,16 @@ export function buildKeepExploringLinks(ctx = {}) {
   }
 
   const themeId = lid ? getQuizThemeIdForLeague(lid) : '';
-  if (themeId) add('Themed league quiz', getQuizThemePlayHref(themeId));
-  if (quizReady && team?.id) add('Team player quiz', `/quiz?team=${team.id}`);
-  if (lid) add('League player quiz', `/quiz?league=${lid}`);
-  if (lid) add('Stadium quiz', `/club-quiz?category=stadium&league=${lid}`);
+  if (themeId) add('Themed league quiz', getQuizThemePlayHref(themeId), 'Curated question mix');
+  if (quizReady && team?.id) add('Team player quiz', `/quiz?team=${team.id}`, 'Name recall from this squad');
+  if (lid) add('League player quiz', `/quiz?league=${lid}`, 'All clubs in the competition');
+  if (lid) add('Stadium quiz', `/club-quiz?category=stadium&league=${lid}`, 'Grounds and home clubs');
   if (team?.rivals?.length && lid) {
-    add('Rivalry quiz', `/club-quiz?category=rivalry&league=${lid}`);
+    add('Rivalry quiz', `/club-quiz?category=rivalry&league=${lid}`, 'Derbies and feuds');
   }
 
-  add('Daily challenge', '/daily');
-  add('Explore football', '/hubs');
+  add('Daily challenge', '/daily', 'One quick round');
+  add('Explore football', '/hubs', 'Leagues, quizzes, and guides');
 
   return links.slice(0, 10);
 }

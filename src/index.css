@@ -13304,3 +13304,145 @@ p.browse-results-empty {
     justify-content: center;
   }
 }
+
+/* Top-tier profile pages — readability, keep exploring, mobile polish */
+.profile--premium .profile__section,
+.profile--premium .info-card,
+.profile--premium .league-section {
+  margin-bottom: 1rem;
+}
+
+.profile--premium .player-profile__about,
+.profile--premium .league-profile__about,
+.profile--premium .national-team-profile__lede {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.profile--premium .player-profile__body {
+  gap: 0.85rem;
+}
+
+.profile-keep-exploring {
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(16, 26, 23, 0.88);
+}
+
+.profile-keep-exploring h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.02rem;
+}
+
+.profile-keep-exploring__lead {
+  margin: 0 0 0.75rem;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  max-width: 40rem;
+}
+
+.profile-keep-exploring__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.5rem), 1fr));
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.profile-keep-exploring__chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-height: var(--touch-target-min);
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(7, 17, 13, 0.65);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out);
+}
+
+.profile-keep-exploring__chip:hover,
+.profile-keep-exploring__chip:focus-visible {
+  border-color: rgba(52, 211, 153, 0.45);
+  background: rgba(52, 211, 153, 0.08);
+  outline: none;
+}
+
+.profile-keep-exploring__chip strong {
+  font-size: 0.84rem;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.profile-keep-exploring__chip span {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  line-height: 1.35;
+}
+
+.profile-keep-exploring--premium {
+  border-color: rgba(52, 211, 153, 0.28);
+  background: linear-gradient(145deg, rgba(52, 211, 153, 0.07), rgba(16, 26, 23, 0.92));
+}
+
+.profile-keep-exploring--premium h2 {
+  font-size: 1.08rem;
+}
+
+.league-hero__actions--tier {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+.league-hero__more {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.league-hero__more-summary {
+  list-style: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.league-hero__more-summary::-webkit-details-marker {
+  display: none;
+}
+
+.league-hero__more-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.player-profile__quick-links--curated {
+  gap: 0.35rem;
+}
+
+@media (max-width: 520px) {
+  .profile-keep-exploring__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .league-hero__actions--tier .btn--primary {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .profile--premium .player-profile__quick-links--curated a {
+    flex: 1 1 calc(50% - 0.2rem);
+    text-align: center;
+    justify-content: center;
+  }
+}

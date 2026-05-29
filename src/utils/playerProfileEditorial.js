@@ -4,7 +4,11 @@ import { getDisplayQuickFact, isBrowseOnlyPlayer } from './playerEditorial';
 import { buildCareerSummary } from './playerImportance';
 import { countPlayerEditorialDepth, isThinPlayer } from './entityDepthAudit';
 import { buildHowTheyPlaySection } from './entityEditorialSynthesis';
-import { buildTopPlayerMetaDescription, isHighImportancePlayer } from './topImportanceProfile';
+import {
+  buildTopPlayerMetaDescription,
+  isHighImportancePlayer,
+  isTopTierPlayer,
+} from './topImportanceProfile';
 
 export const PLAYER_PLACEHOLDER_FACT_RE =
   /editorial profile coming soon|editorial quiz profile pending|footybrain|footycompass sample/i;
@@ -88,9 +92,9 @@ export function buildPlayerAboutParagraph(player, ctx = {}) {
   let pathBit = '';
   if (career.length >= 2) {
     const recent = career.slice(-2).map((s) => s.club).join(' and ');
-    pathBit = ` Career stops in the dataset include ${recent}.`;
+    pathBit = ` Previous stops include ${recent}.`;
   } else if (career.length === 1) {
-    pathBit = ` Listed with ${career[0].club} (${career[0].years}) in the dataset.`;
+    pathBit = ` Listed with ${career[0].club} (${career[0].years}).`;
   }
 
   return `${opener}${pathBit} ${roleContextLine(player.position)}`.replace(/\s+/g, ' ').trim();
@@ -190,7 +194,8 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
   const playStyleBlurb = buildHowTheyPlaySection(player);
   const depth = countPlayerEditorialDepth(player);
   const isThin = isThinPlayer(player, 3);
-  const enrichThin = isThin && isHighImportancePlayer(player);
+  const topTier = isTopTierPlayer(player);
+  const enrichThin = isThin && (isHighImportancePlayer(player) || topTier);
 
   return {
     about,
@@ -204,6 +209,8 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
     enrichThin,
     showAbout: Boolean(about),
     showKnownFor: knownFor.length > 0,
-    showPlayStyleBlurb: Boolean(playStyleBlurb) && (enrichThin || isHighImportancePlayer(player)),
+    showPlayStyleBlurb:
+      Boolean(playStyleBlurb) && (enrichThin || isHighImportancePlayer(player) || topTier),
+    topTier,
   };
 }

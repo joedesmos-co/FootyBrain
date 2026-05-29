@@ -28,6 +28,8 @@ import {
 } from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
+import ProfileKeepExploring from './ProfileKeepExploring';
+import { isTopTierNationalTeam } from '../utils/topTierPages';
 import NationalTeamProfileHub from './NationalTeamProfileHub';
 import NationalTeamDiscoveryStrip from './NationalTeamDiscoveryStrip';
 import {
@@ -251,7 +253,9 @@ export default function NationalTeamProfile() {
   }
   breadcrumbItems.push({ label: nationalTeam.displayName });
 
+  const topTier = isTopTierNationalTeam(nationalTeam);
   const showKeepExploring =
+    topTier ||
     isThinNationalTeam(nationalTeam, 4) ||
     isFeatured ||
     linkedCount >= 20 ||
@@ -334,21 +338,21 @@ export default function NationalTeamProfile() {
       />
 
       {showKeepExploring ? (
-        <section className="profile__section profile-keep-exploring" aria-labelledby="nt-keep-exploring">
-          <h2 id="nt-keep-exploring">Keep exploring</h2>
-          {keepExploringLead ? (
-            <p className="profile-keep-exploring__lead">{keepExploringLead}</p>
-          ) : null}
-          <EntityRelatedNav
-            title="Study paths"
-            links={buildNationalTeamInternalLinks({
-              nationalTeam,
-              quizReady: canLaunchNationalQuiz,
-              squad,
-            })}
-            className="profile-keep-exploring__nav"
-          />
-        </section>
+        <ProfileKeepExploring
+          variant="national"
+          premium={topTier}
+          entityId={nationalTeam.id}
+          nationalTeamId={nationalTeam.id}
+          nationalTeam={nationalTeam}
+          squad={squad}
+          quizReady={canLaunchNationalQuiz}
+          lead={keepExploringLead}
+          nationalStats={{
+            linkedCount,
+            quizReadyCount: quizReady.length,
+            tournamentLine: profileStructured?.tournament ?? '',
+          }}
+        />
       ) : (
         <EntityRelatedNav
           links={buildNationalTeamInternalLinks({

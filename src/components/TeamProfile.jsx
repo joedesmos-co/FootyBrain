@@ -39,6 +39,7 @@ import { dedupeInternalLinks } from '../utils/internalLinking.js';
 import {
   buildKeepExploringLinks,
   isHighTrafficTeam,
+  isTopTierClub,
 } from '../utils/topImportanceProfile';
 import { isThinTeam } from '../utils/entityDepthAudit';
 import { getProfileExploreLead } from '../data/profileExploreEnhancements';
@@ -138,7 +139,9 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   const profileSubline = buildTeamProfileSubline(team);
   const thinClub = isThinTeam(team, 4);
   const highTraffic = isHighTrafficTeam(team, roster);
+  const topTier = isTopTierClub(team);
   const showKeepExploring =
+    topTier ||
     Boolean(getProfileExploreLead(team.id)) ||
     thinClub ||
     highTraffic ||
@@ -201,7 +204,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   ];
 
   return (
-    <div className="page team-profile">
+    <div className={`page team-profile${topTier ? ' profile--premium' : ''}`}>
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
@@ -378,6 +381,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
         {showKeepExploring ? (
           <ProfileKeepExploring
             variant="team"
+            premium={topTier}
             entityId={team.id}
             teamId={team.id}
             leagueId={team.leagueId}

@@ -43,6 +43,8 @@ import { buildLeagueIdentitySection } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
+import ProfileKeepExploring from './ProfileKeepExploring';
+import { isTopTierLeague } from '../utils/topTierPages';
 import {
   buildLeagueInternalLinks,
   findNationalTeamIdForCountry,
@@ -125,9 +127,14 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   const leagueNationalTeamId = league.country
     ? findNationalTeamIdForCountry(league.country)
     : null;
+  const topTier = isTopTierLeague(league);
+  const leagueStats = {
+    clubs: leagueTeams.length,
+    quizReady: quizReadyPlayers.length,
+  };
 
   return (
-    <div className="page league-profile">
+    <div className={`page league-profile${topTier ? ' profile--premium' : ''}`}>
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
@@ -153,7 +160,9 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
             </p>
           </div>
         </div>
-        <div className="team-profile__actions">
+        <div
+          className={`team-profile__actions${topTier ? ' league-hero__actions league-hero__actions--tier' : ''}`}
+        >
           {hasLeagueQuiz ? (
             <Link to={`/quiz?league=${league.id}`} className="btn btn--primary">
               Start League Quiz
@@ -169,46 +178,98 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           >
             League quiz guide
           </Link>
-          <Link
-            to={getClubQuizPlayHref('league', { leagueId: league.id })}
-            className="btn btn--secondary"
-          >
-            Club league quiz
-          </Link>
-          <Link
-            to={getClubQuizPlayHref('stadium', { leagueId: league.id })}
-            className="btn btn--secondary"
-          >
-            Stadium quiz
-          </Link>
-          <Link
-            to={getClubQuizPlayHref('rivalry', { leagueId: league.id })}
-            className="btn btn--secondary"
-          >
-            Rivalry quiz
-          </Link>
-          <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
-            Club quiz guides
-          </Link>
-          {leagueNationalTeamId ? (
-            <Link
-              to={`/national-team/${leagueNationalTeamId}`}
-              className="btn btn--secondary"
-            >
-              {league.country} national team
-            </Link>
-          ) : null}
-          {league.country ? (
-            <Link
-              to={`/hubs/players/nationality/${encodeURIComponent(league.country)}`}
-              className="btn btn--secondary"
-            >
-              {league.country} players
-            </Link>
-          ) : null}
-          <a href="#league-clubs" className="btn btn--secondary">
-            Browse clubs
-          </a>
+          {topTier ? (
+            <details className="league-hero__more">
+              <summary className="btn btn--secondary league-hero__more-summary">
+                More quizzes & paths
+              </summary>
+              <div className="league-hero__more-panel">
+                <Link
+                  to={getClubQuizPlayHref('league', { leagueId: league.id })}
+                  className="btn btn--secondary btn--small"
+                >
+                  Club league quiz
+                </Link>
+                <Link
+                  to={getClubQuizPlayHref('stadium', { leagueId: league.id })}
+                  className="btn btn--secondary btn--small"
+                >
+                  Stadium quiz
+                </Link>
+                <Link
+                  to={getClubQuizPlayHref('rivalry', { leagueId: league.id })}
+                  className="btn btn--secondary btn--small"
+                >
+                  Rivalry quiz
+                </Link>
+                <Link to="/hubs/quizzes/clubs" className="btn btn--secondary btn--small">
+                  Club quiz guides
+                </Link>
+                {leagueNationalTeamId ? (
+                  <Link
+                    to={`/national-team/${leagueNationalTeamId}`}
+                    className="btn btn--secondary btn--small"
+                  >
+                    {league.country} national team
+                  </Link>
+                ) : null}
+                {league.country ? (
+                  <Link
+                    to={`/hubs/players/nationality/${encodeURIComponent(league.country)}`}
+                    className="btn btn--secondary btn--small"
+                  >
+                    {league.country} players
+                  </Link>
+                ) : null}
+                <a href="#league-clubs" className="btn btn--secondary btn--small">
+                  Browse clubs
+                </a>
+              </div>
+            </details>
+          ) : (
+            <>
+              <Link
+                to={getClubQuizPlayHref('league', { leagueId: league.id })}
+                className="btn btn--secondary"
+              >
+                Club league quiz
+              </Link>
+              <Link
+                to={getClubQuizPlayHref('stadium', { leagueId: league.id })}
+                className="btn btn--secondary"
+              >
+                Stadium quiz
+              </Link>
+              <Link
+                to={getClubQuizPlayHref('rivalry', { leagueId: league.id })}
+                className="btn btn--secondary"
+              >
+                Rivalry quiz
+              </Link>
+              <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
+                Club quiz guides
+              </Link>
+              {leagueNationalTeamId ? (
+                <Link
+                  to={`/national-team/${leagueNationalTeamId}`}
+                  className="btn btn--secondary"
+                >
+                  {league.country} national team
+                </Link>
+              ) : null}
+              {league.country ? (
+                <Link
+                  to={`/hubs/players/nationality/${encodeURIComponent(league.country)}`}
+                  className="btn btn--secondary"
+                >
+                  {league.country} players
+                </Link>
+              ) : null}
+              <a href="#league-clubs" className="btn btn--secondary">
+                Browse clubs
+              </a>
+            </>
+          )}
         </div>
       </header>
 
@@ -362,6 +423,20 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         </div>
       </section>
 
+      {topTier ? (
+        <ProfileKeepExploring
+          variant="league"
+          premium
+          entityId={league.id}
+          leagueId={league.id}
+          leagueName={getLeagueDisplayName(league)}
+          league={league}
+          leagueTeams={leagueTeams}
+          quizReady={hasLeagueQuiz}
+          leagueStats={leagueStats}
+        />
+      ) : null}
+
       <section
         id="league-clubs"
         className="league-section"
@@ -408,14 +483,16 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
         </ol>
       </details>
 
-      <EntityRelatedNav
-        links={buildLeagueInternalLinks({
-          league,
-          leagueTeams,
-          leaguePlayers,
-          quizReady: hasLeagueQuiz,
-        })}
-      />
+      {topTier ? null : (
+        <EntityRelatedNav
+          links={buildLeagueInternalLinks({
+            league,
+            leagueTeams,
+            leaguePlayers,
+            quizReady: hasLeagueQuiz,
+          })}
+        />
+      )}
     </div>
   );
 }

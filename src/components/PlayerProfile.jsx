@@ -470,7 +470,9 @@ export default function PlayerProfile() {
   ].filter(Boolean);
 
   return (
-    <div className="page profile player-profile">
+    <div
+      className={`page profile player-profile${profileEditorial.topTier ? ' profile--premium' : ''}`}
+    >
       <BreadcrumbNav
         items={[
           { label: 'Home', to: '/' },
@@ -560,7 +562,10 @@ export default function PlayerProfile() {
         </p>
       ) : null}
 
-      <nav className="player-profile__quick-links" aria-label="Quick actions">
+      <nav
+        className={`player-profile__quick-links${profileEditorial.topTier ? ' player-profile__quick-links--curated' : ''}`}
+        aria-label="Quick actions"
+      >
         <Link to={`/team/${player.teamId}`}>Club</Link>
         <Link to={`/league/${player.leagueId}`}>League</Link>
         {liveNationalTeam && (
@@ -569,23 +574,25 @@ export default function PlayerProfile() {
         {!liveNationalTeam && nationalTeamPlainLabel ? (
           <span className="player-profile__quick-link--disabled">National team page coming</span>
         ) : null}
-        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Player club quiz</Link>}
-        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Club quiz guide</Link>
-        {player.nationality ? (
+        {quizReady && <Link to={`/quiz?team=${player.teamId}`}>Club quiz</Link>}
+        <Link to={`/hubs/quizzes/team/${player.teamId}`}>Quiz guide</Link>
+        {!profileEditorial.topTier && player.nationality ? (
           <Link
             to={`/hubs/players/nationality/${encodeURIComponent(String(player.nationality).trim())}`}
           >
             {player.nationality} players
           </Link>
         ) : null}
-        <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>
-        {player.teamId ? (
+        {!profileEditorial.topTier ? (
+          <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>
+        ) : null}
+        {!profileEditorial.topTier && player.teamId ? (
           <Link to={`/club-quiz?category=stadium&league=${player.leagueId}`}>Stadium quiz</Link>
         ) : null}
-        {quizReady && typeof player.age === 'number' && player.age <= 23 ? (
+        {!profileEditorial.topTier && quizReady && typeof player.age === 'number' && player.age <= 23 ? (
           <Link to="/quiz?theme=wonderkids">Wonderkids quiz</Link>
         ) : null}
-        {quizReady && (player.importanceScore ?? 0) >= 88 ? (
+        {!profileEditorial.topTier && quizReady && (player.importanceScore ?? 0) >= 88 ? (
           <Link to="/quiz?theme=legends">Legends quiz</Link>
         ) : null}
       </nav>
@@ -755,10 +762,14 @@ export default function PlayerProfile() {
         </article>
       </section>
 
-      {profileEditorial.isThin || isBrowseOnlyPlayer(player) ? (
+      {profileEditorial.topTier ||
+      profileEditorial.isThin ||
+      isBrowseOnlyPlayer(player) ? (
         <ProfileKeepExploring
           variant="player"
+          premium={profileEditorial.topTier}
           entityId={player.id}
+          player={player}
           teamId={player.teamId}
           leagueId={player.leagueId}
           teamName={teamName}
