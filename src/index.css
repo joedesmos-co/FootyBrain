@@ -13367,6 +13367,281 @@ p.browse-results-empty {
   }
 }
 
+/* —— Homepage premium UX polish —— */
+.home.home--premium {
+  gap: clamp(1.5rem, 4vw, 2.35rem);
+}
+
+.home-section-head h2,
+.home-section-head.home-tools__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.06rem, 2.6vw, 1.22rem);
+  font-weight: 800;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.2;
+}
+
+.home-section-head p {
+  margin: 0;
+  max-width: 38rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.hero.hero--home.hero--polished {
+  min-height: auto;
+  padding: clamp(1.25rem, 4vw, 2.15rem) clamp(1.1rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(ellipse 90% 70% at 8% 0%, rgba(52, 211, 153, 0.14), transparent 55%),
+    linear-gradient(165deg, rgba(13, 148, 136, 0.2), rgba(15, 23, 42, 0.42));
+  background-size: auto;
+  box-shadow: var(--shadow);
+}
+
+.hero.hero--home.hero--polished::after {
+  display: none;
+}
+
+.hero.hero--home.hero--polished .hero__eyebrow {
+  margin-bottom: 0.55rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+}
+
+.hero__brand-tagline {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.hero.hero--home.hero--polished .hero__subcopy--lead {
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+}
+
+.hero.hero--home.hero--polished .hero__actions--stack {
+  margin-top: 1.1rem;
+  gap: 0.55rem;
+}
+
+.hero.hero--home.hero--polished .hero__stats {
+  margin-top: 0.9rem;
+  gap: 0.45rem;
+}
+
+.hero.hero--home.hero--polished .hero__stats div {
+  padding: 0.65rem 0.55rem;
+  background: rgba(7, 17, 13, 0.32);
+  border-color: rgba(148, 163, 184, 0.16);
+}
+
+.hero.hero--home.hero--polished .hero__stats dt {
+  font-size: clamp(1.15rem, 4vw, 1.35rem);
+}
+
+.hero.hero--home.hero--polished .home-trust-strip {
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.7rem;
+  background: rgba(7, 17, 13, 0.28);
+  border-color: rgba(148, 163, 184, 0.14);
+}
+
+@media (max-width: 900px) {
+  .hero.hero--home.hero--polished .hero-visual {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero.hero--home.hero--polished .home-trust-strip__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.15rem;
+    scrollbar-width: thin;
+  }
+
+  .hero.hero--home.hero--polished .home-trust-strip__list li {
+    flex: 0 0 auto;
+    min-width: 10.5rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: var(--radius-sm);
+    background: rgba(7, 17, 13, 0.35);
+  }
+}
+
+.home-pillars {
+  margin: 0;
+}
+
+.home-pillar-card {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.home-pillar-card:hover {
+  border-color: rgba(52, 211, 153, 0.32);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.home-popular-now {
+  margin: 0;
+  gap: clamp(1.35rem, 3.5vw, 1.85rem);
+}
+
+.home-popular-now__section + .home-popular-now__section {
+  padding-top: clamp(1.15rem, 3vw, 1.45rem);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.home-popular-now__head {
+  margin-bottom: 0.55rem;
+}
+
+.home-popular-now__head p {
+  margin-bottom: 0;
+}
+
+.home-popular-now__grid {
+  gap: 0.55rem;
+}
+
+.home-popular-now__card {
+  min-height: 3.35rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(16, 26, 23, 0.62);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.home-popular-now__card:hover,
+.home-popular-now__card:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.home-popular-now__card strong {
+  font-weight: 800;
+}
+
+.home-spotlight {
+  padding: clamp(1rem, 3vw, 1.2rem);
+}
+
+.home-spotlight__header {
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.home-spotlight__head p {
+  margin: 0;
+}
+
+.home-spotlight__link {
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.home-spotlight__link:hover,
+.home-spotlight__link:focus-visible {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.home-return-cta {
+  margin: 0;
+  padding: clamp(1rem, 3vw, 1.15rem);
+}
+
+.home-tools {
+  margin: 0;
+}
+
+.home-tools__grid .feature-card--compact {
+  min-height: 7.5rem;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.home-tools__grid a.feature-card--compact:hover,
+.home-tools__grid a.feature-card--compact:focus-visible {
+  border-color: rgba(52, 211, 153, 0.38);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.app__footer--polished {
+  padding: 1.35rem 1rem calc(1.35rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(5, 12, 10, 0.92);
+  border-top-color: rgba(148, 163, 184, 0.14);
+}
+
+.app__footer--polished .app__footer__brand {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--color-soft);
+}
+
+.app__footer--polished .app__footer__links {
+  margin-top: 0.15rem;
+  gap: 0.4rem 0.75rem;
+}
+
+.app__footer--polished .app__footer__links a {
+  font-weight: 700;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.app__footer--polished .app__footer__links a:hover,
+.app__footer--polished .app__footer__links a:focus-visible {
+  color: var(--color-accent);
+}
+
+.app__footer--polished .app__footer__links--meta {
+  margin-top: 0;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  max-width: 28rem;
+}
+
+.app__footer--polished .app__footer__feedback,
+.app__footer--polished .app__footer__privacy {
+  margin-top: 0;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  opacity: 0.88;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .home-popular-now__card:hover,
+  .home-tools__grid a.feature-card--compact:hover,
+  .home-pillar-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 /* Explore (/hubs) — user-facing “Explore” branding */
 .explore-page .page-header p {
   max-width: 40rem;

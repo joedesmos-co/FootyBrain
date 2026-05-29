@@ -116,15 +116,15 @@ export default function HomeSpotlight() {
 
   return (
     <section className="home-spotlight" aria-labelledby="home-spotlight-title">
-      <div className="home-spotlight__header">
-        <div>
+      <header className="home-spotlight__header">
+        <div className="home-section-head home-spotlight__head">
           <h2 id="home-spotlight-title">Editorial spotlight</h2>
           <p>Hand-picked players, clubs, leagues, and quiz formats — rotates daily.</p>
         </div>
         <button type="button" className="btn btn--secondary btn--small" onClick={handleRefresh}>
           Refresh picks
         </button>
-      </div>
+      </header>
 
       <div className="home-spotlight__carousel">
         {slideCount > 1 ? (

@@ -45,7 +45,7 @@ export default function HomeBelowFold() {
   return (
     <>
       <section className="home-return-cta" aria-label="Return visits">
-        <div className="home-return-cta__copy">
+        <div className="home-return-cta__copy home-section-head">
           <h2 className="home-return-cta__title">Build a daily habit</h2>
           <p>
             Five fresh football questions each day — streak XP and study cards for misses. Come back
@@ -84,7 +84,7 @@ export default function HomeBelowFold() {
       ) : null}
 
       <section className="home-tools" aria-labelledby="home-tools-title">
-        <h2 id="home-tools-title" className="home-tools__title">
+        <h2 id="home-tools-title" className="home-section-head home-tools__title">
           More football tools
         </h2>
         <div className="feature-grid home-tools__grid">

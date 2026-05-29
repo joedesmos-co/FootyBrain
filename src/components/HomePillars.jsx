@@ -36,10 +36,10 @@ const PILLARS = [
 export default function HomePillars() {
   return (
     <section className="home-pillars" aria-labelledby="home-pillars-title">
-      <div className="home-pillars__header">
+      <header className="home-section-head home-pillars__header">
         <h2 id="home-pillars-title">Learn · Quiz · Discover</h2>
         <p>Three ways to use FootyCompass — study first, test yourself, then go deeper.</p>
-      </div>
+      </header>
       <ul className="home-pillars__grid">
         {PILLARS.map((pillar) => (
           <li key={pillar.id}>

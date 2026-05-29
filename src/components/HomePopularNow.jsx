@@ -12,10 +12,10 @@ export default function HomePopularNow() {
           className="home-popular-now__section"
           aria-labelledby={`home-popular-${section.id}`}
         >
-          <div className="home-popular-now__head">
+          <header className="home-section-head home-popular-now__head">
             <h2 id={`home-popular-${section.id}`}>{section.title}</h2>
             {section.subtitle ? <p>{section.subtitle}</p> : null}
-          </div>
+          </header>
           <ul className="home-popular-now__grid" role="list">
             {section.items.map((item) => (
               <li key={item.to}>

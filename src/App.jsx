@@ -266,7 +266,7 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          <footer className="app__footer" aria-label="Footer">
+          <footer className="app__footer app__footer--polished" aria-label="Footer">
             <p className="app__footer__brand">FootyCompass · Learn players, clubs, and leagues through quizzes.</p>
             <nav className="app__footer__links" aria-label="Play and explore">
               <Link to="/quiz">Player quiz</Link>

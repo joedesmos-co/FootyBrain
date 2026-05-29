@@ -12,11 +12,10 @@ const HomeBelowFold = lazy(() => import('./HomeBelowFold'));
 
 export default function Home() {
   const playerCount = DATASET_META.playerCount.toLocaleString();
-  const quizReady = (DATASET_META.quizEligibleCount ?? 518).toLocaleString();
 
   return (
-    <div className="home">
-      <section className="hero hero--home hero--redesign">
+    <div className="home home--premium">
+      <section className="hero hero--home hero--redesign hero--polished">
         <div className="hero__content">
           <p className="hero__eyebrow">Free football quizzes · Premier League, La Liga, MLS &amp; World Cup</p>
           <h1 className="hero__title hero__title--seo">
@@ -24,21 +23,18 @@ export default function Home() {
           </h1>
           <p className="hero__brand-line">
             <span className="hero__brand-name">{SITE_NAME}</span>
-            <span className="hero__brand-sep" aria-hidden="true">
-              ·
-            </span>
-            <span>{playerCount} profiles · {quizReady} quiz-ready</span>
+            <span className="hero__brand-tagline">Football profiles, squads, and quizzes</span>
           </p>
           <p className="hero__subcopy hero__subcopy--lead">
-            <strong>Learn</strong> squads and stats, <strong>quiz</strong> on names and club knowledge,{' '}
-            <strong>discover</strong> leagues, national teams, and World Cup 2026 prep — no account required.
+            <strong>Learn</strong> squads, <strong>quiz</strong> on names and club knowledge,{' '}
+            <strong>discover</strong> leagues and World Cup 2026 prep — no account required.
           </p>
 
           <div className="hero__actions hero__actions--stack">
             <Link to="/quiz" className="btn btn--primary btn--large hero__cta-primary">
               Play player quiz
             </Link>
-            <Link to="/club-quiz" className="btn btn--secondary btn--large hero__cta-secondary">
+            <Link to="/club-quiz" className="btn btn--secondary hero__cta-secondary">
               Club football quiz
             </Link>
             <div className="hero__actions-row hero__actions-row--priority">
@@ -50,8 +46,6 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
-          <HomeTrustStrip />
 
           <dl className="hero__stats" aria-label="FootyCompass dataset scale">
             <div>
@@ -67,6 +61,8 @@ export default function Home() {
               <dd>Leagues</dd>
             </div>
           </dl>
+
+          <HomeTrustStrip />
         </div>
 
         <div className="hero-visual" aria-hidden="true">
