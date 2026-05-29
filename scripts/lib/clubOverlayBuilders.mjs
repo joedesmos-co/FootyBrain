@@ -100,7 +100,7 @@ export function buildThinClubHistory(team, leagueName, league, rosterSize = 0) {
   if (style) parts.push(truncate(style, 140));
 
   if (rosterSize > 0) {
-    parts.push(`${rosterSize} squad players on this profile for browse and quiz practice.`);
+    parts.push(`${rosterSize} players in the squad list below.`);
   }
 
   return truncate(parts.join(' '), 320);
@@ -127,7 +127,7 @@ export function buildThinClubFanGuide(team, leagueName, league) {
 
   const rivalries = Array.isArray(league?.rivalries) ? league.rivalries : [];
   if (rivalries.length) {
-    parts.push(`League-wide derbies noted in the dataset: ${rivalries.slice(0, 2).join('; ')}.`);
+    parts.push(`League derbies include ${rivalries.slice(0, 2).join('; ')}.`);
   }
 
   return truncate(parts.join(' '), 280);
@@ -174,18 +174,18 @@ export function buildTacticalIdentity(team) {
   const manager = clean(team.manager);
   const parts = [];
   if (phrases.length) {
-    parts.push(`Dataset tags describe ${team.name} as ${list(phrases, 3)}.`);
+    parts.push(`${team.name} are known for ${list(phrases, 3)}.`);
   }
-  if (manager) parts.push(`Head coach listed: ${manager}.`);
+  if (manager) parts.push(`Head coach: ${manager}.`);
   return truncate(parts.join(' '), 240) || null;
 }
 
 export function buildStadiumContext(team) {
   const bits = [];
-  if (team.stadium) bits.push(`${team.name} list ${team.stadium} as their home ground.`);
+  if (team.stadium) bits.push(`${team.name} play home matches at ${team.stadium}.`);
   if (team.founded) bits.push(`Founded in ${team.founded}.`);
   const manager = clean(team.manager);
-  if (manager) bits.push(`Head coach in the dataset: ${manager}.`);
+  if (manager) bits.push(`Head coach: ${manager}.`);
   return truncate(bits.join(' '), 220) || null;
 }
 
@@ -226,11 +226,11 @@ export function buildLegendsSummary(team) {
   const note = firstLine.includes(' — ') ? clean(firstLine.split(' — ').slice(1).join(' — ')) : '';
   if (note) {
     return truncate(
-      `Legends in the dataset: ${list(names, 4)} — e.g. ${names[0]} (${note}).`,
+      `Club legends include ${list(names, 4)} — e.g. ${names[0]} (${note}).`,
       240,
     );
   }
-  return truncate(`Legends in the dataset: ${list(names, 4)}.`, 220);
+  return truncate(`Club legends include ${list(names, 4)}.`, 220);
 }
 
 export function buildPlayersToKnowIntro(team, players) {

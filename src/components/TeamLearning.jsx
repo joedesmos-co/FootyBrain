@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { getManifestLeagues } from '../data/contentManifest';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import TeamCard from './TeamCard';
+import EmptyState from './ui/EmptyState';
 
 const leagues = getManifestLeagues();
 
@@ -64,9 +65,9 @@ export default function TeamLearning() {
         {filteredTeams.length > 0 ? (
           filteredTeams.map((team) => <TeamCard key={team.id} team={team} />)
         ) : (
-          <section className="empty-state" aria-label="No matching clubs">
-            <p>No clubs match your search. Try another league or spelling.</p>
-            <div className="empty-state__actions">
+          <EmptyState
+            title="No clubs match your search. Try another league or spelling."
+            actions={
               <button
                 type="button"
                 className="btn btn--secondary"
@@ -77,8 +78,8 @@ export default function TeamLearning() {
               >
                 Clear filters
               </button>
-            </div>
-          </section>
+            }
+          />
         )}
       </div>
     </div>

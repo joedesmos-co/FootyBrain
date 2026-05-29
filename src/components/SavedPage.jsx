@@ -5,6 +5,7 @@ import { useSearchIndex } from '../hooks/useSearchIndex';
 import PlayerCard from './PlayerCard';
 import RecommendationsPanel from './RecommendationsPanel';
 import TeamCard from './TeamCard';
+import EmptyState from './ui/EmptyState';
 
 export default function SavedPage() {
   const { favorites } = useFavorites();
@@ -50,17 +51,19 @@ export default function SavedPage() {
       )}
 
       {!hasSavedItems && (
-        <section className="empty-state" aria-label="Nothing saved yet">
-          <p>Nothing saved yet. Use Save on any player or club profile.</p>
-          <div className="empty-state__actions">
-            <Link to="/browse" className="btn btn--primary">
-              Browse players
-            </Link>
-            <Link to="/teams" className="btn btn--secondary">
-              Explore clubs
-            </Link>
-          </div>
-        </section>
+        <EmptyState
+          title="Nothing saved yet. Use Save on any player or club profile."
+          actions={
+            <>
+              <Link to="/browse" className="btn btn--primary">
+                Browse players
+              </Link>
+              <Link to="/teams" className="btn btn--secondary">
+                Explore clubs
+              </Link>
+            </>
+          }
+        />
       )}
 
       {savedPlayers.length > 0 && (

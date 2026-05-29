@@ -25,6 +25,8 @@ import TeamBadge from './TeamBadge';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
+import ActionRow from './ui/ActionRow';
+import SectionHeading from './ui/SectionHeading';
 
 function XpToast({ message, onDismiss }) {
   if (!message) return null;
@@ -278,7 +280,7 @@ export default function CollectionDetailPage() {
             roles, then run the scoped quiz.
           </p>
         )}
-        <div className="collection-detail-header__actions">
+        <ActionRow className="collection-detail-header__actions">
           <Link to={quizHref} className="btn btn--primary">
             {quizLabel}
           </Link>
@@ -299,7 +301,7 @@ export default function CollectionDetailPage() {
           <Link to="/collections" className="btn btn--secondary">
             All collections
           </Link>
-        </div>
+        </ActionRow>
         <div className="collection-detail-header__manage">
           {!showResetConfirm ? (
             <button
@@ -330,7 +332,9 @@ export default function CollectionDetailPage() {
       </header>
 
       <section aria-label="Study checklist">
-        <h2 className="collections-section-title">Study order</h2>
+        <SectionHeading as="h2" className="collections-section-title">
+          Study order
+        </SectionHeading>
         <ol className="collection-items-list">
           {resolvedItems.map((resolved) => (
             <CollectionItemRow

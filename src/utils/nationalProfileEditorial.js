@@ -6,6 +6,7 @@ import { FEATURED_NATIONAL_TEAM_IDS } from '../data/worldCupHubData.js';
 import { getWorldCup2026RosterIds, getWorldCup2026RosterStatus } from '../data/worldCup2026Rosters.js';
 import { getNationalTeamById } from '../data/nationalTeamData.js';
 import { formatCountryLabel, formatPosition } from './footballDisplay.js';
+import { buildNationalSquadLead, truncateLearnerCopy } from './learnerProfileCopy.js';
 import { getNationalityHubPath } from './internalLinking.js';
 import {
   LINK_ALL_NATIONAL_TEAMS,
@@ -40,7 +41,7 @@ export function buildSquadIdentityContext(nationalTeam, stats = {}) {
   }
 
   parts.push(
-    `${linkedCount} club players are linked to this national pool${quizReadyCount > 0 ? `; ${quizReadyCount} have quiz clues` : ''}.`,
+    `${linkedCount} club players are linked to this national pool${quizReadyCount > 0 ? `; ${quizReadyCount} appear in quizzes` : ''}.`,
   );
 
   const leagueCounts = new Map();
@@ -53,14 +54,10 @@ export function buildSquadIdentityContext(nationalTeam, stats = {}) {
     .slice(0, 3)
     .map(([id]) => id);
   if (topLeagues.length) {
-    parts.push(
-      `Most linked players currently appear in: ${topLeagues.join(', ').replace(/-/g, ' ')}.`,
-    );
+    parts.push(`Most linked players currently play in ${topLeagues.join(' and ').replace(/-/g, ' ')}.`);
   }
 
-  parts.push('This is a learning squad from club football—not an official tournament roster.');
-
-  return parts.join(' ');
+  return truncateLearnerCopy(parts.join(' '), 320);
 }
 
 /**
@@ -159,11 +156,14 @@ export function buildStructuredNationalProfile(ctx) {
   return {
     hasAuthoritativeHistory: Boolean(history),
     history,
-    squadIdentity: buildSquadIdentityContext(nationalTeam, {
+    squadIdentity: buildNationalSquadLead(nationalTeam, {
       linkedCount,
       quizReadyCount,
       squad,
-    }),
+    }) || truncateLearnerCopy(
+      buildSquadIdentityContext(nationalTeam, { linkedCount, quizReadyCount, squad }),
+      220,
+    ),
     footballCulture: buildFootballCultureContext(nationalTeam),
     rivalry: buildRivalryContext(nationalTeam),
     tournament: buildTournamentRelevanceContext(nationalTeam),

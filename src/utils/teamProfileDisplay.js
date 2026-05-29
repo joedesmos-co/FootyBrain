@@ -1,6 +1,12 @@
 import { formatCountryLabel } from './footballDisplay';
 import { isPlaceholderClubCopy } from './entityDepthAudit';
+import { polishGeneratedCopy, truncateLearnerCopy } from './learnerProfileCopy';
 import { getTeamHonorsList, parseKeyPlayerLine } from './teamPageUtils';
+
+function polishField(text, max = 280) {
+  const t = polishGeneratedCopy(text);
+  return t ? truncateLearnerCopy(t, max) : '';
+}
 
 /** @typedef {{ icon: string, label: string, value: string, href?: string }} TeamQuickFact */
 
@@ -95,23 +101,23 @@ export function getTeamProfileEditorial(team) {
   const rawShortHistory = String(team.shortHistory ?? '').trim();
   const fanGuide = isPlaceholderClubCopy({ shortHistory: '', fanGuide: rawFanGuide })
     ? ''
-    : rawFanGuide;
+    : polishField(rawFanGuide, 320);
   const shortHistory = isPlaceholderClubCopy({
     shortHistory: rawShortHistory,
     fanGuide: '',
   })
     ? ''
-    : rawShortHistory;
+    : polishField(rawShortHistory, 280);
   const nicknames = inferTeamNicknames(team);
   const honors = getTeamHonorsList(team);
-  const metaDescription = String(team.metaDescription ?? '').trim();
-  const tacticalIdentity = String(team.tacticalIdentity ?? '').trim();
-  const stadiumContext = String(team.stadiumContext ?? '').trim();
-  const leagueContext = String(team.leagueContext ?? '').trim();
-  const rivalsSummary = String(team.rivalsSummary ?? '').trim();
-  const legendsSummary = String(team.legendsSummary ?? '').trim();
-  const playersToKnowIntro = String(team.playersToKnowIntro ?? '').trim();
-  const quizDiscoveryLead = String(team.quizDiscoveryLead ?? '').trim();
+  const metaDescription = polishField(team.metaDescription ?? '', 165);
+  const tacticalIdentity = polishField(team.tacticalIdentity ?? '', 240);
+  const stadiumContext = polishField(team.stadiumContext ?? '', 220);
+  const leagueContext = polishField(team.leagueContext ?? '', 240);
+  const rivalsSummary = polishField(team.rivalsSummary ?? '', 220);
+  const legendsSummary = polishField(team.legendsSummary ?? '', 240);
+  const playersToKnowIntro = polishField(team.playersToKnowIntro ?? '', 180);
+  const quizDiscoveryLead = polishField(team.quizDiscoveryLead ?? '', 200);
 
   return {
     fanGuide,

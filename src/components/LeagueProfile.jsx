@@ -47,6 +47,7 @@ import BreadcrumbNav from './BreadcrumbNav';
 import { CRUMB_BROWSE, CRUMB_HOME, CTA_BACK_TO_BROWSE } from '../utils/entityCopy.js';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
+import { buildLeagueHeroLede } from '../utils/learnerProfileCopy';
 import { isTopTierLeague } from '../utils/topTierPages';
 import {
   buildLeagueInternalLinks,
@@ -133,13 +134,15 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
   const leagueDescription = truncateLeagueText(league.description, 280);
   const playstyleLine = truncateLeagueText(league.styleOfPlay, 200);
   const leagueIdentityBlurb = buildLeagueIdentitySection(league);
-  const showLeagueIdentity = isThinLeague(league, 4) || !leagueDescription;
+  const showLeagueIdentity =
+    !topTier && (isThinLeague(league, 4) || !leagueDescription);
   const rivalryLinks = resolveLeagueRivalryLinks(league.rivalries, leagueTeams, 6);
   const famousPlayerLinks = resolveFamousPlayerLinks(league.famousPlayers, leaguePlayers, 6);
   const leagueNationalTeamId = league.country
     ? findNationalTeamIdForCountry(league.country)
     : null;
   const topTier = isTopTierLeague(league);
+  const leagueHeroLede = buildLeagueHeroLede(league);
   const leagueStats = {
     clubs: leagueTeams.length,
     quizReady: quizReadyPlayers.length,
@@ -164,6 +167,9 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           <div className="league-hero__copy">
             <p className="profile__league">{formatCountryLabel(league.country)}</p>
             <h1>{getLeagueDisplayName(league)}</h1>
+            {leagueHeroLede ? (
+              <p className="league-hero__lede">{leagueHeroLede}</p>
+            ) : null}
             <p className="profile__sub league-hero__sub">
               {leagueMetaLine({
                 clubs: leagueTeams.length,

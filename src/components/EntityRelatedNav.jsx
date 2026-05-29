@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SectionHeading from './ui/SectionHeading';
 
 /**
  * Crawlable related-entity links (real anchors) — capped to avoid nav spam.
@@ -18,9 +19,9 @@ export default function EntityRelatedNav({
       className={`entity-related-nav profile__section${className ? ` ${className}` : ''}`}
       aria-labelledby={sectionId}
     >
-      <h2 id={sectionId} className="entity-related-nav__title">
+      <SectionHeading id={sectionId} className="entity-related-nav__title">
         {title}
-      </h2>
+      </SectionHeading>
       <ul className="entity-related-nav__list">
         {links.map((link) => (
           <li key={link.to}>

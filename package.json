@@ -47,6 +47,8 @@
     "expand:phase3": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale",
     "audit:expansion-foundation": "node scripts/audit-expansion-foundation.js",
     "audit:top-importance-depth": "node scripts/audit-top-importance-depth.js",
+    "audit:learner-top-100": "node scripts/audit-learner-top-100.js",
+    "refresh:club-overlay-copy": "node scripts/refresh-club-overlay-copy.js",
     "audit:internal-linking": "node scripts/audit-internal-linking.js",
     "audit:entity-consistency": "node scripts/audit-entity-consistency.js",
     "audit:seo-meta": "node scripts/audit-seo-meta.js",

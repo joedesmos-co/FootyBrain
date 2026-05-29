@@ -5,6 +5,12 @@ import { buildCareerSummary } from './playerImportance';
 import { countPlayerEditorialDepth, isThinPlayer } from './entityDepthAudit';
 import { buildHowTheyPlaySection } from './entityEditorialSynthesis';
 import {
+  buildPlayerHeroLede,
+  polishGeneratedCopy,
+  textsSimilar,
+  truncateLearnerCopy,
+} from './learnerProfileCopy';
+import {
   buildTopPlayerMetaDescription,
   isHighImportancePlayer,
   isTopTierPlayer,
@@ -31,15 +37,15 @@ function positionCategory(position) {
 function roleContextLine(position) {
   switch (positionCategory(position)) {
     case 'goalkeeper':
-      return 'Shot-stopping and command of the box matter most in quizzes and squad recognition.';
+      return 'Focus on shot-stopping and box command when learning this name.';
     case 'defender':
-      return 'Defensive positioning and partnership with the rest of the back line are the usual study angles.';
+      return 'Partnerships at the back and role in build-up are the usual memory hooks.';
     case 'midfielder':
-      return 'Link play between defence and attack is the typical lens for learning this profile.';
+      return 'Link play and where they pick up the ball help tie name to role.';
     case 'forward':
-      return 'Goal threat and movement in the final third are what fans and quizzes usually test.';
+      return 'Goal threat and movement are what stick in quizzes and highlights.';
     default:
-      return 'Squad role and club context are the fastest way to remember this name.';
+      return 'Club and league context are the fastest way to remember this name.';
   }
 }
 
@@ -100,6 +106,11 @@ export function buildPlayerAboutParagraph(player, ctx = {}) {
   return `${opener}${pathBit} ${roleContextLine(player.position)}`.replace(/\s+/g, ' ').trim();
 }
 
+function polishAboutParagraph(text, topTier) {
+  const polished = polishGeneratedCopy(text);
+  return topTier ? truncateLearnerCopy(polished, 240) : polished;
+}
+
 /**
  * @param {object} player
  * @param {{ team?: object | null }} ctx
@@ -138,7 +149,7 @@ export function buildPlayerKnownFor(player, ctx = {}) {
   }
 
   const country = String(player.nationalTeam || player.nationality || '').trim();
-  if (country) add(`${country} national-team pool on FootyCompass`);
+  if (country && !ctx.topTier) add(`${country} national-team pool on FootyCompass`);
 
   if (hasSubstantiveQuickFact(player) && items.length < 4) {
     const fact = String(player.quickFact).trim();
@@ -190,18 +201,23 @@ export { countPlayerEditorialDepth } from './entityDepthAudit';
  * @param {{ teamName?: string, leagueName?: string, team?: object | null }} ctx
  */
 export function buildPlayerProfileEditorial(player, ctx = {}) {
-  const about = buildPlayerAboutParagraph(player, ctx);
-  const knownFor = buildPlayerKnownFor(player, ctx);
+  const topTier = isTopTierPlayer(player);
+  const aboutRaw = buildPlayerAboutParagraph(player, ctx);
+  const about = polishAboutParagraph(aboutRaw, topTier);
+  const knownFor = buildPlayerKnownFor(player, { ...ctx, topTier });
   const displayFact = getDisplayQuickFact(player);
   const careerSummary = buildCareerSummary(player);
-  const playStyleBlurb = buildHowTheyPlaySection(player);
+  const playStyleBlurbRaw = polishGeneratedCopy(buildHowTheyPlaySection(player));
+  const playStyleBlurb = topTier ? truncateLearnerCopy(playStyleBlurbRaw, 180) : playStyleBlurbRaw;
   const depth = countPlayerEditorialDepth(player);
   const isThin = isThinPlayer(player, 3);
-  const topTier = isTopTierPlayer(player);
   const enrichThin = isThin && (isHighImportancePlayer(player) || topTier);
+  const heroLede = topTier ? buildPlayerHeroLede(player, ctx) : '';
+  const aboutDistinctFromHero = !textsSimilar(about, heroLede);
 
   return {
     about,
+    heroLede,
     knownFor,
     description: buildPlayerProfileDescription(player, ctx),
     displayFact,
@@ -210,10 +226,13 @@ export function buildPlayerProfileEditorial(player, ctx = {}) {
     depth,
     isThin,
     enrichThin,
-    showAbout: Boolean(about),
+    showAbout: Boolean(about) && aboutDistinctFromHero,
     showKnownFor: knownFor.length > 0,
     showPlayStyleBlurb:
-      Boolean(playStyleBlurb) && (enrichThin || isHighImportancePlayer(player) || topTier),
+      Boolean(playStyleBlurb) &&
+      !textsSimilar(playStyleBlurb, about) &&
+      !textsSimilar(playStyleBlurb, heroLede) &&
+      (enrichThin || isHighImportancePlayer(player) || topTier),
     topTier,
   };
 }

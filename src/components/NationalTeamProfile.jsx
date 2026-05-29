@@ -32,6 +32,7 @@ import BreadcrumbNav from './BreadcrumbNav';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { isTopTierNationalTeam } from '../utils/topTierPages';
+import { buildNationalHeroLede } from '../utils/learnerProfileCopy';
 import NationalTeamProfileHub from './NationalTeamProfileHub';
 import NationalTeamDiscoveryStrip from './NationalTeamDiscoveryStrip';
 import {
@@ -282,6 +283,10 @@ export default function NationalTeamProfile() {
   breadcrumbItems.push({ label: nationalTeam.displayName });
 
   const topTier = isTopTierNationalTeam(nationalTeam);
+  const nationalHeroLede = buildNationalHeroLede(nationalTeam, {
+    linkedCount,
+    quizReadyCount: quizReady.length,
+  });
   const showKeepExploring =
     topTier ||
     isThinNationalTeam(nationalTeam, 4) ||
@@ -305,6 +310,11 @@ export default function NationalTeamProfile() {
           <div>
             <p className="profile__league">{nationalTeam.confederation}</p>
             <h1>{nationalTeam.displayName}</h1>
+            {nationalHeroLede ? (
+              <p className="national-team-profile__lede national-team-profile__lede--hero">
+                {nationalHeroLede}
+              </p>
+            ) : null}
             <p className="profile__sub">
               {linkedCount} players in squad
               {quizReady.length > 0 ? ` · ${quizReady.length} in quizzes` : ''}
@@ -313,9 +323,9 @@ export default function NationalTeamProfile() {
             {wcRosterStatus ? (
               <p className="national-team-profile__wc-roster-status">{wcRosterStatus.label}</p>
             ) : null}
-            {nationalTeam.shortHistory && (
+            {nationalTeam.shortHistory && !nationalHeroLede ? (
               <p className="national-team-profile__lede">{nationalTeam.shortHistory}</p>
-            )}
+            ) : null}
           </div>
         </div>
         <div className="team-profile__actions">
@@ -356,6 +366,7 @@ export default function NationalTeamProfile() {
         squad={squad}
         linkedCount={linkedCount}
         quizReadyCount={quizReadyCount}
+        compact={topTier}
       />
 
       <NationalTeamDiscoveryStrip

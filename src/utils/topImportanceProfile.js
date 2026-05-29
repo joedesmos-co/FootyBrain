@@ -67,17 +67,17 @@ export function buildStructuredExploreLead(ctx = {}) {
 
   if (ctx.team?.rivals?.length) {
     parts.push(
-      `Derbies with ${ctx.team.rivals.slice(0, 2).join(' and ')} — open those club pages or try a rivalry quiz.`,
+      `Derbies with ${ctx.team.rivals.slice(0, 2).join(' and ')} — open those club pages next.`,
     );
   }
 
   if (ctx.team?.name && ctx.team?.identityTags?.length) {
     const blurb = buildClubIdentitySection(ctx.team, ctx.league?.name ?? 'their league', 0);
-    if (blurb.length < 140) parts.push(blurb);
+    if (blurb.length < 120) parts.push(blurb);
   }
 
   if (links.some((l) => l.to.includes('theme'))) {
-    parts.push('League-themed quizzes are a strong follow-up after browsing the squad.');
+    parts.push('Try a league-themed quiz after browsing the squad.');
   } else if (ctx.quizReady && ctx.team?.name) {
     parts.push(`Quiz the ${ctx.team.name} squad while names are still fresh.`);
   }
@@ -93,12 +93,12 @@ export function buildPlayerExploreLead(player, ctx = {}) {
   const parts = [];
   if (ctx.team?.rivals?.length) {
     parts.push(
-      `${player.name} plays in a side that lists ${ctx.team.rivals.slice(0, 2).join(' and ')} as rivals — worth opening those club pages next.`,
+      `${player.name} plays for a club that lists ${ctx.team.rivals.slice(0, 2).join(' and ')} as rivals — compare those squads next.`,
     );
   } else if (ctx.quizReady && ctx.teamName) {
-    parts.push(`Lock in ${player.name} by quizzing the ${ctx.teamName} squad, then browse ${ctx.leagueName ?? 'the league'} for similar roles.`);
+    parts.push(`Remember ${player.name} with a ${ctx.teamName} squad quiz, then browse ${ctx.leagueName ?? 'the league'}.`);
   } else if (ctx.leagueName) {
-    parts.push(`Browse ${ctx.leagueName} for players in the same position and league-themed quizzes.`);
+    parts.push(`Browse ${ctx.leagueName} for similar roles and league quizzes.`);
   }
   return parts.slice(0, 2).join(' ');
 }

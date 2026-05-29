@@ -16,6 +16,7 @@ import {
   parsePlayStyleTags,
   parseStrengths,
 } from './entityDepthAudit';
+import { truncateLearnerCopy, buildNationalSquadLead } from './learnerProfileCopy.js';
 import { buildSquadIdentityContext } from './nationalProfileEditorial.js';
 import {
   LINK_CLUB_PLAYER_QUIZ,
@@ -61,7 +62,10 @@ export function buildHowTheyPlaySection(player) {
 
   const position = formatPosition(player?.position);
   if (position && position !== '—') {
-    return `${player.name} is listed as a ${position.toLowerCase()} — use club and league context on this page for recognition practice.`;
+    return truncateLearnerCopy(
+      `${player.name} plays as a ${position.toLowerCase()} — see club and league links above for context.`,
+      120,
+    );
   }
 
   return '';
@@ -99,11 +103,11 @@ export function buildClubIdentitySection(team, leagueName, rosterSize = 0) {
     parts.push(`Rivalries: ${team.rivals.slice(0, 3).join(', ')}.`);
   }
 
-  if (rosterSize > 0) {
-    parts.push(`${rosterSize} squad players profiled here for browse and quiz practice.`);
+  if (rosterSize > 0 && !history) {
+    parts.push(`${rosterSize} players in the squad list below.`);
   }
 
-  return parts.join(' ');
+  return truncateLearnerCopy(parts.join(' '), 280);
 }
 
 /**
@@ -122,7 +126,7 @@ export function buildLeagueIdentitySection(league) {
   if (league?.rivalries?.length) {
     parts.push(`Rivalries: ${league.rivalries.slice(0, 2).join('; ')}.`);
   }
-  return parts.join(' ');
+  return truncateLearnerCopy(parts.join(' '), 320);
 }
 
 /**
@@ -132,12 +136,15 @@ export function buildNationalIdentitySection(nationalTeam, stats = {}) {
   const history = String(nationalTeam?.shortHistory ?? '').trim();
   if (history) return history;
 
-  const synthesized = buildSquadIdentityContext(nationalTeam, {
+  const synthesized = buildNationalSquadLead(nationalTeam, {
     linkedCount: stats.linkedCount ?? 0,
     quizReadyCount: stats.quizReadyCount ?? 0,
     squad: stats.squad ?? [],
   });
-  if (synthesized.length >= 80) return synthesized;
+  if (synthesized) return synthesized;
+
+  const full = buildSquadIdentityContext(nationalTeam, stats);
+  if (full.length >= 40) return truncateLearnerCopy(full, 220);
 
   const guide = String(nationalTeam?.fanGuide ?? '').trim();
   if (guide) return guide.length > 320 ? `${guide.slice(0, 317).trimEnd()}…` : guide;

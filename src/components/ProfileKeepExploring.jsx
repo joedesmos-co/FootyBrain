@@ -8,6 +8,7 @@ import {
   buildPlayerExploreLead,
   buildStructuredExploreLead,
 } from '../utils/topImportanceProfile';
+import SectionHeading from './ui/SectionHeading';
 
 /** Short hints for national-team study paths (no invented copy). */
 const NATIONAL_LINK_HINTS = {
@@ -152,7 +153,7 @@ export default function ProfileKeepExploring({
       className={`profile__section profile-keep-exploring${premium ? ' profile-keep-exploring--premium' : ''}`}
       aria-labelledby={`keep-exploring-${entityId}`}
     >
-      <h2 id={`keep-exploring-${entityId}`}>{title}</h2>
+      <SectionHeading id={`keep-exploring-${entityId}`}>{title}</SectionHeading>
       {exploreLead ? <p className="profile-keep-exploring__lead">{exploreLead}</p> : null}
       <div className="profile-keep-exploring__grid">
         {actionLinks.map((link) => (

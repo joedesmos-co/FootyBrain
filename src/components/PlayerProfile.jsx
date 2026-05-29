@@ -538,6 +538,9 @@ export default function PlayerProfile() {
           <PlayerVisual player={player} size="profile" priority />
           <div className="player-profile__hero-copy">
             <h1>{player.name}</h1>
+            {profileEditorial.heroLede ? (
+              <p className="player-profile__hero-lede">{profileEditorial.heroLede}</p>
+            ) : null}
             <PositionLabel
               position={player.position}
               className="player-profile__position player-profile__position--hero"
@@ -702,7 +705,8 @@ export default function PlayerProfile() {
       <div className="player-profile__divider" aria-hidden="true" />
 
       <section className="player-profile__body" aria-label={`${player.name} profile`}>
-        {(playStyleTags.length > 0 || playStyleSummary) && (
+        {(playStyleTags.length > 0 || playStyleSummary) &&
+        !(profileEditorial.topTier && profileEditorial.showPlayStyleBlurb) ? (
           <article className="info-card player-section player-section--playstyle">
             <PlayerSectionHead icon="⚡" title="Play style" />
             {playStyleTags.length > 0 && (
@@ -718,7 +722,7 @@ export default function PlayerProfile() {
               <p className="card-note">{playStyleSummary}</p>
             ) : null}
           </article>
-        )}
+        ) : null}
 
         {strengths.length > 0 && (
           <article className="info-card player-section player-section--strengths">

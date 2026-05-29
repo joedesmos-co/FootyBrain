@@ -7,6 +7,7 @@ import { buildStructuredNationalProfile } from '../utils/nationalProfileEditoria
  *   squad: object[],
  *   linkedCount: number,
  *   quizReadyCount: number,
+ *   compact?: boolean,
  * }} props
  */
 export default function NationalTeamProfileHub({
@@ -14,6 +15,7 @@ export default function NationalTeamProfileHub({
   squad,
   linkedCount,
   quizReadyCount,
+  compact = false,
 }) {
   const profile = buildStructuredNationalProfile({
     nationalTeam,
@@ -22,8 +24,8 @@ export default function NationalTeamProfileHub({
     quizReadyCount,
   });
 
-  const showHistory = profile.hasAuthoritativeHistory;
-  const showSquadIdentity = Boolean(profile.squadIdentity);
+  const showHistory = profile.hasAuthoritativeHistory && !compact;
+  const showSquadIdentity = Boolean(profile.squadIdentity) && !compact;
   const showCulture = Boolean(profile.footballCulture) && !nationalTeam.fanGuide;
   const showCultureDetails = Boolean(nationalTeam.fanGuide);
   const showRivalry = Boolean(profile.rivalry);

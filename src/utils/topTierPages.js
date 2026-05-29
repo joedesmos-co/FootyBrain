@@ -1,5 +1,5 @@
 /**
- * Top 50 traffic pages (25 players · 15 clubs · 5 leagues · 5 national teams).
+ * Top 100 learner-priority pages (50 players · 25 clubs · 8 leagues · 17 national teams).
  * IDs derived once from the dataset — used for premium layout and copy only.
  */
 
@@ -9,10 +9,10 @@ import liveNt from '../data/nationalTeamLive.json' with { type: 'json' };
 import { isMajorClub } from './entityDepthAudit.js';
 
 export const TOP_TIER_COUNTS = {
-  players: 25,
-  clubs: 15,
-  leagues: 5,
-  national: 5,
+  players: 50,
+  clubs: 25,
+  leagues: 8,
+  national: 17,
 };
 
 function rosterImportanceSum(teamId) {
@@ -44,13 +44,7 @@ const TOP_CLUB_IDS = new Set([
 const TOP_LEAGUE_IDS = new Set(
   leagues
     .filter((l) => l?.id && l.id !== 'external')
-    .map((league) => ({
-      id: league.id,
-      players: players.filter((p) => p.leagueId === league.id).length,
-    }))
-    .sort((a, b) => b.players - a.players)
-    .slice(0, TOP_TIER_COUNTS.leagues)
-    .map((l) => l.id),
+    .map((league) => league.id),
 );
 
 const membershipsPerTeam = liveNt.meta?.membershipsPerTeam ?? {};

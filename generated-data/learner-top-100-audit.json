@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-05-29T16:09:37.840Z",
+  "scope": {
+    "players": 50,
+    "clubs": 25,
+    "leagues": 8,
+    "national": 17
+  },
+  "totals": {
+    "pages": 112,
+    "flagged": 0,
+    "players": 50,
+    "clubs": 37,
+    "leagues": 8,
+    "national": 17
+  },
+  "flagged": [],
+  "clean": 112
+}
