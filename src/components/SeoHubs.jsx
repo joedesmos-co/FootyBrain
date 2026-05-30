@@ -247,23 +247,23 @@ export function SeoQuizzesHub() {
             .filter((league) => league?.id && !isExternalLeagueId(league.id))
             .map((league) => (
               <li key={league.id} className="player-card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <div className="hub-card-header">
                   <LeagueBadge league={league} />
-                  <div>
-                    <h3 style={{ margin: 0 }}>{getLeagueDisplayName(league)}</h3>
-                    <p style={{ margin: '0.25rem 0 0' }}>
+                  <div className="hub-card-header__copy">
+                    <h3>{getLeagueDisplayName(league)}</h3>
+                    <p>
                       Guess players from {getLeagueDisplayName(league)} clubs.
                     </p>
                   </div>
                 </div>
-                <div style={{ marginTop: '0.75rem' }}>
+                <div className="hub-card-actions">
                   <Link
                     to={`/hubs/quizzes/league/${league.id}`}
                     className="btn btn--primary btn--small"
                   >
                     {leagueQuizGuideLabel(getLeagueDisplayName(league))}
                   </Link>
-                  <Link to="/quiz" className="btn btn--secondary btn--small" style={{ marginLeft: '0.5rem' }}>
+                  <Link to="/quiz" className="btn btn--secondary btn--small">
                     Play quizzes
                   </Link>
                 </div>
@@ -580,16 +580,16 @@ export function SeoPlayersByNationalityHub() {
         <ul className="card-grid" aria-label="Nationalities">
           {nations.slice(0, 48).map((row) => (
             <li key={row.nation} className="player-card">
-              <h3 style={{ marginTop: 0 }}>{formatCountryLabel(row.nation)}</h3>
-              <p style={{ margin: '0.35rem 0 0' }}>{row.count} players</p>
-              <div style={{ marginTop: '0.75rem' }}>
+              <h3 className="hub-card-title">{formatCountryLabel(row.nation)}</h3>
+              <p className="hub-card-meta">{row.count} players</p>
+              <div className="hub-card-actions">
                 <Link
                   to={`/hubs/players/nationality/${encodeURIComponent(row.nation)}`}
                   className="btn btn--primary btn--small"
                 >
                   Open nationality page
                 </Link>
-                <Link to="/browse" className="btn btn--secondary btn--small" style={{ marginLeft: '0.5rem' }}>
+                <Link to="/browse" className="btn btn--secondary btn--small">
                   {CRUMB_BROWSE}
                 </Link>
               </div>
