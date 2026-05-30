@@ -85,25 +85,19 @@ export function buildThinClubHistory(team, leagueName, league, rosterSize = 0) {
 
   const parts = [];
   const country = clean(team.country);
-  parts.push(
-    `${team.name} are listed in ${leagueName}${country ? ` (${country})` : ''} on FootyCompass.`,
-  );
+  parts.push(`${team.name} play in ${leagueName}${country ? ` (${country})` : ''}.`);
   if (team.founded) parts.push(`Founded in ${team.founded}.`);
   if (team.stadium) parts.push(`Home ground: ${team.stadium}.`);
 
-  const phrases = tagPhrases(team, 3);
+  const phrases = tagPhrases(team, 2);
   if (phrases.length) {
-    parts.push(`Playing identity tags: ${list(phrases, 3)}.`);
+    parts.push(`Known for ${list(phrases, 2)}.`);
   }
 
   const style = clean(league?.styleOfPlay);
-  if (style) parts.push(truncate(style, 140));
+  if (style) parts.push(truncate(style, 120));
 
-  if (rosterSize > 0) {
-    parts.push(`${rosterSize} players in the squad list below.`);
-  }
-
-  return truncate(parts.join(' '), 320);
+  return truncate(parts.join(' '), 280);
 }
 
 export function buildThinClubFanGuide(team, leagueName, league) {
@@ -111,26 +105,20 @@ export function buildThinClubFanGuide(team, leagueName, league) {
 
   const parts = [];
   if (team.stadium) {
-    parts.push(`Matchday focus: ${team.stadium} — use the squad list to learn current names.`);
+    parts.push(`${team.stadium} is the home ground — start with the squad list to learn current names.`);
+  }
+
+  const rivals = (team.rivals ?? []).map(clean).filter(Boolean);
+  if (rivals.length) {
+    parts.push(`Local fixtures against ${list(rivals, 2)} matter most to supporters.`);
   }
 
   const phrases = tagPhrases(team, 2);
   if (phrases.length) {
-    parts.push(`Supporters often associate the side with ${list(phrases, 2)}.`);
+    parts.push(`Fans associate the side with ${list(phrases, 2)}.`);
   }
 
-  const famous = Array.isArray(league?.famousClubs) ? league.famousClubs : [];
-  if (famous.length && leagueName) {
-    const names = famous.slice(0, 2).map((c) => clean(String(c).split(' — ')[0]));
-    parts.push(`Other ${leagueName} clubs profiled nearby include ${list(names, 2)}.`);
-  }
-
-  const rivalries = Array.isArray(league?.rivalries) ? league.rivalries : [];
-  if (rivalries.length) {
-    parts.push(`League derbies include ${rivalries.slice(0, 2).join('; ')}.`);
-  }
-
-  return truncate(parts.join(' '), 280);
+  return truncate(parts.join(' '), 240);
 }
 
 export function buildMetaDescription(team, leagueName) {
@@ -140,31 +128,25 @@ export function buildMetaDescription(team, leagueName) {
   const variant = hashId(team.id) % 4;
 
   if (!isPlaceholderClubCopy(team) && story && variant === 0) {
-    return truncate(
-      `${team.name} (${leagueName}): ${story} Squad, rivals, and club quizzes on FootyCompass.`,
-      158,
-    );
+    return truncate(`${team.name} (${leagueName}): ${story}`, 158);
   }
   if (variant === 1 || isPlaceholderClubCopy(team)) {
     const bits = [`${team.name} (${leagueName})`];
     if (stadium) bits.push(stadium);
-    if (rivals.length) bits.push(`rivals: ${list(rivals, 2)}`);
+    if (rivals.length) bits.push(`rivals include ${list(rivals, 2)}`);
     const hook = !isPlaceholderClubCopy(team) && story
       ? truncate(story, 72)
       : team.stadium
-        ? `Study the squad at ${team.stadium}.`
-        : 'Squad and league context.';
-    return truncate(`${bits.join(' · ')}. ${hook} FootyCompass club profile.`, 158);
+        ? `Squad and home ground at ${team.stadium}.`
+        : 'Club profile with squad and quizzes.';
+    return truncate(`${bits.join(' · ')}. ${hook}`, 158);
   }
   const guide = clean(team.fanGuide);
   if (guide && !isPlaceholderClubCopy(team)) {
-    return truncate(
-      `${team.name}: ${truncate(guide, 90)} ${leagueName} quizzes on FootyCompass.`,
-      158,
-    );
+    return truncate(`${team.name}: ${truncate(guide, 100)}`, 158);
   }
   return truncate(
-    `${team.name} — ${leagueName} club squad, player profiles, and football quizzes on FootyCompass.`,
+    `${team.name} — ${leagueName} club profile, squad, and football quizzes.`,
     158,
   );
 }
@@ -174,7 +156,7 @@ export function buildTacticalIdentity(team) {
   const manager = clean(team.manager);
   const parts = [];
   if (phrases.length) {
-    parts.push(`${team.name} are known for ${list(phrases, 3)}.`);
+    parts.push(`${team.name} play with ${list(phrases, 3)}.`);
   }
   if (manager) parts.push(`Head coach: ${manager}.`);
   return truncate(parts.join(' '), 240) || null;
@@ -190,7 +172,7 @@ export function buildStadiumContext(team) {
 }
 
 export function buildLeagueContextBlurb(team, leagueName, league) {
-  const parts = [`${team.name} compete in ${leagueName} on FootyCompass.`];
+  const parts = [`${team.name} compete in ${leagueName}.`];
   const style = clean(league?.styleOfPlay);
   if (style) parts.push(truncate(style, 160));
   const desc = clean(league?.description);
@@ -208,8 +190,11 @@ export function buildRivalsSummary(team) {
     );
     if (sentence) return truncate(sentence, 220);
   }
+  if (rivals.length === 1) {
+    return truncate(`Fixtures against ${rivals[0]} carry extra edge for supporters.`, 220);
+  }
   return truncate(
-    `Rivalries noted for ${team.name}: ${list(rivals, 4)}. Compare squads on linked club profiles.`,
+    `Supporters mark games against ${list(rivals, 3)} as the fixtures that matter most.`,
     220,
   );
 }
@@ -225,10 +210,7 @@ export function buildLegendsSummary(team) {
   const firstLine = clean(legends[0] ?? '');
   const note = firstLine.includes(' — ') ? clean(firstLine.split(' — ').slice(1).join(' — ')) : '';
   if (note) {
-    return truncate(
-      `Club legends include ${list(names, 4)} — e.g. ${names[0]} (${note}).`,
-      240,
-    );
+    return truncate(`Club legends include ${list(names, 4)} — notably ${names[0]} (${note}).`, 240);
   }
   return truncate(`Club legends include ${list(names, 4)}.`, 220);
 }
@@ -241,24 +223,21 @@ export function buildPlayersToKnowIntro(team, players) {
     .slice(0, 4);
   const names = fromListed.length >= 2 ? fromListed : fromRoster.map((l) => l.split(' — ')[0]);
   if (names.length < 2) return null;
-  const variant = hashId(team.id) % 3;
-  if (variant === 0) {
-    return `Start with ${list(names, 4)} — highest-profile names in the current squad list.`;
-  }
-  if (variant === 1) {
-    return `Players to know: ${list(names, 4)}. Open profiles for nationality, role, and quiz clues.`;
-  }
-  return `Before the full squad, learn ${list(names, 3)}${names.length > 3 ? ` and ${names[3]}` : ''}.`;
+  return `Look out for ${list(names, 4)} in the squad below.`;
 }
 
 export function buildQuizDiscoveryLead(team, leagueName) {
-  const stadium = clean(team.stadium);
   const rival = clean(team.rivals?.[0]);
-  const parts = [`Practice ${team.name} with the club player quiz`];
-  if (stadium) parts.push(`after scanning ${stadium}`);
-  if (rival) parts.push(`then rivalry pools vs ${rival}`);
-  if (leagueName) parts.push(`or the ${leagueName} league hub`);
-  return truncate(`${parts.join(' — ')}.`, 200);
+  if (rival) {
+    return truncate(
+      `Learn the squad here, then try the ${team.name} player quiz — derby names like ${rival} often come up.`,
+      200,
+    );
+  }
+  return truncate(
+    `Learn the squad on this page, then test yourself with the ${team.name} player quiz.`,
+    200,
+  );
 }
 
 export function buildClubOverlay(team, leagueName, league, players, rosterSize) {

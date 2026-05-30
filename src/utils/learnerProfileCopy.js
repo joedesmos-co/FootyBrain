@@ -6,17 +6,21 @@
 import { formatCountryLabel, formatPosition } from './footballDisplay.js';
 
 const INTERNAL_PHRASE_RE =
-  /\b(in the dataset|listed in the dataset|dataset tags describe|dataset snapshot|footycompass sample|editorial profile coming soon|browse and quiz practice|profiled here for browse)\b/gi;
+  /\b(in the dataset|listed in the dataset|dataset tags describe|dataset snapshot|footycompass sample|editorial profile coming soon|browse and quiz practice|profiled here for browse|quiz-ready|quiz ready|controlled expansion club set|editorial coverage expands|on footycompass|tracked in|footycompass has profile|compare squads on linked|rivalry pools|lock in|rivalries noted for|playing identity tags|national pool|footycompass club database|in quizzes|linked club profiles|editorial schedule)\b/gi;
 
 export function polishGeneratedCopy(text) {
   return String(text ?? '')
     .replace(INTERNAL_PHRASE_RE, '')
-    .replace(/Dataset tags describe ([^.]+) as ([^.]+)\./gi, 'Known for $2.')
+    .replace(/Dataset tags describe ([^.]+) as ([^.]+)\./gi, '$1 play with $2.')
     .replace(/Club legends in the dataset include/gi, 'Club legends include')
     .replace(/Legends in the dataset:/gi, 'Legends include')
     .replace(/Head coach listed:/gi, 'Head coach:')
     .replace(/Current head coach in the dataset:/gi, 'Head coach:')
+    .replace(/Rivalries noted for ([^:]+):/gi, 'Key rivalries for $1 include')
+    .replace(/Lock in ([^—]+) names with the club player quiz/gi, 'Test yourself on $1 players after studying the squad')
     .replace(/list ([^.]+) as their home ground/gi, 'play home matches at $1')
+    .replace(/(\d+) players in the squad list below\.?/gi, '')
+    .replace(/Compare squads on linked club profiles[^.]*\.?/gi, '')
     .replace(/\s{2,}/g, ' ')
     .replace(/\s+([.,;:!?])/g, '$1')
     .replace(/\. \./g, '.')
@@ -92,8 +96,8 @@ export function buildNationalHeroLede(nationalTeam, stats = {}) {
   const quiz = stats.quizReadyCount ?? 0;
 
   const bits = [`${nationalTeam.displayName} (${country}) — ${conf}.`];
-  if (linked > 0) bits.push(`${linked} club players linked to this pool.`);
-  if (quiz > 0) bits.push(`${quiz} names appear in quizzes.`);
+  if (linked > 0) bits.push(`${linked} players from club football in this squad.`);
+  if (quiz > 0) bits.push(`${quiz} names you can practice in quizzes.`);
 
   return truncateLearnerCopy(bits.join(' '), 220);
 }
@@ -111,7 +115,7 @@ export function buildNationalSquadLead(nationalTeam, stats = {}) {
 
   if (linkedCount > 0) {
     parts.push(
-      `${linkedCount} club players linked${quizReadyCount > 0 ? `; ${quizReadyCount} in quizzes` : ''}.`,
+      `${linkedCount} players from club football${quizReadyCount > 0 ? `; ${quizReadyCount} you can practice in quizzes` : ''}.`,
     );
   }
 

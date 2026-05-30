@@ -33,16 +33,18 @@ export function buildSquadIdentityContext(nationalTeam, stats = {}) {
   const parts = [];
 
   parts.push(
-    `${nationalTeam.displayName} (${formatCountryLabel(nationalTeam.country)}) compete under ${nationalTeam.confederation ?? 'their confederation'} in FootyCompass.`,
+    `${nationalTeam.displayName} (${formatCountryLabel(nationalTeam.country)}) compete under ${nationalTeam.confederation ?? 'their confederation'}.`,
   );
 
   if (nationalTeam.fifaRanking != null) {
     parts.push(`FIFA ranking: ${nationalTeam.fifaRanking}.`);
   }
 
-  parts.push(
-    `${linkedCount} club players are linked to this national pool${quizReadyCount > 0 ? `; ${quizReadyCount} appear in quizzes` : ''}.`,
-  );
+  if (linkedCount > 0) {
+    parts.push(
+      `${linkedCount} players from club football${quizReadyCount > 0 ? `; ${quizReadyCount} you can practice in quizzes` : ''}.`,
+    );
+  }
 
   const leagueCounts = new Map();
   for (const player of squad) {
@@ -259,8 +261,8 @@ export function buildRichNationalTeamMetaDescription(nationalTeam, ctx = {}) {
   const bits = [
     `${nationalTeam.displayName} national team`,
     nationalTeam.confederation ? nationalTeam.confederation : null,
-    ctx.linkedCount != null ? `${ctx.linkedCount} linked players` : null,
-    ctx.quizReady > 0 ? `${ctx.quizReady} quiz-ready` : null,
+    ctx.linkedCount != null ? `${ctx.linkedCount} squad players` : null,
+    ctx.quizReady > 0 ? `${ctx.quizReady} in quizzes` : null,
     profile.isWorldCupFeatured ? 'World Cup 2026 featured' : null,
   ].filter(Boolean);
 
@@ -272,7 +274,7 @@ export function buildRichNationalTeamMetaDescription(nationalTeam, ctx = {}) {
   );
 
   const quizBit = ctx.canQuiz
-    ? 'Play the nation quiz on FootyCompass.'
+    ? 'Try the nation quiz when you are ready.'
     : 'Browse squad profiles and international quizzes.';
 
   return `${bits.join(' · ')}. ${hook} ${quizBit} Not an official federation roster.`;

@@ -76,7 +76,7 @@ export function buildHowTheyPlaySection(player) {
  * @param {string} leagueName
  * @param {number} [rosterSize]
  */
-export function buildClubIdentitySection(team, leagueName, rosterSize = 0) {
+export function buildClubIdentitySection(team, leagueName) {
   const history = String(team?.shortHistory ?? '').trim();
   if (history) return history;
 
@@ -100,14 +100,10 @@ export function buildClubIdentitySection(team, leagueName, rosterSize = 0) {
   }
 
   if (team?.rivals?.length) {
-    parts.push(`Rivalries: ${team.rivals.slice(0, 3).join(', ')}.`);
+    parts.push(`Rivalries with ${team.rivals.slice(0, 3).join(', ')}.`);
   }
 
-  if (rosterSize > 0 && !history) {
-    parts.push(`${rosterSize} players in the squad list below.`);
-  }
-
-  return truncateLearnerCopy(parts.join(' '), 280);
+  return truncateLearnerCopy(parts.join(' '), 240);
 }
 
 /**

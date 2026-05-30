@@ -26,7 +26,7 @@ export default function ClubQuizDiscoveryStrip({
   const topTier = isTopTierClub(team);
   const lead =
     editorial.quizDiscoveryLead ||
-    'Turn squad browsing into recall — player quizzes, league pools, and club trivia from real profiles.';
+    `Learn the squad on this page, then test yourself with the ${team.name} player quiz.`;
 
   if (!links.length) return null;
 
@@ -36,7 +36,7 @@ export default function ClubQuizDiscoveryStrip({
       aria-labelledby="club-quiz-discovery-title"
     >
       <h2 id="club-quiz-discovery-title" className="club-quiz-discovery__title">
-        Quiz &amp; study links
+        Test yourself
       </h2>
       <p className="club-quiz-discovery__lead">{lead}</p>
       <ul className="club-quiz-discovery__list">

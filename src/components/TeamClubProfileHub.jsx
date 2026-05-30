@@ -68,7 +68,6 @@ export default function TeamClubProfileHub({
     team,
     leagueName,
     rosterSize,
-    rivalCount: rivalEntries.length,
     honorCount: editorial.honors.length,
   });
 
@@ -82,7 +81,7 @@ export default function TeamClubProfileHub({
   const showSyntheticStory =
     !showStory && Boolean(profile.story) && (isThinTeam(team, 4) || !editorial.hasContext);
   const showStadium = Boolean(profile.stadium);
-  const showLeagueContext = Boolean(profile.league);
+  const showLeagueContext = Boolean(profile.league) && !showStory;
   const showFanIdentity = Boolean(profile.fanIdentity) && !showFanGuide;
   const showRivalsBlurb = Boolean(profile.rivals) && !showRivals;
   const showLegendsBlurb = Boolean(profile.legends) && !showLegends;
@@ -145,7 +144,7 @@ export default function TeamClubProfileHub({
       {showStory ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-why-matters-title">
           <h2 id="team-why-matters-title" className="team-club-hub__card-title">
-            Club identity &amp; history
+            History
           </h2>
           <p className="team-club-hub__prose">{editorial.shortHistory}</p>
         </section>
@@ -157,7 +156,7 @@ export default function TeamClubProfileHub({
           aria-labelledby="team-tactical-identity-title"
         >
           <h2 id="team-tactical-identity-title" className="team-club-hub__card-title">
-            Tactical identity
+            How they play
           </h2>
           <p className="team-club-hub__prose">{profile.tacticalIdentity}</p>
         </section>
@@ -166,19 +165,16 @@ export default function TeamClubProfileHub({
       {showSyntheticStory ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-club-identity-title">
           <h2 id="team-club-identity-title" className="team-club-hub__card-title">
-            About this club
+            At a glance
           </h2>
           <p className="team-club-hub__prose">{profile.story}</p>
-          <p className="team-fan-guide__meta team-club-hub__synthesis-note">
-            Profile summary — updated on our editorial schedule, not live match news.
-          </p>
         </section>
       ) : null}
 
       {showStadium ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-stadium-title">
           <h2 id="team-stadium-title" className="team-club-hub__card-title">
-            Stadium &amp; setup
+            Home ground
           </h2>
           <p className="team-club-hub__prose">{profile.stadium}</p>
         </section>
@@ -187,13 +183,11 @@ export default function TeamClubProfileHub({
       {showLeagueContext ? (
         <section className="team-club-hub__panel info-card" aria-labelledby="team-league-context-title">
           <h2 id="team-league-context-title" className="team-club-hub__card-title">
-            League context
+            {leagueName}
           </h2>
           <p className="team-club-hub__prose">{profile.league}</p>
           <p className="team-fan-guide__meta">
-            <Link to={`/league/${team.leagueId}`}>Explore {leagueName}</Link>
-            {' · '}
-            <Link to={`/hubs/quizzes/league/${team.leagueId}`}>League quiz page</Link>
+            <Link to={`/league/${team.leagueId}`}>Full {leagueName} guide</Link>
           </p>
         </section>
       ) : null}
@@ -201,8 +195,8 @@ export default function TeamClubProfileHub({
       {showFanGuide ? (
         <details className="team-fan-guide info-card" open>
           <summary className="team-fan-guide__summary">
-            <span className="team-club-hub__card-title">Fan guide</span>
-            <span className="team-fan-guide__hint">Culture, colours, and matchday feel</span>
+            <span className="team-club-hub__card-title">For supporters</span>
+            <span className="team-fan-guide__hint">Colours, culture, and what matters on matchday</span>
           </summary>
           <div className="team-fan-guide__body">
             <p className="team-club-hub__prose">{editorial.fanGuide}</p>
@@ -229,7 +223,7 @@ export default function TeamClubProfileHub({
           {showRivals ? (
             <section className="team-club-hub__panel info-card" aria-labelledby="team-rivals-title">
               <h2 id="team-rivals-title" className="team-club-hub__card-title">
-                Rival clubs
+                Rivalries
               </h2>
               {profile.rivals ? (
                 <p className="team-club-hub__prose team-club-hub__prose--tight">{profile.rivals}</p>

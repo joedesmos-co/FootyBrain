@@ -6,7 +6,7 @@ import { useRecordRecentView } from '../hooks/useRecordRecentView';
 import { getPlayableQuizPlayers } from '../utils/quizEligibility';
 import { QUIZ_MIN_SESSION_POOL } from '../utils/quizSession';
 import { formatClubIdentityTags, truncateClubText } from '../utils/clubIdentity';
-import { IMPORTANCE_SCORE_LABEL, QUIZ_COMING_SOON } from '../utils/consumerCopy';
+import { QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
 import { buildTeamKeyPlayerCards } from '../utils/teamPageUtils';
 import {
@@ -151,8 +151,8 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
   const keyPlayersNote =
     teamEditorial.playersToKnowIntro ||
     (teamEditorial.hasStory
-      ? 'Faces to know before you explore the full squad — names in quizzes are marked.'
-      : 'Top importance in the squad list — open profiles for hints, then try the club quiz.');
+      ? 'Faces to know before you scroll the full squad.'
+      : 'Start with the highest-profile names in the squad list below.');
   const profileSubline = buildTeamProfileSubline(team);
   const thinClub = isThinTeam(team, 4);
   const highTraffic = isHighTrafficTeam(team, roster);
@@ -170,20 +170,20 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
       title: 'Learn the club basics',
       text:
         team.stadium && team.founded
-          ? `${team.name} play in ${leagueName}, call ${team.stadium} home, and were founded in ${team.founded}.`
-          : `${team.name} are listed in ${leagueName}. Club history and stadium details are being added.`,
+          ? `${team.name} play in ${leagueName}, at ${team.stadium} since ${team.founded}.`
+          : `${team.name} play in ${leagueName}.`,
     },
     {
       label: 'Squad',
       title: 'Know the current squad',
-      text: `Review ${roster.length} player${roster.length === 1 ? '' : 's'} in the squad, grouped by position and ${IMPORTANCE_SCORE_LABEL.toLowerCase()}.`,
+      text: `Browse ${roster.length} player${roster.length === 1 ? '' : 's'} by position.`,
     },
     {
       label: 'Squad',
       title: 'Know the key players',
       text: team.currentKeyPlayers?.length
         ? `Start with ${team.currentKeyPlayers.join(', ')}.`
-        : `Start with the highest ${IMPORTANCE_SCORE_LABEL.toLowerCase()} in the squad list below.`,
+        : `Start with the most recognisable names in the squad list below.`,
     },
     ...(team.rivals?.length
       ? [

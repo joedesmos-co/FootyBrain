@@ -58,7 +58,7 @@ export function SeoClubQuizzesHub() {
       },
       {
         question: 'Is club quiz data live?',
-        answer: `Questions use the FootyCompass editorial dataset snapshot (${DATASET_META.dataAsOf}).`,
+        answer: `Questions draw on club profiles and squads (last updated ${DATASET_META.dataAsOf}).`,
       },
     ],
   });
@@ -176,13 +176,13 @@ export function SeoClubQuizCategoryHub() {
           {
             question: 'How many clubs are in the pool?',
             answer: viable
-              ? `About ${poolSize} clubs qualify for this format in the current dataset (${DATASET_META.dataAsOf}).`
+              ? `About ${poolSize} clubs qualify for this format.`
               : `Fewer than ${CLUB_QUIZ_MIN_POOL} clubs qualify — try stadium, league, or country quizzes instead.`,
           },
           {
             question: 'Is this the same as the player quiz?',
             answer:
-              'No. Player quizzes use hint lines about individuals. Club quizzes use editorial club fields (stadium, rivals, history, etc.).',
+              'No. Player quizzes use hints about individuals. Club quizzes use stadium, rivals, history, and kit facts from club profiles.',
           },
         ]
       : [],

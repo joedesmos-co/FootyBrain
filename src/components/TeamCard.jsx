@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import { getManifestLeague } from '../data/contentManifest';
 import { useFavorites } from '../hooks/useFavorites';
+import { getTeamProfileEditorial } from '../utils/teamProfileDisplay';
 import FavoriteButton from './FavoriteButton';
 import TeamBadge from './TeamBadge';
 
 export default function TeamCard({ team }) {
   const { isTeamSaved, toggleTeam } = useFavorites();
   const saved = isTeamSaved(team.id);
+  const editorial = getTeamProfileEditorial(team);
+  const rivals = (team.rivals ?? []).filter(Boolean);
+  const legends = (team.legends ?? []).filter(Boolean);
+  const keyPlayers = (team.currentKeyPlayers ?? []).filter(Boolean);
 
   return (
     <article className="team-card">
@@ -54,38 +59,48 @@ export default function TeamCard({ team }) {
           </div>
         </dl>
 
-        <div className="team-card__section">
-          <h4>Rivals</h4>
-          <p>{team.rivals.join(' · ')}</p>
-        </div>
+        {rivals.length > 0 ? (
+          <div className="team-card__section">
+            <h4>Rivals</h4>
+            <p>{rivals.join(' · ')}</p>
+          </div>
+        ) : null}
 
-        <div className="team-card__section">
-          <h4>History</h4>
-          <p>{team.shortHistory}</p>
-        </div>
+        {editorial.shortHistory ? (
+          <div className="team-card__section">
+            <h4>History</h4>
+            <p>{editorial.shortHistory}</p>
+          </div>
+        ) : null}
 
-        <div className="team-card__section">
-          <h4>Fan guide</h4>
-          <p>{team.fanGuide}</p>
-        </div>
+        {editorial.fanGuide ? (
+          <div className="team-card__section">
+            <h4>For supporters</h4>
+            <p>{editorial.fanGuide}</p>
+          </div>
+        ) : null}
 
-        <div className="team-card__section">
-          <h4>Legends</h4>
-          <ul className="tag-list">
-            {team.legends.map((legend) => (
-              <li key={legend}>{legend}</li>
-            ))}
-          </ul>
-        </div>
+        {legends.length > 0 ? (
+          <div className="team-card__section">
+            <h4>Legends</h4>
+            <ul className="tag-list">
+              {legends.map((legend) => (
+                <li key={legend}>{legend}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
-        <div className="team-card__section">
-          <h4>Current key players</h4>
-          <ul className="tag-list tag-list--accent">
-            {team.currentKeyPlayers.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
-        </div>
+        {keyPlayers.length > 0 ? (
+          <div className="team-card__section">
+            <h4>Key players</h4>
+            <ul className="tag-list tag-list--accent">
+              {keyPlayers.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
         <span className="team-card__cta">Open team profile</span>
       </Link>

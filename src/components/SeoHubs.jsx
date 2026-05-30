@@ -421,7 +421,7 @@ export function SeoTeamQuizHub() {
           },
           {
             question: 'Is the squad list live?',
-            answer: `No—this page uses a static dataset snapshot (currently ${DATASET_META.dataAsOf}).`,
+            answer: `Squad lists are updated periodically (last refresh: ${DATASET_META.dataAsOf}).`,
           },
         ]
       : [
@@ -478,7 +478,7 @@ export function SeoTeamQuizHub() {
         </p>
       </header>
 
-      <ExploreSection title="Key players (from the current dataset)" linkTo={`/team/${team.id}`} linkLabel="Club profile">
+      <ExploreSection title="Key players" linkTo={`/team/${team.id}`} linkLabel="Club profile">
         <ul className="card-grid" aria-label={`${teamName} players`}>
           {topPlayers.map((player) => (
             <li key={player.id}>

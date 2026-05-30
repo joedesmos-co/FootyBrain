@@ -31,7 +31,7 @@ export function inferTeamNicknames(team) {
  * @param {{ team: object, leagueName: string, rosterSize: number, rivalCount: number, honorCount: number }} ctx
  * @returns {TeamQuickFact[]}
  */
-export function buildTeamQuickFacts({ team, leagueName, rosterSize, rivalCount, honorCount }) {
+export function buildTeamQuickFacts({ team, leagueName, rosterSize, honorCount }) {
   /** @type {TeamQuickFact[]} */
   const facts = [];
 
@@ -66,11 +66,15 @@ export function buildTeamQuickFacts({ team, leagueName, rosterSize, rivalCount, 
     facts.push({ icon: '👥', label: 'Squad', value: `${rosterSize} players` });
   }
 
-  if (rivalCount > 0) {
+  if (team.rivals?.length) {
+    const rivalLabel =
+      team.rivals.length <= 2
+        ? team.rivals.join(', ')
+        : `${team.rivals.slice(0, 2).join(', ')} +${team.rivals.length - 2}`;
     facts.push({
       icon: '⚔️',
       label: 'Rivals',
-      value: `${rivalCount} listed`,
+      value: rivalLabel,
     });
   }
 
