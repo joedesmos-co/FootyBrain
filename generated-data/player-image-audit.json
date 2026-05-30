@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-30T19:58:55.640Z",
+  "generatedAt": "2026-05-30T20:51:14.525Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 245,
-    "withFallbackAvatar": 4582,
+    "withVerifiedPhoto": 282,
+    "withFallbackAvatar": 4545,
     "priorityListSize": 200,
-    "approvedEntries": 245,
-    "cacheResolved": 245,
-    "cacheSkipped": 15
+    "approvedEntries": 282,
+    "cacheResolved": 282,
+    "cacheSkipped": 145
   },
   "brokenUrls": [],
   "missingAttribution": [],
@@ -22,13 +22,13 @@
       "id": "tm-177467",
       "name": "Gerard Moreno",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:19.855Z"
+      "at": "2026-05-30T20:50:46.549Z"
     },
     {
       "id": "tm-181767",
       "name": "Marquinhos",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:29.736Z"
+      "at": "2026-05-30T20:50:52.068Z"
     },
     {
       "id": "tm-44058",
@@ -40,25 +40,25 @@
       "id": "tm-626724",
       "name": "João Pedro",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:14:34.463Z"
+      "at": "2026-05-30T20:51:03.543Z"
     },
     {
       "id": "tm-237662",
       "name": "Breel Embolo",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:32.565Z"
+      "at": "2026-05-30T20:50:53.889Z"
     },
     {
       "id": "tm-488362",
       "name": "Conor Gallagher",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:42.762Z"
+      "at": "2026-05-30T20:50:59.681Z"
     },
     {
       "id": "tm-503743",
       "name": "Morgan Rogers",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:43.771Z"
+      "at": "2026-05-30T20:51:01.557Z"
     },
     {
       "id": "tm-192635",
@@ -71,12 +71,6 @@
       "name": "Andrea Cambiaso",
       "reason": "no_safe_match",
       "at": "2026-05-30T18:17:04.020Z"
-    },
-    {
-      "id": "tm-493003",
-      "name": "Daniel Muñoz",
-      "reason": "no_safe_match",
-      "at": "2026-05-30T18:17:07.291Z"
     },
     {
       "id": "tm-568157",
@@ -101,6 +95,792 @@
       "name": "Alejandro Balde",
       "reason": "no_safe_match",
       "at": "2026-05-30T18:17:20.599Z"
+    },
+    {
+      "id": "tm-289592",
+      "name": "Orel Mangala",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:03.242Z"
+    },
+    {
+      "id": "tm-293194",
+      "name": "Borna Sosa",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:06.809Z"
+    },
+    {
+      "id": "tm-303657",
+      "name": "Ionuț Radu",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:08.686Z"
+    },
+    {
+      "id": "tm-332697",
+      "name": "Weston McKennie",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:11.386Z"
+    },
+    {
+      "id": "tm-334221",
+      "name": "Amos Pieper",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:13.238Z"
+    },
+    {
+      "id": "tm-338425",
+      "name": "Álex Berenguer",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:16.820Z"
+    },
+    {
+      "id": "tm-340205",
+      "name": "Gorka Guruzeta",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:18.667Z"
+    },
+    {
+      "id": "tm-346551",
+      "name": "Kamil Grabara",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:21.754Z"
+    },
+    {
+      "id": "tm-354792",
+      "name": "Cristian Roldán",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:23.808Z"
+    },
+    {
+      "id": "tm-355861",
+      "name": "Arnaut Danjuma",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:25.678Z"
+    },
+    {
+      "id": "tm-377468",
+      "name": "Anel Ahmedhodzic",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:32.918Z"
+    },
+    {
+      "id": "tm-378139",
+      "name": "Aitor Ruibal",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:34.839Z"
+    },
+    {
+      "id": "tm-380350",
+      "name": "Igor Julio",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:36.903Z"
+    },
+    {
+      "id": "tm-394236",
+      "name": "Filip Ugrinic",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:38.713Z"
+    },
+    {
+      "id": "tm-404842",
+      "name": "Vitaliy Mykolenko",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:43.864Z"
+    },
+    {
+      "id": "tm-405670",
+      "name": "Yannik Engelhardt",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:45.711Z"
+    },
+    {
+      "id": "tm-412932",
+      "name": "Myron Boadu",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:47.647Z"
+    },
+    {
+      "id": "tm-415381",
+      "name": "Mats Wieffer",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:49.541Z"
+    },
+    {
+      "id": "tm-462823",
+      "name": "Gustav Isaksen",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:51.388Z"
+    },
+    {
+      "id": "tm-467437",
+      "name": "Malik Tillman",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:53.185Z"
+    },
+    {
+      "id": "tm-479648",
+      "name": "Félix Correia",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:55.119Z"
+    },
+    {
+      "id": "tm-483046",
+      "name": "Josip Stanisic",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:34:59.309Z"
+    },
+    {
+      "id": "tm-516716",
+      "name": "Bremer",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:03.333Z"
+    },
+    {
+      "id": "tm-517842",
+      "name": "Aihen Muñoz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:05.992Z"
+    },
+    {
+      "id": "tm-536835",
+      "name": "Amad Diallo",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:07.836Z"
+    },
+    {
+      "id": "tm-538996",
+      "name": "Tanguy Nianzou",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:09.682Z"
+    },
+    {
+      "id": "tm-545647",
+      "name": "Sergio Carreira",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:11.650Z"
+    },
+    {
+      "id": "tm-548254",
+      "name": "Nathan Ngoy",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:13.527Z"
+    },
+    {
+      "id": "tm-550106",
+      "name": "Matteo Cancellieri",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:15.544Z"
+    },
+    {
+      "id": "bellingham",
+      "name": "Jude Bellingham",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:27.266Z"
+    },
+    {
+      "id": "tm-640428",
+      "name": "Eduardo Camavinga",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:30.849Z"
+    },
+    {
+      "id": "alisson",
+      "name": "Alisson Becker",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:34.528Z"
+    },
+    {
+      "id": "tm-503482",
+      "name": "Min-jae Kim",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:38.110Z"
+    },
+    {
+      "id": "tm-552955",
+      "name": "Santiago Giménez",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:41.856Z"
+    },
+    {
+      "id": "tm-451276",
+      "name": "Dominik Szoboszlai",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:50.239Z"
+    },
+    {
+      "id": "tm-571020",
+      "name": "Oihan Sancet",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:55.271Z"
+    },
+    {
+      "id": "tm-58995",
+      "name": "Anthony Jung",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:35:57.281Z"
+    },
+    {
+      "id": "tm-595809",
+      "name": "Beto",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:00.485Z"
+    },
+    {
+      "id": "tm-598791",
+      "name": "Tsuyoshi Watanabe",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:02.515Z"
+    },
+    {
+      "id": "tm-616341",
+      "name": "Nuno Mendes",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:06.341Z"
+    },
+    {
+      "id": "tm-618494",
+      "name": "Tyler Morton",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:08.924Z"
+    },
+    {
+      "id": "tm-627228",
+      "name": "Yan Couto",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:10.798Z"
+    },
+    {
+      "id": "tm-646707",
+      "name": "Wouter Goes",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:16.222Z"
+    },
+    {
+      "id": "tm-659459",
+      "name": "Carney Chukwuemeka",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:18.174Z"
+    },
+    {
+      "id": "tm-659813",
+      "name": "Piero Hincapié",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:21.203Z"
+    },
+    {
+      "id": "tm-662261",
+      "name": "Rafa Marín",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:23.928Z"
+    },
+    {
+      "id": "tm-668207",
+      "name": "Petar Sučić",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:25.881Z"
+    },
+    {
+      "id": "tm-674612",
+      "name": "Youssouf Ndayishimiye",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:29.165Z"
+    },
+    {
+      "id": "tm-692368",
+      "name": "Younes Ebnoutalib",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:30.979Z"
+    },
+    {
+      "id": "tm-696164",
+      "name": "Tim Oermann",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:32.690Z"
+    },
+    {
+      "id": "tm-698164",
+      "name": "Freddie Potts",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:35.003Z"
+    },
+    {
+      "id": "tm-710671",
+      "name": "Adama Boiro",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:36.866Z"
+    },
+    {
+      "id": "tm-71271",
+      "name": "Adrián San Miguel",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:40.861Z"
+    },
+    {
+      "id": "tm-717411",
+      "name": "Yegor Yarmolyuk",
+      "reason": "identity_mismatch",
+      "at": "2026-05-30T20:36:41.571Z"
+    },
+    {
+      "id": "tm-725912",
+      "name": "Antonín Kinský",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:43.429Z"
+    },
+    {
+      "id": "tm-729814",
+      "name": "Georges Mikautadze",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:46.289Z"
+    },
+    {
+      "id": "tm-733576",
+      "name": "Alberto Moleiro",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:48.352Z"
+    },
+    {
+      "id": "tm-743600",
+      "name": "Andrey Santos",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:50.420Z"
+    },
+    {
+      "id": "tm-746910",
+      "name": "Mohamed Amoura",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:36:54.025Z"
+    },
+    {
+      "id": "tm-823486",
+      "name": "Michael Kayode",
+      "reason": "commons_denylisted",
+      "at": "2026-05-30T20:36:54.741Z"
+    },
+    {
+      "id": "tm-74294",
+      "name": "Nemanja Gudelj",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:37:04.181Z"
+    },
+    {
+      "id": "tm-795738",
+      "name": "Paxten Aaronson",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:38:17.813Z"
+    },
+    {
+      "id": "tm-257814",
+      "name": "Gregor Kobel",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:48.384Z"
+    },
+    {
+      "id": "tm-126665",
+      "name": "Idrissa Gueye",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:41:42.873Z"
+    },
+    {
+      "id": "tm-283628",
+      "name": "Tomáš Souček",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:55.805Z"
+    },
+    {
+      "id": "tm-503987",
+      "name": "Noni Madueke",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:41:47.508Z"
+    },
+    {
+      "id": "tm-660867",
+      "name": "Julio Enciso",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:41:49.978Z"
+    },
+    {
+      "id": "tm-3333",
+      "name": "James Milner",
+      "reason": "commons_denylisted",
+      "at": "2026-05-30T20:41:58.610Z"
+    },
+    {
+      "id": "tm-205940",
+      "name": "Marko Pjaca",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:34.142Z"
+    },
+    {
+      "id": "tm-208681",
+      "name": "Gustavo Henrique",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:36.956Z"
+    },
+    {
+      "id": "tm-282429",
+      "name": "Sergio Reguilón",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:43.519Z"
+    },
+    {
+      "id": "tm-323872",
+      "name": "Andrés Cubas",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:51.354Z"
+    },
+    {
+      "id": "tm-340840",
+      "name": "Benjamín Kuscevic",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:54.047Z"
+    },
+    {
+      "id": "tm-361074",
+      "name": "Peer Koopmeiners",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:56.035Z"
+    },
+    {
+      "id": "tm-410225",
+      "name": "Ismaïla Sarr",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:42:58.062Z"
+    },
+    {
+      "id": "tm-461607",
+      "name": "Estéban Lepaul",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:43:02.046Z"
+    },
+    {
+      "id": "tm-484547",
+      "name": "Jeremie Frimpong",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:43:03.999Z"
+    },
+    {
+      "id": "tm-55089",
+      "name": "Oliver Baumann",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:43:09.025Z"
+    },
+    {
+      "id": "tm-59323",
+      "name": "Cristhian Stuani",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:43:11.938Z"
+    },
+    {
+      "id": "tm-921655",
+      "name": "Ismaël Koné",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:15.264Z"
+    },
+    {
+      "id": "tm-106405",
+      "name": "Jeffrey Gouweleeuw",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:21.430Z"
+    },
+    {
+      "id": "tm-127048",
+      "name": "Cédric Bakambu",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:23.776Z"
+    },
+    {
+      "id": "tm-212723",
+      "name": "Djibril Sow",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:27.747Z"
+    },
+    {
+      "id": "tm-216683",
+      "name": "Fafà Picault",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:29.809Z"
+    },
+    {
+      "id": "tm-221624",
+      "name": "Zack Steffen",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:31.955Z"
+    },
+    {
+      "id": "tm-270393",
+      "name": "Robert Skov",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:36.599Z"
+    },
+    {
+      "id": "tm-284854",
+      "name": "Carles Aleñá",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:39.636Z"
+    },
+    {
+      "id": "tm-361260",
+      "name": "Ozan Kabak",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:48.915Z"
+    },
+    {
+      "id": "tm-408471",
+      "name": "Javi Puado",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:50.954Z"
+    },
+    {
+      "id": "tm-496706",
+      "name": "Montassar Talbi",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:45:57.273Z"
+    },
+    {
+      "id": "tm-638571",
+      "name": "Sang-bin Jeong",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:01.593Z"
+    },
+    {
+      "id": "tm-72441",
+      "name": "Rafael Tolói",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:03.784Z"
+    },
+    {
+      "id": "tm-855731",
+      "name": "Jordan Bos",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:07.207Z"
+    },
+    {
+      "id": "tm-107775",
+      "name": "Frederik Rönnow",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:09.806Z"
+    },
+    {
+      "id": "tm-129674",
+      "name": "Jeremy Toljan",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:17.284Z"
+    },
+    {
+      "id": "tm-160963",
+      "name": "Robin Zentner",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:22.791Z"
+    },
+    {
+      "id": "tm-226012",
+      "name": "David Soria",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:25.529Z"
+    },
+    {
+      "id": "tm-251299",
+      "name": "Finn Dahmen",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:27.445Z"
+    },
+    {
+      "id": "tm-262939",
+      "name": "Johan Mojica",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:29.772Z"
+    },
+    {
+      "id": "tm-361256",
+      "name": "Berke Özer",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:35.045Z"
+    },
+    {
+      "id": "tm-669202",
+      "name": "Bongokuhle Hlongwane",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:39.042Z"
+    },
+    {
+      "id": "tm-237164",
+      "name": "Ihlas Bebou",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:45.728Z"
+    },
+    {
+      "id": "tm-613873",
+      "name": "Álvaro Barreal",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:48.153Z"
+    },
+    {
+      "id": "tm-1064871",
+      "name": "Joaquín Panichelli",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:50.295Z"
+    },
+    {
+      "id": "tm-133731",
+      "name": "Patrick Mainka",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:52.461Z"
+    },
+    {
+      "id": "tm-175446",
+      "name": "Jonny Otto",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:46:56.311Z"
+    },
+    {
+      "id": "tm-249513",
+      "name": "Diego Rico",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:48:35.645Z"
+    },
+    {
+      "id": "tm-525438",
+      "name": "Horațiu Moldovan",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:48:39.645Z"
+    },
+    {
+      "id": "tm-648046",
+      "name": "Evan Ferguson",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:21.236Z"
+    },
+    {
+      "id": "tm-131225",
+      "name": "Nicolás Tagliafico",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:24.651Z"
+    },
+    {
+      "id": "tm-278296",
+      "name": "Antonio Raíllo",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:26.670Z"
+    },
+    {
+      "id": "tm-311351",
+      "name": "Lewis Morgan",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:32.317Z"
+    },
+    {
+      "id": "tm-357884",
+      "name": "Fernando Calero",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:34.590Z"
+    },
+    {
+      "id": "tm-370844",
+      "name": "Brady Scott",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:38.069Z"
+    },
+    {
+      "id": "tm-455181",
+      "name": "Jorge de Frutos",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:45.140Z"
+    },
+    {
+      "id": "tm-628886",
+      "name": "Iván Romero",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:48.033Z"
+    },
+    {
+      "id": "tm-634131",
+      "name": "Aimar Oroz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:50.061Z"
+    },
+    {
+      "id": "tm-763182",
+      "name": "Josué Casimir",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:52.120Z"
+    },
+    {
+      "id": "tm-914681",
+      "name": "David Ruíz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:55.194Z"
+    },
+    {
+      "id": "tm-424043",
+      "name": "Joaquín Pereyra",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:57.335Z"
+    },
+    {
+      "id": "tm-218278",
+      "name": "Amahl Pellegrino",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:49:59.426Z"
+    },
+    {
+      "id": "tm-251302",
+      "name": "Niklas Dorsch",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:02.587Z"
+    },
+    {
+      "id": "tm-363057",
+      "name": "Pedro Díaz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:07.581Z"
+    },
+    {
+      "id": "tm-431190",
+      "name": "Carlos Protesoni",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:10.075Z"
+    },
+    {
+      "id": "tm-548188",
+      "name": "Germán Valera",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:15.397Z"
+    },
+    {
+      "id": "tm-578419",
+      "name": "Federico Viñas",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:18.126Z"
+    },
+    {
+      "id": "tm-618809",
+      "name": "Manu Sánchez",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:20.291Z"
+    },
+    {
+      "id": "tm-628498",
+      "name": "Jofre Carreras",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:22.245Z"
+    },
+    {
+      "id": "tm-628806",
+      "name": "Carlos Harvey",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:26.037Z"
+    },
+    {
+      "id": "tm-710677",
+      "name": "Iker Muñoz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:30.157Z"
+    },
+    {
+      "id": "tm-324358",
+      "name": "Ollie Watkins",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T20:50:57.729Z"
     }
   ],
   "verifiedSample": [
@@ -195,6 +975,12 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Vin%C3%ADcius_J%C3%BAnior.jpg"
     },
     {
+      "id": "modric",
+      "name": "Luka Modrić",
+      "tier": "overlay",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Luka_Modri%C4%87_Real_Madrid.jpg/960px-Luka_Modri%C4%87_Real_Madrid.jpg"
+    },
+    {
       "id": "valverde",
       "name": "Federico Valverde",
       "tier": "overlay",
@@ -277,12 +1063,6 @@
       "name": "Mike Maignan",
       "tier": "overlay",
       "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Chelsea_2_Lille_1_%2849202948728%29_Mike_Maignan.jpg"
-    },
-    {
-      "id": "lautaro",
-      "name": "Lautaro Martínez",
-      "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lautaro_Mart%C3%ADnez_%28cropped%29.jpg/960px-Lautaro_Mart%C3%ADnez_%28cropped%29.jpg"
     }
   ]
 }

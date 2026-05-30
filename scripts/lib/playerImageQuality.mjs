@@ -7,6 +7,8 @@ import qualityConfig from '../../src/data/playerImageQuality.json' with { type: 
 
 export const MIN_APPROVAL_SCORE = qualityConfig.minApprovalScore ?? 58;
 export const MIN_AUTO_APPROVE_SCORE = qualityConfig.minAutoApproveScore ?? 65;
+export const MIN_PORTRAIT_HEIGHT = qualityConfig.minPortraitHeight ?? 400;
+export const MIN_PIXEL_AREA = qualityConfig.minPixelArea ?? 120_000;
 
 const HARD_REJECT_PATTERNS = [
   /red carpet/i,
@@ -14,10 +16,22 @@ const HARD_REJECT_PATTERNS = [
   /laureus world sports awards/i,
 ];
 
+const SCREENSHOT_PATTERNS = [
+  /screenshot/i,
+  /screen grab/i,
+  /screengrab/i,
+  /frame grab/i,
+  /video still/i,
+  /youtube/i,
+  /instagram story/i,
+  /twitter\.com/i,
+  /\.webm/i,
+];
+
+const MULTI_PLAYER_FILE_PATTERN = /\band\s+[A-ZÁÉÍÓÚÄÖÜ][a-záéíóúäöü'-]+/i;
+
 const GROUP_FILE_PATTERNS = [
-  /\band\b/i,
-  /\bvs\.?\b/i,
-  /\s+v\s+/i,
+  /\band\s+[A-ZÁÉÍÓÚÄÖÜ]/i,
   /line[- ]?up/i,
   /lineup/i,
   /gruppenfoto/i,
@@ -26,6 +40,26 @@ const GROUP_FILE_PATTERNS = [
   /starting line/i,
   /combined/i,
   /,\s*[A-Z][a-z]+ [A-Z][a-z]+/, // "Smith, John Doe" style multi-name lists
+];
+
+const MATCH_FILENAME_PATTERNS = [
+  /-vs-/i,
+  /\s+vs\.?\s+/i,
+  /\s+-\s+.+\s+-\s+\d{2}-\d{2}-\d{4}/i,
+  /\s+\d+\s+x\s+\d+\s/i,
+];
+
+const COACH_NON_PLAYER_PATTERNS = [
+  /\bentrenador\b/i,
+  /\bcoach\b/i,
+  /\bmanager\b/i,
+];
+
+const TEAM_PHOTO_FILE_PATTERNS = [
+  /national football team\s+-\s+\d+/i,
+  /national team\s+-\s+\d+/i,
+  /^ol-zenit\s*\(\d+\)/i,
+  /^zenit-benfica/i,
 ];
 
 const EVENT_STADIUM_PATTERNS = [
@@ -40,6 +74,15 @@ const EVENT_STADIUM_PATTERNS = [
   /^\d{8}\s/i,
   /fußball,\s*männer.*1dx/i,
   /uefa champions league.*by stepro/i,
+  /fifa friendly match/i,
+  /training with goalkeepers/i,
+  /friendly match/i,
+  /pre-?season friendly/i,
+  /friendly v\./i,
+  /after the match between/i,
+  /pictured with a fan/i,
+  /with a fan after/i,
+  /league game versus/i,
 ];
 
 const PORTRAIT_HINT_PATTERNS = [
@@ -49,6 +92,7 @@ const PORTRAIT_HINT_PATTERNS = [
   /head shot/i,
   /\(cropped\)/i,
   /\(fullcropped/i,
+  /\bcrop(?:ped)?\b/i,
   /warm up/i,
 ];
 
@@ -102,6 +146,8 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
   const file = String(meta?.commonsFile ?? '');
   const hay = haystack(meta, playerName, verifyName);
   const tokens = surnameTokens(playerName, verifyName);
+  const pixelArea = width > 0 && height > 0 ? width * height : 0;
+  const ratio = width > 0 && height > 0 ? width / height : 0;
 
   if (isDeniedCommonsFile(file)) {
     return {
@@ -109,6 +155,16 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
       grade: 'reject',
       flags: ['denylist'],
       reasons: ['commons file is denylisted'],
+      pass: false,
+    };
+  }
+
+  if (MULTI_PLAYER_FILE_PATTERN.test(file)) {
+    return {
+      score: 0,
+      grade: 'reject',
+      flags: ['multi_player_file'],
+      reasons: ['filename lists multiple players'],
       pass: false,
     };
   }
@@ -122,6 +178,15 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
         reasons: ['hard-reject event/team pattern'],
         pass: false,
       };
+    }
+  }
+
+  for (const pattern of SCREENSHOT_PATTERNS) {
+    if (pattern.test(file) || pattern.test(hay)) {
+      score -= 24;
+      flags.push('screenshot_like');
+      reasons.push('screenshot or frame-grab pattern');
+      break;
     }
   }
 
@@ -140,12 +205,22 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
     reasons.push('resolution too small');
   }
 
+  if (pixelArea > 0 && pixelArea < MIN_PIXEL_AREA) {
+    score -= 18;
+    flags.push('tiny_image');
+    reasons.push('total pixel area too small');
+  }
+
   if (width > 0 && height > 0) {
-    const ratio = width / height;
     if (height >= width && ratio <= 0.85) {
       score += 16;
       flags.push('portrait');
       reasons.push('portrait orientation');
+      if (height >= MIN_PORTRAIT_HEIGHT) {
+        score += 6;
+        flags.push('tall_portrait');
+        reasons.push('tall portrait frame');
+      }
     } else if (ratio >= 0.85 && ratio <= 1.15) {
       score += 10;
       flags.push('square');
@@ -160,6 +235,13 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
       score -= 16;
       flags.push('wide_landscape');
       reasons.push('wide match/action framing');
+    }
+
+    // Face likely too small in wide action frames
+    if (ratio >= 1.45 && height < 480) {
+      score -= 14;
+      flags.push('small_face_wide_frame');
+      reasons.push('wide frame with limited height (face likely small)');
     }
   }
 
@@ -193,6 +275,18 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
     }
   }
 
+  // Head-and-shoulders candidate bonus
+  if (
+    flags.includes('portrait') &&
+    height >= MIN_PORTRAIT_HEIGHT &&
+    matchedNameTokens.length >= 1 &&
+    !flags.includes('group_or_team')
+  ) {
+    score += 8;
+    flags.push('head_shoulder_candidate');
+    reasons.push('head-and-shoulders portrait candidate');
+  }
+
   for (const pattern of NEGATIVE_CROP_PATTERNS) {
     if (pattern.test(hay)) {
       score -= 12;
@@ -205,6 +299,33 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
       score -= 22;
       flags.push('group_or_team');
       reasons.push('group/team photo pattern');
+      break;
+    }
+  }
+
+  for (const pattern of MATCH_FILENAME_PATTERNS) {
+    if (pattern.test(file)) {
+      score -= 26;
+      flags.push('match_filename');
+      reasons.push('match/fixture filename (vs/opponent)');
+      break;
+    }
+  }
+
+  for (const pattern of TEAM_PHOTO_FILE_PATTERNS) {
+    if (pattern.test(file)) {
+      score -= 30;
+      flags.push('team_photo_file');
+      reasons.push('numbered team/squad filename');
+      break;
+    }
+  }
+
+  for (const pattern of COACH_NON_PLAYER_PATTERNS) {
+    if (pattern.test(file) || pattern.test(hay)) {
+      score -= 40;
+      flags.push('coach_not_player');
+      reasons.push('coach/manager photo, not player portrait');
       break;
     }
   }
@@ -240,7 +361,24 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
   else if (score >= MIN_APPROVAL_SCORE) grade = 'fair';
   else if (score >= 40) grade = 'poor';
 
-  const pass = score >= MIN_APPROVAL_SCORE && !flags.includes('denylist');
+  const yearMatchForPass = file.match(/\b(20\d{2})\b/);
+  const fileYear = yearMatchForPass ? Number(yearMatchForPass[1]) : null;
+  const hasPortraitHint = flags.includes('portrait_hint') || /\(cropped\)/i.test(file);
+
+  const pass =
+    score >= MIN_APPROVAL_SCORE &&
+    !flags.includes('denylist') &&
+    !flags.includes('multi_player_file') &&
+    !flags.includes('hard_reject') &&
+    !(flags.includes('event_stadium') && !flags.includes('portrait') && !flags.includes('square')) &&
+    !(flags.includes('name_not_in_filename') && flags.includes('wide_landscape')) &&
+    !flags.includes('coach_not_player') &&
+    !(flags.includes('match_filename') && !hasPortraitHint) &&
+    !(flags.includes('team_photo_file') && !hasPortraitHint) &&
+    !(flags.includes('event_stadium') && flags.includes('name_not_in_filename') && !hasPortraitHint) &&
+    !(flags.includes('group_or_team') && flags.includes('event_stadium') && !hasPortraitHint) &&
+    !(fileYear !== null && fileYear <= 2012 && flags.includes('event_stadium')) &&
+    !(flags.includes('name_not_in_filename') && !hasPortraitHint && score < MIN_AUTO_APPROVE_SCORE);
 
   return { score, grade, flags: [...new Set(flags)], reasons, pass };
 }

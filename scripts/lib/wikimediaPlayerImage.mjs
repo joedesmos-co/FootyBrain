@@ -5,6 +5,7 @@
 
 import {
   getPreferredOverride,
+  getQualityConfig,
   isDeniedCommonsFile,
   isDeniedPlayer,
   pickBestQualityCandidate,
@@ -16,7 +17,7 @@ export const USER_AGENT = 'FootyCompass/1.0 (player-image-ingest; https://footyc
 export const REQUEST_TIMEOUT_MS = 12_000;
 export const MAX_RETRIES = 2;
 export const API_DELAY_MS = 650;
-export const SEARCH_CANDIDATE_LIMIT = 8;
+export const SEARCH_CANDIDATE_LIMIT = 12;
 
 export const ALLOWED_LICENSE_PATTERNS = [
   /^cc0/i,
@@ -77,9 +78,32 @@ export function hasFootballContext(meta) {
   return FOOTBALL_CONTEXT.test(hay);
 }
 
+const NON_SOCCER_SPORT_PATTERNS = [
+  /american football/i,
+  /\bnfl\b/i,
+  /\bnba\b/i,
+  /basketball/i,
+  /baseball/i,
+  /ice hockey/i,
+  /\bnhl\b/i,
+  /rugby league/i,
+  /rugby union/i,
+  /cricket/i,
+  /tennis player/i,
+];
+
+function tokenInHay(token, hay) {
+  if (!token || token.length < 2) return false;
+  const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(hay);
+}
+
 export function verifyIdentity(meta, verifyName, playerName, excludeTerms = []) {
-  if (!hasFootballContext(meta)) return false;
   const hay = `${meta.description} ${meta.commonsFile}`.toLowerCase();
+  for (const pattern of NON_SOCCER_SPORT_PATTERNS) {
+    if (pattern.test(hay)) return false;
+  }
+  if (!hasFootballContext(meta)) return false;
   for (const term of excludeTerms) {
     if (term && hay.includes(String(term).toLowerCase())) return false;
   }
@@ -99,9 +123,9 @@ export function verifyIdentity(meta, verifyName, playerName, excludeTerms = []) 
   const surname = playerTokens[playerTokens.length - 1];
 
   // Reject when description/file clearly names a different person with the same surname.
-  if (givenName && surname && hay.includes(surname) && !hay.includes(givenName)) {
+  if (givenName && surname && tokenInHay(surname, hay) && !tokenInHay(givenName, hay)) {
     const otherGiven = hay.match(
-      new RegExp(`([a-zà-ÿ]{3,})\\s+${surname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
+      new RegExp(`([a-zà-ÿ]{3,})\\s+${surname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'),
     );
     if (otherGiven && otherGiven[1].toLowerCase() !== givenName) return false;
   }
@@ -110,17 +134,17 @@ export function verifyIdentity(meta, verifyName, playerName, excludeTerms = []) 
   if (needle && needle.includes(' ') && hay.includes(needle)) return true;
 
   if (needle && verifyTokens.length === 1 && playerTokens.length >= 2) {
-    if (!hay.includes(givenName ?? '')) {
+    if (!tokenInHay(givenName ?? '', hay)) {
       // Surname-only verifyName must not match a different player's full name.
-      if (hay.includes(needle)) return false;
+      if (tokenInHay(needle, hay)) return false;
     }
   } else if (needle && hay.includes(needle)) {
     return true;
   }
 
-  if (surname && surname.length > 2 && !hay.includes(surname)) return false;
+  if (surname && surname.length > 2 && !tokenInHay(surname, hay)) return false;
 
-  const matched = tokens.filter((t) => hay.includes(t)).length;
+  const matched = tokens.filter((t) => tokenInHay(t, hay)).length;
   return matched >= Math.min(2, tokens.length);
 }
 
@@ -292,24 +316,51 @@ export async function resolvePlayerCommonsImage(spec, player, { onDelay = sleep 
 
   if (!meta) {
     const searchTerm = mergedSpec.searchName ?? mergedSpec.verifyName ?? player.name;
-    await onDelay(API_DELAY_MS);
-    const search = await searchCommonsFiles(searchTerm);
+    const qualityCfg = getQualityConfig();
+    const minW = qualityCfg.minSearchWidth ?? 280;
+    const minH = qualityCfg.minSearchHeight ?? 280;
+
+    const runSearch = async (term) => {
+      await onDelay(API_DELAY_MS);
+      const search = await searchCommonsFiles(term);
+      if (search.error) return { error: search.error, results: [] };
+      return search;
+    };
+
+    const filterCandidates = (results) =>
+      results.filter((candidate) => {
+        if (!isAllowedLicense(candidate.licenseShort)) return false;
+        if (!verifyIdentity(candidate, mergedSpec.verifyName, player.name, mergedSpec.excludeTerms)) {
+          return false;
+        }
+        if (isDeniedCommonsFile(candidate.commonsFile)) return false;
+        if ((candidate.width ?? 0) < minW || (candidate.height ?? 0) < minH) return false;
+        return true;
+      });
+
+    let search = await runSearch(searchTerm);
     if (search.error) return { skip: true, reason: search.error };
 
-    const safeCandidates = search.results.filter((candidate) => {
-      if (!isAllowedLicense(candidate.licenseShort)) return false;
-      if (!verifyIdentity(candidate, mergedSpec.verifyName, player.name, mergedSpec.excludeTerms)) return false;
-      if (isDeniedCommonsFile(candidate.commonsFile)) return false;
-      if ((candidate.width ?? 0) < 200 || (candidate.height ?? 0) < 200) return false;
-      return true;
-    });
-
-    const best = pickBestQualityCandidate(
+    let safeCandidates = filterCandidates(search.results);
+    let best = pickBestQualityCandidate(
       safeCandidates,
       player.name,
       mergedSpec.verifyName,
       mergedSpec.excludeTerms,
     );
+
+    if (!best) {
+      search = await runSearch(`${searchTerm} portrait`);
+      if (!search.error) {
+        safeCandidates = filterCandidates(search.results);
+        best = pickBestQualityCandidate(
+          safeCandidates,
+          player.name,
+          mergedSpec.verifyName,
+          mergedSpec.excludeTerms,
+        );
+      }
+    }
 
     if (best) {
       meta = best.meta;

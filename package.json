@@ -41,6 +41,8 @@
     "audit:player-image-quality": "node scripts/audit-player-image-quality.js",
     "apply:player-image-quality": "node scripts/apply-player-image-quality.js",
     "upgrade:player-image-quality": "node scripts/upgrade-player-image-quality.js",
+    "expand:wikimedia-curated": "node scripts/expand-wikimedia-curated.js",
+    "review:player-images": "node scripts/review-player-images.js",
     "merge:phase1-sample": "node scripts/merge-phase1-sample-data.js",
     "merge:phase2-sample": "node scripts/merge-phase1-sample-data.js",
     "merge:phase3-sample": "node scripts/merge-phase1-sample-data.js",

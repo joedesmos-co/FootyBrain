@@ -70,6 +70,10 @@ function main() {
     .sort((a, b) => b.importance - a.importance)
     .slice(0, 100);
 
+  const borderline = rows.filter(
+    (r) => r.pass && r.qualityScore < MIN_AUTO_APPROVE_SCORE && r.qualityScore >= MIN_APPROVAL_SCORE,
+  );
+
   const report = {
     generatedAt: new Date().toISOString(),
     thresholds: { minApprovalScore: MIN_APPROVAL_SCORE, minAutoApproveScore: MIN_AUTO_APPROVE_SCORE },
@@ -80,6 +84,7 @@ function main() {
       denylisted: rows.filter((r) => r.denylisted).length,
     },
     failing,
+    borderline,
     all: rows,
     top100Review: top100.map((r) => ({
       playerId: r.playerId,
@@ -99,7 +104,9 @@ function main() {
     '',
     `Generated: ${report.generatedAt}`,
     '',
-    `**Approved:** ${report.totals.approved} | **Passing:** ${report.totals.passing} | **Failing:** ${report.totals.failing}`,
+    `**Approved:** ${report.totals.approved} | **Passing:** ${report.totals.passing} | **Failing:** ${report.totals.failing} | **Borderline:** ${borderline.length}`,
+    '',
+    'Manual review: `npm run review:player-images` → `generated-data/player-image-review.html`',
     '',
     '## Top 100 players (by importance)',
     '',
