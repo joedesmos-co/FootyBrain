@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-30T18:14:40.076Z",
+  "generatedAt": "2026-05-30T18:19:24.026Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 122,
-    "withFallbackAvatar": 4705,
+    "withVerifiedPhoto": 158,
+    "withFallbackAvatar": 4669,
     "priorityListSize": 200,
-    "approvedEntries": 122,
-    "cacheResolved": 122,
-    "cacheSkipped": 9
+    "approvedEntries": 158,
+    "cacheResolved": 158,
+    "cacheSkipped": 32
   },
   "brokenUrls": [],
   "missingAttribution": [],
@@ -28,13 +28,7 @@
       "id": "tm-177467",
       "name": "Gerard Moreno",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:12:42.303Z"
-    },
-    {
-      "id": "tm-316889",
-      "name": "Hirving Lozano",
-      "reason": "no_safe_match",
-      "at": "2026-05-30T18:12:54.418Z"
+      "at": "2026-05-30T18:16:19.855Z"
     },
     {
       "id": "tm-351809",
@@ -46,13 +40,13 @@
       "id": "tm-181767",
       "name": "Marquinhos",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:13:14.025Z"
+      "at": "2026-05-30T18:16:29.736Z"
     },
     {
       "id": "tm-44058",
       "name": "Wojciech Szczesny",
       "reason": "no_safe_match",
-      "at": "2026-05-30T18:13:34.350Z"
+      "at": "2026-05-30T18:16:41.440Z"
     },
     {
       "id": "tm-466810",
@@ -65,6 +59,150 @@
       "name": "João Pedro",
       "reason": "no_safe_match",
       "at": "2026-05-30T18:14:34.463Z"
+    },
+    {
+      "id": "tm-353108",
+      "name": "Bruno Henrique",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:23.055Z"
+    },
+    {
+      "id": "tm-237662",
+      "name": "Breel Embolo",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:32.565Z"
+    },
+    {
+      "id": "tm-488362",
+      "name": "Conor Gallagher",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:42.762Z"
+    },
+    {
+      "id": "tm-503743",
+      "name": "Morgan Rogers",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:43.771Z"
+    },
+    {
+      "id": "tm-118534",
+      "name": "Michael Keane",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:47.017Z"
+    },
+    {
+      "id": "tm-173504",
+      "name": "James Tarkowski",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:48.041Z"
+    },
+    {
+      "id": "tm-192635",
+      "name": "Nico Elvedi",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:49.029Z"
+    },
+    {
+      "id": "tm-263918",
+      "name": "Aleksandr Golovin",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:54.192Z"
+    },
+    {
+      "id": "tm-331511",
+      "name": "Riqui Puig",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:57.667Z"
+    },
+    {
+      "id": "tm-369316",
+      "name": "Ferdi Kadıoğlu",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:16:59.260Z"
+    },
+    {
+      "id": "tm-459658",
+      "name": "Andrea Cambiaso",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:04.020Z"
+    },
+    {
+      "id": "tm-493003",
+      "name": "Daniel Muñoz",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:07.291Z"
+    },
+    {
+      "id": "tm-503987",
+      "name": "Noni Madueke",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:08.376Z"
+    },
+    {
+      "id": "tm-509022",
+      "name": "Federico Gatti",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:09.349Z"
+    },
+    {
+      "id": "tm-568157",
+      "name": "Yéremy Pino",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:13.422Z"
+    },
+    {
+      "id": "tm-574671",
+      "name": "Strahinja Pavlović",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:14.982Z"
+    },
+    {
+      "id": "tm-614258",
+      "name": "Levi Colwill",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:18.579Z"
+    },
+    {
+      "id": "tm-61812",
+      "name": "Yuri Berchiche",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:19.596Z"
+    },
+    {
+      "id": "tm-636688",
+      "name": "Alejandro Balde",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:20.599Z"
+    },
+    {
+      "id": "tm-776890",
+      "name": "Nicolas Jackson",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:21.776Z"
+    },
+    {
+      "id": "tm-203460",
+      "name": "Jack Grealish",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:26.631Z"
+    },
+    {
+      "id": "tm-95424",
+      "name": "Kyle Walker",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:17:29.536Z"
+    },
+    {
+      "id": "tm-386446",
+      "name": "Alessandro Buongiorno",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:19:08.166Z"
+    },
+    {
+      "id": "tm-388165",
+      "name": "Yoane Wissa",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:19:09.117Z"
     }
   ],
   "verifiedSample": [

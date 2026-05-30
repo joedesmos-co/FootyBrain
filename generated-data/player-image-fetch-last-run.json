@@ -1,12 +1,108 @@
 {
-  "startedAt": "2026-05-30T18:14:33.287Z",
+  "startedAt": "2026-05-30T18:18:53.012Z",
   "offset": 0,
   "limit": 25,
-  "added": [],
+  "added": [
+    {
+      "playerId": "tm-236045",
+      "name": "Denis Bouanga",
+      "license": "CC0",
+      "commonsFile": "Lens - Saint-Etienne (03-10-2020) 57.jpg"
+    },
+    {
+      "playerId": "tm-123275",
+      "name": "Tom Cairney",
+      "license": "CC BY 2.0",
+      "commonsFile": "Tom Cairney 2016.jpg"
+    },
+    {
+      "playerId": "tm-16136",
+      "name": "Dante",
+      "license": "Public domain",
+      "commonsFile": "Dante Bonfim.jpg"
+    },
+    {
+      "playerId": "tm-215390",
+      "name": "Gustavo Gómez",
+      "license": "Public domain",
+      "commonsFile": "Gustavo-Gomez-Palmeiras-Athletico-jul-2022-2.jpg"
+    },
+    {
+      "playerId": "tm-248999",
+      "name": "Lucas Höler",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Lucas Höler (2019 - 1).jpg"
+    },
+    {
+      "playerId": "tm-287579",
+      "name": "Sofyan Amrabat",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Sofyan Amrabat (Morocco v Niger) 35 (cropped).jpg"
+    },
+    {
+      "playerId": "tm-318204",
+      "name": "David Raum",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "2022 FIFA World Cup Germany 1–2 Japan - Gonda vs Raum.jpg"
+    },
+    {
+      "playerId": "tm-319745",
+      "name": "Dani Ceballos",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "UEFA EURO qualifiers Sweden vs Spain 20191015 Dani Ceballos 7.jpg"
+    },
+    {
+      "playerId": "tm-372246",
+      "name": "Carlos Soler",
+      "license": "CC BY 3.0",
+      "commonsFile": "Carlos Soler 2020.png"
+    },
+    {
+      "playerId": "tm-378293",
+      "name": "Yangel Herrera",
+      "license": "CC BY-SA 2.0",
+      "commonsFile": "Yangel Herrera 2017.jpg"
+    },
+    {
+      "playerId": "tm-418659",
+      "name": "Amine Gouiri",
+      "license": "CC BY 2.0",
+      "commonsFile": "Amine Gouiri (2017).jpg"
+    },
+    {
+      "playerId": "tm-427568",
+      "name": "Aaron Ramsdale",
+      "license": "CC BY-SA 2.0",
+      "commonsFile": "Aaron Ramsdale February 2020.jpg"
+    },
+    {
+      "playerId": "tm-490426",
+      "name": "Krépin Diatta",
+      "license": "CC BY 3.0",
+      "commonsFile": "Krépin Diatta Sénégal.png"
+    },
+    {
+      "playerId": "tm-521964",
+      "name": "Malick Thiaw",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Milan Lecce 2023 Thiaw.jpg"
+    },
+    {
+      "playerId": "tm-93707",
+      "name": "Christian Günter",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Christian Günter (2013).jpg"
+    }
+  ],
   "skipped": [
     {
-      "playerId": "tm-626724",
-      "name": "João Pedro",
+      "playerId": "tm-386446",
+      "name": "Alessandro Buongiorno",
+      "reason": "no_safe_match"
+    },
+    {
+      "playerId": "tm-388165",
+      "name": "Yoane Wissa",
       "reason": "no_safe_match"
     }
   ],
@@ -14,5 +110,5 @@
   "alreadyApproved": [],
   "apiErrors": 0,
   "stoppedEarly": false,
-  "finishedAt": "2026-05-30T18:14:34.464Z"
+  "finishedAt": "2026-05-30T18:19:16.013Z"
 }
