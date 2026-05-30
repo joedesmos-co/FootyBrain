@@ -1,14 +1,14 @@
 # Player image audit
 
-Generated: 2026-05-30T18:40:06.148Z
+Generated: 2026-05-30T18:47:24.830Z
 
 | Metric | Count |
 |--------|------:|
 | Total players | 4827 |
-| Verified photos | 250 |
-| Fallback avatars | 4577 |
-| Approved overlay entries | 250 |
-| Cache resolved | 250 |
+| Verified photos | 285 |
+| Fallback avatars | 4542 |
+| Approved overlay entries | 285 |
+| Cache resolved | 285 |
 | Cache skipped (licensing) | 15 |
 | Broken URLs | 0 |
 | Missing attribution | 0 |

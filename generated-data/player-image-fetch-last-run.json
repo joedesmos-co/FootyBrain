@@ -1,145 +1,217 @@
 {
-  "startedAt": "2026-05-30T18:39:27.231Z",
+  "startedAt": "2026-05-30T18:46:30.202Z",
   "offset": 0,
   "limit": 25,
   "added": [
     {
-      "playerId": "tm-117674",
-      "name": "Maximilian Arnold",
+      "playerId": "tm-342385",
+      "name": "Guido Rodríguez",
       "license": "CC BY-SA 4.0",
-      "commonsFile": "2017083200943 2017-03-24 Fussball U21 Deutschland vs England - Sven - 1D X - 0135 - DV3P6461 mod.jpg"
+      "commonsFile": "Guido Rodríguez WC2022.jpg"
     },
     {
-      "playerId": "tm-257474",
-      "name": "Vanja Milinković-Savić",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Vanja Milinković Savić na utakmici protiv CG 3.jpg"
-    },
-    {
-      "playerId": "tm-405398",
-      "name": "Takefusa Kubo",
-      "license": "CC BY 3.0",
-      "commonsFile": "Takefusa Kubo 2019.png"
-    },
-    {
-      "playerId": "tm-42460",
-      "name": "Ivan Perišić",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Perišić (FC Bruges).jpg"
-    },
-    {
-      "playerId": "tm-433188",
-      "name": "Curtis Jones",
-      "license": "CC BY 2.0",
-      "commonsFile": "Curtis Jones 2017.jpg"
-    },
-    {
-      "playerId": "tm-486046",
-      "name": "Maarten Vandevoordt",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Maarten Vandevoordt 2019 (cropped).jpg"
-    },
-    {
-      "playerId": "tm-569384",
-      "name": "Lucien Agoumé",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Lucien Agoumé.jpg"
-    },
-    {
-      "playerId": "tm-716276",
-      "name": "Yerson Mosquera",
-      "license": "CC BY 2.0",
-      "commonsFile": "Nick Hagglund, Yerson Mosquera, Matt Miazga.jpg"
-    },
-    {
-      "playerId": "tm-72476",
-      "name": "Bernd Leno",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "20180602 FIFA Friendly Match Austria vs. Germany Bernd Leno 850 0646.jpg"
-    },
-    {
-      "playerId": "tm-848509",
-      "name": "Jackson Tchatchoua",
-      "license": "CC0",
-      "commonsFile": "Jackson Tchatchoua 01112025 (1).jpg"
-    },
-    {
-      "playerId": "tm-192557",
-      "name": "Jackson Irvine",
-      "license": "CC BY 2.0",
-      "commonsFile": "Jackson Irvine 2013.jpg"
-    },
-    {
-      "playerId": "tm-196095",
-      "name": "Luca Waldschmidt",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Luca Waldschmidt.jpg"
-    },
-    {
-      "playerId": "tm-502722",
-      "name": "Luka Sucic",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Luka Sucic.jpg"
-    },
-    {
-      "playerId": "tm-565009",
-      "name": "Rodrigo Garro",
-      "license": "Public domain",
-      "commonsFile": "Botafogo-SP 1x4 Corinthians - 14-02-2024 01 - Rodrigo Garro.jpg"
-    },
-    {
-      "playerId": "tm-525438",
-      "name": "Horațiu Moldovan",
-      "license": "CC BY 4.0",
-      "commonsFile": "Horatiu Moldovan - Romania vs Greece, 25 March 2022.jpg"
-    },
-    {
-      "playerId": "tm-10471",
-      "name": "Luiz Gustavo",
-      "license": "CC BY 3.0 br",
-      "commonsFile": "Luis Gustavo Dias.jpg"
-    },
-    {
-      "playerId": "tm-126664",
-      "name": "Lucas Digne",
+      "playerId": "tm-111078",
+      "name": "Emil Forsberg",
       "license": "CC BY-SA 3.0",
-      "commonsFile": "Lucas DIGNE.jpg"
+      "commonsFile": "Forsberg 2018.jpg"
     },
     {
-      "playerId": "tm-930571",
-      "name": "Oscar Gloukh",
+      "playerId": "tm-1145504",
+      "name": "Aarón Anselmino",
+      "license": "Public domain",
+      "commonsFile": "Aaron Anselmino, 2025 FIFA Club World Cup Final (cropped).jpg"
+    },
+    {
+      "playerId": "tm-122043",
+      "name": "Héctor Herrera",
+      "license": "CC BY 3.0",
+      "commonsFile": "Héctor Herrera.png"
+    },
+    {
+      "playerId": "tm-157635",
+      "name": "Yussuf Poulsen",
       "license": "CC BY-SA 4.0",
-      "commonsFile": "Oscar Gloukh (cropped).jpg"
+      "commonsFile": "2021-11-06 Fußball, Männer, 1. Bundesliga, RB Leipzig - Borussia Dortmund 1DX 1696 by Stepro.jpg"
     },
     {
-      "playerId": "tm-568177",
-      "name": "Cole Palmer",
+      "playerId": "tm-205562",
+      "name": "Thomas Lemar",
       "license": "CC BY 2.0",
-      "commonsFile": "Cole Palmer.jpg"
+      "commonsFile": "Atlético de Madrid v Juventus, 10 August 2019 (5).jpg"
     },
     {
-      "playerId": "tm-145988",
-      "name": "Wilfried Zaha",
-      "license": "CC BY-SA 2.0",
-      "commonsFile": "Zaha-Cardiff-v-Crystal-Palace-Carling-Cup-SF.jpg"
-    },
-    {
-      "playerId": "tm-16306",
-      "name": "Casemiro",
+      "playerId": "tm-223979",
+      "name": "Xaver Schlager",
       "license": "CC BY-SA 4.0",
-      "commonsFile": "20180610 FIFA Friendly Match Austria vs. Brazil Casemiro 850 1575.jpg"
+      "commonsFile": "20180610 FIFA Friendly Match Austria vs. Brazil Xaver Schlager 850 1680.jpg"
     },
     {
-      "playerId": "tm-206050",
-      "name": "Paulo Dybala",
+      "playerId": "tm-242632",
+      "name": "Glen Kamara",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "AUT U-21 vs. FIN U-21 2015-11-13 (185) Glen Kamara.jpg"
+    },
+    {
+      "playerId": "tm-251075",
+      "name": "Zeki Çelik",
+      "license": "CC0",
+      "commonsFile": "RC Lens - Lille OSC (17-09-2021) 15.jpg"
+    },
+    {
+      "playerId": "tm-272642",
+      "name": "Allan Saint-Maximin",
       "license": "CC BY-SA 2.0",
-      "commonsFile": "Dybala 2017.jpg"
+      "commonsFile": "Allan Saint-Maximin.jpg"
     },
     {
-      "playerId": "tm-258923",
-      "name": "Marcus Rashford",
+      "playerId": "tm-323831",
+      "name": "Rafael Borré",
       "license": "CC BY-SA 4.0",
-      "commonsFile": "Marcus Rashford, FWC 2018 - Round of 16 - COL v ENG - Photo 106 (cropped).jpg"
+      "commonsFile": "Rafael Santos Borré Deportivo Cali.jpg"
+    },
+    {
+      "playerId": "tm-336077",
+      "name": "Altay Bayındır",
+      "license": "CC BY 3.0",
+      "commonsFile": "MKE Ankaragücü – Training with Goalkeepers, January 2019 .png"
+    },
+    {
+      "playerId": "tm-346289",
+      "name": "Mouctar Diakhaby",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Mouctar Diakhaby 2019.jpg"
+    },
+    {
+      "playerId": "tm-346551",
+      "name": "Kamil Grabara",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Kamil Grabara FC København (cropped).jpg"
+    },
+    {
+      "playerId": "tm-361914",
+      "name": "Nayef Aguerd",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Nayef Aguerd.jpeg"
+    },
+    {
+      "playerId": "tm-58864",
+      "name": "Pierre-Emerick Aubameyang",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Pierre-Emerick Aubameyang (03-08-2011).jpg"
+    },
+    {
+      "playerId": "tm-616341",
+      "name": "Nuno Mendes",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Portugal national football team 0866 (Nuno Mendes).jpg"
+    },
+    {
+      "playerId": "tm-702869",
+      "name": "Ismael Saibari",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Saibari.jpg"
+    },
+    {
+      "playerId": "tm-729814",
+      "name": "Georges Mikautadze",
+      "license": "CC BY 3.0",
+      "commonsFile": "Mikautadze vs Montpellier, Feb 2024.png"
+    },
+    {
+      "playerId": "tm-746910",
+      "name": "Mohamed Amoura",
+      "license": "CC BY 4.0",
+      "commonsFile": "Mohammed Amoura training against Mozambique.png"
+    },
+    {
+      "playerId": "tm-763079",
+      "name": "Abdukodir Khusanov",
+      "license": "CC0",
+      "commonsFile": "Lens - Torino FC (02-08-2023) 57.jpg"
+    },
+    {
+      "playerId": "tm-811778",
+      "name": "Álvaro Carreras",
+      "license": "CC BY 3.0",
+      "commonsFile": "ÁlvaroCarreras.jpg"
+    },
+    {
+      "playerId": "tm-81789",
+      "name": "Maya Yoshida",
+      "license": "CC BY 3.0 br",
+      "commonsFile": "Yoshida Maya.jpg"
+    },
+    {
+      "playerId": "tm-943837",
+      "name": "Vitor Roque",
+      "license": "Public domain",
+      "commonsFile": "Vitor Roque - SÉRIE A - PALMEIRAS 0 X 2 ATHLETICO PARANAENSE - 52192738366 (cropped).jpg"
+    },
+    {
+      "playerId": "tm-177847",
+      "name": "Adnan Januzaj",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Adnan Januzaj.JPG"
+    },
+    {
+      "playerId": "tm-187492",
+      "name": "Julian Brandt",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Julian Brandt 2014.jpg"
+    },
+    {
+      "playerId": "tm-591949",
+      "name": "Aaron Hickey",
+      "license": "CC0",
+      "commonsFile": "Aaron Hickey 02082025 (1).jpg"
+    },
+    {
+      "playerId": "tm-617074",
+      "name": "Ilaix Moriba",
+      "license": "Public domain",
+      "commonsFile": "Ilaixmoriba (cropped).jpg"
+    },
+    {
+      "playerId": "tm-74294",
+      "name": "Nemanja Gudelj",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Nemanja Gudelj 2020.jpg"
+    },
+    {
+      "playerId": "tm-74842",
+      "name": "Mario Götze",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Mario Götze, Germany national football team (01).jpg"
+    },
+    {
+      "playerId": "tm-496268",
+      "name": "Joaquín Piquerez",
+      "license": "Public domain",
+      "commonsFile": "Joaquin-Piquerez-Palmeiras-Athletico-jul-2022-2.jpg"
+    },
+    {
+      "playerId": "tm-1083247",
+      "name": "Bruno Alves",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Bruno Alves - Portugal, 2011.jpg"
+    },
+    {
+      "playerId": "tm-795738",
+      "name": "Paxten Aaronson",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Kevin O'Toole Paxten Aaronson NYCFC v Colorado Mar 14 2026-117.jpg"
+    },
+    {
+      "playerId": "tm-811779",
+      "name": "Alejandro Garnacho",
+      "license": "CC BY 3.0",
+      "commonsFile": "Alejandro Garnacho comemorando.jpg"
+    },
+    {
+      "playerId": "tm-52769",
+      "name": "Willian",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Willian Borges da Silva.jpg"
     }
   ],
   "skipped": [],
@@ -147,5 +219,5 @@
   "alreadyApproved": [],
   "apiErrors": 0,
   "stoppedEarly": false,
-  "finishedAt": "2026-05-30T18:39:58.771Z"
+  "finishedAt": "2026-05-30T18:47:18.224Z"
 }

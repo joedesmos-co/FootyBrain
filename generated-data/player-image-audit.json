@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-30T18:40:06.148Z",
+  "generatedAt": "2026-05-30T18:47:24.830Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 250,
-    "withFallbackAvatar": 4577,
+    "withVerifiedPhoto": 285,
+    "withFallbackAvatar": 4542,
     "priorityListSize": 200,
-    "approvedEntries": 250,
-    "cacheResolved": 250,
+    "approvedEntries": 285,
+    "cacheResolved": 285,
     "cacheSkipped": 15
   },
   "brokenUrls": [],
