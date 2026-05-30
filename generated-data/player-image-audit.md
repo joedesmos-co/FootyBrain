@@ -1,15 +1,15 @@
 # Player image audit
 
-Generated: 2026-05-30T17:58:27.386Z
+Generated: 2026-05-30T18:14:40.076Z
 
 | Metric | Count |
 |--------|------:|
 | Total players | 4827 |
-| Verified photos | 84 |
-| Fallback avatars | 4743 |
-| Approved overlay entries | 84 |
-| Cache resolved | 84 |
-| Cache skipped (licensing) | 2 |
+| Verified photos | 122 |
+| Fallback avatars | 4705 |
+| Approved overlay entries | 122 |
+| Cache resolved | 122 |
+| Cache skipped (licensing) | 9 |
 | Broken URLs | 0 |
 | Missing attribution | 0 |
 
@@ -20,7 +20,14 @@ _None._
 ## Skipped (cache)
 
 - Hugo Ekitiké: no_safe_match
-- Alphonso Davies: error:fetch failed
+- Alphonso Davies: no_safe_match
+- Gerard Moreno: no_safe_match
+- Hirving Lozano: no_safe_match
+- Robin Le Normand: no_safe_match
+- Marquinhos: no_safe_match
+- Wojciech Szczesny: no_safe_match
+- Ansu Fati: no_safe_match
+- João Pedro: no_safe_match
 
 ## Next batch
 

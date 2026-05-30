@@ -1,79 +1,18 @@
 {
-  "startedAt": "2026-05-30T17:56:02.227Z",
-  "offset": 75,
-  "limit": 11,
-  "added": [
+  "startedAt": "2026-05-30T18:14:33.287Z",
+  "offset": 0,
+  "limit": 25,
+  "added": [],
+  "skipped": [
     {
-      "playerId": "tm-487969",
-      "name": "Randal Kolo Muani",
-      "license": "CC0",
-      "commonsFile": "RC Lens - FC Nantes (25-11-2020) 13.jpg"
-    },
-    {
-      "playerId": "tm-552955",
-      "name": "Santiago Giménez",
-      "license": "CC BY-SA 2.0",
-      "commonsFile": "VAR - River Plate 2 - Cerro Porteño 0 190822-7897-jikatu (48607077706).jpg"
-    },
-    {
-      "playerId": "tm-687626",
-      "name": "Moisés Caicedo",
-      "license": "CC BY 2.0",
-      "commonsFile": "Moises Caicedo 2022.jpg"
-    },
-    {
-      "playerId": "tm-69633",
-      "name": "Christian Eriksen",
-      "license": "CC BY-SA 3.0",
-      "commonsFile": "NED-DEN Euro 2012 (09).jpg"
-    },
-    {
-      "playerId": "tm-861410",
-      "name": "Arda Güler",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Arda Güler Fenerbahçe Forması İle lig kupası maçında.jpg"
-    },
-    {
-      "playerId": "raphinha",
-      "name": "Raphinha",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Raphinha.jpg"
-    },
-    {
-      "playerId": "sane",
-      "name": "Leroy Sané",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "20180602 FIFA Friendly Match Austria vs. Germany Leroy Sané 850 1160.jpg"
-    },
-    {
-      "playerId": "jesus",
-      "name": "Gabriel Jesus",
-      "license": "CC BY 2.0",
-      "commonsFile": "Gabriel Jesus 2015.jpg"
-    },
-    {
-      "playerId": "sommer",
-      "name": "Yann Sommer",
-      "license": "CC BY-SA 3.0",
-      "commonsFile": "AUT vs. SUI 2015-11-17 (142).jpg"
-    },
-    {
-      "playerId": "tm-477758",
-      "name": "Aaron Wan-Bissaka",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Aaron Wan-Bissaka of West Ham United.jpeg"
-    },
-    {
-      "playerId": "tm-342229",
-      "name": "Kylian Mbappé",
-      "license": "CC BY 4.0",
-      "commonsFile": "Kylian Mbappe 2017.jpg"
+      "playerId": "tm-626724",
+      "name": "João Pedro",
+      "reason": "no_safe_match"
     }
   ],
-  "skipped": [],
   "cachedHits": [],
   "alreadyApproved": [],
   "apiErrors": 0,
   "stoppedEarly": false,
-  "finishedAt": "2026-05-30T17:56:42.885Z"
+  "finishedAt": "2026-05-30T18:14:34.464Z"
 }

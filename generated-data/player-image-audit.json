@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-30T17:58:27.386Z",
+  "generatedAt": "2026-05-30T18:14:40.076Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 84,
-    "withFallbackAvatar": 4743,
+    "withVerifiedPhoto": 122,
+    "withFallbackAvatar": 4705,
     "priorityListSize": 200,
-    "approvedEntries": 84,
-    "cacheResolved": 84,
-    "cacheSkipped": 2
+    "approvedEntries": 122,
+    "cacheResolved": 122,
+    "cacheSkipped": 9
   },
   "brokenUrls": [],
   "missingAttribution": [],
@@ -21,8 +21,50 @@
     {
       "id": "tm-424204",
       "name": "Alphonso Davies",
-      "reason": "error:fetch failed",
-      "at": "2026-05-30T17:56:02.063Z"
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:12:31.444Z"
+    },
+    {
+      "id": "tm-177467",
+      "name": "Gerard Moreno",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:12:42.303Z"
+    },
+    {
+      "id": "tm-316889",
+      "name": "Hirving Lozano",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:12:54.418Z"
+    },
+    {
+      "id": "tm-351809",
+      "name": "Robin Le Normand",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:12:55.897Z"
+    },
+    {
+      "id": "tm-181767",
+      "name": "Marquinhos",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:13:14.025Z"
+    },
+    {
+      "id": "tm-44058",
+      "name": "Wojciech Szczesny",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:13:34.350Z"
+    },
+    {
+      "id": "tm-466810",
+      "name": "Ansu Fati",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:13:39.898Z"
+    },
+    {
+      "id": "tm-626724",
+      "name": "João Pedro",
+      "reason": "no_safe_match",
+      "at": "2026-05-30T18:14:34.463Z"
     }
   ],
   "verifiedSample": [
