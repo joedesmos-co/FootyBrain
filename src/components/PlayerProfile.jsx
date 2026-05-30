@@ -535,7 +535,9 @@ export default function PlayerProfile() {
         style={accentStyle}
       >
         <div className="player-profile__hero-main">
-          <PlayerVisual player={player} size="profile" priority />
+          <div className="player-profile__hero-visual">
+            <PlayerVisual player={player} size="profile" priority showCredit />
+          </div>
           <div className="player-profile__hero-copy">
             <h1>{player.name}</h1>
             {profileEditorial.heroLede ? (

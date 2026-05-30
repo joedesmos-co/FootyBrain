@@ -8,10 +8,12 @@ import {
   resolvePlayerAvatarTheme,
 } from '../utils/identityVisual';
 import {
+  getPlayerImageAttribution,
   getPlayerImageAttributes,
   resolvePlayerImageSource,
   warnMissingImageAttribution,
 } from '../utils/playerImage';
+import PlayerImageCredit from './PlayerImageCredit';
 
 function PlayerAvatarPlaceholder({
   player,
@@ -35,6 +37,7 @@ function PlayerAvatarPlaceholder({
       aria-label={`${player?.name ?? 'Player'} avatar`}
     >
       <span className={`player-avatar__disc${isCircle ? ' player-avatar__disc--circle' : ''}`}>
+        <span className="player-avatar__silhouette" aria-hidden="true" />
         <span className="player-avatar__ring" aria-hidden="true" />
         {theme.flag ? (
           <span className="player-avatar__flag" aria-hidden="true">
@@ -64,6 +67,7 @@ function PlayerAvatarComponent({
   compact = false,
   teamName: teamNameProp,
   preferPhoto = true,
+  showCredit = false,
 }) {
   const team = teamProp ?? peekTeamById(player?.teamId);
   const source = resolvePlayerImageSource(player);
@@ -71,6 +75,8 @@ function PlayerAvatarComponent({
   const [failedPlayerId, setFailedPlayerId] = useState(null);
   const style = getPlayerAvatarStyle(player, team);
   const teamName = teamNameProp ?? player?._teamName ?? team?.name ?? 'Unknown';
+  const attribution = getPlayerImageAttribution(player, source);
+  const shouldShowCredit = showCredit && Boolean(attribution);
 
   useEffect(() => {
     warnMissingImageAttribution(player);
@@ -84,17 +90,22 @@ function PlayerAvatarComponent({
 
   if (showPhoto && imageAttrs) {
     return (
-      <div
-        className={`player-avatar player-avatar--${size} player-avatar--photo player-visual player-visual--${size} player-visual--photo${compact ? ' player-visual--compact' : ''}`}
-        style={style}
+      <figure
+        className={`player-avatar-figure player-avatar-figure--${size}${shouldShowCredit ? ' player-avatar-figure--with-credit' : ''}`}
       >
-        <img {...imageAttrs} onError={() => setFailedPlayerId(player?.id ?? '')} />
-        {getPositionBadgeLabel(player?.position) ? (
-          <span className="player-avatar__position player-avatar__position--photo">
-            {getPositionBadgeLabel(player.position)}
-          </span>
-        ) : null}
-      </div>
+        <div
+          className={`player-avatar player-avatar--${size} player-avatar--photo player-visual player-visual--${size} player-visual--photo${compact ? ' player-visual--compact' : ''}`}
+          style={style}
+        >
+          <img {...imageAttrs} onError={() => setFailedPlayerId(player?.id ?? '')} />
+          {getPositionBadgeLabel(player?.position) ? (
+            <span className="player-avatar__position player-avatar__position--photo">
+              {getPositionBadgeLabel(player.position)}
+            </span>
+          ) : null}
+        </div>
+        {shouldShowCredit ? <PlayerImageCredit player={player} compact={size !== 'profile'} /> : null}
+      </figure>
     );
   }
 

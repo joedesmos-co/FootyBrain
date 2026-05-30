@@ -99,6 +99,26 @@ export function hasImageAttribution(player, source = null) {
   );
 }
 
+/** Attribution lines for profile / credit UI (null when no licensed photo). */
+export function getPlayerImageAttribution(player, source = null) {
+  const resolved = source ?? resolvePlayerImageSource(player);
+  if (!resolved.url || resolved.tier === 'gradientInitials') return null;
+
+  const credit = String(resolved.credit ?? player?.imageCredit ?? '').trim();
+  const license = String(resolved.license ?? player?.imageLicense ?? '').trim();
+  if (!credit && !license) return null;
+
+  const sourceLabel = String(resolved.imageSource ?? player?.imageSource ?? '').trim();
+  const sourceUrl = String(resolved.imageSourceUrl ?? player?.imageSourceUrl ?? '').trim() || null;
+
+  return {
+    credit: credit || 'Rights holder on file',
+    license: license || null,
+    sourceLabel: sourceLabel || null,
+    sourceUrl,
+  };
+}
+
 const warnedMissingAttribution = new Set();
 
 /** Dev-only: warn once per player id when a photo URL lacks credit/license. */

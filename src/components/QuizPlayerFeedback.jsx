@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FIELD_CLUB, FIELD_NATIONAL_TEAM } from '../utils/entityCopy.js';
 import CountryFlag from './CountryFlag';
+import PlayerVisual from './PlayerVisual';
 
 /**
  * Shared post-answer feedback for player-name quizzes (daily + player quiz surfaces).
@@ -15,6 +16,9 @@ import CountryFlag from './CountryFlag';
  *   milestone?: string,
  *   momentumLine?: string,
  *   xpLine?: string,
+ *   timedOut?: boolean,
+ *   tip?: string,
+ *   showVisual?: boolean,
  * }} props
  */
 export default function QuizPlayerFeedback({
@@ -27,6 +31,9 @@ export default function QuizPlayerFeedback({
   milestone = '',
   momentumLine = '',
   xpLine = '',
+  timedOut = false,
+  tip = '',
+  showVisual = true,
 }) {
   const isCorrect = variant === 'correct';
 
@@ -36,14 +43,26 @@ export default function QuizPlayerFeedback({
       role="status"
     >
       <div
-        className={`quiz-feedback__banner quiz-feedback__banner--${isCorrect ? 'success' : 'miss'}`}
+        className={`quiz-feedback__banner quiz-feedback__banner--${isCorrect ? 'success' : 'miss'}${showVisual ? ' quiz-feedback__banner--with-visual' : ''}`}
       >
+        {showVisual ? (
+          <div className="quiz-feedback__visual">
+            <PlayerVisual player={player} size="thumb" compact />
+          </div>
+        ) : null}
         <span className="quiz-feedback__icon" aria-hidden="true">
           {isCorrect ? '✓' : '×'}
         </span>
         <div className="quiz-feedback__banner-copy">
-          <h3>{isCorrect ? 'Correct' : 'Not quite'}</h3>
-          <p className="quiz-feedback__answer-name">{player.name}</p>
+          <h3>{isCorrect ? 'Correct' : timedOut ? "Time's up" : 'Not quite'}</h3>
+          {isCorrect ? (
+            <p className="quiz-feedback__answer-name">{player.name}</p>
+          ) : (
+            <>
+              <p className="quiz-feedback__reveal-label">Answer</p>
+              <p className="quiz-feedback__reveal-name">{player.name}</p>
+            </>
+          )}
         </div>
         {isCorrect && streak > 1 ? (
           <span className={`quiz-feedback__streak quiz-feedback__streak--t${streakTier}`}>
@@ -58,6 +77,7 @@ export default function QuizPlayerFeedback({
         </p>
       ) : null}
       {momentumLine ? <p className="quiz-feedback__momentum">{momentumLine}</p> : null}
+      {tip ? <p className="quiz-feedback__tip">{tip}</p> : null}
       <dl className="quiz-feedback__details">
         <div>
           <dt>{FIELD_CLUB}</dt>

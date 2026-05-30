@@ -4,6 +4,7 @@
  */
 
 import manifest from '../data/playerImageManifest.json' with { type: 'json' };
+import { getOverlayImageForPlayer } from './playerImageOverlay.js';
 import { isApprovedAssetUrl, isDisallowedImageUrl } from './playerImageUrlPolicy.js';
 
 /** @typedef {'manifest' | 'playerField' | 'genericPlaceholder' | 'gradientInitials'} ImageDisplayTier */
@@ -92,7 +93,22 @@ export function resolvePlayerImageSource(player) {
       credit: fromManifest.credit ?? player.imageCredit,
       license: fromManifest.license ?? player.imageLicense,
       imageSource: fromManifest.imageSource ?? player.imageSource,
+      imageSourceUrl: player.imageSourceUrl,
       srcSet: fromManifest.srcSet ?? player.imageSrcSet,
+    };
+  }
+
+  const fromOverlay = getOverlayImageForPlayer(player.id);
+  if (fromOverlay?.url) {
+    return {
+      tier: 'overlay',
+      url: fromOverlay.url,
+      alt: fromOverlay.alt ?? player.imageAlt,
+      credit: fromOverlay.credit ?? player.imageCredit,
+      license: fromOverlay.license ?? player.imageLicense,
+      imageSource: fromOverlay.imageSource ?? player.imageSource,
+      imageSourceUrl: fromOverlay.imageSourceUrl ?? player.imageSourceUrl,
+      srcSet: fromOverlay.srcSet ?? player.imageSrcSet,
     };
   }
 
@@ -105,19 +121,8 @@ export function resolvePlayerImageSource(player) {
       credit: player.imageCredit,
       license: player.imageLicense,
       imageSource: player.imageSource,
+      imageSourceUrl: player.imageSourceUrl,
       srcSet: player.imageSrcSet,
-    };
-  }
-
-  const generic = getGenericPlaceholderUrl();
-  if (generic) {
-    return {
-      tier: 'genericPlaceholder',
-      url: generic,
-      alt: `${player.name ?? 'Player'} — placeholder silhouette`,
-      credit: 'FootyCompass',
-      license: 'FootyCompass asset',
-      imageSource: 'FootyCompass placeholders',
     };
   }
 

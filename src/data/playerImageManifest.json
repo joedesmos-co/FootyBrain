@@ -3,8 +3,8 @@
   "updatedAt": "2026-05-26",
   "policy": "Licensed assets only. No Transfermarkt scrape or hotlink. See PLAYER_IMAGE_SYSTEM_PLAN.md.",
   "phase1": {
-    "goal": "Top 100 quiz-ready players first (by importanceScore).",
-    "status": "targets_defined_no_assets_yet",
+    "goal": "Top 200 players by importanceScore (licensed images added gradually).",
+    "status": "overlay_stubs_ready",
     "topQuizReadyPlayerIds": [
       "haaland",
       "bellingham",
@@ -110,8 +110,8 @@
   },
   "placeholderHierarchy": [
     "manifest",
+    "overlay",
     "playerField",
-    "genericPlaceholder",
     "gradientInitials"
   ],
   "assets": {

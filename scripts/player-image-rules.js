@@ -17,6 +17,7 @@ export const APPROVED_IMAGE_FIELDS = [
   'imageAlt',
   'imageCredit',
   'imageSource',
+  'imageSourceUrl',
   'imageLicense',
   'imageSrcSet',
 ];
@@ -36,6 +37,7 @@ export function nullImageFields() {
     imageAlt: null,
     imageCredit: null,
     imageSource: null,
+    imageSourceUrl: null,
     imageLicense: null,
     imageSrcSet: null,
   };

@@ -5,8 +5,8 @@
   "policy": "Licensed assets only. No Transfermarkt scrape or hotlink. See PLAYER_IMAGE_SYSTEM_PLAN.md.",
   "placeholderHierarchy": [
     "manifest",
+    "overlay",
     "playerField",
-    "genericPlaceholder",
     "gradientInitials"
   ],
   "assets": {

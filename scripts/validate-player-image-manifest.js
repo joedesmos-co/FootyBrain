@@ -37,7 +37,7 @@ if (!srcManifest.schemaVersion) {
 }
 
 const hierarchy = srcManifest.placeholderHierarchy ?? [];
-const expectedHierarchy = ['manifest', 'playerField', 'genericPlaceholder', 'gradientInitials'];
+const expectedHierarchy = ['manifest', 'overlay', 'playerField', 'gradientInitials'];
 if (JSON.stringify(hierarchy) !== JSON.stringify(expectedHierarchy)) {
   err(`placeholderHierarchy must be ${JSON.stringify(expectedHierarchy)}`);
 }

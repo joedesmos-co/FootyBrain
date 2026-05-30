@@ -11,7 +11,6 @@ import {
   pickWeightedQuizPlayer,
 } from '../utils/quizThemePools';
 import { useQuizRegistry } from '../hooks/useQuizRegistry';
-import CountryFlag from './CountryFlag';
 import { useProgression } from '../hooks/useProgression';
 import {
   formatMilestoneMessage,
@@ -71,6 +70,7 @@ import {
   scrollQuizPanelIntoView,
 } from '../utils/quizUiPolish';
 import QuizFeedbackActions from './QuizFeedbackActions';
+import QuizPlayerFeedback from './QuizPlayerFeedback';
 
 // TODO: Future Firebase sync — persist quiz session history and scores under
 //       users/{uid}/quizSessions so progress carries across devices.
@@ -1535,109 +1535,37 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
               </p>
             )}
 
-            {feedback === 'correct' && (
-              <article
-                className={`quiz-feedback quiz-feedback--correct quiz-feedback--pop quiz-feedback--streak-t${streakTier}`}
-                role="status"
-              >
-                <div className="quiz-feedback__banner quiz-feedback__banner--success">
-                  <span className="quiz-feedback__icon" aria-hidden="true">
-                    ✓
-                  </span>
-                  <div className="quiz-feedback__banner-copy">
-                    <h3>Correct</h3>
-                    <p className="quiz-feedback__answer-name">{currentPlayer.name}</p>
-                  </div>
-                  {streak > 1 ? (
-                    <span
-                      className={`quiz-feedback__streak quiz-feedback__streak--t${streakTier}`}
-                    >
-                      {streak} streak
-                    </span>
-                  ) : null}
-                </div>
-                {getStreakMilestoneCopy(streak) ? (
-                  <p className="quiz-feedback__milestone">{getStreakMilestoneCopy(streak)}</p>
-                ) : null}
-                {lastXpFeedback ? (
-                  <p className="quiz-feedback__xp" aria-label={lastXpFeedback}>
-                    {lastXpFeedback}
-                  </p>
-                ) : null}
-                <dl className="quiz-feedback__details">
-                  <div>
-                    <dt>Club</dt>
-                    <dd>{currentPlayerClub}</dd>
-                  </div>
-                  <div>
-                    <dt>National team</dt>
-                    <dd className="football-meta-line">
-                      <CountryFlag label={currentPlayer.nationalTeam} />
-                      {currentPlayer.nationalTeam || '—'}
-                    </dd>
-                  </div>
-                </dl>
-                {currentPlayer.quickFact ? (
-                  <p className="quiz-feedback__fact">{currentPlayer.quickFact}</p>
-                ) : null}
-                <Link
-                  to={`/player/${currentPlayer.id}`}
-                  className="btn btn--secondary btn--small quiz-feedback__cta"
-                >
-                  View player profile
-                </Link>
-              </article>
-            )}
+            {feedback === 'correct' && currentPlayer ? (
+              <QuizPlayerFeedback
+                variant="correct"
+                player={currentPlayer}
+                clubLabel={currentPlayerClub}
+                streak={streak}
+                streakTier={streakTier}
+                milestone={getStreakMilestoneCopy(streak) || ''}
+                xpLine={lastXpFeedback || ''}
+              />
+            ) : null}
 
-            {feedback === 'incorrect' && (
-              <article className="quiz-feedback quiz-feedback--incorrect quiz-feedback--pop" role="status">
-                <div className="quiz-feedback__banner quiz-feedback__banner--miss">
-                  <span className="quiz-feedback__icon" aria-hidden="true">
-                    ×
-                  </span>
-                  <div className="quiz-feedback__banner-copy">
-                    <h3>{timedOut ? "Time's up" : 'Not quite'}</h3>
-                    <p className="quiz-feedback__reveal-label">Answer</p>
-                  </div>
-                </div>
-                <p className="quiz-feedback__momentum">
-                  {getIncorrectMomentumCopy(bestStreak)}
-                </p>
-                <p className="quiz-feedback__reveal-name">{currentPlayer.name}</p>
-                {(() => {
-                  const tip = getWrongAnswerTip({
+            {feedback === 'incorrect' && currentPlayer ? (
+              <QuizPlayerFeedback
+                variant="incorrect"
+                player={currentPlayer}
+                clubLabel={currentPlayerClub}
+                profileLabel={`View ${currentPlayer.name}`}
+                timedOut={timedOut}
+                momentumLine={getIncorrectMomentumCopy(bestStreak)}
+                tip={
+                  getWrongAnswerTip({
                     guess: answer,
                     correctName: currentPlayer.name,
                     ambiguousLastNames,
                     timedOut,
                     requireFullName: requiresFullNameMatch(difficulty),
-                  });
-                  return tip?.tip ? <p className="quiz-feedback__tip">{tip.tip}</p> : null;
-                })()}
-                <dl className="quiz-feedback__details">
-                  <div>
-                    <dt>Club</dt>
-                    <dd>{currentPlayerClub}</dd>
-                  </div>
-                  <div>
-                    <dt>National team</dt>
-                    <dd className="football-meta-line">
-                      <CountryFlag label={currentPlayer.nationalTeam} />
-                      {currentPlayer.nationalTeam || '—'}
-                    </dd>
-                  </div>
-                </dl>
-                {currentPlayer.quickFact ? (
-                  <p className="quiz-feedback__fact">{currentPlayer.quickFact}</p>
-                ) : null}
-                <Link
-                  to={`/player/${currentPlayer.id}`}
-                  className="btn btn--secondary btn--small quiz-feedback__cta"
-                >
-                  View {currentPlayer.name}
-                </Link>
-              </article>
-            )}
+                  })?.tip ?? ''
+                }
+              />
+            ) : null}
 
             {feedback ? (
               <QuizFeedbackActions>
