@@ -26,6 +26,7 @@ function normalizeOverlayEntry(playerId, entry) {
     imageSource: String(entry.imageSource ?? '').trim() || null,
     imageSourceUrl: imageSourceUrl && !isDisallowedImageUrl(imageSourceUrl) ? imageSourceUrl : null,
     imageSrcSet: String(entry.imageSrcSet ?? entry.srcSet ?? '').trim() || null,
+    imageAttributionRequired: entry.imageAttributionRequired === true,
     status: String(entry.status ?? 'approved').trim(),
   };
 }
@@ -52,6 +53,7 @@ export function getOverlayImageForPlayer(playerId) {
     license: entry.imageLicense,
     imageSource: entry.imageSource,
     imageSourceUrl: entry.imageSourceUrl,
+    imageAttributionRequired: entry.imageAttributionRequired,
     srcSet: entry.imageSrcSet,
     status: entry.status,
   };

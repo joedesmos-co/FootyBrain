@@ -107,8 +107,9 @@ export function resolvePlayerImageSource(player) {
       credit: fromOverlay.credit ?? player.imageCredit,
       license: fromOverlay.license ?? player.imageLicense,
       imageSource: fromOverlay.imageSource ?? player.imageSource,
-      imageSourceUrl: fromOverlay.imageSourceUrl ?? player.imageSourceUrl,
-      srcSet: fromOverlay.srcSet ?? player.imageSrcSet,
+    imageSourceUrl: fromOverlay.imageSourceUrl ?? player.imageSourceUrl,
+    imageAttributionRequired: fromOverlay.imageAttributionRequired ?? player.imageAttributionRequired,
+    srcSet: fromOverlay.srcSet ?? player.imageSrcSet,
     };
   }
 

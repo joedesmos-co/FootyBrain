@@ -6,8 +6,6 @@
  *   npm run add:player-image -- --id=haaland --url=/images/players/haaland.webp \
  *     --credit="Jane Doe" --license="CC BY-SA 4.0" --source="Wikimedia Commons" \
  *     --source-url="https://commons.wikimedia.org/wiki/File:Example.jpg"
- *
- * Local files should live under public/images/players/
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -15,6 +13,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { isApprovedAssetUrl, isDisallowedImageUrl } from '../src/utils/playerImageUrlPolicy.js';
+import { requiresAttribution } from './lib/wikimediaPlayerImage.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -26,8 +25,7 @@ function parseArgs(argv) {
     if (!arg.startsWith('--')) continue;
     const eq = arg.indexOf('=');
     if (eq === -1) continue;
-    const key = arg.slice(2, eq);
-    out[key] = arg.slice(eq + 1);
+    out[arg.slice(2, eq)] = arg.slice(eq + 1);
   }
   return out;
 }
@@ -43,7 +41,6 @@ if (!playerId || !imageUrl) {
 
 if (isDisallowedImageUrl(imageUrl) || !isApprovedAssetUrl(imageUrl)) {
   console.error(`URL not approved: ${imageUrl}`);
-  console.error('Use /images/* paths or approved CDN hosts (see PLAYER_IMAGE_POLICY.md).');
   process.exit(1);
 }
 
@@ -71,10 +68,10 @@ approved.entries[playerId] = {
   imageSourceUrl: args['source-url']?.trim() || null,
   imageSource: args.source?.trim() || null,
   imageSrcSet: args.srcset?.trim() || null,
+  imageAttributionRequired: args['attribution-required'] === 'false' ? false : requiresAttribution(license),
   status: 'approved',
 };
 approved.updatedAt = new Date().toISOString().slice(0, 10);
 
 writeFileSync(APPROVED_PATH, `${JSON.stringify(approved, null, 2)}\n`, 'utf8');
 console.log(`Updated approved image for ${playerId}`);
-console.log('Next: npm run validate:player-images && npm run build');

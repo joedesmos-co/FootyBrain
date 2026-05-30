@@ -36,6 +36,8 @@
     "validate:player-image-overlays": "node scripts/validate-player-image-overlays.js",
     "bootstrap:player-image-overlays": "node scripts/bootstrap-player-image-overlays.js --write",
     "add:player-image": "node scripts/add-player-image.js",
+    "fetch:wikimedia-player-images": "node scripts/fetch-wikimedia-player-images.js",
+    "audit:player-images": "node scripts/audit-player-images.js",
     "merge:phase1-sample": "node scripts/merge-phase1-sample-data.js",
     "merge:phase2-sample": "node scripts/merge-phase1-sample-data.js",
     "merge:phase3-sample": "node scripts/merge-phase1-sample-data.js",
