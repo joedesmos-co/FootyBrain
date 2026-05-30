@@ -6,7 +6,7 @@ export default function HomeTrustStrip() {
     <aside className="home-trust-strip" aria-label="Trust and transparency">
       <ul className="home-trust-strip__list">
         <li>
-          <span className="home-trust-strip__label">Dataset</span>
+          <span className="home-trust-strip__label">Updated</span>
           <span>Updated {DATASET_META.dataAsOf}</span>
         </li>
         <li>

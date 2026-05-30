@@ -804,9 +804,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['ksa', 'green falcons', 'saudi national team', 'saudi nt', 'saudi arabia'],
     badgeTheme: { from: '#16a34a', to: '#14532d', accent: '#bbf7d0' },
     fanGuide:
-      'The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path. Learn Saudi Arabia through AFC rivalries and a national pool drawn from FootyBrain’s club registry.',
+      'The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path. Learn Saudi Arabia through AFC rivalries and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Saudi Arabia (SAFF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Saudi Arabia (SAFF). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   iran: {
     displayName: 'Iran',
@@ -817,9 +817,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['ir iran', 'team melli', 'iran national team', 'iran nt', 'persian'],
     badgeTheme: { from: '#16a34a', to: '#dc2626', accent: '#fef08a' },
     fanGuide:
-      'Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and linked players in FootyBrain’s national pool.',
+      'Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Iran (FFIRI). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Iran (FFIRI). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   'south-africa': {
     displayName: 'South Africa',
@@ -830,9 +830,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['rsa', 'bafana bafana', 'south africa national team', 'south africa nt'],
     badgeTheme: { from: '#16a34a', to: '#fbbf24', accent: '#1f2937' },
     fanGuide:
-      'Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names linked from FootyBrain’s club registry national pool.',
+      'Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names you can browse on FootyCompass.',
     shortHistory:
-      'Men’s senior team of South Africa (SAFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of South Africa (SAFA). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   panama: {
     displayName: 'Panama',
@@ -843,9 +843,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['pan', 'los canaleros', 'panama national team', 'panama nt'],
     badgeTheme: { from: '#dc2626', to: '#1d4ed8', accent: '#fde047' },
     fanGuide:
-      'Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and linked players in FootyBrain’s national pool.',
+      'Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and players you can browse on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Panama (FEPAFUT). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Panama (FEPAFUT). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   iraq: {
     displayName: 'Iraq',
@@ -856,9 +856,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['irq', 'lions of mesopotamia', 'iraq national team', 'iraq nt'],
     badgeTheme: { from: '#16a34a', to: '#111827', accent: '#dc2626' },
     fanGuide:
-      'The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and linked names from FootyBrain’s club registry pool.',
+      'The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and names you can browse on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Iraq (IFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Iraq (IFA). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   jordan: {
     displayName: 'Jordan',
@@ -869,9 +869,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['jor', 'nashama', 'jordan national team', 'jordan nt'],
     badgeTheme: { from: '#111827', to: '#dc2626', accent: '#f8fafc' },
     fanGuide:
-      'Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and FootyBrain’s registry-linked national pool.',
+      'Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Jordan (JFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Jordan (JFA). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   uzbekistan: {
     displayName: 'Uzbekistan',
@@ -882,9 +882,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['uzb', 'white wolves', 'uzbekistan national team', 'uzbekistan nt'],
     badgeTheme: { from: '#38bdf8', to: '#16a34a', accent: '#f8fafc' },
     fanGuide:
-      'The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and linked players in FootyBrain’s national pool.',
+      'The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Uzbekistan (UFA). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of Uzbekistan (UFA). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   'new-zealand': {
     displayName: 'New Zealand',
@@ -895,9 +895,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['nzl', 'all whites', 'new zealand national team', 'new zealand nt'],
     badgeTheme: { from: '#111827', to: '#1d4ed8', accent: '#f8fafc' },
     fanGuide:
-      'The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyBrain’s registry-linked national pool.',
+      'The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of New Zealand (NZF). FootyBrain lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.',
+      'Men’s senior team of New Zealand (NZF). Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   'cape-verde': {
     displayName: 'Cabo Verde',
@@ -908,9 +908,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['cape verde', 'cabo verde', 'cape verde national team', 'cape verde nt'],
     badgeTheme: { from: '#1d4ed8', to: '#fbbf24', accent: '#dc2626' },
     fanGuide:
-      'Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and linked players from FootyBrain’s browse-only national pool.',
+      'Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and players you can browse on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Cabo Verde. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.',
+      'Men’s senior team of Cabo Verde. Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
   curacao: {
     displayName: 'Curaçao',
@@ -921,9 +921,9 @@ const LIVE_NATION_EDITORIAL = {
     searchAliases: ['curacao', 'curaçao', 'curacao national team', 'curacao nt'],
     badgeTheme: { from: '#1d4ed8', to: '#fbbf24', accent: '#dc2626' },
     fanGuide:
-      'Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and FootyBrain’s registry-linked national pool.',
+      'Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and players linked from club football on FootyCompass.',
     shortHistory:
-      'Men’s senior team of Curaçao. FootyBrain lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.',
+      'Men’s senior team of Curaçao. Squad lists linked club players on FootyCompass — not an official World Cup 2026 roster.',
   },
 };
 

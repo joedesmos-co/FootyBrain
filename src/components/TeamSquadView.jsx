@@ -146,7 +146,7 @@ export default function TeamSquadView({
           <h2 id="team-squad-title">{title}</h2>
           <p className="team-squad__intro">
             {intro ??
-              `Players for ${teamName}, grouped by position and sorted by importance score.`}
+              `Players for ${teamName}, grouped by position and sorted by profile rank.`}
           </p>
           <DataTrustNotice compact />
         </div>

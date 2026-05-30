@@ -13,8 +13,8 @@ import SectionHeading from './ui/SectionHeading';
 /** Short hints for national-team study paths (no invented copy). */
 const NATIONAL_LINK_HINTS = {
   '/world-cup': 'Tournament prep hub',
-  '/national-teams': 'Every live pool',
-  '/quiz?theme=world-cup': 'Curated WC questions',
+  '/national-teams': 'All countries',
+  '/quiz?theme=world-cup': 'World Cup quiz',
   '/daily': 'One quick round',
   '/hubs': 'Leagues, quizzes, and guides',
 };
@@ -108,7 +108,7 @@ export default function ProfileKeepExploring({
                 : link.to.startsWith('/league/')
                   ? 'Where most of the squad plays'
                   : link.to.includes('/hubs/players/')
-                    ? 'Same nationality pool'
+                    ? 'Same country'
                     : ''),
         }))
       : buildKeepExploringLinks({

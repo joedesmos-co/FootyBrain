@@ -218,7 +218,7 @@ export default function PlayerAutocomplete({
 
       {poolLoading && (
         <p className="player-autocomplete__status" role="status">
-          Loading player registry…
+          Loading players…
         </p>
       )}
 

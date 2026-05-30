@@ -1,5 +1,5 @@
 # Entity consistency audit
 
-Generated: 2026-05-29T10:22:42.219Z
+Generated: 2026-05-30T21:11:54.536Z
 
 No banned copy patterns found in `src/`.

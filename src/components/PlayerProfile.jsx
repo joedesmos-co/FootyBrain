@@ -603,13 +603,13 @@ export default function PlayerProfile() {
 
       {browseOnly && (
         <p className="player-study__note" role="status">
-          Study profile from the current dataset—quiz clues for this player are still being added.
+          Study profile ready to read — quiz hints for this player are still being added.
         </p>
       )}
 
       {isExternalClubStubTeam({ id: player.teamId, leagueId: player.leagueId }) ? (
         <p className="player-study__note" role="note">
-          This club is listed for national-team pools. A full club page is coming later.
+          Squad listed for international quizzes; full club guide coming soon.
         </p>
       ) : null}
 
@@ -623,9 +623,11 @@ export default function PlayerProfile() {
           <Link to={`/national-team/${liveNationalTeam.id}`}>{LINK_NATIONAL_TEAM}</Link>
         )}
         {!liveNationalTeam && nationalTeamPlainLabel ? (
-          <span className="player-profile__quick-link--disabled">
-            {LINK_NATIONAL_TEAM} page coming
-          </span>
+          <Link
+            to={`/hubs/players/nationality/${encodeURIComponent(String(nationalTeamPlainLabel).trim())}`}
+          >
+            {linkNationalityPlayers(nationalTeamPlainLabel)}
+          </Link>
         ) : null}
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>{NAME_CLUB_QUIZ}</Link>}
         <Link to={`/hubs/quizzes/team/${player.teamId}`}>{LINK_CLUB_QUIZ_GUIDE}</Link>
@@ -635,12 +637,6 @@ export default function PlayerProfile() {
           >
             {linkNationalityPlayers(player.nationality)}
           </Link>
-        ) : null}
-        {!profileEditorial.topTier ? (
-          <Link to="/club-quiz?category=player-to-club">Legend → club quiz</Link>
-        ) : null}
-        {!profileEditorial.topTier && player.teamId ? (
-          <Link to={`/club-quiz?category=stadium&league=${player.leagueId}`}>Stadium quiz</Link>
         ) : null}
         {!profileEditorial.topTier && quizReady && typeof player.age === 'number' && player.age <= 23 ? (
           <Link to="/quiz?theme=wonderkids">Wonderkids quiz</Link>

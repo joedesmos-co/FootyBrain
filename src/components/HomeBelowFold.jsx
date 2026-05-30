@@ -65,8 +65,8 @@ export default function HomeBelowFold() {
       {showPersonalizeCta ? (
         <section className="home-personalize-cta" aria-label="Personalize FootyCompass">
           <div className="home-personalize-cta__body">
-            <h2>Sharpen your home feed</h2>
-            <p>Favorite leagues and clubs for faster browse — optional, stored on your device only.</p>
+            <h2>Pick your leagues and clubs</h2>
+            <p>We&apos;ll surface them first when you browse — optional, saved on this device only.</p>
             <div className="home-personalize-cta__actions">
               <Link to="/onboarding" className="btn btn--primary">
                 Set preferences

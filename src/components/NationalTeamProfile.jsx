@@ -225,21 +225,20 @@ export default function NationalTeamProfile() {
           items={[
             { label: CRUMB_HOME, to: '/' },
             { label: CRUMB_NATIONAL_TEAMS, to: '/national-teams' },
-            { label: poolNotAddedYet ? 'Pool coming' : 'Not found' },
+            { label: poolNotAddedYet ? 'Coming soon' : 'Not found' },
           ]}
         />
         <header className="page-header">
-          <h1>{poolNotAddedYet ? 'National team pool coming' : 'National team not found'}</h1>
+          <h1>{poolNotAddedYet ? 'This nation isn\u2019t ready yet' : 'National team not found'}</h1>
           <p className="empty-state">
             {poolNotAddedYet
-              ? 'Pool not added yet.'
-              : 'National team not found.'}
+              ? 'We\u2019re still building the player list for this country.'
+              : 'That national team page could not be found.'}
           </p>
         </header>
         {poolNotAddedYet ? (
           <p className="collections-page__section-desc">
-            This World Cup team is in the 2026 draw for orientation only — FootyCompass does not
-            have a national player pool page yet. Browse live pools from the{' '}
+            This World Cup team is in the 2026 draw for orientation only. Browse live squads from{' '}
             <Link to="/world-cup">World Cup 2026 prep</Link> or the{' '}
             <Link to="/national-teams">national teams</Link> list.
           </p>
@@ -348,12 +347,12 @@ export default function NationalTeamProfile() {
                 National team quiz
               </Link>
               <Link to="/quiz?theme=world-cup" className="btn btn--secondary">
-                World Cup quiz pool
+                World Cup quiz
               </Link>
             </>
           ) : (
             <button type="button" className="btn btn--secondary" disabled>
-              Quiz unlocks with a larger linked squad ({quizReady.length} with quiz clues so far)
+              National team quiz coming soon — browse the squad below first
             </button>
           )}
         </div>
@@ -409,8 +408,7 @@ export default function NationalTeamProfile() {
 
       {showBrowseOnlyPoolBanner ? (
         <p className="national-team-profile__pool-banner" role="status">
-          Browse the full player pool now—the national team quiz unlocks as more players get quiz
-          clues.
+          Browse the full squad below — the national team quiz unlocks as more players get quiz hints.
         </p>
       ) : null}
 
@@ -419,8 +417,7 @@ export default function NationalTeamProfile() {
           <div className="team-key-players__header">
             <h2 id="nt-key-players">Players to know</h2>
             <p className="team-key-players__note">
-              Highest importance in the linked pool — open profiles for hints, then return to the
-              nation quiz.
+              Top names linked to this nation — open profiles for hints, then try the nation quiz.
             </p>
           </div>
           <ul className="team-key-players__grid">
@@ -474,8 +471,7 @@ export default function NationalTeamProfile() {
         <section className="profile__section info-card" aria-label="Nation to club learning flow">
           <h2>Club supply chains</h2>
           <p className="collections-page__section-desc">
-            Clubs that supply the most linked players in this national pool—jump to squads before
-            quizzing.
+            Clubs supplying the most players for this nation — jump to squads before quizzing.
           </p>
           <ul className="national-team-profile__club-flows">
             {clubFlows.map((row) => (
@@ -495,9 +491,9 @@ export default function NationalTeamProfile() {
         teamName={nationalTeam.displayName}
         variant="national"
         getTeamName={(teamIdArg) => peekTeamName(teamIdArg)}
-        eyebrow="Player pool"
+        eyebrow="Squad"
         title="Squad players"
-        intro={`Players linked to ${nationalTeam.displayName} from club football—sorted by importance score. Not an official tournament roster.`}
+        intro={`Players linked to ${nationalTeam.displayName} from club football — sorted by profile rank. Not an official tournament roster.`}
       />
     </div>
   );

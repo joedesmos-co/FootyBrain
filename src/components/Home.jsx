@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
 
-          <dl className="hero__stats" aria-label="FootyCompass dataset scale">
+          <dl className="hero__stats" aria-label="FootyCompass at a glance">
             <div>
               <dt>{playerCount}</dt>
               <dd>Players</dd>

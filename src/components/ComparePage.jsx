@@ -42,7 +42,7 @@ export default function ComparePage() {
       <BreadcrumbNav items={[{ label: 'Home', to: '/' }, { label: 'Compare' }]} />
       <header className="page-header">
         <h1>Compare</h1>
-        <p>Compare two players or two clubs side by side—roles, squads, and importance score.</p>
+        <p>Compare two players or two clubs side by side — roles, squads, and profile rank.</p>
         <nav className="compare-tabs" aria-label="Compare type">
           <NavLink
             to="/compare"

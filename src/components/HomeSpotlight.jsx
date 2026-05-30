@@ -118,11 +118,11 @@ export default function HomeSpotlight() {
     <section className="home-spotlight" aria-labelledby="home-spotlight-title">
       <header className="home-spotlight__header">
         <div className="home-section-head home-spotlight__head">
-          <h2 id="home-spotlight-title">Editorial spotlight</h2>
-          <p>Hand-picked players, clubs, leagues, and quiz formats — rotates daily.</p>
+          <h2 id="home-spotlight-title">Featured today</h2>
+          <p>Players, clubs, and quizzes — changes daily.</p>
         </div>
         <button type="button" className="btn btn--secondary btn--small" onClick={handleRefresh}>
-          Refresh picks
+          Show new picks
         </button>
       </header>
 

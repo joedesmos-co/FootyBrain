@@ -323,7 +323,7 @@ export default function UniversalSearch({ open, onClose }) {
         />
 
         <p className="universal-search__hint">
-          Nicknames work too — KDB, Vini, Son, Puli · fuzzy spelling OK
+          Nicknames work — try KDB, Vini, Son · spelling can be approximate
         </p>
 
         {!showResults && (
@@ -354,25 +354,6 @@ export default function UniversalSearch({ open, onClose }) {
             </div>
             <p className="universal-search__empty universal-search__empty--idle">
               {SEARCH_EMPTY_HINT}
-            </p>
-            <p className="universal-search__examples">
-              Try{' '}
-              {SEARCH_EMPTY_EXAMPLES.map((example, index) => (
-                <span key={example}>
-                  {index > 0 ? (index === SEARCH_EMPTY_EXAMPLES.length - 1 ? ' or ' : ', ') : ''}
-                  <button
-                    type="button"
-                    className="universal-search__example-link"
-                    onClick={() => {
-                      setQuery(example);
-                      setActiveIndex(-1);
-                      inputRef.current?.focus();
-                    }}
-                  >
-                    {example}
-                  </button>
-                </span>
-              ))}
             </p>
           </div>
         )}

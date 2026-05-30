@@ -39,8 +39,8 @@ export default function CollectionsPage() {
         <p className="page-header__eyebrow">Study tools</p>
         <h1>Collections & paths</h1>
         <p>
-          <strong>Learning paths</strong> chain a collection, profile pages, and a quiz.
-          <strong> Collections</strong> are standalone study lists you can complete in any order.
+          <strong>Learning paths</strong> walk you through profiles and a quiz at the end.{' '}
+          <strong>Collections</strong> are shorter lists you can finish in any order.
         </p>
       </header>
 

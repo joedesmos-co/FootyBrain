@@ -179,7 +179,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
       text: `Browse ${roster.length} player${roster.length === 1 ? '' : 's'} by position.`,
     },
     {
-      label: 'Squad',
+      label: 'Key players',
       title: 'Know the key players',
       text: team.currentKeyPlayers?.length
         ? `Start with ${team.currentKeyPlayers.join(', ')}.`
@@ -247,7 +247,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
               <p className="profile__sub club-hero__sub">{profileSubline}</p>
             ) : isExternalStub ? (
               <p className="profile__sub club-hero__sub">
-                Imported club profile — browse the squad below.
+                Limited club page — squad and quiz links below.
               </p>
             ) : null}
             {identityTags.length > 0 && (
@@ -273,14 +273,14 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
           {hasTeamQuiz ? (
             <>
               <Link to={`/quiz?team=${team.id}`} className="btn btn--primary">
-                Start Team Quiz
+                Start club quiz
               </Link>
               <Link to={`/hubs/quizzes/team/${team.id}`} className="btn btn--secondary">
                 Club quiz guide
               </Link>
               {leagueThemeQuizHref ? (
                 <Link to={leagueThemeQuizHref} className="btn btn--secondary">
-                  {leagueName} quiz pool
+                  {leagueName} league quiz
                 </Link>
               ) : null}
               {stadiumClubQuizHref ? (

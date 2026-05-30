@@ -24,7 +24,7 @@ const TOP_CLUB_LINKS = [
   { to: '/team/arsenal', label: 'Arsenal', hint: 'Premier League' },
   { to: '/team/liverpool', label: 'Liverpool', hint: 'Premier League' },
   { to: '/team/manchester-city', label: 'Manchester City', hint: 'Premier League' },
-  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona quiz guide', hint: 'Player pool' },
+  { to: '/hubs/quizzes/team/barcelona', label: 'Barcelona quiz guide', hint: 'Club quiz tips' },
 ];
 
 const DISCOVER_LINKS = [

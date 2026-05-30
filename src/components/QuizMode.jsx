@@ -847,7 +847,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
         </aside>
       )}
 
-      <section className="quiz-themes-picker" aria-label="Themed quiz pools">
+      <section className="quiz-themes-picker" aria-label="Themed quizzes">
         <div className="quiz-themes-picker__head">
           <h2 className="quiz-themes-picker__title">Themed pools</h2>
           <Link to="/hubs/quizzes/themes" className="collections-page__section-link">
@@ -975,7 +975,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                   return (
                     <option key={team.id} value={team.id} disabled={isTooSmallForNationalMode}>
                       {team.displayName} ({quizCount} player{quizCount === 1 ? '' : 's'}
-                      {isTooSmallForNationalMode ? ` — needs ${QUIZ_MIN_SESSION_POOL}` : ''})
+                      {isTooSmallForNationalMode ? ' — quiz soon' : ''})
                     </option>
                   );
                 })}

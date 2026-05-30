@@ -8,10 +8,6 @@ import {
 import { getNationalTeamName } from '../data/nationalTeamData';
 import { getManifestLeague } from '../data/contentManifest';
 import { peekTeamName } from '../data/teamStore';
-import {
-  COLLECTION_COMPLETE_XP,
-  COLLECTION_ITEM_XP,
-} from '../hooks/useProgression';
 import { useCollectionProgress } from '../hooks/useCollectionProgress';
 import {
   getCollectionQuizHref,
@@ -115,14 +111,17 @@ function CollectionItemRow({
                 Mark learned
               </button>
             ) : (
-              <button
-                type="button"
-                className="btn btn--secondary btn--small"
-                disabled
-                title="Open the profile first to unlock marking as learned"
-              >
-                Mark learned
-              </button>
+              <span className="collection-item__mark-wrap">
+                <button
+                  type="button"
+                  className="btn btn--secondary btn--small"
+                  disabled
+                  title="Open the profile first to unlock marking as learned"
+                >
+                  Mark learned
+                </button>
+                <span className="collection-item__mark-hint">Open the profile first</span>
+              </span>
             )
           )}
         </div>
@@ -286,7 +285,7 @@ export default function CollectionDetailPage() {
           <p className="collection-detail-header__complete">Collection complete</p>
         )}
         <p className="collection-detail-header__xp-hint">
-          Open each profile before marking learned. +{COLLECTION_ITEM_XP} XP per item and +{COLLECTION_COMPLETE_XP} XP when you finish the collection (each once).
+          Open each profile, then tap Mark learned to track progress.
         </p>
         {(isAdvancedFootballCollection(collection.id) ||
           isNationalTeamLearningCollection(collection.id)) && (

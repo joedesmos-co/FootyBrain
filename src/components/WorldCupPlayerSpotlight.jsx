@@ -13,7 +13,7 @@ function WorldCupPlayerSpotlight({ player, note }) {
     <article className="world-cup-player-spotlight">
       <div className="world-cup-player-spotlight__head">
         <PositionLabel position={player.position} className="world-cup-player-spotlight__role" />
-        <span className="world-cup-player-spotlight__score" title="FootyCompass importance score">
+        <span className="world-cup-player-spotlight__score" title="FootyCompass profile rank">
           {player.importanceScore}
         </span>
       </div>

@@ -194,12 +194,6 @@ function CompletionScreen({
         <Link to="/quiz" className="btn btn--primary btn--large">
           Play another quiz
         </Link>
-        <Link
-          to="/club-quiz?category=stadium"
-          className="btn btn--secondary btn--large quiz-summary__follow-up"
-        >
-          One more: club stadium quiz
-        </Link>
         <Link to="/profile" className="btn btn--secondary">
           View progress
         </Link>
@@ -399,7 +393,7 @@ export default function DailyChallenge() {
       <QuizSubNav />
       <header className="daily-header">
         <div>
-          <h1 className="daily-header__title">Daily Challenge</h1>
+          <h1 className="daily-header__title">Daily challenge</h1>
           <p className="daily-header__date">{formatDateKey(todayKey)}</p>
           {challengeLabel && (
             <p className="daily-challenge-label" role="status">
