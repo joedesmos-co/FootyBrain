@@ -81,6 +81,11 @@ const h1Checks = [
   { file: 'src/components/QuizMode.jsx', pattern: /<h1\b/ },
   { file: 'src/components/NotFoundPage.jsx', pattern: /<h1\b/ },
   { file: 'src/components/SeoHubs.jsx', pattern: /<h1\b/ },
+  { file: 'src/components/CollectionsPage.jsx', pattern: /<h1\b/ },
+  { file: 'src/components/LearningPathsPage.jsx', pattern: /<h1\b/ },
+  { file: 'src/components/ClubQuizMode.jsx', pattern: /<h1\b/ },
+  { file: 'src/components/NationalTeamsPage.jsx', pattern: /<h1\b/ },
+  { file: 'src/components/CollectionDetailPage.jsx', pattern: /<h1\b/ },
 ];
 
 for (const { file, pattern } of h1Checks) {

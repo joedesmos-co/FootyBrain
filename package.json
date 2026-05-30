@@ -61,6 +61,7 @@
     "audit:entity-consistency": "node scripts/audit-entity-consistency.js",
     "audit:seo-meta": "node scripts/audit-seo-meta.js",
     "audit:spa-seo": "node scripts/audit-spa-seo.js",
+    "audit:seo-indexing": "node scripts/audit-seo-indexing.js",
     "audit:adsense-readiness": "node scripts/audit-adsense-readiness.js",
     "audit:quiz-ecosystem": "node scripts/audit-quiz-ecosystem.js",
     "audit:club-profiles": "node scripts/audit-club-profiles.js",

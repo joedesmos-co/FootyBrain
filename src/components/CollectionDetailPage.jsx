@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   getCollectionById,
@@ -22,8 +22,9 @@ import {
 import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
+import { canonicalUrlForPath } from '../utils/brand.js';
 import { getCanonicalUrl } from '../utils/jsonLd';
-import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
+import { applyEntityNotFoundSeo, applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 import BreadcrumbNav from './BreadcrumbNav';
 import ActionRow from './ui/ActionRow';
 import SectionHeading from './ui/SectionHeading';
@@ -169,8 +170,22 @@ export default function CollectionDetailPage() {
       description,
       canonicalUrl: canonical,
       robots: 'index,follow',
+      breadcrumbs: [
+        { name: 'Home', item: '/' },
+        { name: 'Collections', item: '/collections' },
+        { name: collection.title, item: canonical },
+      ],
     });
   }, [collection]);
+
+  useLayoutEffect(() => {
+    if (collection) return undefined;
+    applyEntityNotFoundSeo({
+      label: 'Collection',
+      canonicalUrl: canonicalUrlForPath(`/collections/${collectionId}`),
+    });
+    return undefined;
+  }, [collection, collectionId]);
 
   const showXp = (xp) => {
     if (xp > 0) setXpToast(`+${xp} XP`);

@@ -3,6 +3,7 @@ User-agent: *
 Disallow: /dev/
 Disallow: /saved
 Disallow: /profile
+Disallow: /compare-clubs
 # Block query-string URLs (quiz sessions, compare params) — canonical paths are path-only
 Disallow: /*?
 

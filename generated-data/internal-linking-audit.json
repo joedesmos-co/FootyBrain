@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-29T10:25:15.619Z",
-  "sitemapUrlCount": 4992,
-  "zeroInboundCount": 4965,
-  "weakInboundCount": 6,
+  "generatedAt": "2026-05-30T20:28:56.196Z",
+  "sitemapUrlCount": 1090,
+  "zeroInboundCount": 1064,
+  "weakInboundCount": 7,
   "zeroInboundSample": [
     "/hubs/quizzes/theme/wonderkids",
     "/hubs/quizzes/theme/legends",
@@ -25,6 +25,7 @@
     "/hubs/quizzes/clubs/trophy",
     "/hubs/quizzes/clubs/kit",
     "/league/premier-league",
+    "/hubs/quizzes/league/premier-league",
     "/league/la-liga",
     "/hubs/quizzes/league/la-liga",
     "/league/bundesliga",
@@ -42,10 +43,13 @@
     "/team/manchester-city",
     "/hubs/quizzes/team/manchester-city",
     "/team/arsenal",
-    "/hubs/quizzes/team/arsenal",
-    "/team/liverpool"
+    "/hubs/quizzes/team/arsenal"
   ],
   "weakInboundSample": [
+    {
+      "path": "/hubs/quizzes",
+      "inbound": 1
+    },
     {
       "path": "/hubs/players/best-young-footballers",
       "inbound": 1
@@ -55,7 +59,7 @@
       "inbound": 1
     },
     {
-      "path": "/hubs/quizzes/league/premier-league",
+      "path": "/hubs/learn/football-players",
       "inbound": 1
     },
     {

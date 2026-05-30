@@ -9,7 +9,7 @@ import {
 } from '../data/nationalTeamData';
 import NationalTeamBadge from './NationalTeamBadge';
 import BreadcrumbNav from './BreadcrumbNav';
-import { pageTitle } from '../utils/brand.js';
+import { canonicalUrlForPath, pageTitle } from '../utils/brand.js';
 import { applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
 import {
   CRUMB_HOME,
@@ -32,6 +32,8 @@ export default function NationalTeamsPage() {
       description: truncateMetaDescription(
         `${nationCount} men's national sides with ${totalLinked.toLocaleString()} linked club players. Browse squad identity, rivalries, and World Cup 2026 prep—or play nation quizzes on FootyCompass.`,
       ),
+      canonicalUrl: canonicalUrlForPath('/national-teams'),
+      robots: 'index,follow',
       breadcrumbs: [
         { name: CRUMB_HOME, item: '/' },
         { name: CRUMB_NATIONAL_TEAMS, item: '/national-teams' },

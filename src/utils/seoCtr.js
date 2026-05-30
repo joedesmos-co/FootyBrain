@@ -7,7 +7,7 @@ import { getClubQuizCategoryById } from '../data/clubQuizCategories.js';
 import { getQuizThemeById } from '../data/quizThemes.js';
 import { getNationalTeamName } from '../data/nationalTeamData.js';
 import { peekTeamName } from '../data/teamStore.js';
-import { pageTitle, SITE_NAME, SITE_URL } from './brand.js';
+import { canonicalUrlForPath, pageTitle, SITE_NAME, SITE_URL } from './brand.js';
 import { formatPosition, getLeagueDisplayName } from './footballDisplay.js';
 import { upsertJsonLdScript } from './jsonLd.js';
 import { buildPlayerProfileDescription } from './playerProfileEditorial.js';
@@ -41,12 +41,19 @@ export function buildBreadcrumbJsonLd(items) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((row, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: row.name,
-      item: row.item,
-    })),
+    itemListElement: items.map((row, index) => {
+      const rawItem = row.item;
+      const item =
+        rawItem && String(rawItem).startsWith('http')
+          ? rawItem
+          : canonicalUrlForPath(rawItem || '/');
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: row.name,
+        item,
+      };
+    }),
   };
 }
 
