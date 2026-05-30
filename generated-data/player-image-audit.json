@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-30T18:47:24.830Z",
+  "generatedAt": "2026-05-30T19:58:55.640Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 285,
-    "withFallbackAvatar": 4542,
+    "withVerifiedPhoto": 245,
+    "withFallbackAvatar": 4582,
     "priorityListSize": 200,
-    "approvedEntries": 285,
-    "cacheResolved": 285,
+    "approvedEntries": 245,
+    "cacheResolved": 245,
     "cacheSkipped": 15
   },
   "brokenUrls": [],
@@ -108,25 +108,25 @@
       "id": "haaland",
       "name": "Erling Haaland",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Manchester_City_dressing_room_2022.jpg/960px-Manchester_City_dressing_room_2022.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Erling_Haaland_2023.jpg/960px-Erling_Haaland_2023.jpg"
     },
     {
       "id": "de-bruyne",
       "name": "Kevin De Bruyne",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Kevin_de_bruyne_werder.JPG"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Kevin_de_Bruyne_2016-12-26_%28cropped%29.jpg"
     },
     {
       "id": "rodri",
       "name": "Rodri",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/UEFA_EURO_qualifiers_Sweden_vs_Spain_20191015_Rodri_13.jpg/960px-UEFA_EURO_qualifiers_Sweden_vs_Spain_20191015_Rodri_13.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/RODRI_-_SWE_vs_ESP_-_UEFA_EURO_2020_QUALIFIERS_-_2019.10.15_%28cropped%29.jpg"
     },
     {
       "id": "foden",
       "name": "Phil Foden",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Phil_Foden_%2836502388741%29.jpg/960px-Phil_Foden_%2836502388741%29.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Phil_Foden_2022.jpeg"
     },
     {
       "id": "ederson",
@@ -177,12 +177,6 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Virgil_van_Dijk_2015.jpg/960px-Virgil_van_Dijk_2015.jpg"
     },
     {
-      "id": "alisson",
-      "name": "Alisson Becker",
-      "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_850_1625.jpg/960px-20180610_FIFA_Friendly_Match_Austria_vs._Brazil_850_1625.jpg"
-    },
-    {
       "id": "trent",
       "name": "Trent Alexander-Arnold",
       "tier": "overlay",
@@ -201,22 +195,10 @@
       "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Vin%C3%ADcius_J%C3%BAnior.jpg"
     },
     {
-      "id": "bellingham",
-      "name": "Jude Bellingham",
-      "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190535.jpg/960px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190535.jpg"
-    },
-    {
-      "id": "modric",
-      "name": "Luka Modrić",
-      "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Luka_Modri%C4%87_meets_Kolinda_Grabar-Kitarovi%C4%87_after_the_2018_FIFA_World_Cup_Final_%282%29.jpg/960px-Luka_Modri%C4%87_meets_Kolinda_Grabar-Kitarovi%C4%87_after_the_2018_FIFA_World_Cup_Final_%282%29.jpg"
-    },
-    {
       "id": "valverde",
       "name": "Federico Valverde",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/20171114_AUT_URU_7801.jpg/960px-20171114_AUT_URU_7801.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Federico_Valverde_2021_%28cropped%29.jpg"
     },
     {
       "id": "courtois",
@@ -228,7 +210,7 @@
       "id": "lewandowski",
       "name": "Robert Lewandowski",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Robert_Lewandowski_2008_profil.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Robert_Lewandowski_2011_%283%29_%28cropped%29.jpg"
     },
     {
       "id": "pedri",
@@ -264,7 +246,7 @@
       "id": "musiala",
       "name": "Jamal Musiala",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Klostermann_and_Musiala_2022.jpg/960px-Klostermann_and_Musiala_2022.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Jamal_Musiala_2022.jpg"
     },
     {
       "id": "kimmich",
@@ -282,7 +264,25 @@
       "id": "sane",
       "name": "Leroy Sané",
       "tier": "overlay",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/20180602_FIFA_Friendly_Match_Austria_vs._Germany_Leroy_San%C3%A9_850_1160.jpg/960px-20180602_FIFA_Friendly_Match_Austria_vs._Germany_Leroy_San%C3%A9_850_1160.jpg"
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Leroy_San%C3%A9_in_December_2017_%28cropped%29.jpg"
+    },
+    {
+      "id": "leao",
+      "name": "Rafael Leão",
+      "tier": "overlay",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Rafael_Le%C3%A3o_February_2018.jpg"
+    },
+    {
+      "id": "maignan",
+      "name": "Mike Maignan",
+      "tier": "overlay",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Chelsea_2_Lille_1_%2849202948728%29_Mike_Maignan.jpg"
+    },
+    {
+      "id": "lautaro",
+      "name": "Lautaro Martínez",
+      "tier": "overlay",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lautaro_Mart%C3%ADnez_%28cropped%29.jpg/960px-Lautaro_Mart%C3%ADnez_%28cropped%29.jpg"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-30",
+  "minApprovalScore": 62,
+  "minAutoApproveScore": 70,
+  "policy": "Prefer portrait/head-and-shoulders football photos. Placeholder is better than a low-quality image.",
+  "denyPlayerIds": {},
+  "denyCommonsFiles": [
+    "Manchester City dressing room 2022.jpg",
+    "Klostermann and Musiala 2022.jpg",
+    "20171114 AUT URU 7801.jpg",
+    "20171114 AUT URU 4530.jpg",
+    "Luka Modrić meets Kolinda Grabar-Kitarović after the 2018 FIFA World Cup Final (2).jpg",
+    "Arda Turan - Isco - Sami Khedira.jpg",
+    "Kieran Trippier, Alex Murphy and Harvey Barnes 24052026 (24).jpg",
+    "Nick Hagglund, Yerson Mosquera, Matt Miazga.jpg",
+    "James Tarkowski TomHeaton.jpg",
+    "Aaron Wan-Bissaka and Tomáš Souček 04032026 (2).jpg",
+    "Bafodé Diakité, Adam Smith, Igor Thiago, Michael Kayode and Adrien Truffert 27122025 (1).jpg",
+    "Carlos Baleba and Yankuba Minteh 24012026 (1).jpg",
+    "Kevin O'Toole Paxten Aaronson NYCFC v Colorado Mar 14 2026-117.jpg",
+    "Eduardo Camavinga, in Rennes, after his victory in Coupe de France, April 28th, 2019.png",
+    "25th Laureus World Sports Awards - Red Carpet - Jude Bellingham - 240422 190535.jpg",
+    "Robert Lewandowski 2008 profil.jpg",
+    "Ricardo Rodríguez (football).JPG",
+    "Olimpia-y-su-copa.jpg"
+  ],
+  "preferredOverrides": {
+    "haaland": {
+      "commonsFile": "Erling Haaland 2023.jpg",
+      "verifyName": "Haaland"
+    },
+    "foden": {
+      "commonsFile": "Phil Foden 2022.jpeg",
+      "verifyName": "Foden"
+    },
+    "valverde": {
+      "commonsFile": "Federico Valverde 2021 (cropped).jpg",
+      "verifyName": "Valverde"
+    },
+    "lewandowski": {
+      "commonsFile": "Robert Lewandowski 2011 (3) (cropped).jpg",
+      "verifyName": "Lewandowski"
+    },
+    "musiala": {
+      "commonsFile": "Jamal Musiala 2022.jpg",
+      "verifyName": "Musiala"
+    }
+  }
+}

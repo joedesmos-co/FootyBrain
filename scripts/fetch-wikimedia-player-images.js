@@ -212,7 +212,7 @@ async function main() {
       continue;
     }
 
-    const { meta } = result;
+    const { meta, quality } = result;
     let imageUrl = meta.thumbUrl;
 
     if (args.download) {
@@ -236,7 +236,7 @@ async function main() {
       }
     }
 
-    const entry = buildApprovedEntry(player, meta, imageUrl);
+    const entry = buildApprovedEntry(player, meta, imageUrl, quality);
 
     if (!args.dryRun) {
       cache.resolved[playerId] = { meta, at: new Date().toISOString() };

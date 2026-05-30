@@ -3,6 +3,14 @@
  * Timeouts, limited retries, no infinite loops.
  */
 
+import {
+  getPreferredOverride,
+  isDeniedCommonsFile,
+  isDeniedPlayer,
+  pickBestQualityCandidate,
+  scorePlayerImage,
+} from './playerImageQuality.mjs';
+
 export const USER_AGENT = 'FootyCompass/1.0 (player-image-ingest; https://footycompass.com)';
 
 export const REQUEST_TIMEOUT_MS = 12_000;
@@ -75,8 +83,6 @@ export function verifyIdentity(meta, verifyName, playerName, excludeTerms = []) 
   for (const term of excludeTerms) {
     if (term && hay.includes(String(term).toLowerCase())) return false;
   }
-  const needle = String(verifyName ?? playerName ?? '').toLowerCase();
-  if (needle && hay.includes(needle)) return true;
 
   const playerTokens = String(playerName ?? '')
     .toLowerCase()
@@ -89,7 +95,29 @@ export function verifyIdentity(meta, verifyName, playerName, excludeTerms = []) 
   const tokens = [...new Set([...playerTokens, ...verifyTokens])];
   if (!tokens.length) return false;
 
+  const givenName = playerTokens[0];
   const surname = playerTokens[playerTokens.length - 1];
+
+  // Reject when description/file clearly names a different person with the same surname.
+  if (givenName && surname && hay.includes(surname) && !hay.includes(givenName)) {
+    const otherGiven = hay.match(
+      new RegExp(`([a-zà-ÿ]{3,})\\s+${surname.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i'),
+    );
+    if (otherGiven && otherGiven[1].toLowerCase() !== givenName) return false;
+  }
+
+  const needle = String(verifyName ?? '').toLowerCase().trim();
+  if (needle && needle.includes(' ') && hay.includes(needle)) return true;
+
+  if (needle && verifyTokens.length === 1 && playerTokens.length >= 2) {
+    if (!hay.includes(givenName ?? '')) {
+      // Surname-only verifyName must not match a different player's full name.
+      if (hay.includes(needle)) return false;
+    }
+  } else if (needle && hay.includes(needle)) {
+    return true;
+  }
+
   if (surname && surname.length > 2 && !hay.includes(surname)) return false;
 
   const matched = tokens.filter((t) => hay.includes(t)).length;
@@ -113,8 +141,8 @@ function parseCommonsPage(page) {
     pageUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(title.replace(/ /g, '_'))}`,
     thumbUrl: info.thumburl ?? info.url,
     originalUrl: info.url,
-    width: info.thumbwidth ?? info.width,
-    height: info.thumbheight ?? info.height,
+    width: info.width ?? info.thumbwidth ?? 0,
+    height: info.height ?? info.thumbheight ?? 0,
     mime: info.mime,
     licenseShort,
     artist: artist || 'Wikimedia Commons contributor',
@@ -210,7 +238,8 @@ export async function downloadImage(url, destPath, writeFile) {
   writeFile(destPath, buf);
 }
 
-export function buildApprovedEntry(player, meta, imageUrl) {
+export function buildApprovedEntry(player, meta, imageUrl, quality = null) {
+  const q = quality ?? scorePlayerImage(meta, player.name);
   return {
     imageUrl,
     imageAlt: `${player.name}, ${player.position ?? 'footballer'} — licensed photo`,
@@ -223,31 +252,68 @@ export function buildApprovedEntry(player, meta, imageUrl) {
     status: 'approved',
     commonsFile: meta.commonsFile,
     commonsDescription: meta.description,
+    imageWidth: meta.width ?? null,
+    imageHeight: meta.height ?? null,
+    qualityScore: q.score,
+    qualityGrade: q.grade,
   };
 }
 
 export async function resolvePlayerCommonsImage(spec, player, { onDelay = sleep } = {}) {
-  let meta = null;
+  if (isDeniedPlayer(player.id)) {
+    return { skip: true, reason: 'player_denylisted' };
+  }
 
-  if (spec.commonsFile) {
+  const override = getPreferredOverride(player.id);
+  const mergedSpec = override
+    ? { ...spec, commonsFile: override.commonsFile ?? spec.commonsFile, verifyName: override.verifyName ?? spec.verifyName }
+    : spec;
+
+  let meta = null;
+  let quality = null;
+
+  if (mergedSpec.commonsFile) {
     await onDelay(API_DELAY_MS);
-    const direct = await fetchCommonsFile(spec.commonsFile);
+    const direct = await fetchCommonsFile(mergedSpec.commonsFile);
     if (direct?.error) return { skip: true, reason: direct.error };
-    meta = direct;
+    if (direct && isDeniedCommonsFile(direct.commonsFile)) {
+      return { skip: true, reason: 'commons_denylisted' };
+    }
+    if (direct) {
+      quality = scorePlayerImage(direct, player.name, mergedSpec.verifyName);
+      if (quality.pass) meta = direct;
+      else if (!override) {
+        // fall through to search for a better candidate
+      } else {
+        return { skip: true, reason: `quality_below_threshold:${quality.score}` };
+      }
+    }
   }
 
   if (!meta) {
-    const searchTerm = spec.searchName ?? spec.verifyName ?? player.name;
+    const searchTerm = mergedSpec.searchName ?? mergedSpec.verifyName ?? player.name;
     await onDelay(API_DELAY_MS);
     const search = await searchCommonsFiles(searchTerm);
     if (search.error) return { skip: true, reason: search.error };
 
-    for (const candidate of search.results) {
-      if (!isAllowedLicense(candidate.licenseShort)) continue;
-      if (!verifyIdentity(candidate, spec.verifyName, player.name, spec.excludeTerms)) continue;
-      if ((candidate.width ?? 0) < 200 || (candidate.height ?? 0) < 200) continue;
-      meta = candidate;
-      break;
+    const safeCandidates = search.results.filter((candidate) => {
+      if (!isAllowedLicense(candidate.licenseShort)) return false;
+      if (!verifyIdentity(candidate, mergedSpec.verifyName, player.name, mergedSpec.excludeTerms)) return false;
+      if (isDeniedCommonsFile(candidate.commonsFile)) return false;
+      if ((candidate.width ?? 0) < 200 || (candidate.height ?? 0) < 200) return false;
+      return true;
+    });
+
+    const best = pickBestQualityCandidate(
+      safeCandidates,
+      player.name,
+      mergedSpec.verifyName,
+      mergedSpec.excludeTerms,
+    );
+
+    if (best) {
+      meta = best.meta;
+      quality = best.quality;
     }
   }
 
@@ -255,12 +321,17 @@ export async function resolvePlayerCommonsImage(spec, player, { onDelay = sleep 
   if (!isAllowedLicense(meta.licenseShort)) {
     return { skip: true, reason: `unclear_license:${meta.licenseShort || 'unknown'}` };
   }
-  if (!verifyIdentity(meta, spec.verifyName, player.name, spec.excludeTerms)) {
+  if (!verifyIdentity(meta, mergedSpec.verifyName, player.name, mergedSpec.excludeTerms)) {
     return { skip: true, reason: 'identity_mismatch' };
   }
   if ((meta.width ?? 0) < 180 || (meta.height ?? 0) < 180) {
     return { skip: true, reason: 'image_too_small' };
   }
 
-  return { meta };
+  quality = quality ?? scorePlayerImage(meta, player.name, mergedSpec.verifyName);
+  if (!quality.pass) {
+    return { skip: true, reason: `quality_below_threshold:${quality.score}` };
+  }
+
+  return { meta, quality };
 }

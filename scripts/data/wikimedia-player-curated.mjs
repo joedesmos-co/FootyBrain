@@ -323,7 +323,7 @@ export default {
     'tm-111078': { commonsFile: 'Forsberg 2018.jpg', verifyName: 'Forsberg' },
     'tm-323831': { commonsFile: 'Rafael Santos Borré Deportivo Cali.jpg', verifyName: 'Borré' },
     'tm-763079': { commonsFile: 'Lens - Torino FC (02-08-2023) 57.jpg', verifyName: 'Khusanov' },
-    'tm-342385': { commonsFile: 'Guido Rodríguez WC2022.jpg', verifyName: 'Rodríguez' },
+    'tm-342385': { commonsFile: 'Guido Rodríguez WC2022.jpg', verifyName: 'Guido Rodríguez' },
     'tm-795738': { commonsFile: 'Kevin O\'Toole Paxten Aaronson NYCFC v Colorado Mar 14 2026-117.jpg', verifyName: 'Aaronson' },
     'tm-496268': { commonsFile: 'Joaquin-Piquerez-Palmeiras-Athletico-jul-2022-2.jpg', verifyName: 'Piquerez' },
     'tm-361914': { commonsFile: 'Nayef Aguerd.jpeg', verifyName: 'Aguerd' },
