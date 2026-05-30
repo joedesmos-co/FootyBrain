@@ -85,17 +85,20 @@ export function buildThinClubHistory(team, leagueName, league, rosterSize = 0) {
 
   const parts = [];
   const country = clean(team.country);
-  parts.push(`${team.name} play in ${leagueName}${country ? ` (${country})` : ''}.`);
-  if (team.founded) parts.push(`Founded in ${team.founded}.`);
-  if (team.stadium) parts.push(`Home ground: ${team.stadium}.`);
+  parts.push(`${team.name} compete in ${leagueName}${country ? ` (${country})` : ''}.`);
+  if (team.founded) parts.push(`Founded ${team.founded}.`);
+  if (team.stadium) parts.push(`Home: ${team.stadium}.`);
 
   const phrases = tagPhrases(team, 2);
   if (phrases.length) {
-    parts.push(`Known for ${list(phrases, 2)}.`);
+    parts.push(`Playing identity: ${list(phrases, 2)}.`);
   }
 
+  const manager = clean(team.manager);
+  if (manager) parts.push(`Head coach: ${manager}.`);
+
   const style = clean(league?.styleOfPlay);
-  if (style) parts.push(truncate(style, 120));
+  if (style) parts.push(truncate(style, 100));
 
   return truncate(parts.join(' '), 280);
 }
@@ -105,17 +108,19 @@ export function buildThinClubFanGuide(team, leagueName, league) {
 
   const parts = [];
   if (team.stadium) {
-    parts.push(`${team.stadium} is the home ground — start with the squad list to learn current names.`);
+    parts.push(`${team.stadium} is home — start with the squad list to learn current names.`);
   }
 
   const rivals = (team.rivals ?? []).map(clean).filter(Boolean);
   if (rivals.length) {
-    parts.push(`Local fixtures against ${list(rivals, 2)} matter most to supporters.`);
+    parts.push(`Derbies against ${list(rivals, 2)} matter most to supporters.`);
   }
 
   const phrases = tagPhrases(team, 2);
   if (phrases.length) {
-    parts.push(`Fans associate the side with ${list(phrases, 2)}.`);
+    parts.push(`Supporters associate the club with ${list(phrases, 2)}.`);
+  } else {
+    parts.push(`Follow league form and squad changes to build recognition in ${leagueName}.`);
   }
 
   return truncate(parts.join(' '), 240);

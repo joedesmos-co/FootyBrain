@@ -465,6 +465,8 @@ function main() {
 // Future: replace with API/Firebase fetch — see fetchPlayers(), fetchTeams() stubs at bottom.
 // Full squad expansion (${DATA_AS_OF}): ${baseLeagues.length} leagues, ${baseTeams.length} clubs, ${allBasePlayers.length} players (${mvpBase.length} editorial + ${trimmedGenerated.length} squad listings).
 
+import { mergePlayerOverlay, mergeTeamOverlay } from './editorialOverlayAccess.js';
+
 `;
 
   const leagueThemes = `const leagueBadgeThemes = [
@@ -554,11 +556,13 @@ for (const player of players) {
 
 // Helpers for local data — swap implementations when API/Firebase is wired up.
 export function getPlayerById(id) {
-  return playerById.get(id);
+  const player = playerById.get(id);
+  return player ? mergePlayerOverlay(player) : undefined;
 }
 
 export function getTeamById(id) {
-  return teamById.get(id);
+  const team = teamById.get(id);
+  return team ? mergeTeamOverlay(team) : undefined;
 }
 
 export function getLeagueById(id) {
@@ -566,11 +570,13 @@ export function getLeagueById(id) {
 }
 
 export function getPlayersForTeam(teamId) {
-  return playersByTeamId.get(teamId) ?? [];
+  const roster = playersByTeamId.get(teamId) ?? [];
+  return roster.map((p) => mergePlayerOverlay(p));
 }
 
 export function getPlayersForLeague(leagueId) {
-  return playersByLeagueId.get(leagueId) ?? [];
+  const roster = playersByLeagueId.get(leagueId) ?? [];
+  return roster.map((p) => mergePlayerOverlay(p));
 }
 
 export function getTeamName(teamId) {

@@ -37,15 +37,15 @@ function positionCategory(position) {
 function roleContextLine(position) {
   switch (positionCategory(position)) {
     case 'goalkeeper':
-      return 'Focus on shot-stopping and box command when learning this name.';
+      return 'Goalkeepers live on saves, command, and distribution under pressure.';
     case 'defender':
-      return 'Partnerships at the back and role in build-up are the usual memory hooks.';
+      return 'Centre-backs and full-backs are remembered for duels, positioning, and build-up.';
     case 'midfielder':
-      return 'Link play and where they pick up the ball help tie name to role.';
+      return 'Midfielders tie the team together — where they receive the ball shapes how you recall them.';
     case 'forward':
-      return 'Goal threat and movement are what stick in quizzes and highlights.';
+      return 'Forwards stick through goals, movement, and how they attack space.';
     default:
-      return 'Club and league context are the fastest way to remember this name.';
+      return 'Club, league, and role together are the fastest memory hooks.';
   }
 }
 
@@ -149,7 +149,10 @@ export function buildPlayerKnownFor(player, ctx = {}) {
   }
 
   const country = String(player.nationalTeam || player.nationality || '').trim();
-  if (country && !ctx.topTier) add(`${country} national-team pool on FootyCompass`);
+  if (country && !ctx.topTier) add(`${country} international`);
+
+  const careerCtx = String(player?.careerContext ?? '').trim();
+  if (careerCtx && items.length < 4) add(careerCtx.replace(/\.$/, ''));
 
   if (hasSubstantiveQuickFact(player) && items.length < 4) {
     const fact = String(player.quickFact).trim();

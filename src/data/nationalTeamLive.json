@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-05-27T10:27:19.335Z",
+    "generatedAt": "2026-05-30T21:02:09.726Z",
     "wave": "2+3-batch1+2",
     "liveNationalTeamIds": [
       "england",
@@ -246,20 +246,20 @@
       "france": 9,
       "spain": 8,
       "brazil": 8,
-      "argentina": 20,
+      "argentina": 23,
       "germany": 7,
       "portugal": 13,
-      "italy": 9,
+      "italy": 10,
       "netherlands": 13,
       "belgium": 13,
       "croatia": 11,
       "switzerland": 9,
-      "denmark": 9,
+      "denmark": 11,
       "serbia": 5,
-      "turkey": 6,
+      "turkey": 7,
       "united-states": 7,
       "mexico": 5,
-      "uruguay": 7,
+      "uruguay": 9,
       "colombia": 6,
       "chile": 5,
       "morocco": 5,
@@ -267,13 +267,13 @@
       "nigeria": 5,
       "japan": 8,
       "korea-republic": 6,
-      "norway": 5,
+      "norway": 6,
       "ghana": 6,
       "algeria": 6,
       "poland": 5,
       "austria": 9,
       "ukraine": 5,
-      "scotland": 7,
+      "scotland": 8,
       "paraguay": 5,
       "czechia": 3,
       "sweden": 3,
@@ -289,8 +289,8 @@
       "qatar": 0,
       "saudi-arabia": 0,
       "iran": 0,
-      "south-africa": 0,
-      "panama": 0,
+      "south-africa": 1,
+      "panama": 1,
       "iraq": 0,
       "jordan": 0,
       "uzbekistan": 1,
@@ -322,7 +322,7 @@
         "accent": "#e0e7ff"
       },
       "fanGuide": "The Three Lions carry the weight of 1966 and a nation that lives through the Premier League. England means Wembley, white shirts, and endless “football’s coming home” debate.",
-      "shortHistory": "Men’s senior team of England (FA). Linked players are already in the FootyCompass club database.",
+      "shortHistory": "The Three Lions carry the weight of 1966 and a nation that lives through the Premier League.",
       "fifaRanking": 4,
       "tmCode": "england",
       "crestPolicy": "text-only"
@@ -350,7 +350,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Les Bleus blend academy depth with star power. France won the 2018 World Cup and remain a benchmark for modern athletic, tactical football.",
-      "shortHistory": "Men’s senior team of France (FFF). Squad lists link FootyCompass club players on TM senior France listings.",
+      "shortHistory": "Les Bleus blend academy depth with star power.",
       "fifaRanking": 1,
       "tmCode": "france",
       "crestPolicy": "text-only"
@@ -378,7 +378,7 @@
         "accent": "#fecaca"
       },
       "fanGuide": "La Roja won Euro 2008, 2012, and the 2010 World Cup with tiki-taka possession. Spain means red shirts, technical midfielders, and Iberian pride.",
-      "shortHistory": "Men’s senior team of Spain (RFEF). Squads link club players in FootyCompass who appear on TM Spain senior listings.",
+      "shortHistory": "La Roja won Euro 2008, 2012, and the 2010 World Cup with tiki-taka possession.",
       "fifaRanking": 2,
       "tmCode": "spain",
       "crestPolicy": "text-only"
@@ -405,7 +405,7 @@
         "accent": "#bbf7d0"
       },
       "fanGuide": "The Seleção are five-time World Cup winners and the reference point for flair in men’s football. Learning Brazil means knowing samba style, yellow shirts, and the rivalry with Argentina.",
-      "shortHistory": "Men’s senior team of Brazil (CBF). FootyCompass squads link existing club players matched to Transfermarkt senior listings.",
+      "shortHistory": "The Seleção are five-time World Cup winners and the reference point for flair in men’s football.",
       "fifaRanking": 6,
       "tmCode": "brazil",
       "crestPolicy": "text-only"
@@ -431,7 +431,7 @@
         "accent": "#e0f2fe"
       },
       "fanGuide": "La Albiceleste are 2022 World Cup winners built around generational talent and Buenos Aires passion. Argentina means blue and white stripes and the Clásico with Brazil.",
-      "shortHistory": "Men’s senior team of Argentina (AFA). Squad links use TM listings matched to existing FootyCompass players.",
+      "shortHistory": "La Albiceleste are 2022 World Cup winners built around generational talent and Buenos Aires passion.",
       "fifaRanking": 3,
       "tmCode": "argentina",
       "crestPolicy": "text-only"
@@ -460,7 +460,7 @@
         "accent": "#fbbf24"
       },
       "fanGuide": "Die Mannschaft are four-time World Cup winners known for pressing, organization, and tournament pedigree. Germany means efficiency, big-match experience, and Bundesliga-fed talent.",
-      "shortHistory": "Men’s senior team of Germany (DFB). Squads combine Transfermarkt senior links with club players whose nationality matches in the FootyCompass registry.",
+      "shortHistory": "Die Mannschaft are four-time World Cup winners known for pressing, organization, and tournament pedigree.",
       "fifaRanking": 10,
       "tmCode": "germany",
       "crestPolicy": "text-only"
@@ -488,7 +488,7 @@
         "accent": "#fecaca"
       },
       "fanGuide": "Portugal blend technical midfielders with elite forwards. Modern Portugal means Cristiano Ronaldo’s era, Euro 2016 pride, and a deep pipeline from Lisbon and Porto.",
-      "shortHistory": "Men’s senior team of Portugal (FPF). Squad links join existing FootyCompass club players to national-team memberships.",
+      "shortHistory": "Portugal blend technical midfielders with elite forwards.",
       "fifaRanking": 5,
       "tmCode": "portugal",
       "crestPolicy": "text-only"
@@ -516,7 +516,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "The Azzurri are defined by tactical identity and tournament moments: defensive mastery, ruthless set pieces, and famous European Championship runs.",
-      "shortHistory": "Men’s senior team of Italy (FIGC). FootyCompass squads link players already in the club database.",
+      "shortHistory": "The Azzurri are defined by tactical identity and tournament moments: defensive mastery, ruthless set pieces, and famous European Championship runs.",
       "fifaRanking": 12,
       "tmCode": "italy",
       "crestPolicy": "text-only"
@@ -545,7 +545,7 @@
         "accent": "#ffedd5"
       },
       "fanGuide": "Oranje invented Total Football and remain a benchmark for technical, attacking football. The Netherlands mean orange shirts, Ajax DNA, and World Cup near-misses turned into learning stories.",
-      "shortHistory": "Men’s senior team of the Netherlands (KNVB). Linked players are existing FootyCompass club players with Dutch nationality or TM senior listings.",
+      "shortHistory": "Oranje invented Total Football and remain a benchmark for technical, attacking football.",
       "fifaRanking": 7,
       "tmCode": "netherlands",
       "crestPolicy": "text-only"
@@ -572,7 +572,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Belgium’s “Golden Generation” made them a modern power. Learn Belgium through creative midfielders, elite keepers, and a small-country talent funnel.",
-      "shortHistory": "Men’s senior team of Belgium (RBFA). Memberships join existing FootyCompass club players; no new registry players are created.",
+      "shortHistory": "Belgium’s “Golden Generation” made them a modern power.",
       "fifaRanking": 9,
       "tmCode": "belgium",
       "crestPolicy": "text-only"
@@ -599,7 +599,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Croatia overachieve through midfield craft and tournament grit. The story runs from 1998 to 2018’s final and the continuous production of elite playmakers.",
-      "shortHistory": "Men’s senior team of Croatia (HNS). FootyCompass squads link existing club players matched to Croatia memberships.",
+      "shortHistory": "Croatia overachieve through midfield craft and tournament grit.",
       "fifaRanking": 11,
       "tmCode": "croatia",
       "crestPolicy": "text-only"
@@ -626,7 +626,7 @@
         "accent": "#fecaca"
       },
       "fanGuide": "Switzerland are a disciplined tournament side with a strong diaspora talent base. Learn the spine: goalkeeper stability, organized defenders, and creative dual-nation midfielders.",
-      "shortHistory": "Men’s senior team of Switzerland (SFV/ASF). Squads link to club players already present in FootyCompass.",
+      "shortHistory": "Switzerland are a disciplined tournament side with a strong diaspora talent base.",
       "fifaRanking": 19,
       "tmCode": "switzerland",
       "crestPolicy": "text-only"
@@ -652,7 +652,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "Denmark punch above their size with collective pressing and smart rotations. The modern story mixes Euro 1992 legend, Eriksen’s era, and strong club exports.",
-      "shortHistory": "Men’s senior team of Denmark (DBU). Memberships are join-only to existing FootyCompass players.",
+      "shortHistory": "Denmark punch above their size with collective pressing and smart rotations.",
       "fifaRanking": 20,
       "tmCode": "denmark",
       "crestPolicy": "text-only"
@@ -678,7 +678,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Serbia’s identity is physical presence and technical flashes from a rich Balkan football culture. Learn key exports and the tactical swings between generations.",
-      "shortHistory": "Men’s senior team of Serbia (FSS). Squads link existing FootyCompass club players to Serbia memberships.",
+      "shortHistory": "Serbia’s identity is physical presence and technical flashes from a rich Balkan football culture.",
       "fifaRanking": 39,
       "tmCode": "serbia",
       "crestPolicy": "text-only"
@@ -705,7 +705,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "Turkey combine passionate football culture with emerging European-based talent. Learn the national identity through big tournament highs and the Istanbul club ecosystem.",
-      "shortHistory": "Men’s senior team of Turkey (TFF). Memberships join existing FootyCompass club players; no new players are imported.",
+      "shortHistory": "Turkey combine passionate football culture with emerging European-based talent.",
       "fifaRanking": 22,
       "tmCode": "turkiye",
       "crestPolicy": "text-only"
@@ -732,7 +732,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "The USMNT are a rising CONCACAF power built on athleticism and a growing European player pipeline. Learn the core roles ahead of the 2026 host spotlight.",
-      "shortHistory": "Men’s senior team of the United States (US Soccer). Squads link FootyCompass club players to USA memberships.",
+      "shortHistory": "The USMNT are a rising CONCACAF power built on athleticism and a growing European player pipeline.",
       "fifaRanking": 16,
       "tmCode": "united-states",
       "crestPolicy": "text-only"
@@ -758,7 +758,7 @@
         "accent": "#bbf7d0"
       },
       "fanGuide": "El Tri are defined by regional rivalry, technical attackers, and tournament regularity. Mexico is central to CONCACAF storylines and 2026 host context.",
-      "shortHistory": "Men’s senior team of Mexico (FMF). Memberships link existing club players only; coverage depends on club imports.",
+      "shortHistory": "El Tri are defined by regional rivalry, technical attackers, and tournament regularity.",
       "fifaRanking": 15,
       "tmCode": "mexico",
       "crestPolicy": "text-only"
@@ -786,7 +786,7 @@
         "accent": "#e0f2fe"
       },
       "fanGuide": "Uruguay are small-country giants: historic World Cups, relentless mentality, and famous striker pipelines. Learn their modern pressing plus classic grit.",
-      "shortHistory": "Men’s senior team of Uruguay (AUF). Squads link to existing FootyCompass club players matched to Uruguay memberships.",
+      "shortHistory": "Uruguay are small-country giants: historic World Cups, relentless mentality, and famous striker pipelines.",
       "fifaRanking": 17,
       "tmCode": "uruguay",
       "crestPolicy": "text-only"
@@ -812,7 +812,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Colombia’s modern identity mixes midfield rhythm with explosive wide attackers. Learn the Cafeteros through iconic No.10 traditions and CONMEBOL qualifying battles.",
-      "shortHistory": "Men’s senior team of Colombia (FCF). Memberships are join-only to existing FootyCompass players.",
+      "shortHistory": "Colombia’s modern identity mixes midfield rhythm with explosive wide attackers.",
       "fifaRanking": 13,
       "tmCode": "colombia",
       "crestPolicy": "text-only"
@@ -838,7 +838,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Chile’s peak era came from relentless pressing and midfield grit. Learn their identity through high-intensity transitions and memorable Copa América moments.",
-      "shortHistory": "Men’s senior team of Chile (FFCh). Squads link existing FootyCompass club players to Chile memberships.",
+      "shortHistory": "Chile’s peak era came from relentless pressing and midfield grit.",
       "fifaRanking": 54,
       "tmCode": "chile",
       "crestPolicy": "text-only"
@@ -865,7 +865,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "Morocco’s modern rise is built on a strong diaspora, organized defending, and brave tournament play. Learn them through club exports across Europe.",
-      "shortHistory": "Men’s senior team of Morocco (FRMF). Memberships join existing FootyCompass club players; coverage grows with club imports.",
+      "shortHistory": "Morocco’s modern rise is built on a strong diaspora, organized defending, and brave tournament play.",
       "fifaRanking": 8,
       "tmCode": "morocco",
       "crestPolicy": "text-only"
@@ -891,7 +891,7 @@
         "accent": "#bbf7d0"
       },
       "fanGuide": "Senegal are one of Africa’s strongest sides: athletic pressing, elite forwards, and deep European club representation. Learn their core through AFCON and World Cup stories.",
-      "shortHistory": "Men’s senior team of Senegal (FSF). FootyCompass squads link existing club players to Senegal memberships.",
+      "shortHistory": "Senegal are one of Africa’s strongest sides: athletic pressing, elite forwards, and deep European club representation.",
       "fifaRanking": 14,
       "tmCode": "senegal",
       "crestPolicy": "text-only"
@@ -917,7 +917,7 @@
         "accent": "#bbf7d0"
       },
       "fanGuide": "Nigeria’s Super Eagles are defined by pace, power, and a huge talent pipeline. Learn Nigeria through their exports and the variety of attacking profiles.",
-      "shortHistory": "Men’s senior team of Nigeria (NFF). Memberships join existing FootyCompass club players; no new registry players are imported.",
+      "shortHistory": "Nigeria’s Super Eagles are defined by pace, power, and a huge talent pipeline.",
       "fifaRanking": 26,
       "tmCode": "nigeria",
       "crestPolicy": "text-only"
@@ -943,7 +943,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Japan are a modern technical side with disciplined structure and a growing European presence. Learn their style through positional play and coordinated pressing.",
-      "shortHistory": "Men’s senior team of Japan (JFA). Squads link existing FootyCompass club players to Japan memberships.",
+      "shortHistory": "Japan are a modern technical side with disciplined structure and a growing European presence.",
       "fifaRanking": 18,
       "tmCode": "japan",
       "crestPolicy": "text-only"
@@ -971,7 +971,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "South Korea combine relentless work rate with elite attackers and fast transitions. Learn the Taegeuk Warriors through their World Cup history and rivalry with Japan.",
-      "shortHistory": "Men’s senior team of South Korea (KFA). Memberships join existing FootyCompass club players; coverage depends on club imports.",
+      "shortHistory": "South Korea combine relentless work rate with elite attackers and fast transitions.",
       "fifaRanking": 25,
       "tmCode": "south-korea",
       "crestPolicy": "text-only"
@@ -998,7 +998,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Norway’s modern story blends Nordic rivalry with a growing European export pipeline. Learn them through Haaland’s generation, organized defending, and Scandinavian derby context.",
-      "shortHistory": "Men’s senior team of Norway (NFF). FootyCompass squads link existing club players matched to Norway memberships.",
+      "shortHistory": "Norway’s modern story blends Nordic rivalry with a growing European export pipeline.",
       "fifaRanking": 31,
       "tmCode": "norway",
       "crestPolicy": "text-only"
@@ -1024,7 +1024,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "The Black Stars are one of Africa’s most recognizable sides: pace, power, and deep talent across Europe’s leagues. Learn Ghana through AFCON history and the rivalry with Nigeria.",
-      "shortHistory": "Men’s senior team of Ghana (GFA). Memberships join existing FootyCompass club players; no new registry players are imported.",
+      "shortHistory": "The Black Stars are one of Africa’s most recognizable sides: pace, power, and deep talent across Europe’s leagues.",
       "fifaRanking": 74,
       "tmCode": "ghana",
       "crestPolicy": "text-only"
@@ -1050,7 +1050,7 @@
         "accent": "#dc2626"
       },
       "fanGuide": "Algeria’s Fennecs mix North African flair with European-based stars. Learn them through AFCON triumphs, desert football identity, and Maghreb rivalries.",
-      "shortHistory": "Men’s senior team of Algeria (FAF). Squads link existing FootyCompass club players to Algeria memberships.",
+      "shortHistory": "Algeria’s Fennecs mix North African flair with European-based stars.",
       "fifaRanking": 28,
       "tmCode": "algeria",
       "crestPolicy": "text-only"
@@ -1077,7 +1077,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "Poland combine physical presence with technical midfielders and famous striker traditions. Learn the Biało-czerwoni through World Cup history and Central European rivalries.",
-      "shortHistory": "Men’s senior team of Poland (PZPN). Memberships are join-only to existing FootyCompass players.",
+      "shortHistory": "Poland combine physical presence with technical midfielders and famous striker traditions.",
       "fifaRanking": 35,
       "tmCode": "poland",
       "crestPolicy": "text-only"
@@ -1104,7 +1104,7 @@
         "accent": "#fee2e2"
       },
       "fanGuide": "Austria blend Central European grit with a strong Bundesliga talent pipeline. Learn Das Team through organized pressing, set-piece threat, and rivalry with Germany.",
-      "shortHistory": "Men’s senior team of Austria (ÖFB). FootyCompass squads link existing club players to Austria memberships.",
+      "shortHistory": "Austria blend Central European grit with a strong Bundesliga talent pipeline.",
       "fifaRanking": 24,
       "tmCode": "austria",
       "crestPolicy": "text-only"
@@ -1130,7 +1130,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Ukraine’s identity is built on technical midfielders, fast wide players, and a deep European diaspora. Learn the national team through modern exports and resilient tournament football.",
-      "shortHistory": "Men’s senior team of Ukraine (UAF). Memberships join existing FootyCompass club players; no new registry players are imported.",
+      "shortHistory": "Ukraine’s identity is built on technical midfielders, fast wide players, and a deep European diaspora.",
       "fifaRanking": 32,
       "tmCode": "ukraine",
       "crestPolicy": "text-only"
@@ -1156,7 +1156,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Scotland carry passionate support and a proud British Isles rivalry with England. Learn the Tartan Army through physical duels, set pieces, and the Premier League Scottish export pipeline.",
-      "shortHistory": "Men’s senior team of Scotland (SFA). Squads link existing FootyCompass club players matched to Scotland memberships.",
+      "shortHistory": "Scotland carry passionate support and a proud British Isles rivalry with England.",
       "fifaRanking": 43,
       "tmCode": "scotland",
       "crestPolicy": "text-only"
@@ -1183,7 +1183,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Paraguay are CONMEBOL warriors: organized defending, set-piece discipline, and famous Albirroja spirit. Learn them through qualifying battles and physical South American football.",
-      "shortHistory": "Men’s senior team of Paraguay (APF). Memberships are join-only to existing FootyCompass players.",
+      "shortHistory": "Paraguay are CONMEBOL warriors: organized defending, set-piece discipline, and famous Albirroja spirit.",
       "fifaRanking": 40,
       "tmCode": "paraguay",
       "crestPolicy": "text-only"
@@ -1212,7 +1212,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Czechia carry Central European football heritage from the Czechoslovak era through modern UEFA competition. Learn them through technical midfielders, organized defending, and rivalry with Germany and Poland.",
-      "shortHistory": "Men’s senior team of Czechia (FAČR). FootyCompass squads link existing club players matched to Czechia memberships.",
+      "shortHistory": "Czechia carry Central European football heritage from the Czechoslovak era through modern UEFA competition.",
       "fifaRanking": 43,
       "tmCode": "czech-republic",
       "crestPolicy": "text-only"
@@ -1240,7 +1240,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Sweden’s Blågult blend Scandinavian organization with Premier League and Bundesliga exports. Learn them through Ibrahimović’s legacy, Nordic rivalries, and modern stars like Isak.",
-      "shortHistory": "Men’s senior team of Sweden (SvFF). FootyCompass squads link existing club players matched to Sweden memberships.",
+      "shortHistory": "Sweden’s Blågult blend Scandinavian organization with Premier League and Bundesliga exports.",
       "fifaRanking": 38,
       "tmCode": "sweden",
       "crestPolicy": "text-only"
@@ -1268,7 +1268,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Les Éléphants are West African giants with AFCON triumphs and a long line of European-based stars. Learn Ivory Coast through orange kits, physical flair, and rivalry with Ghana.",
-      "shortHistory": "Men’s senior team of Côte d'Ivoire (FIF). Squads link existing FootyCompass club players via nationality registry and preview TM field matches.",
+      "shortHistory": "Les Éléphants are West African giants with AFCON triumphs and a long line of European-based stars.",
       "fifaRanking": null,
       "tmCode": "cote-divoire",
       "crestPolicy": "text-only"
@@ -1296,7 +1296,7 @@
         "accent": "#fecaca"
       },
       "fanGuide": "Canada’s Les Rouges are 2026 co-hosts building on MLS depth and European exports like Davies and David. Learn them through CONCACAF rivalries and a growing World Cup generation.",
-      "shortHistory": "Men’s senior team of Canada (Canada Soccer). FootyCompass squads link existing club players matched to Canada memberships.",
+      "shortHistory": "Canada’s Les Rouges are 2026 co-hosts building on MLS depth and European exports like Davies and David.",
       "fifaRanking": 30,
       "tmCode": "canada",
       "crestPolicy": "text-only"
@@ -1323,7 +1323,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "The Socceroos carry Asia-Pacific pride with a physical, direct style and a strong European diaspora pipeline. Learn Australia through World Cup runs and AFC rivalry with Japan.",
-      "shortHistory": "Men’s senior team of Australia (Football Australia). Squads link existing FootyCompass club players matched to Australia memberships.",
+      "shortHistory": "The Socceroos carry Asia-Pacific pride with a physical, direct style and a strong European diaspora pipeline.",
       "fifaRanking": 27,
       "tmCode": "australia",
       "crestPolicy": "text-only"
@@ -1351,7 +1351,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "La Tri blend Andean grit with technical midfielders and South American World Cup pedigree. Learn Ecuador through yellow shirts, altitude football identity, and rivalry with Colombia.",
-      "shortHistory": "Men’s senior team of Ecuador (FEF). FootyCompass squads link existing club players matched to Ecuador memberships.",
+      "shortHistory": "La Tri blend Andean grit with technical midfielders and South American World Cup pedigree.",
       "fifaRanking": 23,
       "tmCode": "ecuador",
       "crestPolicy": "text-only"
@@ -1378,7 +1378,7 @@
         "accent": "#dbeafe"
       },
       "fanGuide": "Bosnia and Herzegovina’s Zmajevi tie mountain football passion to Serie A and Bundesliga exports. Learn them through Yugoslav heritage, derby tension with Serbia, and gritty defensive football.",
-      "shortHistory": "Men’s senior team of Bosnia and Herzegovina (NFSBiH). FootyCompass squads link existing club players matched to Bosnia memberships.",
+      "shortHistory": "Bosnia and Herzegovina’s Zmajevi tie mountain football passion to Serie A and Bundesliga exports.",
       "fifaRanking": 65,
       "tmCode": "bosnia-herzegovina",
       "crestPolicy": "text-only"
@@ -1405,7 +1405,7 @@
         "accent": "#fef08a"
       },
       "fanGuide": "Les Léopards blend Central African athleticism with a European club diaspora across Ligue 1 and La Liga. Learn Congo DR through fast transitions and rivalry with neighbouring West African powers.",
-      "shortHistory": "Men’s senior team of DR Congo (FECOFA). FootyCompass squads link existing club players via nationality registry; TM national-team scraper lacks a stable row.",
+      "shortHistory": "Les Léopards blend Central African athleticism with a European club diaspora across Ligue 1 and La Liga.",
       "fifaRanking": null,
       "tmCode": "congo-dr",
       "crestPolicy": "text-only"
@@ -1432,7 +1432,7 @@
         "accent": "#fde047"
       },
       "fanGuide": "Les Grenadiers carry Caribbean passion through pacey wingers and a growing MLS and European diaspora. Learn Haiti through CONCACAF fight and rivalry with neighbouring regional powers.",
-      "shortHistory": "Men’s senior team of Haiti (FHF). FootyCompass squads link existing club players via nationality registry until TM squad listings match cleanly.",
+      "shortHistory": "Les Grenadiers carry Caribbean passion through pacey wingers and a growing MLS and European diaspora.",
       "fifaRanking": null,
       "tmCode": "haiti",
       "crestPolicy": "text-only"
@@ -1460,7 +1460,7 @@
         "accent": "#1f2937"
       },
       "fanGuide": "Tunisia’s Carthage Eagles are a resilient North African tournament side built on disciplined defending and fast transitions. Learn Tunisia through CAF rivalry with Algeria and Morocco and a strong pipeline into Europe’s leagues.",
-      "shortHistory": "Men’s senior team of Tunisia (FTF). FootyCompass squads link existing club players via Transfermarkt preview links plus nationality registry backfill.",
+      "shortHistory": "Tunisia’s Carthage Eagles are a resilient North African tournament side built on disciplined defending and fast transitions.",
       "fifaRanking": 44,
       "tmCode": "tunisia",
       "crestPolicy": "text-only"
@@ -1487,7 +1487,7 @@
         "accent": "#fde047"
       },
       "fanGuide": "The Pharaohs are Africa’s most successful AFCON side, built on technical midfielders and European-based stars. Learn Egypt through Cairo passion, North African rivalries, and a deep national-pool diaspora.",
-      "shortHistory": "Men’s senior team of Egypt (EFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "shortHistory": "The Pharaohs are Africa’s most successful AFCON side, built on technical midfielders and European-based stars.",
       "fifaRanking": 29,
       "tmCode": "egypt",
       "crestPolicy": "text-only"
@@ -1514,7 +1514,7 @@
         "accent": "#fecaca"
       },
       "fanGuide": "Al-Annabi blend Gulf technical football with a growing European pipeline. Learn Qatar through AFC rivalries and the 2022 host generation — study names from the national pool, not a locked tournament squad.",
-      "shortHistory": "Men’s senior team of Qatar (QFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "shortHistory": "Al-Annabi blend Gulf technical football with a growing European pipeline.",
       "fifaRanking": 55,
       "tmCode": "qatar",
       "crestPolicy": "text-only"
@@ -1541,8 +1541,8 @@
         "to": "#14532d",
         "accent": "#bbf7d0"
       },
-      "fanGuide": "The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path. Learn Saudi Arabia through AFC rivalries and a national pool drawn from FootyCompass’s club registry.",
-      "shortHistory": "Men’s senior team of Saudi Arabia (SAFF). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path. Learn Saudi Arabia through AFC rivalries and a national pool drawn from FootyBrain’s club registry.",
+      "shortHistory": "The Green Falcons carry Gulf pride with pace, pressing, and a strong domestic league export path.",
       "fifaRanking": 61,
       "tmCode": "saudi-arabia",
       "crestPolicy": "text-only"
@@ -1569,8 +1569,8 @@
         "to": "#dc2626",
         "accent": "#fef08a"
       },
-      "fanGuide": "Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and linked players in FootyCompass’s national pool.",
-      "shortHistory": "Men’s senior team of Iran (FFIRI). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition. Learn Iran through AFC rivalries and linked players in FootyBrain’s national pool.",
+      "shortHistory": "Team Melli combine disciplined defending with technical midfielders and a long World Cup qualification tradition.",
       "fifaRanking": 21,
       "tmCode": "iran",
       "crestPolicy": "text-only"
@@ -1596,8 +1596,8 @@
         "to": "#fbbf24",
         "accent": "#1f2937"
       },
-      "fanGuide": "Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names linked from FootyCompass’s club registry national pool.",
-      "shortHistory": "Men’s senior team of South Africa (SAFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues. Learn South Africa through CAF rivalries and names linked from FootyBrain’s club registry national pool.",
+      "shortHistory": "Bafana Bafana carry Africa’s first World Cup host legacy and a deep diaspora in Europe’s leagues.",
       "fifaRanking": 60,
       "tmCode": "south-africa",
       "crestPolicy": "text-only"
@@ -1623,8 +1623,8 @@
         "to": "#1d4ed8",
         "accent": "#fde047"
       },
-      "fanGuide": "Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and linked players in FootyCompass’s national pool.",
-      "shortHistory": "Men’s senior team of Panama (FEPAFUT). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "Los Canaleros blend CONCACAF grit with MLS and South American club paths. Learn Panama through regional rivalries and linked players in FootyBrain’s national pool.",
+      "shortHistory": "Los Canaleros blend CONCACAF grit with MLS and South American club paths.",
       "fifaRanking": 33,
       "tmCode": "panama",
       "crestPolicy": "text-only"
@@ -1650,8 +1650,8 @@
         "to": "#111827",
         "accent": "#dc2626"
       },
-      "fanGuide": "The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and linked names from FootyCompass’s club registry pool.",
-      "shortHistory": "Men’s senior team of Iraq (IFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "The Lions of Mesopotamia mix technical midfielders with passionate tournament football. Learn Iraq through AFC qualifying stories and linked names from FootyBrain’s club registry pool.",
+      "shortHistory": "The Lions of Mesopotamia mix technical midfielders with passionate tournament football.",
       "fifaRanking": 57,
       "tmCode": "iraq",
       "crestPolicy": "text-only"
@@ -1677,8 +1677,8 @@
         "to": "#dc2626",
         "accent": "#f8fafc"
       },
-      "fanGuide": "Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and FootyCompass’s registry-linked national pool.",
-      "shortHistory": "Men’s senior team of Jordan (JFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "Al-Nashama are a rising AFC side built on organized defending and European-based talent. Learn Jordan through West Asian rivalries and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "Al-Nashama are a rising AFC side built on organized defending and European-based talent.",
       "fifaRanking": 63,
       "tmCode": "jordan",
       "crestPolicy": "text-only"
@@ -1704,8 +1704,8 @@
         "to": "#16a34a",
         "accent": "#f8fafc"
       },
-      "fanGuide": "The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and linked players in FootyCompass’s national pool.",
-      "shortHistory": "Men’s senior team of Uzbekistan (UFA). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports. Learn Uzbekistan through AFC depth and linked players in FootyBrain’s national pool.",
+      "shortHistory": "The White Wolves are Central Asia’s benchmark with technical midfielders and growing European exports.",
       "fifaRanking": 50,
       "tmCode": "uzbekistan",
       "crestPolicy": "text-only"
@@ -1730,8 +1730,8 @@
         "to": "#1d4ed8",
         "accent": "#f8fafc"
       },
-      "fanGuide": "The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyCompass’s registry-linked national pool.",
-      "shortHistory": "Men’s senior team of New Zealand (NZF). FootyCompass lists a broad national player pool from existing registry players — not an official World Cup 2026 roster.",
+      "fanGuide": "The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe. Learn New Zealand through OFC tradition and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "The All Whites carry Oceania pride with physical defending and a strong diaspora in Australia and Europe.",
       "fifaRanking": 85,
       "tmCode": "new-zealand",
       "crestPolicy": "text-only"
@@ -1757,8 +1757,8 @@
         "to": "#fbbf24",
         "accent": "#dc2626"
       },
-      "fanGuide": "Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and linked players from FootyCompass’s browse-only national pool.",
-      "shortHistory": "Men’s senior team of Cabo Verde. FootyCompass lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.",
+      "fanGuide": "Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France. Learn them through CAF tournament football and linked players from FootyBrain’s browse-only national pool.",
+      "shortHistory": "Cabo Verde blend Atlantic island identity with a wide European diaspora — especially Portugal and France.",
       "fifaRanking": null,
       "tmCode": "cape-verde",
       "crestPolicy": "text-only"
@@ -1784,8 +1784,8 @@
         "to": "#fbbf24",
         "accent": "#dc2626"
       },
-      "fanGuide": "Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and FootyCompass’s registry-linked national pool.",
-      "shortHistory": "Men’s senior team of Curaçao. FootyCompass lists a broad national player pool from registry and imports — not an official World Cup 2026 roster.",
+      "fanGuide": "Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection. Learn them through CONCACAF qualifying stories and FootyBrain’s registry-linked national pool.",
+      "shortHistory": "Curaçao carry Dutch Caribbean football culture with technical midfielders and a deep Netherlands connection.",
       "fifaRanking": null,
       "tmCode": "curacao",
       "crestPolicy": "text-only"
@@ -15177,7 +15177,49 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-565009",
+      "nationalTeamId": "argentina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-909758",
+      "nationalTeamId": "argentina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-613873",
+      "nationalTeamId": "argentina",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-424043",
       "nationalTeamId": "argentina",
       "role": "senior",
       "status": "active",
@@ -15303,20 +15345,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-565009",
-      "nationalTeamId": "argentina",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-352324",
       "nationalTeamId": "argentina",
       "role": "senior",
@@ -15416,34 +15444,6 @@
     },
     {
       "playerId": "tm-872184",
-      "nationalTeamId": "argentina",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-829378",
-      "nationalTeamId": "argentina",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-45319",
       "nationalTeamId": "argentina",
       "role": "senior",
       "status": "active",
@@ -16045,7 +16045,7 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-571604",
+      "playerId": "tm-72441",
       "nationalTeamId": "italy",
       "role": "senior",
       "status": "active",
@@ -17613,6 +17613,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-342389",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-270393",
       "nationalTeamId": "denmark",
       "role": "senior",
@@ -17628,6 +17642,20 @@
     },
     {
       "playerId": "tm-107775",
+      "nationalTeamId": "denmark",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-257324",
       "nationalTeamId": "denmark",
       "role": "senior",
       "status": "active",
@@ -17740,34 +17768,6 @@
     },
     {
       "playerId": "tm-541601",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-543822",
-      "nationalTeamId": "denmark",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-257324",
       "nationalTeamId": "denmark",
       "role": "senior",
       "status": "active",
@@ -18215,6 +18215,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-361260",
+      "nationalTeamId": "turkey",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-361256",
       "nationalTeamId": "turkey",
       "role": "senior",
@@ -18272,20 +18286,6 @@
     },
     {
       "playerId": "tm-615350",
-      "nationalTeamId": "turkey",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-361260",
       "nationalTeamId": "turkey",
       "role": "senior",
       "status": "active",
@@ -18747,7 +18747,35 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-496268",
+      "nationalTeamId": "uruguay",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-431190",
+      "nationalTeamId": "uruguay",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
+      "playerId": "tm-578419",
       "nationalTeamId": "uruguay",
       "role": "senior",
       "status": "active",
@@ -18901,20 +18929,6 @@
       "tmSourceId": null
     },
     {
-      "playerId": "tm-496268",
-      "nationalTeamId": "uruguay",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
       "playerId": "tm-833886",
       "nationalTeamId": "uruguay",
       "role": "senior",
@@ -19000,20 +19014,6 @@
     },
     {
       "playerId": "tm-861981",
-      "nationalTeamId": "uruguay",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-578419",
       "nationalTeamId": "uruguay",
       "role": "senior",
       "status": "active",
@@ -21407,6 +21407,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-218278",
+      "nationalTeamId": "norway",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-226524",
       "nationalTeamId": "norway",
       "role": "senior",
@@ -21576,20 +21590,6 @@
     },
     {
       "playerId": "tm-1129198",
-      "nationalTeamId": "norway",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-218278",
       "nationalTeamId": "norway",
       "role": "senior",
       "status": "active",
@@ -23605,6 +23605,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-311351",
+      "nationalTeamId": "scotland",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-719673",
       "nationalTeamId": "scotland",
       "role": "senior",
@@ -23662,20 +23676,6 @@
     },
     {
       "playerId": "tm-633652",
-      "nationalTeamId": "scotland",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-311351",
       "nationalTeamId": "scotland",
       "role": "senior",
       "status": "active",
@@ -26517,6 +26517,20 @@
       "tmSourceId": null
     },
     {
+      "playerId": "tm-669202",
+      "nationalTeamId": "south-africa",
+      "role": "senior",
+      "status": "active",
+      "isPrimary": true,
+      "membershipTags": [
+        "nationalPool"
+      ],
+      "source": "registry_nationality",
+      "membershipSource": "registry_nationality",
+      "asOf": null,
+      "tmSourceId": null
+    },
+    {
       "playerId": "tm-1151605",
       "nationalTeamId": "south-africa",
       "role": "senior",
@@ -26532,20 +26546,6 @@
     },
     {
       "playerId": "tm-1069801",
-      "nationalTeamId": "south-africa",
-      "role": "senior",
-      "status": "active",
-      "isPrimary": true,
-      "membershipTags": [
-        "nationalPool"
-      ],
-      "source": "registry_nationality",
-      "membershipSource": "registry_nationality",
-      "asOf": null,
-      "tmSourceId": null
-    },
-    {
-      "playerId": "tm-669202",
       "nationalTeamId": "south-africa",
       "role": "senior",
       "status": "active",

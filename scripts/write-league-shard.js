@@ -10,6 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { DATASET_META } from '../src/data/datasetMeta.js';
 import { getLeagueById, getPlayersForLeague, teams } from '../src/data/sampleData.js';
+import { mergePlayerOverlay, mergeTeamOverlay } from '../src/data/editorialOverlayAccess.js';
 
 const leagueId = process.argv[2];
 if (!leagueId) {
@@ -28,8 +29,8 @@ if (!league) {
   process.exit(1);
 }
 
-const leagueTeams = teams.filter((team) => team.leagueId === leagueId);
-const leaguePlayers = getPlayersForLeague(leagueId);
+const leagueTeams = teams.filter((team) => team.leagueId === leagueId).map((t) => mergeTeamOverlay(t));
+const leaguePlayers = getPlayersForLeague(leagueId).map((p) => mergePlayerOverlay(p));
 
 const shard = {
   schemaVersion: 1,

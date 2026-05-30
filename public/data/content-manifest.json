@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "dataAsOf": "2026-05-27",
+  "dataAsOf": "2026-05-30",
   "defaultPlayerChunk": "sample-data",
   "nationalTeamChunk": "national-team-data",
   "note": "Mirror of src/data/contentManifest.js for future runtime fetch.",

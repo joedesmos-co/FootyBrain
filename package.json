@@ -74,6 +74,8 @@
     "enrich:thin-clubs": "node scripts/enrich-thin-clubs.js",
     "enrich:thin-players": "node scripts/enrich-thin-players.js",
     "enrich:thin-data": "npm run enrich:thin-clubs && npm run enrich:thin-players",
+    "enrich:content-depth": "npm run enrich:top-players && npm run enrich:top-clubs && npm run enrich:thin-clubs && THIN_PLAYERS_N=200 npm run enrich:thin-players && npm run refresh:club-overlay-copy",
+    "audit:weak-entities": "node scripts/audit-weak-entities-report.js",
     "audit:thin-data": "node scripts/audit-thin-data.js",
     "append:wc-national-pool": "node scripts/append-wc-national-pool-import.js",
     "expand:foundation": "npm run build:data-preview && npm run build:app-ready-preview && npm run validate:data-pipeline && npm run validate:overlays && npm run merge:phase3-sample && npm run build:national-teams-preview && npm run build:national-team-live && npm run write:post-merge-artifacts && npm run validate:app-ready-preview && npm run validate:squad-report && npm run validate:dataset-scale && npm run validate:dataset-scale:dist",

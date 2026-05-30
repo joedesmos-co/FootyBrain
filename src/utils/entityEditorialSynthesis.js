@@ -49,11 +49,20 @@ export function buildHowTheyPlaySection(player) {
   const summary = String(player?.playStyleSummary ?? player?.styleSummary ?? '').trim();
   if (summary) return summary;
 
+  const role = String(player?.roleSummary ?? '').trim();
+  if (role) {
+    const tags = parsePlayStyleTags(player);
+    if (tags.length >= 1) {
+      return `${role} Key traits: ${tags.slice(0, 3).join(', ')}.`;
+    }
+    return role;
+  }
+
   const tags = parsePlayStyleTags(player);
   if (tags.length >= 2) {
-    return `Playing style: ${tags.join(', ')}.`;
+    return `${tags.join(', ')}.`;
   }
-  if (tags.length === 1) return `Profiled as a ${tags[0].toLowerCase()} player.`;
+  if (tags.length === 1) return `Plays with a ${tags[0].toLowerCase()} profile.`;
 
   const strengths = parseStrengths(player);
   if (strengths.length >= 2) {
@@ -63,7 +72,7 @@ export function buildHowTheyPlaySection(player) {
   const position = formatPosition(player?.position);
   if (position && position !== '—') {
     return truncateLearnerCopy(
-      `${player.name} plays as a ${position.toLowerCase()} — see club and league links above for context.`,
+      `${player.name} plays as a ${position.toLowerCase()} — use club and league links above for context.`,
       120,
     );
   }

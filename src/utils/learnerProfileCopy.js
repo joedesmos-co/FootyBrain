@@ -6,7 +6,7 @@
 import { formatCountryLabel, formatPosition } from './footballDisplay.js';
 
 const INTERNAL_PHRASE_RE =
-  /\b(in the dataset|listed in the dataset|dataset tags describe|dataset snapshot|footycompass sample|editorial profile coming soon|browse and quiz practice|profiled here for browse|quiz-ready|quiz ready|controlled expansion club set|editorial coverage expands|on footycompass|tracked in|footycompass has profile|compare squads on linked|rivalry pools|lock in|rivalries noted for|playing identity tags|national pool|footycompass club database|in quizzes|linked club profiles|editorial schedule)\b/gi;
+  /\b(in the dataset|listed in the dataset|dataset tags describe|dataset snapshot|footycompass sample|footybrain|editorial profile coming soon|browse and quiz practice|profiled here for browse|quiz-ready|quiz ready|controlled expansion club set|editorial coverage expands|on footycompass|tracked in|footycompass has profile|compare squads on linked|rivalry pools|lock in|rivalries noted for|playing identity tags|national pool|footycompass club database|in quizzes|linked club profiles|editorial schedule|transfermarkt|tm senior|tm listings|registry-linked|registry players)\b/gi;
 
 export function polishGeneratedCopy(text) {
   return String(text ?? '')

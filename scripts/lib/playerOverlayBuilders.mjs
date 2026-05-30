@@ -25,6 +25,33 @@ export function isPlaceholderQuickFact(player) {
   return PLACEHOLDER_FACT_RE.test(fact);
 }
 
+function positionCategory(position) {
+  const p = clean(position).toLowerCase();
+  if (/goalkeeper/.test(p)) return 'goalkeeper';
+  if (/defender|centre-back|center-back|back/.test(p)) return 'defender';
+  if (/midfield/.test(p)) return 'midfielder';
+  if (/striker|winger|forward/.test(p)) return 'forward';
+  return 'outfield';
+}
+
+export function buildRoleSummary(player) {
+  const position = clean(player?.position);
+  if (!position) return null;
+
+  switch (positionCategory(position)) {
+    case 'goalkeeper':
+      return 'Shot-stopping and command of the box define this role.';
+    case 'defender':
+      return 'Defensive work, duels, and build-up from the back.';
+    case 'midfielder':
+      return 'Links defence and attack — tempo, passing, and ball-winning.';
+    case 'forward':
+      return 'Goal threat, movement, and finishing in the final third.';
+    default:
+      return null;
+  }
+}
+
 export function buildStrengthsFromPlayingStyle(playingStyle) {
   const raw = clean(playingStyle).toLowerCase();
   if (!raw) return [];
@@ -71,6 +98,27 @@ export function buildStrengthsFromPlayingStyle(playingStyle) {
   return strengths.slice(0, 6);
 }
 
+export function buildCareerContext(player) {
+  const career = Array.isArray(player?.careerHistory) ? player.careerHistory : [];
+  if (career.length === 0) return null;
+
+  const clubs = career.map((c) => clean(c.club)).filter(Boolean);
+  if (clubs.length >= 3) {
+    return `Career path: ${clubs.slice(-3).join(' → ')}.`;
+  }
+  if (clubs.length === 2) {
+    const years = career.map((c) => clean(c.years)).filter(Boolean);
+    return years.length
+      ? `Previously at ${clubs[0]} (${years[0]}), now ${clubs[1]}.`
+      : `Previously at ${clubs[0]}, now ${clubs[1]}.`;
+  }
+  if (clubs.length === 1) {
+    const years = clean(career[0]?.years);
+    return years ? `Listed with ${clubs[0]} (${years}).` : `Listed with ${clubs[0]}.`;
+  }
+  return null;
+}
+
 export function buildBrowseQuickFact(player, ctx, variant = 0) {
   const nat = clean(player.nationalTeam || player.nationality);
   const position = clean(player.position);
@@ -79,19 +127,29 @@ export function buildBrowseQuickFact(player, ctx, variant = 0) {
   const age =
     player.age != null && player.age !== '' ? `${player.age}-year-old ` : '';
 
+  const style = clean(player.playingStyle);
+  const styleBit = style ? ` — ${style.split(/[·•,;|/]/)[0].trim().toLowerCase()}` : '';
+
   const openers = [
     () =>
-      `${player.name} is a ${age}${position.toLowerCase()} for ${club} in ${league}${nat ? ` (${nat})` : ''}.`,
-    () => `${club} ${position.toLowerCase()} ${player.name} — ${league}${nat ? ` · ${nat}` : ''}.`,
+      `${player.name} is a ${age}${position.toLowerCase()} at ${club} (${league})${nat ? ` · ${nat}` : ''}${styleBit}.`,
     () =>
-      `${player.name} plays ${position.toLowerCase()} in ${league}; club listed as ${club}${nat ? ` (${nat})` : ''}.`,
+      `${nat ? `${nat} ` : ''}${position.toLowerCase()} ${player.name} plays for ${club} in ${league}.`,
+    () =>
+      `${club}'s ${position.toLowerCase()} ${player.name}${nat ? ` (${nat})` : ''} — ${league}${styleBit}.`,
   ];
   return clean(openers[variant % openers.length]());
 }
 
 export function buildPlayStyleSummary(player, strengths) {
   const style = clean(player.playingStyle);
-  if (!style) return '';
+  if (!style) {
+    if (strengths.length >= 2) {
+      return clean(`Known for ${strengths.slice(0, 3).join(', ')}.`);
+    }
+    const role = buildRoleSummary(player);
+    return role;
+  }
 
   const s = style.endsWith('.') ? style : `${style}.`;
   if (s.length <= 150) return s;
@@ -110,6 +168,7 @@ export function buildBrowseKnownFor(player, strengths, ctx) {
   };
 
   for (const s of strengths) add(s);
+
   const tags = clean(player.playingStyle)
     .split(/[·•,;|/]/g)
     .map((t) => t.trim())
@@ -119,8 +178,12 @@ export function buildBrowseKnownFor(player, strengths, ctx) {
 
   const pos = clean(player.position);
   if (pos && ctx.teamName) add(`${pos} · ${ctx.teamName}`);
+
   const nat = clean(player.nationalTeam || player.nationality);
-  if (nat) add(`${nat} — browse squad context on FootyCompass`);
+  if (nat && ctx.leagueName) add(`${nat} · ${ctx.leagueName}`);
+
+  const career = buildCareerContext(player);
+  if (career && items.length < 4) add(career.replace(/\.$/, ''));
 
   return items.slice(0, 5);
 }
@@ -132,13 +195,15 @@ export function buildPlayerOverlay(player, ctx, variant = 0) {
     : clean(player.quickFact);
   const playStyleSummary = buildPlayStyleSummary(player, strengths);
   const knownFor = buildBrowseKnownFor(player, strengths, ctx);
+  const roleSummary = buildRoleSummary(player);
+  const careerContext = buildCareerContext(player);
 
-  const overlay = {
+  return {
     quickFact,
     playStyleSummary: playStyleSummary || null,
     strengths: strengths.length ? strengths : null,
     knownFor: knownFor.length ? knownFor : null,
+    roleSummary,
+    careerContext,
   };
-
-  return overlay;
 }

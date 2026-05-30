@@ -1,6 +1,6 @@
 # Top-importance depth audit
 
-Generated: 2026-05-29T16:04:52.078Z
+Generated: 2026-05-30T21:02:16.781Z
 
 ## Scope
 
@@ -13,7 +13,7 @@ Generated: 2026-05-29T16:04:52.078Z
 
 ## Summary
 
-- **Thin top players** (depth ≤3): 265
+- **Thin top players** (depth ≤3): 264
 - **Thin major clubs** (depth ≤4): 124
 - **Thin leagues**: 0
 - **Thin national teams**: 0

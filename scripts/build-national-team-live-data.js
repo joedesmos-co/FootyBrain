@@ -188,6 +188,27 @@ const REGISTRY_NATIONALITY_LABELS = {
   ),
 };
 
+function resolveNationShortHistory(editorial) {
+  const guide = String(editorial?.fanGuide ?? '').trim();
+  if (guide) {
+    const first = guide.split(/(?<=[.!?])\s+/)[0]?.trim();
+    if (first && first.length >= 36 && !/footybrain|footycompass|transfermarkt|registry/i.test(first)) {
+      return first;
+    }
+  }
+
+  const legacy = String(editorial?.shortHistory ?? '').trim();
+  if (legacy && !/footybrain|footycompass|transfermarkt|tm |registry|memberships join|not an official world cup/i.test(legacy)) {
+    return legacy;
+  }
+
+  const name = editorial?.displayName ?? editorial?.country ?? 'This nation';
+  const conf = editorial?.confederation ?? 'international football';
+  const rivals = Array.isArray(editorial?.rivalIds) ? editorial.rivalIds : [];
+  const rivalBit = rivals.length ? ` Key fixtures against ${rivals.slice(0, 2).join(' and ')}.` : '';
+  return `${name} — ${conf} side with a linked senior player pool.${rivalBit}`.trim();
+}
+
 const LIVE_NATION_EDITORIAL = {
   brazil: {
     displayName: 'Brazil',
@@ -1085,6 +1106,7 @@ function main() {
     return {
       id,
       ...editorial,
+      shortHistory: resolveNationShortHistory(editorial),
       fifaRanking: tm.fifaRanking ?? null,
       tmCode: tm.tmCode ?? id,
       crestPolicy: 'text-only',

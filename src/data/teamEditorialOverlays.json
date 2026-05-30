@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-05-30T20:13:24.033Z",
+  "generatedAt": "2026-05-30T21:00:39.443Z",
   "overlayCount": 117,
-  "premiumClubPass": {
-    "updated": 17,
-    "targeted": 17
+  "thinClubPass": {
+    "added": 0,
+    "updated": 0,
+    "targeted": 0
   },
   "overlays": {
     "arsenal": {
@@ -12,7 +13,7 @@
       "stadiumContext": "Arsenal play home matches at Emirates Stadium. Founded in 1886. Head coach: Mikel Arteta.",
       "rivalsSummary": "The Gunners wear red and white; the north London derby vs Tottenham is the fixture fans circle first.",
       "legendsSummary": "Club legends include Thierry Henry, Dennis Bergkamp, Tony Adams, and Patrick Vieira — notably Thierry Henry (club record goalscorer; pace and composure defined the Wenger era).",
-      "playersToKnowIntro": "Look out for Bukayo Saka, Martin Ødegaard, and William Saliba and Declan Rice in the squad below.",
+      "playersToKnowIntro": "Look out for Bukayo Saka, Martin Ødegaard, William Saliba, and Declan Rice in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Arsenal player quiz — derby names like Tottenham Hotspur often come up.",
       "leagueContext": "Arsenal compete in Premier League. Often end-to-end: quick transitions, pressing, and athletic midfield battles. Top teams mix that with modern positional play; smaller clubs may sit deeper and…"
     },
@@ -22,7 +23,7 @@
       "stadiumContext": "Liverpool play home matches at Anfield. Founded in 1892. Head coach: Arne Slot.",
       "rivalsSummary": "The Merseyside derby vs Everton is about city pride; matches vs Manchester United carry extra history.",
       "legendsSummary": "Club legends include Steven Gerrard, Kenny Dalglish, Ian Rush, and Jamie Carragher — notably Steven Gerrard (one-club captain; Istanbul 2005 and famous long-range goals).",
-      "playersToKnowIntro": "Look out for Mohamed Salah, Virgil van Dijk, and Alisson Becker and Trent Alexander-Arnold in the squad below.",
+      "playersToKnowIntro": "Look out for Mohamed Salah, Virgil van Dijk, Alisson Becker, and Trent Alexander-Arnold in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Liverpool player quiz — derby names like Everton often come up.",
       "leagueContext": "Liverpool compete in Premier League. Often end-to-end: quick transitions, pressing, and athletic midfield battles. Top teams mix that with modern positional play; smaller clubs may sit deeper and…"
     },
@@ -52,7 +53,7 @@
       "stadiumContext": "Manchester City play home matches at Etihad Stadium. Founded in 1880. Head coach: Pep Guardiola.",
       "rivalsSummary": "Supporters mark games against Manchester United and Liverpool as the fixtures that matter most.",
       "legendsSummary": "Club legends include Sergio Agüero, David Silva, Vincent Kompany, and Yaya Touré — notably Sergio Agüero (93rd-minute title winner in 2012; City’s greatest goalscorer).",
-      "playersToKnowIntro": "Look out for Erling Haaland, Rodri, and Phil Foden and Kevin De Bruyne in the squad below.",
+      "playersToKnowIntro": "Look out for Erling Haaland, Rodri, Phil Foden, and Kevin De Bruyne in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Manchester City player quiz — derby names like Manchester United often come up.",
       "leagueContext": "Manchester City compete in Premier League. Often end-to-end: quick transitions, pressing, and athletic midfield battles. Top teams mix that with modern positional play; smaller clubs may sit deeper and…"
     },
@@ -72,7 +73,7 @@
       "stadiumContext": "Real Madrid play home matches at Santiago Bernabéu. Founded in 1902. Head coach: Xabi Alonso.",
       "rivalsSummary": "El Clásico vs Barcelona is the world’s most watched club fixture.",
       "legendsSummary": "Club legends include Alfredo Di Stéfano, Raúl, Cristiano Ronaldo, and Zinedine Zidane — notably Alfredo Di Stéfano (forward who shaped the club’s first European dominance).",
-      "playersToKnowIntro": "Look out for Vinícius Júnior, Jude Bellingham, and Federico Valverde and Luka Modrić in the squad below.",
+      "playersToKnowIntro": "Look out for Vinícius Júnior, Jude Bellingham, Federico Valverde, and Luka Modrić in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Real Madrid player quiz — derby names like Barcelona often come up.",
       "leagueContext": "Real Madrid compete in La Liga. Traditionally more possession and touch in midfield; patience to find gaps. Defending is organised; attackers use dribbling and combinations. Real and Barça…"
     },
@@ -82,7 +83,7 @@
       "stadiumContext": "Barcelona play home matches at Spotify Camp Nou. Founded in 1899. Head coach: Hansi Flick.",
       "rivalsSummary": "El Clásico vs Real Madrid is the must-learn fixture; the city derby vs Espanyol is smaller but fierce.",
       "legendsSummary": "Club legends include Lionel Messi, Xavi, Andrés Iniesta, and Carles Puyol — notably Lionel Messi (greatest player in club history; hundreds of goals in blaugrana).",
-      "playersToKnowIntro": "Look out for Robert Lewandowski, Pedri, and Gavi and Raphinha in the squad below.",
+      "playersToKnowIntro": "Look out for Robert Lewandowski, Pedri, Gavi, and Raphinha in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Barcelona player quiz — derby names like Real Madrid often come up.",
       "leagueContext": "Barcelona compete in La Liga. Traditionally more possession and touch in midfield; patience to find gaps. Defending is organised; attackers use dribbling and combinations. Real and Barça…"
     },
@@ -102,7 +103,7 @@
       "stadiumContext": "Bayern Munich play home matches at Allianz Arena. Founded in 1900. Head coach: Vincent Kompany.",
       "rivalsSummary": "Supporters mark games against Borussia Dortmund and 1860 Munich as the fixtures that matter most.",
       "legendsSummary": "Club legends include Franz Beckenbauer, Gerd Müller, Philipp Lahm, and Thomas Müller — notably Franz Beckenbauer (libero who redefined defending; World Cup winner as player and coach).",
-      "playersToKnowIntro": "Look out for Harry Kane, Jamal Musiala, and Joshua Kimmich and Manuel Neuer in the squad below.",
+      "playersToKnowIntro": "Look out for Harry Kane, Jamal Musiala, Joshua Kimmich, and Manuel Neuer in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Bayern Munich player quiz — derby names like Borussia Dortmund often come up.",
       "leagueContext": "Bayern Munich compete in Bundesliga. Direct and vertical: win the ball, attack fast, use wingers and overlapping full-backs. Pressing is common; transitions matter. Many clubs trust academy…"
     },
@@ -132,7 +133,7 @@
       "stadiumContext": "Inter Milan play home matches at San Siro. Founded in 1908. Head coach: Cristian Chivu.",
       "rivalsSummary": "The Derby della Madonnina vs AC Milan splits Milan — same stadium, different ends.",
       "legendsSummary": "Club legends include Giuseppe Meazza, Javier Zanetti, Ronaldo Nazário, and Marco Materazzi — notably Giuseppe Meazza (stadium namesake; striker who defined pre-war Italian football).",
-      "playersToKnowIntro": "Look out for Lautaro Martínez, Nicolò Barella, and Alessandro Bastoni and Yann Sommer in the squad below.",
+      "playersToKnowIntro": "Look out for Lautaro Martínez, Nicolò Barella, Alessandro Bastoni, and Yann Sommer in the squad below.",
       "quizDiscoveryLead": "Learn the squad here, then try the Inter Milan player quiz — derby names like AC Milan often come up.",
       "leagueContext": "Inter Milan compete in Serie A. Organised defending and midfield blocks; wing-backs and three-at-the-back systems appear often. Teams protect shape first, then explode with individual skill.…"
     },
@@ -1376,5 +1377,6 @@
       "shortHistory": "Sporting Kansas City play in Major League Soccer (United States). Founded in 1900. Home ground: Sporting Park. Known for vocal supporter culture. Athletic and direct, with squad-building rules that mix homegrown players, MLS veterans, and star imports.",
       "fanGuide": "Sporting Park is the home ground — start with the squad list to learn current names. Fans associate the side with vocal supporter culture."
     }
-  }
+  },
+  "polishedAt": "2026-05-30T21:00:39.676Z"
 }

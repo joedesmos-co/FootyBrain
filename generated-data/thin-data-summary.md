@@ -1,44 +1,25 @@
 # Thin data quality audit
 
-Generated: 2026-05-29T12:48:52.274Z
+Generated: 2026-05-30T21:02:16.634Z
 
 ## Summary
 
 | Metric | Count |
 |--------|------:|
 | Major clubs | 164 |
-| Thin / placeholder clubs | 45 |
-| Placeholder club copy | 45 |
-| Clubs with editorial overlay | 72 |
+| Thin / placeholder clubs | 0 |
+| Placeholder club copy | 0 |
+| Clubs with editorial overlay | 117 |
 | Thin clubs with overlay | 0 |
 | Top 300 players (thin) | 0 |
 | Browse-only players (importance ≥48) | 3902 |
-| Browse-only ≥48 without overlay | 3662 |
+| Browse-only ≥48 without overlay | 3462 |
 | Thin leagues | 0 |
 | Thin national teams | 0 |
 
 ## Priority thin clubs (by roster importance)
 
-- **Cremonese** — depth 7, placeholder=true, overlay=false
-- **Le Havre** — depth 7, placeholder=true, overlay=false
-- **Chicago Fire FC** — depth 7, placeholder=true, overlay=false
-- **CF Montréal** — depth 7, placeholder=true, overlay=false
-- **Nashville SC** — depth 7, placeholder=true, overlay=false
-- **Philadelphia Union** — depth 7, placeholder=true, overlay=false
-- **Real Salt Lake** — depth 7, placeholder=true, overlay=false
-- **Houston Dynamo FC** — depth 7, placeholder=true, overlay=false
-- **New York Red Bulls** — depth 7, placeholder=true, overlay=false
-- **Toronto FC** — depth 7, placeholder=true, overlay=false
-- **Portland Timbers** — depth 7, placeholder=true, overlay=false
-- **Elche** — depth 7, placeholder=true, overlay=false
-- **Leeds United** — depth 7, placeholder=true, overlay=false
-- **Bologna** — depth 7, placeholder=true, overlay=false
-- **Genoa** — depth 7, placeholder=true, overlay=false
-- **Lecce** — depth 7, placeholder=true, overlay=false
-- **Como** — depth 7, placeholder=true, overlay=false
-- **FC Utrecht** — depth 7, placeholder=true, overlay=false
-- **sc Heerenveen** — depth 7, placeholder=true, overlay=false
-- **NEC Nijmegen** — depth 7, placeholder=true, overlay=false
+
 
 ## Browse-only players (importance ≥48, sample)
 

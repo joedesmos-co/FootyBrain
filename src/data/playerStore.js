@@ -1,4 +1,5 @@
 import { loadEntityIndex } from './entityIndex';
+import { mergePlayerOverlay } from './editorialOverlayAccess.js';
 import { loadLeagueShard } from './contentManifest';
 
 const playerCache = new Map();
@@ -26,8 +27,9 @@ export async function loadPlayerById(playerId) {
         const shard = await loadLeagueShard(leagueId);
         const player = shard.players.find((p) => p.id === playerId) ?? null;
         if (player) {
-          playerCache.set(playerId, player);
-          return player;
+          const merged = mergePlayerOverlay(player);
+          playerCache.set(playerId, merged);
+          return merged;
         }
       }
     } catch {
@@ -35,8 +37,9 @@ export async function loadPlayerById(playerId) {
     }
 
     const fallback = await loadBundledPlayer(playerId);
-    if (fallback) playerCache.set(playerId, fallback);
-    return fallback ?? null;
+    const merged = fallback ? mergePlayerOverlay(fallback) : null;
+    if (merged) playerCache.set(playerId, merged);
+    return merged ?? null;
   })();
 
   inflight.set(playerId, promise);
