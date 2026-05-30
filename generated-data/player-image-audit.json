@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-30T18:24:40.663Z",
+  "generatedAt": "2026-05-30T18:31:01.488Z",
   "totals": {
     "players": 4827,
-    "withVerifiedPhoto": 195,
-    "withFallbackAvatar": 4632,
+    "withVerifiedPhoto": 227,
+    "withFallbackAvatar": 4600,
     "priorityListSize": 200,
-    "approvedEntries": 195,
-    "cacheResolved": 195,
-    "cacheSkipped": 18
+    "approvedEntries": 227,
+    "cacheResolved": 227,
+    "cacheSkipped": 15
   },
   "brokenUrls": [],
   "missingAttribution": [],
@@ -19,22 +19,10 @@
       "at": "2026-05-30T17:52:32.074Z"
     },
     {
-      "id": "tm-424204",
-      "name": "Alphonso Davies",
-      "reason": "no_safe_match",
-      "at": "2026-05-30T18:12:31.444Z"
-    },
-    {
       "id": "tm-177467",
       "name": "Gerard Moreno",
       "reason": "no_safe_match",
       "at": "2026-05-30T18:16:19.855Z"
-    },
-    {
-      "id": "tm-351809",
-      "name": "Robin Le Normand",
-      "reason": "no_safe_match",
-      "at": "2026-05-30T18:12:55.897Z"
     },
     {
       "id": "tm-181767",
@@ -77,12 +65,6 @@
       "name": "Nico Elvedi",
       "reason": "no_safe_match",
       "at": "2026-05-30T18:16:49.029Z"
-    },
-    {
-      "id": "tm-369316",
-      "name": "Ferdi Kadıoğlu",
-      "reason": "no_safe_match",
-      "at": "2026-05-30T18:16:59.260Z"
     },
     {
       "id": "tm-459658",

@@ -1,229 +1,199 @@
 {
-  "startedAt": "2026-05-30T18:23:43.155Z",
+  "startedAt": "2026-05-30T18:30:11.795Z",
   "offset": 0,
   "limit": 25,
   "added": [
     {
-      "playerId": "tm-353108",
-      "name": "Bruno Henrique",
+      "playerId": "tm-424204",
+      "name": "Alphonso Davies",
+      "license": "CC BY 2.0",
+      "commonsFile": "Alphonso Davies 2018.jpg"
+    },
+    {
+      "playerId": "tm-351809",
+      "name": "Robin Le Normand",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Robin Le Normand, FC Salzburg vs. Atletico Madrid (2025-01-29 UEFA Championsleague) 56 (cropped).jpg"
+    },
+    {
+      "playerId": "tm-369316",
+      "name": "Ferdi Kadıoğlu",
+      "license": "CC0",
+      "commonsFile": "Ferdi Kadıoğlu 24012026 (1).jpg"
+    },
+    {
+      "playerId": "tm-174094",
+      "name": "Morgan Sanson",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "U-19 EC-Qualifikation Austria vs. France 2013-06-10 (132) crop.jpg"
+    },
+    {
+      "playerId": "tm-179184",
+      "name": "Michy Batshuayi",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Michy Batshuayi 2019.jpg"
+    },
+    {
+      "playerId": "tm-212847",
+      "name": "Adam Webster",
+      "license": "CC BY 2.0",
+      "commonsFile": "Adam Webster 2022.jpg"
+    },
+    {
+      "playerId": "tm-229006",
+      "name": "Franck Honorat",
+      "license": "CC0",
+      "commonsFile": "RC Lens - Clermont Foot 63 (04-05-2019) 31.jpg"
+    },
+    {
+      "playerId": "tm-278332",
+      "name": "Florian Neuhaus",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Florian Neuhaus Champions for Charity 2022 (cropped).jpg"
+    },
+    {
+      "playerId": "tm-278359",
+      "name": "Borja Iglesias",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Borja Iglesias.jpg"
+    },
+    {
+      "playerId": "tm-293194",
+      "name": "Borna Sosa",
+      "license": "CC BY 3.0",
+      "commonsFile": "Utrecht v Ajax 2023 van der Hoorn and Sosa.jpg"
+    },
+    {
+      "playerId": "tm-335209",
+      "name": "Kevin Diks",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Kevin Diks Vitesse 28062015.png"
+    },
+    {
+      "playerId": "tm-472423",
+      "name": "Reece James",
+      "license": "CC BY 2.0",
+      "commonsFile": "Reece James.jpg"
+    },
+    {
+      "playerId": "tm-489893",
+      "name": "Yuri Alberto",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Yuri Alberto 2022.jpg"
+    },
+    {
+      "playerId": "tm-505219",
+      "name": "James Garner",
+      "license": "CC BY 2.0",
+      "commonsFile": "James Garner ManUtd.jpg"
+    },
+    {
+      "playerId": "tm-575998",
+      "name": "Leonardo Balerdi",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Leonardo Balerdi OM.jpg"
+    },
+    {
+      "playerId": "tm-667287",
+      "name": "Yasin Ayari",
+      "license": "Public domain",
+      "commonsFile": "Yasin Ayari (Sweden U21 starting XI vs Moldova U21, 13 October 2023).jpg"
+    },
+    {
+      "playerId": "tm-717411",
+      "name": "Yegor Yarmolyuk",
+      "license": "CC0",
+      "commonsFile": "Yehor Yarmolyuk 29112025 (1).jpg"
+    },
+    {
+      "playerId": "tm-739443",
+      "name": "Igor Thiago",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Igor thiago.jpg"
+    },
+    {
+      "playerId": "tm-823231",
+      "name": "Dango Ouattara",
+      "license": "CC BY 3.0",
+      "commonsFile": "Dango Ouattara 2023.jpg"
+    },
+    {
+      "playerId": "tm-823486",
+      "name": "Michael Kayode",
+      "license": "CC0",
+      "commonsFile": "Bafodé Diakité, Adam Smith, Igor Thiago, Michael Kayode and Adrien Truffert 27122025 (1).jpg"
+    },
+    {
+      "playerId": "tm-341092",
+      "name": "Federico Chiesa",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Chiesa Nazionale 2021.jpg"
+    },
+    {
+      "playerId": "tm-102017",
+      "name": "Jorginho",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Jorginho 2016.jpg"
+    },
+    {
+      "playerId": "tm-105521",
+      "name": "Ciro Immobile",
+      "license": "Public domain",
+      "commonsFile": "Ciro Immobile crop.jpg"
+    },
+    {
+      "playerId": "tm-134425",
+      "name": "Raheem Sterling",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Raheem Sterling August 2012 vs FC Gomel.jpg"
+    },
+    {
+      "playerId": "tm-3333",
+      "name": "James Milner",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "James-Milner Wigan-vs-Man-City 2010-09-19.JPG"
+    },
+    {
+      "playerId": "tm-798687",
+      "name": "Antony",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Antony2022.jpg"
+    },
+    {
+      "playerId": "tm-973085",
+      "name": "Carlos Baleba",
+      "license": "CC0",
+      "commonsFile": "Carlos Baleba and Yankuba Minteh 24012026 (1).jpg"
+    },
+    {
+      "playerId": "tm-181579",
+      "name": "James Ward-Prowse",
+      "license": "CC BY 2.0",
+      "commonsFile": "James Ward-Prowse.jpg"
+    },
+    {
+      "playerId": "tm-401173",
+      "name": "Jadon Sancho",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Jadon Sancho 2021.jpg"
+    },
+    {
+      "playerId": "tm-405768",
+      "name": "Ronaldo",
+      "license": "CC BY-SA 3.0",
+      "commonsFile": "Argentine - Portugal - Cristiano Ronaldo.jpg"
+    },
+    {
+      "playerId": "tm-503733",
+      "name": "Anthony Gordon",
+      "license": "CC BY-SA 4.0",
+      "commonsFile": "Anthony Gordon (cropped).jpg"
+    },
+    {
+      "playerId": "tm-583199",
+      "name": "James McAtee",
       "license": "CC BY-SA 2.0",
-      "commonsFile": "BARCELONA-SANTOS - Bruno Henrique.jpg"
-    },
-    {
-      "playerId": "tm-466810",
-      "name": "Ansu Fati",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Ansu Fati — Dinamo vs Barcelona 0-1 (cropped).jpg"
-    },
-    {
-      "playerId": "tm-118534",
-      "name": "Michael Keane",
-      "license": "CC BY 2.0",
-      "commonsFile": "Michael Keane.jpg"
-    },
-    {
-      "playerId": "tm-173504",
-      "name": "James Tarkowski",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "James Tarkowski TomHeaton.jpg"
-    },
-    {
-      "playerId": "tm-263918",
-      "name": "Aleksandr Golovin",
-      "license": "CC BY-SA 3.0",
-      "commonsFile": "Aleksandr Golovin 2016.jpg"
-    },
-    {
-      "playerId": "tm-284727",
-      "name": "Jonathan Calleri",
-      "license": "CC BY 2.0",
-      "commonsFile": "Jonathan Calleri1.jpg"
-    },
-    {
-      "playerId": "tm-314875",
-      "name": "Jarrod Bowen",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Jarrod Bowen (cropped).jpg"
-    },
-    {
-      "playerId": "tm-331511",
-      "name": "Riqui Puig",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Riqui Puig against Portland Timbers.jpg"
-    },
-    {
-      "playerId": "tm-339314",
-      "name": "Deniz Undav",
-      "license": "CC0",
-      "commonsFile": "RC Lens - Union-Saint-Gilloise (05-08-2020) 46.jpg"
-    },
-    {
-      "playerId": "tm-371149",
-      "name": "Evan Ndicka",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Evan Ndicka - Eintracht Frankfurt (2022).jpg"
-    },
-    {
-      "playerId": "tm-385105",
-      "name": "Gabriel Suazo",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "SuazoTFC 01-02-2023.jpg"
-    },
-    {
-      "playerId": "tm-386446",
-      "name": "Alessandro Buongiorno",
-      "license": "CC0",
-      "commonsFile": "Lens - Torino FC (02-08-2023) 13.jpg"
-    },
-    {
-      "playerId": "tm-388165",
-      "name": "Yoane Wissa",
-      "license": "CC0",
-      "commonsFile": "RC Lens - FC Lorient (23-04-2019) 6.jpg"
-    },
-    {
-      "playerId": "tm-398065",
-      "name": "Harvey Barnes",
-      "license": "CC0",
-      "commonsFile": "Kieran Trippier, Alex Murphy and Harvey Barnes 24052026 (24).jpg"
-    },
-    {
-      "playerId": "tm-410425",
-      "name": "Yves Bissouma",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Lille vs Lyon, 18 novembre 2016 - 34.jpg"
-    },
-    {
-      "playerId": "tm-43228",
-      "name": "Albert Rusnák",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Albert Rusnák of Seattle Sounders FC, penalty kick in stoppage time against Chicago Fire FC - June 29, 2024.jpg"
-    },
-    {
-      "playerId": "tm-474800",
-      "name": "Facundo Medina",
-      "license": "CC0",
-      "commonsFile": "RC Lens - Montpellier HSC (12-12-2020) 37.jpg"
-    },
-    {
-      "playerId": "tm-480763",
-      "name": "Juan Foyth",
-      "license": "CC BY-SA 2.0",
-      "commonsFile": "Juan Foyth 2017.jpg"
-    },
-    {
-      "playerId": "tm-503987",
-      "name": "Noni Madueke",
-      "license": "CC0",
-      "commonsFile": "Fulham v Chelsea 20042025 (7) (Noni Madueke).jpg"
-    },
-    {
-      "playerId": "tm-509022",
-      "name": "Federico Gatti",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Frosinone Calcio - Federico Gatti - MS 1.jpg"
-    },
-    {
-      "playerId": "tm-614258",
-      "name": "Levi Colwill",
-      "license": "CC BY 2.0",
-      "commonsFile": "Levi Colwill playing for England U17s against Spain in 2019.jpg"
-    },
-    {
-      "playerId": "tm-648046",
-      "name": "Evan Ferguson",
-      "license": "CC BY 2.0",
-      "commonsFile": "Evan Ferguson (cropped) WWFC vs Brighton & Hove Albion 4.3.2022 (1).jpg"
-    },
-    {
-      "playerId": "tm-660867",
-      "name": "Julio Enciso",
-      "license": "CC BY 2.0",
-      "commonsFile": "Enciso 2022.jpg"
-    },
-    {
-      "playerId": "tm-776890",
-      "name": "Nicolas Jackson",
-      "license": "CC0",
-      "commonsFile": "Nicolas Jackson 20042025 (1).jpg"
-    },
-    {
-      "playerId": "tm-93844",
-      "name": "Leonardo Bittencourt",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "LeonardoBittencourt.jpg"
-    },
-    {
-      "playerId": "nunez",
-      "name": "Darwin Núñez",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Darwin Núñez (cropped).jpg"
-    },
-    {
-      "playerId": "tm-148367",
-      "name": "Christian Nørgaard",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Christian Nørgaard, Brentford F.C. footballer, May 2022.jpg"
-    },
-    {
-      "playerId": "tm-255450",
-      "name": "Aleksey Miranchuk",
-      "license": "CC BY-SA 3.0",
-      "commonsFile": "Aleksei Miranchuk 2013.jpg"
-    },
-    {
-      "playerId": "tm-258919",
-      "name": "Dean Henderson",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Dean Henderson 2021(cropped).jpg"
-    },
-    {
-      "playerId": "tm-279455",
-      "name": "Harry Wilson",
-      "license": "CC BY-SA 3.0",
-      "commonsFile": "Harry Wilson 2014.jpg"
-    },
-    {
-      "playerId": "tm-381950",
-      "name": "Alexis Saelemaekers",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Saelemaekers 2 Milan-Torino 2021-22.jpg"
-    },
-    {
-      "playerId": "tm-479643",
-      "name": "Alexandre Penetra",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Alexandre Penetra in 2025.jpg"
-    },
-    {
-      "playerId": "tm-485585",
-      "name": "Ian Maatsen",
-      "license": "CC BY 4.0",
-      "commonsFile": "St. Louis City vs Aston Villa (Jul 2025) 06 (Ian Maatsen).jpg"
-    },
-    {
-      "playerId": "tm-559324",
-      "name": "Youri Regeer",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "Youri Regeer.jpg"
-    },
-    {
-      "playerId": "tm-591916",
-      "name": "Aitor Paredes",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "AitorParedes2022.jpg"
-    },
-    {
-      "playerId": "tm-203460",
-      "name": "Jack Grealish",
-      "license": "CC BY-SA 4.0",
-      "commonsFile": "-2019-10-05 Jack Grealish, Carrow Road, Norwich city V Aston Villa (2).JPG"
-    },
-    {
-      "playerId": "tm-95424",
-      "name": "Kyle Walker",
-      "license": "CC BY 2.0",
-      "commonsFile": "Kyle Walker 01-09-2013 1.jpg"
+      "commonsFile": "Yokohama F. Marinos - Manchester City (3-5) - 53074500727 (James McAtee).jpg"
     }
   ],
   "skipped": [],
@@ -231,5 +201,5 @@
   "alreadyApproved": [],
   "apiErrors": 0,
   "stoppedEarly": false,
-  "finishedAt": "2026-05-30T18:24:33.826Z"
+  "finishedAt": "2026-05-30T18:30:55.775Z"
 }
