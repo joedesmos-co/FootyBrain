@@ -43,6 +43,7 @@
   --type-card-title: 1.1rem;
   --type-h1: clamp(1.7rem, 4vw, 2.05rem);
   --type-h2: 1.15rem;
+  --type-h3: 0.92rem;
   --tracking-label: 0.06em;
   --tracking-tight: -0.02em;
   /* Cards */
@@ -55,8 +56,14 @@
   --card-shadow: var(--shadow-soft);
   --card-shadow-hover: var(--shadow-lift);
   --card-hover-lift: -2px;
+  --card-transition:
+    border-color var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out);
   /* Buttons & chips */
   --btn-height: 2.65rem;
+  --btn-hover-lift: -1px;
   --btn-height-sm: 2.2rem;
   --btn-height-lg: 2.95rem;
   --btn-padding-x: 1.05rem;
@@ -158,12 +165,12 @@ body {
   letter-spacing: var(--tracking-tight);
 }
 
-.card-interactive {
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out),
-    background var(--duration-normal) var(--ease-out);
+.card-interactive,
+.player-card,
+.team-card,
+.collection-card,
+.learning-path-card {
+  transition: var(--card-transition);
 }
 
 .card-interactive:hover,
@@ -173,6 +180,10 @@ body {
 .player-card:focus-within,
 .team-card:hover,
 .team-card:focus-within,
+.collection-card:hover,
+.collection-card:focus-within,
+.learning-path-card:hover,
+.learning-path-card:focus-within,
 a.feature-card:hover,
 a.feature-card:focus-visible,
 .league-link-card:hover,
@@ -279,7 +290,7 @@ a.feature-card:focus-visible,
 }
 
 .collections-subsection-title {
-  font-size: 0.92rem;
+  font-size: var(--type-h3);
   font-weight: 650;
   text-transform: none;
   color: var(--color-muted);
@@ -382,7 +393,7 @@ a.feature-card:focus-visible,
   margin: 0;
   max-width: 28rem;
   color: var(--color-text);
-  font-size: 0.98rem;
+  font-size: var(--type-body);
   font-weight: 700;
   line-height: 1.35;
 }
@@ -1355,9 +1366,6 @@ input:focus-visible {
 
 .home-start-card:hover,
 .home-start-card:focus-visible {
-  border-color: rgba(52, 211, 153, 0.45);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
   outline: none;
 }
 
@@ -2809,8 +2817,6 @@ input:focus-visible {
 
 .browse-secondary__card:hover,
 .browse-secondary__card:focus-visible {
-  border-color: rgba(167, 243, 208, 0.35);
-  transform: translateY(-1px);
   outline: none;
 }
 
@@ -2957,9 +2963,10 @@ input:focus-visible {
 
 .browse-accordion__loading,
 .browse-accordion__empty {
-  margin: 0 0 0.55rem;
+  margin: 0 0 var(--space-sm);
   color: var(--color-muted);
-  font-size: 0.84rem;
+  font-size: var(--type-meta);
+  line-height: 1.45;
 }
 
 .browse-accordion__actions {
@@ -3778,7 +3785,7 @@ input:focus-visible {
 .profile__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 /* Player profile — compact research layout */
@@ -4198,12 +4205,12 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  padding: 0.28rem 0.6rem;
+  padding: var(--badge-padding-y) var(--badge-padding-x);
   border: 1px solid rgba(167, 243, 208, 0.14);
-  border-radius: 999px;
+  border-radius: var(--badge-radius);
   background: rgba(7, 17, 13, 0.55);
   color: var(--color-soft);
-  font-size: 0.78rem;
+  font-size: var(--badge-font-size);
   font-weight: 750;
   line-height: 1.25;
   text-decoration: none;
@@ -4257,7 +4264,7 @@ a.player-identity-chip:focus-visible {
 .player-section__head h2 {
   margin: 0;
   color: var(--color-text);
-  font-size: 0.92rem;
+  font-size: var(--type-h3);
   font-weight: 850;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -5332,16 +5339,17 @@ a.player-identity-chip:focus-visible {
 .team-club-hub {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: 0.85rem;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
   min-width: 0;
 }
 
 .team-club-hub__panel {
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  background: rgba(16, 26, 23, 0.92);
+  padding: var(--card-padding-sm);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--card-bg-muted);
+  box-shadow: var(--card-shadow);
   min-width: 0;
 }
 
@@ -5363,17 +5371,17 @@ a.player-identity-chip:focus-visible {
 }
 
 .team-club-hub__card-title {
-  margin: 0 0 0.45rem;
-  font-size: 0.82rem;
-  font-weight: 900;
-  letter-spacing: 0.03em;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--type-label);
+  font-weight: 750;
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-muted);
 }
 
 .team-club-hub__prose {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: var(--type-meta);
   line-height: 1.5;
   color: var(--color-text);
 }
@@ -5456,7 +5464,7 @@ a.player-identity-chip:focus-visible {
 
 .national-team-hub__prose {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: var(--type-meta);
   line-height: 1.55;
   color: var(--color-soft);
 }
@@ -7016,13 +7024,13 @@ a.player-identity-chip:focus-visible {
 
 .quiz-panel__variant-badge {
   flex-shrink: 0;
-  padding: 0.2rem 0.55rem;
+  padding: var(--badge-padding-y) var(--badge-padding-x);
   border: 1px solid rgba(52, 211, 153, 0.32);
-  border-radius: 999px;
+  border-radius: var(--badge-radius);
   background: rgba(52, 211, 153, 0.1);
   color: var(--color-accent);
-  font-size: 0.68rem;
-  font-weight: 900;
+  font-size: var(--badge-font-size-sm);
+  font-weight: 750;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -7053,22 +7061,25 @@ a.player-identity-chip:focus-visible {
   gap: 0.2rem;
   min-width: 0;
   min-height: 5.5rem;
-  padding: 0.65rem 0.7rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  padding: var(--card-padding-sm);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
   background: rgba(7, 17, 13, 0.45);
   color: var(--color-text);
   text-align: left;
   cursor: pointer;
   overflow-wrap: anywhere;
   transition:
-    border-color 0.15s ease,
-    background 0.15s ease;
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .quiz-mode-card:hover:not(:disabled) {
-  border-color: rgba(52, 211, 153, 0.45);
+  border-color: var(--color-border-strong);
   background: rgba(52, 211, 153, 0.06);
+  transform: translateY(var(--btn-hover-lift));
 }
 
 .quiz-mode-card--active {
@@ -7803,8 +7814,11 @@ a.player-identity-chip:focus-visible {
 }
 
 .quiz-summary__title {
-  margin: 0 0 0.75rem;
-  font-size: 1.15rem;
+  margin: 0 0 var(--space-sm);
+  font-size: var(--type-h2);
+  font-weight: 800;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.22;
 }
 
 .quiz-summary__hero {
@@ -8023,12 +8037,7 @@ a.player-identity-chip:focus-visible {
 }
 
 .quiz-form__submit {
-  min-height: 2.85rem;
-}
-
-.quiz-panel {
-  gap: 1.1rem;
-  padding: 1.15rem;
+  min-height: var(--btn-height-lg);
 }
 
 /* Buttons */
@@ -8057,7 +8066,7 @@ a.player-identity-chip:focus-visible {
 }
 
 .btn:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transform: translateY(var(--btn-hover-lift));
 }
 
 .btn:active:not(:disabled) {
@@ -8113,15 +8122,15 @@ a.player-identity-chip:focus-visible {
 .empty-state {
   grid-column: 1 / -1;
   width: 100%;
-  padding: 1.75rem 1.25rem;
+  padding: var(--space-xl) var(--space-lg);
   border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  background: rgba(16, 26, 23, 0.88);
+  border-radius: var(--card-radius);
+  background: var(--card-bg-muted);
   box-shadow: none;
   color: var(--color-muted);
   text-align: center;
   line-height: 1.45;
-  font-size: 0.92rem;
+  font-size: var(--type-meta);
 }
 
 section.empty-state {
@@ -8151,12 +8160,12 @@ div.empty-state > p {
 p.empty-state,
 p.browse-results-empty {
   margin: 0;
-  padding: 1.35rem 1.1rem;
+  padding: var(--space-lg) var(--space-md);
   border: 1px dashed var(--color-border);
-  border-radius: var(--radius-lg);
-  background: rgba(16, 26, 23, 0.88);
+  border-radius: var(--card-radius);
+  background: var(--card-bg-muted);
   color: var(--color-muted);
-  font-size: 0.9rem;
+  font-size: var(--type-meta);
   line-height: 1.55;
   text-align: center;
   max-width: 100%;
@@ -11193,9 +11202,7 @@ p.browse-results-empty {
 
 .today-picks-card:hover,
 .today-picks-card:focus-visible {
-  border-color: var(--color-border-strong);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  outline: none;
 }
 
 .today-picks-card__visual {
@@ -11540,17 +11547,6 @@ p.browse-results-empty {
   border: var(--card-border);
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow);
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out);
-}
-
-.collection-card:hover,
-.collection-card:focus-within {
-  border-color: var(--color-border-strong);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
 }
 
 .collection-card__header {
@@ -11601,8 +11597,11 @@ p.browse-results-empty {
 }
 
 .collection-card__title {
-  font-size: 1.05rem;
-  margin: 0 0 0.35rem;
+  font-size: var(--type-card-title);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-xs);
 }
 
 .collection-card__title a {
@@ -11617,7 +11616,7 @@ p.browse-results-empty {
 
 .collection-card__desc {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: var(--type-meta);
   color: var(--color-muted);
   line-height: 1.45;
 }
@@ -12028,7 +12027,7 @@ p.browse-results-empty {
 }
 
 .collections-page__section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-xl);
 }
 
 .collections-page__section-head {
@@ -12036,12 +12035,12 @@ p.browse-results-empty {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.5rem 1rem;
-  margin-bottom: 0.75rem;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .collections-page__section-link {
-  font-size: 0.88rem;
+  font-size: var(--type-meta);
   font-weight: 700;
   color: var(--color-accent);
   text-decoration: none;
@@ -12057,7 +12056,7 @@ p.browse-results-empty {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 1rem;
+  gap: var(--space-md);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   align-items: stretch;
 }
@@ -12069,24 +12068,13 @@ p.browse-results-empty {
 .learning-path-card {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: var(--space-sm);
   height: 100%;
-  padding: 1.1rem 1.15rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-soft);
-  transition:
-    border-color var(--duration-normal) var(--ease-out),
-    transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out);
-}
-
-.learning-path-card:hover,
-.learning-path-card:focus-within {
-  border-color: rgba(52, 211, 153, 0.45);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lift);
+  padding: var(--card-padding);
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
 }
 
 .learning-path-card__header {
@@ -12094,8 +12082,11 @@ p.browse-results-empty {
 }
 
 .learning-path-card__title {
-  font-size: 1.05rem;
-  margin: 0 0 0.35rem;
+  font-size: var(--type-card-title);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--space-xs);
 }
 
 .learning-path-card__title a {
@@ -12110,7 +12101,7 @@ p.browse-results-empty {
 
 .learning-path-card__desc {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: var(--type-meta);
   color: var(--color-muted);
   line-height: 1.5;
 }
@@ -14939,4 +14930,110 @@ p.browse-results-empty {
   :root {
     --max-width: min(1180px, calc(100vw - 2rem));
   }
+}
+
+/* —— Production visual consistency pass —— */
+.page-loading,
+.page-fallback {
+  text-align: center;
+}
+
+.page-loading__skeleton,
+.page-fallback__skeleton {
+  gap: var(--space-sm);
+}
+
+.page-loading__label,
+.page-fallback__label {
+  font-weight: 650;
+}
+
+.card-grid,
+.collections-grid,
+.team-grid {
+  gap: var(--space-md);
+}
+
+.team-card__header h3 {
+  font-size: var(--type-card-title);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: var(--tracking-tight);
+}
+
+.club-quiz-discovery {
+  margin: 0 0 var(--space-md);
+  padding: var(--card-padding);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  background: var(--card-bg-muted);
+  box-shadow: var(--card-shadow);
+}
+
+.club-quiz-discovery__title {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--type-h2);
+  font-weight: 800;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.22;
+}
+
+.home-start-card__title {
+  font-size: var(--type-body);
+  font-weight: 800;
+}
+
+.home-start-card__desc,
+.home-explore-card__desc,
+.browse-secondary__card span {
+  font-size: var(--type-meta);
+}
+
+.browse-secondary__card strong {
+  font-size: var(--type-body);
+  font-weight: 700;
+}
+
+.quiz-mode-picker__label {
+  font-size: var(--type-label);
+  font-weight: 750;
+  letter-spacing: var(--tracking-label);
+}
+
+.quiz-summary__meta,
+.quiz-summary__insight-label {
+  font-size: var(--type-meta);
+}
+
+.quiz-summary__insight {
+  border-radius: var(--radius-sm);
+}
+
+section.empty-state {
+  gap: var(--space-md);
+}
+
+.empty-state__actions {
+  gap: var(--space-sm);
+}
+
+.chip {
+  font-size: var(--type-meta);
+}
+
+.profile--premium.team-profile .team-club-hub--premium .team-club-hub__card-title {
+  font-size: var(--type-h2);
+  letter-spacing: var(--tracking-tight);
+  text-transform: none;
+  color: var(--color-text);
+}
+
+.profile--premium.team-profile .team-club-hub--premium .team-club-hub__prose {
+  font-size: var(--type-body);
+}
+
+.profile--premium .player-profile__about,
+.profile--premium .league-profile__about,
+.profile--premium .national-team-profile__lede {
+  font-size: var(--type-body);
 }
