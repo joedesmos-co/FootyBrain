@@ -22,6 +22,7 @@ import {
   usesClubQuizMultipleChoice,
 } from '../utils/clubQuizEngine';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
+import { QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import { QUIZ_DIFFICULTY_OPTIONS } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
 import QuizSubNav from './QuizSubNav';
@@ -350,7 +351,7 @@ export default function ClubQuizMode() {
                 </span>
                 <span className="club-quiz__category-label">{cat.label}</span>
                 <span className="club-quiz__category-meta">
-                  {viable ? `${count} clubs` : 'More clubs coming soon'}
+                  {viable ? `${count} clubs` : QUIZ_COMING_SOON}
                 </span>
               </button>
             );
@@ -398,7 +399,7 @@ export default function ClubQuizMode() {
 
         {categoryId ? (
           <p className="quiz-filters__focus-note">
-            Pool: {poolSize} clubs
+            {poolSize} clubs
             {poolReady ? '' : ` (need ${CLUB_QUIZ_MIN_POOL}+ to start)`}
             {leagueFilter ? ` · ${getLeagueDisplayName({ id: leagueFilter })}` : ''}
           </p>
@@ -608,7 +609,7 @@ export default function ClubQuizMode() {
                   <li key={rec.categoryId}>
                     <Link to={rec.href} className="quiz-summary__next-link">
                       <strong>{rec.label}</strong>
-                      <span>{rec.poolSize} clubs in pool</span>
+                      <span>{rec.poolSize} clubs</span>
                     </Link>
                   </li>
                 ))}

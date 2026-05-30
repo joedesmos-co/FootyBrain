@@ -7,7 +7,7 @@ export default function ExternalStubNotice({ compact = false }) {
       className={`external-stub-notice${compact ? ' external-stub-notice--compact' : ''}`}
       role="note"
     >
-      Quick club reference for national-team players—a full club profile is on the way.
+      Quick club reference for national-team players — a full club profile is coming.
     </p>
   );
 }

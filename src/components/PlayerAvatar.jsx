@@ -52,7 +52,7 @@ function PlayerAvatarPlaceholder({
       {!compact && !isThumb ? (
         <span className="player-avatar__meta player-visual__meta">
           <span>{formatPosition(player?.position)}</span>
-          <strong>{teamName}</strong>
+          {teamName && teamName !== 'Unknown' ? <strong>{teamName}</strong> : null}
         </span>
       ) : null}
     </div>

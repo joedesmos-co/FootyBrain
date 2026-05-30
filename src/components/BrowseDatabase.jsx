@@ -269,7 +269,11 @@ export default function BrowseDatabase() {
     searchIndexStatus === 'ready' || Boolean(bundled) || usesExternalShard;
   const showPlayerResults =
     showPlayersTab &&
-    (hasPlayerQuery || skipClubPicker || (!leagueFilter && playersListReady));
+    (hasPlayerQuery ||
+      skipClubPicker ||
+      leagueFilter ||
+      teamFilter ||
+      (!leagueFilter && !teamFilter && playersListReady));
 
   const totalFilteredPlayers = filteredPlayers.length;
   const totalPlayerPages = Math.max(1, Math.ceil(totalFilteredPlayers / BROWSE_PAGE_SIZE));
@@ -495,11 +499,15 @@ export default function BrowseDatabase() {
                   : totalFilteredPlayers === 0
                     ? '0 players found'
                     : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()}`
-                : playersListReady
+                : leagueFilter || teamFilter
                   ? totalFilteredPlayers === 0
-                    ? '0 players'
-                    : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()} — search or pick a league or club`
-                  : 'Players could not load. Try again in a moment.'}
+                    ? '0 players match these filters'
+                    : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()}`
+                  : playersListReady
+                    ? totalFilteredPlayers === 0
+                      ? '0 players'
+                      : `Showing ${playerPageStart + 1}–${playerPageEnd} of ${totalFilteredPlayers.toLocaleString()} — search or pick a league or club`
+                    : 'Players could not load. Try again in a moment.'}
         </p>
       </section>
       )}
@@ -604,6 +612,9 @@ export default function BrowseDatabase() {
                 >
                   Clear filters
                 </button>
+                <Link to="/quiz" className="btn btn--secondary">
+                  Try a quiz
+                </Link>
               </div>
             </section>
           )}

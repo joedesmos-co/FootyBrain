@@ -10,7 +10,7 @@ import {
   buildPlayerProfileEditorial,
   PLAYER_PLACEHOLDER_FACT_RE,
 } from '../utils/playerProfileEditorial';
-import { IMPORTANCE_SCORE_LABEL } from '../utils/consumerCopy';
+import { IMPORTANCE_SCORE_LABEL, IMPORTANCE_SCORE_TITLE } from '../utils/consumerCopy';
 import { getRoleSummary } from '../utils/playerImportance';
 import { isQuizEligiblePlayer } from '../utils/quizPlayerRules';
 import { useRecordRecentView } from '../hooks/useRecordRecentView';
@@ -27,7 +27,9 @@ import {
 } from '../utils/footballDisplay';
 import CountryFlag from './CountryFlag';
 import DataTrustNotice from './DataTrustNotice';
+import ExternalStubNotice from './ExternalStubNotice';
 import FavoriteButton from './FavoriteButton';
+import PageFallback, { PageLoadingInline } from './PageFallback';
 import PlayerVisual from './PlayerVisual';
 import PositionLabel from './PositionLabel';
 import RelatedPlayersSection from './RelatedPlayersSection';
@@ -54,7 +56,6 @@ import {
   FIELD_NATIONAL_TEAM,
   FIELD_POSITION,
   LINK_CLUB_QUIZ_GUIDE,
-  LINK_NATIONAL_TEAM,
   NAME_CLUB_QUIZ,
   linkNationalityPlayers,
 } from '../utils/entityCopy.js';
@@ -378,16 +379,7 @@ export default function PlayerProfile() {
   }, [playerStatus, playerId]);
 
   if (playerStatus === 'loading') {
-    return (
-      <div className="page player-profile">
-        <header className="page-header">
-          <h1>Loading player profile</h1>
-          <p className="empty-state" role="status">
-            Loading player…
-          </p>
-        </header>
-      </div>
-    );
+    return <PageFallback label="Loading player…" />;
   }
 
   if (!player || playerStatus === 'not-found' || playerStatus === 'error') {
@@ -578,7 +570,7 @@ export default function PlayerProfile() {
           </div>
         </div>
         <div className="profile__side-actions player-profile__hero-aside">
-          <div className="profile__score-block">
+          <div className="profile__score-block" title={IMPORTANCE_SCORE_TITLE}>
             <span className="profile__score-label">{IMPORTANCE_SCORE_LABEL}</span>
             <span className="profile__score-value">{player.importanceScore}</span>
           </div>
@@ -608,27 +600,13 @@ export default function PlayerProfile() {
       )}
 
       {isExternalClubStubTeam({ id: player.teamId, leagueId: player.leagueId }) ? (
-        <p className="player-study__note" role="note">
-          Squad listed for international quizzes; full club guide coming soon.
-        </p>
+        <ExternalStubNotice compact />
       ) : null}
 
       <nav
         className={`player-profile__quick-links${profileEditorial.topTier ? ' player-profile__quick-links--curated' : ''}`}
         aria-label="Quick actions"
       >
-        <Link to={`/team/${player.teamId}`}>{FIELD_CLUB}</Link>
-        <Link to={`/league/${player.leagueId}`}>{FIELD_LEAGUE}</Link>
-        {liveNationalTeam && (
-          <Link to={`/national-team/${liveNationalTeam.id}`}>{LINK_NATIONAL_TEAM}</Link>
-        )}
-        {!liveNationalTeam && nationalTeamPlainLabel ? (
-          <Link
-            to={`/hubs/players/nationality/${encodeURIComponent(String(nationalTeamPlainLabel).trim())}`}
-          >
-            {linkNationalityPlayers(nationalTeamPlainLabel)}
-          </Link>
-        ) : null}
         {quizReady && <Link to={`/quiz?team=${player.teamId}`}>{NAME_CLUB_QUIZ}</Link>}
         <Link to={`/hubs/quizzes/team/${player.teamId}`}>{LINK_CLUB_QUIZ_GUIDE}</Link>
         {!profileEditorial.topTier && player.nationality ? (
@@ -768,7 +746,7 @@ export default function PlayerProfile() {
               ))}
             </ul>
           ) : (
-            <PlayerEmptyState>More player details are on the way.</PlayerEmptyState>
+            <PlayerEmptyState>Major honors haven&apos;t been added for this player yet.</PlayerEmptyState>
           )}
         </article>
 
@@ -799,7 +777,7 @@ export default function PlayerProfile() {
           <PlayerSectionHead icon="◆" title="At a glance" />
           <ul className="player-snapshot__list">
             <li>
-              <span className="player-snapshot__label">Importance</span>
+              <span className="player-snapshot__label">Role</span>
               <span>{roleSummary}</span>
             </li>
             {displayFact ? (
@@ -844,11 +822,7 @@ export default function PlayerProfile() {
         />
       )}
 
-      {relatedLoading ? (
-        <p className="page-loading" role="status" aria-live="polite">
-          Loading related players…
-        </p>
-      ) : null}
+      {relatedLoading ? <PageLoadingInline label="Loading related players…" /> : null}
       <RelatedPlayersSection suggestions={relatedPlayers} />
       <RelatedPlayersSection
         title="Similar role"

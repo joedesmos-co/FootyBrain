@@ -23,7 +23,7 @@ export function getPlayerRoleSummary(player) {
  */
 export function getPlayerStrengths(player) {
   if (isBrowseOnlyPlayer(player)) {
-    return ['Profile preview—playing strengths coming soon.'];
+    return ['Playing strengths haven\'t been added yet.'];
   }
 
   const style = String(player.playingStyle ?? '').trim();
@@ -59,13 +59,13 @@ export function getSquadStrengthSummary(rosterStats) {
 
   const depth =
     dominantCount > 0
-      ? `deepest ${positionGroupLabel(dominantId).toLowerCase()} pool (${dominantCount})`
+      ? `deepest ${positionGroupLabel(dominantId).toLowerCase()} group (${dominantCount})`
       : 'balanced squad spread';
 
   const top =
     topPlayer != null
-      ? `top importance score ${topPlayer.importanceScore} (${topPlayer.name})`
-      : 'no rated leader in sample';
+      ? `top profile rank ${topPlayer.importanceScore} (${topPlayer.name})`
+      : 'no stand-out name yet';
 
   return `${total} players · ${depth} · ${top}`;
 }

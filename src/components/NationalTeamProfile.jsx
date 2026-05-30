@@ -44,6 +44,7 @@ import {
   getNationalityHubPath,
 } from '../utils/internalLinking.js';
 import { isThinNationalTeam } from '../utils/entityDepthAudit';
+import { QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import {
   BADGE_QUIZ_READY,
   CRUMB_HOME,
@@ -351,9 +352,14 @@ export default function NationalTeamProfile() {
               </Link>
             </>
           ) : (
-            <button type="button" className="btn btn--secondary" disabled>
-              National team quiz coming soon — browse the squad below first
-            </button>
+            <>
+              <button type="button" className="btn btn--secondary" disabled>
+                {QUIZ_COMING_SOON}
+              </button>
+              <a href="#team-squad" className="btn btn--secondary">
+                Browse squad
+              </a>
+            </>
           )}
         </div>
       </header>
@@ -457,7 +463,7 @@ export default function NationalTeamProfile() {
                   ) : (
                     <span className="national-team-profile__rival-pending">
                       {getRivalDisplayName(rivalId)}
-                      <span className="national-team-profile__rival-note"> (page coming)</span>
+                      <span className="national-team-profile__rival-note"> (profile coming soon)</span>
                     </span>
                   )}
                 </li>
@@ -469,7 +475,7 @@ export default function NationalTeamProfile() {
 
       {clubFlows.length > 0 && (
         <section className="profile__section info-card" aria-label="Nation to club learning flow">
-          <h2>Club supply chains</h2>
+          <h2>Where they play club football</h2>
           <p className="collections-page__section-desc">
             Clubs supplying the most players for this nation — jump to squads before quizzing.
           </p>

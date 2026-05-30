@@ -75,17 +75,17 @@ export function buildCompareInsights(playerA, playerB) {
   if (scoreDiff === 0) {
     insights.push({
       kind: 'similarity',
-      text: `Same Importance Score (${playerA.importanceScore}).`,
+      text: `Same profile rank (${playerA.importanceScore}).`,
     });
   } else if (scoreDiff > 0) {
     insights.push({
       kind: 'difference',
-      text: `${playerA.name} has the higher score (${playerA.importanceScore} vs ${playerB.importanceScore}).`,
+      text: `${playerA.name} ranks higher (${playerA.importanceScore} vs ${playerB.importanceScore}).`,
     });
   } else {
     insights.push({
       kind: 'difference',
-      text: `${playerB.name} has the higher score (${playerB.importanceScore} vs ${playerA.importanceScore}).`,
+      text: `${playerB.name} ranks higher (${playerB.importanceScore} vs ${playerA.importanceScore}).`,
     });
   }
 
@@ -94,17 +94,17 @@ export function buildCompareInsights(playerA, playerB) {
   if (stopsA === 0 && stopsB === 0) {
     insights.push({
       kind: 'similarity',
-      text: 'Career histories are not in the sample yet for either player.',
+      text: 'Career histories are not on FootyCompass yet for either player.',
     });
   } else if (stopsA === stopsB) {
     insights.push({
       kind: 'similarity',
-      text: `Same career stops in the sample (${stopsA}).`,
+      text: `Same number of career stops (${stopsA}).`,
     });
   } else {
     insights.push({
       kind: 'difference',
-      text: `Career stops in sample: ${playerA.name} ${stopsA}, ${playerB.name} ${stopsB}.`,
+      text: `Career stops: ${playerA.name} ${stopsA}, ${playerB.name} ${stopsB}.`,
     });
   }
 

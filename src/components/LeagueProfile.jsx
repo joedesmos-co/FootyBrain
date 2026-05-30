@@ -416,7 +416,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
               </ul>
             ) : (
               <p className="league-discovery__empty">
-                Derby and rivalry notes for this league are on the way.
+                Derby and rivalry notes for this league are still being added.
               </p>
             )}
           </article>

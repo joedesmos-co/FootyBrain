@@ -205,7 +205,7 @@ export function SeoQuizThemeHub() {
         <p className="page-header__meta">
           {viable
             ? `${pool.length} quiz-ready players · Last updated ${DATASET_META.dataAsOf}`
-            : `Only ${pool.length} players in pool — try another theme or the main quiz`}
+            : `Only ${pool.length} quiz-ready players — try another theme or the main quiz`}
         </p>
       </header>
 

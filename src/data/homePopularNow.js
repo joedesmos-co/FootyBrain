@@ -67,7 +67,7 @@ export function getHomePopularSections() {
         {
           to: '/quiz?theme=world-cup',
           label: 'World Cup football quiz',
-          hint: '2026 prep player pool',
+          hint: '2026 prep quiz',
         },
         {
           to: '/club-quiz?category=stadium',

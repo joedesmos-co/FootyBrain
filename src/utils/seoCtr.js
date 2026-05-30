@@ -379,7 +379,7 @@ export function buildCompareSeoDescription(ctx = {}) {
   }
   if (leftName && rightName) {
     return truncateMetaDescription(
-      `Compare ${leftName} and ${rightName}: position, club, league, importance score, and quiz clues. Settle debates with data on FootyCompass.`,
+      `Compare ${leftName} and ${rightName}: position, club, league, profile rank, and quiz clues. Settle debates with data on FootyCompass.`,
     );
   }
   return truncateMetaDescription(

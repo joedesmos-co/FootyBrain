@@ -94,7 +94,7 @@ function ComparePlayerColumn({ player, side, getTeamName }) {
 
       {browseOnly && (
         <p className="player-study__note">
-          Profile preview—compare facts are available; quiz clues for this player are not in the pool yet.
+          Study profile — compare facts are ready; quiz hints are still being added.
         </p>
       )}
 

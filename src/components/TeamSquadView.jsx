@@ -14,6 +14,7 @@ import DataTrustNotice from './DataTrustNotice';
 import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
+import { BADGE_QUIZ_READY, IMPORTANCE_SCORE_LABEL, IMPORTANCE_SCORE_TITLE } from '../utils/consumerCopy';
 
 const NATIONALITY_ABBREV = {
   'United States': 'USA',
@@ -224,7 +225,11 @@ export default function TeamSquadView({
                       <span className="team-squad__row-name-line">
                         <strong className="team-squad__row-name">{player.name}</strong>
                         {isQuizEligiblePlayer(player) ? (
-                          <span className="team-squad__row-quiz" title="Playable in quizzes">
+                          <span
+                            className="team-squad__row-quiz"
+                            title={BADGE_QUIZ_READY}
+                            aria-label={BADGE_QUIZ_READY}
+                          >
                             Q
                           </span>
                         ) : null}
@@ -233,8 +238,8 @@ export default function TeamSquadView({
                         {squadRowMeta(player, variant, getTeamName)}
                       </span>
                     </span>
-                    <span className="team-squad__row-score" title="Importance score">
-                      <span className="team-squad__row-score-label">Score</span>
+                    <span className="team-squad__row-score" title={IMPORTANCE_SCORE_TITLE}>
+                      <span className="team-squad__row-score-label">{IMPORTANCE_SCORE_LABEL}</span>
                       <span className="team-squad__row-score-value">{player.importanceScore}</span>
                     </span>
                   </Link>
