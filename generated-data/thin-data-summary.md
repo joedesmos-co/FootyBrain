@@ -1,6 +1,6 @@
 # Thin data quality audit
 
-Generated: 2026-05-31T13:28:44.672Z
+Generated: 2026-05-31T16:46:51.729Z
 
 ## Summary
 
@@ -9,11 +9,11 @@ Generated: 2026-05-31T13:28:44.672Z
 | Major clubs | 164 |
 | Thin / placeholder clubs | 0 |
 | Placeholder club copy | 0 |
-| Clubs with editorial overlay | 117 |
+| Clubs with editorial overlay | 164 |
 | Thin clubs with overlay | 0 |
 | Top 300 players (thin) | 0 |
 | Browse-only players (importance ≥48) | 3902 |
-| Browse-only ≥48 without overlay | 3462 |
+| Browse-only ≥48 without overlay | 0 |
 | Thin leagues | 0 |
 | Thin national teams | 0 |
 

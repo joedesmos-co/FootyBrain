@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-05-31T13:28:44.672Z",
+  "generatedAt": "2026-05-31T16:46:51.729Z",
   "summary": {
     "majorClubs": 164,
     "thinClubs": 0,
     "placeholderClubs": 0,
-    "clubsWithOverlay": 117,
+    "clubsWithOverlay": 164,
     "thinClubsWithOverlay": 0,
     "topPlayersAudited": 300,
     "thinTopPlayers": 0,
     "browseOnlyImportance48Plus": 3902,
-    "browseOnlyHighWithoutOverlay": 3462,
+    "browseOnlyHighWithoutOverlay": 0,
     "thinLeagues": 0,
     "thinNational": 0,
-    "teamOverlayCount": 117,
-    "playerOverlayCount": 790
+    "teamOverlayCount": 164,
+    "playerOverlayCount": 4420
   },
   "thinClubsPriority": [],
   "placeholderClubs": [],

@@ -1,12 +1,12 @@
 # Weak entities report
 
-Generated: 2026-05-30T23:51:39.456Z
+Generated: 2026-05-31T16:46:53.083Z
 
 ## Summary
 
 | Metric | Count |
 | --- | ---: |
-| Weak players (all) | 3702 |
+| Weak players (all) | 0 |
 | Weak players (importance ≥68) | 0 |
 | Weak / placeholder clubs | 0 (0 placeholder) |
 | Weak national teams | 0 |
