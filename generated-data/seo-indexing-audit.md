@@ -1,6 +1,6 @@
 # SEO indexing audit
 
-Generated: 2026-05-30T20:28:55.890Z
+Generated: 2026-05-31T16:46:52.808Z
 
 **Status: pass**
 
