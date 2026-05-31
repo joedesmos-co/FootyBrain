@@ -7,7 +7,7 @@ const PILLARS = [
     summary: 'Football player profiles, club squads, leagues, and national teams.',
     links: [
       { to: '/browse', label: 'Browse players' },
-      { to: '/teams', label: 'Browse clubs' },
+      { to: '/browse?tab=clubs', label: 'Browse clubs' },
       { to: '/hubs', label: 'Guides & topics' },
     ],
   },

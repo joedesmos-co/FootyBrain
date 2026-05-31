@@ -25,15 +25,15 @@
   --space-md: 1rem;
   --space-lg: 1.35rem;
   --space-xl: 1.75rem;
-  --space-section: 1.65rem;
+  --space-section: 1.85rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-fast: 0.14s;
   --duration-normal: 0.22s;
   --duration-slow: 0.34s;
   --shadow: 0 22px 50px rgba(0, 0, 0, 0.3);
-  --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.22);
-  --shadow-lift: 0 14px 32px rgba(0, 0, 0, 0.26);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.18);
+  --shadow-lift: 0 12px 28px rgba(0, 0, 0, 0.22);
   --max-width: 1180px;
   /* Typography */
   --type-eyebrow: 0.7rem;
@@ -42,7 +42,7 @@
   --type-body: 0.94rem;
   --type-card-title: 1.1rem;
   --type-h1: clamp(1.7rem, 4vw, 2.05rem);
-  --type-h2: 1.15rem;
+  --type-h2: 1.2rem;
   --type-h3: 0.92rem;
   --tracking-label: 0.06em;
   --tracking-tight: -0.02em;
@@ -55,7 +55,7 @@
   --card-bg-muted: rgba(16, 26, 23, 0.92);
   --card-shadow: var(--shadow-soft);
   --card-shadow-hover: var(--shadow-lift);
-  --card-hover-lift: -2px;
+  --card-hover-lift: -1px;
   --card-transition:
     border-color var(--duration-normal) var(--ease-out),
     transform var(--duration-normal) var(--ease-out),
@@ -122,8 +122,8 @@ body {
   font-family: var(--font-sans);
   font-size: var(--type-body);
   background:
-    linear-gradient(rgba(167, 243, 208, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167, 243, 208, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(167, 243, 208, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(167, 243, 208, 0.015) 1px, transparent 1px),
     linear-gradient(180deg, #07110d 0%, #0b1511 48%, #101513 100%);
   background-size: 42px 42px, 42px 42px, auto;
   color: var(--color-text);
@@ -531,7 +531,8 @@ input:focus-visible {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md) 3.25rem;
+  padding: clamp(1.15rem, 3vw, var(--space-lg)) clamp(0.85rem, 3vw, var(--space-md))
+    clamp(2.75rem, 6vw, 3.75rem);
 }
 
 .app__footer {
@@ -15179,4 +15180,210 @@ section.empty-state {
 .profile--premium .league-profile__about,
 .profile--premium .national-team-profile__lede {
   font-size: var(--type-body);
+}
+
+/* ============================================================
+   Premium design refinement — cohesion, hierarchy, polish
+   ============================================================ */
+
+.page {
+  gap: clamp(1.35rem, 3.5vw, 2rem);
+}
+
+.page-header {
+  gap: var(--space-sm);
+}
+
+.page-header p,
+.page-header__lead {
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
+  line-height: 1.55;
+}
+
+.filters {
+  background: rgba(16, 26, 23, 0.72);
+  box-shadow: none;
+  border-color: rgba(167, 243, 208, 0.12);
+}
+
+.data-trust-notice:not(.data-trust-notice--compact) {
+  border-color: rgba(167, 243, 208, 0.12);
+  background: rgba(16, 26, 23, 0.42);
+  font-size: 0.8rem;
+}
+
+.data-trust-notice--compact {
+  opacity: 0.9;
+}
+
+.card-grid {
+  gap: clamp(0.85rem, 2.5vw, 1.15rem);
+}
+
+.player-card,
+.team-card {
+  background: rgba(16, 26, 23, 0.88);
+}
+
+.profile__hero {
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: linear-gradient(165deg, rgba(16, 26, 23, 0.96), rgba(12, 22, 18, 0.88));
+}
+
+.profile__hero h1 {
+  font-size: clamp(1.65rem, 5vw, 2.15rem);
+  letter-spacing: var(--tracking-tight);
+}
+
+.profile__grid,
+.player-profile__body {
+  gap: clamp(0.85rem, 2.5vw, 1.15rem);
+}
+
+.info-card p,
+.info-card li,
+.team-club-hub__prose p,
+.player-profile__about,
+.league-profile__about,
+.national-team-profile__lede {
+  max-width: 68ch;
+}
+
+.info-card {
+  padding: clamp(0.95rem, 2.5vw, 1.15rem);
+}
+
+.quiz-scoreboard div {
+  border-color: rgba(167, 243, 208, 0.1);
+  background: rgba(7, 17, 13, 0.28);
+  box-shadow: none;
+}
+
+.page.quiz .quiz-scoreboard,
+.page.club-quiz .quiz-scoreboard {
+  padding: 0.55rem;
+  gap: 0.45rem;
+  background: rgba(16, 26, 23, 0.55);
+  border-color: rgba(167, 243, 208, 0.12);
+  box-shadow: none;
+}
+
+.quiz-panel {
+  padding: clamp(1rem, 3vw, 1.25rem);
+}
+
+.quiz-panel__prompt {
+  font-size: clamp(1.05rem, 3vw, 1.2rem);
+}
+
+.collection-item {
+  padding: clamp(0.95rem, 2.5vw, 1.1rem);
+  background: rgba(16, 26, 23, 0.88);
+}
+
+.collection-card {
+  padding: clamp(1rem, 2.5vw, 1.15rem);
+}
+
+.collection-card__bar {
+  height: 5px;
+  border-radius: var(--radius-pill);
+}
+
+.hero__brand-tagline {
+  display: none;
+}
+
+.hero__brand-name {
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(167, 243, 208, 0.55);
+}
+
+.hero.hero--home.hero--polished .hero__brand-line {
+  margin-top: 0.35rem;
+}
+
+.home-pillar-card {
+  background: rgba(16, 26, 23, 0.72);
+  box-shadow: none;
+}
+
+.home-pillar-card:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.home-popular-now__card {
+  background: rgba(16, 26, 23, 0.55);
+  border-color: rgba(167, 243, 208, 0.12);
+}
+
+.compare-tabs {
+  gap: 0.35rem;
+}
+
+.compare-tabs__tab {
+  background: rgba(16, 26, 23, 0.45);
+}
+
+.compare-tabs__tab--active {
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.quiz-subnav {
+  border-color: rgba(167, 243, 208, 0.12);
+  background: rgba(16, 26, 23, 0.55);
+}
+
+section.empty-state,
+.empty-state:not(p) {
+  padding: clamp(1.25rem, 4vw, 1.75rem);
+  border-radius: var(--card-radius);
+  background: rgba(16, 26, 23, 0.42);
+  border: 1px dashed rgba(167, 243, 208, 0.14);
+}
+
+.player-visual--profile {
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.player-visual--card {
+  border-radius: var(--radius-sm);
+}
+
+.home-trust-strip a {
+  text-decoration: none;
+}
+
+.home-trust-strip a:hover,
+.home-trust-strip a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .page-header h1 {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  }
+
+  .hero.hero--home.hero--polished {
+    padding: 1.1rem 1rem 1.25rem;
+  }
+
+  .quiz-scoreboard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quiz-scoreboard strong {
+    font-size: 1.25rem;
+  }
+
+  .collection-item {
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0.65rem 0.85rem;
+  }
 }
