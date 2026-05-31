@@ -3,8 +3,8 @@
   --color-surface: #101a17;
   --color-surface-2: #172520;
   --color-surface-3: #20342d;
-  --color-border: rgba(167, 243, 208, 0.16);
-  --color-border-strong: rgba(167, 243, 208, 0.28);
+  --color-border: rgba(148, 163, 184, 0.11);
+  --color-border-strong: rgba(148, 163, 184, 0.22);
   --color-text: #f3f7f2;
   --color-muted: #a9b9b0;
   --color-soft: #d9e6dd;
@@ -53,9 +53,9 @@
   --card-border: 1px solid var(--color-border);
   --card-bg: var(--color-surface);
   --card-bg-muted: rgba(16, 26, 23, 0.92);
-  --card-shadow: var(--shadow-soft);
-  --card-shadow-hover: var(--shadow-lift);
-  --card-hover-lift: -1px;
+  --card-shadow: none;
+  --card-shadow-hover: 0 10px 28px rgba(0, 0, 0, 0.2);
+  --card-hover-lift: 0;
   --card-transition:
     border-color var(--duration-normal) var(--ease-out),
     transform var(--duration-normal) var(--ease-out),
@@ -121,11 +121,7 @@ body {
   min-height: 100vh;
   font-family: var(--font-sans);
   font-size: var(--type-body);
-  background:
-    linear-gradient(rgba(167, 243, 208, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(167, 243, 208, 0.015) 1px, transparent 1px),
-    linear-gradient(180deg, #07110d 0%, #0b1511 48%, #101513 100%);
-  background-size: 42px 42px, 42px 42px, auto;
+  background: linear-gradient(180deg, #07110d 0%, #0b1511 48%, #101513 100%);
   color: var(--color-text);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -15385,5 +15381,243 @@ section.empty-state,
   .collection-item {
     grid-template-columns: 1.75rem 1fr;
     gap: 0.65rem 0.85rem;
+  }
+}
+
+/* ============================================================
+   Design taste pass — restraint, neutral surfaces, less noise
+   ============================================================ */
+
+.surface-card,
+.info-card,
+.profile__hero,
+.profile-keep-exploring,
+.filters,
+.player-card,
+.team-card,
+.collection-card,
+.quiz-panel,
+.home-pillar-card {
+  box-shadow: none;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-within,
+.player-card:hover,
+.player-card:focus-within,
+.team-card:hover,
+.team-card:focus-within,
+.collection-card:hover,
+.collection-card:focus-within,
+.home-popular-now__card:hover,
+.home-popular-now__card:focus-visible,
+.home-start-card:hover,
+.home-explore-card:hover,
+.today-picks-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-border-strong);
+}
+
+.hero.hero--home.hero--polished {
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+  background: linear-gradient(168deg, rgba(14, 22, 19, 0.96), rgba(9, 15, 13, 0.98));
+}
+
+.hero.hero--home.hero--polished .hero__eyebrow {
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+.hero.hero--home.hero--polished .hero__stats div {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.hero.hero--home.hero--polished .hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  gap: 1.25rem;
+  max-width: none;
+}
+
+.hero.hero--home.hero--polished .hero__stats dt {
+  font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.hero.hero--home.hero--polished .hero__stats dd {
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.hero.hero--home.hero--polished .home-trust-strip {
+  margin-top: 1rem;
+  padding: 0.75rem 0 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  background: none;
+}
+
+.hero__brand-name {
+  color: var(--color-muted);
+}
+
+.hero__actions-row--priority .btn {
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-soft);
+  font-weight: 600;
+}
+
+.hero__actions-row--priority .btn:hover:not(:disabled),
+.hero__actions-row--priority .btn:focus-visible {
+  background: rgba(148, 163, 184, 0.08);
+  border-color: var(--color-border);
+  transform: none;
+}
+
+.home-popular-now__section + .home-popular-now__section {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.home-popular-now__card {
+  min-height: 0;
+  padding: 0.7rem 0.85rem;
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.home-popular-now__card:hover,
+.home-popular-now__card:focus-visible {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.home-pillar-card {
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.home-pillar-card:hover {
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.player-card__meta div {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.player-card__meta {
+  gap: 0.35rem 1rem;
+}
+
+.player-card__meta dt {
+  font-size: 0.68rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.player-card__meta dd {
+  font-weight: 700;
+}
+
+.player-card__score {
+  box-shadow: none;
+}
+
+.team-card__league {
+  color: var(--color-muted);
+  font-weight: 750;
+}
+
+.page.quiz .quiz-scoreboard,
+.page.club-quiz .quiz-scoreboard {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.quiz-scoreboard div {
+  padding: 0.35rem 0;
+  border: none;
+  background: none;
+}
+
+.quiz-scoreboard {
+  gap: 1rem;
+}
+
+.quiz-scoreboard strong {
+  font-size: 1.25rem;
+}
+
+.quiz-mode-card:hover:not(:disabled) {
+  transform: none;
+  background: rgba(148, 163, 184, 0.05);
+}
+
+.quiz-mode-card--active {
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(52, 211, 153, 0.08);
+  box-shadow: none;
+}
+
+.compare-tabs__tab--active {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+
+.quiz-subnav {
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  background: none;
+  border-radius: 0;
+}
+
+.filters {
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.data-trust-notice:not(.data-trust-notice--compact) {
+  border: none;
+  border-left: 2px solid var(--color-border-strong);
+  border-radius: 0;
+  background: none;
+  padding-left: 0.85rem;
+}
+
+section.empty-state,
+.empty-state:not(p) {
+  border: 1px solid var(--color-border);
+  border-style: solid;
+  background: transparent;
+}
+
+.collection-item:hover {
+  box-shadow: none;
+}
+
+@media (max-width: 639px) {
+  .hero.hero--home.hero--polished .home-trust-strip__list li {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .hero.hero--home.hero--polished .hero__stats {
+    flex-wrap: wrap;
+    row-gap: 0.65rem;
   }
 }
