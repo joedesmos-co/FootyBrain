@@ -724,10 +724,6 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
     nationalTeamFilter,
     teamFilter,
   );
-  const isThinPool =
-    playerPool.length > 0 &&
-    playerPool.length < QUIZ_MIN_SESSION_POOL &&
-    (poolFocus === 'club' || poolFocus === 'national' || poolFocus === 'international');
   const questionPrompt = getQuizPromptForType(quizType);
   const timedLabel =
     QUIZ_TIMED_PRESETS.find((preset) => preset.id === timeLimitSeconds)?.label ?? 'Off';
@@ -828,7 +824,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           </p>
           <p>{activeTheme.description}</p>
           <p className="quiz-active-theme__meta">
-            {playerPool.length} players in pool
+            {playerPool.length} players ready
             {themedSourcePool ? ` (from ${themedSourcePool.length} themed)` : ''}
           </p>
           <Link to={`/hubs/quizzes/theme/${activeTheme.id}`} className="quiz-active-theme__link">
@@ -849,7 +845,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
 
       <section className="quiz-themes-picker" aria-label="Themed quizzes">
         <div className="quiz-themes-picker__head">
-          <h2 className="quiz-themes-picker__title">Themed pools</h2>
+          <h2 className="quiz-themes-picker__title">Themed quizzes</h2>
           <Link to="/hubs/quizzes/themes" className="collections-page__section-link">
             Browse all themes
           </Link>
@@ -872,7 +868,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 </span>
                 <span className="quiz-theme-card__title">{theme.label}</span>
                 <span className="quiz-theme-card__meta">
-                  {viable ? `${count} ready` : `${count} in pool`}
+                  {viable ? `${count} ready` : `${count} players`}
                 </span>
               </button>
             );
@@ -885,7 +881,7 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
           <span className="quiz-filters-details__label">Customize quiz</span>
           <span className="quiz-filters-details__hint">
             {currentDifficulty?.label ?? 'Medium'}
-            {playerPool.length > 0 ? ` · ${playerPool.length} in pool` : ''}
+            {playerPool.length > 0 ? ` · ${playerPool.length} players ready` : ''}
           </span>
         </summary>
         <section className="filters quiz-filters quiz-filters-details__body" aria-label="Quiz setup">
@@ -1356,11 +1352,6 @@ function QuizModeLoaded({ registry, teamById, leagueById }) {
                 {poolHint}
               </p>
             )}
-            {isThinPool ? (
-              <p className="quiz-panel__empty-actions" role="note">
-                Need {QUIZ_MIN_SESSION_POOL}+ players with clues to start a fair session.
-              </p>
-            ) : null}
             {countryEmptyState?.showSquadLink && selectedNationalTeam && (
               <p className="quiz-panel__empty-actions">
                 <Link to={`/national-team/${selectedNationalTeam.id}`}>

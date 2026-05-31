@@ -18,6 +18,10 @@ export default function HomeTrustStrip() {
           <Link to="/editorial">How we source &amp; correct data</Link>
         </li>
         <li>
+          <span className="home-trust-strip__label">Privacy</span>
+          <Link to="/privacy">How we handle your data</Link>
+        </li>
+        <li>
           <span className="home-trust-strip__label">About</span>
           <Link to="/about">Who runs FootyCompass</Link>
         </li>

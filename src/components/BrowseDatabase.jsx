@@ -36,7 +36,8 @@ const browseNationalTeams = getBrowseNationalTeams();
 export default function BrowseDatabase() {
   const [searchParams, setSearchParams] = useSearchParams();
   const rawTab = searchParams.get('tab') || 'players';
-  const tab = rawTab === 'teams' ? 'clubs' : rawTab;
+  const normalizedRaw = rawTab === 'teams' ? 'clubs' : rawTab;
+  const tab = normalizedRaw === 'players' || normalizedRaw === 'clubs' ? normalizedRaw : 'players';
   const leagueFilter = normalizeBrowseLeagueParam(searchParams.get('league') || '');
   const otherClubRegion = normalizeOtherClubRegionParam(searchParams.get('region'));
   const [teamFilter, setTeamFilter] = useState('');
@@ -65,6 +66,19 @@ export default function BrowseDatabase() {
     }
     return 'league';
   }, [isOtherClubsLeague, otherClubRegion, leagueFilter]);
+
+  useEffect(() => {
+    if (normalizedRaw === tab) return;
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (tab === 'players') next.delete('tab');
+        else next.set('tab', tab);
+        return next;
+      },
+      { replace: true },
+    );
+  }, [normalizedRaw, tab, setSearchParams]);
 
   useEffect(() => {
     if (usesExternalShard || searchIndexStatus !== 'error') return undefined;
@@ -457,7 +471,7 @@ export default function BrowseDatabase() {
           </label>
 
           <label className="filter-field">
-            <span>Club</span>
+            <span>Club{!leagueFilter ? ' (pick a league first)' : ''}</span>
             <select
               value={teamFilter}
               onChange={(e) => handleTeamFilterChange(e.target.value)}
@@ -473,16 +487,15 @@ export default function BrowseDatabase() {
           </label>
 
           <PlayerAutocomplete
-            searchPool={playerSearchPool.players}
             players={scopedPlayers}
             value={search}
             onChange={handleSearchChange}
             showNationalTeam
-            navigateOnSelect
+            navigateOnSelect={false}
             intentContext={intentContext}
             poolStatus={playerSearchPool.status}
             label="Search"
-            placeholder="Search all players — name, club, country…"
+            placeholder="Search players in this view — name, club, country…"
             disabled={browseDataLoading}
             getTeamName={(id) => playerSearchPool.getTeamName(id) || getTeamName(id)}
             getLeagueName={(id) => playerSearchPool.getLeagueName(id) || getLeagueName(id)}

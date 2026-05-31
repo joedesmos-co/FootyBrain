@@ -3,6 +3,7 @@ import { getManifestLeagues } from '../data/contentManifest';
 import { useSearchIndex } from '../hooks/useSearchIndex';
 import TeamCard from './TeamCard';
 import EmptyState from './ui/EmptyState';
+import PageFallback from './PageFallback';
 
 const leagues = getManifestLeagues();
 
@@ -56,32 +57,37 @@ export default function TeamLearning() {
           </label>
         </div>
         <p className="filters__count">
-          {filteredTeams.length} club{filteredTeams.length !== 1 ? 's' : ''} found
+          {indexStatus === 'loading'
+            ? 'Loading clubs…'
+            : `${filteredTeams.length} club${filteredTeams.length !== 1 ? 's' : ''} found`}
         </p>
       </section>
 
-      {/* Future: fetchTeams() from API/Firebase */}
-      <div className="team-grid">
-        {filteredTeams.length > 0 ? (
-          filteredTeams.map((team) => <TeamCard key={team.id} team={team} />)
-        ) : (
-          <EmptyState
-            title="No clubs match your search. Try another league or spelling."
-            actions={
-              <button
-                type="button"
-                className="btn btn--secondary"
-                onClick={() => {
-                  setLeagueFilter('');
-                  setSearch('');
-                }}
-              >
-                Clear filters
-              </button>
-            }
-          />
-        )}
-      </div>
+      {indexStatus === 'loading' ? (
+        <PageFallback label="Loading clubs…" />
+      ) : (
+        <div className="team-grid">
+          {filteredTeams.length > 0 ? (
+            filteredTeams.map((team) => <TeamCard key={team.id} team={team} />)
+          ) : (
+            <EmptyState
+              title="No clubs match your search. Try another league or spelling."
+              actions={
+                <button
+                  type="button"
+                  className="btn btn--secondary"
+                  onClick={() => {
+                    setLeagueFilter('');
+                    setSearch('');
+                  }}
+                >
+                  Clear filters
+                </button>
+              }
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }

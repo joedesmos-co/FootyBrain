@@ -273,7 +273,7 @@ export default function App() {
               <Link to="/club-quiz">Club quiz</Link>
               <Link to="/daily">Daily challenge</Link>
               <Link to="/browse">Browse players</Link>
-              <Link to="/teams">Clubs</Link>
+              <Link to="/browse?tab=clubs">Clubs</Link>
               <Link to="/world-cup">World Cup 2026</Link>
               <Link to="/national-teams">National teams</Link>
               <Link to="/hubs">Explore</Link>

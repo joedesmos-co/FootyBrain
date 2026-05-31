@@ -5,6 +5,7 @@
 import { CLUB_QUIZ_CATEGORY_CATALOG } from './clubQuizCategories.js';
 import { DATASET_META } from './datasetMeta.js';
 import { getHubLeagues } from './leagueManifest.js';
+import { getViableLiveNationalTeams, nationalTeams } from './nationalTeamData.js';
 
 /** Mirror worldCupHubData featured IDs — avoid heavy nationalTeamLive import on home chunk. */
 const FEATURED_NATION_LINKS = [
@@ -42,6 +43,8 @@ const DISCOVER_LINKS = [
 export function getHomePopularSections() {
   const stadiumQuiz = CLUB_QUIZ_CATEGORY_CATALOG.find((c) => c.id === 'stadium');
   const quizReady = DATASET_META.quizEligibleCount ?? 518;
+  const quizViableNations = getViableLiveNationalTeams().length;
+  const nationSquads = nationalTeams.length;
 
   return [
     {
@@ -103,7 +106,7 @@ export function getHomePopularSections() {
           label: nation.label,
           hint: 'National squad & quiz',
         })),
-        { to: '/national-teams', label: 'All national teams', hint: '55+ live pools' },
+        { to: '/national-teams', label: 'All national teams', hint: `${nationSquads} squads · ${quizViableNations} quiz-ready` },
       ],
     },
     {

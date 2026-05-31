@@ -45,7 +45,6 @@ import {
   getNationalityHubPath,
 } from '../utils/internalLinking.js';
 import { isThinNationalTeam } from '../utils/entityDepthAudit';
-import { QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import {
   BADGE_QUIZ_READY,
   CRUMB_HOME,
@@ -355,8 +354,8 @@ export default function NationalTeamProfile() {
             </>
           ) : (
             <>
-              <button type="button" className="btn btn--secondary" disabled>
-                {QUIZ_COMING_SOON}
+              <button type="button" className="btn btn--secondary" disabled aria-disabled="true">
+                National quiz needs {QUIZ_NATIONAL_TEAM_MIN_POOL}+ ({quizReady.length} ready)
               </button>
               <a href="#team-squad" className="btn btn--secondary">
                 Browse squad
@@ -416,7 +415,8 @@ export default function NationalTeamProfile() {
 
       {showBrowseOnlyPoolBanner ? (
         <p className="national-team-profile__pool-banner" role="status">
-          Browse the full squad below — the national team quiz unlocks as more players get quiz hints.
+          Browse the squad below — {quizReady.length} of {QUIZ_NATIONAL_TEAM_MIN_POOL} players ready
+          for the national quiz.
         </p>
       ) : null}
 

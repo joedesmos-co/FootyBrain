@@ -17,6 +17,7 @@ import {
 import { getManifestLeague } from '../data/contentManifest';
 import LeagueBadge from './LeagueBadge';
 import BreadcrumbNav from './BreadcrumbNav';
+import DataTrustNotice from './DataTrustNotice';
 import { NATIONALITY_HUB_INDEX_LIMIT } from '../utils/internalLinking.js';
 import {
   EXPLORE_INDEX_EYEBROW,
@@ -135,6 +136,8 @@ export function SeoHubsIndex() {
           Dataset updated <strong>{DATASET_META.dataAsOf}</strong> · No account required
         </p>
       </header>
+
+      <DataTrustNotice compact />
 
       <ul className="explore-index-grid" aria-label="Explore topics">
         <li className="explore-index-card">

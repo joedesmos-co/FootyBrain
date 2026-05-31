@@ -113,7 +113,8 @@ export default function NationalTeamsPage() {
                         {linked > 0 && !isLiveNationalTeamQuizViable(team.id) ? (
                           <span className="national-teams-page__quiz-pending">
                             {' '}
-                            · pool available · quiz unlocks at {LIVE_NATIONAL_TEAM_MIN_QUIZ}+
+                            · browse squad · quiz needs {LIVE_NATIONAL_TEAM_MIN_QUIZ}+ with clues (
+                            {quizReady} ready)
                           </span>
                         ) : null}
                       </p>

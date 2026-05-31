@@ -11965,6 +11965,9 @@ p.browse-results-empty {
 }
 
 .collection-study-return {
+  position: sticky;
+  top: calc(var(--nav-height) + 0.35rem);
+  z-index: 8;
   display: flex;
   align-items: center;
   justify-content: space-between;

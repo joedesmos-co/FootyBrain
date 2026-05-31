@@ -22,7 +22,6 @@ import {
   usesClubQuizMultipleChoice,
 } from '../utils/clubQuizEngine';
 import { getLeagueDisplayName } from '../utils/footballDisplay';
-import { QUIZ_COMING_SOON } from '../utils/consumerCopy';
 import { QUIZ_DIFFICULTY_OPTIONS } from '../utils/quizSession';
 import BreadcrumbNav from './BreadcrumbNav';
 import QuizSubNav from './QuizSubNav';
@@ -170,6 +169,14 @@ export default function ClubQuizMode() {
     },
     [leagueFilter, resetSession, setSearchParams],
   );
+
+  const handleClearLeagueFilter = useCallback(() => {
+    resetSession();
+    setLeagueFilter('');
+    const params = new URLSearchParams(searchParams);
+    params.delete('league');
+    setSearchParams(params, { replace: true });
+  }, [resetSession, searchParams, setSearchParams]);
 
   const finalizeAnswer = useCallback(
     ({ isCorrect, choiceId, answerText }) => {
@@ -351,7 +358,9 @@ export default function ClubQuizMode() {
                 </span>
                 <span className="club-quiz__category-label">{cat.label}</span>
                 <span className="club-quiz__category-meta">
-                  {viable ? `${count} clubs` : QUIZ_COMING_SOON}
+                  {viable
+                    ? `${count} clubs`
+                    : `${count} of ${CLUB_QUIZ_MIN_POOL} clubs`}
                 </span>
               </button>
             );
@@ -439,13 +448,22 @@ export default function ClubQuizMode() {
               {categoryId
                 ? poolReady
                   ? 'Ready when you are — club questions use editorial data (stadiums, rivals, history).'
-                  : 'Not enough clubs in this pool. Try another category or clear the league filter.'
+                  : `${poolSize} of ${CLUB_QUIZ_MIN_POOL} clubs — try another category or clear the league filter.`
                 : 'Pick a club quiz category above to start.'}
             </p>
             <div className="quiz-panel__empty-actions">
               {categoryId && poolReady ? (
                 <button type="button" className="btn btn--primary btn--large" onClick={handleStart}>
                   Start club quiz
+                </button>
+              ) : null}
+              {categoryId && !poolReady && leagueFilter ? (
+                <button
+                  type="button"
+                  className="btn btn--secondary"
+                  onClick={handleClearLeagueFilter}
+                >
+                  Clear league filter
                 </button>
               ) : null}
               <Link to="/hubs/quizzes/clubs" className="btn btn--secondary">
