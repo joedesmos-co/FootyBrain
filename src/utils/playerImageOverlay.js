@@ -5,6 +5,7 @@
 
 import approved from '../data/playerImageApproved.json' with { type: 'json' };
 import meta from '../data/playerImageOverlays.meta.json' with { type: 'json' };
+import { isOverlayImageBlocked } from './playerImageQualityGate.js';
 import { isApprovedAssetUrl, isDisallowedImageUrl } from './playerImageUrlPolicy.js';
 
 const entriesByPlayerId = new Map(
@@ -28,6 +29,9 @@ function normalizeOverlayEntry(playerId, entry) {
     imageSrcSet: String(entry.imageSrcSet ?? entry.srcSet ?? '').trim() || null,
     imageAttributionRequired: entry.imageAttributionRequired === true,
     status: String(entry.status ?? 'approved').trim(),
+    commonsFile: String(entry.commonsFile ?? '').trim() || null,
+    qualityScore: entry.qualityScore ?? null,
+    qualityGrade: entry.qualityGrade ?? null,
   };
 }
 
@@ -43,6 +47,7 @@ export function getPlayerImageOverlayMeta() {
 export function getOverlayImageForPlayer(playerId) {
   const entry = entriesByPlayerId.get(playerId);
   if (!entry?.imageUrl) return null;
+  if (isOverlayImageBlocked(playerId, entry)) return null;
   if (isDisallowedImageUrl(entry.imageUrl) || !isApprovedAssetUrl(entry.imageUrl)) return null;
 
   return {

@@ -30,14 +30,17 @@ export default function LeagueBadge({ league, size = 'card' }) {
 
   return (
     <div
-      className={`league-badge league-badge--${size}`}
+      className={`entity-crest-badge league-badge league-badge--${size}`}
       style={style}
       role="img"
       aria-label={`${league.name} placeholder league badge`}
     >
+      <span className="entity-crest-badge__shield" aria-hidden="true" />
       <span className="league-badge__ring" aria-hidden="true" />
-      <span className="league-badge__initials">{getInitials(league.name)}</span>
-      <span className="league-badge__country">{league.country}</span>
+      <span className="league-badge__initials entity-crest-badge__code">{getInitials(league.name)}</span>
+      {size !== 'thumb' ? (
+        <span className="league-badge__country">{league.country}</span>
+      ) : null}
     </div>
   );
 }

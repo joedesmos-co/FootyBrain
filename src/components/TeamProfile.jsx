@@ -35,6 +35,7 @@ import {
 } from '../utils/seoCtr.js';
 import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
+import CollectionStudyReturnBar from './CollectionStudyReturnBar';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
 import { dedupeInternalLinks } from '../utils/internalLinking.js';
@@ -231,6 +232,7 @@ function TeamProfileContent({ team, leagueName, league, roster, squadLoading, le
           { label: team.name },
         ]}
       />
+      <CollectionStudyReturnBar />
 
       <header
         className="profile__hero profile__hero--team club-hero football-accent-surface"

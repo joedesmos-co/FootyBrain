@@ -44,6 +44,7 @@ import { canonicalUrlForPath } from '../utils/brand.js';
 import { buildLeagueIdentitySection } from '../utils/topImportanceProfile';
 import { isThinLeague } from '../utils/entityDepthAudit';
 import BreadcrumbNav from './BreadcrumbNav';
+import CollectionStudyReturnBar from './CollectionStudyReturnBar';
 import { CRUMB_BROWSE, CRUMB_HOME, CTA_BACK_TO_BROWSE } from '../utils/entityCopy.js';
 import EntityRelatedNav from './EntityRelatedNav';
 import ProfileKeepExploring from './ProfileKeepExploring';
@@ -157,6 +158,7 @@ function LeagueProfileContent({ league, leagueTeams, leaguePlayers }) {
           { label: getLeagueDisplayName(league) },
         ]}
       />
+      <CollectionStudyReturnBar />
 
       <header
         className="profile__hero profile__hero--league league-hero football-accent-surface"

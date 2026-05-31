@@ -1,8 +1,8 @@
 # Player image quality audit
 
-Generated: 2026-05-30T20:51:14.657Z
+Generated: 2026-05-31T00:35:08.891Z
 
-**Approved:** 282 | **Passing:** 282 | **Failing:** 0 | **Borderline:** 4
+**Approved:** 260 | **Passing:** 260 | **Failing:** 0 | **Borderline:** 1
 
 Manual review: `npm run review:player-images` → `generated-data/player-image-review.html`
 
@@ -32,8 +32,6 @@ Manual review: `npm run review:player-images` → `generated-data/player-image-r
 | Martin Ødegaard | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Martin Ødegaard.JPG |
 | Christopher Nkunku | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Christopher Nkunku 2021.jpg |
 | Dušan Vlahović | 76 | good | ✓ | portrait, tall_portrait, name_not_in_filename | Dusan Vlahovic.jpg |
-| Giorgian de Arrascaeta | 76 | good | ✓ | portrait, tall_portrait, name_not_in_filename | URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg |
-| William Saliba | 80 | excellent | ✓ | portrait, tall_portrait, name_not_in_filename | Lens - Nice (23-01-2021) 39.jpg |
 | Luis Suárez | 82 | excellent | ✓ | name_in_filename | Festejo Luis Suárez.jpg |
 | Pedri | 84 | excellent | ✓ | portrait, tall_portrait, head_shoulder_candidate, group_or_team | Pedri.jpg |
 | James Rodríguez | 92 | excellent | ✓ | square, name_in_filename | James Rodríguez.jpg |
@@ -58,8 +56,6 @@ Manual review: `npm run review:player-images` → `generated-data/player-image-r
 | Ousmane Dembélé | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Saint-Lô - Rennes CFA2 20150523 - Ousmane Dembélé 4.JPG |
 | Marc-André ter Stegen | 76 | good | ✓ | name_in_filename | Marc Andre ter Stegen.jpg |
 | Hakan Çalhanoğlu | 76 | good | ✓ | portrait, tall_portrait, head_shoulder_candidate, event_stadium | Hakan Calhanoglu 2014.jpg |
-| Ronald Araujo | 76 | good | ✓ | portrait, tall_portrait, name_not_in_filename | URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg |
-| Randal Kolo Muani | 80 | excellent | ✓ | portrait, tall_portrait, name_not_in_filename | RC Lens - FC Nantes (25-11-2020) 13.jpg |
 | Frenkie de Jong | 80 | excellent | ✓ | square, name_in_filename, portrait_hint, group_or_team | Frenkie De Jong (2025) (cropped).png |
 | Fabián Ruiz | 86 | excellent | ✓ | portrait, tall_portrait, portrait_hint, head_shoulder_candidate, match_filename | UEFA EURO qualifiers Sweden vs Spain 20191015 Fabian Ruiz 6 (cropped).jpg |
 | Gavi | 88 | excellent | ✓ | portrait, tall_portrait, head_shoulder_candidate, event_stadium | Gavi (footballer).jpg |
@@ -83,7 +79,6 @@ Manual review: `npm run review:player-images` → `generated-data/player-image-r
 | Rodrigo De Paul | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Rodrigo de Paul (2022).jpg |
 | Marco Reus | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Marco Reus 2013.jpeg |
 | Raphinha | 74 | good | ✓ | square | Raphinha.jpg |
-| Memphis Depay | 74 | good | ✓ | square, name_in_filename, event_stadium | Memphis Depay - July 2015c.jpg |
 | Marcel Sabitzer | 90 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate, group_or_team | 2014-05-30 Austria - Iceland football match, Marcel Sabitzer 0591.jpg |
 | Emiliano Martínez | 90 | excellent | ✓ | name_in_filename | Sheikh Hasina presents souvenir gift to Emiliano Martínez 2023-07-03 (PID-0015060).jpg |
 | Hirving Lozano | 90 | excellent | ✓ | name_in_filename | Hirving Lozano at Russia 2018 FIFA World Cup.jpg |
@@ -100,16 +95,21 @@ Manual review: `npm run review:player-images` → `generated-data/player-image-r
 | Samuel Chukwueze | 100 | excellent | ✓ | portrait, tall_portrait, head_shoulder_candidate | Sammuel chukwueze.jpg |
 | Antonio Rüdiger | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Antonio Rüdiger Chelsea.jpg |
 | Leroy Sané | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, portrait_hint, head_shoulder_candidate | Leroy Sané in December 2017 (cropped).jpg |
-| Pedro Neto | 74 | good | ✓ | square, name_in_filename, event_stadium | Pedro Neto watching from the Billy Wright stand.jpg |
-| Benjamin Pavard | 76 | good | ✓ | portrait, tall_portrait, name_not_in_filename | France - England U19, 20150331 08.JPG |
 | Marcos Alonso | 76 | good | ✓ | name_in_filename | Marcos Alonso 2015.jpg |
-| Denis Bouanga | 80 | excellent | ✓ | portrait, tall_portrait, name_not_in_filename | Lens - Saint-Etienne (03-10-2020) 57.jpg |
 | Yann Sommer | 80 | excellent | ✓ | square, name_in_filename, portrait_hint, event_stadium | Yann Sommer (cropped).jpg |
 | Isco | 80 | excellent | ✓ | — | Isco - Atletico Madrid 6.jpg |
 | Andrej Kramaric | 82 | excellent | ✓ | name_in_filename | Andrej Kramaric.jpg |
 | Paul Pogba | 86 | excellent | ✓ | square, name_in_filename | Paul Pogba Juventus (2).jpg |
 | Santi Cazorla | 86 | excellent | ✓ | name_in_filename | Santi Cazorla Arsenal.jpg |
 | Ansu Fati | 86 | excellent | ✓ | portrait, tall_portrait, name_in_filename, portrait_hint, head_shoulder_candidate, match_filename | Ansu Fati — Dinamo vs Barcelona 0-1 (cropped).jpg |
+| Youri Tielemans | 88 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate, group_or_team | Youri Tielemans 2018.jpg |
+| Kang-in Lee | 88 | excellent | ✓ | portrait, tall_portrait, name_in_filename, portrait_hint, head_shoulder_candidate, bad_crop, group_or_team | Lee Kang-in - 2022 (52551771501) (cropped).jpg |
+| Raúl Jiménez | 90 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate, group_or_team | Raúl Jiménez.jpg |
+| Mohammed Kudus | 90 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate, group_or_team | GAE - Ajax - 52788309814 (Mohammed Kudus).jpg |
+| Mason Greenwood | 92 | excellent | ✓ | square, name_in_filename | Mason Greenwood.jpeg |
+| Gabriel Jesus | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, head_shoulder_candidate | Gabriel Jesus 2015.jpg |
+| Niklas Süle | 100 | excellent | ✓ | portrait, tall_portrait, head_shoulder_candidate | Niklas Suele Training 2019-09-01 FC Bayern Muenchen-1.jpg |
+| Alexander Sørloth | 100 | excellent | ✓ | portrait, tall_portrait, name_in_filename, portrait_hint, head_shoulder_candidate | Alexander Sørloth for RB Leipzig in 2022 (cropped).jpg |
 
 ## Failing images (replace or remove)
 

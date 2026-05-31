@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-05-30",
+  "updatedAt": "2026-05-31",
   "entries": {
     "tm-28003": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg",
@@ -272,23 +272,6 @@
       "imageWidth": 624,
       "imageHeight": 1134,
       "qualityScore": 94,
-      "qualityGrade": "excellent"
-    },
-    "saliba": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Lens_-_Nice_%2823-01-2021%29_39.jpg/960px-Lens_-_Nice_%2823-01-2021%29_39.jpg",
-      "imageAlt": "William Saliba, Centre-Back — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ALens_-_Nice_(23-01-2021)_39.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Lens - Nice (23-01-2021) 39.jpg",
-      "commonsDescription": "William Saliba lors du match RC Lens / OGC Nice, comptant pour la 21ème journée du championnat de France de football de Ligue 1 2020-2021, le 23 janvier 2021, au Stade Bollaert-Delelis.",
-      "imageWidth": 1382,
-      "imageHeight": 1842,
-      "qualityScore": 80,
       "qualityGrade": "excellent"
     },
     "tm-121483": {
@@ -784,23 +767,6 @@
       "qualityScore": 100,
       "qualityGrade": "excellent"
     },
-    "tm-480267": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg/960px-URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "imageAlt": "Ronald Araujo, Defender - Centre-Back — licensed photo",
-      "imageCredit": "jikatu",
-      "imageLicense": "CC BY-SA 2.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AURUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "commonsDescription": "URUGUAY: Sergio Rochet (45' Fernando Muslera y 75' Sebastián Sosa), Damián Suárez (75' Guillermo Varela), Ronald Araújo (61' Martín Cáceres), Sebastián Coates, Mathías Olivera (37' Matías Viña), Lucas Torreira (61' Maximiliano Gómez), Matías Vecino (61' Manuel Ugarte), Federico Valverde (75' Fernando Gorriarán), Facundo Pellistri (61' Diego Rossi), Giorgian De Arrascaeta (45' Nicolás De La Cruz) y Edinson Cavani (75' Mauro Arambarri). DT: Diego Alonso. PANAMA: Alex Rodríguez (77' Eric Hughes), Iván Anderson (28' Ricardo Buitrago), Jorge Gutiérrez, Manuel Gamboa, Francisco Palacios, Rolando Botello (68' Jordan Girón), Cristian Quintero (46' José Murillo), Emmanuel Channis, Rodolfo Vega (46' Rodrigo Tello), Ronaldo Córdoba (68' Carlos Rivera) y Alfredo Stephens. DT: Ángel Sánchez Goles: 38' Edinson Cavani (U), 47' Edinson Cavani (U), 57' Nicolás De La Cruz (U), 67' Maximiliano Gómez (U), 76' Diego Rossi (U) Árbitros: Cristian Garay, Alejandro Molina y Claudio Urrutia (Terna de Chile). El presidente de la República, Luis Lacalle Pou, entregó el Pabellón Nacional a la delegación de Uruguay, como señal de reconocimiento. También participaron el secretario nacional del Deporte, Sebastián Bauzá, y el presidente de la Asociación Uruguaya de Fútbol, Ignacio Alonso. Hubo un espectáculo musical de Tabaré Cardozo, la murga Agarrate Catalina y el grupo argentino Los Auténticos Decadentes. Estadio: Centenario, Montevideo, Uruguay Camera: Canon EOS 5D Mark IV Lens: EF135mm f/2L USM +2x Focal Length: 270 mm Exposure: ¹⁄₁₈₀ sec at f/6.7 ISO: ISO 400",
-      "imageWidth": 2999,
-      "imageHeight": 3558,
-      "qualityScore": 76,
-      "qualityGrade": "good"
-    },
     "pedri": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Pedri.jpg/960px-Pedri.jpg",
       "imageAlt": "Pedri, Central Midfielder — licensed photo",
@@ -850,23 +816,6 @@
       "imageWidth": 646,
       "imageHeight": 800,
       "qualityScore": 90,
-      "qualityGrade": "excellent"
-    },
-    "tm-487969": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/RC_Lens_-_FC_Nantes_%2825-11-2020%29_13.jpg/960px-RC_Lens_-_FC_Nantes_%2825-11-2020%29_13.jpg",
-      "imageAlt": "Randal Kolo Muani, Attack - Centre-Forward — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_FC_Nantes_(25-11-2020)_13.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - FC Nantes (25-11-2020) 13.jpg",
-      "commonsDescription": "Randal Kolo Muani lors du match RC Lens - FC Nantes, comptant pour la huitième journée (match en retard) du championnat de France de football de Ligue 1 2020-2021, le 25 novembre 2020 au Stade Bollaert-Delelis",
-      "imageWidth": 2244,
-      "imageHeight": 2992,
-      "qualityScore": 80,
       "qualityGrade": "excellent"
     },
     "tm-687626": {
@@ -1004,23 +953,6 @@
       "imageHeight": 1484,
       "qualityScore": 90,
       "qualityGrade": "excellent"
-    },
-    "tm-167850": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Memphis_Depay_-_July_2015c.jpg/960px-Memphis_Depay_-_July_2015c.jpg",
-      "imageAlt": "Memphis Depay, Attack - Second Striker — licensed photo",
-      "imageCredit": "Matt Janzer from Missoula, USA",
-      "imageLicense": "CC BY-SA 2.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AMemphis_Depay_-_July_2015c.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Memphis Depay - July 2015c.jpg",
-      "commonsDescription": "Memphis Depay playing for Manchester United in pre-season friendly against Club America",
-      "imageWidth": 1438,
-      "imageHeight": 1684,
-      "qualityScore": 74,
-      "qualityGrade": "good"
     },
     "tm-182913": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Adrien_Rabiot_2015.jpg",
@@ -1311,23 +1243,6 @@
       "qualityScore": 100,
       "qualityGrade": "excellent"
     },
-    "tm-353366": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/France_-_England_U19%2C_20150331_08.JPG/960px-France_-_England_U19%2C_20150331_08.JPG",
-      "imageAlt": "Benjamin Pavard, Defender - Centre-Back — licensed photo",
-      "imageCredit": "S. Plaine",
-      "imageLicense": "CC BY-SA 4.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AFrance_-_England_U19%2C_20150331_08.JPG",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "France - England U19, 20150331 08.JPG",
-      "commonsDescription": "Photographie prise lors du match opposant la France à l' Angleterre pour les qualifications du championnat d'Europe de football des moins de 19 ans 2015 au stade Louis-Villemer de Saint-Lô le 31 mars 2015. Ici, Benjamin Pavard .",
-      "imageWidth": 1434,
-      "imageHeight": 1914,
-      "qualityScore": 76,
-      "qualityGrade": "good"
-    },
     "tm-406040": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Ademola_Lookman_%282019%29.jpg",
       "imageAlt": "Ademola Lookman, Attack - Left Winger — licensed photo",
@@ -1378,23 +1293,6 @@
       "imageHeight": 1200,
       "qualityScore": 82,
       "qualityGrade": "excellent"
-    },
-    "tm-487465": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pedro_Neto_watching_from_the_Billy_Wright_stand.jpg/960px-Pedro_Neto_watching_from_the_Billy_Wright_stand.jpg",
-      "imageAlt": "Pedro Neto, Attack - Right Winger — licensed photo",
-      "imageCredit": "Bex Walton",
-      "imageLicense": "CC BY 2.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3APedro_Neto_watching_from_the_Billy_Wright_stand.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Pedro Neto watching from the Billy Wright stand.jpg",
-      "commonsDescription": "Wolves vs Celta Vigo, preseason friendly, 7/8/21",
-      "imageWidth": 1456,
-      "imageHeight": 1417,
-      "qualityScore": 74,
-      "qualityGrade": "good"
     },
     "tm-51471": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Mateo_Kovacic.jpg",
@@ -1634,40 +1532,6 @@
       "qualityScore": 90,
       "qualityGrade": "excellent"
     },
-    "tm-485706": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/RC_Lens_-_Lille_OSC_%2817-09-2021%29_10.jpg/960px-RC_Lens_-_Lille_OSC_%2817-09-2021%29_10.jpg",
-      "imageAlt": "Amadou Onana, Midfield - Defensive Midfield — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_Lille_OSC_(17-09-2021)_10.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - Lille OSC (17-09-2021) 10.jpg",
-      "commonsDescription": "Amadou Onana lors du match RC Lens / Lille OSC, comptant pour la 6ème journée du championnat de France de Ligue 1 de football, le 17 septembre 2021, au Stade Bollaert-Delelis.",
-      "imageWidth": 2171,
-      "imageHeight": 3039,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
-    "tm-585959": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Lens_-_PSG_%2810-09-2020%29_37.jpg/960px-Lens_-_PSG_%2810-09-2020%29_37.jpg",
-      "imageAlt": "Arnaud Kalimuendo, Attack - Centre-Forward — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ALens_-_PSG_(10-09-2020)_37.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Lens - PSG (10-09-2020) 37.jpg",
-      "commonsDescription": "Arnaud Kalimuendo lors du match RC Lens / Paris Saint-Germain, rencontre en retard de la deuxième journée du championnat de France de Ligue 1 de football, le 10 septembre 2020 au Stade Bollaert-Delelis.",
-      "imageWidth": 1955,
-      "imageHeight": 2606,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
     "tm-82442": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Olivier_Giroud_in_2017.jpg/960px-Olivier_Giroud_in_2017.jpg",
       "imageAlt": "Olivier Giroud, Attack - Centre-Forward — licensed photo",
@@ -1717,23 +1581,6 @@
       "imageWidth": 3481,
       "imageHeight": 2675,
       "qualityScore": 90,
-      "qualityGrade": "excellent"
-    },
-    "tm-236045": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Lens_-_Saint-Etienne_%2803-10-2020%29_57.jpg/960px-Lens_-_Saint-Etienne_%2803-10-2020%29_57.jpg",
-      "imageAlt": "Denis Bouanga, Attack - Left Winger — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ALens_-_Saint-Etienne_(03-10-2020)_57.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Lens - Saint-Etienne (03-10-2020) 57.jpg",
-      "commonsDescription": "Denis Bouanga lors du match Lens - Saint-Etienne, comptant pour la sixième journée du championnat de France de football de Ligue 1 2020-2021, le 3 octobre 2020, au Stade Bollaert-Delelis.",
-      "imageWidth": 1934,
-      "imageHeight": 2579,
-      "qualityScore": 80,
       "qualityGrade": "excellent"
     },
     "tm-123275": {
@@ -2042,40 +1889,6 @@
       "qualityScore": 100,
       "qualityGrade": "excellent"
     },
-    "tm-331511": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Riqui_Puig_against_Portland_Timbers.jpg/960px-Riqui_Puig_against_Portland_Timbers.jpg",
-      "imageAlt": "Riqui Puig, Midfield - Central Midfield — licensed photo",
-      "imageCredit": "Frenchieinportland",
-      "imageLicense": "CC BY-SA 4.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARiqui_Puig_against_Portland_Timbers.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Riqui Puig against Portland Timbers.jpg",
-      "commonsDescription": "Riqui Puig during the match between the Portland Timbers and the Los Angeles Galaxy at Providence Park on March 25, 2023 in Portland, Oregon.",
-      "imageWidth": 5184,
-      "imageHeight": 3888,
-      "qualityScore": 64,
-      "qualityGrade": "fair"
-    },
-    "tm-339314": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/RC_Lens_-_Union-Saint-Gilloise_%2805-08-2020%29_46.jpg/960px-RC_Lens_-_Union-Saint-Gilloise_%2805-08-2020%29_46.jpg",
-      "imageAlt": "Deniz Undav, Attack - Centre-Forward — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_Union-Saint-Gilloise_(05-08-2020)_46.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - Union-Saint-Gilloise (05-08-2020) 46.jpg",
-      "commonsDescription": "Deniz Undav lors du match amical RC Lens / Union Saint-Gilloise, le 5 août 2020, au Stade Paul-Guerre de Billy-Montigny.",
-      "imageWidth": 1328,
-      "imageHeight": 1771,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
     "tm-371149": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Evan_Ndicka_-_Eintracht_Frankfurt_%282022%29.jpg/960px-Evan_Ndicka_-_Eintracht_Frankfurt_%282022%29.jpg",
       "imageAlt": "Evan Ndicka, Defender - Centre-Back — licensed photo",
@@ -2091,57 +1904,6 @@
       "imageWidth": 1139,
       "imageHeight": 1402,
       "qualityScore": 100,
-      "qualityGrade": "excellent"
-    },
-    "tm-385105": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/SuazoTFC_01-02-2023.jpg/960px-SuazoTFC_01-02-2023.jpg",
-      "imageAlt": "Gabriel Suazo, Defender - Left-Back — licensed photo",
-      "imageCredit": "Nebuno",
-      "imageLicense": "CC BY-SA 4.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ASuazoTFC_01-02-2023.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "SuazoTFC 01-02-2023.jpg",
-      "commonsDescription": "Le défenseur Gabriel Suazo saluant les supporters du Toulouse FC après une victoire 4-1 au Stadium aux dépens de Troyes le 1er février 2023.",
-      "imageWidth": 1335,
-      "imageHeight": 1241,
-      "qualityScore": 72,
-      "qualityGrade": "good"
-    },
-    "tm-386446": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lens_-_Torino_FC_%2802-08-2023%29_13.jpg/960px-Lens_-_Torino_FC_%2802-08-2023%29_13.jpg",
-      "imageAlt": "Alessandro Buongiorno, Defender - Centre-Back — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ALens_-_Torino_FC_(02-08-2023)_13.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Lens - Torino FC (02-08-2023) 13.jpg",
-      "commonsDescription": "Alessandro Buongiorno lors du match amical RC Lens / Torino FC, le 2 août 2023 au Stade Bollaert-Delelis.",
-      "imageWidth": 2302,
-      "imageHeight": 2878,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
-    "tm-388165": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/RC_Lens_-_FC_Lorient_%2823-04-2019%29_6.jpg/960px-RC_Lens_-_FC_Lorient_%2823-04-2019%29_6.jpg",
-      "imageAlt": "Yoane Wissa, Attack - Centre-Forward — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_FC_Lorient_(23-04-2019)_6.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - FC Lorient (23-04-2019) 6.jpg",
-      "commonsDescription": "Yoane Wissa avant le match RC Lens / FC Lorient, comptant pour la 34ème journée du championnat de France de Ligue 2 de football 2018-2019, le 23 avril 2019, au Stade Bollaert-Delelis.",
-      "imageWidth": 2592,
-      "imageHeight": 3456,
-      "qualityScore": 80,
       "qualityGrade": "excellent"
     },
     "tm-43228": {
@@ -2449,23 +2211,6 @@
       "imageHeight": 3254,
       "qualityScore": 96,
       "qualityGrade": "excellent"
-    },
-    "tm-369316": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg/960px-Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg",
-      "imageAlt": "Ferdi Kadıoğlu, Defender - Left-Back — licensed photo",
-      "imageCredit": "Timmy96",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AFerdi_Kad%C4%B1o%C4%9Flu_24012026_(1).jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Ferdi Kadıoğlu 24012026 (1).jpg",
-      "commonsDescription": "Ferdi Kadıoğlu arriving at Craven Cottage prior to the match between Fulham and Brighton and Hove Albion.",
-      "imageWidth": 2892,
-      "imageHeight": 2705,
-      "qualityScore": 70,
-      "qualityGrade": "good"
     },
     "tm-179184": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Michy_Batshuayi_2019.jpg",
@@ -3096,23 +2841,6 @@
       "qualityScore": 86,
       "qualityGrade": "excellent"
     },
-    "tm-251075": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RC_Lens_-_Lille_OSC_%2817-09-2021%29_15.jpg/960px-RC_Lens_-_Lille_OSC_%2817-09-2021%29_15.jpg",
-      "imageAlt": "Zeki Çelik, Defender - Right-Back — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_Lille_OSC_(17-09-2021)_15.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - Lille OSC (17-09-2021) 15.jpg",
-      "commonsDescription": "Zeki Çelik lors du match RC Lens / Lille OSC, comptant pour la 6ème journée du championnat de France de Ligue 1 de football, le 17 septembre 2021, au Stade Bollaert-Delelis.",
-      "imageWidth": 2304,
-      "imageHeight": 3456,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
     "tm-272642": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Allan_Saint-Maximin.jpg",
       "imageAlt": "Allan Saint-Maximin, Attack - Left Winger — licensed photo",
@@ -3214,23 +2942,6 @@
       "imageHeight": 2769,
       "qualityScore": 100,
       "qualityGrade": "excellent"
-    },
-    "tm-811778": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/%C3%81lvaroCarreras.jpg",
-      "imageAlt": "Álvaro Carreras, Defender - Left-Back — licensed photo",
-      "imageCredit": "Sport Lisboa e Benfica",
-      "imageLicense": "CC BY 3.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3A%C3%81lvaroCarreras.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "ÁlvaroCarreras.jpg",
-      "commonsDescription": "Álvaro Carreras player of SL Benfica in a press conference",
-      "imageWidth": 887,
-      "imageHeight": 905,
-      "qualityScore": 74,
-      "qualityGrade": "good"
     },
     "tm-81789": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/Yoshida_Maya.jpg",
@@ -3469,23 +3180,6 @@
       "imageHeight": 10902,
       "qualityScore": 100,
       "qualityGrade": "excellent"
-    },
-    "tm-248410": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg/960px-URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "imageAlt": "Giorgian de Arrascaeta, Midfield - Attacking Midfield — licensed photo",
-      "imageCredit": "jikatu",
-      "imageLicense": "CC BY-SA 2.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AURUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "commonsDescription": "URUGUAY: Sergio Rochet (45' Fernando Muslera y 75' Sebastián Sosa), Damián Suárez (75' Guillermo Varela), Ronald Araújo (61' Martín Cáceres), Sebastián Coates, Mathías Olivera (37' Matías Viña), Lucas Torreira (61' Maximiliano Gómez), Matías Vecino (61' Manuel Ugarte), Federico Valverde (75' Fernando Gorriarán), Facundo Pellistri (61' Diego Rossi), Giorgian De Arrascaeta (45' Nicolás De La Cruz) y Edinson Cavani (75' Mauro Arambarri). DT: Diego Alonso. PANAMA: Alex Rodríguez (77' Eric Hughes), Iván Anderson (28' Ricardo Buitrago), Jorge Gutiérrez, Manuel Gamboa, Francisco Palacios, Rolando Botello (68' Jordan Girón), Cristian Quintero (46' José Murillo), Emmanuel Channis, Rodolfo Vega (46' Rodrigo Tello), Ronaldo Córdoba (68' Carlos Rivera) y Alfredo Stephens. DT: Ángel Sánchez Goles: 38' Edinson Cavani (U), 47' Edinson Cavani (U), 57' Nicolás De La Cruz (U), 67' Maximiliano Gómez (U), 76' Diego Rossi (U) Árbitros: Cristian Garay, Alejandro Molina y Claudio Urrutia (Terna de Chile). El presidente de la República, Luis Lacalle Pou, entregó el Pabellón Nacional a la delegación de Uruguay, como señal de reconocimiento. También participaron el secretario nacional del Deporte, Sebastián Bauzá, y el presidente de la Asociación Uruguaya de Fútbol, Ignacio Alonso. Hubo un espectáculo musical de Tabaré Cardozo, la murga Agarrate Catalina y el grupo argentino Los Auténticos Decadentes. Estadio: Centenario, Montevideo, Uruguay Camera: Canon EOS 5D Mark IV Lens: EF135mm f/2L USM +2x Focal Length: 270 mm Exposure: ¹⁄₁₈₀ sec at f/6.7 ISO: ISO 400",
-      "imageWidth": 2999,
-      "imageHeight": 3558,
-      "qualityScore": 76,
-      "qualityGrade": "good"
     },
     "tm-288230": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Saint-L%C3%B4_-_Rennes_CFA2_20150523_-_Ousmane_Demb%C3%A9l%C3%A9_4.JPG/960px-Saint-L%C3%B4_-_Rennes_CFA2_20150523_-_Ousmane_Demb%C3%A9l%C3%A9_4.JPG",
@@ -3810,23 +3504,6 @@
       "qualityScore": 100,
       "qualityGrade": "excellent"
     },
-    "tm-336077": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png/960px-Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png",
-      "imageAlt": "Altay Bayındır, Goalkeeper — licensed photo",
-      "imageCredit": "Ankaragücü",
-      "imageLicense": "CC BY 3.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3AAltay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Altay Bayındır – Goalkeeper-Training, January 2019 – Screen1.png",
-      "commonsDescription": "Altay Bayındır – MKE Ankaragücü Goalkeeper-Training – January 2019",
-      "imageWidth": 1920,
-      "imageHeight": 1080,
-      "qualityScore": 70,
-      "qualityGrade": "good"
-    },
     "tm-365394": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Hwang_In-beom_2020.jpg",
       "imageAlt": "In-beom Hwang, Midfield - Defensive Midfield — licensed photo",
@@ -3893,23 +3570,6 @@
       "imageWidth": 1240,
       "imageHeight": 1170,
       "qualityScore": 92,
-      "qualityGrade": "excellent"
-    },
-    "tm-493513": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/RC_Lens_-_Arsenal_FC_%2803-10-2023%29_6.jpg/960px-RC_Lens_-_Arsenal_FC_%2803-10-2023%29_6.jpg",
-      "imageAlt": "Karl Hein, Goalkeeper — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ARC_Lens_-_Arsenal_FC_(03-10-2023)_6.jpg",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "RC Lens - Arsenal FC (03-10-2023) 6.jpg",
-      "commonsDescription": "Karl Hein lors du match RC Lens / Arsenal FC comptant pour la 2ème journée des phases de poule de la Ligue des Champions de l'UEFA, au Stade Bollaert-Delelis de Lens le 3 octobre 2023.",
-      "imageWidth": 2418,
-      "imageHeight": 3023,
-      "qualityScore": 80,
       "qualityGrade": "excellent"
     },
     "tm-344381": {
@@ -4320,23 +3980,6 @@
       "qualityScore": 100,
       "qualityGrade": "excellent"
     },
-    "tm-290587": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/2021-08-08_FC_Carl_Zeiss_Jena_gegen_1._FC_K%C3%B6ln_%28DFB-Pokal%29_by_Sandro_Halank%E2%80%93182_%28cropped2%29.jpg/960px-2021-08-08_FC_Carl_Zeiss_Jena_gegen_1._FC_K%C3%B6ln_%28DFB-Pokal%29_by_Sandro_Halank%E2%80%93182_%28cropped2%29.jpg",
-      "imageAlt": "Ellyes Skhiri, Midfield - Defensive Midfield — licensed photo",
-      "imageCredit": "Sandro Halank , Wikimedia Commons",
-      "imageLicense": "CC BY-SA 4.0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021-08-08_FC_Carl_Zeiss_Jena_gegen_1._FC_K%C3%B6ln_(DFB-Pokal)_by_Sandro_Halank%E2%80%93182_(cropped2).jpg",
-      "imageAttributionRequired": true,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "2021-08-08 FC Carl Zeiss Jena gegen 1. FC Köln (DFB-Pokal) by Sandro Halank–182 (cropped2).jpg",
-      "commonsDescription": "DFB-Pokal season 2021/22, 1st round: FC Carl Zeiss Jena vs. 1. FC Köln (5:3 after penalty; 1:1 after extra time): Ellyes Skhiri (1. FC Köln)",
-      "imageWidth": 1709,
-      "imageHeight": 2734,
-      "qualityScore": 80,
-      "qualityGrade": "excellent"
-    },
     "tm-292246": {
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Hwang_Hee-chan_01112025_%282%29.jpg/960px-Hwang_Hee-chan_01112025_%282%29.jpg",
       "imageAlt": "Hee-chan Hwang, Attack - Centre-Forward — licensed photo",
@@ -4539,23 +4182,6 @@
       "imageWidth": 1060,
       "imageHeight": 2664,
       "qualityScore": 100,
-      "qualityGrade": "excellent"
-    },
-    "tm-450050": {
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Lens_B_-_AC_Amiens_%2812-09-2015%29_64_%28cropped%29.JPG",
-      "imageAlt": "Jean-Ricner Bellegarde, Midfield - Central Midfield — licensed photo",
-      "imageCredit": "Supporterhéninois",
-      "imageLicense": "CC0",
-      "imageSource": "Wikimedia Commons",
-      "imageSourceUrl": "https://commons.wikimedia.org/wiki/File%3ALens_B_-_AC_Amiens_(12-09-2015)_64_(cropped).JPG",
-      "imageAttributionRequired": false,
-      "imageSrcSet": null,
-      "status": "approved",
-      "commonsFile": "Lens B - AC Amiens (12-09-2015) 64 (cropped).JPG",
-      "commonsDescription": "Jean Bellegarde lors du match RC Lens B / AC Amiens, comptant pour la cinquième journée du Championnat de France de football amateur (CFA), le 12 septembre 2015, au Stade François Blin d'Avion.",
-      "imageWidth": 845,
-      "imageHeight": 1267,
-      "qualityScore": 82,
       "qualityGrade": "excellent"
     },
     "tm-84993": {

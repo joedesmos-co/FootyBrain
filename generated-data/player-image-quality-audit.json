@@ -1,40 +1,17 @@
 {
-  "generatedAt": "2026-05-30T20:51:14.657Z",
+  "generatedAt": "2026-05-31T00:35:08.891Z",
   "thresholds": {
     "minApprovalScore": 62,
     "minAutoApproveScore": 72
   },
   "totals": {
-    "approved": 282,
-    "passing": 282,
+    "approved": 260,
+    "passing": 260,
     "failing": 0,
     "denylisted": 0
   },
   "failing": [],
   "borderline": [
-    {
-      "playerId": "tm-331511",
-      "name": "Riqui Puig",
-      "importance": 85,
-      "commonsFile": "Riqui Puig against Portland Timbers.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Riqui_Puig_against_Portland_Timbers.jpg/960px-Riqui_Puig_against_Portland_Timbers.jpg",
-      "width": 5184,
-      "height": 3888,
-      "qualityScore": 64,
-      "qualityGrade": "fair",
-      "flags": [
-        "name_in_filename",
-        "group_or_team"
-      ],
-      "reasons": [
-        "high resolution",
-        "player name in filename",
-        "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 64
-    },
     {
       "playerId": "lewandowski",
       "name": "Robert Lewandowski",
@@ -56,54 +33,6 @@
         "square framing",
         "player name in filename",
         "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 70
-    },
-    {
-      "playerId": "tm-369316",
-      "name": "Ferdi Kadıoğlu",
-      "importance": 85,
-      "commonsFile": "Ferdi Kadıoğlu 24012026 (1).jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg/960px-Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg",
-      "width": 2892,
-      "height": 2705,
-      "qualityScore": 70,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "group_or_team"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "player name in filename",
-        "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 70
-    },
-    {
-      "playerId": "tm-336077",
-      "name": "Altay Bayındır",
-      "importance": 84,
-      "commonsFile": "Altay Bayındır – Goalkeeper-Training, January 2019 – Screen1.png",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png/960px-Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png",
-      "width": 1920,
-      "height": 1080,
-      "qualityScore": 70,
-      "qualityGrade": "good",
-      "flags": [
-        "wide_landscape",
-        "name_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "wide match/action framing",
-        "player name in filename"
       ],
       "pass": true,
       "denylisted": false,
@@ -112,29 +41,6 @@
   ],
   "all": [
     {
-      "playerId": "tm-331511",
-      "name": "Riqui Puig",
-      "importance": 85,
-      "commonsFile": "Riqui Puig against Portland Timbers.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Riqui_Puig_against_Portland_Timbers.jpg/960px-Riqui_Puig_against_Portland_Timbers.jpg",
-      "width": 5184,
-      "height": 3888,
-      "qualityScore": 64,
-      "qualityGrade": "fair",
-      "flags": [
-        "name_in_filename",
-        "group_or_team"
-      ],
-      "reasons": [
-        "high resolution",
-        "player name in filename",
-        "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 64
-    },
-    {
       "playerId": "lewandowski",
       "name": "Robert Lewandowski",
       "importance": 91,
@@ -155,54 +61,6 @@
         "square framing",
         "player name in filename",
         "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 70
-    },
-    {
-      "playerId": "tm-369316",
-      "name": "Ferdi Kadıoğlu",
-      "importance": 85,
-      "commonsFile": "Ferdi Kadıoğlu 24012026 (1).jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg/960px-Ferdi_Kad%C4%B1o%C4%9Flu_24012026_%281%29.jpg",
-      "width": 2892,
-      "height": 2705,
-      "qualityScore": 70,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "group_or_team"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "player name in filename",
-        "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 70
-    },
-    {
-      "playerId": "tm-336077",
-      "name": "Altay Bayındır",
-      "importance": 84,
-      "commonsFile": "Altay Bayındır – Goalkeeper-Training, January 2019 – Screen1.png",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png/960px-Altay_Bay%C4%B1nd%C4%B1r_%E2%80%93_Goalkeeper-Training%2C_January_2019_%E2%80%93_Screen1.png",
-      "width": 1920,
-      "height": 1080,
-      "qualityScore": 70,
-      "qualityGrade": "good",
-      "flags": [
-        "wide_landscape",
-        "name_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "wide match/action framing",
-        "player name in filename"
       ],
       "pass": true,
       "denylisted": false,
@@ -227,30 +85,6 @@
         "screenshot or frame-grab pattern",
         "high resolution",
         "player name in filename"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 72
-    },
-    {
-      "playerId": "tm-385105",
-      "name": "Gabriel Suazo",
-      "importance": 85,
-      "commonsFile": "SuazoTFC 01-02-2023.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/SuazoTFC_01-02-2023.jpg/960px-SuazoTFC_01-02-2023.jpg",
-      "width": 1335,
-      "height": 1241,
-      "qualityScore": 72,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "event_stadium"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "surname in filename",
-        "event/stadium/generic match id"
       ],
       "pass": true,
       "denylisted": false,
@@ -328,56 +162,6 @@
       "storedScore": 74
     },
     {
-      "playerId": "tm-167850",
-      "name": "Memphis Depay",
-      "importance": 87,
-      "commonsFile": "Memphis Depay - July 2015c.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Memphis_Depay_-_July_2015c.jpg/960px-Memphis_Depay_-_July_2015c.jpg",
-      "width": 1438,
-      "height": 1684,
-      "qualityScore": 74,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "event_stadium"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "player name in filename",
-        "event/stadium/generic match id"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 74
-    },
-    {
-      "playerId": "tm-487465",
-      "name": "Pedro Neto",
-      "importance": 86,
-      "commonsFile": "Pedro Neto watching from the Billy Wright stand.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pedro_Neto_watching_from_the_Billy_Wright_stand.jpg/960px-Pedro_Neto_watching_from_the_Billy_Wright_stand.jpg",
-      "width": 1456,
-      "height": 1417,
-      "qualityScore": 74,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "event_stadium"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "player name in filename",
-        "event/stadium/generic match id"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 74
-    },
-    {
       "playerId": "tm-16136",
       "name": "Dante",
       "importance": 85,
@@ -397,31 +181,6 @@
       "storedScore": 74
     },
     {
-      "playerId": "tm-811778",
-      "name": "Álvaro Carreras",
-      "importance": 84,
-      "commonsFile": "ÁlvaroCarreras.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/62/%C3%81lvaroCarreras.jpg",
-      "width": 887,
-      "height": 905,
-      "qualityScore": 74,
-      "qualityGrade": "good",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "event_stadium"
-      ],
-      "reasons": [
-        "high resolution",
-        "square framing",
-        "player name in filename",
-        "event/stadium/generic match id"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 74
-    },
-    {
       "playerId": "tm-357498",
       "name": "Dušan Vlahović",
       "importance": 90,
@@ -429,31 +188,6 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Dusan_Vlahovic.jpg/960px-Dusan_Vlahovic.jpg",
       "width": 1536,
       "height": 2048,
-      "qualityScore": 76,
-      "qualityGrade": "good",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 76
-    },
-    {
-      "playerId": "tm-248410",
-      "name": "Giorgian de Arrascaeta",
-      "importance": 90,
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg/960px-URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "width": 2999,
-      "height": 3558,
       "qualityScore": 76,
       "qualityGrade": "good",
       "flags": [
@@ -520,56 +254,6 @@
       "storedScore": 76
     },
     {
-      "playerId": "tm-480267",
-      "name": "Ronald Araujo",
-      "importance": 88,
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg/960px-URUGUAY_5_%E2%80%93_PANAM%C3%81_0_-_220611-7083-jikatu.jpg",
-      "width": 2999,
-      "height": 3558,
-      "qualityScore": 76,
-      "qualityGrade": "good",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 76
-    },
-    {
-      "playerId": "tm-353366",
-      "name": "Benjamin Pavard",
-      "importance": 86,
-      "commonsFile": "France - England U19, 20150331 08.JPG",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/France_-_England_U19%2C_20150331_08.JPG/960px-France_-_England_U19%2C_20150331_08.JPG",
-      "width": 1434,
-      "height": 1914,
-      "qualityScore": 76,
-      "qualityGrade": "good",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 76
-    },
-    {
       "playerId": "tm-112515",
       "name": "Marcos Alonso",
       "importance": 86,
@@ -610,56 +294,6 @@
       "storedScore": 76
     },
     {
-      "playerId": "saliba",
-      "name": "William Saliba",
-      "importance": 90,
-      "commonsFile": "Lens - Nice (23-01-2021) 39.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Lens_-_Nice_%2823-01-2021%29_39.jpg/960px-Lens_-_Nice_%2823-01-2021%29_39.jpg",
-      "width": 1382,
-      "height": 1842,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-487969",
-      "name": "Randal Kolo Muani",
-      "importance": 88,
-      "commonsFile": "RC Lens - FC Nantes (25-11-2020) 13.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/RC_Lens_-_FC_Nantes_%2825-11-2020%29_13.jpg/960px-RC_Lens_-_FC_Nantes_%2825-11-2020%29_13.jpg",
-      "width": 2244,
-      "height": 2992,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
       "playerId": "tm-326330",
       "name": "Frenkie de Jong",
       "importance": 88,
@@ -680,31 +314,6 @@
         "square framing",
         "player name in filename",
         "group/team photo pattern"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-236045",
-      "name": "Denis Bouanga",
-      "importance": 86,
-      "commonsFile": "Lens - Saint-Etienne (03-10-2020) 57.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Lens_-_Saint-Etienne_%2803-10-2020%29_57.jpg/960px-Lens_-_Saint-Etienne_%2803-10-2020%29_57.jpg",
-      "width": 1934,
-      "height": 2579,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
       ],
       "pass": true,
       "denylisted": false,
@@ -756,131 +365,6 @@
       "storedScore": 80
     },
     {
-      "playerId": "tm-485706",
-      "name": "Amadou Onana",
-      "importance": 85,
-      "commonsFile": "RC Lens - Lille OSC (17-09-2021) 10.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/RC_Lens_-_Lille_OSC_%2817-09-2021%29_10.jpg/960px-RC_Lens_-_Lille_OSC_%2817-09-2021%29_10.jpg",
-      "width": 2171,
-      "height": 3039,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-585959",
-      "name": "Arnaud Kalimuendo",
-      "importance": 85,
-      "commonsFile": "Lens - PSG (10-09-2020) 37.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Lens_-_PSG_%2810-09-2020%29_37.jpg/960px-Lens_-_PSG_%2810-09-2020%29_37.jpg",
-      "width": 1955,
-      "height": 2606,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-339314",
-      "name": "Deniz Undav",
-      "importance": 85,
-      "commonsFile": "RC Lens - Union-Saint-Gilloise (05-08-2020) 46.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/RC_Lens_-_Union-Saint-Gilloise_%2805-08-2020%29_46.jpg/960px-RC_Lens_-_Union-Saint-Gilloise_%2805-08-2020%29_46.jpg",
-      "width": 1328,
-      "height": 1771,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-386446",
-      "name": "Alessandro Buongiorno",
-      "importance": 85,
-      "commonsFile": "Lens - Torino FC (02-08-2023) 13.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lens_-_Torino_FC_%2802-08-2023%29_13.jpg/960px-Lens_-_Torino_FC_%2802-08-2023%29_13.jpg",
-      "width": 2302,
-      "height": 2878,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-388165",
-      "name": "Yoane Wissa",
-      "importance": 85,
-      "commonsFile": "RC Lens - FC Lorient (23-04-2019) 6.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/RC_Lens_-_FC_Lorient_%2823-04-2019%29_6.jpg/960px-RC_Lens_-_FC_Lorient_%2823-04-2019%29_6.jpg",
-      "width": 2592,
-      "height": 3456,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
       "playerId": "tm-111078",
       "name": "Emil Forsberg",
       "importance": 84,
@@ -894,81 +378,6 @@
       "reasons": [
         "high resolution",
         "surname in filename"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-251075",
-      "name": "Zeki Çelik",
-      "importance": 84,
-      "commonsFile": "RC Lens - Lille OSC (17-09-2021) 15.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/RC_Lens_-_Lille_OSC_%2817-09-2021%29_15.jpg/960px-RC_Lens_-_Lille_OSC_%2817-09-2021%29_15.jpg",
-      "width": 2304,
-      "height": 3456,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-493513",
-      "name": "Karl Hein",
-      "importance": 84,
-      "commonsFile": "RC Lens - Arsenal FC (03-10-2023) 6.jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/RC_Lens_-_Arsenal_FC_%2803-10-2023%29_6.jpg/960px-RC_Lens_-_Arsenal_FC_%2803-10-2023%29_6.jpg",
-      "width": 2418,
-      "height": 3023,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 80
-    },
-    {
-      "playerId": "tm-290587",
-      "name": "Ellyes Skhiri",
-      "importance": 82,
-      "commonsFile": "2021-08-08 FC Carl Zeiss Jena gegen 1. FC Köln (DFB-Pokal) by Sandro Halank–182 (cropped2).jpg",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/2021-08-08_FC_Carl_Zeiss_Jena_gegen_1._FC_K%C3%B6ln_%28DFB-Pokal%29_by_Sandro_Halank%E2%80%93182_%28cropped2%29.jpg/960px-2021-08-08_FC_Carl_Zeiss_Jena_gegen_1._FC_K%C3%B6ln_%28DFB-Pokal%29_by_Sandro_Halank%E2%80%93182_%28cropped2%29.jpg",
-      "width": 1709,
-      "height": 2734,
-      "qualityScore": 80,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
       ],
       "pass": true,
       "denylisted": false,
@@ -1081,32 +490,6 @@
       "reasons": [
         "high resolution",
         "player name in filename"
-      ],
-      "pass": true,
-      "denylisted": false,
-      "storedScore": 82
-    },
-    {
-      "playerId": "tm-450050",
-      "name": "Jean-Ricner Bellegarde",
-      "importance": 76,
-      "commonsFile": "Lens B - AC Amiens (12-09-2015) 64 (cropped).JPG",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/09/Lens_B_-_AC_Amiens_%2812-09-2015%29_64_%28cropped%29.JPG",
-      "width": 845,
-      "height": 1267,
-      "qualityScore": 82,
-      "qualityGrade": "excellent",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename",
-        "portrait_hint"
-      ],
-      "reasons": [
-        "high resolution",
-        "portrait orientation",
-        "tall portrait frame",
-        "player named in description only (likely context shot)"
       ],
       "pass": true,
       "denylisted": false,
@@ -7812,32 +7195,6 @@
       ]
     },
     {
-      "playerId": "tm-248410",
-      "name": "Giorgian de Arrascaeta",
-      "score": 76,
-      "grade": "good",
-      "pass": true,
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ]
-    },
-    {
-      "playerId": "saliba",
-      "name": "William Saliba",
-      "score": 80,
-      "grade": "excellent",
-      "pass": true,
-      "commonsFile": "Lens - Nice (23-01-2021) 39.jpg",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ]
-    },
-    {
       "playerId": "tm-44352",
       "name": "Luis Suárez",
       "score": 82,
@@ -8151,32 +7508,6 @@
         "tall_portrait",
         "head_shoulder_candidate",
         "event_stadium"
-      ]
-    },
-    {
-      "playerId": "tm-480267",
-      "name": "Ronald Araujo",
-      "score": 76,
-      "grade": "good",
-      "pass": true,
-      "commonsFile": "URUGUAY 5 – PANAMÁ 0 - 220611-7083-jikatu.jpg",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ]
-    },
-    {
-      "playerId": "tm-487969",
-      "name": "Randal Kolo Muani",
-      "score": 80,
-      "grade": "excellent",
-      "pass": true,
-      "commonsFile": "RC Lens - FC Nantes (25-11-2020) 13.jpg",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
       ]
     },
     {
@@ -8497,19 +7828,6 @@
       ]
     },
     {
-      "playerId": "tm-167850",
-      "name": "Memphis Depay",
-      "score": 74,
-      "grade": "good",
-      "pass": true,
-      "commonsFile": "Memphis Depay - July 2015c.jpg",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "event_stadium"
-      ]
-    },
-    {
       "playerId": "tm-106987",
       "name": "Marcel Sabitzer",
       "score": 90,
@@ -8729,32 +8047,6 @@
       ]
     },
     {
-      "playerId": "tm-487465",
-      "name": "Pedro Neto",
-      "score": 74,
-      "grade": "good",
-      "pass": true,
-      "commonsFile": "Pedro Neto watching from the Billy Wright stand.jpg",
-      "flags": [
-        "square",
-        "name_in_filename",
-        "event_stadium"
-      ]
-    },
-    {
-      "playerId": "tm-353366",
-      "name": "Benjamin Pavard",
-      "score": 76,
-      "grade": "good",
-      "pass": true,
-      "commonsFile": "France - England U19, 20150331 08.JPG",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
-      ]
-    },
-    {
       "playerId": "tm-112515",
       "name": "Marcos Alonso",
       "score": 76,
@@ -8763,19 +8055,6 @@
       "commonsFile": "Marcos Alonso 2015.jpg",
       "flags": [
         "name_in_filename"
-      ]
-    },
-    {
-      "playerId": "tm-236045",
-      "name": "Denis Bouanga",
-      "score": 80,
-      "grade": "excellent",
-      "pass": true,
-      "commonsFile": "Lens - Saint-Etienne (03-10-2020) 57.jpg",
-      "flags": [
-        "portrait",
-        "tall_portrait",
-        "name_not_in_filename"
       ]
     },
     {
@@ -8849,6 +8128,122 @@
         "portrait_hint",
         "head_shoulder_candidate",
         "match_filename"
+      ]
+    },
+    {
+      "playerId": "tm-249565",
+      "name": "Youri Tielemans",
+      "score": 88,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Youri Tielemans 2018.jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "head_shoulder_candidate",
+        "group_or_team"
+      ]
+    },
+    {
+      "playerId": "tm-557149",
+      "name": "Kang-in Lee",
+      "score": 88,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Lee Kang-in - 2022 (52551771501) (cropped).jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "portrait_hint",
+        "head_shoulder_candidate",
+        "bad_crop",
+        "group_or_team"
+      ]
+    },
+    {
+      "playerId": "tm-206040",
+      "name": "Raúl Jiménez",
+      "score": 90,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Raúl Jiménez.jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "head_shoulder_candidate",
+        "group_or_team"
+      ]
+    },
+    {
+      "playerId": "tm-543499",
+      "name": "Mohammed Kudus",
+      "score": 90,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "GAE - Ajax - 52788309814 (Mohammed Kudus).jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "head_shoulder_candidate",
+        "group_or_team"
+      ]
+    },
+    {
+      "playerId": "tm-532826",
+      "name": "Mason Greenwood",
+      "score": 92,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Mason Greenwood.jpeg",
+      "flags": [
+        "square",
+        "name_in_filename"
+      ]
+    },
+    {
+      "playerId": "jesus",
+      "name": "Gabriel Jesus",
+      "score": 100,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Gabriel Jesus 2015.jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "head_shoulder_candidate"
+      ]
+    },
+    {
+      "playerId": "tm-166601",
+      "name": "Niklas Süle",
+      "score": 100,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Niklas Suele Training 2019-09-01 FC Bayern Muenchen-1.jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "head_shoulder_candidate"
+      ]
+    },
+    {
+      "playerId": "tm-238407",
+      "name": "Alexander Sørloth",
+      "score": 100,
+      "grade": "excellent",
+      "pass": true,
+      "commonsFile": "Alexander Sørloth for RB Leipzig in 2022 (cropped).jpg",
+      "flags": [
+        "portrait",
+        "tall_portrait",
+        "name_in_filename",
+        "portrait_hint",
+        "head_shoulder_candidate"
       ]
     }
   ]

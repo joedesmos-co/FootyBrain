@@ -18,6 +18,8 @@ import {
 import NationalTeamBadge from './NationalTeamBadge';
 import PlayerVisual from './PlayerVisual';
 import TeamBadge from './TeamBadge';
+import LeagueBadge from './LeagueBadge';
+import { buildStudyProfileHref } from '../utils/collectionStudyContext';
 import { canonicalUrlForPath } from '../utils/brand.js';
 import { getCanonicalUrl } from '../utils/jsonLd';
 import { applyEntityNotFoundSeo, applyPageSeo, truncateMetaDescription } from '../utils/seoCtr.js';
@@ -48,6 +50,7 @@ function CollectionItemRow({
 }) {
   const { type, entity, note, index } = resolved;
   const profilePath = getEntityProfilePath(type, entity.id);
+  const studyProfilePath = buildStudyProfileHref(profilePath, collectionId);
   const handleOpenProfile = () => onMarkViewed(collectionId, index);
 
   return (
@@ -60,24 +63,14 @@ function CollectionItemRow({
       <div className="collection-item__body">
         <div className="collection-item__preview">
           {type === 'player' && <PlayerVisual player={entity} size="thumb" />}
-          {type === 'team' && <TeamBadge team={entity} />}
-          {type === 'league' && (
-            <span
-              className="collection-item__league-badge"
-              style={{
-                background: `linear-gradient(135deg, ${entity.badgeTheme.from}, ${entity.badgeTheme.to})`,
-              }}
-              aria-hidden="true"
-            >
-              {entity.name.slice(0, 2).toUpperCase()}
-            </span>
-          )}
+          {type === 'team' && <TeamBadge team={entity} size="thumb" />}
+          {type === 'league' && <LeagueBadge league={entity} size="thumb" />}
           {type === 'national-team' && (
             <NationalTeamBadge nationalTeam={entity} size="thumb" />
           )}
           <div className="collection-item__identity">
             <h3>
-              <Link to={profilePath} onClick={handleOpenProfile}>
+              <Link to={studyProfilePath} onClick={handleOpenProfile}>
                 {entity.name}
               </Link>
             </h3>
@@ -95,7 +88,7 @@ function CollectionItemRow({
         </div>
         <div className="collection-item__actions">
           <Link
-            to={profilePath}
+            to={studyProfilePath}
             className="btn btn--primary btn--small"
             onClick={handleOpenProfile}
           >

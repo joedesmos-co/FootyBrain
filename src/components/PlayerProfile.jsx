@@ -46,6 +46,7 @@ import {
 } from '../utils/seoCtr.js';
 import { canonicalUrlForPath } from '../utils/brand.js';
 import BreadcrumbNav from './BreadcrumbNav';
+import CollectionStudyReturnBar from './CollectionStudyReturnBar';
 import {
   CRUMB_BROWSE,
   CRUMB_HOME,
@@ -521,6 +522,7 @@ export default function PlayerProfile() {
           { label: player.name },
         ]}
       />
+      <CollectionStudyReturnBar />
 
       <header
         className="profile__hero profile__hero--player player-profile__hero football-accent-surface"

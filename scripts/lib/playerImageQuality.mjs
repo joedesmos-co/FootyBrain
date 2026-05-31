@@ -103,6 +103,22 @@ const NEGATIVE_CROP_PATTERNS = [
   /silhouette/i,
 ];
 
+const NON_PORTRAIT_FILE_PATTERNS = [
+  /watching from/i,
+  /against portland/i,
+  /goalkeeper-training.*screen/i,
+  /screen1\.png/i,
+];
+
+const FIXTURE_FILENAME_PATTERNS = [
+  /^Lens - /i,
+  /^RC Lens - /i,
+  /^France - /i,
+  /^Norwich \d/i,
+  /^Chelsea \d/i,
+  /^URUGUAY \d/i,
+];
+
 function haystack(meta, playerName, verifyName) {
   const file = String(meta?.commonsFile ?? '');
   const desc = String(meta?.description ?? meta?.commonsDescription ?? '');
@@ -294,6 +310,24 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
     }
   }
 
+  for (const pattern of NON_PORTRAIT_FILE_PATTERNS) {
+    if (pattern.test(file) || pattern.test(hay)) {
+      score -= 32;
+      flags.push('non_portrait_context');
+      reasons.push('not a player portrait (context/stand shot)');
+      break;
+    }
+  }
+
+  for (const pattern of FIXTURE_FILENAME_PATTERNS) {
+    if (pattern.test(file) && matchedNameTokens.length === 0) {
+      score -= 28;
+      flags.push('fixture_context');
+      reasons.push('match/fixture filename without player name');
+      break;
+    }
+  }
+
   for (const pattern of GROUP_FILE_PATTERNS) {
     if (pattern.test(file) || pattern.test(hay)) {
       score -= 22;
@@ -378,7 +412,11 @@ export function scorePlayerImage(meta, playerName, verifyName = null) {
     !(flags.includes('event_stadium') && flags.includes('name_not_in_filename') && !hasPortraitHint) &&
     !(flags.includes('group_or_team') && flags.includes('event_stadium') && !hasPortraitHint) &&
     !(fileYear !== null && fileYear <= 2012 && flags.includes('event_stadium')) &&
-    !(flags.includes('name_not_in_filename') && !hasPortraitHint && score < MIN_AUTO_APPROVE_SCORE);
+    !(flags.includes('name_not_in_filename') && !hasPortraitHint && score < MIN_AUTO_APPROVE_SCORE) &&
+    !flags.includes('non_portrait_context') &&
+    !(flags.includes('fixture_context') && !hasPortraitHint) &&
+    !(flags.includes('wide_landscape') && !hasPortraitHint && matchedNameTokens.length === 0) &&
+    !(flags.includes('screenshot_like') && score < MIN_AUTO_APPROVE_SCORE);
 
   return { score, grade, flags: [...new Set(flags)], reasons, pass };
 }
